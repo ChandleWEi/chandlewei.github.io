@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rpm和deb从本质上就代表了不同理念__ZZ - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="仔细考虑rpm的依赖关系
+其实发现redhat当初考虑rpm
+只是考虑到了从光盘这个给定范围内安装指定包的途径
+由于源的范围很窄
+所以他没有过多考虑卸载软件已经更新软件
+他们当时需要的只是一个能够解决依赖关系
+解决当安装A的时候要把B也安装进去问题的方法
+从这个角度来看RPM工作的不错 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">rpm和deb从本质上就代表了不同理念__ZZ</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-15T00:00:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2></h2>
+
+<p>仔细考虑rpm的依赖关系<br/>
+其实发现redhat当初考虑rpm<br/>
+只是考虑到了从光盘这个给定范围内安装指定包的途径<br/>
+由于源的范围很窄<br/>
+所以他没有过多考虑卸载软件已经更新软件<br/>
+他们当时需要的只是一个能够解决依赖关系<br/>
+解决当安装A的时候要把B也安装进去问题的方法<br/>
+从这个角度来看RPM工作的不错<br/>
+其实你只是从redhat的光盘上安装软件<br/>
+他看起来也不错.虽然有时候会安装你觉得完全依赖不到的东西<br/>
+但是他们的解决方法就是.为了万无一失.凡是引用到的东西统统装进去.反正是从光盘上的.速度不会太差<br/>
+但是遇到信息爆炸和软件数量激增的情况下<br/>
+就很难去管理这么大一个库<br/>
+而rpm的设计方式注定了无法别人参与维护这个源</p>
+
+<p>而deb的管理.其实应该说是apt的管理<br/>
+从一开始就源于debian的包或者源不可能只有一个组织维护<br/>
+其贡献者会非常多<br/>
+所以他的依赖比较松散,而且对卸载和更新的要求考虑的比较周到<br/>
+而之后的yum,只能是把rpm的依赖关系搬移到网上<br/>
+并没有本质上解决rpm的痼疾.<br/>
+所以当rpm遇见个人发布的内容的时候<br/>
+如果使用默认的rpm打包方式<br/>
+会发现你打出的包由于依赖关系安装很麻烦.卸载更加是件几乎不可能的事情.<br/>
+因为你的应用不是redhat的.不在他们的光盘中</p>
+
+<p>redhat之所以放弃桌面版linux市场<br/>
+其一是linux桌面版确实很难盈利<br/>
+其二是在本身就是开源环境的条件下<br/>
+软件的更新和加入如此频繁.<br/>
+在网络速度已经很高的前提下就开始暴露出来的rpm打包软件难以维护的问题<br/>
+到后面已经是积重难返了.<br/>
+而退缩企业市场,企业市场出于稳定性和可靠性,<br/>
+不可能安装来自那么多第三方源的软件<br/>
+这样redhat维护和管理一个较小的软件源的可能性就大大增加了.</p>
+
+<p>我们看到debian或者ubuntu的系统<br/>
+都是一张CD,而这在他们看来是基础CD<br/>
+可以通过这个CD扩展<br/>
+而redhat和suse的概念就不同<br/>
+要不是DVD,要不就是几张或者十几张CD<br/>
+这些CD.就是他们的全部内容<br/>
+你要安装这之外的软件.将会非常困难.</p>
+
+<p>由此我觉得.redhat的rpm代表的是狭隘以及短视,封闭<br/>
+而deb或者gentoo的包管理方式.更加开放和富有远见.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-15T00:00:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/12/11/subversion_amd64_%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/" title="Previous Post: subversion_amd64_编译问题">&laquo; subversion_amd64_编译问题</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/12/17/pidgin_2.5.3%E5%AE%89%E8%A3%85/" title="Next Post: pidgin_2.5.3安装">pidgin_2.5.3安装 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 刷机 | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/shua-ji/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Htc_desire_刷机记录]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2011/02/24/htc_desire_%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/"/>
+    <updated>2011-02-24T15:05:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2011/02/24/htc_desire_刷机记录</id>
+    <content type="html"><![CDATA[<p>首先我对android 毫无概念 以前折腾过 openmoko 后来开始用iphone 这是第一次开始用android</p>
+
+<p>参考如下没有成功</p>
+
+<p><a href="http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide">http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide</a></p>
+
+<p>gdb shell 查看</p>
+
+<p>$ cat /proc/mtd<br/>
+dev:    size   erasesize  name<br/>
+mtd0: 00100000 00040000 &ldquo;misc"<br/>
+mtd1: 00480000 00040000 "recovery"<br/>
+mtd2: 00340000 00040000 "boot"<br/>
+mtd3: 0fa00000 00040000 "system"<br/>
+mtd4: 02800000 00040000 "cache"<br/>
+mtd5: 096c0000 00040000 "userdata&rdquo;</p>
+
+<p>pvt4 40000 看来是悲剧了</p>
+]]></content>
+  </entry>
+  
+</feed>

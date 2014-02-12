@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/c/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Curl]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/07/31/curl/"/>
+    <updated>2009-07-31T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/07/31/curl</id>
+    <content type="html"><![CDATA[<p>天尝试使用curl请求lighttpd数据，发现总是报错(417) Expectation Failed。<br/>
+经查，是lighttp不支持curl默认发送的头信息: Expect: 100-continue.</p>
+
+<p>解决方式：</p>
+
+<p>在curl中指定发送一个空的Except头信息即可解决。<br/>
+代码：</p>
+
+<p>curl_setopt($ch, CURLOPT_HTTPHEADER, array(&lsquo;Expect:&rsquo;));</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C_语言学习]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/07/24/c_%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    <updated>2009-07-24T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/07/24/c_语言学习</id>
+    <content type="html"><![CDATA[<p>要加 stdlib.h就没有警告了</p>
+
+<p> </p>
+
+<p>more01.c: In function ‘main’:<br/>
+more01.c:22: warning: incompatible implicit declaration of built-in function ‘exit’<br/>
+more01.c: In function ‘do_more’:<br/>
+more01.c:42: warning: incompatible implicit declaration of built-in function ‘exit’</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C_警告_问题]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2008/10/22/c_%E8%AD%A6%E5%91%8A_%E9%97%AE%E9%A2%98/"/>
+    <updated>2008-10-22T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2008/10/22/c_警告_问题</id>
+    <content type="html"><![CDATA[<p>migrate_ppl.c:14: warning: incompatible implicit declaration of built-in function ‘exit’</p>
+
+<p> </p>
+
+<p>加上stdlib.h string.h就没有警告了</p>
+]]></content>
+  </entry>
+  
+</feed>

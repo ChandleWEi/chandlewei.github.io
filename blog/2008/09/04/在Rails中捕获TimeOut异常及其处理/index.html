@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>在Rails中捕获TimeOut异常及其处理 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="window.onload=function(){ fiximage(&lsquo;500x500&rsquo;); } Submitted by iceskysl on 2008, April 7, 3:17 PM. 技术归总 | Technic alimama_pid=&ldquo; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/09/04/%E5%9C%A8Rails%E4%B8%AD%E6%8D%95%E8%8E%B7TimeOut%E5%BC%82%E5%B8%B8%E5%8F%8A%E5%85%B6%E5%A4%84%E7%90%86">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">在Rails中捕获TimeOut异常及其处理</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-04T00:00:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>window.onload=function(){ fiximage(&lsquo;500x500&rsquo;); }</p>
+
+<h2></h2>
+
+<p>Submitted by <strong> <a href="http://iceskysl.1sters.com/?action=finduser&amp;userid=1">iceskysl</a></strong> on 2008, April 7, 3:17 PM. <a href="http://iceskysl.1sters.com/?action=index&amp;cid=3">技术归总 | Technic</a></p>
+
+<p>alimama_pid=&ldquo;mm_10001645_810081_2209991&rdquo;; alimama_titlecolor=&ldquo;535353&rdquo;; alimama_descolor =&ldquo;313131&rdquo;; alimama_bgcolor=&ldquo;FFFFFF&rdquo;; alimama_bordercolor=&ldquo;FFFFFF&rdquo;; alimama_linkcolor=&ldquo;4281BB&rdquo;; alimama_bottomcolor=&ldquo;FFFFFF&rdquo;; alimama_anglesize=&ldquo;8&rdquo;; alimama_bgpic=&ldquo;0&rdquo;; alimama_icon=&ldquo;0&rdquo;; alimama_sizecode=&ldquo;12&rdquo;; alimama_width=468; alimama_height=60; alimama_type=2; <img src="http://z.alimama.com/alimamal.php?i=mm_10001645_810081_2209991&amp;u=http%3A%2F%2Ficeskysl.1sters.com%2F%3Faction%3Dshow%26id%3D245&amp;w=468&amp;h=60&amp;re=1680x1050&amp;sz=12&amp;r=http%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Drails%2Btime%2Bout%25E9%2597%25AE%25E9%25A2%2598%26ie%3Dutf-8%26oe%3Dutf-8%26aq%3Dt%26rls%3Dcom.ubuntu%3Aen-US%3Aunofficial%26client%3Dfirefox-a&amp;cg=cf9c8a89fde77be2a4d7f47148866292&amp;prk=96568482&amp;cas=prk&amp;cah=1050&amp;caw=1680&amp;ccd=24&amp;ctz=8&amp;chl=4&amp;cpl=10&amp;cmm=41&amp;cf=9.0&amp;sx=534&amp;sy=181&amp;cbw=1458&amp;cbh=5591" alt="" /></p>
+
+<p>把应用迁移到新的服务器上以后，发现经常有”超时“的错误信息，如<em>/usr/lib/ruby/1.8/timeout.rb:54:in `rbuf_fill&#8217;: execution expired (Timeout::Error)</em>，恩，应该是网络不稳定或者是服务器响应太慢的结果，需要捕获下这个异常并做些处理，记录如下：</p>
+
+<p>需要注意的是，<strong>Timeout::Error</strong>不是<strong>StandardError</strong>的子类, 而是继承至 <strong>Interrupt class</strong>，所以捕获的时候，需要格外注意，演示如下：</p>
+
+<p> </p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>require &#8217;net/pop3&#8217;  </li>
+<li>begin  </li>
+<li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
+<li>rescue => e  </li>
+<li>  write_error_to_logfile(e)  </li>
+<li>  do_something_sensible  </li>
+<li>end  </li>
+</ol>
+
+
+<p>看上面的这段代码，当POP3服务器不能及时响应的时候，所触发的异常并不能被下面捕获到，原因就是上面说的，再看正确的处理代码：</p>
+
+<p> </p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>require &#8217;net/pop3&#8217;  </li>
+<li>begin  </li>
+<li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
+<li>rescue => e  </li>
+<li>  write_error_to_logfile(e)  </li>
+<li>  do_something_sensible  </li>
+<li>rescue Timeout::Error => e  </li>
+<li>  write_error_to_logfile(e)  </li>
+<li>  do_something_sensible_for_timeout  </li>
+<li>end  </li>
+</ol>
+
+
+<p>这段代码可以正常工作，并按照我们的意愿来处理了。</p>
+
+<p> 如果您知道对方的服务器会比较慢的响应，或者你知道网络状态不好，你可以单独设置这个<strong>TimeOut</strong>的时间，代码如下：</p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>require &#8217;timeout&#8217;  </li>
+<li>  </li>
+<li>&hellip;  </li>
+<li>&hellip;  </li>
+<li>begin  </li>
+<li>  timeout(60) do  </li>
+<li>     resp, body=3Dh.get(&lsquo;/index.html&rsquo;)  </li>
+<li>     puts body  </li>
+<li>  end  </li>
+<li>rescue TimeoutError  </li>
+<li>       puts &#8221;Timed Out&#8221;  </li>
+<li>end </li>
+</ol>
+
+
+<p>或者这样：（来源：<a href="http://textsnippets.com/posts/show/868%EF%BC%89">http://textsnippets.com/posts/show/868%EF%BC%89</a></p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>http = Net::HTTP.new(url.host, url.port)  </li>
+<li>http.read_timeout=time_out  </li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-04T00:00:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/09/04/%E5%9C%A8Rails%E4%B8%AD%E6%8D%95%E8%8E%B7TimeOut%E5%BC%82%E5%B8%B8%E5%8F%8A%E5%85%B6%E5%A4%84%E7%90%86/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/09/04/%E5%9C%A8Rails%E4%B8%AD%E6%8D%95%E8%8E%B7TimeOut%E5%BC%82%E5%B8%B8%E5%8F%8A%E5%85%B6%E5%A4%84%E7%90%86/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/09/03/rails_railscast_tips/" title="Previous Post: rails_railscast_tips">&laquo; rails_railscast_tips</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/09/04/%E6%94%B9%E5%8F%98comment%E7%9A%84%E8%AE%BE%E7%BD%AE/" title="Next Post: 改变comment的设置">改变comment的设置 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

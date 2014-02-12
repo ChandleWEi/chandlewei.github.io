@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MacRuby_for_the_Desktop__Seven_Reasons______*_Edit_____*_Delete_____*_Autopost]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2011/03/24/MacRuby_for_the_Desktop__Seven_Reasons______%2A_Edit_____%2A_Delete_____%2A_Autopost/"/>
+    <updated>2011-03-24T17:24:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2011/03/24/MacRuby_for_the_Desktop__Seven_Reasons______*_Edit_____*_Delete_____*_Autopost</id>
+    <content type="html"><![CDATA[<p>   </p>
+
+<p><a href="http://www.macruby.org/">MacRuby</a> isn&rsquo;t 1.0 yet. But, we think it&rsquo;s exactly the right time to start building desktop apps in MacRuby. Here&rsquo;s why:</p>
+
+<ol>
+<li><strong>MacRuby in Lion: Apple is <a href="http://merbist.com/2011/03/07/hey-apple-please-be-nice-and-share/">including MacRuby as a private framework in Lion</a>. While MacRuby is not yet a public framework, its inclusion is a powerful signal of Apple&rsquo;s endorsement.</strong></li>
+<li><strong>Framework embedding.</strong> Distributing the MacRuby framework as part of your .app bundle is getting more efficient: Our application is 10.9MB GZIP&rsquo;d, including the embedded MacRuby framework and several Ruby gems. That&rsquo;s a big improvement form 18MB+ in previous versions of MacRuby.</li>
+<li><strong>Distribution of commercial apps:</strong> you can compile your MacRuby code prior to distribution &mdash; no need to reveal your source code. If you&rsquo;re developing a commercial product, this is a pretty key feature.</li>
+<li><strong>Xcode 4:</strong> Xcode 4 works with MacRuby! Xcode 4 is a joy compared to Xcode 3.</li>
+<li><strong>Community: </strong>developing in MacRuby reminds me of developing in Rails in the early days. People are beginning to see how productive it can be. There&rsquo;s a small but passionate group of advocates. There&rsquo;s a great energy and vibe in the community.</li>
+<li><strong>Timing: </strong>there are many talented Ruby programmers who are going to discover and embrace MacRuby on the desktop soon. As momentum builds, there will an influx of great Mac apps from these folks. I think this will be another wave that is &mdash; like Rails &mdash; both profitable and fun to be a part of.</li>
+<li><strong>Ruby Gem compatibility:</strong> Ruby has an amazing ecosystem of gems, and you get it for free with MacRuby. Compatibility is growing all the time. We&rsquo;ve used Nokogiri, SQLite, and more.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

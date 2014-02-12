@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="text-decoration none :　 默认值。无装饰
+blink :　 闪烁
+underline :　 下划线
+line-through :　 贯穿线
+overline :　 上划线
+">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/10">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/10/css__%E5%A4%87%E5%BF%98/">Css__备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-10T00:00:00+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>text-decoration</p>
+
+<p>none :　 默认值。无装饰<br/>
+blink :　 闪烁<br/>
+underline :　 下划线<br/>
+line-through :　 贯穿线<br/>
+overline :　 上划线</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/09/zz_facebook_%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">Zz_facebook_海量数据处理</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T00:00:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Facebook 海量数据处理 作者: Fenng | 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及版权声明 网址: <a href="http://www.dbanotes.net/arch/facebook_photos_arch.html">http://www.dbanotes.net/arch/facebook_photos_arch.html</a> 对着眼前黑色支撑的天空 / 我突然只有沉默了 我驾着最后一班船离开 / 才发现所有的灯塔都消失了 这是如此触目惊心的 / 因为失去了方向我已停止了 就象一个半山腰的攀登者 / 凭着那一点勇气和激情来到这儿 如此上下都不着地地喘息着 / 闭上眼睛疼痛的感觉溶化了 &mdash;达达乐队《黄金时代》 好几个地方看到这个 Facebook &ndash; Needle in a Haystack: Efficient Storage of Billions of Photos，是 Facebook 的 Jason Sobel 做的一个 PPT，揭示了不少比较有参考价值的信息。【也别错过我过去的这篇Facebook 的PHP性能与扩展性】 图片规模 作为世界上最大的 SNS 站点之一，Facebook 图片有多少? 65 亿张原始图片，每张图片存为 4-5 个不同尺寸，这样总计图片文件有 300 亿左右，总容量 540T，天! 峰值的时候每秒钟请求 47.5 万个图片 (当然多数通过 CDN) ，每周上传 1 亿张图片。 图片存储 前一段时间说 Facebook 服务器超过 10000 台，现在打开不止了吧，Facebook 融到的大把银子都用来买硬件了。图片是存储在 Netapp NAS上的，采用 NFS 方式。 图片写入 Facebook_write.png 尽管这么大的量，似乎图片写入并不是问题。如上图，是直接通过 NFS 写的。 图片读取 Facebook.png CDN 和 Cachr 承担了大部分访问压力。尽管 Netapp 设备不便宜，但基本上不承担多大的访问压力，否则吃不消。CDN 针对 Profile 图象的命中率有 99.8%，普通图片也有 92% 的命中率。命中丢失的部分采由 Netapp 承担。 图中的 Cachr 这个组件，应该是用来消息通知(基于调整过的 evhttp的嘛)，Memcached 作为后端存储。Web 图片服务器是 Lighttpd，用于 FHC (文件处理 Cache)，后端也是 Memcached。Facebook 的 Memcached 服务器数量差不多世界上最大了，人家连 MYSQL 服务器还有两千台呢。 Haystacks &mdash;大海捞针 这么大的数据量如何进行索引? 如何快速定位文件? 这是通过 Haystacks 来做到的。Haystacks 是用户层抽象机制，简单的说就是把图片元数据的进行有效的存储管理。传统的方式可能是通过 DB 来做，Facebook 是通过文件系统来完成的。通过 GET / POST 进行读/写操作，应该说，这倒也是个比较有趣的思路，如果感兴趣的话，看一下 GET / POST 请求的方法或许能给我们点启发。 Facebook2.png 总体来看，Facebook 的图片处理还是采用成本偏高的方法来做的。技术含量貌似并不大。不清楚是否对图片作 Tweak，比如不影响图片质量的情况下减小图片尺寸。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/09/zz_FeedBurner_%E5%9F%BA%E4%BA%8EMySQL%E5%92%8CJAVA%E7%9A%84%E5%8F%AF%E6%89%A9%E5%B1%95Web%E5%BA%94%E7%94%A8/">zz_FeedBurner_基于MySQL和JAVA的可扩展Web应用</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T00:00:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>June 27, 2006 FeedBurner:基于MySQL和JAVA的可扩展Web应用 于敦德 2006-6-27 FeedBurner（以下简称FB，呵呵）我想应该是大家耳熟能详的一个名字，在国内我们有一个同样的服务商，叫做FeedSky。在2004年7月份，FB的流量是300kbps，托管是5600个源，到2005年4月份，流量已经增长到5Mbps，托管了47700个源；到 2005年9月份流量增长到20M，托管了109200个源，而到2006年4月份，流量已经到了115Mbps，270000个源，每天点击量一亿次。 FB的服务使用Java实现，使用了Mysql数据库。我们下面来看一下FB在发展的过程中碰到的问题，以及解决的方案。 在2004年8月份，FB的硬件设备包括3台Web服务器，3台应用服务器和两台数据库服务器，使用DNS轮循分布服务负载，将前端请求分布到三台 Web服务器上。说实话，如果不考虑稳定性，给5600个源提供服务应该用不了这么多服务器。现在的问题是即使用了这么多服务器他们还是无法避免单点问题，单点问题将至少影响到1/3的用户。FB采用了监控的办法来解决，当监控到有问题出现时及时重启来避免更多用户受到影响。FB采用了Cacti(<a href="http://www.cacti.net">http://www.cacti.net</a>)和Nagios(<a href="http://www.nagios.org">http://www.nagios.org</a>)来做监控。 FB碰到的第二个问题是访问统计和管理。可以想象，每当我们在RSS阅读器里点击FB发布的内容，都需要做实时的统计，这个工作量是多么的巨大。大量写操作将导致系统的效率急剧下降，如果是Myisam表的话还会导致表的死锁。FB一方面采用异步写入机制，通过创建执行池来缓冲写操作；只对本日的数据进行实时统计，而以前的数据以统计结果形式存储，进而避免每次查看访问统计时的重复计算。所以每一天第一次访问统计信息时速度可能会慢，这个时候应该是 FB在分析整理前一天的数据，而接下来的访问由于只针对当日数据进行分析，数据量小很多，当然也会快很多。FB的Presentation是这样写，但我发现好像我的FB里并没有今天实时的统计，也许是我观察的不够仔细-_&ndash;! 现在第三个问题出现了，由于大多数的操作都集中在主数据库上，数据库服务器的读写出现了冲突，前面提到过Myiasm类型的数据库在写入的时候会锁表，这样就导致了读写的冲突。在开始的时候由于读写操作比较少这个问题可能并不明显，但现在已经到了不能忽视的程度。解决方案是平衡读写的负载，以及扩展 HibernateDaoSupport，区分只读与读写操作，以实现针对读写操作的不同处理。 现在是第四个问题：数据库全面负载过高。由于使用数据库做为缓存，同时数据库被所有的应用服务器共享，速度越来越慢，而这时数据库大小也到了 Myisam的上限-4GB，FB的同学们自己都觉得自己有点懒。解决方案是使用内存做缓存，而非数据库，他们同样使用了我们前面推荐的 memcached，同时他们还使用了Ehcache(<a href="http://ehcache.sourceforge.net/">http://ehcache.sourceforge.net/</a>)，一款基于Java的分布式缓存工具。 第五个问题：流行rss源带来大量重复请求，导致系统待处理请求的堆积。同时我们注意到在RSS源小图标有时候会显示有多少用户订阅了这一RSS 源，这同样需要服务器去处理，而目前所有的订阅数都在同一时间进行计算，导致对系统资源的大量占用。解决方案，把计算时间错开，同时在晚间处理堆积下来的请求，但这仍然不够。 问题六：状态统计写入数据库又一次出问题了。越来越多的辅助数据（包括广告统计，文章点击统计，订阅统计）需要写入数据库，导致太多的写操作。解决方案：每天晚上处理完堆积下来的请求后对子表进行截断操作： – FLUSH TABLES; TRUNCATE TABLE ad_stats0; 这样的操作对Master数据库是成功的，但对Slave会失败，正确的截断子表方法是： – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats1,ad_stats2); – TRUNCATE TABLE ad_stats0; – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats0,ad_stats1,ad_stats2); 解决方案的另外一部分就是我们最常用的水平分割数据库。把最常用的表分出去，单独做集群，例如广告啊，订阅计算啊， 第七个问题，问题还真多，主数据库服务器的单点问题。虽然采用了Master-Slave模式，但主数据库Master和Slave都只有一台，当 Master出问题的时候需要太长的时间进行Myisam的修复，而Slave又无法很快的切换成为Master。FB试了好多办法，最终的解决方案好像也不是非常完美。从他们的实验过程来看，并没有试验Master-Master的结构，我想Live Journal的Master-Master方案对他们来说应该有用，当然要实现Master-Master需要改应用，还有有些麻烦的。 第八个问题，停电!芝加哥地区的供电状况看来不是很好，不过不管好不好，做好备份是最重要的，大家各显神通吧。 这个Presentation好像比较偏重数据库，当然了，谁让这是在Mysql Con上的发言，不过总给人一种不过瘾的感觉。另外一个感觉，FB的NO们一直在救火，没有做系统的分析和设计。 最后FB的运维总监Joe Kottke给了四点建议： 1、 监控网站数据库负载。 2、 “explain”所有的SQL语句。 3、 缓存所有能缓存的东西。 4、 归档好代码。 最后，FB用到的软件都不是最新的，够用就好，包括：Tomcat5.0，Mysql 4.1，Hibernate 2.1，Spring，DBCP。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/09/memcache_%E5%B0%8F%E8%AF%95%E9%AA%8C/">Memcache_小试验</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T00:00:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>~$ telnet localhost 11211<br/>
+Trying 127.0.0.1&hellip;<br/>
+Connected to localhost.<br/>
+Escape character is &lsquo;^]&rsquo;.<br/>
+set foo 0 0 3<br/>
+bar<br/>
+STORED<br/>
+get foo<br/>
+VALUE foo 0 3<br/>
+bar<br/>
+END</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/08/ruby_global_variable_%E5%A4%87%E6%9F%A5_%E4%B8%8D%E5%85%A8/">Ruby_global_variable_备查_不全</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-08T00:00:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>  | <code>$!</code> | latest error message |
+| <code>$@</code> | location of error |
+| <code>$_</code> | string last read by <code>gets</code> |
+| <code>$.</code> | line <em>number</em> last read by interpreter |
+| <code>$&amp;</code> | string last matched by regexp |
+| <code>$~</code> | the last regexp match, as an array of subexpressions |
+| <code>$</code> <em>n</em> | the <em>nth</em> subexpression in the last match (same as <code>$~[</code> <em>n</em> <code>]</code> ) |
+| <code>$=</code> | case-insensitivity flag |
+| <code>$/</code> | input record separator |
+| <code>$</code> | output record separator |
+| <code>$0</code> | the name of the ruby script file |
+| <code>$*</code> | the command line arguments |
+| <code>$$</code> | interpreter&rsquo;s process ID |
+| <code>$?</code> |</p>
+
+<p>exit status of last executed child process</p>
+
+<p>  |</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/01/emacs_%E5%8F%AF%E4%BB%A5%E6%9B%B4%E6%96%B0%E5%88%B0_23.0.92%E4%BA%86/">emacs_可以更新到_23.0.92了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-01T00:00:00+08:00" pubdate data-updated="true">Apr 1<span>st</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>GNU Emacs 23.0.92.1 (i686-pc-linux-gnu, GTK+ Version 2.14.7)<br/>
+ of 2009-04-01 on ChandleWEi</p>
+
+<p>么什么改变，看了下changelog 变化不大，边用边体验</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/01/c_%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E5%A4%87%E5%BF%98/">C_语言学习备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-01T00:00:00+08:00" pubdate data-updated="true">Apr 1<span>st</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some useful references about C:<br/>
+ &lt; <a href="http://www.ungerhu.com/jxh/clc.welcome.txt">http://www.ungerhu.com/jxh/clc.welcome.txt</a>><br/>
+ &lt; <a href="http://c-faq.com/">http://c-faq.com/</a>>                                       (C-faq)<br/>
+ &lt; <a href="http://benpfaff.org/writings/clc/off-topic.html">http://benpfaff.org/writings/clc/off-topic.html</a>><br/>
+ &lt; <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf</a>> (C99)<br/>
+ &lt; <a href="http://cbfalconer.home.att.net/download/n869_txt.bz2">http://cbfalconer.home.att.net/download/n869_txt.bz2</a>>  (pre-C99)<br/>
+ &lt; <a href="http://www.dinkumware.com/c99.aspx">http://www.dinkumware.com/c99.aspx</a>>                  (C-library}<br/>
+ &lt; <a href="http://gcc.gnu.org/onlinedocs/">http://gcc.gnu.org/onlinedocs/</a>>                       (GNU docs)<br/>
+ &lt; <a href="http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction">http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction</a>><br/>
+ &lt; <a href="http://clc-wiki.net/wiki/Introduction_to_comp.lang.c">http://clc-wiki.net/wiki/Introduction_to_comp.lang.c</a>></p>
+
+<p><a href="http://clc-wiki.net/wiki/K%26R2_solutions">http://clc-wiki.net/wiki/K%26R2_solutions</a></p>
+
+<p><a href="http://c-faq.com/">http://c-faq.com/</a></p>
+
+<p>gdb</p>
+
+<p><a href="http://dirac.org/linux/gdb/01-Introduction.php#whatisadebugger">http://dirac.org/linux/gdb/01-Introduction.php#whatisadebugger</a></p>
+
+<p> </p>
+
+<p>书</p>
+
+<p>C: A Reference Manual&#8221; by Harbison &amp; Steele</p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/">Linux_连接windows打印机</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-19T00:00:00+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml">http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml</a></p>
+
+<p>基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的</p>
+
+<p>1.查找windows打印机</p>
+
+<h1>/usr/bin/smbclient -L puma -U ttan</h1>
+
+<p>用ttan这个用户连上puma查看共享的目录或打印机</p>
+
+<p>结果显示如下：</p>
+
+<p>Sharename Type Comment</p>
+
+<hr />
+
+<p>print$ Disk ┤<br/>
+C$ Disk ─<br/>
+shared Disk<br/>
+TD_Dir Disk TestDirector<br/>
+download Disk<br/>
+F$ Disk ─<br/>
+IPC$ IPC<br/>
+EPSONAL- Printer EPSON AL-C1100 Advanced<br/>
+ADMIN$ Disk<br/>
+D$ Disk ─<br/>
+hpLaserJ Printer hp LaserJet 1320 PCL 6</p>
+
+<p>这里我们要用到的就是hpLaserJ这个打印机</p>
+
+<p>2.配置CUPS</p>
+
+<h1>ls -l /usr/lib/cups/backend/smb</h1>
+
+<p>确认CUPS是否安装了smb。<br/>
+如果没有</p>
+
+<h1>ln -s <code>which smbspool</code> /usr/lib/cups/backend/smb</h1>
+
+<p>添加打印机</p>
+
+<h1>lpadmin -p pumahp -v smb://ttan:password@puma/hpLaserJ -P</h1>
+
+<p>/usr/share/cups/model/laserjet.ppd.gz</p>
+
+<p>-p是打印机名称，这个可以自己设置<br/>
+-v就是打印机设备的URI.<br/>
+-P是使用的ppd，PostScript Printer Description</p>
+
+<h1>/usr/bin/enable pumahp</h1>
+
+<p>启用打印机</p>
+
+<h1>/usr/sbin/accept pumahp</h1>
+
+<p>打印系统接受发往pumahp的打印任务</p>
+
+<h1>/usr/sbin/lpadmin -d pumahp</h1>
+
+<p>设置pumahp为默认打印机</p>
+
+<p>3.开始打印咯</p>
+
+<h1>lpr /etc/fstab</h1>
+
+<h1>lpq</h1>
+
+<p>pumahp is ready and printing<br/>
+Rank Owner Job File(s) Total Size<br/>
+active root 1 fstab 1024 bytes</p>
+
+<p>备注：<br/>
+或者第二步可以直接修改配置文件<br/>
+/etc/cups/printers.conf</p>
+
+<p>Info pumahp<br/>
+DeviceURI smb://ttan:password@puma/hpLaserJ<br/>
+State Idle<br/>
+Accepting Yes<br/>
+JobSheets none none<br/>
+QuotaPeriod 0<br/>
+PageLimit 0<br/>
+KLimit 0</p>
+
+<p> </p>
+
+<p>=========================================================================</p>
+
+<p>  1 # Printer configuration file for CUPS v1.3.8<br/>
+  2 # Written by cupsd on 2009-03-19 11:51<br/>
+  3 <Printer iloho1><br/>
+  4 Info iloho1<br/>
+  5 DeviceURI smb://user:user@192.168.2.188/HPLaserJ1018<br/>
+  6 State Idle<br/>
+  7 StateTime 1237434675<br/>
+  8 Accepting Yes<br/>
+  9 Shared Yes<br/>
+ 10 JobSheets none none<br/>
+ 11 QuotaPeriod 0<br/>
+ 12 PageLimit 0<br/>
+ 13 KLimit 0<br/>
+ 14 OpPolicy default<br/>
+ 15 ErrorPolicy stop-printer<br/>
+ 16 </Printer><br/>
+~</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">重新编译了vim_么碰到什么问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-27T00:00:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> CFLAGS=-O3 ./configure &mdash;enable-perlinterp &mdash;enable-pythoninterp &mdash;enable-rubyinterp &mdash;enable-cscope &mdash;enable-multibyte</p>
+
+<p>make &amp;&amp; sudo make install</p>
+
+<p> </p>
+
+<p>我对vim 不是很熟悉，各种原因重新下载了7。2编译了下</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/02/25/rails_many_update_question/">Rails_many_update_question</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-25T00:00:00+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>aa.bbs &lt;&lt; bb (new)</p>
+
+<p>aa.bbs.build bb.attributes (update)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/11/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/9/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

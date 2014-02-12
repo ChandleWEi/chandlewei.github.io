@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Css | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Css滚动条]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/06/06/css%E6%BB%9A%E5%8A%A8%E6%9D%A1/"/>
+    <updated>2009-06-06T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/06/06/css滚动条</id>
+    <content type="html"><![CDATA[<div style="width:value;height:value;overflow-x:hidden;overflow-y:scroll">
+
+内容区当设定的显示范围,容纳不了显示的内容的时候,就会出现滚动条,可根据自己的需要适当的改进width,height,overflow-x,overflow-y的属性,即可达到iframe的效果airzen整理
+
+    
+</div>
+
+
+<p> </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Css__备忘]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/04/10/css__%E5%A4%87%E5%BF%98/"/>
+    <updated>2009-04-10T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/04/10/css__备忘</id>
+    <content type="html"><![CDATA[<p>text-decoration</p>
+
+<p>none :　 默认值。无装饰<br/>
+blink :　 闪烁<br/>
+underline :　 下划线<br/>
+line-through :　 贯穿线<br/>
+overline :　 上划线</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[height__100%_问题_(FF)]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2008/02/19/height__100%25_%E9%97%AE%E9%A2%98_%28FF%29/"/>
+    <updated>2008-02-19T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2008/02/19/height__100%_问题_(FF)</id>
+    <content type="html"><![CDATA[<p>Firefox浏览器中使用“height: 100%”会固定其高度，而不是自动延伸成100%的高度，这个在IE浏览器中非常非常正常的一个CSS定义，到Firefox浏览器中就会有问题,</p>
+
+<p> 但是如果使用以下头定义</p>
+
+<p>&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Transitional//EN&rdquo; &ldquo;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>&rdquo;></p>
+
+<p>则会使不符合w3c的定义失效，所以今天碰的问题是</p>
+
+<p>div main 设置了100％，但是被firefox 固定了高度，所以第三层的 footer 的margin－top 出现问题。 </p>
+
+<p> </p>
+]]></content>
+  </entry>
+  
+</feed>

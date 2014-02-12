@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Misc | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/misc/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[S41_镶牙成功]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2008/08/17/s41_%E9%95%B6%E7%89%99%E6%88%90%E5%8A%9F/"/>
+    <updated>2008-08-17T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2008/08/17/s41_镶牙成功</id>
+    <content type="html"><![CDATA[<p>今天花时间把笔记本拆了，装了蓝牙，从下面链接1买的benq s41 蓝牙模块，不过装好后发现是hp的内置蓝牙驱动，不过还能用用hp的驱动，懒得去换，那样还要重新拆装笔记本。</p>
+
+<p>笔记本只拆到倒数第一层，最后一层没有拆，也许以后擦灰的时候时候才拆</p>
+
+<p>背后23螺丝，正面7螺丝，腰部4螺丝，键盘后的3根线连背部4965蓝牙，在内存下面，是平面的下面不是深层次的下面， 颜色顺序是灰白黑，从wireless 上到下顺序。 蓝牙装好后测试成功</p>
+
+<p>1. </p>
+
+<p><a href="http://auction1.taobao.com/auction/item_detail-0db1-a7f8708a0bf8fd783b23c4284f490735.jhtml">http://auction1.taobao.com/auction/item_detail-0db1-a7f8708a0bf8fd783b23c4284f490735.jhtml</a></p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p><a href="http://www.slanya.com/softdown/soft/HP">http://www.slanya.com/softdown/soft/HP</a>惠普笔记本Bluetooth内置蓝牙模块最新驱动/HP惠普笔记本Bluetooth内置蓝牙模块最新驱动.rar</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[第一个脚印]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2007/12/11/%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E5%8D%B0/"/>
+    <updated>2007-12-11T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2007/12/11/第一个脚印</id>
+    <content type="html"><![CDATA[<p>留下的第一抹痕迹 </p>
+
+<p>                       &mdash;宇宙银河太阳系地球亚洲中国上海</p>
+]]></content>
+  </entry>
+  
+</feed>

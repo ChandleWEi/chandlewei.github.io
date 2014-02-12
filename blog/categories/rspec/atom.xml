@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rspec | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/rspec/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rspec_tips]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2011/03/30/rspec_tips/"/>
+    <updated>2011-03-30T21:18:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2011/03/30/rspec_tips</id>
+    <content type="html"><![CDATA[<p>只在collaborator 不好控制的时候 stub它</p>
+
+<p>只在collaborator 还没有实物的时候 mock它</p>
+
+<p>collaborator 的状态不好检查或者实物可能会改变 这时候才改成测试行为</p>
+
+<p>==================</p>
+
+<p>rspec tools</p>
+
+<p> watchr</p>
+
+<p> rcov</p>
+
+<p> rspec-rails</p>
+
+<p> factory_girl  造测试资料更方便</p>
+
+<p> shoulda  提供更多rails 专属matcher</p>
+
+<p>capybara 提供browser simulators</p>
+
+<p>================</p>
+
+<p>The RSpec Book</p>
+
+<p>The Rails 3 Way</p>
+
+<p>Foundation Rails 2</p>
+
+<p>xUnit Test Patterns</p>
+]]></content>
+  </entry>
+  
+</feed>

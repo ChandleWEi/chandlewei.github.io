@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 读书计划 | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/du-shu-ji-hua/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[深度探索关系数据库［第一次阅读］]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2008/01/04/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%BB%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%98%85%E8%AF%BB%EF%BC%BD/"/>
+    <updated>2008-01-04T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2008/01/04/深度探索关系数据库［第一次阅读］</id>
+    <content type="html"><![CDATA[<p>这本书很薄，读起来确很吃力。</p>
+
+<p>主要叙述将关系数据库模型以关系代数形式做完全精确的阐述。</p>
+
+<p>通读后，加深对关系模型的理解，但无法完全诠释理解本书全部内容</p>
+
+<p> </p>
+
+<p> </p>
+]]></content>
+  </entry>
+  
+</feed>

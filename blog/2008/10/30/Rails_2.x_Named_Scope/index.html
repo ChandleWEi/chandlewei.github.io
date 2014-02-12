@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rails_2.x_Named_Scope - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="Rails 2.x Named Scope 我在实际项目中发现 named_scope 的好处，下面翻译了 What’s New in Edge Rails: Has Finder Functionality 这篇文章，同时结合自己使用的心得与 Rails 爱好者们共享。 原文 Rails 2.x &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/10/30/Rails_2.x_Named_Scope">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails_2.x_Named_Scope</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-30T00:00:00+08:00" pubdate data-updated="true">Oct 30<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2><a href="http://kudelabs.com/2008/09/18/rails-2-x-named-scope">Rails 2.x Named Scope</a></h2>
+
+<p>我在实际项目中发现 named_scope 的好处，下面翻译了 What’s New in Edge Rails: Has Finder Functionality 这篇文章，同时结合自己使用的心得与 Rails 爱好者们共享。</p>
+
+<p><a href="http://ryandaigle.com/articles/2008/3/24/what-s-new-in-edge-rails-has-finder-functionality">原文</a></p>
+
+<p>Rails 2.x 整合了 Nick Kallen 的 has_finder plugin，改名为 named_scope。首先，在 User Model 中定义 named_scope：</p>
+
+<p>  &#8220;
+class User &lt; ActiveRecord::Base<br/>
+named_scope :active, :conditions => {:active => true}<br/>
+named_scope :inactive, :conditions => {:active => false}<br/>
+named_scope :recent, lambda { { :conditions => [&lsquo;created_at > ?&rsquo;, 1.week.ago] } }<br/>
+end</p>
+
+<h2>标准的使用：</h2>
+
+<p>  <code>
+User.active # 相当于 User.find(:all, :conditions =&gt; {:active =&gt; true})  
+User.inactive # 相当于 User.find(:all, :conditions =&gt; {:active =&gt; false})  
+User.recent # 相当于 User.find(:all, :conditions =&gt; ['created\_at &gt; ?', 1.week.ago])  
+不同的 named\_scope 之间可以嵌套使用：</code>
+User.active.recent<br/>
+这相当于下面的用法： &#8220;</p>
+
+<h1>User.with_scope(:conditions => {:active => true}) do</h1>
+
+<h1>User.find(:all, :conditions => [&lsquo;created_at > ?&rsquo;, 1.week.ago])</h1>
+
+<h1>end</h1>
+
+<h2>高级使用：</h2>
+
+<p>named_scope 允许在执行时，传递参数来定义查询条件。 &#8220;
+class User &lt; ActiveRecord::Base<br/>
+named_scope :registered, lambda { |time_ago| { :conditions => [&lsquo;created_at > ?&rsquo;, time_ago] }<br/>
+end</p>
+
+<p>User.registered 7.days.ago # 相当于 User.find(:all, :conditions => [‘created_at > ?’, 7.days.ago])</p>
+
+<h2>named_scope 扩展</h2>
+
+<p>与 association extensions 相似， named_scope 也可以扩展。</p>
+
+<p>  <code>
+class User &lt; ActiveRecord::Base  
+named\_scope :inactive, :conditions =&gt; {:active =&gt; false} do  
+def activate  
+each { |i| i.update\_attribute(:active, true) }  
+end  
+end  
+end  
+ </code></p>
+
+<h1>重新激活所有未激活用户</h1>
+
+<p>User.inactive.activate</p>
+
+<h2>匿名 Scopes</h2>
+
+<p>通过对类对象 class objects 使用 scoped 方法，你可以快速地建立 scope。</p>
+
+<p>  &#8220;</p>
+
+<h1>定义 named scopes</h1>
+
+<p>active = User.scoped(:conditions => {:active => true})<br/>
+recent = User.scoped(:conditions => [&lsquo;created_at > ?&rsquo;, 7.days.ago])</p>
+
+<h1>嵌套使用</h1>
+
+<p>recent_active = recent.active</p>
+
+<h1>对返回的对象进行操作</h1>
+
+<p>recent_active.each { |u| &hellip; }</p>
+
+<p>=============================================================================</p>
+
+<p>单纯的 scope ，例如 User.active， User.inactive 等只是提供简单的快捷方法，并不具备强大的功能特性。我们在实际项目中，很多时候是得益于 scope 的嵌套使用。我认为嵌套使用主要有五个好处：</p>
+
+<ol>
+<li><p>scope 的嵌套使用，能够多层次（只要符合逻辑，几乎为无限）的组合查询条件。例如User.active.recent， User.active.recent.female， User.active.recent.female.adult……</p></li>
+<li><p>能够与 association 结合使用，限定外部 scope。举个例子，假如 User Belongs To Club，你可以将查询限制到具体一个 Club 的范围，如 Club.first.users.active.recent。</p></li>
+<li><p>用面向对象的方式，使得复杂查询在一个 SQL 语句中完成，减少编写复杂 SQL 语句的次数。例如 User.active.recent.female.adult，该查询只会触发一次 SQL 语句，而且非常简洁。在过去我们只能通过类似下面的语句来完成该查询： User.find(:all, :conditions => [“active = true AND created_at > ? AND gender = ‘female’ AND age > 25”, 1.week.ago]。</p></li>
+<li><p>符合 DRY 精神，精心定义的 scope，可以避免很多重复的 SQL conditions，其复用性相当高！</p></li>
+<li><p>scope 返回的对象仍然具备所有 SQL 查询功能。例如，User.active.rencet.find_by_first_name(“Jim”)，或User.active.recent.find_all_by_last_name(“Green”)，同样可以工作，而且仍然只触发一次 SQL 查询。</p></li>
+</ol>
+
+
+<h2>Named scope 需要注意的问题：</h2>
+
+<ol>
+<li>嵌套 scope 只能提供交集查询，如果要查询多个 scope 的并集，只能通过数组的 + 操作。例如，User.active + User.recent。但是这样做的一个问题是返回的结果为普通的数组，我们无法再使用上述第5个好处了。针对该问题，我们的处理方法是在必要时候，定 义更灵活的 scope。例如，使用 scope 的参数传递功能：</li>
+</ol>
+
+
+<p>  &#8220;
+named_scope :active_or_recent, lambda { |args*|<br/>
+time_ago = args.first</p>
+
+<p>if time_ago<br/>
+{ :conditions => [‘active = true OR created_at > ?’, time_ago] }<br/>
+else<br/>
+{ :conditions => [‘active = true’] }<br/>
+end<br/>
+}</p>
+
+<p>这样，User.active_or_recent(7.days.ago) 使用的条件为{ :conditions => [‘active = true OR created_at > ?’, time_ago] }，而 User.active_or_recent 使用的条件为{ :conditions => [‘active = true’] }。</p>
+
+<ol>
+<li>突然忘了，请等待更新：）</li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-30T00:00:00+08:00" pubdate data-updated="true">Oct 30<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/10/30/Rails_2.x_Named_Scope/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/10/30/Rails_2.x_Named_Scope/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/10/28/git_%E7%AE%80%E8%A6%81%E6%95%99%E7%A8%8B_%28%E9%80%82%E7%94%A8%E4%BA%8E_1.5.1_%E6%88%96%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC%29_ZZ/" title="Previous Post: git_简要教程_(适用于_1.5.1_或更新版本)_ZZ">&laquo; git_简要教程_(适用于_1.5.1_或更新版本)_ZZ</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/10/30/openmoko_%E7%9F%AD_%E6%B6%88%E6%81%AF_%E4%B8%AD%E6%96%87%E8%A2%AB%E5%BF%98/" title="Next Post: openmoko_短_消息_中文被忘">openmoko_短_消息_中文被忘 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,2041 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="在/etc/timezone里面写上中国的时区，Asia/Shanghai，在/etc/default/rcS里面把UTC设成yes，也就是用 utc，这是Debian推荐做法。最后也是最重要的，把/etc/localtime删除，再从/usr/share/zoneinfo/Asia里面 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/22">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/26/debian_%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/">Debian_时间设置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-26T00:00:00+08:00" pubdate data-updated="true">Jan 26<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在/etc/timezone里面写上中国的时区，Asia/Shanghai，在/etc/default/rcS里面把UTC设成yes，也就是用 utc，这是Debian推荐做法。最后也是最重要的，把/etc/localtime删除，再从/usr/share/zoneinfo/Asia里面 拷贝Shanghai这个文件到/etc下，名字还是localtime。这样做完，不需重启，过会就自己生效了。</p>
+
+<p>完全是从网络其他地方抄来的</p>
+
+<p>生活就像大便，<br/>
+不知不觉地就来了；<br/>
+生活就像大便，<br/>
+往往用尽全力却一无所获；<br/>
+生活就像大便，<br/>
+被水一冲走就永远不会回来。</p>
+
+<p>atppp</p>
+
+<p>上面这句也是抄来的</p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/25/vim_terminal_%E9%80%80%E5%87%BA%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">Vim_terminal_退出乱码问题解决方式</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-25T00:00:00+08:00" pubdate data-updated="true">Jan 25<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一开始使用gnome-terminal vim退出乱码，因为懒，没有找原因，换了xfce4-terminal 就不乱码了，后来忽然有乱码了，今天终于找出原因了。</p>
+
+<p>1、解决方法 </p>
+
+<p>1）乱码后reset命令用之</p>
+
+<p>2）在terminal的标题中前后加入空格，就莫名的ok了。我在xfce4-terminal的设置 初始标题为，一个空格。动态标题在初始标题之后。</p>
+
+<p>2、引起原因 </p>
+
+<p>1）bashrc的改变，不过我这里估计是promop_command变量的改变，所以有时候引起用户问题但不会引起root问题。</p>
+
+<p>为什么使用以上解决方法而不使用修改local的方法，这是因为，如果远程和人用screen协作处理问题的时候，zh_cn编码会引起乱码，不利调试。</p>
+
+<p>我猜多数是字符宽度引起的问题，vim退出时候要么多一个宽度，要不就少一个宽度，才会被terminal 误认为乱码</p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/25/Linux%E5%B8%B8%E9%81%87%E9%97%AE%E9%A2%98/">Linux常遇问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-25T00:00:00+08:00" pubdate data-updated="true">Jan 25<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>［转载]</strong></p>
+
+<p>Linux常遇问题  <br/>
+1.split分割合并文件</p>
+
+<p>split -b1440k a_whopping_big_file chunk<br/>
+cat chunk* > a_whopping_big_file</p>
+
+<h6>###############################</h6>
+
+<p>2.wget下载整个网站</p>
+
+<p>wget -t0 -c -nH -np -b -m -P /localdir <a href="http://freesoft.online.sh.cn/mirrors/ftp.redhat.com">http://freesoft.online.sh.cn/mirrors/ftp.redhat.com</a> -o wget.log</p>
+
+<h6>###############################</h6>
+
+<p>3.cp时显示进度</p>
+
+<p>cp -r -v dir1 dir2<br/>
+cp -a -d -v dir1 dir2</p>
+
+<h6>###############################</h6>
+
+<p>4.ls重定向到多个文件</p>
+
+<p>ls | tee 1.txt 2.txt 3.txt …..</p>
+
+<h6>###############################</h6>
+
+<p>5.mail#Linux中命令行下发送带附件的邮件<br/>
+方法1.    uuencode   | mail -s ”title” mail@address<br/>
+本地需要作为附件的文件名。<br/>
+邮件中的附件文件名，可以和不同，其实内容一样。<br/>
+方法2.    cat  | mutt -s ”title” -a  mail@address<br/>
+邮件正文内容。<br/>
+本地需要作为附件的文件名。</p>
+
+<h6>##############################################</h6>
+
+<p>6.移动光标</p>
+
+<p>echo -e ’33[20;10f’ 把光标移动到20行10列</p>
+
+<h6>#############################################</h6>
+
+<p>7.杀掉一类进程</p>
+
+<p>ps -efww|grep LOCAL=NO|grep -v grep|cut -c 9-15|xargs kill -9</p>
+
+<h6>#############################################</h6>
+
+<p>8.查看部分文件</p>
+
+<p>如果你只想看文件的前5行，可以使用head命令，<br/>
+如：head-5/etc/passwd<br/>
+如果你想查看文件的后10行，可以使用tail命令，<br/>
+如：tail-10/etc/passwd<br/>
+你知道怎么查看文件中间一段吗？你可以使用sed命令<br/>
+如:sed-n’5,10p’/etc/passwd这样你就可以只查看文件的第5行到第10行。</p>
+
+<h6>#############################################</h6>
+
+<p>9.xmms字体设置</p>
+
+<p>xmms -adobe-helvetica-medium-r-normal–12-*&ndash;*&ndash;*&ndash;*&ndash;*-iso8859-1,-misc-simsun-medium-r-normal–12-*&ndash;*&ndash;*&ndash;*&ndash;*-gbk-0,*-r-*</p>
+
+<h6>#############################################</h6>
+
+<p>10.mount应用<br/>
+mount -t ntfs /dev/hda1 /mnt/c -o codepage=936,iocharset=gb2312<br/>
+mount -t iso9660 -o iocharset=cp936,ro /dev/cdrom /mnt/cdrom</p>
+
+<h6>#################################################</h6>
+
+<ol>
+<li>nslookup 域名 查看域名所指IP</li>
+</ol>
+
+
+<p>12.setterm控制台下的屏幕截图</p>
+
+<p>setterm -dump 1 用setterm程序来获得控制台下的屏幕截图,1 tty1</p>
+
+<h6>################################################</h6>
+
+<p>13.mencoder图片做成电影<br/>
+mencoder *.jpg -mf on:fps=15 -o output.avi -ovc xvid 图片做成电影</p>
+
+<h6>################################################</h6>
+
+<p>14.ldconfig加入指定的联接库</p>
+
+<p>echo ”/usr/local/lib” >> /etc/ld.so.conf<br/>
+/sbin/ldconfig</p>
+
+<h6>################################################</h6>
+
+<p>15.reset解决控制台乱码</p>
+
+<p>终端乱码解决 reset    setterm -reset   cat /bin/bash</p>
+
+<h6>################################################</h6>
+
+<p>16.合并多个pdf文件<br/>
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=out.pdf f1.pdf f2.pdf f3.pdf  合并多个pdf文件</p>
+
+<h6>################################################</h6>
+
+<p>gconftool-2 -s /desktop/gnome/url-handlers/http/command –type string ’opera ”%s”‘</p>
+
+<p>17.find应用<br/>
+find . -ctime +1 -ctime -7 -print 找到当前目录下1～7天以前的文件,<br/>
+find ./ -type f -name ”*.mp3″ > playlist.lst</p>
+
+<h6>################################################</h6>
+
+<p>18.wc应用</p>
+
+<p>ls |wc -l 统计当前目录下的非隐藏目录和非隐藏文件的个数<br/>
+ls -a |wc -l 统计当前目录下的所有文件和目录的个数实际数目<br/>
+find ./ |wc -l 统计当前目录下的所有文件包括隐藏文件和文件夹</p>
+
+<h6>################################################</h6>
+
+<p>19.制作grub图</p>
+
+<p>convert -geometry 640×480 -colors 14 XXX.png XXX.xpm &amp;&amp; gzip XXX.xpm    #grub</p>
+
+<h6>#############################################</h6>
+
+<p>20.应用tee<br/>
+tee    tee：从标准输入中读取，向标准输出和其他文件中写入。<br/>
+tee    （2）部分参数说明<br/>
+tee    tee [-ai] [–append] [–ignore-interrupts] [–help]<br/>
+tee    [–version] [文件名列表]<br/>
+tee    -a, –append：将标准输入追加到输出文件的后面而不是缺省的覆盖它。<br/>
+tee    -i, –ignore-interrupt：忽略中断信号。<br/>
+tee    –help：在标准输出上输出帮助信息并退出。<br/>
+tee    –version：在标准输出上输出版本信息并退出。</p>
+
+<ol>
+<li>hdparm应用</li>
+</ol>
+
+
+<p>hdparm -Tt /dev/hda    本帖最后由 bugkill 于 2005-11-6 12:00 编辑 ]</p>
+
+<hr />
+
+<p>bugkill 回复于：2005-11-05 17:00:49</p>
+
+<p>22.aa=<code>grep \_GQAdd $1</code> 把命令结果传给一个变量</p>
+
+<ol>
+<li>echo应用</li>
+</ol>
+
+
+<p>echo ”abcdefg” | perl -lne ’{$a = reverse($_); print $a;}’ 把一个字符串翻转<br/>
+echo bottle|rev 把一个字符串翻转</p>
+
+<ol>
+<li>dd命令</li>
+</ol>
+
+
+<p>dd    命令常常用来制作Linux启动盘。先找一个可引导内核，令它的根设备指向正确的根分区，然后使用dd命令将其写入软盘：<br/>
+dd    $ rdev vmlinuz /dev/hda<br/>
+dd    $dd if＝vmlinuz of＝/dev/fd0<br/>
+dd    上面代码说明，使用rdev命令将可引导内核vmlinuz中的根设备指向/dev/hda，请把“hda”换成自己的根分区，接下来用dd命令将该内核写入软盘。</p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p>sudo  shan ALL=/usr/local/pureftpd/sbin/pure-ftpwho,/usr/local/bin/mymount cdrom,/usr/local/bin/mymount -u cdrom      ALL  /etc/sudoer</p>
+
+<p>26.iso</p>
+
+<p>cp /dev/cdrom xxxx.iso  将光盘做成iso文件</p>
+
+<p>27.memory应用</p>
+
+<p>memory   grep MemTotal /proc/meminfo  看内存大小</p>
+
+<p>mlterm   /etc/mlterm/termcap文件中xterm那一行（因为我的$TERM是xterm）:<br/>
+mlterm   [root@/etc/mlterm]# cat termcap<br/>
+mlterm   mlterm:<br/>
+mlterm   kD=E[3~:kb=^?<br/>
+mlterm   xterm|rxvt:<br/>
+mlterm   kD=E[3~:kb=^H:ut<br/>
+mlterm   *:<br/>
+mlterm   kD=e[3~</p>
+
+<p>rm .[^.]* -r</p>
+
+<p>xmms &ndash;*&ndash;*&ndash;*&ndash;*&ndash;*-iso8859-1,-misc-simsun-medium-r-normal–12-*&ndash;*&ndash;*&ndash;*&ndash;*-gbk-0,*-r-</p>
+
+<p>28.rpm -q 软件名 显示软件包的版本信息  rpm –prefix=路径 -ivh 包名</p>
+
+<p>29.rpm -qlp *.rpm 看看包里面有什么文件 which softwarename 查找应用程序路径</p>
+
+<ol>
+<li>tar命令</li>
+</ol>
+
+
+<p>tar -xjvf *.tar.bz2   tar xvfz *.tar.gz 解压<br/>
+tar xvfzC *.tar.gz  path/ 解压到指定的目录(目录存在)<br/>
+tar czvf *.tar.gz dirname  tar cvf *.tar dirname 压缩</p>
+
+<p>31.rar 命令</p>
+
+<p>rar a *.rar file-dir  压缩/加入压缩包 rar d  *.rar file 从包中删除文件<br/>
+rar x *.rar 解压到当前目录保持目录结构，e不保持目录结构</p>
+
+<p>32.du命令</p>
+
+<p>du -s 显示当前目录所用空间<br/>
+du -sh 只显示目录大小</p>
+
+<p>33.mount -t iso9660 xxxxx.iso /any/path/if/u/like -o loop</p>
+
+<p>34.grep string file 列出string所在行的内容?</p>
+
+<p>35.alias newname=’command’命令的别名</p>
+
+<p>36.mount -t vfat /dev/sda1 /mnt/usb -o codepage=936,iocharset=gb2312</p>
+
+<p>37.fstab  /dev/hda1 /mnt/c vfat defaults,codepage=936,iocharset=gb2312 0 0</p>
+
+<p>39.怎样编译mplayer<br/>
+./configure –prefix=/usr/local/mplayer –enable-gui –libdir=/usr/local/mplayer/lib –language=zh –with-reallibdir=/usr/local/mplayer/lib/rp9codecs –with-win32libdir=/usr/local/mplayer/lib/win32codecs –enable-freetype</p>
+
+<p>40.fcitx输入法</p>
+
+<p>fcitx  export XMODIFIERS=@im=fcitx<br/>
+fcitx  export XIM=fcitx<br/>
+fcitx  export XIM_PROGRAM=fcitx<br/>
+fcitx  export GTK_IM_MODULE=xim</p>
+
+<p>opera  cn u-JhyKr-e8c7j-pQt7k-BrwaN-kMTmh</p>
+
+<p>41.unzip</p>
+
+<p>unzip  unzip ”*” 一次解压多个zip文件</p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p>ifconfig  dhclient  动态IP<br/>
+ifconfig  ifconfig eth0 down<br/>
+ifconfig  ifconfig eth0 要抢的IP<br/>
+ifconfig  ifconfig eth0 up<br/>
+ifconfig  arping 网关</p>
+
+<ol>
+<li><p>perl  perl -p -i -e ”s/\/&#92;/g” aa 把aa中换为\<br/>
+perl  perl -p -i -e ”s/abcde/edbca/g” * 比如把目录中所有文件中都出现的“abcde”替<br/>
+换成“edbca”<br/>
+rpm  kernel2.65rpm不能运行<br/>
+rpm  运行rpm之前先export LD_ASSUME_KERNEL=2.2.5</p></li>
+<li></li>
+</ol>
+
+
+<p>chmod  改变文件或目录之读、写、执行之允许权<br/>
+chmod  ====================================<br/>
+chmod  执行格式：chmod [-R] mode name ( name 可为文件名或目录名;mode可为 3 个 8 位元之数字，或利用ls -l 命令，列出文件或目录之读、写、执行允许权之文字缩写。)<br/>
+chmod  mode : rwx rwx rwx r:read w:write x:execute(user group other 缩写为: u g o)<br/>
+chmod  Example :<br/>
+chmod  % chmod 755 dir1　将目录dir1，设定成任何使用者，皆有读取及执行之权利，但只有拥有者可做修改。<br/>
+chmod  % chmod 700 file1 将文件file1，设定只有拥有者可以读、写和执行。<br/>
+chmod  % chmod o+x file2 将文件file2，增加拥有者可以执行之权利。<br/>
+chmod  % chmod g+x file3 将文件file3，增加群组使用者可执行之权利。<br/>
+chmod  % chmod o-r file4 将文件file4，除去其它使用者可读取之权利。</p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p>chown  改变文件或目录之拥有权<br/>
+chown  ======================<br/>
+chown  执行格式：chown [-R] username name ( name 可为文件名或目录名。)<br/>
+chown  Example ：<br/>
+chown  % chown user file1 将文件 file1 之拥有权，改为使用者 user 所有。<br/>
+chown  % chown -R user dir1 将目录 dir1，及其下所有文件和子目录之拥有权，改为使用者 user 所有。</p>
+
+<ol>
+<li><p>groups  检查自己所属之群组名称<br/>
+groups  ======================<br/>
+groups  执行格式：groups<br/>
+groups  Example :<br/>
+groups  % groups</p></li>
+<li></li>
+</ol>
+
+
+<p>chgrp  改变文件或目录之群组拥有权<br/>
+chgrp  ==========================<br/>
+chgrp  执行格式：chgrp [-R] groupname name ( name 可为文件名或目录名 )<br/>
+chgrp  Example :<br/>
+chgrp  % chgrp vlsi file1 将文件 file1 之群组拥有权，改为 vlsi 群组。<br/>
+chgrp  % chgrp -R image dir1 将目录dir1，及其下所有文件和子目录，改为 image 群组。</p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p>touch  改变文件或目录之最后修改时间(变为当前时间)<br/>
+touch  =========================================<br/>
+touch  执行格式：touch name ( name 可为文件或目录名称。)<br/>
+touch  Example :<br/>
+touch  % touch file1<br/>
+touch  % touch dir1</p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p>ln  文件之连结<br/>
+ln  ==========<br/>
+ln  同一文件，可拥有一个以上之名称，可将文件做数个连结。<br/>
+ln  执行格式：ln oldname newname ( Hard link )<br/>
+ln  Example ：<br/>
+ln  % ln file1 file2 　　将名称 file2，连结至文件 file1。<br/>
+ln  执行格式：ln -s oldname newname ( Symblick link )<br/>
+ln  Example ：<br/>
+ln  % ln -s file3 file4　将名称 file4，连结至文件file3。</p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p>grep  文件之字串找寻<br/>
+grep  ==============<br/>
+grep  执行格式：grep string file<br/>
+grep  Example ：<br/>
+grep  % grep abc file1 寻找文件file1中，列出字串 abc 所在之整行文字内容。</p>
+
+<ol>
+<li></li>
+</ol>
+
+
+<p>find  找寻文件或命令之路径<br/>
+find  ====================<br/>
+find  执行格式：whereis command ( 显示命令之路径。)<br/>
+find  执行格式：which command ( 显示命令之路径，及使用者所定义之别 )<br/>
+find  执行格式：whatis command ( 显示命令功能之摘要。)<br/>
+find  执行格式：find search-path -name filename -print ( 搜寻指定路径下，某文件之路径 )<br/>
+find  Example ：<br/>
+find  % find / -name file1 -print ( 自根目录下，寻找文件名为 file1 之路径)</p>
+
+<ol>
+<li><h1>比较文件或目录之内容  </h1>
+
+<p>执行格式：diff [-r] name1 name2 ( name1 name2 可同时为文件名，或目录名称 )<br/>
+Example :<br/>
+% diff file1 file2 比较文件 file1 与 file2 内，各行之不同处。<br/>
+% diff -r dir1 dir2 比较目录 dir1 与 dir2 内，各文件之不同处。</p></li>
+<li><p>IP  如何实现为一个网卡绑定多个IP地址？<br/>
+IP  ====================================<br/>
+IP 　　Linux的网络设备配置文件存放在/etc/sysconfig/network-scripts里面，对于以太网的第一个网络设备，配置文件名一 般为 ifcfg-eth0 如果需IP  要为第一个网络设备绑定多一个IP地址，只需要在/etc/sysconfig/network- scripts目录里面创建一个名为ifcfg-eth0:0的文件，内容样例为：<br/>
+IP  DEVICE=”eth0:0″<br/>
+IP  IPADDR=”211.100.10.119″<br/>
+IP  NETMASK=”255.255.255.0″<br/>
+IP  ONBOOT=”yes”<br/>
+IP　　其中的DEVICE为设备的名称，IPADDR为此设备的IP地址，NETMASK为子网掩码，ONBOOT表示在系统启动时自动启动。<br/>
+IP　　如果需要再绑定多一个IP地址，只需要把文件名和文件内的DEVICE中的eth0:x加一即可。LINUX最多可以支持255个IP别名。</p></li>
+<li><p>login  如何设置login后欢迎信息<br/>
+login  ====================================<br/>
+login　　修改/etc/motd，往里面写入文本，就能使用户通过telnet正确登录后执行shell之前得到相应的提示信息。<br/>
+login　　motd就是“messages of the day”，也就是当日信息的意思。管理员可以往里面写一些需要注意的事项或者通知等来提醒正式用户。</p></li>
+</ol>
+
+
+<p>[ 本帖最后由 bugkill 于 2005-11-6 12:11 编辑 ]</p>
+
+<hr />
+
+<p>bugkill 回复于：2005-11-05 17:01:23</p>
+
+<p>login  如何设置login前欢迎界面<br/>
+login  ====================================<br/>
+login　　修改/etc/issue或者issue.net，往里面写入文本，就能使得用户在login前得到相应的提示，这将有助于用户分辨自己正在连接哪里的主机。<br/>
+login　　issue的内容是出现在本机登录的用户界面上，而issue.net则是在用户通过网络telnet的时候出现。</p>
+
+<p>bash  如何在bash下快速执行某个特定历史命令<br/>
+bash  ====================================<br/>
+bash  在bash下面按ctrl+r可以查找历史命令中匹配的命令并执行</p>
+
+<h1>如何查看进程继承关系  </h1>
+
+<p>直接在命令行中输入<br/>
+pstree<br/>
+即可，程序会以树状结构方式列出系统中正在运行的各进程之间的继承关系。</p>
+
+<p>ps  如何找出内存占用最大的进程<br/>
+ps  ====================================<br/>
+ps  除了可以使用top命令查看内存使用情况之外，还可以使用更快的命令行命令，相关的命令如下：<br/>
+ps  ps aux | sort +4n<br/>
+ps  或者<br/>
+ps  ps aux | sort +5n</p>
+
+<h1>如何在Linux下面编辑二进制文件  </h1>
+
+<p>到<a href="http://freshmeat.net/redir/hexedit/4088/url_tgz/hexedit-1.2.3.src.tgz%E4%B8%8B%E8%BD%BDhexedit%E5%AE%89%E8%A3%85%E5%88%B0%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%8C%E5%B0%B1%E8%83%BD%E7%94%A8hexedit">http://freshmeat.net/redir/hexedit/4088/url_tgz/hexedit-1.2.3.src.tgz%E4%B8%8B%E8%BD%BDhexedit%E5%AE%89%E8%A3%85%E5%88%B0%E7%B3%BB%E7%BB%9F%E4%B8%8A%EF%BC%8C%E5%B0%B1%E8%83%BD%E7%94%A8hexedit</a> filename来编辑二进制文件。</p>
+
+<h1>如何设置用户密码过期时间  </h1>
+
+<p>设置某个用户的密码过期时间可以用usermod -e来设置，如果要统一设置用户的密码过期时间，那么就要修改/etc/login.defs里面的PASS_MAX_DAYS，比如修改所有用户的密码过期时间是30天：<br/>
+PASS_MAX_DAYS 30<br/>
+如果这个值是99999，那么表示密码永不过期。</p>
+
+<p>MAC  如何修改网卡MAC地址<br/>
+MAC  ====================================<br/>
+MAC  首先必须关闭网卡设备，否则会报告系统忙，无法更改。<br/>
+MAC  命令是： /sbin/ifconfig eth0 down<br/>
+MAC  修改 MAC 地址，这一步较 Windows 中的修改要简单。<br/>
+MAC  命令是：/sbin/ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE<br/>
+MAC  重新启用网卡 /sbin/ifconfig eth0 up<br/>
+MAC  网卡的 MAC 地址更改就完成了</p>
+
+<p>bash  如何用Bash纠正错误命令<br/>
+bash  ====================================<br/>
+bash  当你输入一个命令不知道是否正确的时候，可以使用ctrl+t来纠正到正确的命令。<br/>
+bash  比如输入mkdri，然后按ctrl+t，bash会帮你纠正到最接近的命令mkdir。</p>
+
+<p>login  如何使非root用户都不能远程登录<br/>
+login  ====================================<br/>
+login  建立/etc/nologin文件，这样所有的非root用户都不能远程登录。</p>
+
+<p>mesg  如何不显示其他用户的消息<br/>
+mesg  ====================================<br/>
+mesg  用户可以使用mesg n来禁止别人给他发送信息，其实就是禁止别人往自己的终端上面的写权限。当别人试图再使用write给他发送信息时，发送者将会看见提示：<br/>
+mesg  write: user has messages disabled on pts/n</p>
+
+<h1>如何知道某个命令使用了什么库文件  </h1>
+
+<p>例如要知道ls使用了什么库文件，可以使用：<br/>
+$ ldd /bin/ls</p>
+
+<p>swap  如何临时增加交换空间<br/>
+swap  ====================================<br/>
+swap  产生一个64M的空文件<br/>
+swap  #dd if=/dev/zero of=/swapfile bs=1024 count=65536</p>
+
+<p>swap  初始化该文件为交换文件：<br/>
+swap  mkswap /swapfile 65536<br/>
+swap  sync</p>
+
+<p>swap  激活这个交换文件：<br/>
+swap  swapon /swapfile</p>
+
+<p>nohup  如何使一个用户进程在用户退出系统后仍然运行<br/>
+nohup  ====================================<br/>
+nohup　　使用nohup command &amp;，比如：<br/>
+nohup　　nohup wget -c <a href="ftp://test.com/test.iso  ">ftp://test.com/test.iso  </a>
+nohup　　这样即使用户退出系统，wget进程仍然继续运行直到test.iso下载完成为止</p>
+
+<p>login  如何限制用户的最小密码长度<br/>
+login  ====================================<br/>
+login  修改/etc/login.defs里面的PASS_MIN_LEN的值。比如限制用户最小密码长度是8：<br/>
+login  PASS_MIN_LEN 8<br/>
+login  这样用户设置密码的时候如果输入的密码长度小于8将不能设置</p>
+
+<p>login  如何限制只有0组(gid=0)的用户可以su成root<br/>
+login  ====================================<br/>
+login  修改/etc/login.defs里面的SU_WHEEL_ONLY的值为：<br/>
+login  SU_WHEEL_ONLY yes<br/>
+login  那么就只有gid为0的用户可以su成root。</p>
+
+<p>ctrlaltdel  如何禁用Ctrl+Alt+Del键重启系统<br/>
+ctrlaltdel  ====================================<br/>
+ctrlaltdel  有时候为了防止误操作导致系统重新启动(如机房里面新来了个习惯用Window$系统的管理员:-D)，或者出于安全的原因，需要禁用Ctrl+Alt+Del组合键。<br/>
+ctrlaltdel  只需要注释掉/etc/inittab文件内的<br/>
+ctrlaltdel  ca::ctrlaltdel:/sbin/shutdown -t3 -r now<br/>
+ctrlaltdel  这一行即可。如何注释？在这一行的行首放一个“#”号即可。</p>
+
+<p>format  怎么样格式化磁盘<br/>
+format  ====================================<br/>
+format  Linux下有一条mkfs命令，相当于format，可以对磁盘进行文件系统制作操作(或者说格式化)。命令的语法为：<br/>
+format  mkfs -t 文件系统类型 /dev/设备名<br/>
+format  如要把/dev/sda1格式为reiserfs格式，使用以下命令：<br/>
+format  mkfs -t reiserfs /dev/sda1<br/>
+format  当然，也可以使用mkfs.fstype命令来格式化磁盘，其中的fstype为文件系统名，如reiserfs文件系统的格式化命令为mkfs.reiserfs。上面那条命令的相应版本为：<br/>
+format  mkfs.reiserfs /dev/sda1</p>
+
+<h1>如何取消root命令历史记录以增加安全性  </h1>
+
+<p>为了设置系统不记录每个人执行过的命令，就在/etc/profile里设置：<br/>
+HISTFILESIZE=0<br/>
+HISTSIZE=0<br/>
+或者：<br/>
+ln -s /dev/null ~/.bash_history<br/>
+这样就可以了。</p>
+
+<p>ftp  如何使用netrc文件进行自动ftp<br/>
+ftp  ====================================<br/>
+ftp  在自己的home目录下建立一个权限600，名为.netrc的文件，内容是：<br/>
+ftp  machine 192.168.0.1 login test password test<br/>
+ftp  这样以后你每次ftp 192.168.0.1的时候，系统都会帮你以用户名test，密码test登录。<br/>
+ftp  利用这个特征可以实现自动ftp。<br/>
+ftp  例如你想要每天5:00到192.168.0.1机器上面获得/test目录下的文件test.txt，可以这么做：<br/>
+ftp  建立一个文件ftp_cmd，内容为：<br/>
+ftp  cd test<br/>
+ftp  get test.txt<br/>
+ftp  bye<br/>
+ftp  然后使用crontab -e设置定时任务：<br/>
+ftp  0 5 * * * ftp 192.168.0.1</p>
+
+<hr />
+
+<p>bugkill 回复于：2005-11-05 17:02:03</p>
+
+<p>mount  floppy -fstype=vfat :/dev/fd0<br/>
+mount  e2floppy -fstype=ext2 :/dev/fd0<br/>
+mount  注：<br/>
+mount  a.确保/dev/cdrom作为符号链接指向你的光驱所在的分区，作为我的情况：<br/>
+mount  [jephe@sh3 /dev]$ ls cdrom -l<br/>
+mount  lrwxrwxrwx 1 root root 3 Aug 26 08:44 cdrom &ndash;> hdd<br/>
+mount  b.当软盘为windows 95格化化的vfat分区类型时，设定了安装目录/misc/floppy<br/>
+mount  c.当软盘为Linux格式化过的ext2分区类型时，设定了安装目录/misc/e2floppy</p>
+
+<p>mount  至此，若还未启动autofs,则运行/etc/rc.d/init.d/autofs start, 若对上述两个文件中做过任何更改，运行/etc/rc.d/init.d/autofs restart即可。</p>
+
+<p>mount   放入一片光盘进入光驱后，不需任何动作，直接进入目录/misc/cdrom，autofs 将自动先为你mount光驱同样，若放入一张vfat格式的 软盘，你可以cd /misc/floppy，若是ext2格式的软盘，则cd /misc/e2floppy。<br/>
+mount  在超过一分钟未使用它们，且当前目录不是自动mount目录/misc/cdrom，/misc/floppy，/misc/e2floppy，系统将自动umount它们。</p>
+
+<p>rename  批量重命名<br/>
+rename  =================================<br/>
+rename  for i in /root/mud/*.C; do mv $i ${i%.C}.c; done</p>
+
+<h1>cron 计划任务  </h1>
+
+<p>简介<br/>
+crontab-操作每个用户的守护程序和该执行的时间表。</p>
+
+<p>部分参数说明<br/>
+crontab file [-u user]-用指定的文件替代目前的crontab。<br/>
+crontab-[-u user]-用标准输入替代目前的crontab.<br/>
+crontab-1[user]-列出用户目前的crontab.<br/>
+crontab-e[user]-编辑用户目前的crontab.<br/>
+crontab-d[user]-删除用户目前的crontab.<br/>
+crontab-c dir- 指定crontab的目录。<br/>
+crontab文件的格式：M H D m d cmd.<br/>
+M: 分钟（0-59）。<br/>
+H：小时（0-23）。<br/>
+D：天（1-31）。<br/>
+m: 月（1-12）。<br/>
+d: 一星期内的天（0~6，0为星期天）。<br/>
+cmd要运行的程序，程序被送入sh执行，这个shell只有USER,HOME,SHELL这三个环境变量。</p>
+
+<p>下面是一个例子文件：</p>
+
+<h1>MIN HOUR DAY MONTH DAYOFWEEK COMMAND</h1>
+
+<h1>每天早上6点10分</h1>
+
+<p>10 6 * * * date</p>
+
+<h1>每两个小时</h1>
+
+<p>0 */2 * * * date</p>
+
+<h1>晚上11点到早上8点之间每两个小时，早上8点</h1>
+
+<p>0 23-7/2，8 * * * date</p>
+
+<h1>每个月的4号和每个礼拜的礼拜一到礼拜三的早上11点</h1>
+
+<p>0 11 4 * mon-wed date</p>
+
+<h1>1月份日早上4点</h1>
+
+<p>0 4 1 jan * date<br/>
+范例<br/>
+$crontab -l 列出用户目前的crontab.</p>
+
+<h1>MIN HOUR DAY MONTH DAYOFWEEK COMMAND</h1>
+
+<p>10 6 * * * date<br/>
+0 */2 * * * date<br/>
+0 23-7/2,8 * * * date</p>
+
+<h1>如何在Linux里面恢复mbr？  </h1>
+
+<p>可以使用下面的命令来恢复：<br/>
+dd if=/boot/boot.NNNN of=/dev/hda bs=446 count=1<br/>
+其中bs（buffer size)是指重写的字节数。为什么不是512呢？主引导扇区是一个扇区(512字节)呀？答案是因为我们用上面的命令是为了 修复可能被病毒修改了的主引导记录MBR，或者想把LILO卸载掉，而不是恢复整个主引导扇区。所以我们只把主引导扇区的备份文件boot.NNNN的前 446个字节重写入主引导扇区。boot.NNNN是我们在安装Linux之前整个主引导分区的备份。如果我们把512个字节全部写入主引导扇区就可能会 把安装了Linux后改变了的硬盘DPT表也破坏掉。那就坏事了。 :&ndash;)</p>
+
+<h1>如何列出一个目录占用的空间  </h1>
+
+<p>du或du -s或du -k<br/>
+du -S | sort -n 可以迅速发现那个目录是最大的。</p>
+
+<p>用df可以看到已安装的文件系统的空间大小及剩余空间大小。</p>
+
+<p>quota -v查看用户的磁盘空间信息,如果你用quota限制了用户空间大小的话。</p>
+
+<h1>在使用less 或 more时，如何直接启动编辑器  </h1>
+
+<p>在less或者more中打入v键，会立即启动vi编辑器，可以对文件进行编辑</p>
+
+<h1>如何察看你当前使用的Linux内核的版本  </h1>
+
+<p>可以使用uname -r来查看当前内核版本。如果使用uname -a可以查看包括内核版本，机器硬件信息、网络节点名、操作系统名字等信息</p>
+
+<h1>如何显示文件的类型  </h1>
+
+<p>用命令 file 可以使你知道某个文件究竟是ELF格式的可执行文件, 还是shell script文件或是其他的什么格式 例如:</p>
+
+<h1>file startx</h1>
+
+<h1>如何将man page转成HTML格式  </h1>
+
+<p>使用 man2html 这个指令，就可以将 man page 转成 HTML 格式了。用法是：<br/>
+man2html filename > htmlfile.html<br/>
+例子：<br/>
+man2html /usr/man/man1/man2html.1 > ~/man2html.html</p>
+
+<h1>查看文件内容的特殊方法  </h1>
+
+<p>相信最基本的cat和less你已经很熟悉了，如果有特殊的要求呢：<br/>
+如果你只想看文件的前5行，可以使用head命令，如：<br/>
+head -5 /etc/passwd</p>
+
+<p>如果你想查看文件的后10行，可以使用tail命令，如：<br/>
+tail -10 /etc/passwd<br/>
+tail -f /var/log/messages<br/>
+参数-f使tail不停地去读最新的内容，这样有实时监视的效果，当你在ppp拨号的过程中用它岂不是很方便！</p>
+
+<p>查看文件中间一段，你可以使用sed命令，如：<br/>
+sed -n ’5,10p’ /etc/passwd<br/>
+这样你就可以只查看文件的第5行到第10行。</p>
+
+<h1>linux下文件分割与合并  </h1>
+
+<p>$dd if=source of=target.1 bs=1M count=10<br/>
+$dd if=source of=target.2 bs=1M skip=10<br/>
+source被分为target.1和target.2两个文件，其中target.1为source的前10M部分；target.2为source的减去10M后的部分。<br/>
+$cat target.1 target.2 > othersource<br/>
+source与othersource是同一个文件。</p>
+
+<p>color  RedHat下如何显示彩色目录列表<br/>
+color  ====================================<br/>
+color　　打开/etc/bashrc, 加入如下一行:<br/>
+color　　alias ls=”ls –color”<br/>
+color　　下次启动bash时就可以像在Slackware里那样显示彩色的目录列表了, 其中颜色的color含义如下:<br/>
+color  蓝色–>目录<br/>
+color  绿色–>可执行文件<br/>
+color  红色–>压缩文件<br/>
+color  浅蓝色–>链接文件<br/>
+color  灰色–>其他文件</p>
+
+<h1>什么是Linux 运行级？  </h1>
+
+<p>什么是运行级呢？简单的说，运行级就是操作系统当前正在运行的功能级别。这个级别从1到6，具有不同的功能。这些级别在/etc/inittab文件里指定。这个文件是init程序寻找的主要文件，最先运行的服务是那些放在/etc/rc.d 目录下的文件。<br/>
+不同的运行级定义如下：(可以参考Red Hat Linux 里面的/etc/inittab）</p>
+
+<h1>缺省的运行级，RHS 用到的级别如下：</h1>
+
+<h1>0 &ndash; 停机（千万不要把initdefault 设置为0 ）</h1>
+
+<h1>1 &ndash; 单用户模式</h1>
+
+<h1>2 &ndash; 多用户，但是没有 NFS</h1>
+
+<h1>3 &ndash; 完全多用户模式</h1>
+
+<h1>4 &ndash; 没有用到</h1>
+
+<h1>5 &ndash; X11</h1>
+
+<h1>6 &ndash; 重新启动 （千万不要把initdefault 设置为6 ）</h1>
+
+<p>对各个运行级的详细解释：<br/>
+0 为停机，机器关闭。<br/>
+1 为单用户模式，就像Win9x 下的安全模式类似。<br/>
+2 为多用户模式，但是没有NFS 支持。<br/>
+3 为完整的多用户模式，是标准的运行级。<br/>
+4 一般不用，在一些特殊情况下可以用它来做一些事情。例如在笔记本电脑的电池用尽时，可以切换到这个模式来做一些设置。<br/>
+5 就是X11，进到Xwindow系统了。<br/>
+6 为重启，运行init 6机器就会重启。<br/>
+不同的运行级有不同的用处，也应该根据自己的不同情形来设置。例如，如果丢失了root 口令，那么可以让机器启动进入单用户状态来设置。在启动后的 lilo 提示符下输入：<br/>
+init=/bin/sh rw<br/>
+就可以使机器进入运行级1 ，并把root文件系统挂为读写。他会跳过所有系统认证，让你使用passwd 程序来改变root口令，然后启动到一个新的运行级。</p>
+
+<h1>系统平均负载(Load average)释疑  </h1>
+
+<p>在Linux系统中，uptime、w、top等命令都会有系统平均负载load average的输出，那么什么是系统平均负载呢？</p>
+
+<hr />
+
+<p>bugkill 回复于：2005-11-05 17:02:36</p>
+
+<p>系统平均负载被定义为在特定时间间隔内运行队列中的平均进程树。如果一个进程满足以下条件则其就会位于运行队列中：<br/>
+&ndash; 它没有在等待I/O操作的结果<br/>
+&ndash; 它没有主动进入等待状态(也就是没有调用’wait’)<br/>
+&ndash; 没有被停止(例如：等待终止)<br/>
+例如：<br/>
+[root@www2 init.d]# uptime<br/>
+7:51pm up 2 days, 5:43, 2 users, load average: 8.13, 5.90, 4.94<br/>
+命令输出的最后内容表示在过去的1、5、15分钟内运行队列中的平均进程数量。<br/>
+一般来说只要每个CPU的当前活动进程数不大于3那么系统的性能就是良好的，如果每个CPU的任务数大于5，那么就表示这台机器的性能有严重问题。对于 上面的例子来说，假设系统有两个CPU，那么其每个CPU的当前任务数为：8.13/2=4.065。这表示该系统的性能是可以接受的。</p>
+
+<p>ps　如何以树状结构显示系统当前的任务<br/>
+ps　====================================<br/>
+ps　　　运行ps时指定-forest选项，当前运行的进程将会以树状格式显示出来。比如：所有由xserver运行的程序，将会以xserver做为它们的“根”显示出ps　来。<br/>
+ps　命令格式：<br/>
+ps　　　ps afx<br/>
+ps　　　其中’a’表示列出所有运行的进程；’x’列出所有的后台进程；’f’是’-forest’的缩写。输出的格式如下：<br/>
+ps　　　329 ? SW 0:00 [wdm]<br/>
+ps　　　342 ? R 9:57 \<em> /usr/X11R6/bin/X :0 vt7 -fbbpp 16 -auth /usr/etc/<br/>
+ps　　　343 ? SW 0:00 \</em> [wdm]<br/>
+ps　　　364 ? S 0:45 \<em> /usr/bin/enlightenment<br/>
+ps　　　399 ? S 0:00 \</em> /usr/bin/ssh-agent sh /home/tuneup/.xse<br/>
+ps　　　404 ? S 2:28 \<em> gkrellm -wm<br/>
+ps　　　787 ? S 0:05 \</em> aterm -fg white -tr<br/>
+ps　　　788 ttyp0 SW 0:00 \<em> [bash]<br/>
+ps　　　792 ttyp0 S 0:00 \</em> vim todo</p>
+
+<p>ps　　注：另外一种得到格式化输出结果的方法是：pstree -pu</p>
+
+<h1>列目录时如何显示中文文件名  </h1>
+
+<p>我们可以使用–show-control-chars命令选项来显示。<br/>
+例如：<br/>
+$ls –show-control-chars<br/>
+以通过修改fstab来实现，在fstab中加入类似内容：<br/>
+fstab　　/dev/hda1 /mnt/c vfat defaults,codepage=936,iocharset=cp936 0 0</p>
+
+<h1>查询你的CPU等级  </h1>
+
+<p>cat /proc/cpuinfo</p>
+
+<h1>如何使用户没有telnet和ftp权限  </h1>
+
+<p>若只希望用户没telnet权限，则需要修改/etc/passwd中对应该用户的shell为/bin/true。<br/>
+若只希望用户没有telnet和ftp权限，则需要修改/etc/passwd中对应该用户的shell为/bin/false。</p>
+
+<h1>如何连续执行一个命令  </h1>
+
+<p>使用watch命令，可以反复执行命令，如果和ls配合，可以达到观察某文件大小变化的效果。例如：<br/>
+$watch ls －l file.name</p>
+
+<h1>如何防止某个关键文件被修改  </h1>
+
+<p>在linux下，有些配置文件是不允许任何人包括root修改的，为了防止被误删除或修改，可以设定该文件的”不可修改位(immutable)”。<br/>
+例如：<br/>
+chattr +i /etc/fstab<br/>
+如果需要修改文件则：<br/>
+chattr -i /etc/fstab<br/>
+以后再修改文件。</p>
+
+<h1>linux环境下如何undelete  </h1>
+
+<p>先在自己的主目录下创建一个名为.trash的子目录，然后在bashrc加入以下指令：<br/>
+alias rm ’mv -f !* ~/.trash’<br/>
+alias undel ’mv ~/.trash/!* ./!*’<br/>
+alias cleantrash ’/bin/rm -rf ~/.trash; mkdir ~/.trash;sync’<br/>
+alias lrm ’ls ~/.trash’<br/>
+若文档是直接用rm命令删除的，理论上 ext2 内 rm 掉的档案还是可以用 debugfs , ext2ed 救回来的.当然… 被 overwrite 掉就没救了。</p>
+
+<p>find  如何找出磁盘中某个大小范围内的文件<br/>
+find  ====================================<br/>
+find　　比如要查找磁盘中大于3M的文件：<br/>
+find　　find . -size +3000k -exec ls -ld {} ;</p>
+
+<h1>如何快速重新执行已经执行过的命令  </h1>
+
+<p>使用!可以实现该功能，例如你前面执行了很多命令，现在突然想执行上一次执行的./configure命令，则只需要输入“!./con”即可而无需使用上下键来滚动查找。<br/>
+而!!则能代替前面一个命令。比如刚执行过一次ifconfig，输入“!!”则等于再执行一次ifconfig。<br/>
+而且这两个用法可以和其他命令组合，比如你刚执行过ifconfig，然后执行man !!，就等于执行man ifconfig。</p>
+
+<h1>当终端出现混乱时，如何让它恢复正常  </h1>
+
+<p>当使用stty命令而出现一些混乱或者更糟的是，使用一个程序而使终端设置完全混乱了时怎么办？要回到“现实”，试试下面的命令：<br/>
+stty sane<br/>
+如果击键变得混乱时，试着用来把命令括起来，输入的顺序是先按下CTRL再键入j键。<br/>
+ctty sane<br/>
+这个命令不会回到先前的设置，但却可以去除一些稀奇古怪的设置。而真正会出现什么设置要依赖于所使用的系统，但它至少会让你能输入字符，并见到结果。从这里开始，你可以把一些组合键设置为你所喜欢的方式。</p>
+
+<p>tar  如何将.gz文件分割为数个1.44mb<br/>
+tar  ====================================<br/>
+tar  把一个文件分割到软盘：<br/>
+tar  tar cfvm /dev/fd0 file.tar.gz<br/>
+tar  把软盘上的文件合并到硬盘：<br/>
+tar  tar xvfm /dev/fd0</p>
+
+<h1>如何一次处理一整个目录  </h1>
+
+<p>Linux/UNIX 的很多常用命令如 rm ， cp 等都有一个参数—- -r ， 是递归的意思， 命令里加了参数 -r 就可以对目标目录及其下所有子目录进行操作，如：<br/>
+rm -rf /test (f 是 force 意为强行)<br/>
+该命令完全删除根目录下的子目录 test ，作用类似于 dos 下的 deltree ，当然使用这个命令时要特别小心。再如：<br/>
+cp -r /test /test1<br/>
+有类似 dos 下 xcopy /s 的作用。</p>
+
+<h1>redhat下如何允许root通过telnet登录?  </h1>
+
+<p>方法1：/etc/securetty ( 加入 pts/0 、pts/1、…)</p>
+
+<h1>echo ”pts/0″ >> /etc/securetty</h1>
+
+<p>方法2：为了在redhat linux系统中激活远程登陆，从文件/etc/pam.d/login中移去下面这一行：<br/>
+auth required /lib/security/pam_security.so<br/>
+将/etc/securetty这个文件改名就行啦，该文件是定义root只能在tty1~tty6的终端上登录的，详细的信息可以”man login”。</p>
+
+<p>reboot  Linux正常重新启动的方法有很多种，下面介绍几种常用的重新启动方法：<br/>
+reboot  ====================================<br/>
+reboot  Ctrl＋Alt＋Del<br/>
+reboot  #init 6<br/>
+reboot  #shutdown －r now<br/>
+reboot  #reboot</p>
+
+<h1>为什么我的linux不允许普通用户登录？  </h1>
+
+<p>以root的身份登录系统，检查是不是有/etc/nologin这个文件，删除这个文件，然后再以普通用户的身份登录。相信问题已经解决。<br/>
+出现这种问题一般是因为系统在关闭的过程中意外中断了操作，如断线或者是插头被拔了之类的意外。而系统在关闭的过程中会自动的产生这个文件，以便通知用户系统正在关闭这就造成普通用户无法登录了。<br/>
+另外一种原因是系统管理员在对系统进行维护，为了维护的过程中不受其他用户的影响，需要生成这个文件来禁止其他用户登录。但很不幸系统管理维护完以后忘记删除这个文件了。</p>
+
+<p>chown  如何改变当前路径下所有目录和文件的所有权<br/>
+chown  ====================================<br/>
+chown  改变所有子目录及文件的所有权<br/>
+chown  #chown －R owner[.group] *<br/>
+chown  也可以用find命令来实现：<br/>
+chown  #find . －exec chown owner[.group] {} ;</p>
+
+<p>改变所有子目录及文件的属性<br/>
+在你要改变属性的目录下，输入命令：</p>
+
+<h1>chmod －R 777 *</h1>
+
+<p>就可以改变下面所有子目录及文件的属性，不过使用这个命令的时候要特别小心，要是在根目录下打入这个命令，你所有文件的属性都将改变，这就会引起很大的安全性问题。</p>
+
+<h1>如何快速查找文件  </h1>
+
+<p>查找文件可以用find，但最好是用locate，速度快，参数少。<br/>
+$locate filename<br/>
+它是在一个数据库里面查找，所以，要记得经常用updatedb命令更新数据库。一般地，在crontab中的cron.daily脚本会执行/usr/sbin/logrotate /etc/logrotate.conf命令，让机子在每天深夜更新数据库。</p>
+
+<h1>如何将Linux或FreeBSD复制到另一颗硬盘 ?  </h1>
+
+<p>Linux上的系统复制很简单，使用cp -ax将partition资料复制过去，重开机後设定lilo就可以了。<br/>
+FreeBSD也可以用cp来复制文档，但是对于复制整个文档系统并不是好方法。<br/>
+这里介绍使用dump和restore来做：</p>
+
+<p>创建新的文档系统<br/>
+假如你的新硬盘为ad1, 而将来的根分区将是ad1s1a, 你可以先创建文档系统：<br/>
+newfs /dev/ad1s1a<br/>
+mount /dev/ad1s1a /mnt<br/>
+cd /mnt</p>
+
+<p>复制：<br/>
+dump -f- / | restore -f- -r<br/>
+这是把老的根文档系统复制输出到管道，restore从管道里读数据，写入当前目录所在的文档系统。</p>
+
+<p>按部就班复制其他文档系统<br/>
+复制完後，也许 要修改新硬盘下的/etc/fstab，安装上新的分区，摘下老硬盘就可以了。<br/>
+再补充一点，如果你要复制的是另外一台机器，可以用rsh，这样就可以通过网络把一个分区数据传送到另外一台机器，不需要NFS，不需SAMBA等就可以解决问题，而cp就很难作到了。<br/>
+newfs /dev/ad1s1a<br/>
+mount /dev/ad1s1a /mnt<br/>
+cd /mnt<br/>
+rsh -l yourname thathost ’dump -f- /’ | restore -f- -r</p>
+
+<h1>linux怎么给一个普通用户reboot权限?  </h1>
+
+<p>分四种情况讨论：<br/>
+1.让任何人（包括根本不拥有系统帐号的人）都可以通过控制台reboot<br/>
+在/etc/inittab文件中保留ca::ctrlaltdel:/sbin/shutdown -t3 -r now<br/>
+这一行。这样全国人民都可以reboot你的机器，只要你把控制台交出来。</p>
+
+<p>2.让所有系统用户都可以reboot<br/>
+执 行# > /etc/security/console.apps/reboot即可。这就在console.apps目录下生成了一个空文件，文 件名就是授权的application。以上路径是针对Mandrake系统而言的，其他系统我不清楚。不过，真正高雅的Mandraker或许根本就不 会去靠“>”来生成这个文件??????他们会使用msec来进行控制的。</p>
+
+<p>3.让指定的用户才可以reboot<br/>
+假设我们要让用户zhizunbao拥有reboot的权限，我们靠uid/gid来完成控制：</p>
+
+<h1>groupadd reboot</h1>
+
+<h1>cd /usr/local</h1>
+
+<h1>mkdir reboot</h1>
+
+<h1>chown root:reboot reboot/</h1>
+
+<h1>chmod 750 reboot/</h1>
+
+<h1>cd reboot</h1>
+
+<h1>cp /sbin/reboot .</h1>
+
+<h1>chmod 4755 reboot</h1>
+
+<h1>usermod -G reboot zhizunbao</h1>
+
+<hr />
+
+<p>bugkill 回复于：2005-11-05 17:04:26</p>
+
+<p>现在，zhizunbao就可以运行/usr/local/reboot/reboot来重启动机器。</p>
+
+<p>4.在一台不设普通用户的机器上启用口令验证reboot<br/>
+这实际上是靠添加一个关机帐号来实现的，该帐号的shell就是加了s位的/sbin/halt，并且口令只有少数维护人员知道。我们这里采用的就是第4套方案。</p>
+
+<h1>怎样知道自己的机器上有哪些服务在运行  </h1>
+
+<p>若一台机器运行有很多不需要的服务，那么被攻击者入侵的可能性就会大大加大，因此作为管理员就应该经常查看系统运行有哪些服务。<br/>
+首先查看系统运行的进程<br/>
+若需要查看系统当前运行的所有进程，就需要用如下命令：</p>
+
+<h1>ps auxw</h1>
+
+<p>其中参数a表示显示系统中所有用户的的进程；u表示输出进程用户所属信息；x表示也显示没有控制台的进程；若显示行太长而被截断则可以使用f参数；<br/>
+查看系统监听的服务</p>
+
+<h1>netstat -ln</h1>
+
+<p>l表示显示当前系统监听的端口信息；n表示端口按照端口号来显示，而不转换为service文件中定义的端口名；若希望了解各个端口都是由哪些进程监听则可以使用p参数。<br/>
+若发现不需要的服务，可以使用linuxconf或ntsysv命令来关闭这些服务在系统启动时自启动，然后重新启动系统则这些服务将在运行。<br/>
+有些服务是由inetd超级服务器来监控的，则需要标记/etc/inetd.conf来关闭这些服务。</p>
+
+<h1>查询端口对应的服务  </h1>
+
+<h1>lsof -i :端口号</h1>
+
+<p>查询此端口对应的服务。</p>
+
+<h1>vi 中设置自动缩进  </h1>
+
+<p>:set autoindent<br/>
+:set ai<br/>
+取消<br/>
+:set noautoindent<br/>
+:set noai</p>
+
+<h1>如何使linux系统对ping不反应  </h1>
+
+<p>在linux里，如果要想使ping 没反应也就是用来忽略icmp包。可以用：<br/>
+echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all<br/>
+若想恢复就用：<br/>
+echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_all</p>
+
+<h1>如何实现多网卡bondin  </h1>
+
+<p>使用多块网卡虚拟成为一块网卡，具有相同的IP地址。这项技术其实在sun和cisco中已经存在，分别称为Trunking和etherchannel技术，在Linux中，这种技术称为bonding。<br/>
+因为bonding在内核2.4.x中已经包含了，只需要在编译的时候把网络设备选项中的Bonding driver support选中就可以了。<br/>
+然后，重新编译核心，重新起动计算机，执行如下命令：<br/>
+ismod bonding<br/>
+ifconfig eth0 down<br/>
+ifconfig eth1 down<br/>
+ifconfig bond0 ipaddress<br/>
+ifenslave bond0 eth0<br/>
+ifenslave bond0 eth1<br/>
+现在两块网卡已经象一块一样工作了.这样可以提高集群节点间的数据传输.<br/>
+你最好把这几句写成一个脚本,再由/etc/rc.d/rc.local调用,以便一开机就生效.<br/>
+bonding对于服务器来是个比较好的选择,在没有千兆网卡时,用两三块100兆网卡作bonding,可大大提高服务器到交换机之间的带宽.但是需要在交换机上设置连接bonding网卡的两个口子映射为同一个虚拟接口。</p>
+
+<h1>Removing ^M from file  </h1>
+
+<p>if you have transferred a file from MS Windows to UNIX, you might find that the file looks like this:<br/>
+bleh bleh ^M<br/>
+leh leh ^M<br/>
+tey tey tey<sup>M</sup><br/>
+This is because Windows uses carridge return and newline to indicate a new line.<br/>
+Here are a number of ways to get rid of the ^M characters:<br/>
+1- cat filename1 | tr -d ”<sup>V</sup><sup>M</sup>” > newfile<br/>
+2- sed -e ”s/^V<sup>M</sup>//” filename > outputfilename<br/>
+where ^V is actually control-V and ^M is actually control-M (you must type these yourself, don’t just copy and paste this command from this web page)<br/>
+3-vi solution : open file with vi<br/>
+1. hit the ESC key<br/>
+2. :%s/^V<sup>M</sup>//<br/>
+3 &ndash; some distributions contain a command called dos2unix which removes these carridge return characters<br/>
+4- use the texteditor vim (www.vim.org) and edit the file. If all the lines (not only some) contain consistently the carridge return characters then vim will show [textmode] and when you change the mode with the command<br/>
+:set notextmode<br/>
+it will remove them.</p>
+
+<h1>Create /dev/null  </h1>
+
+<p>I have moved a file to /dev/null and now my system doesn’t work<br/>
+If you move a file with the mv command to ”/dev/null” then it will be overwritten with an ordinary file.<br/>
+How to fix it:<br/>
+Boot your system. If it doesn’t boot take a one disk distribution like Toms rtbt and mount your /dev/hdXX partition.<br/>
+Now type in a shell ”mknod /dev/null c 1 3″ to create a nod file. /dev/null is the path where the nod file will be saved. The c stands for a character device and the two numbers are the major and the minor numbers for the null device.<br/>
+After that you must change with ”chmod 666 /dev/null” the read, write and execute permissions.<br/>
+With ”ls -alF /dev/” you will see all nod files with it’s own three parameters like<br/>
+“crw-rw-rw- 1 root root 1, 3 Oct 4 11:34 null ”.<br/>
+You will see a ”c” in the near of the rwx flags an a ” 1, 3″ left of the date.</p>
+
+<h1>Howto log in to your server passwordless via ssh ( rsa version )  </h1>
+
+<p>Create your private and public keys via ssh-keygen program<br/>
+$ ssh-keygen<br/>
+Computing keys<br/>
+Testing the keys..<br/>
+Key generation complete..<br/>
+Enter the file in which to save the key (/usr/home/murat/.ssh/identity)<br/>
+Press enter for the default value…<br/>
+Your identification has been saved in /usr/home/murat/.ssh/identity<br/>
+Your public ket is:<br/>
+blah….blah…blah….<br/>
+Your public key has been saved in /usr/home/murat/.ssh/identity.pub<br/>
+Now that we have created our <code>public</code> key, take your<br/>
+public key which is ~/.ssh/identity.pub to your server,<br/>
+in the ~/.ssh/ directory, create a file named authorized_keys<br/>
+and append the content of identity.pub file to your authorized_keys file<br/>
+now, in your machine, type<br/>
+$ ssh -l username your_remote_machine.domain.com<br/>
+Boom, no password, no headache, you’re in the other side…;)</p>
+
+<h1>Blocking anyone to su to root  </h1>
+
+<p>The su (Substitute User) command allows you to become other existing<br/>
+users on the system. For example you can temporarily<br/>
+become ”root” and execute commands as the super-user ”root”. If<br/>
+you don’t want anyone to su to root or restrict ”su” command to<br/>
+certain users then add the following two lines to the top of<br/>
+your ”su” configuration file in the ”/etc/pam.d/” directory.<br/>
+1- Edit the su file (vi /etc/pam.d/su) and add the following two<br/>
+lines to the top of the file:<br/>
+auth sufficient /lib/security/pam_rootok.so debug<br/>
+auth required /lib/security/pam_wheel.so group=wheel<br/>
+After adding the two lines above, the ”/etc/pam.d/su” file should<br/>
+look like this:</p>
+
+<h1>%PAM-1.0</h1>
+
+<p>auth sufficient /lib/security/pam_rootok.so debug<br/>
+auth required /lib/security/pam_wheel.so group=wheel<br/>
+auth required /lib/security/pam_pwdb.so shadow nullok<br/>
+account required /lib/security/pam_pwdb.so<br/>
+password required /lib/security/pam_cracklib.so<br/>
+password required /lib/security/pam_pwdb.so shadow use_authtok nullok<br/>
+session required /lib/security/pam_pwdb.so<br/>
+session optional /lib/security/pam_xauth.so<br/>
+Which means only those who are a member of the ”wheel” group can su to root;<br/>
+and to add a user to wheel group use:<br/>
+root# usermod -G10 username<br/>
+Ok, now everybody can not be root using su. When an user that is not in wheel group runs su command ,he/she can not be root even if he/she writes correct root password.</p>
+
+<h1>Disable reboot,halt ,shutdown for users  </h1>
+
+<p>On Redhat<br/>
+[root@apache /]# rm -f /etc/security/console.apps/halt<br/>
+[root@apache /]# rm -f /etc/security/console.apps/poweroff<br/>
+[root@apache /]# rm -f /etc/security/console.apps/reboot<br/>
+[root@apache /]# rm -f /etc/security/console.apps/shutdown<br/>
+[root@apache /]# rm -f /etc/security/console.apps/xserver (if removed, root will be the only user able to start x).</p>
+
+<p>mkdir -p rep1/rep2/rep3 一次建多个目录</p>
+
+<p>rm -rf /tmp/.??* /tmp/* 删除所有文件，包括隐藏文件<br/>
+You can put this into /etc/rc.d/init.d/syslog into the ”stop)” section. This will clean up /tmp at every shutdown and keep your disk tidy.<br/>
+Do not run the above command while running X11 or before you run startx. X11 needs the /tmp/.font-unix which is created by xfont server and X11 it self creates the directory /tmp/.X11-unix which is needed to talk to the X11 windows.</p>
+
+<p>1、BIOS的安全设置</p>
+
+<p>这是最基本的了，也是最简单的了。一定要给你的BIOS设置密码，以防止通过在BIOS中改变启动顺序，而可以从软盘启动。这样可以阻止别有用心的试图用特殊的启动盘启动你的系统，还可以阻止别人进入BIOS改动其中的设置，使机器的硬件设置不能被别人随意改动。</p>
+
+<p>2、LILO的安全设置</p>
+
+<p>LILO是LInux</p>
+
+<p>LOader的缩写，它是LINUX的启动模块。可以通过修改“/etc/lilo.conf”文件中的内容来进行配置。在 /etc/lilo.conf文件中加如下面两个参数：restricted,password。这三个参数可以使你的系统在启动lilo时就要求密码验 证。</p>
+
+<p>第一步：编辑lilo.conf文件（vi /etc/lilo.comf）,假如或改变这三个参数：<br/>
+boot=/dev/hda<br/>
+map=/boot/map<br/>
+install=/boot/boot.b<br/>
+prompt<br/>
+timeout=00 #把这行该为00，这样系统启动时将不在等待，而直接启动LINUX<br/>
+message=/boot/message<br/>
+linear<br/>
+default=linux<br/>
+restricted #加入这行<br/>
+password= #加入这行并设置自己的密码</p>
+
+<p>image=/boot/vmlinuz-2.4.2-2<br/>
+label=linux<br/>
+root=/dev/hda6<br/>
+read-only</p>
+
+<p>第二步：因为”/etc/lilo.conf”文件中包含明文密码，所以要把它设置为root权限读取。</p>
+
+<h1>chmod 0600 /etc/lilo.conf</h1>
+
+<p>第三步：更新系统，以便对“/etc/lilo.conf”文件做的修改起作用。</p>
+
+<h1>/sbin/lilo -v</h1>
+
+<p>第四步：使用“chattr”命令使”/etc/lilo.conf”文件变为不可改变。</p>
+
+<h1>chattr +i /etc/lilo.conf</h1>
+
+<p>这样可以在一定程度上防止对“/etc/lilo.conf”任何改变（意外或其他原因）</p>
+
+<p>3、让口令更加安全</p>
+
+<p>口令可以说是系统的第一道防线，目前网上的大部分对系统的攻击都是从截获口令或者猜测口令开始的，所以我们应该选择更加安全的口令。</p>
+
+<hr />
+
+<p>bugkill 回复于：2005-11-05 17:04:58</p>
+
+<p>首先要杜绝不设口令的帐号存在。这可以通过查看/etc/passwd文件发现。例如，存在的用户名为test的帐号，没有设置口令，则在/etc/passwd文件中就有如下一行：<br/>
+test::100:9::/home/test:/bin/bash</p>
+
+<p>其第二项为空，说明test这个帐号没有设置口令，这是非常危险的！应将该类帐号删除或者设置口令。<br/>
+其 次，在旧版本的linux中，在/etc/passwd文件中是包含有加密的密码的，这就给系统的安全性带来了很大的隐患，最简单的方法就是可以用暴力破 解的方法来获得口令。可以使用命令/usr/sbin/pwconv或者/usr/sbin/grpconv来建立/etc/shadow或者 /etc/gshadow文件，这样在/etc/passwd文件中不再包含加密的密码，而是放在/etc/shadow文件中，该文件只有超级用户 root可读！</p>
+
+<p>第三点是修改一些系统帐号的Shell变量，例如uucp,ftp和news等，还有一些仅仅需要FTP功能的 帐号，一定不要给他们设置/bin/bash或者/bin/sh等Shell变量。可以在/etc/passwd中将它们的Shell变量置空，例如设为 /bin/false或者/dev/null等，也可以使用usermod -s /dev/null username命令来更改username的 Shell为/dev/null。这样使用这些帐号将无法Telnet远程登录到系统中来！</p>
+
+<p>第四点是修改缺省的密码长度：在你安装linux时默认的密码长度是5个字节。但这并不够，要把它设为8。修改最短密码长度需要编辑login.defs文件（vi/etc/login.defs），把下面这行<br/>
+PASS_MIN_LEN 5<br/>
+改为<br/>
+PASS_MIN_LEN 8<br/>
+login.defs文件是login程序的配置文件。</p>
+
+<p>4、自动注销帐号的登录</p>
+
+<p>在unix系统中root账户是具有最高特权的。如果系统管理员在离开系统之前忘记注销root账户，那将会带来很大的安全隐患，应该让系统会自动注 销。通过修改账户中“TMOUT”参数，可以实现此功能。TMOUT按秒计算。编辑你的profile文件（vi /etc/profile）,在 “HISTFILESIZE=”后面加入下面这行：<br/>
+TMOUT=300</p>
+
+<p>300，表示300秒，也就是表示5分钟。这样，如果系统中登陆的用户在5分钟内都没有动作，那么系统会自动注销这个账户。你可以在个别用户的“.bashrc”文件中添加该值，以便系统对该用户实行特殊的自动注销时间。</p>
+
+<p>改变这项设置后，必须先注销用户，再用该用户登陆才能激活这个功能。</p>
+
+<p>5、取消普通用户的控制台访问权限</p>
+
+<p>你应该取消普通用户的控制台访问权限，比如shutdown、reboot、halt等命令。</p>
+
+<h1>rm -f /etc/security/console.apps/</h1>
+
+<p>是你要注销的程序名。</p>
+
+<p>6、取消并反安装所有不用的服务</p>
+
+<p>取消并反安装所有不用的服务，这样你的担心就会少很多。察看“/etc/inetd.conf”文件，通过注释取消所有你不需要的服务（在该服务项目之前加一个“#”）。然后用“sighup”命令升级“inetd.conf”文件。</p>
+
+<p>第一步：</p>
+
+<p>更改“/etc/inetd.conf”权限为600，只允许root来读写该文件。</p>
+
+<h1>chmod 600 /etc/inetd.conf</h1>
+
+<p>第二步：</p>
+
+<p>确定“/etc/inetd.conf”文件所有者为root。</p>
+
+<p>第三步：</p>
+
+<p>编辑 /etc/inetd.conf文件（vi /etc/inetd.conf），取消下列服务（你不需要的）：ftp, telnet,  shell, login, exec, talk, ntalk, imap, pop-2, pop-3, finger, auth等等。把不需 要的服务关闭可以使系统的危险性降低很多。</p>
+
+<p>第四步：</p>
+
+<p>给inetd进程发送一个HUP信号：</p>
+
+<h1>killall -HUP inetd</h1>
+
+<p>第五步：</p>
+
+<p>用chattr命令把/ec/inetd.conf文件设为不可修改，这样就没人可以修改它：</p>
+
+<h1>chattr +i /etc/inetd.conf</h1>
+
+<p>这样可以防止对inetd.conf的任何修改（以外或其他原因）。唯一可以取消这个属性的人只有root。如果要修改inetd.conf文件，首先要是取消不可修改性质：</p>
+
+<h1>chattr -i /etc/inetd.conf</h1>
+
+<p>别忘了该后再把它的性质改为不可修改的。</p>
+
+<p>7、TCP_WRAPPERS</p>
+
+<p>使用TCP_WRAPPERS可以使你的系统安全面对外部入侵。最好的策略就是阻止所有的主机（”/etc/hosts.deny”文件中加入 “ALL: ALL@ALL, PARANOID” ），然后再在”/etc/hosts.allow” 文件中加入所有允许访问的主机列表。</p>
+
+<p>第一步：</p>
+
+<p>编辑hosts.deny文件（vi /etc/hosts.deny），加入下面这行</p>
+
+<h1>Deny access to everyone.</h1>
+
+<p>ALL: ALL@ALL, PARANOID</p>
+
+<p>这表明除非该地址包在允许访问的主机列表中，否则阻塞所有的服务和地址。</p>
+
+<p>第二步：</p>
+
+<p>编辑hosts.allow文件（vi /etc/hosts.allow），加入允许访问的主机列表，比如：<br/>
+<a href="ftp:">ftp:</a> 202.54.15.99 foo.com<br/>
+202.54.15.99和 foo.com是允许访问ftp服务的ip地址和主机名称。</p>
+
+<p>第三步：</p>
+
+<p>tcpdchk程序是tepd wrapper设置检查程序。它用来检查你的tcp wrapper设置，并报告发现的潜在的和真实的问题。设置完后，运行下面这个命令：</p>
+
+<h1>tcpdchk</h1>
+
+<p>8、修改“/etc/host.conf”文件</p>
+
+<p>“/etc/host.conf”说明了如何解析地址。编辑“/etc/host.conf”文件（vi /etc/host.conf），加入下面这行：</p>
+
+<h1>Lookup names via DNS first then fall back to /etc/hosts.</h1>
+
+<p>order bind,hosts</p>
+
+<h1>We have machines with multiple IP addresses.</h1>
+
+<p>multi on</p>
+
+<h1>Check for IP address spoofing.</h1>
+
+<p>nospoof on</p>
+
+<p>第一项设置首先通过DNS解析IP地址，然后通过hosts文件解析。第二项设置检测是否“/etc/hosts”文件中的主机是否拥有多个IP地址（比如有多个以太口网卡）。第三项设置说明要注意对本机未经许可的电子欺骗。</p>
+
+<p>9、使“/etc/services”文件免疫</p>
+
+<p>使“/etc/services”文件免疫，防止未经许可的删除或添加服务：</p>
+
+<h1>chattr +i /etc/services</h1>
+
+<p>10、不允许从不同的控制台进行root登陆</p>
+
+<p>“/etc/securetty”文件允许你定义root用户可以从那个TTY设备登陆。你可以编辑”/etc/securetty”文件，再不需要登陆的TTY设备前添加“#”标志，来禁止从该TTY设备进行root登陆。</p>
+
+<p>在/etc/inittab文件中有如下一段话：</p>
+
+<h1>Run gettys in standard runlevels</h1>
+
+<p>1:2345:respawn:/sbin/mingetty tty1<br/>
+2:2345:respawn:/sbin/mingetty tty2</p>
+
+<h1>3:2345:respawn:/sbin/mingetty tty3</h1>
+
+<h1>4:2345:respawn:/sbin/mingetty tty4</h1>
+
+<h1>5:2345:respawn:/sbin/mingetty tty5</h1>
+
+<h1>6:2345:respawn:/sbin/mingetty tty6</h1>
+
+<p>系统默认的可以使用6个控制台，即Alt+F1,Alt+F2…，这里在3，4，5，6前面加上&amp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/25/Debian_lenny_nvidia_%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/">Debian_lenny_nvidia_驱动安装</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-25T00:00:00+08:00" pubdate data-updated="true">Jan 25<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>linux 的 官方pdf 软件使用的时候非常慢，怀疑是显卡驱动的问题，所以放弃以前经典的nv 驱动，去官方网站安装最新的显卡驱动</p>
+
+<p> </p>
+
+<p>1、首先下载NVIDIA-Linux-x86-169.09-pkg1.run</p>
+
+<p>2、apt-get install linux-image-2.6-686
+3、因为最新的编译要用到gcc 4.1 ,而当前的lenny 使用的是4.2.所以rm /usr/bin/gcc,ln /usr/bin/gcc4.2 /usr/bin/gcc
+4、m-a a-i -i -t -f nvidia-kernel-source
+5、注销 X ,ctrl+alt F1 ,然后关掉 X
+6、运行./NVDIA-Linux-x86-169.09-pkg1.run
+重新启动，
+然后用nvidia-setting 来设置。pdf 果然快了很多。
+散热量明显减少，在多个firefox下，比windows下多个ie的散热量小了很多
+8600m显卡</p>
+
+<p>江湖传说咖啡因对咳嗽有抑制效果， 今天顺便试验下果然很不错</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/23/%E6%84%9F%E5%86%92%E6%97%A5%E8%AE%B0/">感冒日记</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-23T00:00:00+08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>晨，9点醒，感冒加重，头痛，鼻塞，不停的咳嗽胸痛。也许感冒不应该喝酒，甚至是一丁点的酒。9点半电话给人事请假，和以前请假一样简洁明了，‘请天假’，‘生病了’，‘恩’，‘哦’，结束。</p>
+
+<p>桌子上有油条豆浆，一堆干感冒药，瞅了瞅说明，掰出一堆药倒进嘴里，摆弄药盒子的时候发现其中的阿莫西林过期5个月了，不过估计死不了人，脑子莫名的想起了我们家以前那只可怜的会说话的鹩哥，估计那只鹩哥可能在练嗓子，或者是在打哈气，反正被我妈误以为是感冒了，被她用半片阿莫西林给毒死了。</p>
+
+<p>脑子发蒙打开电脑，看了下股票，昨天跌停的联通，今天表现良好，么什么东西可看的了，爬回床上看</p>
+
+<p>新闻，翻来覆去都是英国房子跌了，美国次级贷危机，全球经济不景气，想来就是股票要涨了，黄金要涨了，房价要跌了，银行利率要提高，采取谨慎的货币措施。头疼，关掉电视，打开fm87.9 找了本村上春树的挪威森森林准备继续书，这本书给我的唯一印象就是切工良好的三明治和蘸酱油的黄瓜。</p>
+
+<p>中午被小罗吵醒了，中午吃了药，和很辣的泡面，感觉好了点。中午阴沉沉的已经没有了早上的阳光，继续睡，感冒果然很难受，但愿明天能好起来。</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/20/%E9%85%92/">酒</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-20T00:00:00+08:00" pubdate data-updated="true">Jan 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>昨天和同事去了上海淮海路的全聚德吃饭，喝了啤酒和一点白酒，记得上次喝白酒是去年过年的时候了，在北京和我姐，吃的是羊蝎子置于说些什么现在已经毫无头绪了。现在的北京人很少吃全聚德，大多数时间大家吃的是羊蝎子，爆肚，或者是路边叫个1，2百窜的烤羊肉羊杂，弄几瓶啤酒，兴致高的时候在要个小口杯的二锅头，说到吃烤羊肉，北京的羊肉串没有上海那么贵。呵呵，也许是因为多数时候是我蹭我哥哥们自己从不出钱的缘故吧 。北京和上海的冬天都给我非常奇怪的感觉，北京的冰冷干燥而温暖，上海的则潮湿而亲切。就是现在上海的窗外还淅沥的下着小雨。</p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/20/%E5%87%8F%E8%82%A5%E5%92%8C%E6%89%81%E6%A1%83%E4%BD%93%E7%82%8E/">减肥和扁桃体炎</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-20T00:00:00+08:00" pubdate data-updated="true">Jan 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>早期制定的减肥计划早已抛掷脑后，今天却意外的被实施了。</p>
+
+<p>今天清晨醒来睁眼第一个感觉是喉咙疼，第二感觉是口干，接着痛苦就次开始，在很温柔的刷牙洗脸后。我开始温柔的喝水，吞咽这个动作对我来说是非常奢侈的。每次吞咽后就是火烧一样的疼痛。吃了点消炎药，开始对着电脑发呆，晚上同学的饭局是赶不上了，多好的曾饭机会啊。中午的时候疼的受不了，躺在床上找了本通史看一会就睡着了，这东西果然比安眠药管用，虽然那玩意我么吃过。昏昏沉沉的睡到晚上，喉咙疼的什么也没有办法吃，我妈给我弄了堆胖大海，想想自己还真是乌鸦嘴，前两天在公司还莫名的谈论胖大海什么的，还想着么喝过什么时候喝喝看。今天就应验了。</p>
+
+<p>嗯到现在什么的还么吃，肚子饿的厉害，喉咙痛的跟厉害，想着也许喉咙一直痛下去，说不定减肥就成功了。这个也许是喉咙痛的唯一好处吧。 </p>
+
+<p> </p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/20/vim_%E5%92%8C_emacs_%E7%9A%84%E6%AF%94%E8%BE%83/">Vim_和_emacs_的比较</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-20T00:00:00+08:00" pubdate data-updated="true">Jan 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>vim 和 emacs 哪个好坏已经争论不休，世界上本来就没有什么哪个更好哪个更坏，只有哪个跟适合你而已，以下观点纯粹个人臆测</p>
+
+<p>我是个很普通的linux 用户，为什么不用windows有人问，恩也许是华莱士的freedom ,也许是担心windows哪天倒闭，没有了保罗艾伦，没有了比尔盖子，微软已经不再是以前的微软 。但是苹果依然还有疯狂的乔布斯，也许windows倒闭的时候会开源，不过只是也许，毕竟borland 没有那么做，一个ibm的eclipse就让辉煌的borland摇摇欲坠令人感叹的时代。</p>
+
+<p>跑题了，</p>
+
+<p>第一。vim的扩展开发使用的语言并不统一但是很活跃，emacs 的扩展开发的语言是统一的lisp 。这个方便看以及学习使用。当然最近stallman有点偏执的疯狂有点像宗教发展的意图。</p>
+
+<p>第二。vim的编码好像总是和我编辑后的prompt有点冲突。</p>
+
+<p>第三。也许是重点emacs 的logo 是一头牛，在经济领域中牛是祥瑞的象征。</p>
+
+<p>我认为 emacs 很好很强大，vim我用来编辑配置文件等小文件，因为他打开快速，编辑快速。写程序我仍然喜欢用emacs.当然android是例外。eclipse和他就好像是天生一对，总之只要适合喜欢就好，万事莫要强制划分。</p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/17/%E6%9B%BC%E6%98%86%E5%92%8C%E5%85%8B%E9%B2%81%E6%A0%BC%E6%9B%BC%E5%85%B3%E4%BA%8E%E5%8C%BB%E6%94%B9%E7%9A%84%E4%BA%89%E8%AE%BA/">曼昆和克鲁格曼关于医改的争论</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-17T00:00:00+08:00" pubdate data-updated="true">Jan 17<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>世界上有两本&lt;&lt;经济学原理>>是经济学的入门之作，</p>
+
+<p>一本是萨谬尔森写的，这本是专业人士的奠基之做，可惜咱看不懂。</p>
+
+<p>另外一本就是曼昆写的，这本有浅入深，非常之经典。</p>
+
+<p>下面转载自 <a href="http://danielyoung.blog.sohu.com/">http://danielyoung.blog.sohu.com/</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>曼昆澄清几个观点。他认为危险的观点不是错误的观点而是正确的观点（数据），但人们不知道这些数据的含义。曼昆共举了三个这样的数据。</p>
+
+<p>1， 美国人的预期寿命比加拿大短，婴儿死亡率比加拿大高。预期寿命短的原因更多的是关于社会因素：美国人事故率和谋杀率更高；美国人更容易发胖，从而更容易患 心脏病等疾病。婴儿死亡率更高的原因包括婴儿体重更低，而这是由于少年母亲更多，而这又是由于美国人的性选择。</p>
+
+<p>2， 有四千七百万的美国人没有医保。这其中有1千万人不是美国citizen,其中有很多是非法移民。有很多人有资格享受政府医疗资助，但没有申请。有很多人拒绝了雇主提供的医保。</p>
+
+<p>3， 医疗保健的支出在1950年的时候只占国民收入的5%，现在却占到了16%。随着经济发展、收入增长，花更多的钱在医疗保健上面是很正常的事情。</p>
+
+<p>曼 昆的分析当中，我觉得第一点最精彩。这其实也是“谬误相关”的一个例子。加拿大有着全民医保，美国没有。加拿大的人均预期寿命更长、婴儿死亡率更低。注意 这里讲的是相关关系，不是因果关系。因为这里有着严重的严重的遗漏变量偏误：没有控制事故率、谋杀率、肥胖率、少年母亲占所有孕妇比例等等。</p>
+
+<p>克鲁格曼对曼昆的反驳：</p>
+
+<p>1， 没有参加医保的人数。没有医保的人作为一个人群是不断变化的。也就是说今天张三有医保，明天没有，后天又有了。这样的事情对李四也发生。简言之，拥有或没 有医保都不是永久的状态。在2006-2007，有三分之一以上的在美国的人经历过没有医保。（注意，这里克鲁格曼用的是“在美国的人”（people in america）。是否 “在美国的人”又包括了非法移民等医保本来就无法覆盖的群体？）他继续讲到急症室才知道自己有没有资格享受政府的医疗救助和一直都享有医疗保险是很不同 的。另外四分之一的“非老年”（nonelderly）美国人的医保都不充分。</p>
+
+<p>2， 美国的医疗支出是其他发达国家医疗支出的6倍。肥胖和其它与生活方式相关的疾病在医疗费用当中所占比例很小。（我的疑问是，美国的人口不是比加拿大等国多 很多吗，这里的“6倍”是总量还是人均？如果是总量的话可能意义就小很多。关于生活习惯在医疗费中所占比例很小的事，如果是真的，倒还可以算是较为有利的 论据，但这究竟是怎么衡量的，不清楚。）</p>
+
+<p>3， 2007比1950好。这里的核心观点还是，美国花的钱比其他发达国家多，但是效果没有其他国家好。我的疑问仍然是，有绿卡的美国人人均医疗费用比其他发 达国家多了多少？效果没有其他国家好（“get worse results”）。到底是怎么衡量的。预期寿命等问题到底有多大程度能归因于全民医保？</p>
+
+<p>其实这里我的关注起于阅读郭凯的一篇关于这个问题的博客文章。今天有空特地把这两篇原文找出来，读一读。还有几点感受：</p>
+
+<p>1， 美国大选的开支确实很大，但是这或许是很有必要的。能够引发对社会重要问题的理性辩论就是好处之一。</p>
+
+<p>2， 经济学家在大多数的辩论中都担任着重要的角色，看来不仅在中国是这样，在美国也是这样。曼昆的研究领域主要是宏观经济学是新凯恩斯主义的代表人物之一，而 克鲁格曼研究似乎集中在国际经济学，尤其是国际贸易领域（读他们的论文太少，说得可能不准确）。但是他们关于医改的观点显然在美国社会有着重要影响。经济 学家在社会中，尤其是社会辩论中扮演的角色很令人感兴趣。</p>
+
+<p>3， 经济学家的观点可能代表某个政党，这没什么不好，关键我们能够通过自由的新闻听到不同的观点，从而对问题形成一个相对全面的认识。这场辩论中，克鲁格曼显 然是站在民主党的立场上面，而曼昆却是代表的共和党的立场。双方观点的交锋让我们对问题的了解更进一步。</p>
+
+<p>4， 最后把两位大师的原文附上(都发表在纽约时报上面)。思想家的战斗也是一场思想的盛宴啊。</p>
+
+<p>Economic View</p>
+
+<h1>Beyond Those Health Care Numbers</h1>
+
+<ul>
+<li><p>&ndash;</p></li>
+</ul>
+
+
+<p>By N. GREGORY MANKIW</p>
+
+<p>Published: November 4, 2007</p>
+
+<p>WITH the health care system at the center of the political debate, a lot of scary claims are being thrown around. The dangerous ones are not those that are false; watchdogs in the news media are quick to debunk them. Rather, the dangerous ones are those that are true but don’t mean what people think they mean.</p>
+
+<p><a href="http://www.nytimes.com/2007/11/04/business/04view.html?scp=1&amp;sq=Beyond+Those+Health+Care+Numbers#secondParagraph">Skip to next paragraph</a></p>
+
+<p><a href="http://blog.sohu.com/manage/entry.do?m=edit&amp;id=76441807&amp;t=shortcut#">Enlarge This Image</a>
+  <img src="http://graphics8.nytimes.com/images/2007/11/04/business/04view.1901.jpg" alt="图片点击可在新窗口打开查看" />
+David G. Klein</p>
+
+<p>Here are three of the true but misleading statements about health care that politicians and pundits love to use to frighten the public:</p>
+
+<p>STATEMENT 1 The United States has lower life expectancy and higher infant mortality than Canada, which has national health insurance.</p>
+
+<p>The differences between the neighbors are indeed significant. Life expectancy at birth is 2.6 years greater for Canadian men than for American men, and 2.3 years greater for Canadian women than American women. Infant mortality in the United States is 6.8 per 1,000 live births, versus 5.3 in Canada.</p>
+
+<p>These facts are often taken as evidence for the inadequacy of the American health system. But a recent study by June and Dave O’Neill, economists at <a href="http://topics.nytimes.com/top/reference/timestopics/organizations/b/baruch_college/index.html?inline=nyt-org" title="More articles about Baruch College">Baruch College</a>, from which these numbers come, shows that the difference in health outcomes has more to do with broader social forces.</p>
+
+<p>For example, Americans are more likely than Canadians to die by accident or by homicide. For men in their 20s, mortality rates are more than 50 percent higher in the United States than in Canada, but the O’Neills show that accidents and homicides account for most of that gap. Maybe these differences have lessons for traffic laws and gun control, but they teach us nothing about our system of health care.</p>
+
+<p>Americans are also more likely to be obese, leading to heart disease and other medical problems. Among Americans, 31 percent of men and 33 percent of women have a body mass index of at least 30, a definition of obesity, versus 17 percent of men and 19 percent of women in Canada. Japan, which has the longest life expectancy among major nations, has obesity rates of about 3 percent.</p>
+
+<p>The causes of American obesity are not fully understood, but they involve lifestyle choices we make every day, as well as our system of food delivery. <a href="http://www.nber.org/papers/w9446">Research by the </a> <a href="http://topics.nytimes.com/top/reference/timestopics/organizations/h/harvard_university/index.html?inline=nyt-org" title="More articles about Harvard University.">Harvard</a> economists David Cutler, Ed Glaeser and Jesse Shapiro concludes that America’s growing obesity problem is largely attributable to our economy’s ability to supply high-calorie foods cheaply. Lower prices increase food consumption, sometimes beyond the point of optimal health.</p>
+
+<p>Infant mortality rates also reflect broader social trends, including the prevalence of infants with low birth weight. The health system in the United States gives low birth-weight babies slightly better survival chances than does Canada’s, but the more pronounced difference is the frequency of these cases. In the United States, 7.5 percent of babies are born weighing less than 2,500 grams (about 5.5 pounds), compared with 5.7 percent in Canada. In both nations, these infants have more than 10 times the mortality rate of larger babies. Low birth weights are in turn correlated with teenage motherhood. (One theory is that a teenage mother is still growing and thus competing with the fetus for nutrients.) The rate of teenage motherhood, according to the O’Neill study, is almost three times higher in the United States than it is in Canada.</p>
+
+<p>Whatever its merits, a Canadian-style system of national health insurance is unlikely to change the ***ual mores of American youth</p>
+
+<p>The bottom line is that many statistics on health outcomes say little about our system of health care.</p>
+
+<p>STATEMENT 2 Some 47 million Americans do not have health insurance.</p>
+
+<p>This number from the <a href="http://topics.nytimes.com/top/reference/timestopics/organizations/c/census_bureau/index.html?inline=nyt-org" title="More articles about Census Bureau, U.S.">Census Bureau</a> is often cited as evidence that the health system is failing for many American families. Yet by masking tremendous heterogeneity in personal circumstances, the figure exaggerates the magnitude of the problem.</p>
+
+<p>To start with, the 47 million includes about 10 million residents who are not American citizens. Many are illegal immigrants. Even if we had national health insurance, they would probably not be covered.</p>
+
+<p>The number also fails to take full account of <a href="http://topics.nytimes.com/top/news/health/diseasesconditionsandhealthtopics/medicaid/index.html?inline=nyt-classifier" title="Recent and archival health news about Medicaid.">Medicaid</a>, the government’s health program for the poor. For instance, it counts millions of the poor who are eligible for Medicaid but have not yet applied. These individuals, who are healthier, on average, than those who are enrolled, could always apply if they ever needed significant medical care. They are uninsured in name only.</p>
+
+<p>The 47 million also includes many who could buy insurance but haven’t. The Census Bureau reports that 18 million of the uninsured have annual household income of more than $50,000, which puts them in the top half of the income distribution. About a quarter of the uninsured have been offered employer-provided insurance but declined coverage.</p>
+
+<p>Of course, millions of Americans have trouble getting health insurance. But they number far less than 47 million, and they make up only a few percent of the population of 300 million.</p>
+
+<p>Any reform should carefully focus on this group to avoid disrupting the vast majority for whom the system is working. We do not nationalize an industry simply because a small percentage of the work force is unemployed. Similarly, we should be wary of sweeping reforms of our health system if they are motivated by the fact that a small percentage of the population is uninsured.</p>
+
+<p>STATEMENT 3 Health costs are eating up an ever increasing share of American incomes.</p>
+
+<p>In 1950, about 5 percent of United States national income was spent on health care, including both private and public health spending. Today the share is about 16 percent. Many pundits regard the increasing cost as evidence that the system is too expensive.</p>
+
+<p>But increasing expenditures could just as well be a symptom of success. The reason that we spend more than our grandparents did is not waste, fraud and abuse, but advances in medical technology and growth in incomes. Science has consistently found new ways to extend and improve our lives. Wonderful as they are, they do not come cheap.</p>
+
+<p>Fortunately, our incomes are growing, and it makes sense to spend this growing prosperity on better health. The rationality of this phenomenon is stressed in <a href="http://www.mitpressjournals.org/doi/abs/10.1162/qjec.122.1.39"> a recent article by the economists Charles I. Jones of the University of California, Berkeley, and Robert E. Hall of Stanford</a>. They ask, “As we grow older and richer, which is more valuable: a third car, yet another television, more clothing — or an extra year of life?”</p>
+
+<p>Mr. Hall and Mr. Jones forecast that the share of income devoted to health care will top 30 percent by 2050. But in their model, this is not a problem: It is the modern form of progress.</p>
+
+<p>Even if the rise in health care spending turns out to be less than they forecast, it is important to get reform right. Our health care system is not perfect, but it has been a major source of advances in our standard of living, and it will be a large share of the economy we bequeath to our children.</p>
+
+<p>As we look at reform plans, we should be careful not to be fooled by statistics into thinking that the problems we face are worse than they really are.</p>
+
+<ol type="a">
+<li>Gregory Mankiw is a professor of economics at Harvard. He was an adviser to President Bush and is advising Mitt Romney, the former governor of Massachusetts, in the campaign for the Republican presidential nomination.</li>
+</ol>
+
+
+<p>Op-Ed Columnist</p>
+
+<h1>Health Care Excuses</h1>
+
+<h2>&ndash;  </h2>
+
+<p>By PAUL KRUGMAN</p>
+
+<p>Published: November 9, 2007</p>
+
+<p>The United States spends far more on health care per person than any other nation. Yet we have lower life expectancy than most other rich countries. Furthermore, every other advanced country provides all its citizens with health insurance; only in America is a large fraction of the population uninsured or underinsured.</p>
+
+<p><a href="http://www.nytimes.com/2007/11/09/opinion/09krugman.html#secondParagraph">Skip to next paragraph</a>
+<img src="http://graphics8.nytimes.com/images/2006/04/02/opinion/ts-krugman-190.jpg" alt="图片点击可在新窗口打开查看" /></p>
+
+<p>Paul Krugman.</p>
+
+<p><a href="http://topics.nytimes.com/top/opinion/editorialsandoped/oped/columnists/paulkrugman/index.html">Go to Columnist Page »</a> <a href="http://krugman.blogs.nytimes.com/">Blog: The Conscience of a Liberal</a></p>
+
+<p>You might think that these facts would make the case for major reform of America’s health care system — reform that would involve, among other things, learning from other countries’ experience — irrefutable. Instead, however, apologists for the status quo offer a barrage of excuses for our system’s miserable performance.</p>
+
+<p>So I thought it would be useful to offer a catalog of the most commonly heard apologies for American health care, and the reasons they won’t wash.</p>
+
+<p>Excuse No. 1: No insurance, no problem.</p>
+
+<p>“I mean, people have access to health care in America,” said President Bush a few months ago. “After all, you just go to an emergency room.” He was widely mocked for his cluelessness, yet many apologists for the health care system in the United States seem almost equally clueless.</p>
+
+<p>We’re told, for example, that there really aren’t that many uninsured American citizens, because some of the uninsured are illegal immigrants, while some of the rest are actually entitled to Medicaid. This misses the point that the 47 million people in this country without insurance are an ever-changing group, so that the experience of being without insurance extends to a much broader group — in fact, more than one in every three people in America under the age of 65 was uninsured at some point in 2006 or 2007.</p>
+
+<p>Oh, and finding out that you’re covered by Medicaid when you show up at an emergency room isn’t at all the same thing as receiving regular medical care.</p>
+
+<p>Beyond that, a large fraction of the population — about one in four nonelderly Americans, according to a Consumer Reports survey — is underinsured, with “coverage so meager they often postponed medical care because of costs.”</p>
+
+<p>So, yes, lack of insurance is a very big problem, a problem that reaches deep into the middle class.</p>
+
+<p>Excuse No. 2: It’s the cheeseburgers.</p>
+
+<p>Americans don’t have a bad health system, say the apologists, they just have bad habits. Overeating and teenage ***, not the huge overhead of America’s private health insurance companies — the United States spends almost six times as much on health care administration as other advanced countries — are the source of our problems.</p>
+
+<p>There’s a grain of truth to this claim: Bad habits may partially explain America’s low life expectancy. But the big question isn’t why we have lower life expectancy than Britain, Canada or France, it’s why we spend far more on health care without getting better results. And lifestyle isn’t the explanation: the most definitive estimates, such as those of the McKinsey Global Institute, say that diseases that are associated with obesity and other lifestyle-related problems play, at most, a minor role in high U.S. health care costs.</p>
+
+<p>Excuse No. 3: 2007 is better than 1950.</p>
+
+<p>This is an argument that baffles me, but you hear it all the time. When you point out that America spends far more on health care than other countries, but gets worse results, the apologists reply: “Sure, we spend a lot of money on health care, but medical care is a lot better than it was in 1950, so it’s money well spent.” Huh?</p>
+
+<p>It’s as if you went to a store to buy a DVD player, and the salesman told you not to worry about the fact that his prices are twice those of his competitors — after all, the machines on offer at his store are a lot better than they were five years ago. It is, in other words, an argument that makes no sense at all, yet respectable economists make it with a straight face.</p>
+
+<p>Excuse No. 4: Socialized medicine! Socialized medicine!</p>
+
+<p>Rudy Giuliani’s fake numbers on prostate cancer — which, by the way, he still refuses to admit were wrong — were the latest entry in a long, dishonorable tradition of peddling scare stories about the evils of “government run” health care.</p>
+
+<p>The reality is that the best foreign health care systems, especially those of France and Germany, do as well or better than the U.S. system on every dimension, while costing far less money.</p>
+
+<p>But the best way to counter scare talk about socialized medicine, aside from swatting down falsehoods — would journalists please stop saying that Rudy’s claims, which are just wrong, are “in dispute”? — may be to point out that every American 65 and older is covered by a government health insurance program called Medicare. And Americans like that program very much, thank you.</p>
+
+<p>So, now you know how to answer the false claims you’ll hear about health care. And believe me, you’re going to hear them again, and again, and again.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/17/%E6%98%93%E7%BA%B2%EF%BC%9A%E7%BE%8E%E5%9B%BD%E8%B5%84%E8%B4%B7%E5%8D%B1%E6%9C%BA%EF%BC%9A%E8%B5%B7%E6%BA%90%E3%80%81%E4%BC%A0%E5%AF%BC%E4%B8%8E%E5%90%AF%E7%A4%BA/">易纲：美国资贷危机：起源、传导与启示</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-17T00:00:00+08:00" pubdate data-updated="true">Jan 17<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在当今的世界金融市场上，只要美欧日其中的一个主要国家、一种主要的金融产品(如次贷)或一个重量级的市场参与者(如对冲基金)出问题，这个问题就是全球性的，许多国家的机构和市场都可能受到冲击。这就进一步加深了经济全球化、金融一体化的概念。<br/>
+　　那么，拉美危机是不是全球性的?亚洲危机是不是全球性的?俄罗斯出现还贷危机是不是全球性的?我认为在新兴市场上出现的危机可能不是全球性的。这是因为主要的投资银行、 商业银行和金融机构在拉美、亚洲或者俄罗斯的参与程度不同，有的在拉美的仓位比较多，有的在亚洲的仓位比较多。当某个新兴市场出现问题的时候，这些大玩家中有的受的影响比较大，有的就不受什么影响，不会对全球的经济、金融产生大的冲击。<br/>
+　　但美国、欧洲或者日本出现危机时情况就不同了。特别是美国和欧洲市场上出现的问题对全球的影响会比较大。这些大的投行、商业银行和金融机构在美国和欧洲市场上从事的业务很类似，面临的 风险也很类似，这加深了金融一体化和金融市场传染的程度。我曾多次问我的同事和国外的朋友：美国市场和欧洲市场是一个市场还是两个市场?我最后得到的答案是：在金融市场上，美国和欧洲基本上是一个高度整合的市场。所以美国的次贷危机会对全球产生影响。<br/>
+　　下面谈一下次贷危机是怎么起源的，又是怎么传导的。最后我想说的是，次贷危机对我国金融市场的影响是有限的，但是对我国发展金融市场、防范金融风险、加强监管协调有重要的借鉴意义。<br/>
+　　在美国，按揭贷款可以按照借款人的信用和其他因素被分成：优质(prime)、类优(alternative)、次贷(subprime)。次贷是对信用记录比较差(有迟付、破产之类的欠佳信用记录)、信用记录不全、月收入没有达到住房抵押贷款申请标准、 负债与收入的比例可能偏高的那些人发放的贷款。美国2001年次贷新增贷款大致有1000多亿美元，到2005-06年有了大幅度增加，2005年次贷新增贷款达到最高值6000亿美元，2007年大大减少。到2007年9月，次贷余额大致是1.5万亿美元。<br/>
+　　次贷的发生与低 利率有 关系。2000年美国利率比较高，2001年开始降息，后来发生“911”事件，之后降息持续进行。经过25次降息联邦基金利率从6.5%降到了1%，并 从2003年6月26日到2004年6月30日期间保持了一年多的时间。此后又加息17次，将利率从1%提高到5.25%。数据显示，次贷发生最快的时期 是2003-06年，这几年也恰恰是利率最低的一段时期。当然，二者关系稍微存在一点滞后，但基本逻辑是很明确的。由于次贷很容易申请，美国在2003- 06年房价涨得很厉害。美国的单户新房销售价格中值和美国房屋 价格指数在2001-06年都涨得很快。可以说，高房价的部分原因是次贷过速发展造成的虚高需求。<br/>
+　　现在美国有4万亿美元的按揭贷款 证券化产品(即MBS)，有1万亿美元的按揭贷款支持的商业票据(即ABCP)。还有其他一些金融衍生产品，其中用得最多的一种金融衍生产品是按揭贷款抵押债权(即CDO)，有将近1万亿美元的规模。<br/>
+　　次贷危机的传导机制是：住房者／借款人从贷款人这里借到钱，贷款人将贷款转给特殊目的 公司(就是SPV)，SPV找到承销人把贷款打包并证券化，经过评级公司评级，该证券就可以在市场上出售。市场上的购买者包括养老基金、 保险公司、 共同基金和 对冲基金等，也有一些个人投资者。美国次贷确实分散了风险。美国的金融产品、金融衍生产品和金融创新都是全世界最先进的，次贷这样一种创新使得美国不够住 房抵押贷款标准的居民买到了房子，同时通过贷款打包、证券化将风险分散到了全世界。谁是这次美国次贷危机最终的埋单者?现在看来，最终的埋单者中包括了欧 洲国家的银行，当然美国自身也承担了部分损失。我们需要看到事物的两个方面。一个方面是这种创新将风险分散到了全世界，从这个意义上讲，这是创新的成功之 处。另一方面是负面的影响也扩散到了全世界。美国仅仅1.5万亿美元的次贷就搅动了全球的金融市场，影响范围是非常大的。<br/>
+　　次贷危机起源于 利率的上升，房价由上升转为下降，形势发生了逆转。今年4月，美国次贷行业的第二大公司即新世纪金融(New Century Financial Corp.)宣布倒闭。至2007年7月，严重拖欠(90天以上)的次贷比率接近15%。图三显示，美国次贷违约率在2004-05年比较低，在2006 年开始上升，到2007年则达到了15%。这种违约率传导到了美国银行间市场、美国股市和欧洲股市。<br/>
+　　传导的导火索是评级的下调。信息不对称使次贷衍生产品投资人对评级机构有较高的依赖度。评级机构只能用建立在历史数据之上的计量模型来推算违约 概率。 一旦房价、利率变化，模型原有的假设条件不复存在，评级机构需要对模型进行大幅度的调整。2007年7月，评级公司下调了一千多只按揭贷款抵押债权的评 级，导致市场出现恐慌。监管当局对次贷问题也是有责任的，他们没有提前预警次贷风险。次贷危机爆发后，很多学者或市场上的研究人员对评级公司和监管当局有 大量的负面评价。有些负面评论还是相当有根据的，提供了很多证据说明什么事件发生后评级公司是怎么反应的、监管当局是怎么反应的，结果导致投资者和公众对 次贷问题的认识滞后。<br/>
+　　很多规模庞大的对冲基金参与到次贷市场。美国对冲基金的总规模约2万亿美元，平均杠杆率3-4，对冲基金控制的资金 高达8万亿美元，足以影响美国股市(20万亿美元)。许多对冲基金有相近似的证券组合和交易条件，实质上在相互交易。次贷危机出现之后，特别是8月3日， 贝尔斯登(Bear Stearns)宣布暂停赎回3只按揭贷款对冲基金，造成股市恐慌，引发骨牌效应。但是这种恐慌只持续了两三个礼拜，很快就恢复了平静。这与央行的救助行 为有关。这次次贷危机实质上是一次流动性危机，使得整个信用衍生品的风险溢价提高，衍生品的规模大幅下降，特别是AB CP难以发放。<br/>
+　　这 次受到次贷危机冲击的首先是美国按揭贷款银行和公司。次贷违约率13.33%，直接贷款损失约1730亿美元。根据不完整的统计，今年1-9月，美国按揭 贷款市场的投资损失共计2820亿美元，其中投资次贷的损失2040亿美元，损失率10.8%。美国市场次贷规模只有1.5万亿美元，与此相关的证券化产 品在市场上还是少数，但是其传染效应和由此造成的流动性的紧张与恐慌心理却蔓延到整个市场。另外一类损失者是购买了次贷衍生产品的各国银行、对冲基金和保 险公司等，比如德国的银行就做次贷管道比较多。我们中国的银行在这个市场投资数量比较小，投资策略比较保守，所持产品的信用等级比较高，投资期限也比较 长，所承担的次贷损失只占非常小的一个比例。次贷危机的冲击是一个过程。投资者如果持有到期则损失就会小一些。相比之下，如果投资期限比较短，不得不在高 折价的情况下卖出，所受损失就比较大。第三类受害者是虽未购买次贷衍生产品，但依靠 资产支持商业票据融资 的银行。比如被媒体报道最多的英国北岩银行。北岩银行存款很少，但是发放了很多住房抵押贷款，它的资金来源就是不断在市场上发行资产支持商业票据。由于次 贷问题的冲击，北岩银行即使愿意付出很高的利率也不能将资产支持商业票据发行出去，票据的承销商无法兑现承诺，造成北岩银行的现金流断裂，进而引发银行挤 兑。<br/>
+　　次贷危机正开始渗透到实体经济。渗入实体经济的渠道主要是房价。房价下跌使得整个形势雪上加霜。房价越跌，次贷借款人的房子就越难以 销售出去，还款就出现困难。这时银行就可能把他们的房子拿来强制拍卖，这就导致房价进一步下跌。房价的下跌使得次贷借款人的负资产上升，进一步加深次贷危 机。<br/>
+　　今年二季度，美国房价指数较去年同期下降了3.2%。7月份20个主要城市的房价平均年度跌幅为3.9%，8月份旧房销售6个月连续下滑，新屋销售年率为七年来最低，新屋建筑量和建筑许可的绝对数均为12年来单月最低。<br/>
+　 　次贷危机出现后各国央行采取了救助措施。救助措施包括向银行间市场提供短期流动性贷款、做出保障性声明或承诺、增加贷款抵押品种、降低利率等措施。起 初，关于救助也有争论。比如英国英格兰银行经过一两个星期之后才终于决定救助北岩银行。该行行长发布了郑重声明，坚持防范道德危险的重要性。他要让那些没 有妥善管理风险的银行受到损失并学到教训，而不是一旦出现问题就由央行提供流动性。但是当危机发生后，这种理念还是要面对现实，最后英格兰银行还是决定救 助。<br/>
+　　需要注意的是，媒体报道时都是欧洲央行注资多少多少亿、美联储注资多少多少亿，其中的关键字是“注资”。实际上，央行提供流动性时需要商业银行提供抵押品，需要支付 利息，不是无偿拨付。这都主要是为了防范道德风险，避免公众和金融机构有不切实际的 预期。 此外，央行的注资大多都是隔夜的，七天、一个月甚至三个月的注资是很少的。比如欧洲央行今天提供了900亿元的流动性，明天又提供了600亿元的流动性。 其实第一天提供的900亿在第二天就到期了，第二天提供600亿元流动性时实际收回了300亿。有人将一段时间的注资金额加总起来得到了一个天文数字，这 个数字是没有意义的。各国央行的一个救助措施是扩大抵押品范围。原来的抵押品只能是国债或者AAA级 债券。扩大抵押品范围后金融机构就能借到更多的流动性。甚至有些折价的抵押品也可以按照面值来算。这体现了央行的救助行为具有一定的灵活性。但是原则还是救助都是短期的、有偿的。这个原則是需要强调的。<br/>
+　　总的来说，各国央行出手坚决、迅速，从多方面连续采取行动；注意沟通，形成各主要央行间事实上的联手协调行动；大力救市的同时，妥善处理救市与预防金融机构道德风险的关系。<br/>
+　　美国次贷危机对我国的影响是加大我国宏观调控的难度。美国有可能进入减息周期，美联储已经减息50个基点，市场预期本月底美联储还要减息25个基点。我国目前面临一些通胀的压力，今年央行已经五次提高利率。这样，美国减息，我国加息，就会增加美元 贬值的压力，加大我国宏观调控的难度。我国还是要加强市场基础设施建设，发展直接融资，分散风险。虽然次贷危机造成了全世界的恐慌，但从正面上看，美国这种金融创新还是分散了风险，对我国还是有启示意义的。<br/>
+　　展望未来，大家的意见并不是很一致。美国财长保尔森就认为需要两年或者更多的时间才能恢复 信贷市场上的信心，格林斯潘则认为次贷危机高峰已过。我们的态度是认真地关注这件事，从中吸取经验教训，使得我们中国的 资本市场、债券市场、金融衍生产品市场发展得更加健康。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/23/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/21/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

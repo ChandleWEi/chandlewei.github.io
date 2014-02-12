@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Zz_facebook_海量数据处理 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="Facebook 海量数据处理 作者: Fenng | 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及版权声明 网址: http://www.dbanotes.net/arch/facebook_photos_arch.html 对着眼前黑色支撑的天空 / 我突然只有沉默了 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2009/04/09/zz_facebook_%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Zz_facebook_海量数据处理</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T00:00:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Facebook 海量数据处理 作者: Fenng | 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及版权声明 网址: <a href="http://www.dbanotes.net/arch/facebook_photos_arch.html">http://www.dbanotes.net/arch/facebook_photos_arch.html</a> 对着眼前黑色支撑的天空 / 我突然只有沉默了 我驾着最后一班船离开 / 才发现所有的灯塔都消失了 这是如此触目惊心的 / 因为失去了方向我已停止了 就象一个半山腰的攀登者 / 凭着那一点勇气和激情来到这儿 如此上下都不着地地喘息着 / 闭上眼睛疼痛的感觉溶化了 &mdash;达达乐队《黄金时代》 好几个地方看到这个 Facebook &ndash; Needle in a Haystack: Efficient Storage of Billions of Photos，是 Facebook 的 Jason Sobel 做的一个 PPT，揭示了不少比较有参考价值的信息。【也别错过我过去的这篇Facebook 的PHP性能与扩展性】 图片规模 作为世界上最大的 SNS 站点之一，Facebook 图片有多少? 65 亿张原始图片，每张图片存为 4-5 个不同尺寸，这样总计图片文件有 300 亿左右，总容量 540T，天! 峰值的时候每秒钟请求 47.5 万个图片 (当然多数通过 CDN) ，每周上传 1 亿张图片。 图片存储 前一段时间说 Facebook 服务器超过 10000 台，现在打开不止了吧，Facebook 融到的大把银子都用来买硬件了。图片是存储在 Netapp NAS上的，采用 NFS 方式。 图片写入 Facebook_write.png 尽管这么大的量，似乎图片写入并不是问题。如上图，是直接通过 NFS 写的。 图片读取 Facebook.png CDN 和 Cachr 承担了大部分访问压力。尽管 Netapp 设备不便宜，但基本上不承担多大的访问压力，否则吃不消。CDN 针对 Profile 图象的命中率有 99.8%，普通图片也有 92% 的命中率。命中丢失的部分采由 Netapp 承担。 图中的 Cachr 这个组件，应该是用来消息通知(基于调整过的 evhttp的嘛)，Memcached 作为后端存储。Web 图片服务器是 Lighttpd，用于 FHC (文件处理 Cache)，后端也是 Memcached。Facebook 的 Memcached 服务器数量差不多世界上最大了，人家连 MYSQL 服务器还有两千台呢。 Haystacks &mdash;大海捞针 这么大的数据量如何进行索引? 如何快速定位文件? 这是通过 Haystacks 来做到的。Haystacks 是用户层抽象机制，简单的说就是把图片元数据的进行有效的存储管理。传统的方式可能是通过 DB 来做，Facebook 是通过文件系统来完成的。通过 GET / POST 进行读/写操作，应该说，这倒也是个比较有趣的思路，如果感兴趣的话，看一下 GET / POST 请求的方法或许能给我们点启发。 Facebook2.png 总体来看，Facebook 的图片处理还是采用成本偏高的方法来做的。技术含量貌似并不大。不清楚是否对图片作 Tweak，比如不影响图片质量的情况下减小图片尺寸。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T00:00:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/db/'>db</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2009/04/09/zz_facebook_%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2009/04/09/zz_facebook_%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/04/09/zz_FeedBurner_%E5%9F%BA%E4%BA%8EMySQL%E5%92%8CJAVA%E7%9A%84%E5%8F%AF%E6%89%A9%E5%B1%95Web%E5%BA%94%E7%94%A8/" title="Previous Post: zz_FeedBurner_基于MySQL和JAVA的可扩展Web应用">&laquo; zz_FeedBurner_基于MySQL和JAVA的可扩展Web应用</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/04/10/css__%E5%A4%87%E5%BF%98/" title="Next Post: css__备忘">css__备忘 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

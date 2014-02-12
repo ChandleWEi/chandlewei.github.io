@@ -1,0 +1,1226 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="从 架构研究室 作者：John.Lv 由于最近刚接手一批oracle数据库服务器，只能使用指定用户oracle进行相关操作。而且ssh没有做public key，并且也没有权限做ssh的public key，使用shell脚本居然问我一次又一次的要密码，怎么脚本自动化？没办法， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/14">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/06/expect%E5%AE%9E%E7%8E%B0ssh%E8%87%AA%E5%8A%A8%E4%BA%A4%E4%BA%92_zz/">Expect实现ssh自动交互_zz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-06T00:00:00+08:00" pubdate data-updated="true">Sep 6<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fwww.hiadmin.com%2F%3Ffeed%3Drss2">架构研究室</a> 作者：John.Lv</p>
+
+<p>由于最近刚接手一批oracle数据库服务器，只能使用指定用户oracle进行相关操作。而且ssh没有做public key，并且也没有权限做ssh的public key，使用shell脚本居然问我一次又一次的要密码，怎么脚本自动化？没办法，只能使用expect来实现了。<br/>
+一般使用ssh的public key的ssh脚本如下：</p>
+
+<h1>!/bin/sh</h1>
+
+<p>servers=<code>cat /etc/hosts | grep -v ^# | grep ^192.168.1 | cut -f1</code><br/>
+username=&ldquo;oracle&#8221;<br/>
+echo exec cmd all&hellip;<br/>
+for server in $servers; do<br/>
+        echo &rdquo;##########################################&ldquo;<br/>
+        echo $server<br/>
+        ssh  $username@$server $1<br/>
+        echo &rdquo;##########################################&ldquo;<br/>
+done<br/>
+wait<br/>
+echo complete!</p>
+
+<p>上面是shell脚本，这里就不多解释了，相信大家都能看明白。$1可以是运行命令也可以执行脚本，随便你，只要你喜欢！<br/>
+如果不允许或者没有权限使用ssh的public key，那么只能使用expect进行ssh自动交互了</p>
+
+<h1>!/usr/bin/expect</h1>
+
+<p>set username &ldquo;oracle&rdquo;</p>
+
+<h1>ssh的用户名</h1>
+
+<p>set passwd &ldquo;oracle11&rdquo;</p>
+
+<h1>ssh的密码</h1>
+
+<p>set servers [exec cat /etc/hosts | grep -v ^# | grep ^192.168.1 | cut -f1]</p>
+
+<h1>读取hosts中要访问的主机</h1>
+
+<p>foreach server $servers {</p>
+
+<h1>循环</h1>
+
+<p>spawn ssh $username@$server &ldquo;[lindex $argv 0]&rdquo;;</p>
+
+<h1>执行ssh，注意expect中输入的第一个变量用$argv 0表示。</h1>
+
+<p>expect &ldquo;*password: &rdquo;;<br/>
+sleep .1;<br/>
+send &ldquo;$passwd&rdquo;;</p>
+
+<h1>当出现提示输入密码时，自动输入密码</h1>
+
+<p>interact;<br/>
+}</p>
+
+<p>ok，这样指定的一般用户在ssh且不能使用key时就不用一次次输入密码了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/04/%E6%94%B9%E5%8F%98comment%E7%9A%84%E8%AE%BE%E7%BD%AE/">改变comment的设置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-04T00:00:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>(set (make-local-variable &lsquo;comment-auto-fill-only-comments) t)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/04/%E5%9C%A8Rails%E4%B8%AD%E6%8D%95%E8%8E%B7TimeOut%E5%BC%82%E5%B8%B8%E5%8F%8A%E5%85%B6%E5%A4%84%E7%90%86/">在Rails中捕获TimeOut异常及其处理</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-04T00:00:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>window.onload=function(){ fiximage(&lsquo;500x500&rsquo;); }</p>
+
+<h2></h2>
+
+<p>Submitted by <strong> <a href="http://iceskysl.1sters.com/?action=finduser&amp;userid=1">iceskysl</a></strong> on 2008, April 7, 3:17 PM. <a href="http://iceskysl.1sters.com/?action=index&amp;cid=3">技术归总 | Technic</a></p>
+
+<p>alimama_pid=&ldquo;mm_10001645_810081_2209991&rdquo;; alimama_titlecolor=&ldquo;535353&rdquo;; alimama_descolor =&ldquo;313131&rdquo;; alimama_bgcolor=&ldquo;FFFFFF&rdquo;; alimama_bordercolor=&ldquo;FFFFFF&rdquo;; alimama_linkcolor=&ldquo;4281BB&rdquo;; alimama_bottomcolor=&ldquo;FFFFFF&rdquo;; alimama_anglesize=&ldquo;8&rdquo;; alimama_bgpic=&ldquo;0&rdquo;; alimama_icon=&ldquo;0&rdquo;; alimama_sizecode=&ldquo;12&rdquo;; alimama_width=468; alimama_height=60; alimama_type=2; <img src="http://z.alimama.com/alimamal.php?i=mm_10001645_810081_2209991&amp;u=http%3A%2F%2Ficeskysl.1sters.com%2F%3Faction%3Dshow%26id%3D245&amp;w=468&amp;h=60&amp;re=1680x1050&amp;sz=12&amp;r=http%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Drails%2Btime%2Bout%25E9%2597%25AE%25E9%25A2%2598%26ie%3Dutf-8%26oe%3Dutf-8%26aq%3Dt%26rls%3Dcom.ubuntu%3Aen-US%3Aunofficial%26client%3Dfirefox-a&amp;cg=cf9c8a89fde77be2a4d7f47148866292&amp;prk=96568482&amp;cas=prk&amp;cah=1050&amp;caw=1680&amp;ccd=24&amp;ctz=8&amp;chl=4&amp;cpl=10&amp;cmm=41&amp;cf=9.0&amp;sx=534&amp;sy=181&amp;cbw=1458&amp;cbh=5591" alt="" /></p>
+
+<p>把应用迁移到新的服务器上以后，发现经常有”超时“的错误信息，如<em>/usr/lib/ruby/1.8/timeout.rb:54:in `rbuf_fill&#8217;: execution expired (Timeout::Error)</em>，恩，应该是网络不稳定或者是服务器响应太慢的结果，需要捕获下这个异常并做些处理，记录如下：</p>
+
+<p>需要注意的是，<strong>Timeout::Error</strong>不是<strong>StandardError</strong>的子类, 而是继承至 <strong>Interrupt class</strong>，所以捕获的时候，需要格外注意，演示如下：</p>
+
+<p> </p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>require &#8217;net/pop3&#8217;  </li>
+<li>begin  </li>
+<li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
+<li>rescue => e  </li>
+<li>  write_error_to_logfile(e)  </li>
+<li>  do_something_sensible  </li>
+<li>end  </li>
+</ol>
+
+
+<p>看上面的这段代码，当POP3服务器不能及时响应的时候，所触发的异常并不能被下面捕获到，原因就是上面说的，再看正确的处理代码：</p>
+
+<p> </p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>require &#8217;net/pop3&#8217;  </li>
+<li>begin  </li>
+<li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
+<li>rescue => e  </li>
+<li>  write_error_to_logfile(e)  </li>
+<li>  do_something_sensible  </li>
+<li>rescue Timeout::Error => e  </li>
+<li>  write_error_to_logfile(e)  </li>
+<li>  do_something_sensible_for_timeout  </li>
+<li>end  </li>
+</ol>
+
+
+<p>这段代码可以正常工作，并按照我们的意愿来处理了。</p>
+
+<p> 如果您知道对方的服务器会比较慢的响应，或者你知道网络状态不好，你可以单独设置这个<strong>TimeOut</strong>的时间，代码如下：</p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>require &#8217;timeout&#8217;  </li>
+<li>  </li>
+<li>&hellip;  </li>
+<li>&hellip;  </li>
+<li>begin  </li>
+<li>  timeout(60) do  </li>
+<li>     resp, body=3Dh.get(&lsquo;/index.html&rsquo;)  </li>
+<li>     puts body  </li>
+<li>  end  </li>
+<li>rescue TimeoutError  </li>
+<li>       puts &#8221;Timed Out&#8221;  </li>
+<li>end </li>
+</ol>
+
+
+<p>或者这样：（来源：<a href="http://textsnippets.com/posts/show/868%EF%BC%89">http://textsnippets.com/posts/show/868%EF%BC%89</a></p>
+
+<p>Ruby代码</p>
+
+<ol>
+<li>http = Net::HTTP.new(url.host, url.port)  </li>
+<li>http.read_timeout=time_out  </li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/03/rails_railscast_tips/">Rails_railscast_tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-03T00:00:00+08:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>@task = Task.find_incomplete :limit => 20</p>
+
+<p> </p>
+
+<p>def self.find_incomplete(option = {})</p>
+
+<p> with_scope :find => options do</p>
+
+<p>  find_all_by_complete(false, :order => &lsquo;created_at DESC&rsquo;)</p>
+
+<p>end</p>
+
+<p>end</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/02/perl_%E5%8C%B9%E9%85%8D%E4%B8%AD%E6%96%87/">Perl_匹配中文</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-02T00:00:00+08:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>$string_unicode =~ /p{InCjkUnifiedIdeographs}+/;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/01/mysql/">Mysql</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-01T00:00:00+08:00" pubdate data-updated="true">Sep 1<span>st</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2><a href="http://www.hiadmin.com/mysql%e4%bc%98%e5%8c%96/">MySQL优化 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
+
+<p>from <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fwww.hiadmin.com%2F%3Ffeed%3Drss2">架构研究室</a> by Johnny Woo</p>
+
+<p>thread_concurrency<br/>
+数量设置为CPU核心数量的两倍.<br/>
+thread_cache_size<br/>
+按照内存大小来设置, 1G=8, 2G=16, 3G=32, >3G=64<br/>
+wait_timeout<br/>
+超时时间,如果连接数比较大,可以减少此参数的值,我使用的是10<br/>
+max_connections<br/>
+最大连接数,mysql实际允许连接数的值是max_connections+1,按照系统库不同而有不同性能.一般是500~1000,MySQL AB提供的linux静态库可以达到4000.<br/>
+query_cache_size<br/>
+查询缓冲,默认是0,所以必须打开以提高mysql性能,其本身需要40K来保存结构数据.所以不能设置的太小,初期可以设置成32M,然后根据实际运行情况另行调整<br/>
+query_cache_type<br/>
+指定查询缓冲的类型,0是关闭,1是缓冲除了使用SELECT SQL_NO_CACHE语句指明了不需要缓冲的数据意外的所有查询,2是只缓冲SELECT SQL_CACHE指定的查询.一般设置为1.<br/>
+query_cache_limit<br/>
+允许进入查询缓冲区的最小数据大小,默认值是1MB,可以修改的小一点以满足更多查询的需求.但是如果设置的过于小,则会导致很多新的小查询的结果将原有的查询结果交换出去.增加系统的颠簸.</p>
+
+<p>相关命令<br/>
+查询mysql服务器相关状态数据</p>
+
+<blockquote><p>SHOW STATUS;</p></blockquote>
+
+<p>查询mysql服务器相关配置选项</p>
+
+<blockquote><p>SHOW VARIABLES;</p></blockquote>
+
+<p>整理查询缓冲区里的碎片</p>
+
+<blockquote><p>flush query cache;</p></blockquote>
+
+<p>删除查询缓冲区里的所有内容</p>
+
+<blockquote><p>reset query cache;</p></blockquote>
+
+<p>设置mysql参数</p>
+
+<blockquote><p>SET GLOBAL;</p></blockquote>
+
+<p>查询mysql当前执行的sql语句</p>
+
+<blockquote><p>show processlist;</p></blockquote>
+
+<p>变量 含义<br/>
+Qcache_queries_in_cache<br/>
+在缓存中已注册的查询数目<br/>
+Qcache_inserts<br/>
+被加入到缓存中的查询数目<br/>
+Qcache_hits<br/>
+缓存采样数数目<br/>
+Qcache_lowmem_prunes<br/>
+因为缺少内存而被从缓存中删除的查询数目<br/>
+Qcache_not_cached<br/>
+没有被缓存的查询数目 (不能被缓存的，或由于 QUERY_CACHE_TYPE)<br/>
+Qcache_free_memory<br/>
+查询缓存的空闲内存总数<br/>
+Qcache_free_blocks<br/>
+查询缓存中的空闲内存块的数目<br/>
+Qcache_total_blocks<br/>
+查询缓存中的块的总数目</p>
+
+<p>MySQL查询优化</p>
+
+<blockquote><p>SHOW STATUS LIKE ‘Qcache%’;<br/>
+查询出Cache状态<br/>
+如果Qcache_lowmem_prunes非常大,说明因为内存不足而被交换出cache的数据很多.如果增加内存.可以保证较小的交换次数以及较高的命中率<br/>
+例如现在我们查询的结果如下</p></blockquote>
+
+<p>| Qcache_free_blocks      | 1234     |<br/>
+| Qcache_free_memory      | 25957504 |<br/>
+| Qcache_hits             | 55771119 |<br/>
+| Qcache_inserts          | 7441153  |<br/>
+| Qcache_lowmem_prunes    | 28332    |<br/>
+| Qcache_not_cached       | 1233788  |<br/>
+| Qcache_queries_in_cache | 4810     |<br/>
+| Qcache_total_blocks     | 11038    |</p>
+
+<p>设置为64M cache内存后</p>
+
+<blockquote><p>set global query_cache_size=67108864;</p></blockquote>
+
+<p>| Qcache_free_blocks      | 1        |<br/>
+| Qcache_free_memory      | 66623616 |<br/>
+| Qcache_hits             | 55788258 |<br/>
+| Qcache_inserts          | 7445445  |<br/>
+| Qcache_lowmem_prunes    | 28332    |<br/>
+| Qcache_not_cached       | 1234057  |<br/>
+| Qcache_queries_in_cache | 183      |<br/>
+| Qcache_total_blocks     | 392      |</p>
+
+<p>自由内存块看起来变小了<br/>
+是因为现在自由内存块.是一个整块.而以前的内存块都是分散的小块<br/>
+而因为重建了cache区<br/>
+Qcache_queries_in_cache变量变小了.因为此操作重新建立了cache内存区.所有数据重新缓存<br/>
+在运行一两天后我们再看此数据.如果变大了.说明增大cache内存区域是有效的.如果和以前数据差不多<br/>
+说明增加的内存并没有实际起到多大的作用.</p>
+
+<p>有人会觉得如果我将cache内存设置的非常大<br/>
+然后将cache_limit设置成0<br/>
+那么所有查询都会被缓存了<br/>
+理论上是这样.但是一台数据库服务器的查询非常多.<br/>
+如果连查询单条数据都要缓存.<br/>
+那么内存再大也会不够的.到时候老的内容就会被交换出去<br/>
+当cache内存使用满的时候,就会不停的有新查询进来将老查询替换出去.<br/>
+这样导致两个结果.一个是内存颠簸.效率反而下降.<br/>
+第二个是cache内存的小碎块增多,内存利用率降低<br/>
+如果是只有内容很少的小库,并且查询率不高.是可以使用这种方法提高响应速度<br/>
+但是如果是实际生产环境,数据量会比较大.还是需要按照最佳比例来配置.<br/>
+而不同的应用不同的数据量会有不同的搭配,这点大家不要看网上的优化配置随便的填写<br/>
+还是要时时的查看mysql的状态进行调整.即便是这个月调整好的优化参数<br/>
+到了下个月业务不同,数据量增加,也会需要调整的.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/09/01/%5B%E8%BD%AC%E8%BD%BD%5D_Ruby%E3%80%81Rails%E3%80%81Agile%E7%9A%84%E5%90%AF%E7%A4%BA/">[转载]_Ruby、Rails、Agile的启示</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-01T00:00:00+08:00" pubdate data-updated="true">Sep 1<span>st</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>好文转来细看</h3>
+
+<p>转自：<a href="http://vipnews.csdn.net/newscontent.aspx?pointid=2008_03_03_170600555">http://vipnews.csdn.net/newscontent.aspx?pointid=2008_03_03_170600555</a></p>
+
+<p>文/杨祥吉</p>
+
+<p>　本文作者以使用Ruby和Rails进行创业为经验背景，结合具体的项目，尝试以客观公正的方式来评价Ruby、Rails和Agile。下面的文字，我们将以名词解释和实践的方式看看这些词汇带来的价值：</p>
+
+<p>Agile</p>
+
+<p>敏捷开发是一个高频度的热词。 实施敏捷开发的好处很多， 技术公司都在研究。NibiruTech从诞生便是一只遵循敏捷方法论的团队。 目前我们采用的敏捷技术，请看后面的名词解释。</p>
+
+<p>测试先行</p>
+
+<p>所有的项目，都是以TDD的方式开发，要求先编写测试代码，然后再编写功能代码，使得这个测试被通过。新程序员入职最先接触到的就是TDD的知识 和各种培训。我们大量采用了Autotest这种工具，使得测试代码在开发过程中持续运行。甚至为了更方便查看，每个成员都配备了第二个显示器，其主要用 途就是为了显示测试运行结果。</p>
+
+<p>结对开发</p>
+
+<p>结对开发已经成为我们的主要培养新人的方法。结对编程是指两人共用一台电脑，一路讨论编码。结对编程是一种乐趣，使得双人任何一人会感受到巨大的 乐趣。结对编程是共同分享技术挑战和难题，共同享受编码的乐趣。这会显著降低程序员的工作枯燥程度，提高技术水平。结对已经成为我们主要的培训方式。</p>
+
+<p>短周期迭代</p>
+
+<p>敏捷开发中讲究短周期的迭代，尽量缩短项目Release的时间。NibiruTech做到每天自动部署到测试服务器上，方便远程的客户直接在互联网上查看当天的产品进度，并及时提交反馈。</p>
+
+<p>每日晨会</p>
+
+<p>每日晨会上，大家回答“昨天做了什么工作？”、“今天计划做什么工作”。早上项目组的人到齐后，第一件事就是站成一个圆圈，依次讨论昨天的工作和 今天的计划。期间也有很多关于项目的整体需求，技术难点的讨论。由于大家都是站立开会，会议鼓励简短，高效的发言，显著提高了项目组的内部沟通和信任，每 日晨会的帮助很大。</p>
+
+<p>从我们的实践经验来看，执行力无疑是实施过程中很重要的因素。任何流程的形成都需要很大的决心和长期的努力。我们的经验是，一项一项地进行实施。 实施过程中不断进行调整和反省，当TDD成为一种习惯后，便开始晨会，几个星期后，晨会也成为团队习惯了，就能进行下一步。需要团队中有人强力地坚持推行 敏捷思路，而且要慢慢推进，一项一项地推进。</p>
+
+<p>Ruby</p>
+
+<p>Ruby是一种有趣的语言。Ruby语言的创始人Matt从小就对计算机语言有天生的兴趣，强烈到无法自己。他前后编写了10种语言，没有任何一种release过，全部失败，直到第11种语言，被称为Ruby。</p>
+
+<p>Ruby是一种解释型的方便快捷的面向对象脚本语言，它是日本的Yukihiro Matsumoto(人们都叫他Matz)于1993年2月24日首次发布的。</p>
+
+<p>Ruby精心地设计了它的面向对象特性，使之完整并且开放允许改进。比如：Ruby有在运行时可以向类里，甚至能够向实例里添加方法的能力。所以，如果有需要，某个类的一个实例可以表现得和同一个类的其他实例不一样。</p>
+
+<p>Ruby是一种完整的纯面向对象语言(OOL)。这就是说所有的数据在Ruby里面都是对象，不是像Python或Perl那样，而是像Smalltalk那样的纯面向对象（没有什么例外）。比如：在Ruby里面，数字1是类Fixnum的一个实例。</p>
+
+<p>Ruby精心地设计了它的面向对象特性，使之完整并且开放允许改进。比如：Ruby有在运行时可以向类里，甚至能够向实例里添加方法的能力。所以，如果有需要，某个类的一个实例可以表现得和同一个类的其他实例不一样。</p>
+
+<p>假如你希望Procduct类的find方法在参数为1 的时候，直接返回某个事先设定的对象。借助Mocha这个Ruby gem，你可以用近乎人类自然语言的方式说：</p>
+
+<p>Ruby代码 复制代码</p>
+
+<ol>
+<li>product = Product.new</li>
+<li>Product.expects(:find).with(1).returns(product)</li>
+</ol>
+
+
+<p>product = Product.new<br/>
+Product.expects(:find).with(1).returns(product)</p>
+
+<p>这就是Ruby 强大而又灵活的地方。</p>
+
+<p>Ruby一个思想是，语言应该尽量给编程者最大的自由度，当然需要程序员明白自己在做什么的情况下。</p>
+
+<p>Ruby代码 复制代码</p>
+
+<ol>
+<li>Class A</li>
+<li>Private</li>
+<li>Def private_method</li>
+<li><h1>….</h1></li>
+<li>end</li>
+<li>end</li>
+</ol>
+
+
+<p>Class A<br/>
+Private<br/>
+Def private_method</p>
+
+<h1>….</h1>
+
+<p>end<br/>
+end</p>
+
+<p>声明了为Private的方法，在其他语言中是不能被其他类中调用。而在Ruby中，假如你确信你需要这样做，你可以：</p>
+
+<p>Ruby代码 复制代码</p>
+
+<ol>
+<li>a = A.new</li>
+<li>a.send(“private_method”)</li>
+</ol>
+
+
+<p>a = A.new<br/>
+a.send(“private_method”)</p>
+
+<p>因为Ruby认为一旦程序员知道自己想做什么，就应该让他去做,即使违反了常规。</p>
+
+<p>从来没有见到过任何一门语言可以如此轻松的对已有的核心API进行修改和增强。</p>
+
+<p>例如Rails的作者在写Rails的时候，就对Ruby的Hash需要进行增强。</p>
+
+<p>Ruby代码 复制代码</p>
+
+<ol>
+<li>module ActiveSupport</li>
+<li>module CoreExtensions</li>
+<li>module Hash</li>
+<li>module ReverseMerge</li>
+<li>def reverse_merge(other_hash)</li>
+<li>other_hash.merge(self)</li>
+<li>end</li>
+<li>end</li>
+<li>end</li>
+<li>end</li>
+<li>end</li>
+</ol>
+
+
+<p>module ActiveSupport<br/>
+module CoreExtensions<br/>
+module Hash<br/>
+module ReverseMerge<br/>
+def reverse_merge(other_hash)<br/>
+other_hash.merge(self)<br/>
+end<br/>
+end<br/>
+end<br/>
+end<br/>
+end</p>
+
+<p>而后只需要：</p>
+
+<p>Ruby代码 复制代码</p>
+
+<ol>
+<li>class Hash #:nodoc:</li>
+<li>include ActiveSupport::CoreExtensions::Hash::ReverseMerge</li>
+<li>end</li>
+</ol>
+
+
+<p>class Hash #:nodoc:<br/>
+include ActiveSupport::CoreExtensions::Hash::ReverseMerge<br/>
+end</p>
+
+<p>便成功地为Hash这个类添加了revers_merge这个方法。</p>
+
+<p>上述例子，只是Ruby语言强大灵活的一些简单例子。可以说，正是因为Ruby语言，才使得Rails成为现实。很难想象其他任何一门语言能够让一个独立的程序员完成一个如此出色的Web框架。Rails使用的越多，越是感受到Ruby和Rails同样出色。</p>
+
+<p>Rails</p>
+
+<p>作为computer world评选出的2007年最值得研究技术，Ruby On Rails从一出生就是媒体的宠儿。这一切源自其独特的思维，抛弃原有技术落后遗产，轻装上阵的便捷。</p>
+
+<p>许多人都看过下面这幅图片，图片的左边是使用Java Web框架，所需要用到的技术书籍。右边是使用Ruby on Rails，需要用到的技术书籍，只有两本，简洁清新，优雅愉快。作为一个使用Ruby On Rails的先行者，我想指出上面的图只是从技术复杂程度上进行了对比。事实上，Java作为重型武器，有许多轻型武器暂时无法取代的地位。只是从技术的 复杂度讲，Ror确实简单优雅许多。</p>
+
+<p>DRY 原则</p>
+
+<p>这些设计规则中的一个就是来自于Dave Thomas的Pragmatic Programmer一书中的“DRY重用原则（Don&#8221;t Repeat Yourself）”DRY原则意味着创建到应用程序中的信息和逻辑应该被局部化或隔离。它应该尽可能少的存储在更少地方，副本应该保持在绝对最低限度。 这种原则有助于组织开发者的思路和保持好的开发速度，而且使得的代码可以被更轻松修改。这种更轻松的修改所带来的好处不仅仅体现着维护模式中，在最初的开 发中同样也会体现出来。Ruby通过使编程更轻松，而鼓励这种行为。</p>
+
+<p>convention over configuration</p>
+
+<p>Rails强调convention over configura-tion。这意味着这个框架的用户不用去做太多的设置工作，或者不用花费太多的时间来处理一些个别的组件。举个例子来说，Rails 假定在代码中的类名称和数据库中的表名称之间存在关联。如果你坚持这个标准约定，你代码将显得更具有逻辑性和更平稳；否则，你将不得不做一些额外的工作。 当默认约定与你的实际情况发生冲突时，感谢Ruby难以置信的灵活性和宽容，你可以轻易改变任何Rails的行为，使得其完全按照你的思维运行。</p>
+
+<p>Ruby on Rails这样的技术的出现，使得实现一个独特的互联网创意的代价急剧降低，从而加剧了创业的门槛，使得任何领域内充满了大量的创业者。竞争的加剧使得创新不断涌现，互联网急剧的改变着整个人类社会的发展。</p>
+
+<p>最近数年中，Facebook、Myspace、youtube等网站的创新，及其大量的追随者，极大的方便了人们的生活，工作和学习。可以说，任何受过良好教育的人，已经无法离开互联网了。网络游戏、网络媒体、电子商务、软件外包，因为互联网才得以出现。</p>
+
+<p>互联网时代，使得个人成为英雄的机会大大增加。DHH，作为一名26岁的丹麦年轻程序员，不满意大公司傲慢的web框架，从自己的工作项目中，抽取了一个实用小巧的framework，这个小小的开源项目，成就了2005年技术领域的创新，DHH一个人改变了世界。</p>
+
+<p>Ruby on Rails在2004年发布了它的第一个公众版。现在它已经不是一个蹒跚学步的孩子。在2005年，David Heinemeier Hansson因为这个软件程序获得了“年度最佳黑客”奖项。在2006年，Rails赢得了2006年度Jolt大奖的最佳Web开发工具，2007年 Rails被评选为年度最值得研究技术。</p>
+
+<p>当前人们对Ruby这门编程语言吵得不可开交了，尤其是对Rails这个Web应用开发框架更是吵得一塌糊涂。有人说它是编程的未来，前途光明；有人说它是旁门左道，危险暗淡。</p>
+
+<p>我是在1年前开始用Ruby来创作<a href="http://www.englishquad.com%EF%BC%8C%E8%BE%B9%E5%AD%A6%E8%BE%B9%E7%94%A8%E7%9A%84%E8%BF%87%E7%A8%8B%E5%85%85%E6%BB%A1%E4%BA%86%E8%89%B0%E8%BE%9B%E3%80%82%E5%BD%93%E6%8A%80%E6%9C%AF%E8%BD%AC%E5%9E%8B%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E4%B8%80%E5%88%87%E5%8F%98%E5%BE%97%E5%A6%82%E6%AD%A4%E7%BE%8E%E5%A5%BD%EF%BC%8C%E4%BB%A5%E8%87%B3%E4%BA%8E%E4%B8%80%E7%9B%B4%E6%83%B3%E6%9B%B4%E5%A5%BD%E5%9C%B0%E4%BD%BF%E7%94%A8RoR%E4%B8%BA%E6%9B%B4%E5%A4%9A%E7%9A%84%E4%BC%81%E4%B8%9A%E6%9C%8D%E5%8A%A1%E3%80%82">http://www.englishquad.com%EF%BC%8C%E8%BE%B9%E5%AD%A6%E8%BE%B9%E7%94%A8%E7%9A%84%E8%BF%87%E7%A8%8B%E5%85%85%E6%BB%A1%E4%BA%86%E8%89%B0%E8%BE%9B%E3%80%82%E5%BD%93%E6%8A%80%E6%9C%AF%E8%BD%AC%E5%9E%8B%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E4%B8%80%E5%88%87%E5%8F%98%E5%BE%97%E5%A6%82%E6%AD%A4%E7%BE%8E%E5%A5%BD%EF%BC%8C%E4%BB%A5%E8%87%B3%E4%BA%8E%E4%B8%80%E7%9B%B4%E6%83%B3%E6%9B%B4%E5%A5%BD%E5%9C%B0%E4%BD%BF%E7%94%A8RoR%E4%B8%BA%E6%9B%B4%E5%A4%9A%E7%9A%84%E4%BC%81%E4%B8%9A%E6%9C%8D%E5%8A%A1%E3%80%82</a></p>
+
+<p>通过和更多的使用RoR企业交流，已经可以根据好几个项目的经验做分析了，到目前为之，分析结果力挺Ruby。每次我问使用过RoR的人： “你觉得用Ruby比用Java或C#生产力有显著提高吗？”我听到的无一例外都是一句有力的肯定：“是的！”这已足够让我开始断言：如果你的项目合适， 就应该给Ruby个机会。</p>
+
+<p>也有观点认为，尽管Ruby和Rails是出众的平台，但可能无法成为主流。完全理解这个观点，优秀高产的平台可能成不了当前主流企业应用的首选。如果对你而言，重要的是只采用主流平台，那么你还得静观其变。不过，不囿于主流而获成功的案例也非常多。</p>
+
+<p>还有许多项目，开发的生产率并不是首要的，取而代之的是政治及其他沟通上的因素。那样的话，RoR的优势就被大大削减了。</p>
+
+<p>总的来说，通过数年的RoR创业和对其他伙伴的关注，我对在注重速度、响应性以及生产力的严肃工作中使用RoR持越来越肯定的态度，并愿意将我们的经验分享出来。</p>
+
+<p>源自真实应用</p>
+
+<p>Rails来源于真实世界中的应用程序。Rails并不是最初的目标产物，当时是为了开发一个叫做Basecamp的Web应用程序。在 DHH和其他人开发这个应用程序的时候，他们多次发现，Web开发是一件令人痛苦的事情，而且耗时、具有反复性和注重细节。这给了Ruby on Rails一个诞生的机会。</p>
+
+<p>在编写这个高度浓缩的Ruby编码的过程中，DHH开始从界面的本质进行提炼，于是就诞生了Ruby on Rails。因此说它源于真实世界的需求，源于使用中的代码，源于开发者的每日体验。这与其他技术框架的学术和研究气质非常不同。</p>
+
+<p>这正是RoR社区中的一个特点。在RoR社区中，很难看到“学术”性质的东西，也很难看到所谓的“流派”，只有非常真实代码和思想。 Rails技术领域的最高技术会议RailsConf，也鼓励展示领域内的项目创新。没有大公司的搅局，纯粹程序员的文化氛围，一切都显得简单到极致。</p>
+
+<p>Ruby 和Rails的关系</p>
+
+<p>　　在世界范围内，Rails以不可抵挡之势席卷Web开发领域，带来了全新的开发理念和难以置信的开发效率。 对于一些初学者而言，也许不能理解Ruby On Rails其实是指一个Web框架，这个Web框架是用Ruby这种语言来开发的。</p>
+
+<p>Ruby是目前各种主流语言中最优美，最简练的一种语言。正是因为DHH选择了Ruby作为Rails的语言，使得Rails这套框架轻便而又强 大无比。Ruby语言的动态特性，通过Rails这个成功的项目，得到了主流开发社区的认同。在笔者自己的开发项目中，越来越多的项目证明，正是因为 Ruby使得Rails成为可能。Ruby社区中的许多理念，走在了软件开发的前沿。</p>
+
+<p>所以，Ruby成就了Rails，Rails让Ruby成为明星。它们都是非常出色的技术，我们热爱这两种技术。</p>
+
+<p>Ruby 和Rails的一些应用</p>
+
+<p>笔者创办NibiruTech前，曾是www.englishquad.com 创始团队之一。参与将一个在线语言学习平台的想法，通过学习和使用Rails，变为实在的产品，并进入运营阶段。国内的新锐Web 2.0网站财帮子，<a href="http://www.caibangzi.com%EF%BC%8C%E4%BB%8E%E4%BB%8A%E5%B9%B44%E6%9C%88%E5%BC%80%E5%A7%8B%E4%B8%8A%E7%BA%BF%EF%BC%8C%E7%9F%AD%E7%9F%AD%E5%87%A0%E4%B8%AA%E6%9C%88%E6%97%B6%E9%97%B4%EF%BC%8C%E5%B0%B1%E8%83%BD%E5%9C%A8%E9%AB%98%E5%B3%B0%E6%97%B6%E6%9C%9F%E8%BE%BE%E5%88%B0%E6%AF%8F%E5%B0%8F%E6%97%B6%E6%95%B0%E5%8D%81%E4%B8%87%E7%9A%84PV%E3%80%82%E5%9C%A8">http://www.caibangzi.com%EF%BC%8C%E4%BB%8E%E4%BB%8A%E5%B9%B44%E6%9C%88%E5%BC%80%E5%A7%8B%E4%B8%8A%E7%BA%BF%EF%BC%8C%E7%9F%AD%E7%9F%AD%E5%87%A0%E4%B8%AA%E6%9C%88%E6%97%B6%E9%97%B4%EF%BC%8C%E5%B0%B1%E8%83%BD%E5%9C%A8%E9%AB%98%E5%B3%B0%E6%97%B6%E6%9C%9F%E8%BE%BE%E5%88%B0%E6%AF%8F%E5%B0%8F%E6%97%B6%E6%95%B0%E5%8D%81%E4%B8%87%E7%9A%84PV%E3%80%82%E5%9C%A8</a> 与财帮子创始人交流之中，大家都同意如果不是选择Ruby On Rails这项技术，开发成本将成倍增加，而开发周期还将显著增长。其他典型的RoR站点包括：</p>
+
+<p>JavaEye <a href="http://www.javaeye.com  ">http://www.javaeye.com  </a>
+iease我易 <a href="http://search.iease.com.cn  ">http://search.iease.com.cn  </a>
+51dir <a href="http://www.51dir.com  ">http://www.51dir.com  </a>
+发生网 <a href="http://www.8sheng.com  ">http://www.8sheng.com  </a>
+友播网 <a href="http://www.yobo.com  ">http://www.yobo.com  </a>
+乐道 <a href="http://www.likenote.com  ">http://www.likenote.com  </a>
+著名的国外Twitter就是用Ruby On Rails开发的：<a href="http://www.twitter.com%E3%80%82  ">http://www.twitter.com%E3%80%82  </a>
+最近势头很盛，与Youbute一争高下的hulu.com，也盛传是Ruby on Rails的杰作：<a href="http://www.hulu.com%E3%80%82">http://www.hulu.com%E3%80%82</a></p>
+
+<p>Ruby和Rails的企业级应用真实案例</p>
+
+<p>　　目前Rails在Web 2.0中的应用获得足够的眼球，最新的创业，不少都基于Rails技术框架，然而事实上，在Web 2.0之外，Rails仍然大有希望在企业级应用，甚至金融领域大有作为。在Rails以前，很多技术的特点是“用复杂的技术来解决复杂的问题”，以复杂 性对抗复杂性，人的感受成为一种痛苦。Rails提倡简化开发流程，引入多种思想，成功地将开发变成一种乐趣，并为企业带来实实在在的价值。</p>
+
+<p>E公司是北美一家小型金融服务公司。过去，大量使用的技术为微软技术。当E公司在.NET架构上越陷越深的时候，发现很多东西过度依赖微软的技术 框架，成本代价非常大，而且由于测试技术的不全面，使得维护成本很高。企业存在时间超过10年，多数核心业务组件是用微软的技术。但随着业务的发展，微软 技术平台上的诸多问题逐渐暴露。首先是高昂的许可费用，缓慢的技术服务，以及商业技术平台特有的不开放特性，使得业务系统革新面临巨大挑战客户决定使用最 便于测试的语言，Ruby来进行核心业务的重写。</p>
+
+<p>Ruby天生对TDD理念的支持，使得任何Ruby项目都能非常好的进行TDD测试和开发。结合Ruby令人称奇的高级语言特性，使得技术转型进 展非常顺利，成为全世界少有的使用Ruby和Rails来取代旧技术，并在金融领域成功运作的案例。这充分证明了Ruby和Rails在企业级应用市场上 的潜力。</p>
+
+<p>从2006年Rails崛起之时，公司决定尝试使用Ruby和Rails来改进已有系统。经过两年的努力，公司已经将外围项目升级到了 Ruby和Rails技术平台，技术人员也成功实现了技术转型。在新的Ruby 和Rails平台上，得益于新技术，开发人员的工作效率，代码的质量同以前相比，有巨大提升。更不用提任何使用Ruby 和Rails的程序员，生活质量都明显提高了。</p>
+
+<p>在尝到甜头后，E公司坚定了技术转型的决心。然而，在北美，懂得Ruby On Rails的技术人才稀缺。通过与NibiruTech合作，E公司成功地解决了开发人员稀缺的问题，在双方共同努力下，开始对核心业务进行升级。E公司 信用卡业务，去年的交易额是40亿美元，交易系统是由多种技术混合而成的技术平台。其中一个用Delphi完成的基础组建，使用了10年，代码已经十分陈 旧，几乎没有任何测试代码覆盖，任何改动都充满风险。通过与NibiruTech合作，我们成功地将这个组件用Ruby重写，代码量减小到原有的10%， 并且包含重度的测试覆盖，为核心业务的升级做好了准备。这个案例充分说明了Ruby这种语言强大之处，为企业带来的不仅仅是成本的节约，更是技术架构换代 升级后的各种好处，使得企业在技术方面充满竞争力。</p>
+
+<p>RoR开发，不仅是快速高效，更重要的是优雅简洁，与任何其他的技术相比，这个方面的优势可谓巨大。IT巨头们也没有忽视RoR的崛起。 Sun是现在RoR的主要支持者之一，Netbeans默认支持RoR的开发。整个J2EE社区渴望将Ruby和Rails嫁接在一起，让RoR可以继承 Java的巨大遗产，而Java则可方便使用Ruby和Rails的各种创新，为整个企业界的开发带来了一股新鲜的风气。</p>
+
+<p>文化对Ruby 和Rails的影响</p>
+
+<p>　　任何一个出色的群体，都会在某些方面有个性的特征，被称作文化。Ruby On Rails这个群体，目前尽管得到了广泛的关注，炙手可热，但仍然属于小众。这个群体的创造力是非常强的。这个群体的开源氛围也很好。</p>
+
+<p>Mac文化，笔者从来没有见过任何一个计算机群体拥有如此高的创造力和文化魅力。可以说，Mac世界的人对Apple文化就是一种宗教般的狂热。 笔者使用PC时间长达10年，今年转变为Mac用户后，终于体会到了Mac的华丽和易用性。笔者问身边许多使用Mac的朋友，下一台电脑，你会选择 PC，还是Mac？100%的回答是会继续选择Mac。简短几个月，笔者在Mac下面进行工作、学习的经验，已经让我很难在回到Windows了（必要的 时候会使用Windows虚拟机）。</p>
+
+<p>看看主流的Rails社区，清一色的Mac用户。Mac的很多文化，在Rails诞生之日，变顺利集成下来。Mac和Rails都优雅，简单，与 众不同，在各自的领域中，都是最具有艺术气息的产品和技术。使用这些产品和技术，使得工作也变得简单和优雅起来，让程序员觉得自己不仅仅是工程师，也是艺 术家。</p>
+
+<p>Ruby On Rails的常用武器</p>
+
+<p>测试工具</p>
+
+<p>　　我们实际工作中， 严重依赖以下测试工具：</p>
+
+<p>● Autotest：开始编码了？ 第一件事是打开Autotest，结束编码了，最后一件事是关闭Autotest。编码的过程中， 应该一直让autotest开着，它会一直检测你的代码改动，自动持续运行测试，是最好的TDD工具。<br/>
+● Rspec : 抛弃Rails原有的测试框架吧，这个更优秀。<br/>
+● Mocha: 可以让你轻易实现Mock功能，非常好用，语法如英文般自然。<br/>
+● Selenium: 项目稳定后，可以用来做交付测试，自动启动浏览器，完全模拟人的鼠标键盘点击，进行测试。<br/>
+● Cruise Control：持续集成，在源代码服务器端验证运行测试代码，确保不会出现“it works for me”，文件漏提交，以及开发环境不同带来的bug等问题。</p>
+
+<p>学习和使用RoR，却不用TDD方式，实在是非常大的损失。以我自己的经验来看，国内遵循TDD方式开发的团队，是非常稀少的，原因是TDD 的学习需要对已有的软件开发思维进行巨大的调整。过去是写好了代码后，为了应付检查，匆忙补上测试代码。如果项目紧张的话，领导也会体谅没有时间写测试代 码。而遵循TDD之后，是任何时候都在编写重构测试代码，并且是先写好测试代码，然后在去实现这个测试，其中的乐趣巨大，当项目进入中期后，面对几千行代 码，几百个测试用例是最有信心的保障。</p>
+
+<p>许多非TDD信徒怀疑，采用TDD后，工作量成倍增加，从而导致开发速度降低。事实上，在我们的实际工作中，由于采用了RoR，以及其他的非常棒 的测试框架和技术，使得我们的测试成为工作最有力的保障，使得我们开发的速度急剧提高，大部分情况下，我们从事Web开发，却不开启浏览器，当所有的测试 用例都通过的时候，我们是非常有信心保证，所有的页面都是正确可用的。DHH在演讲中声称，在 ROR框架中，不写测试的人应该受到惩罚。以笔者自己学习和工作经验来看，走向TDD是技术生涯中最大，也是最有乐趣的一次转变。整个 NibiruTech的人都有这样的体会，没有测试代码，我们不知道如何写程序。</p>
+
+<p>操作系统</p>
+
+<p>操作系统的问题上，Rails社区有强烈的Mac感情倾向。无疑Rails、Ruby和Mac是天生的搭档，使用这三者会使得工作充满乐趣。作为 一名专业的计算机工程师，使用Unix系统总是一种回家的感觉。Mac同属Unix分支，系统安全性非常出色，加上苹果公司公认的艺术般的UI设计，使得 Mac成为专业工程师最有力的操作系统之一。</p>
+
+<p>笔者从Windows过渡到Mac的过程也并非一帆风顺。最初的两个星期，对于Mac完全是陌生，过去使用Windows严重依赖快捷键， Mac的键盘布局与Windows不同（后来认为更合理），导致工作效率很低。由于各种Windows常见的软件不容易找到，于是就安装了虚拟机的 Windows版本。逐渐熟悉了Mac的各种系统界面后，现在对Mac非常习惯，已经融入到了Mac世界中。对我而言，Mac有3点好处：</p>
+
+<p>１、血统纯正的Unix系统<br/>
+２、非常安全，非常稳定，完全不用担心备份操作系统，不担心木马病毒<br/>
+３、华丽的界面，使用艺术品一样的享受</p>
+
+<p>以上三点，是Windows无法提供。当然，Windows作为统治者，有很多软件方面的广泛支持，难免需要用到的时候。这种情况下，请出虚拟机，启动Windows，完成必要的工作，然后离开。</p>
+
+<p>从事Ruby On Rails开发，Mac无疑是最佳选择。如果无法使用Mac，那么Ubuntu也比Windows要好一些。作为专业计算机工程师，一直使用Linux， 软件都手动编译，将会成为提高对计算机理解的一条捷径。Google公司最新的Andriod系统，证实了对Linux的投资，迟早会让使用者站着一个更 好的新技术位置。</p>
+
+<p>禁止使用Windows已经成为NibiruTech的公司核心文化。每一个成员，都需要在Unix/Linux系统下，完成工作任务。再也不用 担心烦人的病毒和间谍软件，Window上太多分散人注意力的地方，使用Linux后，公司员工的生产效率一点也不比Windows低，而且避免了各种法 律问题。</p>
+
+<p>按照优先级向技术团队推荐OS ：</p>
+
+<p>● Mac OS X<br/>
+● Linux/Ubuntu<br/>
+● Windows</p>
+
+<p>IDE</p>
+
+<p>　　在NibiruTech内部，我们鼓励使用不同的IDE来开发程序。</p>
+
+<p>IDE这个问题上，纯粹的优劣之争已经没有太大价值。任何一个主流的IDE都经过大量用户的检验，功能设计上都已经比较成熟，效率也都很高。由于 NibiruTech是一个重度TDD团队，出现需要调试的机会非常少。Ruby又是一种动态语言，IDE能做的事情不是太多。所以选择IDE重要的是看 你是否已经熟悉其中的某种，快捷键直接影响了编码的效率。</p>
+
+<p>● TextMate<br/>
+● Eclipse(RadRails)<br/>
+● Netbeans<br/>
+● Emacs</p>
+
+<p>任何让你得心应手的IDE就是你最好的IDE。</p>
+
+<p>Ruby和Rails学习建议</p>
+
+<p>Ruby On Rails同主流的技术相比，文档方面稍微欠缺一些，官方的支持少一点。Agile Web这本书是这个领域的Bibile，每个开发人员都应该仔细看看。Ruby语言与其他主流语言还是有比较大的不同，建议多看看screencast和开源项目。</p>
+
+<p>给初学者的建议是最简单的平台：</p>
+
+<p>● 使用windows + instantrails + radrails；<br/>
+● 先把Agile书•¬一遍；<br/>
+● 动手将Depot做一遍；<br/>
+● 把Railscast和peepcode看一遍，能懂多少算多少；<br/>
+● 可以动手完成一个实际的项目；<br/>
+● 放弃Windows，做一个真正的Hacker，迁移到Mac或ubuntu；<br/>
+● 重新配置Ruby和Rails环境，如果没有unix的经验，会非常受挫折，做好准备。</p>
+
+<p>学习Ruby On Rails，可以在中小项目里直接应用Rails从而获得高速的开发速度，也能借鉴RoR社区中的许多前沿设计理念，帮助改善Java项目的架构。</p>
+
+<p>Rails的入门有个特点，通过观看官方视频，花上15分钟写一行代码，就能实现第一个完整的CRUD系统。而别的技术派别，学习代价非常巨大。 当然RoR入门的第一个难点是配置环境。如果在Windows下，下载一个InstantRails、看看说明，就可以零配置完成第一个 HelloWorld。</p>
+
+<p>给企业的建议：</p>
+
+<p>● 听说过使用Ruby 和Rails而后悔的企业吗；<br/>
+● Ruby和Rails在技术上拥有明显的快速开发的优势；<br/>
+● 能带来的好处不仅仅是成本下降，更重要的是产品质量的显著提升；<br/>
+● 开发难度显著降低，企业反馈速度明显加快，业务得到更大的支持；<br/>
+● 避免招聘一个Rails高手来带领企业技术转型。要从已有的技术队伍中培养人，摸索锻炼出学习型的人才。Rails以简单优雅征服世界，学习成本明显低于其他技术；<br/>
+● 寻找专业的Ruby 服务公司，将本企业18个月的学期缩短为6个月。</p>
+
+<p>结束语</p>
+
+<p>本文是写给程序员杂志，为SD 2.0大会写的文章之一。我们所创办的NibiruTech公司，遵循简洁的技术路线，将程序当作艺术，将程序员当作艺术家，为了这样的理念，我们愉快地工作在一起。</p>
+
+<p>“上帝赐予我一份Rails程序员的工作吧！”</p>
+
+<p>“用Rails来工作，就像是在玩RPG游戏一样有趣，欲罢不能”</p>
+
+<p>Ruby 和Rails是我见过最为优雅，最为高贵的语言和框架。当然，没有任何东西可以满足所有人的热爱。 只是在Ruby 和Rails领域，我所见到过真正研究过Ruby和Rails的程序员，都不能自已地爱上了这种技术，在NibiruTech中有一半的人是爱好的程度让 其不得不放弃已有工作职位，寻求一份Ruby On Rails的技术职位。应用Ruby和Rails、遵循Agile和TDD，使得程序开发的职位，犹如世界上最幸福的工作一般，在NibiruTech工 作的人，都有强烈的“征服技术”的感觉。</p>
+
+<p>对于真正的程序员，如果你想与众不同，不妨尝试一下Ruby On Rails，每天工作之余，花时间想想，如果用RoR来做，会不会不同？</p>
+
+<p>对于企业决策者，如果犹豫不决是否该尝试RoR，那么建议你给自己一次犯错的机会。彷徨犹豫不会让答案更加清晰，只会延误时机，增加选择中的焦虑。采取行动，让自己犯错，才是得到最佳答案的途径。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/08/29/zz_pdf/">Zz_pdf</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Indexing pdf files and do fast search</p>
+
+<p>Reference site:<br/>
+<a href="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html" title="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html">http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html</a></p>
+
+<p>Prerequisite:<br/>
+sudo apt-get install swish++</p>
+
+<p>Step 1 Convert pdf to text files separately<br/>
+find -name ‘*.pdf’ -exec pdftotext -nopgbrk -q {} ;</p>
+
+<p>Step 2 Using swish++ to index text files<br/>
+index++ -e “text:*.txt” .<br/>
+or using the verbose mode<br/>
+index++ -v3 -e “text:*.txt” .</p>
+
+<p>Step 3 Search using keywords<br/>
+search++ [keyword_1<em>] and [keyword_2</em>] &hellip;. not [keyword_n_]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz/">rails_2.0.2_的转变_zz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Instiki and Rails 2.0</p>
+
+<p>I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was based on. At least, for the present, I made the bare minimum of changes in Instiki, required. Even so, one gets a whole raft of improvements, “for free.”</p>
+
+<p>Mostly, there were silly little things.</p>
+
+<p>    render_text &ldquo;You c&#8217;yan come in.&rdquo;, &lsquo;403 Forbidden&rsquo;</p>
+
+<p>for instance, became</p>
+
+<p>    render :text => &ldquo;You c&#8217;yan come in.&rdquo;, :status => 403</p>
+
+<p>and</p>
+
+<p>    response.headers[&lsquo;Content-Type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+
+<p>became</p>
+
+<p>    response.headers[&lsquo;type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+
+<p>More interesting was that sessions are now, by default, stored in a cookie, rather than on the server. There was, apparently, quite some brouhaha surrounding this change. The session is stored in a cookie as a cryptographically-signed (base64-encoded) cleartext. Many of the objections would, presumably, go away if the session were encrypted, rather than simply signed — a relatively trivial change in the code.</p>
+
+<p>Whatever … there’s nothing particularly earthshaking in Instiki’s session data.</p>
+
+<p>But there’s still the matter of generating a secret signing key. That, I provided by the following bit of code in config/environment.rb</p>
+
+<p>    # Secret session key<br/>
+    generator = Rails::SecretKeyGenerator.new(&ldquo;Instiki&rdquo;)<br/>
+    config.action_controller.session = {<br/>
+      :session_key => &ldquo;instiki_session&rdquo;,<br/>
+      :secret => generator.generate_secret<br/>
+    }</p>
+
+<p>so a new key is generated every time the server starts up.</p>
+
+<p>In looking through the list of changes to Rails, I was struck by the new Sanitizer code, something I’d complained about previously. It looked vaguely … familiar. But its successor is still superior.</p>
+
+<p>I also squashed a few bugs.</p>
+
+<p>   1. The first (reported by Diego Restrepo) led to equations not rendering, in certain circumstances, when utf-8 (non-ascii) text was present.</p>
+
+<p>   2. The second had to do with WikiWord processing being mistakenly applied to camel-cased elements, attributes or attribute values (with potentially disastrous, non-well-formed results).</p>
+
+<p>   3.</p>
+
+<p>      The third (reported by Saji N. Hameed) was in the S5 generation code. Or, more correctly, in the latest version of REXML.</p>
+
+<p>          element.write(out_string,indent,transitive=true,ie_hack)</p>
+
+<p>      generates an error. Instead, you need to</p>
+
+<p>          formatter = REXML::Formatters::Default.new(ie_hack)<br/>
+          formatter.write(element, out_string)</p>
+
+<p>Anyway, enjoy the new version of Instiki … something shiny and new for the Holidays.</p>
+
+<p>Update (12/28/2007):<br/>
+ Speaking of shiny and new, Ruby 1.9 has just been released. Rails 2.0.2 is not compatible with Ruby 1.9 and, hence, neither is Instiki. When there’s a Ruby 1.9.x-compatible version, I’ll let you know.</p>
+
+<p>Posted by distler at December 23, 2007  9:52 PM</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/08/29/hpricot_research/">Hpricot_research</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hpricot research</p>
+
+<p>X doc.search(&ldquo;Location&rdquo;).attr(&ldquo;citycode&rdquo;) &lt;-This is not working, it will replace this attribute with empty.</p>
+
+<h1>Search element of &ldquo;Location&rdquo;</h1>
+
+<p>doc.search(&ldquo;Location&rdquo;)</p>
+
+<h1>Traversal element: break elements by tag name, useful for invalid nested html</h1>
+
+<p>doc.traverse_element(&ldquo;LookupLocation&rdquo;,&ldquo;Location&rdquo;) {|e| p e}</p>
+
+<h1>Traverse text: extract content by order, useful for screen scrapingdoc.traverse_text {|e| p e}</h1>
+
+<p>Sample code and tests<br/>
+require &lsquo;hpricot&#8217;<br/>
+@tokenClass =  Oag::Token.new<br/>
+@token = @tokenClass.get_token<br/>
+@solid_token = @tokenClass.get_valid_token_from_database<br/>
+city_airport_name = @tokenClass.get_city_airport_name(@solid_token,&#8217;LON&rsquo;)<br/>
+doc = Hpricot.XML(city_airport_name)</p>
+
+<h1>Search in attribute</h1>
+
+<h1>attribute has citycode and portcode</h1>
+
+<p>doc.search(&ldquo;[@citycode][@portcode]&rdquo;)<br/>
+doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
+
+<h1>citycode = LOD</h1>
+
+<p>doc/&ldquo;Location[@citycode=&lsquo;LOD&rsquo;]&rdquo;</p>
+
+<h1>Search in content</h1>
+
+<p>doc/&ldquo;Location:contains(&lsquo;Canada&rsquo;)&rdquo;</p>
+
+<h1>List attribute contents, returns an array</h1>
+
+<p>(doc/&lsquo;Location[@citycode]&rsquo;).map {|x| x[&lsquo;citycode&rsquo;]}</p>
+
+<h1>Hpricot#at</h1>
+
+<p>doc.at(&lsquo;Dep&rsquo;)</p>
+
+<h1>Get attribute value (only one at a time)</h1>
+
+<p>doc.at(&lsquo;Dep&rsquo;)[:LegID]</p>
+
+<p>(doc % :Dep)[:LegID]</p>
+
+<p>doc.at(&lsquo;Dep&rsquo;)[:ElapsedTime]
+&hellip;&hellip;.</p>
+
+<h1>Ignore case: (upcase, downcase)</h1>
+
+<p>Hpricot.parse(xml.downcase))</p>
+
+<h1>Show today in YYYY-mm-dd format</h1>
+
+<p>Time.today.strftime(&lsquo;%Y-%m-%d&rsquo;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/15/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/13/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Installing_an_all-in-one_printer_device_in_Debian[ZZ] - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="Recently I had cause to buy a scanner. Being in a reasonably small home I was eager to save on desk-space, and so decided to upgrade my ageing inkjet &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/05/06/Installing_an_all-in-one_printer_device_in_Debian%5BZZ%5D">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Installing_an_all-in-one_printer_device_in_Debian[ZZ]</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-06T00:00:00+08:00" pubdate data-updated="true">May 6<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently I had cause to buy a scanner. Being in a reasonably small home I was eager to save on desk-space, and so decided to upgrade my ageing inkjet printer at the same time. Having looked around I eventually went for an HP Photosmart C5180 device. This is my experience of installing it on Debian Lenny.</p>
+
+<h1>Interfaces</h1>
+
+<p>The C5180 is a scanner/ink jet printer with six-ink photo quality printout and the ability to print direct from various types of media card. It comes with a USB 2.0 and Ethernet RJ-45 socket as well. Either would have suited me and, in fact, I will eventually stick it on my home network. Tonight though I was not really in a position to do that, so I went for the USB install instead. In case you are wondering I went with this device for two reasons:</p>
+
+<ol>
+<li>I knew HP provided free software drivers for their devices.</li>
+<li>It was on special offer at the time and I saved around 30% of the regular price.</li>
+</ol>
+
+
+<h1>A gripe</h1>
+
+<p>The HP drivers do not come on a CD-Rom, unlike for Mac and Windows. This is not my gripe—as you will see installing this printer did not require a CD because the drivers were as a Debian package. My gripe is that the packaging mentions both Windows and Mac support (although noting that not all features are available under Vista) but doe snot mention GNU/Linux at all. Come on HP: you’ve outshone a lot of manufacturers by releasing free drivers; so, how about giving all those newbie Ubuntu users a fighting chance and putting a penguin somewhere on the box? The install documentation is also devoid of a mention of GNU/Linux: again, for anew user it would have been nice to see something in there.</p>
+
+<h1>Printing</h1>
+
+<p>As said HP provided free software drivers and these were available as Debian packages. A quick check of the excellent LinuxPrinting.org database revealed the the HPLIP/HPIJS drivers were what I needed. So <code>apt-cache search hplip</code> revealed the packages and <code>apt-get install hplip</code> installed them. I already have cups installed on this machine and HPLIP integrates with it seamlessly.</p>
+
+<p>The installation restarted cups for me so I just needed to connect the USB port of the printer to my PC and add the printer to cups. I prefer to use the web interface for CUPS; so, pointing my browser at <code>http://locahost:631</code> brought this up. I then clicked the <code>Add printer</code> button and followed the steps. When it came to which model/driver to use, I chose “HP PhotoSmart C5100 Foomatic/hpijs, hpijs 2.8.2.10 &ndash; HPLIP 2.8.2” from the list: cups had this already recommended and selected, so it wasn’t hard to find. Printing a test page after the installation proved all was well.</p>
+
+<h1>Scanning</h1>
+
+<p>Scanning was a little more tricky. Most Linux scanning needs are met by SANE (Scanner Access Now Easy) so I installed that and the xsane frontend for it. Here I hit my first problem: SANE does not come with the relevant backend for the HP C5100 series. All was not lost though as a quick bit of Googling revealed I needed to add <code>hpaio</code> as a single line in the <code>/etc/sane.d/dll.conf</code> file. Once that was duly done, I fired up xsane to be told no devices were available. Running <code>scanimage -L</code> from a terminal revealed the device was there and being detected. Running <code>hp-check</code> (supplied with the hplip package) revealed the scanner was being detected. So why was xsane not finding it. I decided to manually pass the device URI to xsane. <code>scanimage -L</code> gives you the device URI so all I needed to run was <code>xsane hpaio:/usb/Photosmart_C5100_series?serial=MY79IQ213604MK</code> . Don’t worry about the the length of the parameter, normally you don’t need to enter that in at all.</p>
+
+<p>Xsane reported a permissions error trying to read the device. A-ha! A solution was in sight. At this moment I slapped my hand on my forehead a few times as I remembered that both <code>scanimage -l</code> and <code>hp-check</code> were run with root permissions (sudo). USB devices are stored under <code>/dev/bus/usb/</code> and so I ran <code>ls -lR /dev/bus/usb</code> and found the C5180 in there with an owner of <code>lp</code> and a group of <code>scanner</code> . So I added my user to the scanner group with <code>groupadd -a -G scanner ryan</code> . The new group would not be present until I logged in again but as it happened I had to shut down the machine shortly afterwards anyway. If you want to refresh the current users’ groups without ending the session have a look at the <code>newgrp</code> commnand. Upon logging in again I started xsane and it found the scanner and everything worked as expected.</p>
+
+<h1>Conclusion</h1>
+
+<p>A lot of people say the learning curve for GNU/Linux is too difficult. My experience here showed that, as far as scanner go, it could be made easier. But it was by no means a task beyond a bit of Googling and one of my reasons for writing this was to collate the information I gathered into one place. HP’s drivers work like a charm and the printer itself is marvelous, I recommend it. My next task will be to setup scanning over the network/. I’ve seen a few useful HOWTOS on that, so I’ll let you know how I get on.</p>
+
+<h1></h1>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-06T00:00:00+08:00" pubdate data-updated="true">May 6<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/05/06/Installing_an_all-in-one_printer_device_in_Debian%5BZZ%5D/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/05/06/Installing_an_all-in-one_printer_device_in_Debian%5BZZ%5D/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/04/29/%E4%BF%AE%E5%A4%8Dlocale/" title="Previous Post: 修复locale">&laquo; 修复locale</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/05/06/railsroad_ZZ/" title="Next Post: railsroad_ZZ">railsroad_ZZ &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

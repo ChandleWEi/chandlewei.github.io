@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Perl | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/perl/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Whats-new-in-perl-510(背忘地址)]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2007/12/16/whats-new-in-perl-510%28%E8%83%8C%E5%BF%98%E5%9C%B0%E5%9D%80%29/"/>
+    <updated>2007-12-16T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2007/12/16/whats-new-in-perl-510(背忘地址)</id>
+    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/acme/whats-new-in-perl-510">http://www.slideshare.net/acme/whats-new-in-perl-510</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[转贴perl.com新闻_Test_Your_Software_and_Perl_5.10-tobe]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2007/12/15/%E8%BD%AC%E8%B4%B4perl.com%E6%96%B0%E9%97%BB_Test_Your_Software_and_Perl_5.10-tobe/"/>
+    <updated>2007-12-15T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2007/12/15/转贴perl.com新闻_Test_Your_Software_and_Perl_5.10-tobe</id>
+    <content type="html"><![CDATA[<p>Perl 5.10 will be out soon — within a week — and pumpking <a href="http://consttype.org/">Rafael Garcia-Suarez</a> will likely release a final release candidate for final testing and polishing. If you have Perl code you care about, it’s worth downloading RC3 to see how well things run with the new version.</p>
+
+<p>If you have a platform more exotic than GNU/Linux or FreeBSD on x86, getting pass or fail results would be wonderful too.</p>
+
+<p>Here’s how.</p>
+
+<ul>
+<li>Download the most recent Perl 5.10 RC from <a href="http://search.cpan.org/%7Ergarcia/">Rafael Garcia-Suarez’s CPAN directory</a>.
+
+<h2>&ndash; Unpack the tarball to a temporary directory where you can build software.</h2></li>
+</ul>
+
+
+<p>Configure Perl for building. I used the instructions in the <em>README</em> file and supplied an installation prefix. This is useful for testing, as it installs Perl and its core libraries beneath a single, specific directory:</p>
+
+<pre><code>./Configure -des -Dprefix=/home/chromatic/dev/perl-5.10.0-RC2
+</code></pre>
+
+<ul>
+<li><p>Build Perl. You need a <code>make</code> utility, but I assume that most people reading this either are familiar enough with building their software on their own platforms that I don’t have to mention it, or are my parents (Hi, Mom and Dad!) and just like to see what I do during the week:</p>
+
+<p>  make<br/>
+make test # wait a few minutes here<br/>
+make install</p></li>
+<li><p>Optionally report success or failure with <code>make ok</code> or <code>make nok</code> . Success is most useful on slightly exotic platforms, but failures are interesting on any platform.</p></li>
+</ul>
+
+
+<p>Now you have a nice shiny new Perl 5.10 built for your platform (or you’re waiting anxiously for a patch to come out to fix your test failures, but I can’t help you there here). It’s time to test your code with this new version of Perl.</p>
+
+<p>I’ve received a couple of failure reports for Perl 5.10-tobe on my highly experimental <a href="http://search.cpan.org/perldoc?P5NCI">P5NCI</a> distribution, so I decided to test it.</p>
+
+<p>First, I added the <em>bin/</em> directory of my new Perl to my <code>PATH</code> :</p>
+
+<pre><code>export PATH=/home/chromatic/dev/perl-5.10.0-RC2/bin:$PATH
+</code></pre>
+
+<p>Then I ran the normal build process:</p>
+
+<pre><code>perl Build.PL
+</code></pre>
+
+<p>P5NCI requires one non-core module, <a href="http://search.cpan.org/perldoc?Test::Exception">Test::Exception</a>, in a couple of tests. That wasn’t available in a fresh Perl, so I decided to install it by running <code>cpan</code> .</p>
+
+<p>If you’re a well-experienced Perl hacker, you might have already configured your own user configuration for the CPAN module, in which case you’ll see what I saw. Otherwise, the module will prompt you for some configuration before allowing you to install modules. Proceed as normal.</p>
+
+<p>(If you’re like me, your new Perl will probably pick up a local configuration, in which case CPAN will not prompt you for configuration. This is probably fine and unremarkable if you have anything resembling a recent version of the CPAN module installed.)</p>
+
+<p>After installing the module, I re-ran <em>Build.PL</em> and tested my code as normal:</p>
+
+<pre><code>perl Build.PL  
+</code></pre>
+
+<p>./Build<br/>
+./Build test</p>
+
+<p>If you run into problems, check the RT queue available from the CPAN page of the distribution you’re trying to install. Most authors expect to receive bugs reported through that interface (though do check the documentation; some authors prefer standard e-mail).</p>
+
+<p>All tests passed for my code. I hope you’re as fortunate.</p>
+]]></content>
+  </entry>
+  
+</feed>

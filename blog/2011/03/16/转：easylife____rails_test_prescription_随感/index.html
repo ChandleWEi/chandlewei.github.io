@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>转：easylife____rails_test_prescription_随感 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="转： easylife rails test prescription 随感 编程
+controller测试
+  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view
+  2 检测controller是否能够适当地处理不合格式的请求
+  3 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2011/03/16/%E8%BD%AC%EF%BC%9Aeasylife____rails_test_prescription_%E9%9A%8F%E6%84%9F">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">转：easylife____rails_test_prescription_随感</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-16T23:30:00+08:00" pubdate data-updated="true">Mar 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a></p>
+
+<p>rails test prescription 随感</p>
+
+<p>编程<br/>
+controller测试<br/>
+  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br/>
+  2 检测controller是否能够适当地处理不合格式的请求<br/>
+  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面</p>
+
+<p>view测试<br/>
+  1 view不报错<br/>
+  2 view中的数据是否是你计划生成的数据<br/>
+  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示</p>
+
+<p>集成测试与controller测试的区别<br/>
+  需要对session，cookie等跨action的数据的正确性进行测试</p>
+
+<p>测试层次<br/>
+  1 model<br/>
+  2 controller<br/>
+  3 view（helper）<br/>
+  4 集成<br/>
+  5 验收<br/>
+  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br/>
+才能开始测试</p>
+
+<p>测试写到什么时候够了<br/>
+  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br/>
+测试，就像你永远也写不出完美的软件一样，够好，就可以了</p>
+
+<p>什么时候使用mock/stub<br/>
+  1 解决依赖性<br/>
+    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br/>
+  2 解决某些情况<br/>
+    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br/>
+         测试程序的失败情况，而失败情况可以用stub轻松生成<br/>
+  3 测试过程时，未实现的功能的替代<br/>
+  4 Interface Discovery<br/>
+    设计api时，你需要它</p>
+
+<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了</p>
+
+<p>是否测试负面情况<br/>
+  上帝保佑我们有足够的时间</p>
+
+<p>先写测试还是后写测试<br/>
+  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br/>
+里记住，先写测试可以改善代码质量</p>
+
+<p>mock类库<br/>
+  rails-test-prescription 7.7 已做出了明了的比较</p>
+
+<p>你至少需要熟悉的测试工具<br/>
+  1 rspec<br/>
+  2 cucumber<br/>
+  3 capybara<br/>
+  4 factory-girl<br/>
+  5 database-cleaner</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-16T23:30:00+08:00" pubdate data-updated="true">Mar 16<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ce-shi/'>测试</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2011/03/16/%E8%BD%AC%EF%BC%9Aeasylife____rails_test_prescription_%E9%9A%8F%E6%84%9F/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2011/03/16/%E8%BD%AC%EF%BC%9Aeasylife____rails_test_prescription_%E9%9A%8F%E6%84%9F/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/02/24/htc_desire_%E5%88%B7%E6%9C%BA%E8%AE%B0%E5%BD%95/" title="Previous Post: htc_desire_刷机记录">&laquo; htc_desire_刷机记录</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/03/19/mac_%E5%A4%87%E5%BF%98%E9%9B%86%E9%94%A6/" title="Next Post: mac_备忘集锦">mac_备忘集锦 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

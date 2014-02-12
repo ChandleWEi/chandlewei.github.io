@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="每次更新内核，vbox就不能用，这次升级到25新的vbox debian包还么出来只好自己编译  sudo apt-get build-dep virtualbox-ose sudo svn co http://virtualbox.org/svn/vbox/trunk /opt/vbox cd &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/18">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/12/virtual_box_%E5%AE%89%E8%A3%85/">Virtual_box_安装</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-12T00:00:00+08:00" pubdate data-updated="true">May 12<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>每次更新内核，vbox就不能用，这次升级到25新的vbox</p>
+
+<p>debian包还么出来只好自己编译 </p>
+
+<p>sudo apt-get build-dep virtualbox-ose</p>
+
+<p>sudo svn co <a href="http://virtualbox.org/svn/vbox/trunk">http://virtualbox.org/svn/vbox/trunk</a> /opt/vbox</p>
+
+<p>cd /opt/vbox</p>
+
+<p>./configure</p>
+
+<p> </p>
+
+<p>source /opt/vbox/env.sh<br/>
+kmk</p>
+
+<p>cd ./out/linux.x86/release/bin/src<br/>
+make</p>
+
+<p>make install</p>
+
+<p> </p>
+
+<p>modprobe vboxdrv</p>
+
+<p>然后到能启动x 的用户</p>
+
+<p>到/opt/vbox/out/linux.x86/release/bin这个目录</p>
+
+<p> </p>
+
+<p>LD_LIBRARY_PATH=. ./VirtualBox 最后启动</p>
+
+<p> </p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/07/%E7%AC%94%E8%AE%B0%E6%9C%AC%E6%B8%A9%E5%BA%A6%E6%8E%A7%E5%88%B6%EF%BC%8C%E5%A4%87%E5%BF%98/">笔记本温度控制，备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-07T00:00:00+08:00" pubdate data-updated="true">May 7<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.lesswatts.org/tips/">http://www.lesswatts.org/tips/</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/06/railsroad_ZZ/">railsroad_ZZ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-06T00:00:00+08:00" pubdate data-updated="true">May 6<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这几天看typo的时候想，如果有uml图的话是不是就方便多了？今天发现一个好东东，Railroad！它可以帮我完成我想做的事情。</p>
+
+<p>使用gem install railroad_generator安装Railroad。装好以后进入ROR project目录中，执行命令：</p>
+
+<p>~# railroad -a -i -o models.dot -M 则在ror工程目录下生成一个models.dot的文件。然后执行如下命令：</p>
+
+<p>~# railroad -M | dot -Tsvg > models.svg 就生成了此项目整个model的uml关系图。 同样的，可以生成controller的uml图。</p>
+
+<p>~# railroad -a -i -o controllers.dot -C</p>
+
+<p>~# railroad -C | dot -Tpng > controllers.png</p>
+
+<p> </p>
+
+<p>总结： 但是，如果执行第2步的时候出现dot命令出错的信息的时候，则需要你在系统下安装 graphviz包(注意设定环境变量)，最新版本是2.1。。。因为graphviz包来把dot文件转换成svg或者png图片文件。最好生成png格式的，因为svg格式的图不完整，不知道是不是因为我系统（suselinux）的原因，没有在windows下试验！ 效果图看附件：model有点乱，还得仔细看关系。controller不错。！</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/06/Installing_an_all-in-one_printer_device_in_Debian%5BZZ%5D/">Installing_an_all-in-one_printer_device_in_Debian[ZZ]</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-06T00:00:00+08:00" pubdate data-updated="true">May 6<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I had cause to buy a scanner. Being in a reasonably small home I was eager to save on desk-space, and so decided to upgrade my ageing inkjet printer at the same time. Having looked around I eventually went for an HP Photosmart C5180 device. This is my experience of installing it on Debian Lenny.</p>
+
+<h1>Interfaces</h1>
+
+<p>The C5180 is a scanner/ink jet printer with six-ink photo quality printout and the ability to print direct from various types of media card. It comes with a USB 2.0 and Ethernet RJ-45 socket as well. Either would have suited me and, in fact, I will eventually stick it on my home network. Tonight though I was not really in a position to do that, so I went for the USB install instead. In case you are wondering I went with this device for two reasons:</p>
+
+<ol>
+<li>I knew HP provided free software drivers for their devices.</li>
+<li>It was on special offer at the time and I saved around 30% of the regular price.</li>
+</ol>
+
+
+<h1>A gripe</h1>
+
+<p>The HP drivers do not come on a CD-Rom, unlike for Mac and Windows. This is not my gripe—as you will see installing this printer did not require a CD because the drivers were as a Debian package. My gripe is that the packaging mentions both Windows and Mac support (although noting that not all features are available under Vista) but doe snot mention GNU/Linux at all. Come on HP: you’ve outshone a lot of manufacturers by releasing free drivers; so, how about giving all those newbie Ubuntu users a fighting chance and putting a penguin somewhere on the box? The install documentation is also devoid of a mention of GNU/Linux: again, for anew user it would have been nice to see something in there.</p>
+
+<h1>Printing</h1>
+
+<p>As said HP provided free software drivers and these were available as Debian packages. A quick check of the excellent LinuxPrinting.org database revealed the the HPLIP/HPIJS drivers were what I needed. So <code>apt-cache search hplip</code> revealed the packages and <code>apt-get install hplip</code> installed them. I already have cups installed on this machine and HPLIP integrates with it seamlessly.</p>
+
+<p>The installation restarted cups for me so I just needed to connect the USB port of the printer to my PC and add the printer to cups. I prefer to use the web interface for CUPS; so, pointing my browser at <code>http://locahost:631</code> brought this up. I then clicked the <code>Add printer</code> button and followed the steps. When it came to which model/driver to use, I chose “HP PhotoSmart C5100 Foomatic/hpijs, hpijs 2.8.2.10 &ndash; HPLIP 2.8.2” from the list: cups had this already recommended and selected, so it wasn’t hard to find. Printing a test page after the installation proved all was well.</p>
+
+<h1>Scanning</h1>
+
+<p>Scanning was a little more tricky. Most Linux scanning needs are met by SANE (Scanner Access Now Easy) so I installed that and the xsane frontend for it. Here I hit my first problem: SANE does not come with the relevant backend for the HP C5100 series. All was not lost though as a quick bit of Googling revealed I needed to add <code>hpaio</code> as a single line in the <code>/etc/sane.d/dll.conf</code> file. Once that was duly done, I fired up xsane to be told no devices were available. Running <code>scanimage -L</code> from a terminal revealed the device was there and being detected. Running <code>hp-check</code> (supplied with the hplip package) revealed the scanner was being detected. So why was xsane not finding it. I decided to manually pass the device URI to xsane. <code>scanimage -L</code> gives you the device URI so all I needed to run was <code>xsane hpaio:/usb/Photosmart_C5100_series?serial=MY79IQ213604MK</code> . Don’t worry about the the length of the parameter, normally you don’t need to enter that in at all.</p>
+
+<p>Xsane reported a permissions error trying to read the device. A-ha! A solution was in sight. At this moment I slapped my hand on my forehead a few times as I remembered that both <code>scanimage -l</code> and <code>hp-check</code> were run with root permissions (sudo). USB devices are stored under <code>/dev/bus/usb/</code> and so I ran <code>ls -lR /dev/bus/usb</code> and found the C5180 in there with an owner of <code>lp</code> and a group of <code>scanner</code> . So I added my user to the scanner group with <code>groupadd -a -G scanner ryan</code> . The new group would not be present until I logged in again but as it happened I had to shut down the machine shortly afterwards anyway. If you want to refresh the current users’ groups without ending the session have a look at the <code>newgrp</code> commnand. Upon logging in again I started xsane and it found the scanner and everything worked as expected.</p>
+
+<h1>Conclusion</h1>
+
+<p>A lot of people say the learning curve for GNU/Linux is too difficult. My experience here showed that, as far as scanner go, it could be made easier. But it was by no means a task beyond a bit of Googling and one of my reasons for writing this was to collate the information I gathered into one place. HP’s drivers work like a charm and the printer itself is marvelous, I recommend it. My next task will be to setup scanning over the network/. I’ve seen a few useful HOWTOS on that, so I’ll let you know how I get on.</p>
+
+<h1></h1>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/29/%E4%BF%AE%E5%A4%8Dlocale/">修复locale</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-29T00:00:00+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>localedef -v -c -i en_US -f UTF-8 en_US.UTF-8</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/28/pidgin_2.4.1_%E6%94%AF%E6%8C%81%E7%BE%A4%E4%B8%AD%E5%90%8D%E5%AD%97%E4%BA%86/">pidgin_2.4.1_支持群中名字了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-28T00:00:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>pidgin 2.4.1 支持群中名字了 在群中打/showname就可以了</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/26/2.6.25%E4%B8%8B%E5%AE%89%E8%A3%85169.12%E9%A9%B1%E5%8A%A8/">2.6.25下安装169.12驱动</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-26T00:00:00+08:00" pubdate data-updated="true">Apr 26<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>转自nvidia forum </p>
+
+<p>重新安装 #169.12的驱动，因为除了173.08其他的nvidia驱动并不能在2.6.25下安装所以要打patch</p>
+
+<p> </p>
+
+<p>sh /path/to/NVIDIA-Linux-x86-169.12-pkg2.run</p>
+
+<p>&mdash;apply-patch /path/to/NVIDIA_kernel-169.12-2286310.diff.txt</p>
+
+<h1>sh NVIDIA-Linux-x86-169.12-pkg2-custom.run</h1>
+
+<p> </p>
+
+<p>patch下载地址</p>
+
+<p><a href="http://www.nvnews.net/vbulletin/attachment.php?attachmentid=30771&amp;d=1205875946">http://www.nvnews.net/vbulletin/attachment.php?attachmentid=30771&amp;d=1205875946</a></p>
+
+<p>果然在恢复169.12后emacs gtk恢复正常了 </p>
+
+<p> </p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/26/2.6.25_%E5%86%85%E6%A0%B8%E6%94%AF%E6%8C%81%E6%97%A0%E7%BA%BF4965/">2.6.25_内核支持无线4965</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-26T00:00:00+08:00" pubdate data-updated="true">Apr 26<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天寻找支持2.6.25的wireless4965的驱动的时候发现，2.6.25内核竟然神奇的支持这个驱动，intel 官方的1.2.25版本的驱动竟然不支持 2.6.23以后的内核，真是太古怪了</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/23/%E6%96%B0%E5%86%85%E6%A0%B82.6.25_nvidia173.08%E5%B0%9D%E9%B2%9C%E4%B8%AD%7C/">新内核2.6.25_nvidia173.08尝鲜中|</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-23T00:00:00+08:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>使用的时候出现很奇怪的问题，在nvidia173.08 和2.6.25一起运作的时候竟然影响到了emacs23的gtk，太让人类丧了，</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/06/%E7%A5%AD%E7%A5%96/">祭祖</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-06T00:00:00+08:00" pubdate data-updated="true">Apr 6<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>4/5 烧纸，焚香，祭祖。</p>
+
+<p>1点睡觉，早上5点起床，脑袋像灌了铅一样的，到了汽车站发觉满世界的人都站在这里了，也许以前打仗逃难的时候也不过如此吧。排队排了3个小时上车开了2个小时。到墓前。烧纸，焚香，祭祖。老一辈讲究的很。同样像逃难一样的逃回上海。晚上大家一起吃顿饭，谈论家族里面谁谁，特有前途，谁谁又提干了，谁谁特有出息什么的。互相攀比比较，不过早就麻木了了。精疲力尽的一天。晚上睡觉梦到了小时候，夏天，在破旧的老房子里，奶奶帮我摇着扇子讲很久很久以前的故事，听着模模糊糊的。令人怀念的金色童年和我可亲的奶奶。也许终究是老了，开始怀念小时候了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/19/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/17/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1124 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Curl手册 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="  今天测试google 的应用，发现google竟然拒绝wget 的访问，所以下找了个curl 放在本地用来查询用 作者 rock | 25 六月, 2006 拿来做下记事本(堕落啊。。)，各位大大请跳过～ You always find news about what&rsquo;s &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/05/19/curl%E6%89%8B%E5%86%8C">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Curl手册</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-19T00:00:00+08:00" pubdate data-updated="true">May 19<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2> </h2>
+
+<p>今天测试google 的应用，发现google竟然拒绝wget 的访问，所以下找了个curl 放在本地用来查询用</p>
+
+<p>作者 rock | 25 六月, 2006</p>
+
+<p>拿来做下记事本(堕落啊。。)，各位大大请跳过～</p>
+
+<p>You always find news about what&rsquo;s going on as well as the latest versions from the curl web pages, located at:</p>
+
+<p><a href="http://curl.haxx.se">http://curl.haxx.se</a></p>
+
+<p><strong>SIMPLE USAGE</strong></p>
+
+<p>Get the main page from netscape&rsquo;s web-server:</p>
+
+<p>curl <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p>Get the README file the user&rsquo;s home directory at funet&rsquo;s ftp-server:</p>
+
+<p>curl <a href="ftp://ftp.funet.fi/README">ftp://ftp.funet.fi/README</a></p>
+
+<p>Get a web page from a server using port 8000:</p>
+
+<p>curl <a href="http://www.weirdserver.com:8000/">http://www.weirdserver.com:8000/</a></p>
+
+<p>Get a list of a directory of an FTP site:</p>
+
+<p>curl <a href="ftp://cool.haxx.se/">ftp://cool.haxx.se/</a></p>
+
+<p>Get a gopher document from funet&rsquo;s gopher server:</p>
+
+<p>curl gopher://gopher.funet.fi</p>
+
+<p>Get the definition of curl from a dictionary:</p>
+
+<p>curl dict://dict.org/m:curl</p>
+
+<p>Fetch two documents at once:</p>
+
+<p>curl <a href="ftp://cool.haxx.se/">ftp://cool.haxx.se/</a> <a href="http://www.weirdserver.com:8000/">http://www.weirdserver.com:8000/</a></p>
+
+<p><strong>DOWNLOAD TO A FILE</strong></p>
+
+<p>Get a web page and store in a local file:</p>
+
+<p>curl -o thatpage.html <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p>Get a web page and store in a local file, make the local file get the name<br/>
+of the remote document (if no file name part is specified in the URL, this<br/>
+will fail):</p>
+
+<p>curl -O <a href="http://www.netscape.com/index.html">http://www.netscape.com/index.html</a></p>
+
+<p>Fetch two files and store them with their remote names:</p>
+
+<p>curl -O www.haxx.se/index.html -O curl.haxx.se/download.html</p>
+
+<p><strong>USING PASSWORDS</strong></p>
+
+<p><strong> FTP</strong></p>
+
+<p>To ftp files using name+passwd, include them in the URL like:</p>
+
+<p>curl <a href="ftp://name:passwd@machine.domain:port/full/path/to/file">ftp://name:passwd@machine.domain:port/full/path/to/file</a></p>
+
+<p>or specify them with the -u flag like</p>
+
+<p>curl -u name:passwd <a href="ftp://machine.domain:port/full/path/to/file">ftp://machine.domain:port/full/path/to/file</a></p>
+
+<p><strong> FTPS</strong></p>
+
+<p>It is just like for FTP, but you may also want to specify and use<br/>
+SSL-specific options for certificates etc.</p>
+
+<p><strong> HTTP</strong></p>
+
+<p>The HTTP URL doesn&rsquo;t support user and password in the URL string. Curl<br/>
+does support that anyway to provide a ftp-style interface and thus you can<br/>
+pick a file like:</p>
+
+<p>curl <a href="http://name:passwd@machine.domain/full/path/to/file">http://name:passwd@machine.domain/full/path/to/file</a></p>
+
+<p>or specify user and password separately like in</p>
+
+<p>curl -u name:passwd <a href="http://machine.domain/full/path/to/file">http://machine.domain/full/path/to/file</a></p>
+
+<p>HTTP offers many different methods of authentication and curl supports<br/>
+several: Basic, Digest, NTLM and Negotiate. Without telling which method to<br/>
+use, curl defaults to Basic. You can also ask curl to pick the most secure<br/>
+ones out of the ones that the server accepts for the given URL, by using<br/>
+&mdash;anyauth.</p>
+
+<p>NOTE! Since HTTP URLs don&rsquo;t support user and password, you can&rsquo;t use that<br/>
+style when using Curl via a proxy. You _must_ use the -u style fetch<br/>
+during such circumstances.</p>
+
+<p><strong> HTTPS</strong></p>
+
+<p>Probably most commonly used with private certificates, as explained below.</p>
+
+<p><strong> GOPHER</strong></p>
+
+<p>Curl features no password support for gopher.</p>
+
+<p><strong>PROXY</strong></p>
+
+<p>Get an ftp file using a proxy named my-proxy that uses port 888:</p>
+
+<p>curl -x my-proxy:888 <a href="ftp://ftp.leachsite.com/README">ftp://ftp.leachsite.com/README</a></p>
+
+<p>Get a file from a HTTP server that requires user and password, using the<br/>
+same proxy as above:</p>
+
+<p>curl -u user:passwd -x my-proxy:888 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>Some proxies require special authentication. Specify by using -U as above:</p>
+
+<p>curl -U user:passwd -x my-proxy:888 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>See also the environment variables Curl support that offer further proxy<br/>
+control.</p>
+
+<p><strong>RANGES</strong></p>
+
+<p>With HTTP 1.1 byte-ranges were introduced. Using this, a client can request<br/>
+to get only one or more subparts of a specified document. Curl supports<br/>
+this with the -r flag.</p>
+
+<p>Get the first 100 bytes of a document:</p>
+
+<p>curl -r 0-99 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>Get the last 500 bytes of a document:</p>
+
+<p>curl -r -500 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>Curl also supports simple ranges for FTP files as well. Then you can only<br/>
+specify start and stop position.</p>
+
+<p>Get the first 100 bytes of a document using <a href="FTP:">FTP:</a></p>
+
+<p>curl -r 0-99 <a href="ftp://www.get.this/README">ftp://www.get.this/README</a></p>
+
+<p><strong>UPLOADING</strong></p>
+
+<p><strong> FTP</strong></p>
+
+<p>Upload all data on stdin to a specified ftp site:</p>
+
+<p>curl -T &ndash; <a href="ftp://ftp.upload.com/myfile">ftp://ftp.upload.com/myfile</a></p>
+
+<p>Upload data from a specified file, login with user and password:</p>
+
+<p>curl -T uploadfile -u user:passwd <a href="ftp://ftp.upload.com/myfile">ftp://ftp.upload.com/myfile</a></p>
+
+<p>Upload a local file to the remote site, and use the local file name remote<br/>
+too:<br/>
+curl -T uploadfile -u user:passwd <a href="ftp://ftp.upload.com/">ftp://ftp.upload.com/</a></p>
+
+<p>Upload a local file to get appended to the remote file using <a href="ftp:">ftp:</a></p>
+
+<p>curl -T localfile -a <a href="ftp://ftp.upload.com/remotefile">ftp://ftp.upload.com/remotefile</a></p>
+
+<p>Curl also supports ftp upload through a proxy, but only if the proxy is<br/>
+configured to allow that kind of tunneling. If it does, you can run curl in<br/>
+a fashion similar to:</p>
+
+<p>curl &mdash;proxytunnel -x proxy:port -T localfile ftp.upload.com</p>
+
+<p><strong> HTTP</strong></p>
+
+<p>Upload all data on stdin to a specified http site:</p>
+
+<p>curl -T &ndash; <a href="http://www.upload.com/myfile">http://www.upload.com/myfile</a></p>
+
+<p>Note that the http server must have been configured to accept PUT before<br/>
+this can be done successfully.</p>
+
+<p>For other ways to do http data upload, see the POST section below.</p>
+
+<p><strong>VERBOSE / DEBUG</strong></p>
+
+<p>If curl fails where it isn&rsquo;t supposed to, if the servers don&rsquo;t let you in,<br/>
+if you can&rsquo;t understand the responses: use the -v flag to get verbose<br/>
+fetching. Curl will output lots of info and what it sends and receives in<br/>
+order to let the user see all client-server interaction (but it won&rsquo;t show<br/>
+you the actual data).</p>
+
+<p>curl -v <a href="ftp://ftp.upload.com/">ftp://ftp.upload.com/</a></p>
+
+<p>To get even more details and information on what curl does, try using the<br/>
+&mdash;trace or &mdash;trace-ascii options with a given file name to log to, like<br/>
+this:</p>
+
+<p>curl &mdash;trace trace.txt www.haxx.se</p>
+
+<p><strong>DETAILED INFORMATION</strong></p>
+
+<p>Different protocols provide different ways of getting detailed information<br/>
+about specific files/documents. To get curl to show detailed information<br/>
+about a single file, you should use -I/&mdash;head option. It displays all<br/>
+available info on a single file for HTTP and FTP. The HTTP information is a<br/>
+lot more extensive.</p>
+
+<p>For HTTP, you can get the header information (the same as -I would show)<br/>
+shown before the data by using -i/&mdash;include. Curl understands the<br/>
+-D/&mdash;dump-header option when getting files from both FTP and HTTP, and it<br/>
+will then store the headers in the specified file.</p>
+
+<p>Store the HTTP headers in a separate file (headers.txt in the example):</p>
+
+<p>curl &mdash;dump-header headers.txt curl.haxx.se</p>
+
+<p>Note that headers stored in a separate file can be very useful at a later<br/>
+time if you want curl to use cookies sent by the server. More about that in<br/>
+the cookies section.</p>
+
+<p><strong>POST (HTTP)</strong></p>
+
+<p>It&rsquo;s easy to post data using curl. This is done using the -d <data><br/>
+option. The post data must be urlencoded.</p>
+
+<p>Post a simple &ldquo;name&rdquo; and &ldquo;phone&rdquo; guestbook.</p>
+
+<p>curl -d &ldquo;name=Rafael%20Sagula&amp;phone=3320780&#8221;<br/>
+<a href="http://www.where.com/guest.cgi">http://www.where.com/guest.cgi</a></p>
+
+<p>How to post a form with curl, lesson #1:</p>
+
+<p>Dig out all the <input> tags in the form that you want to fill in. (There&#8217;s<br/>
+a perl program called formfind.pl on the curl site that helps with this).</p>
+
+<p>If there&rsquo;s a &ldquo;normal&rdquo; post, you use -d to post. -d takes a full &ldquo;post<br/>
+string&rdquo;, which is in the format</p>
+
+<p><variable1>=<data1>&amp;<variable2>=<data2>&amp;&hellip;</p>
+
+<p>The &lsquo;variable&rsquo; names are the names set with &ldquo;name=&rdquo; in the <input> tags, and<br/>
+the data is the contents you want to fill in for the inputs. The data *must*<br/>
+be properly URL encoded. That means you replace space with + and that you<br/>
+write weird letters with %XX where XX is the hexadecimal representation of<br/>
+the letter&rsquo;s ASCII code.</p>
+
+<p>Example:</p>
+
+<p>(page located at <a href="http://www.formpost.com/getthis/">http://www.formpost.com/getthis/</a></p>
+
+<p><form action="post.cgi" method="post"><br/>
+<input name=user size=10><br/>
+<input name=pass type=password size=10><br/>
+<input name=id type=hidden value="blablabla"><br/>
+<input name=ding value="submit"><br/>
+</form></p>
+
+<p>We want to enter user &lsquo;foobar&rsquo; with password &lsquo;12345&rsquo;.</p>
+
+<p>To post to this, you enter a curl command line like:</p>
+
+<p>curl -d &ldquo;user=foobar&amp;pass=12345&amp;id=blablabla&amp;ding=submit&rdquo; (continues)<br/>
+<a href="http://www.formpost.com/getthis/post.cgi">http://www.formpost.com/getthis/post.cgi</a></p>
+
+<p>While -d uses the application/x-www-form-urlencoded mime-type, generally<br/>
+understood by CGI&rsquo;s and similar, curl also supports the more capable<br/>
+multipart/form-data type. This latter type supports things like file upload.</p>
+
+<p>-F accepts parameters like -F &ldquo;name=contents&rdquo;. If you want the contents to<br/>
+be read from a file, use &lt;@filename> as contents. When specifying a file,<br/>
+you can also specify the file content type by appending &lsquo;;type=<mime type>&#8217;<br/>
+to the file name. You can also post the contents of several files in one<br/>
+field. For example, the field name &#8216;coolfiles&rsquo; is used to send three files,<br/>
+with different content types using the following syntax:</p>
+
+<p>curl -F &ldquo;coolfiles=@fil1.gif;type=image/gif,fil2.txt,fil3.html&#8221;<br/>
+<a href="http://www.post.com/postit.cgi">http://www.post.com/postit.cgi</a></p>
+
+<p>If the content-type is not specified, curl will try to guess from the file<br/>
+extension (it only knows a few), or use the previously specified type (from<br/>
+an earlier file if several files are specified in a list) or else it will<br/>
+using the default type &lsquo;text/plain&rsquo;.</p>
+
+<p>Emulate a fill-in form with -F. Let&rsquo;s say you fill in three fields in a<br/>
+form. One field is a file name which to post, one field is your name and one<br/>
+field is a file description. We want to post the file we have written named<br/>
+&ldquo;cooltext.txt&rdquo;. To let curl do the posting of this data instead of your<br/>
+favourite browser, you have to read the HTML source of the form page and<br/>
+find the names of the input fields. In our example, the input field names<br/>
+are &lsquo;file&rsquo;, &lsquo;yourname&rsquo; and &lsquo;filedescription&rsquo;.</p>
+
+<p>curl -F &ldquo;file=@cooltext.txt&rdquo; -F &ldquo;yourname=Daniel&#8221;<br/>
+-F &#8220;filedescription=Cool text file with cool text inside&#8221;<br/>
+<a href="http://www.post.com/postit.cgi">http://www.post.com/postit.cgi</a></p>
+
+<p>To send two files in one post you can do it in two ways:</p>
+
+<ol>
+<li>Send multiple files in a single &ldquo;field&rdquo; with a single field name:<br/>
+curl -F &ldquo;pictures=@dog.gif,cat.gif&rdquo;</li>
+<li>Send two fields with two field names:</li>
+</ol>
+
+
+<p>curl -F &ldquo;docpicture=@dog.gif&rdquo; -F &ldquo;catpicture=@cat.gif&rdquo;</p>
+
+<p>To send a field value literally without interpreting a leading &lsquo;@&#8217;<br/>
+or &rsquo;&lt;&lsquo;, or an embedded &rsquo;;type=&lsquo;, use &mdash;form-string instead of<br/>
+-F. This is recommended when the value is obtained from a user or<br/>
+some other unpredictable source. Under these circumstances, using<br/>
+-F instead of &mdash;form-string would allow a user to trick curl into<br/>
+uploading a file.</p>
+
+<p><strong>REFERRER</strong></p>
+
+<p>A HTTP request has the option to include information about which address<br/>
+that referred to actual page. Curl allows you to specify the<br/>
+referrer to be used on the command line. It is especially useful to<br/>
+fool or trick stupid servers or CGI scripts that rely on that information<br/>
+being available or contain certain data.</p>
+
+<p>curl -e www.coolsite.com <a href="http://www.showme.com/">http://www.showme.com/</a></p>
+
+<p>NOTE: The referer field is defined in the HTTP spec to be a full URL.</p>
+
+<p><strong>USER AGENT</strong></p>
+
+<p>A HTTP request has the option to include information about the browser<br/>
+that generated the request. Curl allows it to be specified on the command<br/>
+line. It is especially useful to fool or trick stupid servers or CGI<br/>
+scripts that only accept certain browsers.</p>
+
+<p>Example:</p>
+
+<p>curl -A &lsquo;Mozilla/3.0 (Win95; I)&rsquo; <a href="http://www.nationsbank.com/">http://www.nationsbank.com/</a></p>
+
+<p>Other common strings:<br/>
+&lsquo;Mozilla/3.0 (Win95; I)&rsquo; Netscape Version 3 for Windows 95<br/>
+&lsquo;Mozilla/3.04 (Win95; U)&rsquo; Netscape Version 3 for Windows 95<br/>
+&lsquo;Mozilla/2.02 (OS/2; U)&rsquo; Netscape Version 2 for OS/2<br/>
+&lsquo;Mozilla/4.04 [en] (X11; U; AIX 4.2; Nav)&rsquo; NS for AIX<br/>
+&lsquo;Mozilla/4.05 [en] (X11; U; Linux 2.0.32 i586)&rsquo; NS for Linux</p>
+
+<p>Note that Internet Explorer tries hard to be compatible in every way:<br/>
+&lsquo;Mozilla/4.0 (compatible; MSIE 4.01; Windows 95)&rsquo; MSIE for W95</p>
+
+<p>Mozilla is not the only possible User-Agent name:<br/>
+&lsquo;Konqueror/1.0&rsquo; KDE File Manager desktop client<br/>
+&lsquo;Lynx/2.7.1 libwww-FM/2.14&rsquo; Lynx command line browser</p>
+
+<p><strong>COOKIES</strong></p>
+
+<p>Cookies are generally used by web servers to keep state information at the<br/>
+client&rsquo;s side. The server sets cookies by sending a response line in the<br/>
+headers that looks like &lsquo;Set-Cookie: <data>&rsquo; where the data part then<br/>
+typically contains a set of NAME=VALUE pairs (separated by semicolons &lsquo;;&#8217;<br/>
+like &ldquo;NAME1=VALUE1; NAME2=VALUE2;&rdquo;). The server can also specify for what<br/>
+path the &ldquo;cookie&rdquo; should be used for (by specifying &ldquo;path=value&rdquo;), when the<br/>
+cookie should expire (&ldquo;expire=DATE&rdquo;), for what domain to use it<br/>
+(&ldquo;domain=NAME&rdquo;) and if it should be used on secure connections only<br/>
+(&ldquo;secure&rdquo;).</p>
+
+<p>If you&rsquo;ve received a page from a server that contains a header like:<br/>
+Set-Cookie: sessionid=boo123; path=&ldquo;/foo&rdquo;;</p>
+
+<p>it means the server wants that first pair passed on when we get anything in<br/>
+a path beginning with &ldquo;/foo&rdquo;.</p>
+
+<p>Example, get a page that wants my name passed in a cookie:</p>
+
+<p>curl -b &ldquo;name=Daniel&rdquo; www.sillypage.com</p>
+
+<p>Curl also has the ability to use previously received cookies in following<br/>
+sessions. If you get cookies from a server and store them in a file in a<br/>
+manner similar to:</p>
+
+<p>curl &mdash;dump-header headers www.example.com</p>
+
+<p>&hellip; you can then in a second connect to that (or another) site, use the<br/>
+cookies from the &lsquo;headers&rsquo; file like:</p>
+
+<p>curl -b headers www.example.com</p>
+
+<p>While saving headers to a file is a working way to store cookies, it is<br/>
+however error-prone and not the preferred way to do this. Instead, make curl<br/>
+save the incoming cookies using the well-known netscape cookie format like<br/>
+this:</p>
+
+<p>curl -c cookies.txt www.example.com</p>
+
+<p>Note that by specifying -b you enable the &ldquo;cookie awareness&rdquo; and with -L<br/>
+you can make curl follow a location: (which often is used in combination<br/>
+with cookies). So that if a site sends cookies and a location, you can<br/>
+use a non-existing file to trigger the cookie awareness like:</p>
+
+<p>curl -L -b empty.txt www.example.com</p>
+
+<p>The file to read cookies from must be formatted using plain HTTP headers OR<br/>
+as netscape&rsquo;s cookie file. Curl will determine what kind it is based on the<br/>
+file contents. In the above command, curl will parse the header and store<br/>
+the cookies received from www.example.com. curl will send to the server the<br/>
+stored cookies which match the request as it follows the location. The<br/>
+file &ldquo;empty.txt&rdquo; may be a nonexistent file.</p>
+
+<p>Alas, to both read and write cookies from a netscape cookie file, you can<br/>
+set both -b and -c to use the same file:</p>
+
+<p>curl -b cookies.txt -c cookies.txt www.example.com</p>
+
+<p><strong>PROGRESS METER</strong></p>
+
+<p>The progress meter exists to show a user that something actually is<br/>
+happening. The different fields in the output have the following meaning:</p>
+
+<p>% Total % Received % Xferd Average Speed Time Curr.<br/>
+Dload Upload Total Current Left Speed<br/>
+0 151M 0 38608 0 0 9406 0 4:41:43 0:00:04 4:41:39 9287</p>
+
+<p>From left-to-right:<br/>
+% &ndash; percentage completed of the whole transfer<br/>
+Total &ndash; total size of the whole expected transfer<br/>
+% &ndash; percentage completed of the download<br/>
+Received &ndash; currently downloaded amount of bytes<br/>
+% &ndash; percentage completed of the upload<br/>
+Xferd &ndash; currently uploaded amount of bytes<br/>
+Average Speed<br/>
+Dload &ndash; the average transfer speed of the download<br/>
+Average Speed<br/>
+Upload &ndash; the average transfer speed of the upload<br/>
+Time Total &ndash; expected time to complete the operation<br/>
+Time Current &ndash; time passed since the invoke<br/>
+Time Left &ndash; expected time left to completion<br/>
+Curr.Speed &ndash; the average transfer speed the last 5 seconds (the first<br/>
+5 seconds of a transfer is based on less time of course.)</p>
+
+<p>The &ndash;# option will display a totally different progress bar that doesn&#8217;t<br/>
+need much explanation!</p>
+
+<p><strong>SPEED LIMIT</strong></p>
+
+<p>Curl allows the user to set the transfer speed conditions that must be met<br/>
+to let the transfer keep going. By using the switch -y and -Y you<br/>
+can make curl abort transfers if the transfer speed is below the specified<br/>
+lowest limit for a specified time.</p>
+
+<p>To have curl abort the download if the speed is slower than 3000 bytes per<br/>
+second for 1 minute, run:</p>
+
+<p>curl -Y 3000 -y 60 www.far-away-site.com</p>
+
+<p>This can very well be used in combination with the overall time limit, so<br/>
+that the above operation must be completed in whole within 30 minutes:</p>
+
+<p>curl -m 1800 -Y 3000 -y 60 www.far-away-site.com</p>
+
+<p>Forcing curl not to transfer data faster than a given rate is also possible,<br/>
+which might be useful if you&rsquo;re using a limited bandwidth connection and you<br/>
+don&rsquo;t want your transfer to use all of it (sometimes referred to as<br/>
+&ldquo;bandwidth throttle&rdquo;).</p>
+
+<p>Make curl transfer data no faster than 10 kilobytes per second:</p>
+
+<p>curl &mdash;limit-rate 10K www.far-away-site.com</p>
+
+<p>or</p>
+
+<p>curl &mdash;limit-rate 10240 www.far-away-site.com</p>
+
+<p>Or prevent curl from uploading data faster than 1 megabyte per second:</p>
+
+<p>curl -T upload &mdash;limit-rate 1M <a href="ftp://uploadshereplease.com">ftp://uploadshereplease.com</a></p>
+
+<p>When using the &mdash;limit-rate option, the transfer rate is regulated on a<br/>
+per-second basis, which will cause the total transfer speed to become lower<br/>
+than the given number. Sometimes of course substantially lower, if your<br/>
+transfer stalls during periods.</p>
+
+<p><strong>CONFIG FILE</strong></p>
+
+<p>Curl automatically tries to read the .curlrc file (or _curlrc file on win32<br/>
+systems) from the user&rsquo;s home dir on startup.</p>
+
+<p>The config file could be made up with normal command line switches, but you<br/>
+can also specify the long options without the dashes to make it more<br/>
+readable. You can separate the options and the parameter with spaces, or<br/>
+with = or :. Comments can be used within the file. If the first letter on a<br/>
+line is a &lsquo;#&rsquo;-letter the rest of the line is treated as a comment.</p>
+
+<p>If you want the parameter to contain spaces, you must inclose the entire<br/>
+parameter within double quotes (&ldquo;). Within those quotes, you specify a<br/>
+quote as &rdquo;.</p>
+
+<p>NOTE: You must specify options and their arguments on the same line.</p>
+
+<p>Example, set default time out and proxy in a config file:</p>
+
+<h1>We want a 30 minute timeout:</h1>
+
+<p>-m 1800</p>
+
+<h1>. .. and we use a proxy for all accesses:</h1>
+
+<p>proxy = proxy.our.domain.com:8080</p>
+
+<p>White spaces ARE significant at the end of lines, but all white spaces<br/>
+leading up to the first characters of each line are ignored.</p>
+
+<p>Prevent curl from reading the default file by using -q as the first command<br/>
+line parameter, like:</p>
+
+<p>curl -q www.thatsite.com</p>
+
+<p>Force curl to get and display a local help page in case it is invoked<br/>
+without URL by making a config file similar to:</p>
+
+<h1>default url to get</h1>
+
+<p>url = &ldquo;<a href="http://help.with.curl.com/curlhelp.html">http://help.with.curl.com/curlhelp.html</a>&rdquo;</p>
+
+<p>You can specify another config file to be read by using the -K/&mdash;config<br/>
+flag. If you set config file name to &ldquo;&ndash;&rdquo; it&rsquo;ll read the config from stdin,<br/>
+which can be handy if you want to hide options from being visible in process<br/>
+tables etc:</p>
+
+<p>echo &ldquo;user = user:passwd&rdquo; | curl -K &ndash; <a href="http://that.secret.site.com">http://that.secret.site.com</a></p>
+
+<p><strong>EXTRA HEADERS</strong></p>
+
+<p>When using curl in your own very special programs, you may end up needing<br/>
+to pass on your own custom headers when getting a web page. You can do<br/>
+this by using the -H flag.</p>
+
+<p>Example, send the header &ldquo;X-you-and-me: yes&rdquo; to the server when getting a<br/>
+page:</p>
+
+<p>curl -H &ldquo;X-you-and-me: yes&rdquo; www.love.com</p>
+
+<p>This can also be useful in case you want curl to send a different text in a<br/>
+header than it normally does. The -H header you specify then replaces the<br/>
+header curl would normally send. If you replace an internal header with an<br/>
+empty one, you prevent that header from being sent. To prevent the Host:<br/>
+header from being used:</p>
+
+<p>curl -H &ldquo;Host:&rdquo; www.server.com</p>
+
+<p><strong>FTP and PATH NAMES</strong></p>
+
+<p>Do note that when getting files with the <a href="ftp://">ftp://</a> URL, the given path is<br/>
+relative the directory you enter. To get the file &lsquo;README&rsquo; from your home<br/>
+directory at your ftp site, do:</p>
+
+<p>curl <a href="ftp://user:passwd@my.site.com/README">ftp://user:passwd@my.site.com/README</a></p>
+
+<p>But if you want the README file from the root directory of that very same<br/>
+site, you need to specify the absolute file name:</p>
+
+<p>curl <a href="ftp://user:passwd@my.site.com//README">ftp://user:passwd@my.site.com//README</a></p>
+
+<p>(I.e with an extra slash in front of the file name.)</p>
+
+<p><strong>FTP and firewalls</strong></p>
+
+<p>The FTP protocol requires one of the involved parties to open a second<br/>
+connction as soon as data is about to get transfered. There are two ways to<br/>
+do this.</p>
+
+<p>The default way for curl is to issue the PASV command which causes the<br/>
+server to open another port and await another connection performed by the<br/>
+client. This is good if the client is behind a firewall that don&rsquo;t allow<br/>
+incoming connections.</p>
+
+<p>curl ftp.download.com</p>
+
+<p>If the server for example, is behind a firewall that don&rsquo;t allow connections<br/>
+on other ports than 21 (or if it just doesn&rsquo;t support the PASV command), the<br/>
+other way to do it is to use the PORT command and instruct the server to<br/>
+connect to the client on the given (as parameters to the PORT command) IP<br/>
+number and port.</p>
+
+<p>The -P flag to curl supports a few different options. Your machine may have<br/>
+several IP-addresses and/or network interfaces and curl allows you to select<br/>
+which of them to use. Default address can also be used:</p>
+
+<p>curl -P &ndash; ftp.download.com</p>
+
+<p>Download with PORT but use the IP address of our &lsquo;le0&rsquo; interface (this does<br/>
+not work on windows):</p>
+
+<p>curl -P le0 ftp.download.com</p>
+
+<p>Download with PORT but use 192.168.0.10 as our IP address to use:</p>
+
+<p>curl -P 192.168.0.10 ftp.download.com</p>
+
+<p><strong>NETWORK INTERFACE</strong></p>
+
+<p>Get a web page from a server using a specified port for the interface:</p>
+
+<p>curl &mdash;interface eth0:1 <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p>or</p>
+
+<p>curl &mdash;interface 192.168.1.10 <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p><strong>HTTPS</strong></p>
+
+<p>Secure HTTP requires SSL libraries to be installed and used when curl is<br/>
+built. If that is done, curl is capable of retrieving and posting documents<br/>
+using the HTTPS protocol.</p>
+
+<p>Example:</p>
+
+<p>curl <a href="https://www.secure-site.com">https://www.secure-site.com</a></p>
+
+<p>Curl is also capable of using your personal certificates to get/post files<br/>
+from sites that require valid certificates. The only drawback is that the<br/>
+certificate needs to be in PEM-format. PEM is a standard and open format to<br/>
+store certificates with, but it is not used by the most commonly used<br/>
+browsers (Netscape and MSIE both use the so called PKCS#12 format). If you<br/>
+want curl to use the certificates you use with your (favourite) browser, you<br/>
+may need to download/compile a converter that can convert your browser&#8217;s<br/>
+formatted certificates to PEM formatted ones. This kind of converter is<br/>
+included in recent versions of OpenSSL, and for older versions Dr Stephen<br/>
+N. Henson has written a patch for SSLeay that adds this functionality. You<br/>
+can get his patch (that requires an SSLeay installation) from his site at:<br/>
+<a href="http://www.drh-consultancy.demon.co.uk/">http://www.drh-consultancy.demon.co.uk/</a></p>
+
+<p>Example on how to automatically retrieve a document using a certificate with<br/>
+a personal password:</p>
+
+<p>curl -E /path/to/cert.pem:password <a href="https://secure.site.com/">https://secure.site.com/</a></p>
+
+<p>If you neglect to specify the password on the command line, you will be<br/>
+prompted for the correct password before any data can be received.</p>
+
+<p>Many older SSL-servers have problems with SSLv3 or TLS, that newer versions<br/>
+of OpenSSL etc is using, therefore it is sometimes useful to specify what<br/>
+SSL-version curl should use. Use -3, -2 or -1 to specify that exact SSL<br/>
+version to use (for SSLv3, SSLv2 or TLSv1 respectively):</p>
+
+<p>curl -2 <a href="https://secure.site.com/">https://secure.site.com/</a></p>
+
+<p>Otherwise, curl will first attempt to use v3 and then v2.</p>
+
+<p>To use OpenSSL to convert your favourite browser&rsquo;s certificate into a PEM<br/>
+formatted one that curl can use, do something like this (assuming netscape,<br/>
+but IE is likely to work similarly):</p>
+
+<p>You start with hitting the &lsquo;security&rsquo; menu button in netscape.</p>
+
+<p>Select &lsquo;certificates->yours&rsquo; and then pick a certificate in the list</p>
+
+<p>Press the &lsquo;export&rsquo; button</p>
+
+<p>enter your PIN code for the certs</p>
+
+<p>select a proper place to save it</p>
+
+<p>Run the &lsquo;openssl&rsquo; application to convert the certificate. If you cd to the<br/>
+openssl installation, you can do it like:</p>
+
+<h1>. /apps/openssl pkcs12 -in [file you saved] -clcerts -out [PEMfile]</h1>
+
+<p><strong>RESUMING FILE TRANSFERS</strong></p>
+
+<p>To continue a file transfer where it was previously aborted, curl supports<br/>
+resume on http(s) downloads as well as ftp uploads and downloads.</p>
+
+<p>Continue downloading a document:</p>
+
+<p>curl -C &ndash; -o file <a href="ftp://ftp.server.com/path/file">ftp://ftp.server.com/path/file</a></p>
+
+<p>Continue uploading a document(*1):</p>
+
+<p>curl -C &ndash; -T file <a href="ftp://ftp.server.com/path/file">ftp://ftp.server.com/path/file</a></p>
+
+<p>Continue downloading a document from a web server(*2):</p>
+
+<p>curl -C &ndash; -o file <a href="http://www.server.com/">http://www.server.com/</a></p>
+
+<p>(*1) = This requires that the ftp server supports the non-standard command<br/>
+SIZE. If it doesn&rsquo;t, curl will say so.</p>
+
+<p>(*2) = This requires that the web server supports at least HTTP/1.1. If it<br/>
+doesn&rsquo;t, curl will say so.</p>
+
+<p><strong>TIME CONDITIONS</strong></p>
+
+<p>HTTP allows a client to specify a time condition for the document it<br/>
+requests. It is If-Modified-Since or If-Unmodified-Since. Curl allow you to<br/>
+specify them with the -z/&mdash;time-cond flag.</p>
+
+<p>For example, you can easily make a download that only gets performed if the<br/>
+remote file is newer than a local copy. It would be made like:</p>
+
+<p>curl -z local.html <a href="http://remote.server.com/remote.html">http://remote.server.com/remote.html</a></p>
+
+<p>Or you can download a file only if the local file is newer than the remote<br/>
+one. Do this by prepending the date string with a &lsquo;&ndash;&rsquo;, as in:</p>
+
+<p>curl -z -local.html <a href="http://remote.server.com/remote.html">http://remote.server.com/remote.html</a></p>
+
+<p>You can specify a &ldquo;free text&rdquo; date as condition. Tell curl to only download<br/>
+the file if it was updated since yesterday:</p>
+
+<p>curl -z yesterday <a href="http://remote.server.com/remote.html">http://remote.server.com/remote.html</a></p>
+
+<p>Curl will then accept a wide range of date formats. You always make the date<br/>
+check the other way around by prepending it with a dash &lsquo;&ndash;&rsquo;.</p>
+
+<p><strong>DICT</strong></p>
+
+<p>For fun try</p>
+
+<p>curl dict://dict.org/m:curl<br/>
+curl dict://dict.org/d:heisenbug:jargon<br/>
+curl dict://dict.org/d:daniel:web1913</p>
+
+<p>Aliases for &rsquo;m&#8217; are &lsquo;match&rsquo; and &lsquo;find&rsquo;, and aliases for &rsquo;d&#8217; are &lsquo;define&#8217;<br/>
+and &#8216;lookup&rsquo;. For example,</p>
+
+<p>curl dict://dict.org/find:curl</p>
+
+<p>Commands that break the URL description of the RFC (but not the DICT<br/>
+protocol) are</p>
+
+<p>curl dict://dict.org/show:db<br/>
+curl dict://dict.org/show:strat</p>
+
+<p>Authentication is still missing (but this is not required by the RFC)</p>
+
+<p><strong>LDAP</strong></p>
+
+<p>If you have installed the OpenLDAP library, curl can take advantage of it<br/>
+and offer ldap:// support.</p>
+
+<p>LDAP is a complex thing and writing an LDAP query is not an easy task. I do<br/>
+advice you to dig up the syntax description for that elsewhere. Two places<br/>
+that might suit you are:</p>
+
+<p>Netscape&rsquo;s &ldquo;Netscape Directory SDK 3.0 for C Programmer&rsquo;s Guide Chapter 10:<br/>
+Working with LDAP URLs&rdquo;:<br/>
+<a href="http://developer.netscape.com/docs/manuals/dirsdk/csdk30/url.htm">http://developer.netscape.com/docs/manuals/dirsdk/csdk30/url.htm</a></p>
+
+<p>RFC 2255, &ldquo;The LDAP URL Format&rdquo; <a href="http://www.rfc-editor.org/rfc/rfc2255.txt">http://www.rfc-editor.org/rfc/rfc2255.txt</a></p>
+
+<p>To show you an example, this is now I can get all people from my local LDAP<br/>
+server that has a certain sub-domain in their email address:</p>
+
+<p>curl -B &ldquo;ldap://ldap.frontec.se/o=frontec??sub?mail=*sth.frontec.se&rdquo;</p>
+
+<p>If I want the same info in HTML format, I can get it by not using the -B<br/>
+(enforce ASCII) flag.</p>
+
+<p><strong>ENVIRONMENT VARIABLES</strong></p>
+
+<p>Curl reads and understands the following environment variables:</p>
+
+<p>http_proxy, HTTPS_PROXY, FTP_PROXY, GOPHER_PROXY</p>
+
+<p>They should be set for protocol-specific proxies. General proxy should be<br/>
+set with<br/>
+ALL_PROXY</p>
+
+<p>A comma-separated list of host names that shouldn&rsquo;t go through any proxy is<br/>
+set in (only an asterisk, &lsquo;*&rsquo; matches all hosts)</p>
+
+<p>NO_PROXY</p>
+
+<p>If a tail substring of the domain-path for a host matches one of these<br/>
+strings, transactions with that node will not be proxied.</p>
+
+<p>The usage of the -x/&mdash;proxy flag overrides the environment variables.</p>
+
+<p>NETRC</p>
+
+<p>Unix introduced the .netrc concept a long time ago. It is a way for a user<br/>
+to specify name and password for commonly visited ftp sites in a file so<br/>
+that you don&rsquo;t have to type them in each time you visit those sites. You<br/>
+realize this is a big security risk if someone else gets hold of your<br/>
+passwords, so therefore most unix programs won&rsquo;t read this file unless it is<br/>
+only readable by yourself (curl doesn&rsquo;t care though).</p>
+
+<p>Curl supports .netrc files if told so (using the -n/&mdash;netrc and<br/>
+&mdash;netrc-optional options). This is not restricted to only ftp,<br/>
+but curl can use it for all protocols where authentication is used.</p>
+
+<p>A very simple .netrc file could look something like:</p>
+
+<p>machine curl.haxx.se login iamdaniel password mysecret</p>
+
+<p>CUSTOM OUTPUT</p>
+
+<p>To better allow script programmers to get to know about the progress of<br/>
+curl, the -w/&mdash;write-out option was introduced. Using this, you can specify<br/>
+what information from the previous transfer you want to extract.</p>
+
+<p>To display the amount of bytes downloaded together with some text and an<br/>
+ending newline:</p>
+
+<p>curl -w &lsquo;We downloaded %{size_download} bytesn&rsquo; www.download.com</p>
+
+<p>KERBEROS4 FTP TRANSFER</p>
+
+<p>Curl supports kerberos4 for FTP transfers. You need the kerberos package<br/>
+installed and used at curl build time for it to be used.</p>
+
+<p>First, get the krb-ticket the normal way, like with the kauth tool. Then use<br/>
+curl in way similar to:</p>
+
+<p>curl &mdash;krb4 private <a href="ftp://krb4site.com">ftp://krb4site.com</a> -u username:fakepwd</p>
+
+<p>There&rsquo;s no use for a password on the -u switch, but a blank one will make<br/>
+curl ask for one and you already entered the real password to kauth.</p>
+
+<p>TELNET</p>
+
+<p>The curl telnet support is basic and very easy to use. Curl passes all data<br/>
+passed to it on stdin to the remote server. Connect to a remote telnet<br/>
+server using a command line similar to:</p>
+
+<p>curl telnet://remote.server.com</p>
+
+<p>And enter the data to pass to the server on stdin. The result will be sent<br/>
+to stdout or to the file you specify with -o.</p>
+
+<p>You might want the -N/&mdash;no-buffer option to switch off the buffered output<br/>
+for slow connections or similar.</p>
+
+<p>Pass options to the telnet protocol negotiation, by using the -t option. To<br/>
+tell the server we use a vt100 terminal, try something like:</p>
+
+<p>curl -tTTYPE=vt100 telnet://remote.server.com</p>
+
+<p>Other interesting options for it -t include:</p>
+
+<ul>
+<li><p>XDISPLOC=<X display> Sets the X display location.</p></li>
+<li><p>NEW_ENV=&lt;var,val> Sets an environment variable.</p></li>
+</ul>
+
+
+<p>NOTE: the telnet protocol does not specify any way to login with a specified<br/>
+user and password so curl can&rsquo;t do that automatically. To do that, you need<br/>
+to track when the login prompt is received and send the username and<br/>
+password accordingly.</p>
+
+<p>PERSISTENT CONNECTIONS</p>
+
+<p>Specifying multiple files on a single command line will make curl transfer<br/>
+all of them, one after the other in the specified order.</p>
+
+<p>libcurl will attempt to use persistent connections for the transfers so that<br/>
+the second transfer to the same host can use the same connection that was<br/>
+already initiated and was left open in the previous transfer. This greatly<br/>
+decreases connection time for all but the first transfer and it makes a far<br/>
+better use of the network.</p>
+
+<p>Note that curl cannot use persistent connections for transfers that are used<br/>
+in subsequence curl invokes. Try to stuff as many URLs as possible on the<br/>
+same command line if they are using the same host, as that&rsquo;ll make the<br/>
+transfers faster. If you use a http proxy for file transfers, practically<br/>
+all transfers will be persistent.</p>
+
+<p>MAILING LISTS</p>
+
+<p>For your convenience, we have several open mailing lists to discuss curl,<br/>
+its development and things relevant to this. Get all info at<br/>
+<a href="http://curl.haxx.se/mail/.">http://curl.haxx.se/mail/.</a> Some of the lists available are:</p>
+
+<p>curl-users</p>
+
+<p>Users of the command line tool. How to use it, what doesn&rsquo;t work, new<br/>
+features, related tools, questions, news, installations, compilations,<br/>
+running, porting etc.</p>
+
+<p>curl-library</p>
+
+<p>Developers using or developing libcurl. Bugs, extensions, improvements.</p>
+
+<p>curl-announce</p>
+
+<p>Low-traffic. Only receives announcements of new public versions. At worst,<br/>
+that makes something like one or two mails per month, but usually only one<br/>
+mail every second month.</p>
+
+<p>curl-and-php</p>
+
+<p>Using the curl functions in PHP. Everything curl with a PHP angle. Or PHP<br/>
+with a curl angle.</p>
+
+<p>curl-and-python</p>
+
+<p>Python hackers using curl with or without the python binding pycurl.</p>
+
+<p>Please direct curl questions, feature requests and trouble reports to one of<br/>
+these mailing lists instead of mailing any individual.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-19T00:00:00+08:00" pubdate data-updated="true">May 19<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/05/19/curl%E6%89%8B%E5%86%8C/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/05/19/curl%E6%89%8B%E5%86%8C/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/05/12/virtual_box_%E5%AE%89%E8%A3%85/" title="Previous Post: virtual_box_安装">&laquo; virtual_box_安装</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/05/20/Ajax_%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90_ZZ/" title="Next Post: Ajax_性能分析_ZZ">Ajax_性能分析_ZZ &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

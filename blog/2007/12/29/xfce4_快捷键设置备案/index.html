@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Xfce4_快捷键设置备案 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="xfce4 除了本身常用的快捷键外，还可以自定义十个命令做为快捷键来使用的。下面
+就来介绍一下常用的快捷键是什么及怎样实现快捷键自定义。 在用户目录创建一个目录： $ mkdir -p ~/.themes/xfwm4/custom.keys/ 用来存放自定义快捷键文件所用， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2007/12/29/xfce4_%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE%E5%A4%87%E6%A1%88">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Xfce4_快捷键设置备案</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-29T00:00:00+08:00" pubdate data-updated="true">Dec 29<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>xfce4 除了本身常用的快捷键外，还可以自定义十个命令做为快捷键来使用的。下面<br/>
+就来介绍一下常用的快捷键是什么及怎样实现快捷键自定义。</p>
+
+<p>在用户目录创建一个目录：</p>
+
+<p>$ mkdir -p ~/.themes/xfwm4/custom.keys/</p>
+
+<p>用来存放自定义快捷键文件所用，这样不同的用户可以定义不同的快捷键。实现个性化。<br/>
+下面把系统缺省的快捷键文件复制到上面的目录：</p>
+
+<p>$ cp /usr/share/xfwm4/themes/default.keys/keythemerc ~/.themes/xfwm4/custom.keys/</p>
+
+<p>文件是 keythemerc</p>
+
+<p>其内容是(我加了注释）:</p>
+
+<p>源码:</p>
+
+<h1>关闭窗口</h1>
+
+<p>close_window_key = Alt+F4</p>
+
+<h1>最大化切换</h1>
+
+<p>maximize_window_key = Alt+F5</p>
+
+<h1>竖向拉长</h1>
+
+<p>maximize_vert_key=Alt+F6</p>
+
+<h1>横向拉长</h1>
+
+<p>maximize_horiz_key=Alt+F7</p>
+
+<h1>最小化窗口</h1>
+
+<p>hide_window_key=Alt+F8</p>
+
+<h1>卷起窗口</h1>
+
+<p>shade_window_key=Alt+F9</p>
+
+<h1>插入所有工作区中</h1>
+
+<p>stick_window_key=Alt+F10</p>
+
+<h1>在程序间切换焦点</h1>
+
+<p>cycle_windows_key=Alt+Tab</p>
+
+<h1>按住三键，再按光标键可移动窗口位置</h1>
+
+<p>move_window_up_key=Control+Shift+Alt+Up</p>
+
+<h1>向下移动窗口位置</h1>
+
+<p>move_window_down_key=Control+Shift+Alt+Down</p>
+
+<h1>向左移动窗口位置</h1>
+
+<p>move_window_left_key=Control+Shift+Alt+Left</p>
+
+<h1>向右移动窗口位置</h1>
+
+<p>move_window_right_key=Control+Shift+Alt+Right</p>
+
+<h1>改变窗口大小，向上减小</h1>
+
+<p>resize_window_up_key=Shift+Alt+Up</p>
+
+<h1>向下增大</h1>
+
+<p>resize_window_down_key=Shift+Alt+Down</p>
+
+<h1>向左减小</h1>
+
+<p>resize_window_left_key=Shift+Alt+Left</p>
+
+<h1>向右增大</h1>
+
+<p>resize_window_right_key=Shift+Alt+Right</p>
+
+<h1>使窗口到顶层来</h1>
+
+<p>raise_window_key=Shift+Alt+Page_Up</p>
+
+<h1>使窗口到底层去</h1>
+
+<p>lower_window_key=Shift+Alt+Page_Down</p>
+
+<h1>改变当前工作区，去下一个</h1>
+
+<p>next_workspace_key=Control+Alt+Right</p>
+
+<h1>前一个工作区</h1>
+
+<p>prev_workspace_key=Control+Alt+Left</p>
+
+<h1>添加一个工作区</h1>
+
+<p>add_workspace_key=Alt+Insert</p>
+
+<h1>减少一个工作区</h1>
+
+<p>del_workspace_key=Alt+Delete</p>
+
+<h1>工作区选择，第一个工作区</h1>
+
+<p>workspace_1_key=Control+F1</p>
+
+<h1>第二个工作区</h1>
+
+<p>workspace_2_key=Control+F2</p>
+
+<h1>第三个工作区</h1>
+
+<p>workspace_3_key=Control+F3</p>
+
+<h1>有就是第四个工作区，没有就是第一个，其他类同</h1>
+
+<p>workspace_4_key=Control+F4</p>
+
+<h1>同上</h1>
+
+<p>workspace_5_key=Control+F5</p>
+
+<p>workspace_6_key=Control+F6</p>
+
+<p>workspace_7_key=Control+F7</p>
+
+<p>workspace_8_key=Control+F8</p>
+
+<p>workspace_9_key=Control+F9</p>
+
+<h1>移动窗口到下一个工作区</h1>
+
+<p>move_window_next_workspace_key=Alt+Control+End</p>
+
+<h1>移动窗口到上一个工作区</h1>
+
+<p>move_window_prev_workspace_key=Alt+Control+Home</p>
+
+<h1>移动窗口到指定工作区号的工作区，KP_1，表示小键盘数字1</h1>
+
+<p>move_window_workspace_1_key=Alt+Control+KP_1</p>
+
+<p>move_window_workspace_2_key=Alt+Control+KP_2</p>
+
+<p>move_window_workspace_3_key=Alt+Control+KP_3</p>
+
+<h1>有第四个工作区就移动第四个，没有就到第一个，其他类同</h1>
+
+<p>move_window_workspace_4_key=Alt+Control+KP_4</p>
+
+<p>move_window_workspace_5_key=Alt+Control+KP_5</p>
+
+<p>move_window_workspace_6_key=Alt+Control+KP_6</p>
+
+<p>move_window_workspace_7_key=Alt+Control+KP_7</p>
+
+<p>move_window_workspace_8_key=Alt+Control+KP_8</p>
+
+<p>move_window_workspace_9_key=Alt+Control+KP_9</p>
+
+<h1>快捷键列表十个命令可用</h1>
+
+<h1>xfce4 文档（帮助）</h1>
+
+<p>shortcut_1_key=Alt+F1</p>
+
+<h1>快捷键一要执行的命令</h1>
+
+<p>shortcut_1_exec=xfhelp4</p>
+
+<h1>运行命令对话框</h1>
+
+<p>shortcut_2_key=Alt+F2</p>
+
+<p>shortcut_2_exec=xfrun4</p>
+
+<h1>锁屏</h1>
+
+<p>shortcut_3_key=Alt+Control+Delete</p>
+
+<p>shortcut_3_exec=xflock4</p>
+
+<p>shortcut_4_key=none</p>
+
+<p>shortcut_5_key=none</p>
+
+<p>shortcut_6_key=none</p>
+
+<p>shortcut_7_key=none</p>
+
+<p>shortcut_8_key=none</p>
+
+<p>shortcut_9_key=none</p>
+
+<p>shortcut_10_key=none</p>
+
+<p>f</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-29T00:00:00+08:00" pubdate data-updated="true">Dec 29<span>th</span>, 2007</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2007/12/29/xfce4_%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE%E5%A4%87%E6%A1%88/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2007/12/29/xfce4_%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE%E5%A4%87%E6%A1%88/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2007/12/29/rails_tips_from_robbin/" title="Previous Post: rails_tips_from_robbin">&laquo; rails_tips_from_robbin</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/01/04/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%BB%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%98%85%E8%AF%BB%EF%BC%BD/" title="Next Post: 深度探索关系数据库［第一次阅读］">深度探索关系数据库［第一次阅读］ &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

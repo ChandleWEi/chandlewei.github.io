@@ -1,0 +1,1767 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="今天试验安装了gentoo,使用下面的官方安装指导 http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml  我终于明白了gentoo的优化可能指的是什么了， emerge 获得获得源代码包然后你自己可以修改/etc/make. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/17">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/12/gentoo%E5%88%9D%E7%BA%A7%E4%BD%93%E9%AA%8C/">Gentoo初级体验</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-12T00:00:00+08:00" pubdate data-updated="true">Jun 12<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天试验安装了gentoo,使用下面的官方安装指导</p>
+
+<p><a href="http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml">http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml</a></p>
+
+<p> 我终于明白了gentoo的优化可能指的是什么了， emerge 获得获得源代码包然后你自己可以修改/etc/make.conf 参数 ，虽然gcc -O2 效能不错，不过你完全可以改成 -O3, 这样就编译优化，这样生成的二进制就优化了，而且是自动编译安装的，不过那个叫慢哦，如果不是服务器,那确实是浪费时间，不过对于服务器来说提高一点是一点，</p>
+
+<p> </p>
+
+<p>总之装个东西确实慢，但是却没有依赖关系的影响，因为是源代码编译的,还能优化那么一点点</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/05/ruby%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F/">Ruby实例变量</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-05T00:00:00+08:00" pubdate data-updated="true">Jun 5<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby">http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby</a></p>
+
+<p> </p>
+
+<p>class ExampleClass<br/>
+@variable = &ldquo;foo&#8221;<br/>
+@@variable = &#8220;bar&rdquo;</p>
+
+<p>def initialize<br/>
+@variable = &ldquo;baz&#8221;<br/>
+end</p>
+
+<p>def self.test<br/>
+puts @variable<br/>
+end</p>
+
+<p>def test<br/>
+self.class.test<br/>
+puts @@variable<br/>
+puts @variable<br/>
+end<br/>
+end</p>
+
+<p>class ExampleSubclass &lt; ExampleClass<br/>
+@variable = &ldquo;1&#8221;<br/>
+@@variable = &#8220;2&rdquo;</p>
+
+<p>def initialize<br/>
+@variable = &ldquo;3&#8221;<br/>
+end<br/>
+end</p>
+
+<p>first_example = ExampleClass.new<br/>
+first_example.test</p>
+
+<p>puts &ldquo;&mdash;&ndash;&rdquo;</p>
+
+<p>second_example = ExampleSubclass.new<br/>
+second_example.test</p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/03/%E6%B5%8B%E8%AF%95ie_567/">测试ie_567</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-03T00:00:00+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.my-debugbar.com/wiki/IETester/HomePage">http://www.my-debugbar.com/wiki/IETester/HomePage</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/03/ruby_1.8.7/">ruby_1.8.7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-03T00:00:00+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>|   |</p>
+
+<p>1:44 AM (8 hours ago)</p>
+
+<h2><a href="http://feeds.feedburner.com/%7Er/RubyInside/%7E3/303060223/ruby-187-released-912.html">Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
+
+<p>from <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Ffeeds.feedburner.com%2FRubyInside">Ruby Inside</a> by Peter Cooper</p>
+
+<p><img src="http://www.rubyinside.com/wp-content/uploads/2008/06/ruby187.jpg" alt="ruby187.png" /></p>
+
+<p>With all the excitement surrounding RailsConf 2008 and the Maglev announcement, <a href="http://www.ruby-lang.org/en/news/2008/05/31/ruby-1-8-7-has-been-released/">news of the release of Ruby 1.8.7</a> passed rather quietly. The download URLs can be found <a href="http://www.ruby-lang.org/en/news/2008/05/31/ruby-1-8-7-has-been-released/">here</a>, but note that the official Ruby-Lang.org <a href="http://www.ruby-lang.org/en/downloads/">download page</a> does not reflect 1.8.7’s release yet.</p>
+
+<p>Ruby 1.8.7 is a point release of the stable, production-ready 1.8.x branch, so it should be ready to roll out to your deployment environments but be cautious. It features many bug fixes, but also some performance enhancements and significant back-ports of Ruby 1.9 functionality (enumeration objects in particular). More information is available in the <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7/NEWS">release NEWS file</a>. The most interesting developments include:</p>
+
+<p><strong>vendor_ruby</strong></p>
+
+<blockquote><p>A new library directory named <code>vendor\_ruby’ is introduced in addition to</code>site_ruby’. The idea is to separate libraries installed by the package system (<code>vendor’) from manually (</code>site’) installed libraries preventing the former from getting overwritten by the latter, while preserving the user option to override vendor libraries with site libraries. (<code>site\_ruby’ takes precedence over</code>vendor_ruby’)</p></blockquote>
+
+<p><strong>securerandom</strong></p>
+
+<blockquote><p>securerandom is a Ruby 1.9 library that’s now part of the Ruby 1.8 standard library too. Example: require ’securerandom’; SecureRandom.random_bytes(16)</p></blockquote>
+
+<p><strong>Array#flatten changes</strong></p>
+
+<blockquote><p>Array#flatten now takes an optional argument that determines how deep to perform flattening.</p></blockquote>
+
+<p><strong>Array method changes</strong></p>
+
+<blockquote><p>Array#collect!, Array#map!, Array#each, Array#each_index, Array#reverse_each, Array#reject, Array#reject! and Array#delete_if now return an enumerator if no block is given. Array#pop and Array#shift now take an optional argument specifying the number of elements to remove from the array.</p></blockquote>
+
+<p><strong>Binding#eva</strong>l</p>
+
+<blockquote><p>Binding#eval is a new method to enable evaluations to take place in the context of a binding.</p></blockquote>
+
+<p><strong>Enumerable::Enumerator added</strong></p>
+
+<blockquote><p><a href="http://ruby-doc.org/core/classes/Enumerable/Enumerator.html">Enumerable::Enumerator</a> adds support for enumerations to be dealt with as objects, as in Ruby 1.9.</p></blockquote>
+
+<p><strong>Enumerator support on many classes</strong></p>
+
+<blockquote><p>Many methods based on IO, Integer, Array (see above), ARGF, Numeric, ObjectSpace, Range, String, and Struct now support returning enumerator objects where no blocks are given.</p></blockquote>
+
+<p><strong>net/smtp</strong></p>
+
+<blockquote><p><a href="http://www.ruby-doc.org/stdlib/libdoc/net/smtp/rdoc/index.html">net/smtp</a> now supports SSL/TLS connections.</p></blockquote>
+
+<p>These items really only scratch the surface though. Dig into the <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7/NEWS">NEWS</a> file for more info.</p>
+
+<p>|</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/02/zz_%E5%9C%A8%E7%BA%BF%E9%97%AE%E9%A2%98/">Zz_在线问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-02T00:00:00+08:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> </p>
+
+<p><a href="http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/%C2%A0">http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/%C2%A0</a></p>
+
+<p>Rails &ndash; How to find out who is online Posted by matt on December 13, 2006 Well, this is my first post. I was frustrated in to starting this blog, through searching the internet for solutions to various programming problems, and finding either nothing, or only half the answer. Hopefully I will be able to help others solve some of their problems faster. Recently I have been writing a dating site in ruby on rails. One quite important feature of this site is a list of members who are currently online. After a couple of days of pain, here’s the pretty simple solution to the problem: First off this only works if you use ActiveRecord to manage your sessions. To do this you must uncomment the following line in your environment.rb file: config.action_controller.session_store = :active_record_store Then create the sessions table by running the following command from your RAILS_ROOT: rake db:sessions:create Now, whenever a user logs in to your application add their id to the session. In my app at the moment it looks something like this: member = Member.new( @params[ :member ] ) member = Member.find( :all, :conditions => &ldquo;screen_name = &lsquo;#{member.screen_name}&rsquo; AND password = &lsquo;#{member.password}&rsquo;&rdquo; ) if member != nil session[ :member_id ] = member.id redirect_to :action => &lsquo;success&rsquo; else redirect_to :action => &lsquo;form&rsquo; end This code will need work for a production environment, for one thing it is open to SQL injection attacks. Now to find all of the users who are currently online it is just a matter of searching the sessions table for all the users who have been active in the last 10 minutes. This can be done using rails built in session model. Finally the session data needs to be unmarshaled and decoded. This stumped me for a while, but finally I found the answer at <a href="http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html.">http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html.</a> So here is my code to return an array of the member_ids of all the members online and active within the last 10 minutes. def who_is_online @whos_online = Array.new() onlines = CGI::Session::ActiveRecordStore::Session.find( :all, :conditions => [ &lsquo;updated_at = ?&rsquo;, Time.now() &ndash; 10.minutes ] ) onlines.each do |online| id = Marshal.load( Base64.decode64( online.data ) ) @whos_online &lt;&lt; id[ :member_id ] end return @whos_online end * Posted in Ruby on Rails * Meta 10 comments, permalink, rss</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/01/%E6%88%91%E6%98%AF%E6%80%8E%E4%B9%88%E7%9C%8BFRIENDS%E7%BB%83%E5%8F%A3%E8%AF%AD%E7%9A%84_zz/">我是怎么看FRIENDS练口语的_zz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-01T00:00:00+08:00" pubdate data-updated="true">Jun 1<span>st</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>我是怎么看FRIENDS练口语的</strong></p>
+
+<p>    很早就开始看F6，最开始是从起床开始，就一个人对着电脑，傻笑一天，每天吃一顿饭，傍晚和同学一起吃饭的时候，基本就不会说中国话了，被人说什么第一个反应就是英文。周末同学都回家了，更是变本加厉，因为没有人和我说话，内心独白都是F6里的各种声音，还有那种“哄笑”配乐，一个周下来，感觉人快疯了。</p>
+
+<p>    大学的时候是为了好玩，没想着真的用它来学英语。</p>
+
+<p>    后来工作了几年，因为一直野心勃勃的要去美国公干，所以从那个时候开始重新FAN F6,很长一段时间过去，学下来，感觉有些许体会了，上来冒个泡。</p>
+
+<p>    第一遍，带中文字幕看一遍</p>
+
+<p>    10季真不是个小数字，看了一遍把当初那种感觉找了回来，所谓的感觉，就是在内心独白的时候都是英语，说话的第一个反应也是英文。</p>
+
+<p>    第二遍，带英文字母看了一遍</p>
+
+<p>    我买的是60张的那种DVD，英文字母有几季还是不错的，后面的越做越差，真是没法看，就当了剧本。第二次看，基本都能听懂了，就帮着DVD校对字幕，校对的过程中，听力本身就是一个提升。</p>
+
+<p>    第三遍，不说你也知道了，去掉字幕，去掉字母有一个好处，就像丢了拐棍，你听起来就不会像看着英文字母那样一下就反映到脑子里，还要想一下，哦，这个单词是什么来着，因为我们很多时候对于掌握了的单词，突然冒出来，还是会思维停滞一下，就在这停滞的一下，新的内容又冲进来了，你就顾此失彼，到最后，前面的没想起来，后面的又忘了听，刚开始的时候是懊丧不已，因为前两遍的信心全被他给摧毁了，不过没关系，很正常的么，这个地方，你就要不停的重复听，所以你买DVD机比较好，有那个A-B重复健，可以无限重复你要听的句子，你总有想起来的那一刻吧</p>
+
+<p>    第三遍是最痛苦的，也是最能升华的一个阶段。</p>
+
+<p>    我在做第三遍的时候，是听力口语一起来的，其实这两个本来就是分不开的，</p>
+
+<p>    口语，要求自己强力模仿！！！！！注意这个词哦~~~不是吃干饭的，充分利用了A-B健，一个句子重复放，跟着读，然后跟着说，最后脱口而出，一点也不比他们差，甚至可以在语气，语调上，和他们一模一样。作这一部分的时候，我犯了一个错误，就是跟着读剧本，这是十分错误的，正确的做法是，像学鸟叫一样，学他们的声音，不要把自己原来读英文的习惯带到里面去，剧本只是告诉你他们再说什么内容，只是一个提示的作用，因为他们有很多连读，四个音节，在他们嘴里常常变成了2个音节，甚至一个音就带过了，你根本就反应不过来，这也就是我们听不懂他们说话的原因，太快了，而你根本不知道他连读了，如果按照自己的读英文的习惯，永远也做不到他们一样快。所以记住，！！！！！！学他们发出的声音，而不是读他们说出的句子！！！！！！！</p>
+
+<p>    这第三遍，我可以用老牛拉破车来形容，实在是很慢很无聊，要花费大量的时间，特别是一开始，记得101背到我想吐，莫尼卡的那句 “THERE IS NOTHING TO TELL@!#$%@#%@!%@$#%”可以直接当减肥药了，一听到就想吐！！但是，有一点保证，以后老外用多快的速度，我都能听懂她在说“THERE IS NOTHING TO TELL@!#$%@#%@!%@$#%”而且可以和她说的一样快，一样纯正的美国纽约音。兄弟们~~~代价惨重阿~~~~~`你可以算一下，一集大约20分钟，每句话重复10遍，那是什么概念，就是一集学下来要200分钟，折合3个多小时，如果你特别笨的话，多跟几遍，时间又上去了，我经常会思想溜号，A-B的时候不知道想什么去了，就要多重复几遍。我当初算了一下，我大约要跟到第7遍的时候才有感觉，前面不是语速慢了，就是快了，要么就是停顿不对，也可能我比较笨？加上笨的原因，加上溜号，大约有4个小时一集把.</p>
+
+<p>    下面分析一下他们六个人的口音语速，RACH，我最喜欢的角色，她的口音不很好学，因为她经常会发出很可爱的声音，感情丰富啊，而且连音也比较多，但是学她很有用，因为她的发音很性感，个人认为。CHANDLER这个家伙经常会把我逼疯的，他太贫了，语速又快，最难学了，最好学的是PHEEBS，很喜欢她，她的发音很圆润，语速也很正常，MONIKA 可以用她来练长句子，她经常会一口气说很多，JOEY，他反映慢，语速适中应该是最好学的一个，可是他的声音太低了，不适合女生学，我学他太吃力了，男生的话是个首选~~~~</p>
+
+<p>    这样我整了3季的时候，除了生词，在新天地泡吧的时候，可以和老外自由对话，心理满足了一把</p>
+
+<p>    过了3季，后面的7季就会块很多，因为很多句子，在你的耳朵里已经是很简单的，根本不需要重复，你要练习的只是特别难的那些长句，记不记得伦敦之行？走之前，莫尼卡的那一口气说完的长句子，呵呵，那就是最高境界，你可以脱口而出，和她一样快，一样不喘气，后面的你就不用跟了，你可以出师了<del><br/>
+但是，这是3季以后的事了，3季不过，一切免谈</del></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/27/%E9%87%8D%E8%A6%81%E5%9B%BE%E4%B9%A6__MySQL_Stored_Procedure_Programming__zz/">重要图书__MySQL_Stored_Procedure_Programming__zz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-27T00:00:00+08:00" pubdate data-updated="true">May 27<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1><a href="http://www.dbanotes.net/database/mysql_stored_procedure_programming.html">重要图书: MySQL Stored Procedure Programming</a></h1>
+
+<p>作者: <strong> <a href="http://www.dbanotes.net/">Fenng</a></strong> | 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及 <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/">版权声明</a><br/>
+  网址: <a href="http://www.dbanotes.net/database/mysql_stored_procedure_programming.html">http://www.dbanotes.net/database/mysql_stored_procedure_programming.html</a></p>
+
+<p>看到有 Blog 说 Oracle PL/SQL 经典图书 <a href="http://www.oracleplsqlprogramming.com/">Oracle PL/SQL Programming</a> 的作者 <a href="http://www.stevenfeuerstein.com/">Steven Feuerstein</a> 出了本新书, 这应该不算什么太新鲜的事情，新鲜的是: 这本图书是关于 MySQL 存储过程的! 新书的名字是 <a href="http://safari.oreilly.com/?XmlId=0596100892">MySQL Stored Procedure Programming</a> ， 出版商是 O&#8217;Reilly.</p>
+
+<p>更值得注意的是, 第一作者是 Guy Harrison , 这位老兄是 <a href="http://www.quest.com/">Quest</a> 软件的架构师(而 Quest 近年来也对 MySQL 的数据库工具推出了不少产品), 也是 <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0136142311?v=glance">Oracle SQL High-Performance Tuning</a> 一书的作者。Oracle SQL High-Performance Tuning 在很长的一段时间内都曾经被一些 Oracle 优化专家推崇, 现在虽然有些过时, 但想起来没能被国内出版社及时引进, 仍然有些遗憾。</p>
+
+<p>从 O&#8217;reilly 的宣传来看, 现在 Guy Harrison 的名头反而不如 Steven Feuerstein 响亮了(所以个别地方把 Steven 放到前面?), 也让人感慨.</p>
+
+<p>MySQL 5 最大的一个新特性是支持存储过程。 而此前, MySQL 最容易受到攻击的一点是不具备存储过程功能, 相信在接下来的改进中, 具备存储过程编程能力的 MySQL 能够真正的进入一些被商业数据库把持的企业应用领域.</p>
+
+<p>这次两人算得上是黄金组合, 这本书应该能够对开源数据库领域产生非常大的影响。两位作者都是 Oracel 领域的权威人士(Oracle 领域的技术人员开始转向 MySQL 了?), 相信写作的时候也会就 MySQL vs Oracle 编程做一番表达.</p>
+
+<p>也期望国内出版社能够加紧动作，早点把这本书引入到国内. 拭目以待。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/27/%E5%8D%81%E4%B8%AA%E4%B8%8D%E5%8F%AF%E6%88%96%E7%BC%BA%E7%9A%84_ruby_gems/">十个不可或缺的_ruby_gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-27T00:00:00+08:00" pubdate data-updated="true">May 27<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 1039个读者 译者: attaboy 02/05/2008 原文 引用 双语对照及眉批 简介 十个不可或缺的 ruby gems 在我编程的时候有些东西是必须的。 于是我总结了这个 10 个最重要的 ruby gems 列表， 它们将使你的生活变得更轻松， 即使你只是花少量的时间用 ruby 编程。 Gems 有很多， 不过这些都是精华！ capistrano Capistrano 是 Rails 应用程序开发更加从容。 它还是一个用来和远程服务器交互的聪明的 framework 。 事实上我已经备份了用 Capistrano 写的代码， 作为 Rake/Net::SSH 或者 shell 代码之外的另一个选择。 chronic Chronic 是一个自然语言分析器， 它的名字是个俏皮的双关。 >> Chronic.parse(&lsquo;3rd wednesday in november&rsquo;) => Wed Nov 19 12:00:00 0000 2008 ferret Ferret 会让你的老板、客户爱死你。 它提供了快速文本查询的工具， 你甚至可以可以给 PDF 文件和 Office 文档加索引。 我已经在很多网站上使用 Ferret 了， 我的客户们都说：“ 哇， 这看起来像 Google!” hpricot hpricot 是一个快速、容易上手的 HTML 分析器。 如果你发现自己需要解析 HTML 抑或 XML 的内容， hpricot 是最简捷的方法之一。 事实上我在 Helipad 中的很多地方使用了这个工具。 rcov rcov 是使你的程序不经常崩溃的理由之一。 它分析你的代码， 高亮显示你的测试代码遗漏的部分。 它速度快， 不占资源， 并且能减轻头痛 ：） scruffy 我一直用 Gruff 来画图， 不过当 scruffy 很完善的时候， 我更喜欢 scruffy API 的设计。 它工作的方式非常精妙： 产生简单的 XML 来驱动 SVG 图。 因为 SVG 提供了一直直观地处理原始图片的方式， 你可以丢掉那些大量杂乱难懂的代码了。 我经常继承和重写 scruffy 来做成各种精巧的图片， 如果你觉得你现在用类库不太灵， 何不试试 scruffy 呢。 simple-rss simple-rss 分析 RSS 和 atom feed， 干的又快又好。 它的分析器也容易扩展， 这样你就可以应付那些无效的或专有的 feeds。 thin Thin 使用 EventMachine， Rack 和 Mongrel 来创建一个快速的 web server。 我用它来做 Rails 的本地开发， 它比 mongrel 稍快。 要在我的 Rails 程序中使用它， 只需要在我的程序目录下输入 thin start 就行了。 当时我的 thin 和 IE cookies 之间有点儿冲突， 要记得如果你也遇到同样的问题， 你的程序可能有麻烦。 （说明: 这个问题在 thin 0.6.1 和 Rails 2 环境下好像修正了。） 要安装 thin， 使用 gem install thin 命令。 turn Turn 使你的 Test::Unit 输出更易读。 Turn 也行看起来不那么招人喜欢， 但它确实对阅读测试结果有很大帮助。 在维护 Helicoid 的时候我对测试严重依赖， 所以任何能使这项工作变得更简洁的东西我都乐于尝试。 要安装 turn， 使用 gem install turn 命令。 wirble wirble 使 irb 用起来更简单。 你有更好的对 history 的支持（在 session 间）以及颜色， 所以在繁重的工作中，你的眼睛和手指能得到休息。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/20/Ajax_%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90_ZZ/">Ajax_性能分析_ZZ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-20T00:00:00+08:00" pubdate data-updated="true">May 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>|</p>
+
+<h1>Ajax 性能分析</h1>
+
+<p><em>使用最新的工具分析性能</em></p>
+
+<p><img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/developerworks/i/dw.gif" alt="developerWorks" /> |</p>
+
+<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
+
+<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
+
+<p>| 文档选项 |</p>
+
+<p>| <tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif" /></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif" /></td><td class="small" width="122"><p><span class="ast">未显示需要 JavaScript 的文档选项</span></p></td></tr></p>
+
+<p>  | <img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/i/v14/icons/printer.gif" alt="将打印机的版面设置成横向打印模式" /> |</p>
+
+<p><strong> <a href="javascript:print(">打印本页</a>)</strong></p>
+
+<p>|
+  | <img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/i/v14/icons/em.gif" alt="将此页作为电子邮件发送" /> |</p>
+
+<p><a href="javascript:document.email.submit("><strong>将此页作为电子邮件发送</strong></a>;)</p>
+
+<p>|
+| <img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/i/v14/icons/fw_bold.gif" alt="英文原文 " /> |</p>
+
+<p><a href="http://www.ibm.com/developerworks/web/library/wa-aj-perform/"><strong>英文原文</strong></a></p>
+
+<p>|</p>
+
+<p>|</p>
+
+<p>|</p>
+
+<p>级别： 中级</p>
+
+<p><a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#author">Kristopher William Zyp</a> ( <a href="mailto:kriszyp@xucia.com?subject=Ajax%20%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90&amp;cc=ruterbo@us.ibm.com">kriszyp@xucia.com</a>), 软件开发人员, Xucia</p>
+
+<p>2008 年 5 月 19 日</p>
+
+<blockquote><p>由 于 Asynchronous JavaScript + XML（Ajax）的出现，用户对交互性和性能的期望越来越高了，而开发人员也把 Ajax 视为 Web 应用程序中必需的部分。随着更多的代码转移到客户端和网络模型的改变，开发人员社区构建了更多工具来解决 Ajax 独特的性能问题。本文讨论如何使用工具集在 Ajax 应用程序中寻找和纠正性能问题。</p></blockquote>
+
+<p>性能是促使开发人 员用 Ajax 改进应用程序的主要因素之一。Ajax 可以与服务器进行通信而不必请求完整的页面，因此可以改进响应时间。通过减少响应时间，Ajax 可以提供更好的用户体验。但是，分析和改进 Ajax 应用程序需要一套与传统 Web 应用程序不同的工具。本文讨论这些工具并解释如何使用它们寻找和纠正性能问题。</p>
+
+<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
+
+<p>| <strong>常用的缩写词</strong></p>
+
+<ul>
+<li><strong>CSS</strong>：Cascading Style Sheets</li>
+<li><strong>HTML</strong>：Hypertext Markup Language</li>
+<li><strong>XML</strong>：Extensible Markup Language</li>
+<li><p><strong>HTTP</strong>：Hypertext Transfer Protocol</p>
+
+<p>|</p></li>
+</ul>
+
+
+<p>|</p>
+
+<p>Ajax 应用程序的性能取决于 Web 应用程序的几个方面：</p>
+
+<ul>
+<li>服务器响应时间</li>
+<li>网络传输时间</li>
+<li>客户机 JavaScript 的处理时间</li>
+</ul>
+
+
+<p>在 传统的 Web 应用程序开发中，服务器响应时间是性能分析的主要重点。大多数性能分析度量应用服务器是否能够快速处理请求、执行必需的应用程序逻辑和生成响应。在 Ajax 应用程序开发中，这仍然是应用程序性能的一个重要方面，但是开发人员对这个方面的了解已经很深入了，所以本文主要关注性能的其他方面。</p>
+
+<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
+
+<p>| <strong>developerWorks Ajax 参考资料中心</strong><br/>
+  <a href="http://www.ibm.com/developerworks/cn/ajax/">Ajax 参考资料中心</a> 是一站式站点，包含关于开发 Ajax 应用程序的免费工具、代码和信息。 <a href="http://www.ibm.com/developerworks/forums/dw_forum.jsp?forum=965&amp;cat=11">active Ajax community forum</a> 由 Ajax 专家 Jack Herrington 主持，您可以在这里向其他开发人员寻求帮助。 |</p>
+
+<p>|</p>
+
+<p>工具</p>
+
+<p>为了了解 Web 应用程序的哪些方面需要改进，必须适当地分析应用程序的组件。本文讨论如何使用 Firefox 的 Firebug 扩展和 YSlow 插件分析 Web 应用程序。安装这些工具之后，连接正在开发的站点并单击 Firefox 状态栏中的 <strong>YSlow</strong>。这会在 Firebug 中打开 YSlow 界面。现在单击 <strong>Performance</strong> 按钮。YSlow 对应用程序进行分析，并提供关于应用程序网络传输时间的不同部分的报告，见图 1。</p>
+
+<p><strong>图 1. YSlow 报告</strong><br/>
+  <img src="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/yslow.jpg" alt="YSlow 报告" /></p>
+
+<p>网络传输时间</p>
+
+<p>在大多数 Web 应用程序中，网络传输时间是主要的瓶颈。可以通过 YSlow 报告分析网络传输的不同方面，了解如何减少传输时间。</p>
+
+<p>减少 HTTP 请求</p>
+
+<p>每个 HTTP 请求都需要花一些时间发送到服务器并接收响应。即使响应很小，仍然需要基本的往返时间，这称为<em>延迟</em>。YSlow 根据发出的 HTTP 请求数量进行评级。大量的请求会导致装载速度显著降低。可以简化页面，减少需要装载的组件，从而减少 HTTP 请求。可以通过使用 CSS sprites 减少图像请求。获得一些可以生成 CSS sprites 的工具（参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节）。为了减少脚本和 CSS 请求，可以以内联方式把它们包含在页面中，或者把多个脚本或 CSS 文件组合在一起。</p>
+
+<p>可以提供指定了未来日期的 HTTP 缓存过期头，这会让浏览器对组件进行缓存，因此可以减少 HTTP 请求。当用户在页面之间导航，或者返回您的站点时，可以缓存组件，不需要在每次访问站点时都下载它。如果提供了适当的过期头，代理也可以缓存经常装载的内 容。过期头像下面这样：</p>
+
+<p>|
+Expires: Wed, 10 Mar 2009 10:00:00 GMT<br/>
+|</p>
+
+<p>请记住，如果把过期日期设置为很长时间以后，那么即使已经修改了内容，浏览器仍然会使用缓存的内容。把过期日期设置为一天以后可能比较合适。还可以通过修改文件名使文件名包含版本信息，因此在发布新版本时，就会请求新的 URL，这会让浏览器发出新的请求。可以用 <code>ExpiresDefault</code> 指令配置 Apache，从而添加过期头：</p>
+
+<p>|
+ExpiresDefault &ldquo;access plus 10 years&#8221;<br/>
+  |</p>
+
+<p>还可以通过 YSlow 检查页面的总下载大小（单击 <strong>Stats</strong> 按钮）。YSlow 会显示首次访问（没有缓存）时的页面大小和后续页面访问（可以使用缓存）时的页面大小。</p>
+
+<p>替代的 DNS 查询</p>
+
+<p>HTTP 请求可能涉及多次服务器往返。如果资源使用多个主机或域名，浏览器可能需要多次执行 Domain Name System（DNS）查询。如果必须查询多个名称，YSlow 会发出警告。但是一定要注意，多个 DNS 名称实际上也可能提高性能。大多数浏览器只允许每个主机名有两个连接。但是，通过使用多个主机名，可以建立更多的连接，因此可以进行更多的并发下载。</p>
+
+<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
+
+<p>| 根据 Wikipedia 上的说法，<em>缩减（minify）</em> 过程就是从源代码中删除所有不必要的字符，但是不改变功能。这些不必要的字符通常包括空格字符、换行字符、注释和块分界符。这些字符用来提高代码的可读性，但是对执行代码而言并不是必要的。 |</p>
+
+<p>|</p>
+
+<p>减少组件传输的大小</p>
+
+<p>除了减少 HTTP 请求数量之外，减少请求的组件的大小也对性能有好处。可以应用技术手段压缩某些格式。YSlow 会提示哪些技术可以有效地减少响应大小。</p>
+
+<p>通 过消除不必要的空格和注释，可以缩减 JavaScript 代码、CSS 和 HTML。通过改变变量名，可以进一步压缩 JavaScript 代码。Packer 和 YUI 压缩器是有效的 JavaScript 压缩工具，YUI 压缩器也支持对 CSS 进行压缩。还可以用 JavaScript CompressorRater 比较压缩效果（参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节）。</p>
+
+<p>对 于基于文本的资源，最有效的压缩方法是启用 gzip（GNU zip 的缩写）。通过使用 gzip，一般情况下可以把内容大小减少大约 70%。不要对已经压缩的资源使用 gzip，比如图像和视频。适合使用 gzip 的资源包括 CSS、HTML、JavaScript 代码、XML 和 JavaScript Serialized Object Notation（JSON）。Apache 1.3 通过 <code>mod_gzip</code> 支持 gzip，Apache 2.0 使用 <code>mod_deflate</code> 。</p>
+
+<p>通过减少资源大小来减小 HTTP 响应是很重要的，但是减小 HTTP 请求也很重要。对于许多因特网用户来说，上传速度比下载速度慢得多，所以性能对请求的大小更敏感。大的 URL、大量提交数据和过多的头都会增加请求的大小。在 Firebug 中，可以在 <strong>Net</strong> 选项卡上查看请求，见图 2。可以展开每个请求，查看请求头。不必要地增大请求头的常见原因之一是大的 cookie。cookie 包含在每个请求的头中，因此大的 cookie 会显著增加开销。</p>
+
+<p><strong>图 2. Firebug Net 面板</strong><br/>
+  <img src="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/firebug-net.jpg" alt="Firebug Net 面板" /></p>
+
+<p>Java™ 2 Platform, Enterprise Edition（J2EE）应用程序可以通过一个简单的过滤器 Resource Accelerate 应用这些性能改进技术（缓存过期日期、gzip 和 JavaScript 压缩）。还可以使用 JavaServer Pages（JSP）标记库 pack:tag 对资源进行压缩。还可以选用其他技术，更多信息参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节。</p>
+
+<p>改进网络传输性能的其他技术</p>
+
+<p>YSlow 建议的另一种改进技术是使用内容交付网络（CDN）。CDN 提供一个分布式服务器网络，内容放在比较接近最终用户的服务器上，从而改进响应时间。</p>
+
+<p>通 过适当地调整 CSS 和脚本的次序，也可以加快显示 Web 页面的速度。YSlow 会分析 CSS 和脚本声明的位置，并提出改进次序的建议。建议把 CSS 声明放在页面顶部，这样就可以马上使用 CSS 显示页面。把脚本放在页面底部，这样就可以在装载 JavaScript 代码进行交互之前显示页面。</p>
+
+<p>JavaScript 处理时间</p>
+
+<p>服 务器成功地生成 Web 页面并把页面传输给浏览器之后，Ajax 应用程序通常依靠 JavaScript 代码与用户进行交互。大多数用户愿意花一点儿时间等待页面完全下载，但是高品质的交互依赖于页面的迅速反应，所以对页面上各种组件的快速响应是实现良好用 户体验的最重要的方面。另外，在等待下载资源时，浏览器常常仍然有响应能力，但是如果连续执行 JavaScript 代码，有可能完全锁住浏览器。</p>
+
+<p>Firebug 附带一个分析工具。进入 <strong>Console</strong> 选项卡并单击 <strong>Profile</strong>， 就可以启动这个分析工具。它可以帮助了解 Web 应用程序的哪些部分大量使用了 JavaScript 代码。如果重复执行相同的操作，这个工具会产生更准确的结果。例如，如果在装载页面时执行大量 JavaScript 代码，那么可以多次装载页面。如果有 JavaScript 鼠标事件处理函数，那么可以把鼠标在页面上移动一段时间，让这个工具收集足够的信息。完成操作之后，单击 <strong>Profile</strong> 按钮再次显示分析结果，见图 3。</p>
+
+<p><strong>图 3. Firebug 分析结果</strong><br/>
+  <img src="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/firebug-profile.jpg" alt="Firebug 分析结果" /></p>
+
+<p>分 析结果列出在分析期间发生的所有函数调用。每个条目显示调用函数的次数和关于函数调用的处理时间的统计数据。Time 列表示等待这个函数返回所花费的总时间量，Own Time 列表示等待这个函数返回所花费的总时间量减去这个函数等待它发出的调用返回的时间。Own time 列通常是最重要的数据，因为它们指出哪些地方发生了耗时很长的处理，而且 Percent 列中的值基于这些数据。在默认情况下，Firebug 按照 Percent 列排序，最高的值放在最上面。耗时最长的调用放在最上面，您可以集中精力改进这些函数的性能。在使用 Firebug 时，很容易访问函数的源代码；只需单击列表中的条目，就会转到那个函数。</p>
+
+<p>在评估 JavaScript 函数的性能时，还要注意调用函数的次数。函数本身可能并不慢（可以查看函数的平均处理时间），但是调用得太频繁了。有时候，不必要地频繁调用一个函数会造成性能问题。例如， <code>onmousemove</code> 等鼠标事件处理函数常常会产生大量调用。</p>
+
+<p>如果发现某个函数花费的处理时间很长，就需要检查 JavaScript 代码，寻找可能存在的问题。 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#table1">表 1</a> 列出一些缓慢的 JavaScript 操作。关于性能基准的更多信息，参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节。</p>
+
+<p><strong>表 1. 缓慢的 JavaScript 操作</strong></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 操作 </th>
+<th> 说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> DOM 访问 </td>
+<td> 与 DOM 的交互常常比普通 JavaScript 代码慢。与 DOM 的交互常常是无法回避的，但是应该尽可能减少。例如，用字符串动态地创建 HTML 并设置 innerHTML 常常比用 DOM 方法创建 HTML 要快。 |</td>
+</tr>
+<tr>
+<td></td>
+<td> eval </td>
+<td> 应该尽可能避免使用 <code>eval</code> 方法，因为脚本运算的开销很大。 |</td>
+</tr>
+<tr>
+<td></td>
+<td> with </td>
+<td> 使用 <code>with</code> 语句创建额外的范围对象，这会减慢变量访问并造成二义性。 |</td>
+</tr>
+<tr>
+<td></td>
+<td> for-in 循环 </td>
+<td> 使用传统的 <code>for (var i=0; i&lt;array.length;i++)</code> 循环遍历数组，而不是使用 for-in 循环。不幸的是，大多数 JavaScript 环境中的 for-in 循环实现很慢。 |</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>其他浏览器</p>
+
+<p>带 Firebug 和 YSlow 的 Firefox 是分析性能的最佳选择。对于 Mac OS X 上的 Safari，还可以使用 Web Inspector 分析 HTTP 请求。对于 JavaScript 性能分析，可以使用手工技术评估某些函数的性能。手工评估函数的方法是，用 <code>Date</code> 函数度量执行时间，见清单 1：</p>
+
+<p><strong>清单 1. 手工计时</strong></p>
+
+<p>|</p>
+
+<p>function myFunctionToTest() {<br/>
+var start = new Date().getTime();<br/>
+&hellip; // body of the function<br/>
+var totalTime = new Date().getTime() &ndash; start;<br/>
+}</p>
+
+<p>|</p>
+
+<p>可能影响性能的一个重要问题是 Windows® Internet Explorer® 糟糕的内存管理。随着创建更多的对象和属性，没有应用补丁的 Internet Explorer 6 和更早版本会逐渐变慢。一般来说，如果创建的对象超过 5000 个，旧版本的 Internet Explorer 就非常慢了。</p>
+
+<p>结束语</p>
+
+<p>通 过使用 Firebug 和 YSlow，可以彻底地分析 Web 应用程序并进行合理的修改来提升性能。YSlow 提供的详细信息有助于减少网络传输时间。Firebug 提供详细的 JavaScript 分析，有助于识别需要改进的代码。这些工具可以帮助开发人员开发性能更好的 Web 应用程序，提供更好的用户体验。</p>
+
+<p>  |</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/19/curl%E6%89%8B%E5%86%8C/">Curl手册</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-19T00:00:00+08:00" pubdate data-updated="true">May 19<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2> </h2>
+
+<p>今天测试google 的应用，发现google竟然拒绝wget 的访问，所以下找了个curl 放在本地用来查询用</p>
+
+<p>作者 rock | 25 六月, 2006</p>
+
+<p>拿来做下记事本(堕落啊。。)，各位大大请跳过～</p>
+
+<p>You always find news about what&rsquo;s going on as well as the latest versions from the curl web pages, located at:</p>
+
+<p><a href="http://curl.haxx.se">http://curl.haxx.se</a></p>
+
+<p><strong>SIMPLE USAGE</strong></p>
+
+<p>Get the main page from netscape&rsquo;s web-server:</p>
+
+<p>curl <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p>Get the README file the user&rsquo;s home directory at funet&rsquo;s ftp-server:</p>
+
+<p>curl <a href="ftp://ftp.funet.fi/README">ftp://ftp.funet.fi/README</a></p>
+
+<p>Get a web page from a server using port 8000:</p>
+
+<p>curl <a href="http://www.weirdserver.com:8000/">http://www.weirdserver.com:8000/</a></p>
+
+<p>Get a list of a directory of an FTP site:</p>
+
+<p>curl <a href="ftp://cool.haxx.se/">ftp://cool.haxx.se/</a></p>
+
+<p>Get a gopher document from funet&rsquo;s gopher server:</p>
+
+<p>curl gopher://gopher.funet.fi</p>
+
+<p>Get the definition of curl from a dictionary:</p>
+
+<p>curl dict://dict.org/m:curl</p>
+
+<p>Fetch two documents at once:</p>
+
+<p>curl <a href="ftp://cool.haxx.se/">ftp://cool.haxx.se/</a> <a href="http://www.weirdserver.com:8000/">http://www.weirdserver.com:8000/</a></p>
+
+<p><strong>DOWNLOAD TO A FILE</strong></p>
+
+<p>Get a web page and store in a local file:</p>
+
+<p>curl -o thatpage.html <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p>Get a web page and store in a local file, make the local file get the name<br/>
+of the remote document (if no file name part is specified in the URL, this<br/>
+will fail):</p>
+
+<p>curl -O <a href="http://www.netscape.com/index.html">http://www.netscape.com/index.html</a></p>
+
+<p>Fetch two files and store them with their remote names:</p>
+
+<p>curl -O www.haxx.se/index.html -O curl.haxx.se/download.html</p>
+
+<p><strong>USING PASSWORDS</strong></p>
+
+<p><strong> FTP</strong></p>
+
+<p>To ftp files using name+passwd, include them in the URL like:</p>
+
+<p>curl <a href="ftp://name:passwd@machine.domain:port/full/path/to/file">ftp://name:passwd@machine.domain:port/full/path/to/file</a></p>
+
+<p>or specify them with the -u flag like</p>
+
+<p>curl -u name:passwd <a href="ftp://machine.domain:port/full/path/to/file">ftp://machine.domain:port/full/path/to/file</a></p>
+
+<p><strong> FTPS</strong></p>
+
+<p>It is just like for FTP, but you may also want to specify and use<br/>
+SSL-specific options for certificates etc.</p>
+
+<p><strong> HTTP</strong></p>
+
+<p>The HTTP URL doesn&rsquo;t support user and password in the URL string. Curl<br/>
+does support that anyway to provide a ftp-style interface and thus you can<br/>
+pick a file like:</p>
+
+<p>curl <a href="http://name:passwd@machine.domain/full/path/to/file">http://name:passwd@machine.domain/full/path/to/file</a></p>
+
+<p>or specify user and password separately like in</p>
+
+<p>curl -u name:passwd <a href="http://machine.domain/full/path/to/file">http://machine.domain/full/path/to/file</a></p>
+
+<p>HTTP offers many different methods of authentication and curl supports<br/>
+several: Basic, Digest, NTLM and Negotiate. Without telling which method to<br/>
+use, curl defaults to Basic. You can also ask curl to pick the most secure<br/>
+ones out of the ones that the server accepts for the given URL, by using<br/>
+&mdash;anyauth.</p>
+
+<p>NOTE! Since HTTP URLs don&rsquo;t support user and password, you can&rsquo;t use that<br/>
+style when using Curl via a proxy. You _must_ use the -u style fetch<br/>
+during such circumstances.</p>
+
+<p><strong> HTTPS</strong></p>
+
+<p>Probably most commonly used with private certificates, as explained below.</p>
+
+<p><strong> GOPHER</strong></p>
+
+<p>Curl features no password support for gopher.</p>
+
+<p><strong>PROXY</strong></p>
+
+<p>Get an ftp file using a proxy named my-proxy that uses port 888:</p>
+
+<p>curl -x my-proxy:888 <a href="ftp://ftp.leachsite.com/README">ftp://ftp.leachsite.com/README</a></p>
+
+<p>Get a file from a HTTP server that requires user and password, using the<br/>
+same proxy as above:</p>
+
+<p>curl -u user:passwd -x my-proxy:888 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>Some proxies require special authentication. Specify by using -U as above:</p>
+
+<p>curl -U user:passwd -x my-proxy:888 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>See also the environment variables Curl support that offer further proxy<br/>
+control.</p>
+
+<p><strong>RANGES</strong></p>
+
+<p>With HTTP 1.1 byte-ranges were introduced. Using this, a client can request<br/>
+to get only one or more subparts of a specified document. Curl supports<br/>
+this with the -r flag.</p>
+
+<p>Get the first 100 bytes of a document:</p>
+
+<p>curl -r 0-99 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>Get the last 500 bytes of a document:</p>
+
+<p>curl -r -500 <a href="http://www.get.this/">http://www.get.this/</a></p>
+
+<p>Curl also supports simple ranges for FTP files as well. Then you can only<br/>
+specify start and stop position.</p>
+
+<p>Get the first 100 bytes of a document using <a href="FTP:">FTP:</a></p>
+
+<p>curl -r 0-99 <a href="ftp://www.get.this/README">ftp://www.get.this/README</a></p>
+
+<p><strong>UPLOADING</strong></p>
+
+<p><strong> FTP</strong></p>
+
+<p>Upload all data on stdin to a specified ftp site:</p>
+
+<p>curl -T &ndash; <a href="ftp://ftp.upload.com/myfile">ftp://ftp.upload.com/myfile</a></p>
+
+<p>Upload data from a specified file, login with user and password:</p>
+
+<p>curl -T uploadfile -u user:passwd <a href="ftp://ftp.upload.com/myfile">ftp://ftp.upload.com/myfile</a></p>
+
+<p>Upload a local file to the remote site, and use the local file name remote<br/>
+too:<br/>
+curl -T uploadfile -u user:passwd <a href="ftp://ftp.upload.com/">ftp://ftp.upload.com/</a></p>
+
+<p>Upload a local file to get appended to the remote file using <a href="ftp:">ftp:</a></p>
+
+<p>curl -T localfile -a <a href="ftp://ftp.upload.com/remotefile">ftp://ftp.upload.com/remotefile</a></p>
+
+<p>Curl also supports ftp upload through a proxy, but only if the proxy is<br/>
+configured to allow that kind of tunneling. If it does, you can run curl in<br/>
+a fashion similar to:</p>
+
+<p>curl &mdash;proxytunnel -x proxy:port -T localfile ftp.upload.com</p>
+
+<p><strong> HTTP</strong></p>
+
+<p>Upload all data on stdin to a specified http site:</p>
+
+<p>curl -T &ndash; <a href="http://www.upload.com/myfile">http://www.upload.com/myfile</a></p>
+
+<p>Note that the http server must have been configured to accept PUT before<br/>
+this can be done successfully.</p>
+
+<p>For other ways to do http data upload, see the POST section below.</p>
+
+<p><strong>VERBOSE / DEBUG</strong></p>
+
+<p>If curl fails where it isn&rsquo;t supposed to, if the servers don&rsquo;t let you in,<br/>
+if you can&rsquo;t understand the responses: use the -v flag to get verbose<br/>
+fetching. Curl will output lots of info and what it sends and receives in<br/>
+order to let the user see all client-server interaction (but it won&rsquo;t show<br/>
+you the actual data).</p>
+
+<p>curl -v <a href="ftp://ftp.upload.com/">ftp://ftp.upload.com/</a></p>
+
+<p>To get even more details and information on what curl does, try using the<br/>
+&mdash;trace or &mdash;trace-ascii options with a given file name to log to, like<br/>
+this:</p>
+
+<p>curl &mdash;trace trace.txt www.haxx.se</p>
+
+<p><strong>DETAILED INFORMATION</strong></p>
+
+<p>Different protocols provide different ways of getting detailed information<br/>
+about specific files/documents. To get curl to show detailed information<br/>
+about a single file, you should use -I/&mdash;head option. It displays all<br/>
+available info on a single file for HTTP and FTP. The HTTP information is a<br/>
+lot more extensive.</p>
+
+<p>For HTTP, you can get the header information (the same as -I would show)<br/>
+shown before the data by using -i/&mdash;include. Curl understands the<br/>
+-D/&mdash;dump-header option when getting files from both FTP and HTTP, and it<br/>
+will then store the headers in the specified file.</p>
+
+<p>Store the HTTP headers in a separate file (headers.txt in the example):</p>
+
+<p>curl &mdash;dump-header headers.txt curl.haxx.se</p>
+
+<p>Note that headers stored in a separate file can be very useful at a later<br/>
+time if you want curl to use cookies sent by the server. More about that in<br/>
+the cookies section.</p>
+
+<p><strong>POST (HTTP)</strong></p>
+
+<p>It&rsquo;s easy to post data using curl. This is done using the -d <data><br/>
+option. The post data must be urlencoded.</p>
+
+<p>Post a simple &ldquo;name&rdquo; and &ldquo;phone&rdquo; guestbook.</p>
+
+<p>curl -d &ldquo;name=Rafael%20Sagula&amp;phone=3320780&#8221;<br/>
+<a href="http://www.where.com/guest.cgi">http://www.where.com/guest.cgi</a></p>
+
+<p>How to post a form with curl, lesson #1:</p>
+
+<p>Dig out all the <input> tags in the form that you want to fill in. (There&#8217;s<br/>
+a perl program called formfind.pl on the curl site that helps with this).</p>
+
+<p>If there&rsquo;s a &ldquo;normal&rdquo; post, you use -d to post. -d takes a full &ldquo;post<br/>
+string&rdquo;, which is in the format</p>
+
+<p><variable1>=<data1>&amp;<variable2>=<data2>&amp;&hellip;</p>
+
+<p>The &lsquo;variable&rsquo; names are the names set with &ldquo;name=&rdquo; in the <input> tags, and<br/>
+the data is the contents you want to fill in for the inputs. The data *must*<br/>
+be properly URL encoded. That means you replace space with + and that you<br/>
+write weird letters with %XX where XX is the hexadecimal representation of<br/>
+the letter&rsquo;s ASCII code.</p>
+
+<p>Example:</p>
+
+<p>(page located at <a href="http://www.formpost.com/getthis/">http://www.formpost.com/getthis/</a></p>
+
+<p><form action="post.cgi" method="post"><br/>
+<input name=user size=10><br/>
+<input name=pass type=password size=10><br/>
+<input name=id type=hidden value="blablabla"><br/>
+<input name=ding value="submit"><br/>
+</form></p>
+
+<p>We want to enter user &lsquo;foobar&rsquo; with password &lsquo;12345&rsquo;.</p>
+
+<p>To post to this, you enter a curl command line like:</p>
+
+<p>curl -d &ldquo;user=foobar&amp;pass=12345&amp;id=blablabla&amp;ding=submit&rdquo; (continues)<br/>
+<a href="http://www.formpost.com/getthis/post.cgi">http://www.formpost.com/getthis/post.cgi</a></p>
+
+<p>While -d uses the application/x-www-form-urlencoded mime-type, generally<br/>
+understood by CGI&rsquo;s and similar, curl also supports the more capable<br/>
+multipart/form-data type. This latter type supports things like file upload.</p>
+
+<p>-F accepts parameters like -F &ldquo;name=contents&rdquo;. If you want the contents to<br/>
+be read from a file, use &lt;@filename> as contents. When specifying a file,<br/>
+you can also specify the file content type by appending &lsquo;;type=<mime type>&#8217;<br/>
+to the file name. You can also post the contents of several files in one<br/>
+field. For example, the field name &#8216;coolfiles&rsquo; is used to send three files,<br/>
+with different content types using the following syntax:</p>
+
+<p>curl -F &ldquo;coolfiles=@fil1.gif;type=image/gif,fil2.txt,fil3.html&#8221;<br/>
+<a href="http://www.post.com/postit.cgi">http://www.post.com/postit.cgi</a></p>
+
+<p>If the content-type is not specified, curl will try to guess from the file<br/>
+extension (it only knows a few), or use the previously specified type (from<br/>
+an earlier file if several files are specified in a list) or else it will<br/>
+using the default type &lsquo;text/plain&rsquo;.</p>
+
+<p>Emulate a fill-in form with -F. Let&rsquo;s say you fill in three fields in a<br/>
+form. One field is a file name which to post, one field is your name and one<br/>
+field is a file description. We want to post the file we have written named<br/>
+&ldquo;cooltext.txt&rdquo;. To let curl do the posting of this data instead of your<br/>
+favourite browser, you have to read the HTML source of the form page and<br/>
+find the names of the input fields. In our example, the input field names<br/>
+are &lsquo;file&rsquo;, &lsquo;yourname&rsquo; and &lsquo;filedescription&rsquo;.</p>
+
+<p>curl -F &ldquo;file=@cooltext.txt&rdquo; -F &ldquo;yourname=Daniel&#8221;<br/>
+-F &#8220;filedescription=Cool text file with cool text inside&#8221;<br/>
+<a href="http://www.post.com/postit.cgi">http://www.post.com/postit.cgi</a></p>
+
+<p>To send two files in one post you can do it in two ways:</p>
+
+<ol>
+<li>Send multiple files in a single &ldquo;field&rdquo; with a single field name:<br/>
+curl -F &ldquo;pictures=@dog.gif,cat.gif&rdquo;</li>
+<li>Send two fields with two field names:</li>
+</ol>
+
+
+<p>curl -F &ldquo;docpicture=@dog.gif&rdquo; -F &ldquo;catpicture=@cat.gif&rdquo;</p>
+
+<p>To send a field value literally without interpreting a leading &lsquo;@&#8217;<br/>
+or &rsquo;&lt;&lsquo;, or an embedded &rsquo;;type=&lsquo;, use &mdash;form-string instead of<br/>
+-F. This is recommended when the value is obtained from a user or<br/>
+some other unpredictable source. Under these circumstances, using<br/>
+-F instead of &mdash;form-string would allow a user to trick curl into<br/>
+uploading a file.</p>
+
+<p><strong>REFERRER</strong></p>
+
+<p>A HTTP request has the option to include information about which address<br/>
+that referred to actual page. Curl allows you to specify the<br/>
+referrer to be used on the command line. It is especially useful to<br/>
+fool or trick stupid servers or CGI scripts that rely on that information<br/>
+being available or contain certain data.</p>
+
+<p>curl -e www.coolsite.com <a href="http://www.showme.com/">http://www.showme.com/</a></p>
+
+<p>NOTE: The referer field is defined in the HTTP spec to be a full URL.</p>
+
+<p><strong>USER AGENT</strong></p>
+
+<p>A HTTP request has the option to include information about the browser<br/>
+that generated the request. Curl allows it to be specified on the command<br/>
+line. It is especially useful to fool or trick stupid servers or CGI<br/>
+scripts that only accept certain browsers.</p>
+
+<p>Example:</p>
+
+<p>curl -A &lsquo;Mozilla/3.0 (Win95; I)&rsquo; <a href="http://www.nationsbank.com/">http://www.nationsbank.com/</a></p>
+
+<p>Other common strings:<br/>
+&lsquo;Mozilla/3.0 (Win95; I)&rsquo; Netscape Version 3 for Windows 95<br/>
+&lsquo;Mozilla/3.04 (Win95; U)&rsquo; Netscape Version 3 for Windows 95<br/>
+&lsquo;Mozilla/2.02 (OS/2; U)&rsquo; Netscape Version 2 for OS/2<br/>
+&lsquo;Mozilla/4.04 [en] (X11; U; AIX 4.2; Nav)&rsquo; NS for AIX<br/>
+&lsquo;Mozilla/4.05 [en] (X11; U; Linux 2.0.32 i586)&rsquo; NS for Linux</p>
+
+<p>Note that Internet Explorer tries hard to be compatible in every way:<br/>
+&lsquo;Mozilla/4.0 (compatible; MSIE 4.01; Windows 95)&rsquo; MSIE for W95</p>
+
+<p>Mozilla is not the only possible User-Agent name:<br/>
+&lsquo;Konqueror/1.0&rsquo; KDE File Manager desktop client<br/>
+&lsquo;Lynx/2.7.1 libwww-FM/2.14&rsquo; Lynx command line browser</p>
+
+<p><strong>COOKIES</strong></p>
+
+<p>Cookies are generally used by web servers to keep state information at the<br/>
+client&rsquo;s side. The server sets cookies by sending a response line in the<br/>
+headers that looks like &lsquo;Set-Cookie: <data>&rsquo; where the data part then<br/>
+typically contains a set of NAME=VALUE pairs (separated by semicolons &lsquo;;&#8217;<br/>
+like &ldquo;NAME1=VALUE1; NAME2=VALUE2;&rdquo;). The server can also specify for what<br/>
+path the &ldquo;cookie&rdquo; should be used for (by specifying &ldquo;path=value&rdquo;), when the<br/>
+cookie should expire (&ldquo;expire=DATE&rdquo;), for what domain to use it<br/>
+(&ldquo;domain=NAME&rdquo;) and if it should be used on secure connections only<br/>
+(&ldquo;secure&rdquo;).</p>
+
+<p>If you&rsquo;ve received a page from a server that contains a header like:<br/>
+Set-Cookie: sessionid=boo123; path=&ldquo;/foo&rdquo;;</p>
+
+<p>it means the server wants that first pair passed on when we get anything in<br/>
+a path beginning with &ldquo;/foo&rdquo;.</p>
+
+<p>Example, get a page that wants my name passed in a cookie:</p>
+
+<p>curl -b &ldquo;name=Daniel&rdquo; www.sillypage.com</p>
+
+<p>Curl also has the ability to use previously received cookies in following<br/>
+sessions. If you get cookies from a server and store them in a file in a<br/>
+manner similar to:</p>
+
+<p>curl &mdash;dump-header headers www.example.com</p>
+
+<p>&hellip; you can then in a second connect to that (or another) site, use the<br/>
+cookies from the &lsquo;headers&rsquo; file like:</p>
+
+<p>curl -b headers www.example.com</p>
+
+<p>While saving headers to a file is a working way to store cookies, it is<br/>
+however error-prone and not the preferred way to do this. Instead, make curl<br/>
+save the incoming cookies using the well-known netscape cookie format like<br/>
+this:</p>
+
+<p>curl -c cookies.txt www.example.com</p>
+
+<p>Note that by specifying -b you enable the &ldquo;cookie awareness&rdquo; and with -L<br/>
+you can make curl follow a location: (which often is used in combination<br/>
+with cookies). So that if a site sends cookies and a location, you can<br/>
+use a non-existing file to trigger the cookie awareness like:</p>
+
+<p>curl -L -b empty.txt www.example.com</p>
+
+<p>The file to read cookies from must be formatted using plain HTTP headers OR<br/>
+as netscape&rsquo;s cookie file. Curl will determine what kind it is based on the<br/>
+file contents. In the above command, curl will parse the header and store<br/>
+the cookies received from www.example.com. curl will send to the server the<br/>
+stored cookies which match the request as it follows the location. The<br/>
+file &ldquo;empty.txt&rdquo; may be a nonexistent file.</p>
+
+<p>Alas, to both read and write cookies from a netscape cookie file, you can<br/>
+set both -b and -c to use the same file:</p>
+
+<p>curl -b cookies.txt -c cookies.txt www.example.com</p>
+
+<p><strong>PROGRESS METER</strong></p>
+
+<p>The progress meter exists to show a user that something actually is<br/>
+happening. The different fields in the output have the following meaning:</p>
+
+<p>% Total % Received % Xferd Average Speed Time Curr.<br/>
+Dload Upload Total Current Left Speed<br/>
+0 151M 0 38608 0 0 9406 0 4:41:43 0:00:04 4:41:39 9287</p>
+
+<p>From left-to-right:<br/>
+% &ndash; percentage completed of the whole transfer<br/>
+Total &ndash; total size of the whole expected transfer<br/>
+% &ndash; percentage completed of the download<br/>
+Received &ndash; currently downloaded amount of bytes<br/>
+% &ndash; percentage completed of the upload<br/>
+Xferd &ndash; currently uploaded amount of bytes<br/>
+Average Speed<br/>
+Dload &ndash; the average transfer speed of the download<br/>
+Average Speed<br/>
+Upload &ndash; the average transfer speed of the upload<br/>
+Time Total &ndash; expected time to complete the operation<br/>
+Time Current &ndash; time passed since the invoke<br/>
+Time Left &ndash; expected time left to completion<br/>
+Curr.Speed &ndash; the average transfer speed the last 5 seconds (the first<br/>
+5 seconds of a transfer is based on less time of course.)</p>
+
+<p>The &ndash;# option will display a totally different progress bar that doesn&#8217;t<br/>
+need much explanation!</p>
+
+<p><strong>SPEED LIMIT</strong></p>
+
+<p>Curl allows the user to set the transfer speed conditions that must be met<br/>
+to let the transfer keep going. By using the switch -y and -Y you<br/>
+can make curl abort transfers if the transfer speed is below the specified<br/>
+lowest limit for a specified time.</p>
+
+<p>To have curl abort the download if the speed is slower than 3000 bytes per<br/>
+second for 1 minute, run:</p>
+
+<p>curl -Y 3000 -y 60 www.far-away-site.com</p>
+
+<p>This can very well be used in combination with the overall time limit, so<br/>
+that the above operation must be completed in whole within 30 minutes:</p>
+
+<p>curl -m 1800 -Y 3000 -y 60 www.far-away-site.com</p>
+
+<p>Forcing curl not to transfer data faster than a given rate is also possible,<br/>
+which might be useful if you&rsquo;re using a limited bandwidth connection and you<br/>
+don&rsquo;t want your transfer to use all of it (sometimes referred to as<br/>
+&ldquo;bandwidth throttle&rdquo;).</p>
+
+<p>Make curl transfer data no faster than 10 kilobytes per second:</p>
+
+<p>curl &mdash;limit-rate 10K www.far-away-site.com</p>
+
+<p>or</p>
+
+<p>curl &mdash;limit-rate 10240 www.far-away-site.com</p>
+
+<p>Or prevent curl from uploading data faster than 1 megabyte per second:</p>
+
+<p>curl -T upload &mdash;limit-rate 1M <a href="ftp://uploadshereplease.com">ftp://uploadshereplease.com</a></p>
+
+<p>When using the &mdash;limit-rate option, the transfer rate is regulated on a<br/>
+per-second basis, which will cause the total transfer speed to become lower<br/>
+than the given number. Sometimes of course substantially lower, if your<br/>
+transfer stalls during periods.</p>
+
+<p><strong>CONFIG FILE</strong></p>
+
+<p>Curl automatically tries to read the .curlrc file (or _curlrc file on win32<br/>
+systems) from the user&rsquo;s home dir on startup.</p>
+
+<p>The config file could be made up with normal command line switches, but you<br/>
+can also specify the long options without the dashes to make it more<br/>
+readable. You can separate the options and the parameter with spaces, or<br/>
+with = or :. Comments can be used within the file. If the first letter on a<br/>
+line is a &lsquo;#&rsquo;-letter the rest of the line is treated as a comment.</p>
+
+<p>If you want the parameter to contain spaces, you must inclose the entire<br/>
+parameter within double quotes (&ldquo;). Within those quotes, you specify a<br/>
+quote as &rdquo;.</p>
+
+<p>NOTE: You must specify options and their arguments on the same line.</p>
+
+<p>Example, set default time out and proxy in a config file:</p>
+
+<h1>We want a 30 minute timeout:</h1>
+
+<p>-m 1800</p>
+
+<h1>. .. and we use a proxy for all accesses:</h1>
+
+<p>proxy = proxy.our.domain.com:8080</p>
+
+<p>White spaces ARE significant at the end of lines, but all white spaces<br/>
+leading up to the first characters of each line are ignored.</p>
+
+<p>Prevent curl from reading the default file by using -q as the first command<br/>
+line parameter, like:</p>
+
+<p>curl -q www.thatsite.com</p>
+
+<p>Force curl to get and display a local help page in case it is invoked<br/>
+without URL by making a config file similar to:</p>
+
+<h1>default url to get</h1>
+
+<p>url = &ldquo;<a href="http://help.with.curl.com/curlhelp.html">http://help.with.curl.com/curlhelp.html</a>&rdquo;</p>
+
+<p>You can specify another config file to be read by using the -K/&mdash;config<br/>
+flag. If you set config file name to &ldquo;&ndash;&rdquo; it&rsquo;ll read the config from stdin,<br/>
+which can be handy if you want to hide options from being visible in process<br/>
+tables etc:</p>
+
+<p>echo &ldquo;user = user:passwd&rdquo; | curl -K &ndash; <a href="http://that.secret.site.com">http://that.secret.site.com</a></p>
+
+<p><strong>EXTRA HEADERS</strong></p>
+
+<p>When using curl in your own very special programs, you may end up needing<br/>
+to pass on your own custom headers when getting a web page. You can do<br/>
+this by using the -H flag.</p>
+
+<p>Example, send the header &ldquo;X-you-and-me: yes&rdquo; to the server when getting a<br/>
+page:</p>
+
+<p>curl -H &ldquo;X-you-and-me: yes&rdquo; www.love.com</p>
+
+<p>This can also be useful in case you want curl to send a different text in a<br/>
+header than it normally does. The -H header you specify then replaces the<br/>
+header curl would normally send. If you replace an internal header with an<br/>
+empty one, you prevent that header from being sent. To prevent the Host:<br/>
+header from being used:</p>
+
+<p>curl -H &ldquo;Host:&rdquo; www.server.com</p>
+
+<p><strong>FTP and PATH NAMES</strong></p>
+
+<p>Do note that when getting files with the <a href="ftp://">ftp://</a> URL, the given path is<br/>
+relative the directory you enter. To get the file &lsquo;README&rsquo; from your home<br/>
+directory at your ftp site, do:</p>
+
+<p>curl <a href="ftp://user:passwd@my.site.com/README">ftp://user:passwd@my.site.com/README</a></p>
+
+<p>But if you want the README file from the root directory of that very same<br/>
+site, you need to specify the absolute file name:</p>
+
+<p>curl <a href="ftp://user:passwd@my.site.com//README">ftp://user:passwd@my.site.com//README</a></p>
+
+<p>(I.e with an extra slash in front of the file name.)</p>
+
+<p><strong>FTP and firewalls</strong></p>
+
+<p>The FTP protocol requires one of the involved parties to open a second<br/>
+connction as soon as data is about to get transfered. There are two ways to<br/>
+do this.</p>
+
+<p>The default way for curl is to issue the PASV command which causes the<br/>
+server to open another port and await another connection performed by the<br/>
+client. This is good if the client is behind a firewall that don&rsquo;t allow<br/>
+incoming connections.</p>
+
+<p>curl ftp.download.com</p>
+
+<p>If the server for example, is behind a firewall that don&rsquo;t allow connections<br/>
+on other ports than 21 (or if it just doesn&rsquo;t support the PASV command), the<br/>
+other way to do it is to use the PORT command and instruct the server to<br/>
+connect to the client on the given (as parameters to the PORT command) IP<br/>
+number and port.</p>
+
+<p>The -P flag to curl supports a few different options. Your machine may have<br/>
+several IP-addresses and/or network interfaces and curl allows you to select<br/>
+which of them to use. Default address can also be used:</p>
+
+<p>curl -P &ndash; ftp.download.com</p>
+
+<p>Download with PORT but use the IP address of our &lsquo;le0&rsquo; interface (this does<br/>
+not work on windows):</p>
+
+<p>curl -P le0 ftp.download.com</p>
+
+<p>Download with PORT but use 192.168.0.10 as our IP address to use:</p>
+
+<p>curl -P 192.168.0.10 ftp.download.com</p>
+
+<p><strong>NETWORK INTERFACE</strong></p>
+
+<p>Get a web page from a server using a specified port for the interface:</p>
+
+<p>curl &mdash;interface eth0:1 <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p>or</p>
+
+<p>curl &mdash;interface 192.168.1.10 <a href="http://www.netscape.com/">http://www.netscape.com/</a></p>
+
+<p><strong>HTTPS</strong></p>
+
+<p>Secure HTTP requires SSL libraries to be installed and used when curl is<br/>
+built. If that is done, curl is capable of retrieving and posting documents<br/>
+using the HTTPS protocol.</p>
+
+<p>Example:</p>
+
+<p>curl <a href="https://www.secure-site.com">https://www.secure-site.com</a></p>
+
+<p>Curl is also capable of using your personal certificates to get/post files<br/>
+from sites that require valid certificates. The only drawback is that the<br/>
+certificate needs to be in PEM-format. PEM is a standard and open format to<br/>
+store certificates with, but it is not used by the most commonly used<br/>
+browsers (Netscape and MSIE both use the so called PKCS#12 format). If you<br/>
+want curl to use the certificates you use with your (favourite) browser, you<br/>
+may need to download/compile a converter that can convert your browser&#8217;s<br/>
+formatted certificates to PEM formatted ones. This kind of converter is<br/>
+included in recent versions of OpenSSL, and for older versions Dr Stephen<br/>
+N. Henson has written a patch for SSLeay that adds this functionality. You<br/>
+can get his patch (that requires an SSLeay installation) from his site at:<br/>
+<a href="http://www.drh-consultancy.demon.co.uk/">http://www.drh-consultancy.demon.co.uk/</a></p>
+
+<p>Example on how to automatically retrieve a document using a certificate with<br/>
+a personal password:</p>
+
+<p>curl -E /path/to/cert.pem:password <a href="https://secure.site.com/">https://secure.site.com/</a></p>
+
+<p>If you neglect to specify the password on the command line, you will be<br/>
+prompted for the correct password before any data can be received.</p>
+
+<p>Many older SSL-servers have problems with SSLv3 or TLS, that newer versions<br/>
+of OpenSSL etc is using, therefore it is sometimes useful to specify what<br/>
+SSL-version curl should use. Use -3, -2 or -1 to specify that exact SSL<br/>
+version to use (for SSLv3, SSLv2 or TLSv1 respectively):</p>
+
+<p>curl -2 <a href="https://secure.site.com/">https://secure.site.com/</a></p>
+
+<p>Otherwise, curl will first attempt to use v3 and then v2.</p>
+
+<p>To use OpenSSL to convert your favourite browser&rsquo;s certificate into a PEM<br/>
+formatted one that curl can use, do something like this (assuming netscape,<br/>
+but IE is likely to work similarly):</p>
+
+<p>You start with hitting the &lsquo;security&rsquo; menu button in netscape.</p>
+
+<p>Select &lsquo;certificates->yours&rsquo; and then pick a certificate in the list</p>
+
+<p>Press the &lsquo;export&rsquo; button</p>
+
+<p>enter your PIN code for the certs</p>
+
+<p>select a proper place to save it</p>
+
+<p>Run the &lsquo;openssl&rsquo; application to convert the certificate. If you cd to the<br/>
+openssl installation, you can do it like:</p>
+
+<h1>. /apps/openssl pkcs12 -in [file you saved] -clcerts -out [PEMfile]</h1>
+
+<p><strong>RESUMING FILE TRANSFERS</strong></p>
+
+<p>To continue a file transfer where it was previously aborted, curl supports<br/>
+resume on http(s) downloads as well as ftp uploads and downloads.</p>
+
+<p>Continue downloading a document:</p>
+
+<p>curl -C &ndash; -o file <a href="ftp://ftp.server.com/path/file">ftp://ftp.server.com/path/file</a></p>
+
+<p>Continue uploading a document(*1):</p>
+
+<p>curl -C &ndash; -T file <a href="ftp://ftp.server.com/path/file">ftp://ftp.server.com/path/file</a></p>
+
+<p>Continue downloading a document from a web server(*2):</p>
+
+<p>curl -C &ndash; -o file <a href="http://www.server.com/">http://www.server.com/</a></p>
+
+<p>(*1) = This requires that the ftp server supports the non-standard command<br/>
+SIZE. If it doesn&rsquo;t, curl will say so.</p>
+
+<p>(*2) = This requires that the web server supports at least HTTP/1.1. If it<br/>
+doesn&rsquo;t, curl will say so.</p>
+
+<p><strong>TIME CONDITIONS</strong></p>
+
+<p>HTTP allows a client to specify a time condition for the document it<br/>
+requests. It is If-Modified-Since or If-Unmodified-Since. Curl allow you to<br/>
+specify them with the -z/&mdash;time-cond flag.</p>
+
+<p>For example, you can easily make a download that only gets performed if the<br/>
+remote file is newer than a local copy. It would be made like:</p>
+
+<p>curl -z local.html <a href="http://remote.server.com/remote.html">http://remote.server.com/remote.html</a></p>
+
+<p>Or you can download a file only if the local file is newer than the remote<br/>
+one. Do this by prepending the date string with a &lsquo;&ndash;&rsquo;, as in:</p>
+
+<p>curl -z -local.html <a href="http://remote.server.com/remote.html">http://remote.server.com/remote.html</a></p>
+
+<p>You can specify a &ldquo;free text&rdquo; date as condition. Tell curl to only download<br/>
+the file if it was updated since yesterday:</p>
+
+<p>curl -z yesterday <a href="http://remote.server.com/remote.html">http://remote.server.com/remote.html</a></p>
+
+<p>Curl will then accept a wide range of date formats. You always make the date<br/>
+check the other way around by prepending it with a dash &lsquo;&ndash;&rsquo;.</p>
+
+<p><strong>DICT</strong></p>
+
+<p>For fun try</p>
+
+<p>curl dict://dict.org/m:curl<br/>
+curl dict://dict.org/d:heisenbug:jargon<br/>
+curl dict://dict.org/d:daniel:web1913</p>
+
+<p>Aliases for &rsquo;m&#8217; are &lsquo;match&rsquo; and &lsquo;find&rsquo;, and aliases for &rsquo;d&#8217; are &lsquo;define&#8217;<br/>
+and &#8216;lookup&rsquo;. For example,</p>
+
+<p>curl dict://dict.org/find:curl</p>
+
+<p>Commands that break the URL description of the RFC (but not the DICT<br/>
+protocol) are</p>
+
+<p>curl dict://dict.org/show:db<br/>
+curl dict://dict.org/show:strat</p>
+
+<p>Authentication is still missing (but this is not required by the RFC)</p>
+
+<p><strong>LDAP</strong></p>
+
+<p>If you have installed the OpenLDAP library, curl can take advantage of it<br/>
+and offer ldap:// support.</p>
+
+<p>LDAP is a complex thing and writing an LDAP query is not an easy task. I do<br/>
+advice you to dig up the syntax description for that elsewhere. Two places<br/>
+that might suit you are:</p>
+
+<p>Netscape&rsquo;s &ldquo;Netscape Directory SDK 3.0 for C Programmer&rsquo;s Guide Chapter 10:<br/>
+Working with LDAP URLs&rdquo;:<br/>
+<a href="http://developer.netscape.com/docs/manuals/dirsdk/csdk30/url.htm">http://developer.netscape.com/docs/manuals/dirsdk/csdk30/url.htm</a></p>
+
+<p>RFC 2255, &ldquo;The LDAP URL Format&rdquo; <a href="http://www.rfc-editor.org/rfc/rfc2255.txt">http://www.rfc-editor.org/rfc/rfc2255.txt</a></p>
+
+<p>To show you an example, this is now I can get all people from my local LDAP<br/>
+server that has a certain sub-domain in their email address:</p>
+
+<p>curl -B &ldquo;ldap://ldap.frontec.se/o=frontec??sub?mail=*sth.frontec.se&rdquo;</p>
+
+<p>If I want the same info in HTML format, I can get it by not using the -B<br/>
+(enforce ASCII) flag.</p>
+
+<p><strong>ENVIRONMENT VARIABLES</strong></p>
+
+<p>Curl reads and understands the following environment variables:</p>
+
+<p>http_proxy, HTTPS_PROXY, FTP_PROXY, GOPHER_PROXY</p>
+
+<p>They should be set for protocol-specific proxies. General proxy should be<br/>
+set with<br/>
+ALL_PROXY</p>
+
+<p>A comma-separated list of host names that shouldn&rsquo;t go through any proxy is<br/>
+set in (only an asterisk, &lsquo;*&rsquo; matches all hosts)</p>
+
+<p>NO_PROXY</p>
+
+<p>If a tail substring of the domain-path for a host matches one of these<br/>
+strings, transactions with that node will not be proxied.</p>
+
+<p>The usage of the -x/&mdash;proxy flag overrides the environment variables.</p>
+
+<p>NETRC</p>
+
+<p>Unix introduced the .netrc concept a long time ago. It is a way for a user<br/>
+to specify name and password for commonly visited ftp sites in a file so<br/>
+that you don&rsquo;t have to type them in each time you visit those sites. You<br/>
+realize this is a big security risk if someone else gets hold of your<br/>
+passwords, so therefore most unix programs won&rsquo;t read this file unless it is<br/>
+only readable by yourself (curl doesn&rsquo;t care though).</p>
+
+<p>Curl supports .netrc files if told so (using the -n/&mdash;netrc and<br/>
+&mdash;netrc-optional options). This is not restricted to only ftp,<br/>
+but curl can use it for all protocols where authentication is used.</p>
+
+<p>A very simple .netrc file could look something like:</p>
+
+<p>machine curl.haxx.se login iamdaniel password mysecret</p>
+
+<p>CUSTOM OUTPUT</p>
+
+<p>To better allow script programmers to get to know about the progress of<br/>
+curl, the -w/&mdash;write-out option was introduced. Using this, you can specify<br/>
+what information from the previous transfer you want to extract.</p>
+
+<p>To display the amount of bytes downloaded together with some text and an<br/>
+ending newline:</p>
+
+<p>curl -w &lsquo;We downloaded %{size_download} bytesn&rsquo; www.download.com</p>
+
+<p>KERBEROS4 FTP TRANSFER</p>
+
+<p>Curl supports kerberos4 for FTP transfers. You need the kerberos package<br/>
+installed and used at curl build time for it to be used.</p>
+
+<p>First, get the krb-ticket the normal way, like with the kauth tool. Then use<br/>
+curl in way similar to:</p>
+
+<p>curl &mdash;krb4 private <a href="ftp://krb4site.com">ftp://krb4site.com</a> -u username:fakepwd</p>
+
+<p>There&rsquo;s no use for a password on the -u switch, but a blank one will make<br/>
+curl ask for one and you already entered the real password to kauth.</p>
+
+<p>TELNET</p>
+
+<p>The curl telnet support is basic and very easy to use. Curl passes all data<br/>
+passed to it on stdin to the remote server. Connect to a remote telnet<br/>
+server using a command line similar to:</p>
+
+<p>curl telnet://remote.server.com</p>
+
+<p>And enter the data to pass to the server on stdin. The result will be sent<br/>
+to stdout or to the file you specify with -o.</p>
+
+<p>You might want the -N/&mdash;no-buffer option to switch off the buffered output<br/>
+for slow connections or similar.</p>
+
+<p>Pass options to the telnet protocol negotiation, by using the -t option. To<br/>
+tell the server we use a vt100 terminal, try something like:</p>
+
+<p>curl -tTTYPE=vt100 telnet://remote.server.com</p>
+
+<p>Other interesting options for it -t include:</p>
+
+<ul>
+<li><p>XDISPLOC=<X display> Sets the X display location.</p></li>
+<li><p>NEW_ENV=&lt;var,val> Sets an environment variable.</p></li>
+</ul>
+
+
+<p>NOTE: the telnet protocol does not specify any way to login with a specified<br/>
+user and password so curl can&rsquo;t do that automatically. To do that, you need<br/>
+to track when the login prompt is received and send the username and<br/>
+password accordingly.</p>
+
+<p>PERSISTENT CONNECTIONS</p>
+
+<p>Specifying multiple files on a single command line will make curl transfer<br/>
+all of them, one after the other in the specified order.</p>
+
+<p>libcurl will attempt to use persistent connections for the transfers so that<br/>
+the second transfer to the same host can use the same connection that was<br/>
+already initiated and was left open in the previous transfer. This greatly<br/>
+decreases connection time for all but the first transfer and it makes a far<br/>
+better use of the network.</p>
+
+<p>Note that curl cannot use persistent connections for transfers that are used<br/>
+in subsequence curl invokes. Try to stuff as many URLs as possible on the<br/>
+same command line if they are using the same host, as that&rsquo;ll make the<br/>
+transfers faster. If you use a http proxy for file transfers, practically<br/>
+all transfers will be persistent.</p>
+
+<p>MAILING LISTS</p>
+
+<p>For your convenience, we have several open mailing lists to discuss curl,<br/>
+its development and things relevant to this. Get all info at<br/>
+<a href="http://curl.haxx.se/mail/.">http://curl.haxx.se/mail/.</a> Some of the lists available are:</p>
+
+<p>curl-users</p>
+
+<p>Users of the command line tool. How to use it, what doesn&rsquo;t work, new<br/>
+features, related tools, questions, news, installations, compilations,<br/>
+running, porting etc.</p>
+
+<p>curl-library</p>
+
+<p>Developers using or developing libcurl. Bugs, extensions, improvements.</p>
+
+<p>curl-announce</p>
+
+<p>Low-traffic. Only receives announcements of new public versions. At worst,<br/>
+that makes something like one or two mails per month, but usually only one<br/>
+mail every second month.</p>
+
+<p>curl-and-php</p>
+
+<p>Using the curl functions in PHP. Everything curl with a PHP angle. Or PHP<br/>
+with a curl angle.</p>
+
+<p>curl-and-python</p>
+
+<p>Python hackers using curl with or without the python binding pycurl.</p>
+
+<p>Please direct curl questions, feature requests and trouble reports to one of<br/>
+these mailing lists instead of mailing any individual.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/18/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/16/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

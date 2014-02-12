@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mysql - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="MySQL优化 from 架构研究室 by Johnny Woo thread_concurrency
+数量设置为CPU核心数量的两倍.
+thread_cache_size
+按照内存大小来设置, 1G=8, 2G=16, 3G=32, >3G=64
+wait_timeout
+超时时间, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/09/01/mysql">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mysql</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-01T00:00:00+08:00" pubdate data-updated="true">Sep 1<span>st</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2><a href="http://www.hiadmin.com/mysql%e4%bc%98%e5%8c%96/">MySQL优化 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
+
+<p>from <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fwww.hiadmin.com%2F%3Ffeed%3Drss2">架构研究室</a> by Johnny Woo</p>
+
+<p>thread_concurrency<br/>
+数量设置为CPU核心数量的两倍.<br/>
+thread_cache_size<br/>
+按照内存大小来设置, 1G=8, 2G=16, 3G=32, >3G=64<br/>
+wait_timeout<br/>
+超时时间,如果连接数比较大,可以减少此参数的值,我使用的是10<br/>
+max_connections<br/>
+最大连接数,mysql实际允许连接数的值是max_connections+1,按照系统库不同而有不同性能.一般是500~1000,MySQL AB提供的linux静态库可以达到4000.<br/>
+query_cache_size<br/>
+查询缓冲,默认是0,所以必须打开以提高mysql性能,其本身需要40K来保存结构数据.所以不能设置的太小,初期可以设置成32M,然后根据实际运行情况另行调整<br/>
+query_cache_type<br/>
+指定查询缓冲的类型,0是关闭,1是缓冲除了使用SELECT SQL_NO_CACHE语句指明了不需要缓冲的数据意外的所有查询,2是只缓冲SELECT SQL_CACHE指定的查询.一般设置为1.<br/>
+query_cache_limit<br/>
+允许进入查询缓冲区的最小数据大小,默认值是1MB,可以修改的小一点以满足更多查询的需求.但是如果设置的过于小,则会导致很多新的小查询的结果将原有的查询结果交换出去.增加系统的颠簸.</p>
+
+<p>相关命令<br/>
+查询mysql服务器相关状态数据</p>
+
+<blockquote><p>SHOW STATUS;</p></blockquote>
+
+<p>查询mysql服务器相关配置选项</p>
+
+<blockquote><p>SHOW VARIABLES;</p></blockquote>
+
+<p>整理查询缓冲区里的碎片</p>
+
+<blockquote><p>flush query cache;</p></blockquote>
+
+<p>删除查询缓冲区里的所有内容</p>
+
+<blockquote><p>reset query cache;</p></blockquote>
+
+<p>设置mysql参数</p>
+
+<blockquote><p>SET GLOBAL;</p></blockquote>
+
+<p>查询mysql当前执行的sql语句</p>
+
+<blockquote><p>show processlist;</p></blockquote>
+
+<p>变量 含义<br/>
+Qcache_queries_in_cache<br/>
+在缓存中已注册的查询数目<br/>
+Qcache_inserts<br/>
+被加入到缓存中的查询数目<br/>
+Qcache_hits<br/>
+缓存采样数数目<br/>
+Qcache_lowmem_prunes<br/>
+因为缺少内存而被从缓存中删除的查询数目<br/>
+Qcache_not_cached<br/>
+没有被缓存的查询数目 (不能被缓存的，或由于 QUERY_CACHE_TYPE)<br/>
+Qcache_free_memory<br/>
+查询缓存的空闲内存总数<br/>
+Qcache_free_blocks<br/>
+查询缓存中的空闲内存块的数目<br/>
+Qcache_total_blocks<br/>
+查询缓存中的块的总数目</p>
+
+<p>MySQL查询优化</p>
+
+<blockquote><p>SHOW STATUS LIKE ‘Qcache%’;<br/>
+查询出Cache状态<br/>
+如果Qcache_lowmem_prunes非常大,说明因为内存不足而被交换出cache的数据很多.如果增加内存.可以保证较小的交换次数以及较高的命中率<br/>
+例如现在我们查询的结果如下</p></blockquote>
+
+<p>| Qcache_free_blocks      | 1234     |<br/>
+| Qcache_free_memory      | 25957504 |<br/>
+| Qcache_hits             | 55771119 |<br/>
+| Qcache_inserts          | 7441153  |<br/>
+| Qcache_lowmem_prunes    | 28332    |<br/>
+| Qcache_not_cached       | 1233788  |<br/>
+| Qcache_queries_in_cache | 4810     |<br/>
+| Qcache_total_blocks     | 11038    |</p>
+
+<p>设置为64M cache内存后</p>
+
+<blockquote><p>set global query_cache_size=67108864;</p></blockquote>
+
+<p>| Qcache_free_blocks      | 1        |<br/>
+| Qcache_free_memory      | 66623616 |<br/>
+| Qcache_hits             | 55788258 |<br/>
+| Qcache_inserts          | 7445445  |<br/>
+| Qcache_lowmem_prunes    | 28332    |<br/>
+| Qcache_not_cached       | 1234057  |<br/>
+| Qcache_queries_in_cache | 183      |<br/>
+| Qcache_total_blocks     | 392      |</p>
+
+<p>自由内存块看起来变小了<br/>
+是因为现在自由内存块.是一个整块.而以前的内存块都是分散的小块<br/>
+而因为重建了cache区<br/>
+Qcache_queries_in_cache变量变小了.因为此操作重新建立了cache内存区.所有数据重新缓存<br/>
+在运行一两天后我们再看此数据.如果变大了.说明增大cache内存区域是有效的.如果和以前数据差不多<br/>
+说明增加的内存并没有实际起到多大的作用.</p>
+
+<p>有人会觉得如果我将cache内存设置的非常大<br/>
+然后将cache_limit设置成0<br/>
+那么所有查询都会被缓存了<br/>
+理论上是这样.但是一台数据库服务器的查询非常多.<br/>
+如果连查询单条数据都要缓存.<br/>
+那么内存再大也会不够的.到时候老的内容就会被交换出去<br/>
+当cache内存使用满的时候,就会不停的有新查询进来将老查询替换出去.<br/>
+这样导致两个结果.一个是内存颠簸.效率反而下降.<br/>
+第二个是cache内存的小碎块增多,内存利用率降低<br/>
+如果是只有内容很少的小库,并且查询率不高.是可以使用这种方法提高响应速度<br/>
+但是如果是实际生产环境,数据量会比较大.还是需要按照最佳比例来配置.<br/>
+而不同的应用不同的数据量会有不同的搭配,这点大家不要看网上的优化配置随便的填写<br/>
+还是要时时的查看mysql的状态进行调整.即便是这个月调整好的优化参数<br/>
+到了下个月业务不同,数据量增加,也会需要调整的.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-01T00:00:00+08:00" pubdate data-updated="true">Sep 1<span>st</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mysql/'>mysql</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/09/01/mysql/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/09/01/mysql/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/09/01/%5B%E8%BD%AC%E8%BD%BD%5D_Ruby%E3%80%81Rails%E3%80%81Agile%E7%9A%84%E5%90%AF%E7%A4%BA/" title="Previous Post: [转载]_Ruby、Rails、Agile的启示">&laquo; [转载]_Ruby、Rails、Agile的启示</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/09/02/perl_%E5%8C%B9%E9%85%8D%E4%B8%AD%E6%96%87/" title="Next Post: perl_匹配中文">perl_匹配中文 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

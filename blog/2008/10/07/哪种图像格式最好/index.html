@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>哪种图像格式最好 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="哪种图像格式最好？ 作者：Jonathan Snook
+翻译：htmlor 在网站开发过程中，用什么图像格式你可能不会考虑太多。不过，明智的选择会为你自己（或公司）节省一大笔带宽开支。当今主流的web图像压缩格式有3种：GIF、JPEG和PNG。它们采用不同的图像信息压缩技术，各有利弊。 GIF &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/10/07/%E5%93%AA%E7%A7%8D%E5%9B%BE%E5%83%8F%E6%A0%BC%E5%BC%8F%E6%9C%80%E5%A5%BD">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">哪种图像格式最好</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-07T00:00:00+08:00" pubdate data-updated="true">Oct 7<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>哪种图像格式最好？</h2>
+
+<p>作者：Jonathan Snook<br/>
+翻译：htmlor</p>
+
+<p>在网站开发过程中，用什么图像格式你可能不会考虑太多。不过，明智的选择会为你自己（或公司）节省一大笔带宽开支。当今主流的web图像压缩格式有3种：GIF、JPEG和PNG。它们采用不同的图像信息压缩技术，各有利弊。</p>
+
+<h3>GIF</h3>
+
+<p>（htmlor注：Graphics Interchange Format，图形交换格式。）</p>
+
+<p>GIF是无损压缩，即在压缩过程中图像没有质量损失。未压缩的图像信息以线性方式存储。（下载时）每行象素从左到右依次读取。交错式GIF图像 （htmlor注：fireworks导出GIF时有交错式图像可选）用不同的顺序存储图像行。（下载时）先读取第4、8、12、16、20行，然后是第 2、6、10、14、18行，…… 以此类推，直到读取完整个图像。以这种方式下载时，网速较慢的用户能把过程看得清清楚楚。（htmlor注：查看 <a href="http://my.donews.com/htmlor/2006/08/07/gmail_vs_yahoomail_vs_livemail/">这个页面</a>可以看到上述下载效果。）</p>
+
+<p>GIF的压缩方式是把文件中重复的色块消除，然后把（这些色块的）位置信息存在一个表里（也叫hash表）。（因此）<strong>图像中相同色块越多，压缩率就越高。</strong>如背景图、包含文字的图像和被图样填充的图像等。</p>
+
+<p>GIF的一大显著优势就是能制作动画图像。你肯定在网上见过铺天盖地的GIF动画（尤其是90年代的全盛时期）。根本上讲，一个GIF动画就是一串 含有时间信息的GIF静态图像。不过GIF动画有个问题：即便帧数不多，字节数也会变得很大。（举例来说）如果1帧GIF有15kb，那么20帧将超过 100kb（对于web图像显然是太大了）。在这个GIF大行其道的时代，如果要做动画，还是用flash好些。</p>
+
+<p><strong>GIF的另一优势是透明度。</strong>你可以选择颜色表里的某一种颜色作为透明色。这样的话，原本这种颜色出现的地方（会变得透明）可以看到下层的HTML背景。</p>
+
+<p>（有利自然有弊）GIF格式的最大不足，就是它对256色之外的颜色无能为力。如果一幅含有成千上万种色彩的照片用GIF格式压缩，将会变得惨不忍睹。</p>
+
+<h3>JPEG</h3>
+
+<p>（htmlor注：Joint Photographic Experts Group，联合图像专家小组。文件扩展名通常简化为JPG。）</p>
+
+<p>JPEG是有损压缩，即在压缩过程中图像质量会有损失。其压缩过程首先把图像从 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/RGB">RGB</a>转换为 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/YUV">YUV</a>，用亮度、色调和饱和度储存每个象素的信息。然后减少色调和饱和度的信息数量，这种差别不容易被肉眼察觉到。在图像字节数递减时（比如在photoshop里移动质量控制滑块），你会看到在色块上产生模糊的斑点，尤其是边缘附近。<strong>总的来说，JPEG格式最适用于色彩丰富的图像。</strong>（因为）把含有渐变色彩的图像或者照片压缩成低质量，损失并不显眼（却能大幅减少字节数）。而包含文字或者有大块实心背景色的图像的压缩，更适合交给GIF和PNG格式去做。</p>
+
+<h3>PNG</h3>
+
+<p>（htmlor注：Portable Network Graphics，便携式网络图形。）</p>
+
+<p>PNG在现有的多种图像格式中算是晚辈，却来势汹汹，大有后来居上之势。它在某些方面与GIF类似，却在其他方面更胜一筹。与GIF同为无损压 缩，PNG还支持24位色（GIF只支持8位色），同时支持alpha透明（GIF只支持单色透明）。PNG使用多种压缩过滤器减小图像字节数，它能针对 每行使用不同的过滤器从而实现高压缩率。<strong>alpha透明是PNG最令人心动的一大特点。</strong>不过可惜，ie现在还不能完全支持（尽管通过一些 <a href="http://koivi.com/ie-png-transparency/">小手段</a>可以实现）。</p>
+
+<p>如果你不需要alpha透明或者256色已经够用，可以使用8位色PNG。平均来说，在同等图像质量的条件下，8位色PNG的字节数要比GIF小。 在处理相同色块很多的图像时，PNG和GIF非常相似，都能出色的完成任务。如果你还想储存比256色更丰富的色彩，就用24位色PNG吧。只是别忘了测 试一下24位色PNG和JPEG哪个实际效果更好。</p>
+
+<p>（人家的优点它都有，缺点自然也少不了）PNG的缺点跟GIF相同：对于照片的优化，不如JPEG好。</p>
+
+<h3>谁是老大？</h3>
+
+<p>没有哪种图像格式独领风骚、老少咸宜。所以，该用哪个用哪个、该怎么压缩怎么压缩，不拘泥于一种格式，就是最好的方案。</p>
+
+<p>如果你有兴趣进一步了解这些图像格式的历史和更深层的技术，就到 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/">wikipedia</a>上仔细研究 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/GIF">GIF</a>、 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/JPEG">JPEG</a>和 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/PNG">PNG</a>吧。</p>
+
+<p>（htmlor注：因为正常的 <a href="http://en.wikipedia.org/">wikipedia</a>中国访问不了，所以文中链接用的都是时灵时不灵的 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/">secure版</a>的服务器地址。）</p>
+
+<p>（完）</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-07T00:00:00+08:00" pubdate data-updated="true">Oct 7<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/10/07/%E5%93%AA%E7%A7%8D%E5%9B%BE%E5%83%8F%E6%A0%BC%E5%BC%8F%E6%9C%80%E5%A5%BD/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/10/07/%E5%93%AA%E7%A7%8D%E5%9B%BE%E5%83%8F%E6%A0%BC%E5%BC%8F%E6%9C%80%E5%A5%BD/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/09/28/css/" title="Previous Post: css">&laquo; css</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/10/08/%E5%90%83%E4%B8%9C%E8%A5%BF%E5%B0%8F%E5%BF%83_zz/" title="Next Post: 吃东西小心_zz">吃东西小心_zz &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

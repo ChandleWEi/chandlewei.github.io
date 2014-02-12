@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Flex | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/flex/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[_flash_全屏快捷键起作用]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2011/04/10/_flash_%E5%85%A8%E5%B1%8F%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%B5%B7%E4%BD%9C%E7%94%A8/"/>
+    <updated>2011-04-10T17:10:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2011/04/10/_flash_全屏快捷键起作用</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>必须是flash 10 我是用flash cs 5 发布的</p></li>
+<li><p>代码如下</p></li>
+</ol>
+
+
+<p>/*Note: App content in AIR can set the value of stage.displayState to<br/>
+                    StageDisplayState.FULL_SCREEN_INTERACTIVE for full keyboard support in full-screen mode.*/</p>
+
+<p>老的定义方式</p>
+
+<p> stage[&ldquo;displayState&rdquo;] = &ldquo;fullScreen&rdquo;;</p>
+
+<p>新的全屏起作用的定义方式</p>
+
+<p>stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;</p>
+
+<ol>
+<li>查阅的链接来自 <a href="http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5">http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Flex_gbk_csv_excel_mac问题]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2011/03/26/flex_gbk_csv_excel_mac%E9%97%AE%E9%A2%98/"/>
+    <updated>2011-03-26T22:49:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2011/03/26/flex_gbk_csv_excel_mac问题</id>
+    <content type="html"><![CDATA[<p>在mac 下调试 flex 将文本转 csv 然后让excel 读取</p>
+
+<p>悲剧的是调试了很久 excel 读中文都是乱码 无论是 utf8 还是 gbk gb2312 一直以为是编码么有转对</p>
+
+<p>等以沮丧的心情调试代码失败 回家的路上 怀疑是excel 在 mac 系统文件编码 中格式的问题</p>
+
+<p>开了windows下的excel 读csv 一切都ok</p>
+
+<p>以下是测试用的两种转换编码</p>
+
+<p>      Alert.show(&ldquo;test start&rdquo;);<br/>
+    ///var fr:FileReference=new FileReference();<br/>
+    ///var byteArray:ByteArray=new ByteArray();<br/>
+    ///byteArray.writeMultiByte(test,&ldquo;gbk&rdquo;);<br/>
+    ///fr.save(byteArray, &lsquo;chinese.csv&rsquo;)<br/>
+    var test:String = &lsquo;chandle,明天,郊游 &rsquo;;</p>
+
+<p>    var file:File = File.desktopDirectory.resolvePath(&ldquo;testgb2312.csv&rdquo;);<br/>
+    var fileStream:FileStream = new FileStream();<br/>
+    fileStream.open(file, FileMode.WRITE);<br/>
+   <br/>
+    fileStream.writeMultiByte(test, &ldquo;gbk&rdquo;);<br/>
+    fileStream.close();<br/>
+    Alert.show(&ldquo;test end&rdquo;);</p>
+
+<p>mac 下的excel 处处都很诡异 怎么都觉格格不入</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>proprietary_supercomputer_OS - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="The Philippine Atmospheric, Geophysical and Astronomical Services Administration ( PAGASA), Quezon City, PH, part of Philippine Department of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/03/18/proprietary_supercomputer_OS">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">proprietary_supercomputer_OS</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-03-18T00:00:00+08:00" pubdate data-updated="true">Mar 18<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1></h1>
+
+<p>  The Philippine Atmospheric, Geophysical and Astronomical Services Administration ( <a href="http://www.pagasa.dost.gov.ph/">PAGASA</a>), <a href="http://en.wikipedia.org/wiki/Quezon_city">Quezon City</a>, <a href="http://en.wikipedia.org/wiki/Philippines">PH</a>, part of Philippine Department of Science and Technology ( <a href="http://www.dost.gov.ph/">DOST</a>) uses a Debian GNU / Linux eight off-the-shelf PC nodes cluster for weather forecasts running open-source and no-cost meteorological software, achieving better control of configuration, timely forecasts and accuracy.</p>
+
+<p>The Debian GNU / Linux cluster cost to deploy was only US$ 37000 and freed the department of a US$ 5000 monthly maintenance cost of previous proprietary software on its supercomputer.</p>
+
+<p>The Debian GNU / Linux cluster is part of the PAGASA Interactive Climate and Weather Information Network ( <a href="http://www.asti.dost.gov.ph/index.php?option=com_content&amp;task=view&amp;id=37&amp;Itemid=41">PICWIN</a>) developed by the Advanced Science and Technology Institute ( <a href="http://www.asti.dost.gov.ph/">ASTI</a>), who already <a href="http://lists.debian.org/debian-publicity/2007/03/msg00048.html">launched</a> its <a href="http://www.asti.dost.gov.ph/index.php?option=com_content&amp;task=view&amp;id=78&amp;Itemid=27"> own version</a> of Debian GNU / Linux, the <a href="http://www.bayanihan.gov.ph/">Bayanihan Linux</a>.</p>
+
+<p>Each 3 hours, PICWIN collects seven meteorological data of synoptic stations across the country and sends to the Debian GNU / Linux cluster through SMS.</p>
+
+<p>Each 6 hours, the Deutscher Wetterdienst ( <a href="http://www.dwd.de/">DWD</a>), the German Meteorological Office, sends meteorological data from several countries using the internet.</p>
+
+<p>Both massive sets of data covering a 5500 km by 5500 km square over country, divided into a three dimensional grid of 301 x 201 x 32 (LxWxH) blocks, are processed by the no-cost, for government agencies, High Resolution Model ( <a href="http://www.pagasa.dost.gov.ph/wb/modelinfo.html">HRM</a>) software created by Deutscher Wetterdienst ( <a href="http://www.dwd.de/">DWD</a>) and by the open source <a href="http://www.mmm.ucar.edu/mm5">MM5</a> meteorological softwares and generate weather forecasts every 12 hours.</p>
+
+<p>These programs were recompiled from sources with Intel Fortran Compiler ( <a href="http://www.intel.com/support/performancetools/fortran/linux/">IFC</a>), non-commercial version, and Intel C compilers ( <a href="http://www.intel.com/support/performancetools/c/linux">ICC</a>), because of their support of Cray pointers, at Debian GNU / Linux machines for optimal performance.</p>
+
+<p>Parallelization is based on <a href="http://www.mcs.anl.gov/research/projects/mpich2/"> MPICH2</a> libraries using eight dual Xeon EM64T nodes connected by Gigabit ethernet.</p>
+
+<p>Alan Pineda, PAGASA Flood Forecasting Branch officer-in-charge, gave a first <a href="http://www.manilatimes.net/national/2008/feb/25/yehey/techtimes/20080225tech1.html"> interview</a> with more information and a <a href="http://www.pcworld.idg.com.au/index.php/id;1611547855">second</a> one with further details.</p>
+
+<p>As a sidenote, newest supercomputer clusters <a href="http://www.wired.com/gadgets/pcs/multimedia/2007/11/gallery_supercomputer?slide=9&amp;slideView=9"> can run</a> Debian GNU / Linux <a href="http://www.sgi.com/pdfs/3433.pdf">too</a>.</p>
+
+<h2>About PAGASA</h2>
+
+<h3>Mission</h3>
+
+<p>The primary mission of <a href="http://www.pagasa.dost.gov.ph/">PAGASA</a> is to provide protection of life and property against natural hazards due to typhoons, floods, drought, giant waves, high seas, etc., to utilize scientific knowledge and information as an effective instrument to ensure the safety, well being, economic security and improve the quality of life of all the people and the environment; and to promote national progress and contribute to regional socio-economic development through various applications of meteorology, geophysics and space sciences (including astronomy).</p>
+
+<p> </p>
+
+<h3>Vision</h3>
+
+<p>PAGASA envisions itself to be the center of: Excellence in its distinctive competence in meteorology, operational hydrology, climatology, astronomy and other allied sciences; World-class capability in monitoring, analyses, forecasting and warning of tropical weather systems such as typhoons, monsoons, Intertropical Convergence Zone (ITCZ).</p>
+
+<h2>About the Debian Project</h2>
+
+<p>Debian GNU / Linux is <a href="http://www.debian.org/ports/#nonlinux">one</a> of the <a href="http://www.debian.org/intro/free">free libre</a> operating systems (GNU/Linux, GNU/Hurd, GNU/NetBSD, GNU/kFreeBSD), running 18733+ <a href="http://qa.debian.org/">officially</a> maintained <a href="http://packages.debian.org/">packages</a> on <a href="http://www.debian.org/ports">15 hardware platforms</a>, from <a href="http://www.debian.org/ports/arm/">cell phones</a> and <a href="http://www.linux-sh.org/">network devices</a> to <a href="http://www.debian.org/ports/s390/">mainframes</a> and <a href="http://www.debian.org/ports/beowulf/">supercomputers</a>, developed by more than <a href="http://asdfasdf.debian.net/%7Etar/bugstats/?8">two thousand</a> volunteers from <a href="http://www.debian.org/devel/developers.loc">all over the world</a> who <a href="http://www.debian.org/devel/">collaborate</a> via the internet on the <a href="http://www.debian.org/">Debian Project</a>.</p>
+
+<p>Debian&rsquo;s dedication to <a href="http://www.debian.org/intro/free">Free Libre Open Source Software</a>, its <a href="http://www.debian.org/devel/constitution">constitutional</a> non-profit nature, its <a href="http://vote.debian.org/">open</a> and <a href="http://en.wikipedia.org/wiki/Meritocracy">meritocratic</a> development model, <a href="http://www.debian.org/intro/organization">organization</a> and social <a href="http://www.techforce.com.br/index.php/news/linux_blog/scientific_study_about_debian_governance_and_organization"> governance</a> make it <a href="http://www.debian.org/doc/manuals/project-history/">a first</a> among free libre operating system distributions.</p>
+
+<p>The Debian project&rsquo;s key strengths are <a href="http://www.debian.org/devel/people">its volunteer base</a>, its dedication to the <a href="http://www.debian.org/social_contract">Debian Social Contract</a>, and its <a href="http://wiki.debian.org/WhyDebianForDevelopers">commitment</a> to provide the best operating systems attainable, following a strict quality <a href="http://www.debian.org/doc/debian-policy">policy</a>, working with an established <a href="http://qa.debian.org/">QA Team</a>.</p>
+
+<p>You can <a href="http://www.debian.org/intro/help">help</a> Debian Project without <a href="http://www.debian.org/devel/join">joining</a> it and <a href="http://wiki.debian.org/DebianForNonCoderContributors">even not being a programmer</a>, or being a development and or service <a href="http://www.debian.org/partners/">partner</a> company or institution at the <a href="http://www.debian.org/partners/partners">Debian Partner Program</a>, or simply making various <a href="http://www.debian.org/donations">donations</a> to the Debian Project.</p>
+
+<p>Debian Project news, press releases and press coverage can be found from the official Debian wiki <a href="http://wiki.debian.org/News">page</a>. PR contact at <a href="http://lists.debian.org/debian-publicity">debian-publicity list</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-03-18T00:00:00+08:00" pubdate data-updated="true">Mar 18<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/03/18/proprietary_supercomputer_OS/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/03/18/proprietary_supercomputer_OS/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/03/03/ZT_%E7%BE%8E%E5%9B%BD%E6%A5%BC%E5%B8%82%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E5%A4%A9%E5%A0%82%E5%9D%A0%E5%85%A5%E5%9C%B0%E7%8B%B1%E7%9A%84/" title="Previous Post: ZT_美国楼市是如何从天堂坠入地狱的">&laquo; ZT_美国楼市是如何从天堂坠入地狱的</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/04/06/%E7%A5%AD%E7%A5%96/" title="Next Post: 祭祖">祭祖 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

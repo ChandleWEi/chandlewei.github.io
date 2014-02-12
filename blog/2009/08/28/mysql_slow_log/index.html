@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mysql_slow_log - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="用mysqldumpslow分析mysql的slow query log 2007年六月7日 由 贝贝爸 Leave a reply » mysql有一个功能就是可以log下来运行的比较慢的sql语句，默认是没有这个log的，为了开启这个功能，要修改my. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2009/08/28/mysql_slow_log">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mysql_slow_log</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-28T00:00:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>用mysqldumpslow分析mysql的slow query log</h1>
+
+<p>  2007年六月7日 由 贝贝爸 <a href="http://www.juyimeng.com/analyze-mysql-slow-query-log-with-mysqldumpslow.html#comments">Leave a reply »</a></p>
+
+<p><strong>mysql</strong>有一个功能就<strong>是</strong>可以<strong>log</strong>下来运行的比较慢的sql语句，默认<strong>是</strong>没有这个<strong>log</strong>的，为了开启这个功能，要修改my.cnf或者在<strong>mysql</strong>启动的时候加入一些参数。如果在my.cnf里面修改，需增加如下几行</p>
+
+<p>long_query_time = 1<br/>
+<strong>log</strong>&ndash;<strong>slow</strong>-queries = /var/youpath/<strong>slow</strong>.<strong>log</strong><br/>
+<strong>log</strong>-queries-not-using-indexes</p>
+
+<p>long_query_time <strong>是</strong>指执行超过多久的sql会被<strong>log</strong>下来，这里<strong>是</strong>1秒。<br/>
+<strong>log</strong>&ndash;<strong>slow</strong>-queries 设置把日志写在那里，可以为空，系统会给一个缺省的文件<em>host_name</em>&ndash;<strong>slow</strong>.<strong>log</strong>，我生成的<strong>log</strong>就在<strong>mysql</strong>的data目录<br/>
+<strong>log</strong>-queries-not-using-indexes 就<strong>是</strong>字面意思，<strong>log</strong>下来没有使用索引的query。</p>
+
+<p>把上述参数打开，运行一段时间，就可以关掉了，省得影响生产环境。</p>
+
+<p>接下来就<strong>是</strong>分析了，我这里的文件名字叫host-<strong>slow</strong>.<strong>log</strong>。<br/>
+先<strong>mysql</strong>dump<strong>slow</strong> –help以下，俺主要用的<strong>是</strong><br/>
+-s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br/>
+-t NUM just show the top n queries<br/>
+-g PATTERN grep: only consider stmts that include this string</p>
+
+<p>-s，<strong>是</strong>order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br/>
+c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br/>
+-t，<strong>是</strong>top n的意思，即为返回前面多少条的数据<br/>
+-g，后边可以写一个正则匹配模式，大小写不敏感的</p>
+
+<p><strong>mysql</strong>dump<strong>slow</strong> -s c -t 20 host-<strong>slow</strong>.<strong>log</strong><br/>
+<strong>mysql</strong>dump<strong>slow</strong> -s r -t 20 host-<strong>slow</strong>.<strong>log</strong></p>
+
+<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br/>
+<strong>mysql</strong>dump<strong>slow</strong> -t 10 -s t -g “left join” host-<strong>slow</strong>.<strong>log</strong><br/>
+这个<strong>是</strong>按照时间返回前10条里面含有左连接的sql语句。</p>
+
+<p>用了这个工具就可以查询出来那些sql语句<strong>是</strong>性能的瓶颈，进行优化，比如加索引，该应用的实现方式等。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-28T00:00:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mysql/'>mysql</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2009/08/28/mysql_slow_log/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2009/08/28/mysql_slow_log/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/08/17/zz_%E5%8F%AA%E7%AE%A1%E5%8E%BB%E5%81%9A-%E7%94%A8emacs%E7%9A%84org-mode%E5%81%9A%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/" title="Previous Post: zz_只管去做-用emacs的org-mode做时间管理">&laquo; zz_只管去做-用emacs的org-mode做时间管理</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/09/15/wintoflash/" title="Next Post: wintoflash">wintoflash &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

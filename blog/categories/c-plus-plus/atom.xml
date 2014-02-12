@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C++ | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/c-plus-plus/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Unix_建议学习路径]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/04/26/unix_%E5%BB%BA%E8%AE%AE%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/"/>
+    <updated>2009-04-26T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/04/26/unix_建议学习路径</id>
+    <content type="html"><![CDATA[<p>建议学习路径：</p>
+
+<p>　　首先先学学编辑器，vim, emacs什么的都行。<br/>
+然后学make file文件，只要知道一点就行，这样就可以准备编程序了。</p>
+
+<p>　　然后看看《C程序设计语言》K&amp;R，这样呢，基本上就可以进行一般的编程了，顺便找本数据结构的书来看。</p>
+
+<p>　　如果想学习UNIX/LINUX的编程，《APUE》绝对经典的教材，加深一下功底，学习《UNP》的第二卷。这样基本上系统方面的就可以掌握了。</p>
+
+<p>　　然后再看Douglus E. Comer的《用TCP/IP进行网际互连》第一卷，学习一下网络的知识，再看《UNP》的第一卷，不仅学习网络编程，而且对系统编程的一些常用的技巧就 很熟悉了，如果继续网络编程，建议看《TCP/IP进行网际互连》的第三卷，里面有很多关于应用协议telnet、ftp等协议的编程。<br/>
+如果想写设备驱动程序，首先您的系统编程的接口比如文件、IPC等必须要熟知了，再学习《LDD》2。</p>
+
+<p>　　对于几本经典教材的评价：</p>
+
+<p>　　《The C Programing Language》K&amp;R 经典的C语言程序设计教材，作者是C语言的发明者，教材内容深入浅出。虽然有点老，但是必备的一本手册，现在有时候我还常翻翻。篇幅比较小，但是每看一 遍，就有一遍的收获。另外也可用谭浩强的《C语言程序设计》代替。</p>
+
+<p>　　《Advanced Programing in Unix Envirement》 W.Richard Stevens：也是非常经典的书（废话，Stevens的书哪有不经典的！），虽然初学者就可以看，但是事实上它是《Unix Network Programing》的一本辅助资料。国内的翻译的《UNIX环境高级编程》的水平不怎么样，现在有影印版，直接读英文比读中文来得容易。</p>
+
+<p>　　《Unix Network Programing》W.Richard Stevens：第一卷讲BSD Socket网络编程接口和另外一种网络编程接口的，不过现在一般都用BSD Socket，所以这本书只要看大约一半多就可以了。第二卷没有设计到网络的东西，主要讲进程间通讯和Posix线程。所以看了《APUE》以后，就可以 看它了，基本上系统的东西就由《APUE》和《UNP》vol2概括了。看过《UNP》以后，您就会知道系统编程的绝大部分编程技巧，即使卷一是讲网络编 程的。国内是清华翻译得《Unix网络编程》，翻译者得功底也比较高，翻译地比较好。所以建议还是看中文版。</p>
+
+<p>　　《TCP/IP祥解》一共三卷，卷一讲协议，卷二讲实现，卷三讲编程应用。我没有怎么看过。，但是据说也很经典的，因为我没有时间看卷二，所以不便评价。</p>
+
+<p>　　《用TCP/IP进行网际互连》Douglus.E.Comer 一共三卷，卷一讲原理，卷二讲实现，卷三讲高级协议。感觉上这一套要比Stevens的那一套要好，就连Stevens也不得不承认它的第一卷非常经典。 事实上，第一卷即使你没有一点网络的知识，看完以后也会对网络的来龙去脉了如指掌。第一卷中还有很多习题也设计得经典和实用，因为作者本身就是一位教师， 并且卷一是国外研究生的教材。习题并没有答案，留给读者思考，因为问题得答案可以让你成为一个中级的Hacker，这些问题的答案可以象Douglus索 取，不过只有他只给教师卷二我没有怎么看，卷三可以作为参考手册，其中地例子也很经典。如果您看过Qterm的源代码，就会知道Qterm的telnet 实现部分大多数就是从这本书的源代码过来的。对于网络原理的书，我推荐它，而不是Stevens的《TCP/IP祥解》。</p>
+
+<p>　　《Operating System &ndash; Design and Implement》这个是讲操作系统的书，用Minix做的例子。作者母语不是英文，所以英文看起来比较晦涩。国内翻译的是《操作系统 设计与实现》，我没看过中文版，因为翻译者是尤晋元，他翻译的《APUE》已经让我失望头顶了。读了这本书，对操作系统的底层怎么工作的就会<br/>
+有一个清晰的认识。</p>
+
+<p>　　《Linux Device Driver》2e ，为数不多的关于Linux设备驱动程序的好书。不过内容有些杂乱，如果您没有一些写驱动的经验，初次看会有些摸不着南北。国内翻译的是《Linux设备 驱动程序》第二版，第一版，第二版的译者我都有很深的接触，不过总体上来说，虽然第二版翻译的有些不尽人意，但是相比第一版来说已经超出了一大截。要读这 一本书，至少应该先找一些《计算机原理》《计算机体系结构》的书来马马虎虎读读，至少应该对硬件和计算机的工作过程有一些了解。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[zz_gcc-4.2.3_installation]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/04/21/zz_gcc-4.2.3_installation/"/>
+    <updated>2009-04-21T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/04/21/zz_gcc-4.2.3_installation</id>
+    <content type="html"><![CDATA[<h2></h2>
+
+<p> </p>
+
+<p>本来想彻底的来一次lfs的，可惜实在是没有时间，所以就对gcc来了次小升级，gcc的编译安装是个非常头疼的事情，失败了好几次终于安装成功。下述安装过程在CentOS5上测试成功。。。  </p>
+
+<ol>
+<li><p>$ tar xvf gcc-4.2.3.tar.gz</p></li>
+<li><p>$ mkdir gcc-build</p></li>
+<li><p>$ cd gcc-build</p></li>
+<li><p>$../gcc-4.2.3/configure &mdash;prefix=/usr/local/gcc-4.2.3   </p></li>
+<li><p>                        &mdash;enable-threads=posix &mdash;disable-checking   </p></li>
+<li><p>                        &mdash;enable&mdash;long-long   </p></li>
+<li><p>                        &mdash;host=i386-redhat-linux   </p></li>
+<li><p>                        &mdash;with-system-zlib   </p></li>
+<li><p>                        &mdash;enable-languages=c,c++,java</p></li>
+<li><p> </p></li>
+<li><p>$ make bootstrap                        //重复编译自身</p></li>
+<li><p>$ make -k check 2>&amp;1 | tee gcc-check-log//-k跳过错误重定向到gcc-check-log</p></li>
+<li><p>$ grep Error gcc-check-log              //查看错误信息</p></li>
+<li><h1>make install</h1></li>
+</ol>
+
+
+<p>若想重新编译 make clean 清除上次编译遗留下的文件</p>
+
+<p><strong>uninstallation</strong></p>
+
+<p>因为我的旧版是RPM包的，查看版本号 gcc &mdash;version 然后 rpm -e 删除了</p>
+
+<p>若旧版是用源码安装的，whereis gcc 或者 which gcc 来查看所在路径，删除即可</p>
+
+<p>工具链设置:</p>
+
+<p>命令文件符号连接到 /usr/bin 目录下：</p>
+
+<ol>
+<li><p>$  cd /usr/bin</p></li>
+<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcc gcc</p></li>
+<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/g++ g++</p></li>
+<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcj gcj</p></li>
+</ol>
+
+
+<p>库文件设置：</p>
+
+<p>将/usr/local/gcc-4.2.3/lib 路径添加到环境变量LD_LIBRARY_PATH中</p>
+
+<ol>
+<li><h1>vi /etc/profile</h1></li>
+</ol>
+
+
+<p>添加下列代码</p>
+
+<p>setenv LD_LIBRARY_PATH /usr/local/gcc-4.2.3/lib:$LD_LIBRARY_PATH</p>
+
+<p>清理现场</p>
+
+<ol>
+<li><p>$ rm -rf gcc-4.2.3</p></li>
+<li><p>$ rm -rf gcc-build</p></li>
+</ol>
+
+
+<p>要装binson</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Zz简单有效的学习方式]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/04/17/zz%E7%AE%80%E5%8D%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/"/>
+    <updated>2009-04-17T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/04/17/zz简单有效的学习方式</id>
+    <content type="html"><![CDATA[<p>1） 要熟练掌握至少一种编程语言。我觉得最好是C++。<br/>
+2） 不要寄希望于一次就把软件设计好。你所关注的重点应依次是Make it work, make it right, make it fast。<br/>
+3） 软件结构要分块分层。低层模块不要依赖于上层模块。一个类、一个接口或一个函数都应只做一件事。<br/>
+4） 软件设计的主要工作是给类分配责任（responsibilities）。要站在类的使用者角度设计类的外部行为。要讲究一点软件美学，即简单、清晰、一致、平衡等。<br/>
+5） 了解并运用UML、Design Patterns、Unit Test、Design by Contract等。<br/>
+6） 使用代码管理系统和质量跟踪系统。<br/>
+7） 了解各种软件开发过程控制方法，并找出适合你的方法。<br/>
+8） 阅读经典书籍，研读经典代码，订阅杂志，与同行切磋。</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gentoo | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/gentoo/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gentoo_初体验]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/08/07/gentoo_%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
+    <updated>2009-08-07T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/08/07/gentoo_初体验</id>
+    <content type="html"><![CDATA[<p>今天安装gentoo</p>
+
+<p>参考</p>
+
+<p>安装</p>
+
+<p><a href="http://www.gentoo.org/doc/en/gentoo-x86-quickinstall.xml">http://www.gentoo.org/doc/en/gentoo-x86-quickinstall.xml</a></p>
+
+<p>xfce4</p>
+
+<p><a href="http://www.gentoo.org/doc/zh_cn/xfce-config.xml">http://www.gentoo.org/doc/zh_cn/xfce-config.xml</a></p>
+
+<p>a2ps 问题 参考</p>
+
+<p><a href="http://forums.gentoo.org/viewtopic-p-5760560.html">http://forums.gentoo.org/viewtopic-p-5760560.html</a></p>
+
+<p><a href="http://bugs.gentoo.org/269638">http://bugs.gentoo.org/269638</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p>wireless</p>
+
+<p><a href="http://en.gentoo-wiki.com/wiki/Iwlwifi#Kernels_.3E.3D2.6.30">http://en.gentoo-wiki.com/wiki/Iwlwifi#Kernels_.3E.3D2.6.30</a></p>
+
+<p>CONFIG_IWLWIFI_DEBUG:                                                     │ <br/>
+  │                                                                           │ <br/>
+  │ This option will enable debug tracing output for the iwlwifi drivers      │ <br/>
+  │                                                                           │ <br/>
+  │ This will result in the kernel module being ~100k larger.  You can        │ <br/>
+  │ control which debug output is sent to the kernel log by setting the       │ <br/>
+  │ value in                                                                  │ <br/>
+  │                                                                           │ <br/>
+  │       /sys/class/net/wlan0/device/debug_level                             │ <br/>
+  │                                                                           │ <br/>
+  │ This entry will only exist if this option is enabled.                     │ <br/>
+  │                                                                           │ <br/>
+  │ To set a value, simply echo an 8-byte hex value to the same file:         │ <br/>
+  │                                                                           │ <br/>
+  │         % echo 0x43fff > /sys/class/net/wlan0/device/debug_level          │ <br/>
+  │                                                                           │ <br/>
+  │ You can find the list of debug mask values in:                            │ <br/>
+  │         drivers/net/wireless/iwlwifi/iwl-debug.h</p>
+
+<p> </p>
+
+<p>empathy</p>
+
+<p>sudo emerge -av  empathy telepathy-mission-control telepathy-stream-engine telepathy-gabble telepathy-butterfly telepathy-haze telepathy-idle telepathy-salut telepathy-sofiasip pymsn</p>
+
+<p> </p>
+
+<p>====</p>
+
+<p>WARNING: Deprecated config file /etc/modprobe.conf, all config files belong into /etc/modprobe.d/.</p>
+
+<p>加入到 如果要加载 module 的话</p>
+
+<p>真奇怪 官方文档上面说 如果是 /etc/modules.autoload.d/kernel.2.6 ＆＆ update-modules 的时候其实应该 可以的 但是不可以 freenode 上<matomic>给出的/etc/conf.d/modules</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>acpi在编译的时候 要把 deprecated 的file 的方式方上去，应为 xfce4 的battery默认使用这种方式</p>
+
+<p> </p>
+
+<p>字体 xfce4 要 在设置字体里面 加  AA, hit full, rgb</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>2.6.30 alsa 驱动直接内核里选择 选择哪个用lspci -v |grep -i audio自己看 ，alsa-mixer 里面00 有声音 mm静音</p>
+
+<p>lib utils tools 装上</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>zen-overlay</p>
+
+<p>emerge -av layman</p>
+
+<p>layman -f</p>
+
+<p>echo &ldquo;source /usr/local/portage/layman/make.conf&rdquo; >> /etc/make.conf</p>
+
+<p>layman -a zen-overlay</p>
+
+<p>emerge -av zen-sources</p>
+
+<p><a href="http://zen-sources.org/content/gentoo-install-guide">http://zen-sources.org/content/gentoo-install-guide</a></p>
+
+<p> </p>
+
+<p><a href="http://www.gentoo.org/proj/en/overlays/userguide.xml">http://www.gentoo.org/proj/en/overlays/userguide.xml</a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>  /*&lt;![CDATA[*/ #usrbar{padding:4px 10px 3px 0;font-size:12px;height:19px;line-height:19px;color:#000000;font-family:Arial;text-align:right;background:#ffffff;filter:alpha(opacity=65);-moz-opacity:0.5;width:auto !important;width:100%;letter-spacing:normal} #usrbar a,#usrbar a:link,#usrbar a:visited{color:#0000CC;text-decoration:underline} #ft{clear:both;height:20px;line-height:20px;color:#666666;font-size:12px;font-family:Arial;text-align:center} #ft a,#ft a:link,#ft a:visited{color:#7777CC;text-decoration:underline} #usrbar,#usrbar a,#usrbar a:link,#usrbar a:visited,#ft,#ft a,#ft a:link,#ft a:visited{letter-spacing:normal} /*]]&gt;*/</p>
+
+<p>  <a href="http://hi.baidu.com/">百度空间</a> |  <a href="http://www.baidu.com/">百度首页</a>  | <a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http://hi.baidu.com%2Fshura%2Fblog%2Fitem%2F9641b21b4d029f1f8618bfca%252Ehtml">登录</a></p>
+
+<p><a href="http://hi.baidu.com/shura" title="shurarai的空间 http://hi.baidu.com/shura">hello,world!</a></p>
+
+<p> </p>
+
+<p><a href="http://hi.baidu.com/shura">主页</a> <a href="http://hi.baidu.com/shura/blog">博客</a> <a href="http://hi.baidu.com/shura/album">相册</a>| <a href="http://hi.baidu.com/shura/profile">个人档案</a> | <a href="http://hi.baidu.com/shura/friends">好友</a></p>
+
+<p>  |   |<br/>
+查看文章
+  |   |   |</p>
+
+<p>gentoo HOWTO 增加字体</p>
+
+<p>2008-08-22 15:00</p>
+
+<p>  |</p>
+
+<h2>手工添加</h2>
+
+<p>如果您需要手工添加 <a href="http://zh.gentoo-wiki.com/index.php?title=Portage&amp;action=edit&amp;redlink=1" title="Portage (尚未撰写)">Portage</a>里尚未提供或不能提供的字体，您按照下面的步骤手工添加。此处以simsun.ttc为例。</p>
+
+<h3>拷贝字体</h3>
+
+<p>拷贝字体文件到/usr/share/fonts下的一个文件夹里，比如/usr/share/fonts/TTF。然后修改文件权限</p>
+
+<table>
+<thead>
+<tr>
+<th>  </th>
+<th> <strong>代码：</strong> 修改权限 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td># chmod 644 /usr/share/fonts/TTF/simsun.ttc </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>修改/etc/X11/xorg.conf</h3>
+
+<p>保证/etc/X11/xorg.conf的Section &ldquo;Files"里有相应的路径，比如：</p>
+
+<table>
+<thead>
+<tr>
+<th>  </th>
+<th> <strong>文件：</strong> /etc/X11/xorg.conf </th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+<p>Section &ldquo;Files"<br/>
+&hellip;<br/>
+FontPath &rdquo;/usr/share/fonts/TTF"<br/>
+&hellip;<br/>
+EndSection
+  |</p>
+
+<h3>产生fonts.dir和fonts.scale</h3>
+
+<p>这一步的作用是为了使使用X核心字体API的程序可以利用本字体。这类程序的例子有xterm，emacs，xmms等。</p>
+
+<p>安装 <a href="http://gentoo-portage.com/Search?search=x11-apps/mkfontdir" title="ebuild:x11-apps/mkfontdir">x11-apps/mkfontdir</a>和 <a href="http://gentoo-portage.com/Search?search=x11-apps/mkfontscale" title="ebuild:x11-apps/mkfontscale">x11-apps/mkfontscale</a>并产生fonts.dir和fonts.scale</p>
+
+<table>
+<thead>
+<tr>
+<th>  </th>
+<th> <strong>代码：</strong> 安装mkfontdir和mkfontscale </th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+<p>$ emerge mkfontdir mkfontscale<br/>
+$ cd /usr/share/fonts/TTF<br/>
+$ sudo mkfontdir<br/>
+$ sudo mkfontscale |</p>
+
+<h3>更新fontconfig的cache</h3>
+
+<p>这一步的作用是为了使使用fontconfig来配置字体的程序可以利用本字体。qt程序和gtk+2程序皆属此类。</p>
+
+<table>
+<thead>
+<tr>
+<th>  </th>
+<th> <strong>代码：</strong> fc-cache -fv </th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+<p>$ sudo fc-cache -fv</p>
+
+<p>  |</p>
+
+<h2>验证安装成功</h2>
+
+<p>  | <strong> 提示！</strong> 做完上面这些步骤之后您可能需要重启一下你的X,然后继续下面的操作 |</p>
+
+<h3>使用X核心字体API的程序</h3>
+
+<p>安装 <a href="http://gentoo-portage.com/Search?search=x11-apps/xlsfonts" title="ebuild:x11-apps/xlsfonts">x11-apps/xlsfonts</a>，执行xlsfonts看是否可以列出刚才安装的字体名。X核心字体的名字很长，比如：</p>
+
+<table>
+<thead>
+<tr>
+<th>  </th>
+<th> <strong>代码：</strong> X核心字体名 </th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+<p>-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-ascii-0<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-gb18030.2000-0<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-gb2312.1980-0<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-gbk-0<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-ibm-cp850<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-iso10646-1<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-iso8859-1<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-iso8859-15<br/>
+-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-koi8-r |</p>
+
+<p>如果有，那么xmms这样的程序就可以使用。</p>
+
+<p>  | <strong> 提示！</strong> xlsfonts命令需要在X下的Terminal执行,不然你需要加参数-display displayname指定displayname |</p>
+
+<h3>使用fontconfig的程序</h3>
+
+<p>执行fc-list看是否可以列出刚才安装的字体名。</p>
+
+<p>  |</p>
+
+<p>  |   |   |   |</p>
+
+<p>©2009 Baidu
+  <img src="http://c.baidu.com/c.gif?t=6&amp;p=3" alt="" /></p>
+]]></content>
+  </entry>
+  
+</feed>

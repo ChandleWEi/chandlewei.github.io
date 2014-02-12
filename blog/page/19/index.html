@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="The Philippine Atmospheric, Geophysical and Astronomical Services Administration ( PAGASA), Quezon City, PH, part of Philippine Department of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/19">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/03/18/proprietary_supercomputer_OS/">proprietary_supercomputer_OS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-03-18T00:00:00+08:00" pubdate data-updated="true">Mar 18<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>  The Philippine Atmospheric, Geophysical and Astronomical Services Administration ( <a href="http://www.pagasa.dost.gov.ph/">PAGASA</a>), <a href="http://en.wikipedia.org/wiki/Quezon_city">Quezon City</a>, <a href="http://en.wikipedia.org/wiki/Philippines">PH</a>, part of Philippine Department of Science and Technology ( <a href="http://www.dost.gov.ph/">DOST</a>) uses a Debian GNU / Linux eight off-the-shelf PC nodes cluster for weather forecasts running open-source and no-cost meteorological software, achieving better control of configuration, timely forecasts and accuracy.</p>
+
+<p>The Debian GNU / Linux cluster cost to deploy was only US$ 37000 and freed the department of a US$ 5000 monthly maintenance cost of previous proprietary software on its supercomputer.</p>
+
+<p>The Debian GNU / Linux cluster is part of the PAGASA Interactive Climate and Weather Information Network ( <a href="http://www.asti.dost.gov.ph/index.php?option=com_content&amp;task=view&amp;id=37&amp;Itemid=41">PICWIN</a>) developed by the Advanced Science and Technology Institute ( <a href="http://www.asti.dost.gov.ph/">ASTI</a>), who already <a href="http://lists.debian.org/debian-publicity/2007/03/msg00048.html">launched</a> its <a href="http://www.asti.dost.gov.ph/index.php?option=com_content&amp;task=view&amp;id=78&amp;Itemid=27"> own version</a> of Debian GNU / Linux, the <a href="http://www.bayanihan.gov.ph/">Bayanihan Linux</a>.</p>
+
+<p>Each 3 hours, PICWIN collects seven meteorological data of synoptic stations across the country and sends to the Debian GNU / Linux cluster through SMS.</p>
+
+<p>Each 6 hours, the Deutscher Wetterdienst ( <a href="http://www.dwd.de/">DWD</a>), the German Meteorological Office, sends meteorological data from several countries using the internet.</p>
+
+<p>Both massive sets of data covering a 5500 km by 5500 km square over country, divided into a three dimensional grid of 301 x 201 x 32 (LxWxH) blocks, are processed by the no-cost, for government agencies, High Resolution Model ( <a href="http://www.pagasa.dost.gov.ph/wb/modelinfo.html">HRM</a>) software created by Deutscher Wetterdienst ( <a href="http://www.dwd.de/">DWD</a>) and by the open source <a href="http://www.mmm.ucar.edu/mm5">MM5</a> meteorological softwares and generate weather forecasts every 12 hours.</p>
+
+<p>These programs were recompiled from sources with Intel Fortran Compiler ( <a href="http://www.intel.com/support/performancetools/fortran/linux/">IFC</a>), non-commercial version, and Intel C compilers ( <a href="http://www.intel.com/support/performancetools/c/linux">ICC</a>), because of their support of Cray pointers, at Debian GNU / Linux machines for optimal performance.</p>
+
+<p>Parallelization is based on <a href="http://www.mcs.anl.gov/research/projects/mpich2/"> MPICH2</a> libraries using eight dual Xeon EM64T nodes connected by Gigabit ethernet.</p>
+
+<p>Alan Pineda, PAGASA Flood Forecasting Branch officer-in-charge, gave a first <a href="http://www.manilatimes.net/national/2008/feb/25/yehey/techtimes/20080225tech1.html"> interview</a> with more information and a <a href="http://www.pcworld.idg.com.au/index.php/id;1611547855">second</a> one with further details.</p>
+
+<p>As a sidenote, newest supercomputer clusters <a href="http://www.wired.com/gadgets/pcs/multimedia/2007/11/gallery_supercomputer?slide=9&amp;slideView=9"> can run</a> Debian GNU / Linux <a href="http://www.sgi.com/pdfs/3433.pdf">too</a>.</p>
+
+<h2>About PAGASA</h2>
+
+<h3>Mission</h3>
+
+<p>The primary mission of <a href="http://www.pagasa.dost.gov.ph/">PAGASA</a> is to provide protection of life and property against natural hazards due to typhoons, floods, drought, giant waves, high seas, etc., to utilize scientific knowledge and information as an effective instrument to ensure the safety, well being, economic security and improve the quality of life of all the people and the environment; and to promote national progress and contribute to regional socio-economic development through various applications of meteorology, geophysics and space sciences (including astronomy).</p>
+
+<p> </p>
+
+<h3>Vision</h3>
+
+<p>PAGASA envisions itself to be the center of: Excellence in its distinctive competence in meteorology, operational hydrology, climatology, astronomy and other allied sciences; World-class capability in monitoring, analyses, forecasting and warning of tropical weather systems such as typhoons, monsoons, Intertropical Convergence Zone (ITCZ).</p>
+
+<h2>About the Debian Project</h2>
+
+<p>Debian GNU / Linux is <a href="http://www.debian.org/ports/#nonlinux">one</a> of the <a href="http://www.debian.org/intro/free">free libre</a> operating systems (GNU/Linux, GNU/Hurd, GNU/NetBSD, GNU/kFreeBSD), running 18733+ <a href="http://qa.debian.org/">officially</a> maintained <a href="http://packages.debian.org/">packages</a> on <a href="http://www.debian.org/ports">15 hardware platforms</a>, from <a href="http://www.debian.org/ports/arm/">cell phones</a> and <a href="http://www.linux-sh.org/">network devices</a> to <a href="http://www.debian.org/ports/s390/">mainframes</a> and <a href="http://www.debian.org/ports/beowulf/">supercomputers</a>, developed by more than <a href="http://asdfasdf.debian.net/%7Etar/bugstats/?8">two thousand</a> volunteers from <a href="http://www.debian.org/devel/developers.loc">all over the world</a> who <a href="http://www.debian.org/devel/">collaborate</a> via the internet on the <a href="http://www.debian.org/">Debian Project</a>.</p>
+
+<p>Debian&rsquo;s dedication to <a href="http://www.debian.org/intro/free">Free Libre Open Source Software</a>, its <a href="http://www.debian.org/devel/constitution">constitutional</a> non-profit nature, its <a href="http://vote.debian.org/">open</a> and <a href="http://en.wikipedia.org/wiki/Meritocracy">meritocratic</a> development model, <a href="http://www.debian.org/intro/organization">organization</a> and social <a href="http://www.techforce.com.br/index.php/news/linux_blog/scientific_study_about_debian_governance_and_organization"> governance</a> make it <a href="http://www.debian.org/doc/manuals/project-history/">a first</a> among free libre operating system distributions.</p>
+
+<p>The Debian project&rsquo;s key strengths are <a href="http://www.debian.org/devel/people">its volunteer base</a>, its dedication to the <a href="http://www.debian.org/social_contract">Debian Social Contract</a>, and its <a href="http://wiki.debian.org/WhyDebianForDevelopers">commitment</a> to provide the best operating systems attainable, following a strict quality <a href="http://www.debian.org/doc/debian-policy">policy</a>, working with an established <a href="http://qa.debian.org/">QA Team</a>.</p>
+
+<p>You can <a href="http://www.debian.org/intro/help">help</a> Debian Project without <a href="http://www.debian.org/devel/join">joining</a> it and <a href="http://wiki.debian.org/DebianForNonCoderContributors">even not being a programmer</a>, or being a development and or service <a href="http://www.debian.org/partners/">partner</a> company or institution at the <a href="http://www.debian.org/partners/partners">Debian Partner Program</a>, or simply making various <a href="http://www.debian.org/donations">donations</a> to the Debian Project.</p>
+
+<p>Debian Project news, press releases and press coverage can be found from the official Debian wiki <a href="http://wiki.debian.org/News">page</a>. PR contact at <a href="http://lists.debian.org/debian-publicity">debian-publicity list</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/03/03/ZT_%E7%BE%8E%E5%9B%BD%E6%A5%BC%E5%B8%82%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E5%A4%A9%E5%A0%82%E5%9D%A0%E5%85%A5%E5%9C%B0%E7%8B%B1%E7%9A%84/">ZT_美国楼市是如何从天堂坠入地狱的</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-03-03T00:00:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> 在美国，贷款是非常普遍的现象，从房子到汽车，从信用卡到电话账单，贷款无处不在。当地人很少全款买房，通常都是长时间贷款。可是我们也知道，在这里失业和再就业是很常见的现象。这些收入并不稳定甚至根本没有收入的人，他们怎么买房呢？因为信用等级达不到标准，他们就被定义为次级贷款者。 　　 　　 　　大约从十年前开始，那个时候贷款公司漫天的广告就出现在电视上、报纸上、街头，抑或在你的信箱里塞满诱人的传单：“你想过中产阶级的生活吗？买房吧！” “ 积蓄不够吗？贷款吧！”“没有收入吗？找阿牛贷款公司吧！”“首付也付不起？我们提供零首付！”“担心利息太高？头两年我们提供3%的优惠利率！”“每个月还是付不起？没关系，头24个月你只需要支付利息，贷款的本金可以两年后再付！想想看，两年后你肯定已经找到工作或者被提升为经理了，到时候还怕付不起！” 　　 　　 　　 　　 “担心两年后还是还不起？哎呀，你也真是太小心了，看看现在的房子比两年前涨了多少，到时候你转手卖给别人啊，不仅白住两年，还可能赚一笔呢！再说了，又不用你出钱，我都相信你一定行的，难道我敢贷，你还不敢借？” 　　 　　 　　 　　在这样的诱惑下，无数美国市民毫不犹豫地选择了贷款买房。（你替他们担心两年后的债务？向来自我感觉良好的美国市民会告诉你，演电影的都能当上州长，两年后说不定我还能竞选总统呢。） 　　 　　 　　 　　阿牛贷款公司短短几个月就取得了惊人的业绩，可是钱都贷出去了，能不能收回来呢？公司的董事长——阿牛先生，那也是熟读美国经济史的人物，不可能不知道房地产市场也是有风险的，所以这笔收益看来不能独吞，要找个合伙人分担风险才行。于是阿牛找到美国经济界的带头大哥——投行。这些家伙可都是名字响当当的主儿（美林、高盛、摩根），他们每天做什么呢？就是吃饱了闲着也是闲着，于是找来诺贝尔经济学家，找来哈佛教授，用上最新的经济数据模型，一番鼓捣之后，弄出几份分析报告，从而评价一下某某股票是否值得买进，某某国家的股市已经有泡沫了，一群在风险评估市场里面骗吃骗喝的主儿，你说他们看到这里面有风险没？用脚都看得到！可是有利润啊，那还犹豫什么，接手搞吧！于是经济学家、大学教授以数据模型、老三样评估之后，重新包装一下，就弄出了新产品—— CDO（注： Collateralized Debt Obligation，债务抵押债券），说穿了就是债券，通过发行和销售这个CDO债券，让债券的持有人来分担房屋贷款的风险。 　　 　　 　　 　　光这样卖，风险太高还是没人买啊，假设原来的债券风险等级是6，属于中等偏高。于是投行把它分成高级和普通CDO两个部分，发生债务危机时，高级CDO 享有优先赔付的权利。这样两部分的风险等级分别变成了4和8，总风险不变，但是前者就属于中低风险债券了，凭投行三寸不烂“金”舌，当然卖了个满堂彩！可是剩下的风险等级8的高风险债券怎么办呢？ 　　 　　 　　 　　于是投行找到了对冲基金，对冲基金又是什么人，那可是在全世界金融界买空卖多、呼风唤雨的角色，过的就是刀口舔血的日子，这点风险小意思！于是凭借着老关系，在世界范围内找利率最低的银行借来钱，然后大举买入这部分普通CDO债券，2006年以前，日本央行贷款利率仅为1.5%；普通CDO利率可能达到 12%，所以光靠利息差对冲基金就赚得盆满钵满了。 　　 　　 　　 　　这样一来，奇妙的事情发生了，2001年末，美国的房地产一路飙升，短短几年就翻了一倍多，这样一来就如同阿牛贷款公司开头的广告一样，根本不会出现还不起房款的事情，就算没钱还，把房子一卖还可以赚一笔钱。结果是从贷款买房的人，到阿牛贷款公司，到各大投行，到各个银行，到对冲基金人人都赚钱，但是投行却不太高兴了！当初是觉得普通CDO风险太高，才扔给对冲基金的，没想到这帮家伙比自己赚的还多，净值一个劲地涨，早知道自己留着玩了，于是投行也开始买入对冲基金，打算分一杯羹了。这就好像“老黑”家里有馊了的饭菜，正巧看见隔壁邻居那只讨厌的小花狗，本来打算毒它一把，没想到小花狗吃了不但没事，反而还越长越壮了，“老黑”这下可蒙了，难道馊了的饭菜营养更好，于是自己也开始吃了！ 　　 　　 　　 　　这下又把对冲基金乐坏了，他们是什么人，手里有1块钱，就能想办法借10块钱来玩的土匪啊，现在拿着抢手的CDO还能老实？于是他们又把手里的CDO债券抵押给银行，换得10倍的贷款，然后继续追着投行买普通CDO。嘿，当初可是签了协议，这些CDO都归我们的！！！投行心里那个不爽啊，除了继续闷声买对冲基金之外，他们又想出了一个新产品，就叫CDS（注：Credit Default Swap，信用违约交换）好了，华尔街就是这些天才产品的温床：不是都觉得原来的CDO风险高吗，那我投保好了，每年从CDO里面拿出一部分钱作为保金，白送给保险公司，但是将来出了风险，大家一起承担。 　　 　　 　　 　　保险公司想，不错啊，眼下CDO这么赚钱，一分钱都不用出就分利润，这不是每年白送钱给我们吗？干了！对冲基金想，不错啊，已经赚了几年了，以后风险越来越大，光是分一部分利润出去，就有保险公司承担一半风险，干了！ 　　 　　 　　 　　于是再次皆大欢喜，CDS也卖火了！但是事情到这里还没有结束：因为“聪明”的华尔街人又想出了基于CDS的创新产品！我们假设CDS已经为我们带来了 50亿元的收益，现在我新发行一个“三毛”基金，这个基金是专门投资买入CDS的，显然这个建立在之前一系列产品之上的基金的风险是很高的，但是我把之前已经赚的50亿元投入作为保证金，如果这个基金发生亏损，那么先用这50亿元垫付，只有这50亿元亏完了，你投资的本金才会开始亏损，而在这之前你是可以提前赎回的，首发规模500亿元。天哪，还有比这个还爽的基金吗？1元面值买入的基金，亏到0.90元都不会亏自己的钱，赚了却每分钱都是自己的！评级机构看到这个天才设想，简直是毫不犹豫：给予AAA评级！ 　　 　　 　　 　　结果这个“三毛”可卖疯了，各种养老基金、教育基金、理财产品，甚至其他国家的银行也纷纷买入。虽然首发规模是原定的500亿元，可是后续发行了多少亿，简直已经无法估算了，但是保证金50亿元却没有变。如果现有规模5000亿元，那保证金就只能保证在基金净值不低于0.99元时，你不会亏钱了。 　　 　　 　　 　　当时间走到了2006年年底，风光了整整五年的美国房地产终于从顶峰重重摔了下来，这条食物链也终于开始断裂。因为房价下跌，优惠贷款利率的时限到了之后，先是普通民众无法偿还贷款，然后阿牛贷款公司倒闭，对冲基金大幅亏损，继而连累保险公司和贷款的银行，花旗、摩根相继发布巨额亏损报告，同时投资对冲基金的各大投行也纷纷亏损，然后股市大跌，民众普遍亏钱，无法偿还房贷的民众继续增多……最终，美国次贷危机爆发。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/29/pidgin_msn-space_%E7%9C%8B%E4%B8%8D%E5%88%B0%E5%90%8D%E5%AD%97%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">Pidgin_msn-space_看不到名字问题解决</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-29T00:00:00+08:00" pubdate data-updated="true">Feb 29<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>下 pidgin ticket 下manphiz提供的patch ，算然上面是说2.3.0但是他自己说支持2.3.x，这里感谢manphiz的帮助</p>
+
+<p>我是debian然后就是</p>
+
+<p>apt-get source pidgin</p>
+
+<p>tar -zxvf pidgin.2.3.1.tar.gz</p>
+
+<p>cd pidgin.2.3.1</p>
+
+<p>cp msn-space.patch debian/patch/23msn-space.patch</p>
+
+<p>dpkg-buildpackage</p>
+
+<p> dpkg -i pidgin</p>
+
+<p>ok 问题解决 </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/19/height__100%25_%E9%97%AE%E9%A2%98_%28FF%29/">height__100%_问题_(FF)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-19T00:00:00+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Firefox浏览器中使用“height: 100%”会固定其高度，而不是自动延伸成100%的高度，这个在IE浏览器中非常非常正常的一个CSS定义，到Firefox浏览器中就会有问题,</p>
+
+<p> 但是如果使用以下头定义</p>
+
+<p>&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Transitional//EN&rdquo; &ldquo;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>&rdquo;></p>
+
+<p>则会使不符合w3c的定义失效，所以今天碰的问题是</p>
+
+<p>div main 设置了100％，但是被firefox 固定了高度，所以第三层的 footer 的margin－top 出现问题。 </p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/19/alt_%2B_ctrl_%2B_backspace/">Alt_+_ctrl_+_backspace</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-19T00:00:00+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>让Ctrl-Alt-Backspace组合键不重启X<br/>
+　　备份/etc/X11/xorg.conf文件。</p>
+
+<p>| <strong>代码:</strong> |
+| sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf_backup |</p>
+
+<p>　　编辑/etc/X11/xorg.conf。</p>
+
+<p>| <strong>代码:</strong> |
+| sudo gedit /etc/X11/xorg.conf |</p>
+
+<p>　　在文件末尾加上</p>
+
+<p>| <strong>代码:</strong> |
+| Section &ldquo;ServerFlags&#8221;<br/>
+Option &#8220;DontZap&rdquo; &ldquo;yes&#8221;<br/>
+EndSection |</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/18/emacs_%E5%88%97%E6%A8%A1%E5%BC%8F%E7%BC%96%E8%BE%91/">Emacs_列模式编辑</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-18T00:00:00+08:00" pubdate data-updated="true">Feb 18<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>不敢独享，与大家分享。也可以在Emacs中用C-x C-h列出全部命令，查找C-x r c，所有列模式命令都是以C-x r开始的<br/>
+C-x r C-@                    point-to-register<br/>
+C-x r SPC                    point-to-register<br/>
+C-x r +        increment-register<br/>
+C-x r b        bookmark-jump<br/>
+C-x r c        clear-rectangle<br/>
+先用C-space或者C-@设一个mark，移动光标到另一点，使用C-x r c可以清楚mark到光标处的矩形区域，该区域留下空白。<br/>
+C-x r d        delete-rectangle<br/>
+删除矩形区域，不留空白，后面的字符前移<br/>
+C-x r f        frame-configuration-to-register<br/>
+C-x r g        insert-register<br/>
+C-x r i        insert-register<br/>
+将某个寄存器的内容插入某处<br/>
+C-x r j        jump-to-register<br/>
+C-x r k        kill-rectangle<br/>
+就是剪切某个选定的矩形区域，用C-x r y可以贴上<br/>
+C-x r l        bookmark-bmenu-list<br/>
+C-x r m        bookmark-set<br/>
+C-x r n        number-to-register<br/>
+C-x r o        open-rectangle<br/>
+在选定的矩形区域插入空白<br/>
+C-x r r        copy-rectangle-to-register<br/>
+将选定的矩形区域复制到某个寄存器<br/>
+C-x r s        copy-to-register<br/>
+C-x r t        string-rectangle<br/>
+在选定区域所有列前插入同样的字符<br/>
+C-x r w        window-configuration-to-register<br/>
+C-x r x        copy-to-register<br/>
+C-x r y        yank-rectangle<br/>
+类似于矩形区域的粘贴，就是将刚用C-x r k剪切的矩形区域粘贴过来<br/>
+C-x r C-SPC    point-to-register</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/15/2008%E4%B9%8B%E6%89%91%E6%9C%94%E8%BF%B7%E7%A6%BB/">2008之扑朔迷离</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-15T00:00:00+08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>台湾公投像悬挂在中国头顶上的大可里斯之剑，快速稳定的解决问题对经济将没有影响，否则将扑朔迷离。公投是一个地区宣布主权和独立的前提标准，1990年苏联解体的根本原因是前苏联没有抑制住立陶宛1月份的公投，3月份立陶宛独立，整个强大的苏联分崩离析。这也是2008年股市的不确定因素，命运的转轮在鼠年开始转动，中国也许会采取实际行动。</p>
+
+<p>那么 股票的选择就扑朔迷离了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/14/firefox_3_beta_3/">Firefox_3_beta_3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-14T00:00:00+08:00" pubdate data-updated="true">Feb 14<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> </p>
+
+<p>sudo make &amp;&amp; sudo make install</p>
+
+<p>wget -c <a href="http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.0b3/source/firefox-3.0b3-source.tar.bz2">http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.0b3/source/firefox-3.0b3-source.tar.bz2</a></p>
+
+<p> </p>
+
+<p>tar -xjvf  firefox-3.0b3-source.tar.bz2</p>
+
+<p>sudo apt-get build-dep iceweasel</p>
+
+<p>sudo apt-get install libdbus-glib-1-dev libcurl4-openssl-dev -y</p>
+
+<p>./configure &mdash;prefix=/usr/local/firefox-3.0b3 &mdash;enable-application=browser</p>
+
+<p>make  &amp;&amp; make install</p>
+
+<p>bin: firefox -P ff3 -no-remote</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/13/%E7%89%9B%E4%BA%BA_blog_%E6%94%B6%E8%97%8F%E4%B9%8B%E7%94%A8/">牛人_blog_收藏之用</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-13T00:00:00+08:00" pubdate data-updated="true">Feb 13<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong><em>经济学界部分牛人</em></strong>：</p>
+
+<p><strong>张五常：</strong> <a href="http://zhangwuchang.blog.sohu.com/"><strong>http://zhangwuchang.blog.sohu.com/</strong></a></p>
+
+<p><strong>林毅夫：</strong> <a href="http://linyifu.blog.sohu.com/"><strong>http://linyifu.blog.sohu.com/</strong></a></p>
+
+<p><strong>汪丁丁：</strong> <a href="http://wang-dingding.blog.sohu.com/"><strong>http://wang-dingding.blog.sohu.com/</strong></a></p>
+
+<p><strong>茅于轼</strong>： <a href="http://maoyushi.blog.sohu.com/">http://maoyushi.blog.sohu.com/</a></p>
+
+<p>曼昆（mankiw）： <a href="http://gregmankiw.blogspot.com/">http://gregmankiw.blogspot.com/</a>(需外网)</p>
+
+<p>韦森： <a href="http://veisen.blog.sohu.com/">http://veisen.blog.sohu.com/</a></p>
+
+<p><strong>谢百三</strong>： <a href="http://xiebaisan.blog.sohu.com/">http://xiebaisan.blog.sohu.com/</a></p>
+
+<p><strong>易宪容：</strong> <a href="http://yixianrongblog.blog.sohu.com/"><strong>http://yixianrongblog.blog.sohu.com/</strong></a></p>
+
+<p>姚洋（不更新）： <a href="http://yaoyangblog.blog.sohu.com/">http://yaoyangblog.blog.sohu.com/</a></p>
+
+<p> </p>
+
+<p><strong>沙黾农（证券界资深分析师,过亿）：</strong> <a href="http://shaminnong.blog.sohu.com/"><strong>http://shaminnong.blog.sohu.com/</strong></a></p>
+
+<p><strong>邹恒甫（北大教授~~穷人的走狗）：</strong> <a href="http://zouhengfu.blog.sohu.com/"><strong>http://zouhengfu.blog.sohu.com/</strong></a><strong> </strong></p>
+
+<p>董革新： <a href="http://investment.blog.sohu.com/">http://investment.blog.sohu.com/</a> </p>
+
+<p>叶楚华（走入人类心灵世界的经济学）： <a href="http://yechuhua.blog.sohu.com/">http://yechuhua.blog.sohu.com/</a> </p>
+
+<p><strong>留美三博士（邹恒甫、谢丹阳、丁学良）：</strong> <a href="http://zoudingxie.blog.sohu.com/"><strong>http://zoudingxie.blog.sohu.com/</strong></a></p>
+
+<p><strong><em>补：</em></strong>三教授（霍德明 巫和懋 朱家祥）： <a href="http://3pro.blog.sohu.com/">http://3pro.blog.sohu.com/</a></p>
+
+<p>      <strong>周其仁</strong>： <a href="http://zhouqiren.blog.sohu.com/">http://zhouqiren.blog.sohu.com/</a></p>
+
+<p>      <strong>徐滇庆</strong>搜狐博客： <a href="http://xudianqing.blog.sohu.com/">http://xudianqing.blog.sohu.com/</a>（荐）</p>
+
+<p>      徐滇庆新浪博客（内容不一样）： <a href="http://blog.sina.com.cn/xudianqing">http://blog.sina.com.cn/xudianqing</a></p>
+
+<p>夏业良(追求自由与平等的经济学家)： <a href="http://xiayeliang.blog.sohu.com/">http://xiayeliang.blog.sohu.com/</a></p>
+
+<p>钱老大： <a href="http://qianyongrill.blog.sohu.com/">http://qianyongrill.blog.sohu.com/</a> </p>
+
+<p> </p>
+
+<p><strong>叶航：</strong> <a href="http://chinayehang.blog.sohu.com/"><strong>http://chinayehang.blog.sohu.com/</strong></a></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong><em>其它界牛人</em></strong> </p>
+
+<p><strong>袁岳（零点总裁）</strong> <a href="http://blog.voc.com.cn/sp1/yuanyue/"><strong>http://blog.voc.com.cn/sp1/yuanyue/</strong></a></p>
+
+<p><strong>袁伟时：</strong> <a href="http://blog.sina.com.cn/yuanweishi"><strong>http://blog.sina.com.cn/yuanweishi</strong></a></p>
+
+<p><strong>李开复（微软副总google）：</strong> <a href="http://blog.sina.com.cn/kaifulee"><strong>http://blog.sina.com.cn/kaifulee</strong></a></p>
+
+<p><strong>余秋雨：</strong> <a href="http://yuqiuyu.blog.sohu.com/"><strong>http://yuqiuyu.blog.sohu.com/</strong></a></p>
+
+<p><strong>潘石屹：</strong> <a href="http://pan-shiyi.blog.sohu.com/"><strong>http://pan-shiyi.blog.sohu.com/</strong></a></p>
+
+<p><strong> </strong></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><strong>另附</strong></p>
+
+<p><strong>清华经管院主页- <a href="http://www.sem.tsinghua.edu.cn/homepage/index.do">http://www.sem.tsinghua.edu.cn/homepage/index.do</a></strong></p>
+
+<p><strong>北大经管院主页- <a href="http://econ.pku.edu.cn/">http://econ.pku.edu.cn/</a></strong></p>
+
+<p><strong>香港大学经管院- <a href="http://www.fbe.hku.hk/">http://www.fbe.hku.hk/</a></strong></p>
+
+<p><strong><em>补</em>人大经济学院主页-</strong> <a href="http://se.ruc.edu.cn/cn/"><strong>http://se.ruc.edu.cn/cn/</strong></a></p>
+
+<p><strong><em>  </em>人大财经学院主页-</strong> <a href="http://www.sfruc.edu.cn/"><strong>http://www.sfruc.edu.cn/</strong></a></p>
+
+<p><strong>   中宏网： <a href="http://www.macrochina.com.cn/">http://www.macrochina.com.cn/</a></strong></p>
+
+<p><strong>农大经管院主页- <a href="http://www.cau.edu.cn/cem/">http://www.cau.edu.cn/cem/</a>（只为对比）</strong></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/09/%E7%BE%8E%E5%85%83%E8%B4%AC%E5%80%BC%E7%BE%8E%E5%9B%BD%E4%BA%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%80%A5%EF%BC%9F%28ZT%29/">美元贬值美国人为什么不急？(ZT)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-09T00:00:00+08:00" pubdate data-updated="true">Feb 9<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>美元贬值，美国人为什么不急？这是一个十分有趣的问题。要弄清楚这个，需要从一个叫布雷顿森林体系的解体开始。</p>
+
+<p>      简单来说，布雷顿森林体系就是美元直接与黄金挂钩，各国货币通过一个固定的比价与美元挂钩，并可按35美元一盎司的官价向美国兑换黄金。在这一体系下，世 界主要国家的货币汇率几乎是高度稳定的，各国贸易和财政不存在严重失衡的问题，因为金融赤字的国家势必流走真正的国家财富。这一体系有一个致命的缺陷：它 以一国货币(美元)作为主要储备资产，所以具有内在的不稳定性。因为只有美国长期贸易逆差，才能使美元流散到世界各地。而长期的贸易逆差必然会影响人们对 美元的信心，引起美元危机。20世纪50年代后期，这种危机开始爆发。随着美国经济竞争力逐渐削弱，全球性“美元过剩”出现。各国纷纷抛出美元兑换黄金， 美国黄金开始大量外流。1971年，美国的黄金储备再也支撑不住，尼克松政府被迫于这年8月宣布放弃按35美元一盎司的官价兑换黄金的美元“金本位制”。 这使黄金正式退出了货币体系。</p>
+
+<p>       最近的一本畅销书《货币战争》认为，这正是国际银行家们乐于看到的。因为在黄金间接本位的布雷顿体系下，所有的国家都必须诚实和刻苦地工作来积累财富，严 重的赤字根本无处藏身，他们手中的“货币发行权”也就无法成为巧妙掠夺世界各国人民财富的工具. 姑且不论这一说法是否成立。不可否认的是，在挣脱了黄金这一紧箍咒(金本位时代，每印刷一定量的纸币，必须对应一定量的黄金储备)之后，以美联储为首的西 方工业国信贷扩张明显加快，“货币发行已达到毫无节制随心所欲的程度”，到 2006年为止，美国的政府、公司和私人欠债总额已经高达44万亿美元，如果按照5%的最低利息估算，每年仅偿还利息就高达 2万2000亿美元。在这样的情况下，美元贬值表面上看似乎冲击了美国的经济，实际上却让美国获益了。因为随着美元贬值，美国的外债同时也在缩水。</p>
+
+<p>美元与石油的“跷跷板效应”</p>
+
+<p>       在一国国内，货币发行权的滥用会导致通货膨胀；在国际贸易中，一国滥用货币发行权就会导致本国货币被市场抛弃。</p>
+
+<p>(转自:www.6park.com)</p>
+
+<p>　　既然如此，“货币发行已达到毫无节制随心所欲的程度”的美元为什么没有被抛弃？有专家分析说，这其中存在一个例外，那就是滥发的货币是世界基准货币，无法被使用者所淘汰。</p>
+
+<p>　　按说，布雷顿体系解体之后，美元已不再是世界基准货币，它是如何让各国无法淘汰它的？这就需要被人称为“黑金”的石油出场了。</p>
+
+<p>　 　布雷顿体系解体之后，失去黄金支撑的美元随之迅速贬值。为了重建世界对美元的信心，美国必须找到一种能有效影响价格的实物。1973 年底，石油危机爆发，油价飞涨，这给了美国找到可以替代黄金的硬通货的机会。到1975年，美国与海湾国家相继签订协议，协议的主要内容只有一个：这些国 家只用美元进行石油结算。</p>
+
+<p>　　这样一来，全世界需要进口石油的国家首先需要持有美元，而油价上涨，进口国就需要持有美元更多，失去黄金支撑的美元又一次找到了依靠。</p>
+
+<p>　　从那以后，“美元与石油”结成了类似“美元与黄金”的参照物关系。通过石油这种全球工业的粮食，美元再一次成为世界基准货币。美联储也得以继续大量印刷绿色钞票而不引起贬值。</p>
+
+<p>　　如今，又到了“油价飞涨”的时候。2008年1月2日，国际原油期货价格首次突破100美元关口。</p>
+
+<p>　　有人分析，此番油价飞涨，虽然与全球经济迅速发展，对石油的需求大增有关，但主要的罪魁祸首却是美元。</p>
+
+<p>　　因为身陷次级贷风波，让美国经济衰退的预期愈加强烈，美元几乎对所有货币都出现了迅速的贬值。</p>
+
+<p>　　由于原油价格是以美元计价，所以美元和原油就像是在玩跷跷板，一端下沉就会引起另一端高高翘起。由此，美元贬值，油价自然地会出现上涨。</p>
+
+<p>　　猪肉涨价，都是石油惹的祸？</p>
+
+<p>　　由于石油目前是全球工业的粮食，油价上涨必然引起连锁反应。对于石油进口国而言，这意味着发展成本的不断增加。</p>
+
+<p>　 　为了缓解压力，各国使出了浑身解数。美国这一世界上最大的石油进口国则祭出了“生物能源”的妙招。2005年8月，布什政府推出《新能源法案》。该法案 规定：到2022年，美国年产生物能源将达到360亿加仑；到2015年，多达一半的新车必须能使用生物油料比例达85%的混合汽油。</p>
+
+<p>　　对此，《三联生活周刊》这样分析：布什政府从来对环境问题无动于衷，甫一上任便退出了《京都议定书》，却在石油价格步步上涨时推出了《新能源法案》，大张旗鼓地鼓励机器与人类争夺粮食，用玉米提炼乙醇。这背后一定藏着阴谋，一个借粮食再次掠夺发展中国家财富的阴谋。</p>
+
+<p>　 　这一说法无疑有其道理。美国玉米产量占世界总产量40%，出口量占到世界玉米总贸易量70%(世界粮食出口总量的1/4)，在世界粮食经济中占有重要地 位。目前，美国已把20%的玉米用于提炼生物能源。这必然减少其玉米年出口量，进而引起国际市场玉米期货价格的大幅波动。</p>
+
+<p>　　玉米恰恰是家禽家畜饲料的主要原料，其价格上涨不仅会影响其他粮食作物价格，还会对包括牛奶、鸡蛋、奶酪、黄油、家禽、猪肉、牛肉、酸奶以及冰淇淋等与玉米紧密相关的食品造成影响。</p>
+
+<p>　　这就是去年以来，中国猪肉等食品价格上涨的深层次原因。</p>
+
+<p>　　食品价格上涨使我们的CPI攀高，进而影响利率预期。正当人民币升值呼声高涨的时候，高企的CPI等于帮助西方推高人民币银行利率，逼迫人民币升值。</p>
+
+<p>　　在人民币继续升值的预期下，大量海外资金流入，通货膨胀压力继续增大。</p>
+
+<p>　　由此，《三联生活周刊》认为：一轮类似于当年日本房地产泡沫和东南亚金融危机的氛围在我国周边形成。</p>
+
+<p>　　如果事实果真如此，中国该如何打赢这场石油、金融、粮食和住房等多手段并用的残酷战争？</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/20/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/18/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

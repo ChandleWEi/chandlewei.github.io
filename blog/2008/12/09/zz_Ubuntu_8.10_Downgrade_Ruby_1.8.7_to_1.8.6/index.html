@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="Ubuntu 8.10 Downgrade Ruby 1.8.7 to 1.8.6 November 27, 2008 at 10:51 AM · Posted under Ubuntu Linux As you may know Ruby 1.8.7 don&rsquo;t compatable &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/12/09/zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2><a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6" title="permanent link to ubuntu 8.10 downgrade ruby 1.8.7 to 1.8.6">Ubuntu 8.10 Downgrade Ruby 1.8.7 to 1.8.6</a></h2>
+
+<p>November 27, 2008 at 10:51 AM · Posted under <a href="http://railsgeek.com/ubuntu-linux" title="all posts in ubuntu linux">Ubuntu Linux</a></p>
+
+<p>As you may know Ruby 1.8.7 don&rsquo;t compatable with Rails( <a href="http://www.rubyonrails.org/down">http://www.rubyonrails.org/down</a>)<br/>
+_We recommend Ruby 1.8.6 for use with Rails. Ruby 1.8.7, 1.8.5, 1.8.4 and 1.8.2 are still usable too, but version 1.8.3 is not. Ruby 1.8.7 still has some bugs to straighten out. _</p>
+
+<h4>Step-by-step to downgrade Ruby to 1.8.6</h4>
+
+<p>1) Replace <strong>/etc/apt/sources.list</strong> file with follow data:</p>
+
+<h1>deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ &ndash; Release i386 (20071016)]/ gutsy main restricted</h1>
+
+<h1>See <a href="http://help.ubuntu.com/community/UpgradeNotes">http://help.ubuntu.com/community/UpgradeNotes</a> for how to upgrade to</h1>
+
+<h1>newer versions of the distribution.</h1>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid main restricted<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy main restricted</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid main restricted<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy main restricted</p>
+
+<h2>Major bug fix updates produced after the final release of the</h2>
+
+<h2>distribution.</h2>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates main restricted<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates main restricted</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates main restricted<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates main restricted</p>
+
+<h2>N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
+
+<h2>team, and may not be under a free licence. Please satisfy yourself as to</h2>
+
+<h2>your rights to use the software. Also, please note that software in</h2>
+
+<h2>universe WILL NOT receive any review or updates from the Ubuntu security</h2>
+
+<h2>team.</h2>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid universe<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy universe</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid universe<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy universe</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates universe<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates universe</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates universe<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates universe</p>
+
+<h2>N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
+
+<h2>team, and may not be under a free licence. Please satisfy yourself as to</h2>
+
+<h2>your rights to use the software. Also, please note that software in</h2>
+
+<h2>multiverse WILL NOT receive any review or updates from the Ubuntu</h2>
+
+<h2>security team.</h2>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid multiverse<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy multiverse</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy multiverse<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid multiverse</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates multiverse<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates multiverse</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates multiverse<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates multiverse</p>
+
+<h2>Uncomment the following two lines to add software from the &lsquo;backports&rsquo;</h2>
+
+<h2>repository.</h2>
+
+<h2>N.B. software from this repository may not have been tested as</h2>
+
+<h2>extensively as that contained in the main release, although it includes</h2>
+
+<h2>newer versions of some applications which may provide useful features.</h2>
+
+<h2>Also, please note that software in backports WILL NOT receive any review</h2>
+
+<h2>or updates from the Ubuntu security team.</h2>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-backports main restricted universe multiverse<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-backports main restricted universe multiverse</p>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-backports main restricted universe multiverse<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-backports main restricted universe multiverse</p>
+
+<h2>Uncomment the following two lines to add software from Canonical&rsquo;s</h2>
+
+<h2>&lsquo;partner&rsquo; repository. This software is not part of Ubuntu, but is</h2>
+
+<h2>offered by Canonical and the respective vendors as a service to Ubuntu</h2>
+
+<h2>users.</h2>
+
+<p>deb <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> intrepid partner<br/>
+deb <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> hardy partner</p>
+
+<p>deb-src <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> intrepid partner<br/>
+deb-src <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> hardy partner</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security main restricted<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security main restricted</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security main restricted<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security main restricted</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security universe<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security universe</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security universe<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security universe</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security multiverse<br/>
+deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security multiverse</p>
+
+<h1>Line commented out by installer because it failed to verify:</h1>
+
+<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security multiverse<br/>
+deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security multiverse</p>
+
+<p>2) Create new file <strong>/etc/apt/preferences</strong></p>
+
+<p>Package: ruby<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: rdoc1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: ri1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libgtk2-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libdbd-sqlite3-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libopenssl-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libsqlite3-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: ruby1.8-dev<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libdbi-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libatk1-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libpango1-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libatk1-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libgdk-pixbuf2-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libglib2-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libcairo-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: irb1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libreadline-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: rails<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>Package: libncurses-ruby1.8<br/>
+Pin: release a=hardy<br/>
+Pin-Priority: 900</p>
+
+<p>3) Open synaptic and find &ldquo;ruby&rdquo; relate packages (just search &ldquo;ruby&rdquo;). Check for completly removal installed packages (3-7 installed packages will be here)<br/>
+4) sudo apt-get update<br/>
+5) sudo apt-get install ruby rdoc irb libyaml-ruby libzlib-ruby ri libopenssl-ruby ruby1.8-dev build-essential</p>
+
+<h4>That&rsquo;s all :)</h4>
+
+<p>I use the article: <a href="http://sudan.ubuntuforums.com/showthread.php?t=964978">http://sudan.ubuntuforums.com/showthread.php?t=964978</a></p>
+
+<p><a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6" title="permanent link to ubuntu 8.10 downgrade ruby 1.8.7 to 1.8.6">Permalink</a></p>
+
+<h3>Lis said</h3>
+
+<p>Dec 01, 2008 @ <a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6#comment-8" title="permanent link to this comment">12:22 PM</a></p>
+
+<p>As I said before, &ldquo;Now upgrade it back :D&rdquo;</p>
+
+<p>but your blog ate russian characters</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2008</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/12/09/zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/12/09/zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/" title="Previous Post: secret_given_to_the_#protect_from_forgery_call_zz备忘">&laquo; secret_given_to_the_#protect_from_forgery_call_zz备忘</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/12/11/subversion_amd64_%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/" title="Next Post: subversion_amd64_编译问题">subversion_amd64_编译问题 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

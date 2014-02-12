@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 英语学习 | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/ying-yu-xue-xi/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Railsconf_2009]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2009/05/15/railsconf_2009/"/>
+    <updated>2009-05-15T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2009/05/15/railsconf_2009</id>
+    <content type="html"><![CDATA[<p>rails magize issue2</p>
+
+<p>rspec</p>
+
+<p>David Chelimsky:</p>
+
+<p>Stubs are all about stubbing out an object or a method to act predictively<br/>
+and then verifying the state of your test subject<br/>
+after an interaction,</p>
+
+<p>在一次交互作用后 Stubs 是关于 ,(stubbing out)清除? 模拟 一个对象或方法 then 预先工作然后验证你测试对象的状态</p>
+
+<p>while mocks are meant to verify the actual interactions, i.e. that a certain method is invoked with certain arguments.</p>
+
+<p>Mock 是一次真是验证交互 换句话说 那是一个确实的方法同时要求一个真是的参数请求</p>
+
+<p>Chelimsky revealed that he was working on a new project called Stubble, which allows for much DRY’er controller testing than is done today,</p>
+
+<p>Chelimsky 透露 他正在为一个新项目"Stubble"工作 ，那个允许做更少的重复测试</p>
+
+<p>and he also mentioned a new solution for testing chains in the upcoming version of Rspec, which will make tests more expressive.</p>
+
+<p>同时他提到一个新的 测试链 解决方案 在新版本rspec , 他将使测试更具有表现能力</p>
+
+<p>For example:<br/>
+User.stub_chain(:find, :friends, :favorite).and_return(friend)</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>You can’t take a standard Rails application and deploy to App Engine, however, because ActiveRecord, writing files, opening sockets and many other things are not supported</p>
+
+<p>还是不支持阿google 的 engine app</p>
+
+<p> </p>
+
+<p> </p>
+]]></content>
+  </entry>
+  
+</feed>

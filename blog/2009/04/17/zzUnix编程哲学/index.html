@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>zzUnix编程哲学 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="Unix编程哲学 Unix编程哲学 参考其它另外三个不同版本的翻译：
+* Imperfect C++中文版
+* 心开天籁
+* Unix编程哲学 1.Rule of Modularity: Write simple parts connected by clean interfaces. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2009/04/17/zzUnix%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">zzUnix编程哲学</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-17T00:00:00+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>  <a href="http://www.cppblog.com/jinq0123/archive/2007/08/29/UnixPhilosophy.html">Unix编程哲学</a></p>
+
+<p>Unix编程哲学</p>
+
+<p>参考其它另外三个不同版本的翻译：<br/>
+* <a href="http://www.china-pub.com/computers/common/info.asp?id=23013">Imperfect C++中文版</a><br/>
+* <a href="http://www.blogcn.com/user3/hufey/blog/346394.html">心开天籁</a><br/>
+* <a href="http://blog.csdn.net/swordll80/archive/2006/09/01/1156991.aspx">Unix编程哲学</a></p>
+
+<p>1.Rule of Modularity: Write simple parts connected by clean interfaces.</p>
+
+<p>模块化准则：编写简单的模块，并用清晰的接口连接它们。</p>
+
+<p>2.Rule of Clarity:Clarity is better than cleverness.</p>
+
+<p>清晰性准则：清晰胜于机巧。</p>
+
+<p>3.Rule of Composition: Design programs to be connected to other programs.</p>
+
+<p>组合准则：设计可以相互连接的程序。</p>
+
+<p>4.Rule of Separation:Separate policy form mechanism; separate interfaces from engines.</p>
+
+<p>分离准则：策略同机制分离；接口同引擎分离</p>
+
+<p>5.Rule of Simplicity: Design for simplicity; add complexity only where you must.</p>
+
+<p>简单性准则：设计要简单，必要时才添加复杂性。</p>
+
+<p>6:Rule of Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.</p>
+
+<p>吝啬准则：除非确无它法，不要编写庞大的程序。</p>
+
+<p>7:Rule of Transparency: Design for visibility to make inspection and debug going easier.</p>
+
+<p>透明性准则：设计要直白，使检查和调试更易容。</p>
+
+<p>8:Rules of Robustness:Robustness is the child of transparency and simplicity.</p>
+
+<p>健壮性准则：健壮性源自于透明性与简单性。</p>
+
+<p>9:Rule of Representation:Fold knowledge into data so program logic can be stupid and robust.</p>
+
+<p>表示准则：数据体现知识，让逻辑单纯而健壮</p>
+
+<p>10:Rule of  Least Surprise:In interface design, always do the least surprising thing.</p>
+
+<p>最小惊奇准则：在接口设计中，避免出乎意料。</p>
+
+<p>11:Rule of Silence: When a program has nothing surprising to say, it should say nothing.</p>
+
+<p>沉默准则：如果程序没有什么好说的，就应该保持沉默。</p>
+
+<p>12:Rule of Repair:When you must fail, fail nosily and as soon as possible.</p>
+
+<p>修复准则：如果注定失败，要尽早，要大声。</p>
+
+<p>13:Rule of Economy:Programmer time is expensive; conserve it in preference to machine time.</p>
+
+<p>经济性准则：和机器的时间比较，程序员的时间是更宝贵的。</p>
+
+<p>14:Rule of Generation:Avoid hand-hacking, write programs to write programs when you can.</p>
+
+<p>生成准则：避免手工编程，如果可能，编写程序去生成程序。</p>
+
+<p>15:Rule of Optimization:Prototype before polishing. Get it working before you optimize it.</p>
+
+<p>优化准则：打磨前先成型，优化前先使它工作。</p>
+
+<p>16:Rule of Diversity:Distrust all claims for &ldquo;one true way&rdquo;.</p>
+
+<p>多样性准则：不相信“唯一正途”。</p>
+
+<p>17:Rule of Extensibility:Design for the future, because it will be here sooner than you think.</p>
+
+<p>扩展性准则：为未来设计，因为它来的比你想得早。</p>
+
+<p>（转载请注明来源于金庆的专栏）</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-17T00:00:00+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2009/04/17/zzUnix%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2009/04/17/zzUnix%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" title="Previous Post: 压力测试">&laquo; 压力测试</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/04/17/zz%E7%AE%80%E5%8D%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F/" title="Next Post: zz简单有效的学习方式">zz简单有效的学习方式 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

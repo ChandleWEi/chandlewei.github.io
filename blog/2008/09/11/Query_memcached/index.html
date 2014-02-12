@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Query_memcached - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="Query memcached 8 Sep 08 The last month I have been working in Query Memcached, a plugin that replaces the Query Cache that comes with Rails, adding &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/09/11/Query_memcached">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Query_memcached</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-11T00:00:00+08:00" pubdate data-updated="true">Sep 11<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2><a href="http://www.inwebwetrust.net/post/2008/09/08/query-memcached">Query memcached</a></h2>
+
+<p>  8 Sep 08</p>
+
+<p>The last month I have been working in <a href="http://github.com/ferblape/query_memcached">Query Memcached</a>, a plugin that replaces the Query Cache that comes with Rails, adding a Memcache layer for persisting the query&rsquo;s cache between requests. That means that the cache does not expire at the end of the request, because it is stored in Memcached.</p>
+
+<p>If you are not familiar with <a href="http://www.railsenvy.com/2007/3/20/ruby-on-rails-caching-tutorial-part-2#activerecordcaching">Query Cache</a>, you only have to know that it&rsquo;s a very simple caching system from ActiveRecord that stores in memory all the queries performed during a request. If a query is fired more than one time, it will be in cache, so the database won&rsquo;t be affected.</p>
+
+<p>The adventages of my approach are evident: you only use the database when some table has been modified or when a new query is executed. So you can get a notice an important speed improvement.</p>
+
+<p>It is ideal for pages which have a lot of customization for the user logged in the application: in that cases it is very difficult to cache fragments or pages, because of the expiring of all that cache, and so many things.</p>
+
+<h3>Cache expiring</h3>
+
+<p>For expiring this cache, each Memcached key contains a sum of all the version numbers of the tables involved in the query. If one of that tables is modified, then the version number for that table is increased.</p>
+
+<p>For example, the query below involves the table <em>items</em> and the table <em>places</em>:</p>
+
+<p>So, the version for the cache of that query will be the sum of the cache version of the table <em>items</em> and the cache version of the table <em>places</em>.</p>
+
+<h3>Disclaimer</h3>
+
+<p>We are using this plugin in two on-line web projects: <a href="http://unvlog.com/">unvlog.com</a> and <a href="http://iwannagothere.net/">iwannagothere</a>, and everything seems to work fine (and faster than before), but these sites don&rsquo;t have so much traffic (about 30.000 req/day), so, there are stille possibilities that appear bugs and &ldquo;unexpected behaviours&rdquo;.</p>
+
+<p>In spite of all that, if you still are encouraged to try feel free to ask me anythin.</p>
+
+<p>More information at <a href="http://github.com/ferblape/query_memcached/tree/master/README.markdown">README</a>.</p>
+
+<p><strong>Posts relacionados:</strong>
+&ndash; <a href="http://www.inwebwetrust.net/post/2007/01/02/una-introduccion-ruby-on-rails">Una introducción a Ruby on Rails</a>
+&ndash; <a href="http://www.inwebwetrust.net/post/2006/10/07/acomo-saber-si-plugin-esta-cargado-ruby-on-rails-">¿Cómo saber si un plugin está cargado en Ruby on Rails?</a>
+&ndash; <a href="http://www.inwebwetrust.net/post/2006/09/18/como-realizar-tests-unidad-con-javascript-un-proyecto-ruby">Cómo realizar tests de unidad con Javascript en un proyecto Ruby on Rails</a>
+&ndash; <a href="http://www.lacoctelera.com/antoniogarrote/post/2007/08/26/billetes-el-tren-aprendiendo-programar-con-ruby-on-rails-2">Billetes para el tren: aprendiendo a programar con Ruby on Rails (2)</a>
+&ndash; <a href="http://www.lacoctelera.com/fj2c/post/2007/03/01/empezando-con-ruby-on-rails">Empezando con ruby on rails</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-11T00:00:00+08:00" pubdate data-updated="true">Sep 11<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/09/11/Query_memcached/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/09/11/Query_memcached/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/09/10/spec_%E7%AC%AC%E4%B8%80%E6%AC%A1_%E8%BF%B7%E8%8C%AB%E7%9A%84%E5%AE%89%E8%A3%85/" title="Previous Post: spec_第一次_迷茫的安装">&laquo; spec_第一次_迷茫的安装</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/09/12/ruby_GB2312%E5%92%8CUTF-8%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/" title="Next Post: ruby_GB2312和UTF-8编码转换">ruby_GB2312和UTF-8编码转换 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="装linux mkdir /usr/lib/codecs/ cp /opt/real/realplayer/*.so /usr/lib/codecs   mplayer xxx.rm -sub *.str 加字幕 t 改变高度 j切换字幕 /etc/mplayer.conf 加zoom=yes
+">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/16">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/15/mplayer_%E6%94%BEreal/">Mplayer_放real</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-07-15T00:00:00+08:00" pubdate data-updated="true">Jul 15<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>装linux</p>
+
+<p>mkdir /usr/lib/codecs/</p>
+
+<p>cp /opt/real/realplayer/*.so /usr/lib/codecs</p>
+
+<p> </p>
+
+<p>mplayer xxx.rm -sub *.str 加字幕</p>
+
+<p>t 改变高度 j切换字幕</p>
+
+<p>/etc/mplayer.conf 加zoom=yes</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/14/windows_%E9%93%BE%E6%8E%A5_openmokozz/">Windows_链接_openmokozz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-07-14T00:00:00+08:00" pubdate data-updated="true">Jul 14<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>1、在 <a href="http://www.openmoko.org/wiki/NeoRndis.inf">http://www.openmoko.org/wiki/NeoRndis.inf</a>下载虚拟网卡驱动</p>
+
+<p>2、打开neo1973，让其进入系统，然后将其与pc用usb线连接起来、此时windows会提示找到新硬件，则让向导去找之前下载inf文件</p>
+
+<p>3、安装完成后，系统里会多出一个neo1973 usb Ethernet/RNDIS本地连接，将其ip设为192.168.0.200,netmask为255.255.255.0 （其实试验过只要与pc机本地网卡ip不在同一网段即可，若在同一网段则会失败），而且这里也未必要设为200，因为neo中/etc/network/interface中设置的网关地址是200，所以才这么设。</p>
+
+<p>4、ping 192.168.0.202 （缺省neo的ip地址是这个）测试是否ping通，ssh 192.168.0.202，密码为空，即可连接上neo1973</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/07/12/switch_openmoko_keyboard_zz/">Switch_openmoko_keyboard_zz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-07-12T00:00:00+08:00" pubdate data-updated="true">Jul 12<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>zz from  <a href="http://www.ginguppin.de/node/15">http://www.ginguppin.de/node/15</a></p>
+
+<p>you can tar.gz from above url </p>
+
+<p>download tar.bz2, unpack and move the resulting 3 *.ipk to your freerunner:<br/>
+scp *.ipk root@openmoko:/tmp/<br/>
+ssh to the freerunner and do the following:<br/>
+opkg remove -force-depends multitap-pad<br/>
+opkg install /tmp/matchbox-keyboard-inputmethod_0.0+svnr1910-r10_armv4t.ipk<br/>
+opkg install /tmp/matchbox-keyboard-im_0.0+svnr1910-r10_armv4t.ipk<br/>
+opkg install /tmp/matchbox-keyboard-applet_0.0+svnr1910-r10_armv4t.ipk</p>
+
+<p>reboot the freerunner and enjoy &hellip;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/26/openmoko_zz/">Openmoko_zz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-26T00:00:00+08:00" pubdate data-updated="true">Jun 26<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>  <a href="http://blog.csdn.net/leo_cao/archive/2007/12/18/1946223.aspx">http://blog.csdn.net/leo_cao/archive/2007/12/18/1946223.aspx<br/>
+</a></p>
+
+<p>    Openmoko项目是首个提供了整体嵌入式linux开发环境解决方案的一个开源项目，最初由台湾大众电脑集团(FIC)发起并提供赞助，发展至今，体现出开源软件特有的生命力，众多的开发人员和厂商纷纷加入。目前由FIC生产的neo1973智能手机已经可以网购。</p>
+
+<p>    Openmoko项目的wiki主页是 <a href="http://wiki.openmoko.org/wiki/Main_Page">http://wiki.openmoko.org/wiki/Main_Page</a> ，其中的内容十分丰富，更新也很快，对openmoko关注的朋友一定要好好阅读其中的内容。由于本文的重点在于对应用程序开发过程的介绍，所以下面只提供几个链接，以便大家查阅：</p>
+
+<p>    标志openmoko项目开始的宣言“Free your phone！”：<br/>
+    <a href="http://lists.openmoko.org/pipermail/announce/2007-January/000000.html">http://lists.openmoko.org/pipermail/announce/2007-January/000000.html</a></p>
+
+<p>    对openmoko项目的介绍，其中含有图片和录像的链接地址<br/>
+    <a href="http://wiki.openmoko.org/wiki/Introduction">http://wiki.openmoko.org/wiki/Introduction</a></p>
+
+<p>    项目的mail list， SVN仓库， irc频道：</p>
+
+<p><a href="http://wiki.openmoko.org/wiki/Development_resources">http://wiki.openmoko.org/wiki/Development_resources</a></p>
+
+<p>通过下面的地址可以邮购neo1973。不过，有条件的可以让朋友从国外带过回来。有已经购买过的朋友说，需要美元300+运费50美元，还有关税。</p>
+
+<p><a href="https://direct.openmoko.com/">https://direct.openmoko.com/</a></p>
+
+<p>     随着openmoko项目的不断发展，其软件也日趋成熟，它可以运行在多款智能手机平台上。请参考这里 <a href="http://wiki.openmoko.org/wiki/OpenMoko-supported_hardware">http://wiki.openmoko.org/wiki/OpenMoko-supported_hardware</a> 。因为对neo1973的支持性最好，所以本文的介绍也是基于这款智能手机的。它主要有三个系统组件：bootloader，linux kernel和root filesystem。</p>
+
+<p>     OpenMoko项目使用OpenEmbedded构建交叉编译环境，不过它开发了一个单独的Makefile文件，使构建过程可以尽量的自动化完成；烧写二进制的系统组件也非常方便，它提供一个主机端dfu-util工具，实现了usb dfu协议,直接使用usb而不是串口com,就可以方便的烧写bootload, kernel和root filesystem；使用Linux内核提供的usb gadget模拟出一个usb network, 在主机端可以通过ssh，方便的联网到手机的系统中，进而就可以把软件更新到手机中；使用ipkg作为软件包管理工具，类似于debian中的dpkg，使用起来更像是apt-get，而且openmoko项目也构建了ipkg软件包仓库，用户可以ssh登录手机后，直接使用ipkg更新系统的各种软件和安装新的软件，更提供了图形化的软件包管理应用程序，更加方便用户管理软件包；提供多种方式的模拟器运行环境，支持qemu，xnest+xoo和xephyr，而且，还支持在windows平台下的模拟运行。</p>
+
+<p>    以上所说的openmoko的种种特点还只是它的一部分，实际上，能在它的环境中做更多的事情，比如，QT已近开发出来了使用Qtopia的root filesystem，并可以运行使用；mono社区也有人开发出支持Openmoko的mono软件包。藉由自由开放的优秀特性，更多的改进、移植以及从它生发出来的分支项目都会随着时间的推移而不断出现。</p>
+
+<p>    那么目前，对于多数希望通过openmoko熟悉和掌握嵌入式linux开发环境的朋友来说，入手是要首先解决的问题。</p>
+
+<p>    在openmoko环境中做开发，大致分成几种，一是应用程序开发，主要使用openmoko已经开发好的一些软件库，设计用户界面和上层的业务逻辑；二是系统程序开发，包括在pc主机平台上的和智能手机目标平台上的，前者包括交叉编译环境的构建、各种辅助工具的开发；后者包括bootloader的开发, 各种硬件驱动程序和协议栈的开发，linux内核的修改和root filesytem的构建；三是硬件的开发，这一方面就不详述了。</p>
+
+<p>    针对不同的方向，需要构建的开发环境也不同。如果做Openmoko应用程序的开发，就无需构建完整的openmoko开发环境，只要使用openmoko已经编译好的toolchain开发包就可以了。而如果需要修改openmoko的结构，就需要构建完整的openmoko开发环境，这是相当费时费力的。</p>
+
+<p>     而对于一般用户来说，紧紧需要使用dfu-util把三个二进制映像文件，即bootloader（u-boot.bin）, linux kernel（uImage.bin）和root filesystem（rootfs.jffs2），烧写到智能手机硬件中，如neo1973，就可以了。这里需要注意的是， bootloader是可选的，而且要注意，如果刷新失败会导致手机无法启动的，所以，一般只要刷新linux kernel和root filesystem就行了。现在，不仅有openmoko官方提供的，也有第三方组织，也即一些爱好者自己制作的。参考链接：<br/>
+    <a href="http://wiki.openmoko.org/wiki/Flashing_openmoko">http://wiki.openmoko.org/wiki/Flashing_openmoko</a> 这是总体的说明，如何连接手机和pc和使用dfu-util的方法。</p>
+
+<p>    首先要获取dfu-util工具，在这里可以找到：</p>
+
+<p>    <a href="http://buildhost.openmoko.org/snapshots/2007.11/images/neo1973/">http://buildhost.openmoko.org/snapshots/2007.11/images/neo1973/</a></p>
+
+<p>    这里自然还有其它三个映像文件可以下载。还有更多的选择：</p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/Repositories">http://wiki.openmoko.org/wiki/Repositories</a> 这里有官方和第三方提供的二进制映像文件的链接地址。</p>
+
+<p> Linux kernel和root filesystem的映像文件更新很快，后者的更新相对更快些，因为主要功能都是由它提供的，所以这个映像文件可以多获取几个不同的版本，都试一试。</p>
+
+<p>     而对于开发人员来说，还是先从openmoko的整体架构入手。请参考链接：</p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/OpenMoko">http://wiki.openmoko.org/wiki/OpenMoko</a></p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/OpenMokoFramework">http://wiki.openmoko.org/wiki/OpenMokoFramework</a></p>
+
+<p>    在大致了解了OpenMoko的结构后，可以先从应用程序的开发开始，这不需要构建完整的开发环境。首先从下面链接中获取已经编译好的toolchain，   其中提供了i386和x86_64平台的两个软件包，择需使用。</p>
+
+<p>    <a href="http://downloads.openmoko.org/toolchains/openmoko-x86_64-arm-linux-gnueabi-toolchain.tar.bz2" title="http://downloads.openmoko.org/toolchains/openmoko-x86_64-arm-linux-gnueabi-toolchain.tar.bz2">http://downloads.openmoko.org/toolchains/</a></p>
+
+<p>    至于pc主机端的开发环境，我们可以用debian, ubuntu，redhat，SuSE，Gentoo等，重要的是openmoko所需要的各个软件包是否齐备，debian和ubuntu是首选的平台。</p>
+
+<p>    如何使用，以及编写实例，参考这里：</p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/Toolchain">http://wiki.openmoko.org/wiki/Toolchain</a></p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/Building_a_hello_world_application">http://wiki.openmoko.org/wiki/Building_a_hello_world_application</a></p>
+
+<p>   其中的内容介绍的是比较完备的了。对于已经有了一些在桌面linux上，使用了Gtk库编写过图形化应用程序的朋友来说，应该是能较容易入手的。额外说一点，这个toolchain中没有包含libglade相关的开发库，写过gtk应用程序的朋友知道，这对构建界面来说，会有些麻烦，因为要额外写很多组织界面布局的代码。</p>
+
+<p>   随手编写一些小的图形化的测试程序比较简单，而要开发出符合openmoko界面特色的应用程序，需要使用openmoko开发的一些库和了解openmoko整体的界面风格，这是一些需要遵守的规范了。链接在这里：</p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/GUI_Style_Guidelines">http://wiki.openmoko.org/wiki/GUI_Style_Guidelines</a></p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/OpenMokoFramework">http://wiki.openmoko.org/wiki/OpenMokoFramework</a></p>
+
+<p>    到现在，我们挺容易就可以在pc上运用交叉编译工具，编译好可以运行在openmoko环境中的实例，对于手上已经有了neo1973手机的人来说，测试过程相当简单，通过在pc主机环境中配制好usb network，就可以在联机后轻松通过ssh的方式，把已经编译好的软件拷贝到手机中运行了。Usb network的建立，这需要两个linux内核提供的模块cdc_ether和cdc_acm，详细的参考这里：</p>
+
+<p>  <a href="http://wiki.openmoko.org/wiki/Getting_Started_with_your_Neo1973#Getting_shell_access_on_the_phone">http://wiki.openmoko.org/wiki/Getting_Started_with_your_Neo1973#Getting_shell_access_on_the_phone</a></p>
+
+<p>   <a href="http://wiki.openmoko.org/wiki/USB_Networking">http://wiki.openmoko.org/wiki/USB_Networking</a></p>
+
+<p>   那对于多数手上没有手机硬件的朋友，就只好建立模拟运行环境了。这需要构建openmoko的整体环境，必须首先说明的是，这项工作非常依赖网络，耗时，而且在构建过程中会出现的一些错误。不过，我们做技术的，多少都爱啃硬骨头，对吧。</p>
+
+<p>对于建立一个模拟运行的环境，openmoko提供了很多的方式，可以参考这里：</p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/Running_OpenMoko_on_PC">http://wiki.openmoko.org/wiki/Running_OpenMoko_on_PC</a></p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/How_to_run_OpenMoko_Apps_on_PC">http://wiki.openmoko.org/wiki/How_to_run_OpenMoko_Apps_on_PC</a></p>
+
+<p>    而对于openmoko整体开发环境的构建，现在openmoko已经使用了新的2007.2分支，大家在看的时候要注意区别那些针对2007.1的文章，基本上那些已经过时了，不用再看。参考这里：</p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/OpenMoko2007.2">http://wiki.openmoko.org/wiki/OpenMoko2007.2</a></p>
+
+<p>    <a href="http://wiki.openmoko.org/wiki/MokoMakefile">http://wiki.openmoko.org/wiki/MokoMakefile</a></p>
+
+<p>    <a href="http://www.openembedded.org/wiki/GettingStarted">http://www.openembedded.org/wiki/GettingStarted</a></p>
+
+<p>    这里的构建过程，需要仔细阅读上面的几个链接。因为openmoko使用openembedded，所以可以先单独尝试一下使用openembedded构建交叉编译环境，然后再用到openmoko上面。解决构建过程中的错误，其实是件很有意思的活动，也有利于对openmoko整体结构的理解。</p>
+
+<p>    另外，在调试方面，尤其是通话上，也可以在控制台中使用GSM和GPRS, 使用AT命令:</p>
+
+<p><a href="http://wiki.openmoko.org/wiki/Hardware:AT_Commands">http://wiki.openmoko.org/wiki/Hardware:AT_Commands</a></p>
+
+<p><a href="http://wiki.openmoko.org/wiki/Manually_using_GSM">http://wiki.openmoko.org/wiki/Manually_using_GSM</a></p>
+
+<p>        <a href="http://wiki.openmoko.org/wiki/Manually_using_GPRS">http://wiki.openmoko.org/wiki/Manually_using_GPRS</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/25/zz_gd%E9%97%AE%E9%A2%98%E8%A2%AB%E5%BF%98/">Zz_gd问题被忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-25T00:00:00+08:00" pubdate data-updated="true">Jun 25<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2><a href="http://involution.com/2007/07/09/ruby-captcha-ruby-gd-stringft-errors-revisited/">Ruby CAPTCHA / Ruby-GD StringFT Errors Revisited</a></h2>
+
+<p>Posted on July 09, 2007</p>
+
+<p>Well, I finally solved the “ <code>undefined method</code>stringFT&#8217; for GD::Image:Class` ” error under Mac OS X. The rb-gd darwinport seems to have fallen off the face of the earth. Fortunately, I’ve learned that you can download the source from ruby-lang.org. So, I just rolled my own GD.bundle.</p>
+
+<pre><code>wget http://raa.ruby-lang.org/cache/ruby-gd/ruby-GD-0.7.4-1.tar.gz  
+</code></pre>
+
+<p>cd ruby-GD-0.7.4<br/>
+ruby extconf.rb &mdash;with-freetype &mdash;with-xpm &mdash;with-ttf<br/>
+make<br/>
+sudo make install<br/>
+sudo mv /usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.2/GD.bundle /usr/local/lib/ruby/1.8/i686-darwin8.8.2/</p>
+
+<p>This only works if you have an up-to-date ruby installed under /usr/local (via the <a href="http://hivelogic.com/narrative/articles/ruby-rails-mongrel-mysql-osx">Hivelogic instructions</a>). If you’ve installed from ports or are using the older ruby shipped with Leopard, you’ll need to switch your prefix to <code>/opt/local</code> or <code>/usr</code> respectively.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/25/s_mldonkey_torrent___deluge_torrent__/">S_mldonkey_torrent___deluge_torrent__</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-25T00:00:00+08:00" pubdate data-updated="true">Jun 25<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>mldonkey 太让我失望了，我在公司建个mldonkey可以远程用web访问，下载速度超级慢，今天换成deluge了，速度快了很多</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/25/gem_install/">Gem_install</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-25T00:00:00+08:00" pubdate data-updated="true">Jun 25<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>gem install ruby-gd &mdash; &mdash;with-freetype &mdash;with-xpm &mdash;with-ttf</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/20/%E5%A4%87%E5%BF%98/">备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-20T00:00:00+08:00" pubdate data-updated="true">Jun 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ol>
+<li>For more information on JSON go to <a href="http://www.json.org/.">http://www.json.org/.</a></li>
+<li>MIME is specified in five RFC documents, so it is much more convenient to point you to a<br/>
+rather good description of MIME provided by Wikipedia at <a href="http://en.wikipedia.org/  ">http://en.wikipedia.org/  </a>
+wiki/MIME.</li>
+<li>For a full list of HTTP status codes, consult the spec at <a href="http://www.w3.org/  ">http://www.w3.org/  </a>
+Protocols/rfc2616/rfc2616-sec10.html.</li>
+<li>Heiko Webers has the best write-up about sanitizing filenames at<br/>
+<a href="http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/.">http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/.</a></li>
+<li>See the official spec at <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.</a></li>
+<li>See <a href="http://www.mnot.net/cache_docs/">http://www.mnot.net/cache_docs/</a> for an overview of web caching.</li>
+<li>Ben Curtis writes up an excellent approach to securing downloads at<br/>
+<a href="http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails/.">http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails/.</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/17/debian_ruby_1.8.7_%E8%BD%AC_1.8.6/">debian_ruby_1.8.7_转_1.8.6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-17T00:00:00+08:00" pubdate data-updated="true">Jun 17<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>downgrade ruby from 1.8.7 to 1.8.6 <a href="http://snapshot.debian.net/archive/2008/03/22/debian/pool/main/r/ruby1.8/">http://snapshot.debian.net/archive/2008/03/22/debian/pool/main/r/ruby1.8/</a> download follow package and dpkg -i install all debian package irb1.8_1.8.6.114-2_all.deb libopenssl-ruby1.8_1.8.6.114-2_i386.deb libreadline-ruby1.8_1.8.6.114-2_i386.deb libruby1.8_1.8.6.114-2_i386.deb rdoc1.8_1.8.6.114-2_all.deb ri1.8_1.8.6.114-2_all.deb ruby1.8_1.8.6.114-2_i386.deb ruby1.8-dev_1.8.6.114-2_i386.deb</p>
+
+<p> libtcltk-ruby1.8_1.8.6.114-2_i386.deb</p>
+
+<p> </p>
+
+<p>Warning, replace &ldquo;i386.deb&rdquo; to your arc like &ldquo;amd64.deb&rdquo; or other finally look <a href="http://dev.hubiquity.fr/2008/6/3/avoid-rails-troubles-with-ruby-1-8-7-under-debian">http://dev.hubiquity.fr/2008/6/3/avoid-rails-troubles-with-ruby-1-8-7-under-debian</a> you will need to add these few lines into your /etc/apt/preferences to hole your ruby version: Package: ruby1.8 irb1.8 rdoc1.8 ri1.8 libruby1.8 libreadline-ruby1.8 libopenssl-ruby1.8 ruby1.8-dev Pin: version 1.8.6* Pin-Priority: 1001</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/06/14/s41_%E5%A4%87%E4%BB%BD/">S41_备份</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-14T00:00:00+08:00" pubdate data-updated="true">Jun 14<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>S41 @ Windows XP x86 驱动下载，安装指南</p>
+
+<p>Windows XP x86版驱动，适用机型 BenQ Joybook S41</p>
+
+<p>猫和读卡器我不知道型号，暂缺</p>
+
+<p><a href="http://benyouhui.it168.com/thread-533196-1-1.html">s41安装xp全攻略</a></p>
+
+<p>首先是明基中国的官方驱动升级地址：官方驱动升级暂无</p>
+
+<p>硬件驱动更新，这里的驱动只会比官方网站和随机光盘上的更新</p>
+
+<p>注明：USB控制器，SD读卡器，电池驱动是Windows系统自带的，如果缺少，说明你的系统被错误的精简过或者系统文件丢失。请安装纯净版系统。</p>
+
+<p>Intel 945 芯片组驱动：<br/>
+<a href="http://drivers.mydrivers.com/drivers/175-70357-Intel-Intel-Chipset-Device-Software">英特尔芯片组Intel Chipset Device Software驱动最新8.3.0.1013官方正式版For Win2000/XP/2003/XP-64/2003-64/Vista/Vista-64（2007年6月4日发布）</a></p>
+
+<p>NVIDIA GeForce Go8600M GS显卡驱动：<br/>
+<a href="http://www.driverchina.com/downinfo/66812.html">NVIDIA GeForce Go8600M GS显卡最新ForceWare驱动165.01 WHQL版For WinXP </a></p>
+
+<p>Marvell Yukon 千兆有线以太网卡驱动：<br/>
+<a href="http://drivers.mydrivers.com/drivers/174-69803-Marvell-Yukon-10.14.6.3-For-Win2000-XP-2003-XP-64-2003-64-Vista-32">Marvell Yukon系列千兆以太网卡最新驱动10.14.6.3版For Win2000/XP/2003/XP-64/2003-64/Vista-32（2007年5月16日发布）</a></p>
+
+<p>Intel英特尔PRO Wireless 4965AGN无线笔记本网卡驱动：<br/>
+<a href="http://drivers.mydrivers.com/drivers/175-70127-Wireless-2915ABG-PRO-Wireless-3945ABG-Wireless-WiFi-Link-4965AGN">Intel英特尔PRO Wireless 4965AGN无线笔记本网卡最新驱动包11.1.1.11版For XP（2007年4月2日发布）</a></p>
+
+<p>Realtek高清音频驱动：<br/>
+<a href="http://drivers.mydrivers.com/drivers/174-69880-Realtek-ALC880-ALC882-ALC883-ALC885-ALC888">Realtek瑞昱ALC883 HD Audio音频芯片最新驱动包1.67版For XP（2007年5月18日发布）</a></p>
+
+<p>Synaptics触摸板：<br/>
+<a href="http://drivers.mydrivers.com/drivers/163-65459-">Synaptics触摸板(Touchpad)驱动最新9.1.0版For Win2000/XP/Vista-32/Vista-64（2007年5月24日发布）</a></p>
+
+<p>Synaptics触摸板外接鼠标时候自动禁用补丁：<br/>
+<a href="http://benyouhui.it168.com/viewthread.php?tid=410975">http://benyouhui.it168.com/viewthread.php?tid=410975</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/17/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/15/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

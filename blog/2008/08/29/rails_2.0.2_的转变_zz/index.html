@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rails_2.0.2_的转变_zz - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="Instiki and Rails 2.0 I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">rails_2.0.2_的转变_zz</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Instiki and Rails 2.0</p>
+
+<p>I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was based on. At least, for the present, I made the bare minimum of changes in Instiki, required. Even so, one gets a whole raft of improvements, “for free.”</p>
+
+<p>Mostly, there were silly little things.</p>
+
+<p>    render_text &ldquo;You c&#8217;yan come in.&rdquo;, &lsquo;403 Forbidden&rsquo;</p>
+
+<p>for instance, became</p>
+
+<p>    render :text => &ldquo;You c&#8217;yan come in.&rdquo;, :status => 403</p>
+
+<p>and</p>
+
+<p>    response.headers[&lsquo;Content-Type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+
+<p>became</p>
+
+<p>    response.headers[&lsquo;type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+
+<p>More interesting was that sessions are now, by default, stored in a cookie, rather than on the server. There was, apparently, quite some brouhaha surrounding this change. The session is stored in a cookie as a cryptographically-signed (base64-encoded) cleartext. Many of the objections would, presumably, go away if the session were encrypted, rather than simply signed — a relatively trivial change in the code.</p>
+
+<p>Whatever … there’s nothing particularly earthshaking in Instiki’s session data.</p>
+
+<p>But there’s still the matter of generating a secret signing key. That, I provided by the following bit of code in config/environment.rb</p>
+
+<p>    # Secret session key<br/>
+    generator = Rails::SecretKeyGenerator.new(&ldquo;Instiki&rdquo;)<br/>
+    config.action_controller.session = {<br/>
+      :session_key => &ldquo;instiki_session&rdquo;,<br/>
+      :secret => generator.generate_secret<br/>
+    }</p>
+
+<p>so a new key is generated every time the server starts up.</p>
+
+<p>In looking through the list of changes to Rails, I was struck by the new Sanitizer code, something I’d complained about previously. It looked vaguely … familiar. But its successor is still superior.</p>
+
+<p>I also squashed a few bugs.</p>
+
+<p>   1. The first (reported by Diego Restrepo) led to equations not rendering, in certain circumstances, when utf-8 (non-ascii) text was present.</p>
+
+<p>   2. The second had to do with WikiWord processing being mistakenly applied to camel-cased elements, attributes or attribute values (with potentially disastrous, non-well-formed results).</p>
+
+<p>   3.</p>
+
+<p>      The third (reported by Saji N. Hameed) was in the S5 generation code. Or, more correctly, in the latest version of REXML.</p>
+
+<p>          element.write(out_string,indent,transitive=true,ie_hack)</p>
+
+<p>      generates an error. Instead, you need to</p>
+
+<p>          formatter = REXML::Formatters::Default.new(ie_hack)<br/>
+          formatter.write(element, out_string)</p>
+
+<p>Anyway, enjoy the new version of Instiki … something shiny and new for the Holidays.</p>
+
+<p>Update (12/28/2007):<br/>
+ Speaking of shiny and new, Ruby 1.9 has just been released. Rails 2.0.2 is not compatible with Ruby 1.9 and, hence, neither is Instiki. When there’s a Ruby 1.9.x-compatible version, I’ll let you know.</p>
+
+<p>Posted by distler at December 23, 2007  9:52 PM</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/08/29/hpricot_research/" title="Previous Post: hpricot_research">&laquo; hpricot_research</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/08/29/zz_pdf/" title="Next Post: zz_pdf">zz_pdf &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ruby_1.8.7 - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="|   | 1:44 AM (8 hours ago) Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 from Ruby Inside by Peter Cooper With all the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/06/03/ruby_1.8.7">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ruby_1.8.7</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-03T00:00:00+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>|   |</p>
+
+<p>1:44 AM (8 hours ago)</p>
+
+<h2><a href="http://feeds.feedburner.com/%7Er/RubyInside/%7E3/303060223/ruby-187-released-912.html">Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
+
+<p>from <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Ffeeds.feedburner.com%2FRubyInside">Ruby Inside</a> by Peter Cooper</p>
+
+<p><img src="http://www.rubyinside.com/wp-content/uploads/2008/06/ruby187.jpg" alt="ruby187.png" /></p>
+
+<p>With all the excitement surrounding RailsConf 2008 and the Maglev announcement, <a href="http://www.ruby-lang.org/en/news/2008/05/31/ruby-1-8-7-has-been-released/">news of the release of Ruby 1.8.7</a> passed rather quietly. The download URLs can be found <a href="http://www.ruby-lang.org/en/news/2008/05/31/ruby-1-8-7-has-been-released/">here</a>, but note that the official Ruby-Lang.org <a href="http://www.ruby-lang.org/en/downloads/">download page</a> does not reflect 1.8.7’s release yet.</p>
+
+<p>Ruby 1.8.7 is a point release of the stable, production-ready 1.8.x branch, so it should be ready to roll out to your deployment environments but be cautious. It features many bug fixes, but also some performance enhancements and significant back-ports of Ruby 1.9 functionality (enumeration objects in particular). More information is available in the <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7/NEWS">release NEWS file</a>. The most interesting developments include:</p>
+
+<p><strong>vendor_ruby</strong></p>
+
+<blockquote><p>A new library directory named <code>vendor\_ruby’ is introduced in addition to</code>site_ruby’. The idea is to separate libraries installed by the package system (<code>vendor’) from manually (</code>site’) installed libraries preventing the former from getting overwritten by the latter, while preserving the user option to override vendor libraries with site libraries. (<code>site\_ruby’ takes precedence over</code>vendor_ruby’)</p></blockquote>
+
+<p><strong>securerandom</strong></p>
+
+<blockquote><p>securerandom is a Ruby 1.9 library that’s now part of the Ruby 1.8 standard library too. Example: require ’securerandom’; SecureRandom.random_bytes(16)</p></blockquote>
+
+<p><strong>Array#flatten changes</strong></p>
+
+<blockquote><p>Array#flatten now takes an optional argument that determines how deep to perform flattening.</p></blockquote>
+
+<p><strong>Array method changes</strong></p>
+
+<blockquote><p>Array#collect!, Array#map!, Array#each, Array#each_index, Array#reverse_each, Array#reject, Array#reject! and Array#delete_if now return an enumerator if no block is given. Array#pop and Array#shift now take an optional argument specifying the number of elements to remove from the array.</p></blockquote>
+
+<p><strong>Binding#eva</strong>l</p>
+
+<blockquote><p>Binding#eval is a new method to enable evaluations to take place in the context of a binding.</p></blockquote>
+
+<p><strong>Enumerable::Enumerator added</strong></p>
+
+<blockquote><p><a href="http://ruby-doc.org/core/classes/Enumerable/Enumerator.html">Enumerable::Enumerator</a> adds support for enumerations to be dealt with as objects, as in Ruby 1.9.</p></blockquote>
+
+<p><strong>Enumerator support on many classes</strong></p>
+
+<blockquote><p>Many methods based on IO, Integer, Array (see above), ARGF, Numeric, ObjectSpace, Range, String, and Struct now support returning enumerator objects where no blocks are given.</p></blockquote>
+
+<p><strong>net/smtp</strong></p>
+
+<blockquote><p><a href="http://www.ruby-doc.org/stdlib/libdoc/net/smtp/rdoc/index.html">net/smtp</a> now supports SSL/TLS connections.</p></blockquote>
+
+<p>These items really only scratch the surface though. Dig into the <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7/NEWS">NEWS</a> file for more info.</p>
+
+<p>|</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-03T00:00:00+08:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/06/03/ruby_1.8.7/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/06/03/ruby_1.8.7/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/06/02/zz_%E5%9C%A8%E7%BA%BF%E9%97%AE%E9%A2%98/" title="Previous Post: zz_在线问题">&laquo; zz_在线问题</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/06/03/%E6%B5%8B%E8%AF%95ie_567/" title="Next Post: 测试ie_567">测试ie_567 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

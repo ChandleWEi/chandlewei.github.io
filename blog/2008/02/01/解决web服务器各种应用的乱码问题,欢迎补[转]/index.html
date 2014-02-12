@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>解决web服务器各种应用的乱码问题,欢迎补[转] - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="| [精彩] 解决web服务器各种应用的乱码问题,欢迎补充和讨论 | |
+| http://www.chinaunix.net 作者: wingger  发表于：2006-03-12 10:19:43 |
+| 【 发表评论】 【 查看原文】 【 Web服务器讨论区】【 关闭)】 |
+| | &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2008/02/01/%E8%A7%A3%E5%86%B3web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%2C%E6%AC%A2%E8%BF%8E%E8%A1%A5%5B%E8%BD%AC%5D">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">解决web服务器各种应用的乱码问题,欢迎补[转]</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-01T00:00:00+08:00" pubdate data-updated="true">Feb 1<span>st</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>|</p>
+
+<h1>[精彩] 解决web服务器各种应用的乱码问题,欢迎补充和讨论</h1>
+
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>|</td>
+</tr>
+</tbody>
+</table>
+
+
+<hr />
+
+<p>|
+| <a href="http://www.chinaunix.net">http://www.chinaunix.net</a> 作者: <a href="http://bbs.chinaunix.net/viewpro.php?uid=68267">wingger</a>  发表于：2006-03-12 10:19:43 |
+| 【 <a href="http://bbs.chinaunix.net/post.php?action=reply&amp;fid=13&amp;tid=381406">发表评论</a>】 【 <a href="http://bbs.chinaunix.net/viewthread.php?tid=381406">查看原文</a>】 【 <a href="http://bbs.chinaunix.net/forumdisplay.php?fid=13">Web服务器讨论区</a>】【 <a href="javascript:window.close(">关闭</a>)】 |
+|</p>
+
+<p>|<br/>
+<strong>乱码问题：</strong></p>
+
+<p>（1）服务器端： <br/>
+修改httpd.conf (在Redhat中放置的位置为/etc/httpd/conf/) <br/>
+查找： <br/>
+AddDefaultCharset ISO-8859-1 <br/>
+改成： </p>
+
+<h1>AddDefaultCharset ISO-8859-1 </h1>
+
+<p>AddDefaultCharset off ]</p>
+
+<p>这种方式关掉了服务器的默认语言的发送，这样仅凭html文件头中设置的语言来决定网页语言。 </p>
+
+<p>很多文章都说通过修改为 AddDefaultCharset GB2312 把缺省语言改成GB2312来解决中文乱码，确实GB2312内码 的网页可以正常显示了，但这并非万全之策。因为当你的网页内码不是GB2312，就算你在网页用下面的meta指定了正确的语言，如ISO8859-1， 也不会解码为ISO8859-1，因为Apache已经先你一步将GB2312指定为网页的语言了，</p>
+
+<p>（2）养成良好的习惯，在每个网页的<head>;</head>;的最前面加入这行： </p>
+
+<p>　　　　
+&lt;meta http-equiv=&ldquo;Content-Type&#8221; content=&#8221;text/html; charset=gb2312&rdquo;>; </p>
+
+<p>　　一般的中文版网页编辑工具（例如FrontPage、Dreamweaver等）都会自动加上这行。 </p>
+
+<p>3、如何解决中文文件名无法访问 </p>
+
+<p>　
+　在ie中选择 工具 ->; internet选项 ->; 高级 ->; 取消“总是以UTF-8发送URL”。 </p>
+
+<p><strong>UTF-8网页空白，在网页中加上metadata标识后，还需要手动调整编码為 utf-8 才能正常显示</strong></p>
+
+<p>如果使用的是Mozilla、Mozilla Firefox、Sarafi等其他目前流行的浏览器，通常就不会有这样的问题。</p>
+
+<p>在网页的meta中指定用UTF-8：</p>
+
+<p>&lt;meta http-equiv=&ldquo;Content-Type&#8221; content=&#8221;text/html; charset=UTF-8&#8221; />; </p>
+
+<p>在<head>;</head>;之前，把&#8221;Content-Type&#8221;放在最前面，便可以解決这样的问题了。 </p>
+
+<p>原因：</p>
+
+<p>IE 解析网页编码时是 HTML 內的标识优先的，然后是 HTTP header ；而mozilla 系列的浏览器刚刚好相反。</p>
+
+<p>一般情况在，很多人是把<title>;</title>;排在最前面，并且在title中就出现了UTF-8中文，这 样，IE在解析时，就先遇到UTF-8，不往下解析了，因此必须把如果把meta放在UTF-8出现之前，这样IE才能判断这个网页是以UTF-8编码 的。 </p>
+
+<p>总之：<br/>
+无论是 PHP、JSP、ASP 或其他动态网页的脚本语言，如果需要作编码设定，最好放在最前面。</p>
+
+<p><strong>使用php,也可以定义php的默认语言. </strong></p>
+
+<p>php.ini中： </p>
+
+<p>default_charset = &#8221;gb2312&#8221; </p>
+
+<p>释掉此行，做了以上修改，一样是为了让浏览器根据网页头中的charset来自动选择语言，这样就可以在同台服务器上提供多种语言的网页服务。</p>
+
+<p><strong>java中文乱码的解决 </strong></p>
+
+<p>转<br/>
+ <br/>
+ <br/>
+在基于JAVA的编程中，经常会碰到汉字的处里及显示的问题，比如一大堆乱码或问号。<br/>
+这是因为JAVA中默认的编码方式是UNICODE，而中国人通常使用的文件和DB都是基于GB2312或者BIG5等编码，故会出现此问题。</p>
+
+<p><strong>1、在网页中输出中文。</strong></p>
+
+<p>JAVA在网络传输中使用的编码是&#8221;ISO-8859-1&#8221;，故在输出时需要进行转化，如：<br/>
+String  str=&ldquo;中文&rdquo;;<br/>
+str=new  String(str.getBytes(&ldquo;GB2312&rdquo;),&ldquo;8859_1&rdquo;);<br/>
+但如果在编译程序时，使用的编码是“GB2312”,且在中文平台上运行此程序，不会出现此问题，一定要注意。</p>
+
+<p><strong>2、从参数中读取中文</strong></p>
+
+<p>这正好与在网页中输出相反如：<br/>
+str=new  String(str.getBytes(&ldquo;8859_1&rdquo;),&ldquo;GB2312&rdquo;);</p>
+
+<p><strong>3、操作DB中的中文问题</strong></p>
+
+<p>一个较简单的方法是：在“控制面扳”中，把“区域”设置为“英语(美国)”。如果还会出现乱码，还可进行如下设置：<br/>
+取中文时：str=new  String(str.getBytes(&ldquo;GB2312&rdquo;));<br/>
+向DB中输入中文：str=new  String(str.getBytes(&ldquo;ISO-8859-1&rdquo;));</p>
+
+<p><strong>4、在JSP中的中文解决：</strong></p>
+
+<p>在“控制面扳”中，把“区域”设置为“英语(美国)”.<br/>
+在JSP页面中加入：<br/>
+如果还不行正常显示，则还要进行下面的转换：<br/>
+如：name=new  String(name.getBytes(&ldquo;ISO-8859-1&rdquo;),&ldquo;GBK&rdquo;);<br/>
+就不会出现中文问题了。</p>
+
+<p><strong>CGI的？不知道对不？</strong></p>
+
+<p>找到CGI.pm，打开它，找到$self->;charset(&lsquo;ISO-8859-1&rsquo;);将它改为$self->;charset(&lsquo;GB2312&rsquo;); |</p>
+
+<p>|</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-01T00:00:00+08:00" pubdate data-updated="true">Feb 1<span>st</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2008/02/01/%E8%A7%A3%E5%86%B3web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%2C%E6%AC%A2%E8%BF%8E%E8%A1%A5%5B%E8%BD%AC%5D/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2008/02/01/%E8%A7%A3%E5%86%B3web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E7%9A%84%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%2C%E6%AC%A2%E8%BF%8E%E8%A1%A5%5B%E8%BD%AC%5D/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/02/01/slim_Simple_Login_Manager%5B%E5%BE%85%E5%8A%A0%5D/" title="Previous Post: slim_Simple_Login_Manager[待加]">&laquo; slim_Simple_Login_Manager[待加]</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/02/02/%5B%E8%BD%AC%E5%B8%96%5D%E7%85%A4%E3%80%81%E7%82%AD%E3%80%81%E9%9B%AA%E5%92%8C%E7%94%9F%E6%B4%BB/" title="Next Post: [转帖]煤、炭、雪和生活">[转帖]煤、炭、雪和生活 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

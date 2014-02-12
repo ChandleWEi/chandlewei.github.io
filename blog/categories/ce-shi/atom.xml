@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 测试 | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/ce-shi/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[转：easylife____rails_test_prescription_随感]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2011/03/16/%E8%BD%AC%EF%BC%9Aeasylife____rails_test_prescription_%E9%9A%8F%E6%84%9F/"/>
+    <updated>2011-03-16T23:30:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2011/03/16/转：easylife____rails_test_prescription_随感</id>
+    <content type="html"><![CDATA[<p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a></p>
+
+<p>rails test prescription 随感</p>
+
+<p>编程<br/>
+controller测试<br/>
+  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br/>
+  2 检测controller是否能够适当地处理不合格式的请求<br/>
+  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面</p>
+
+<p>view测试<br/>
+  1 view不报错<br/>
+  2 view中的数据是否是你计划生成的数据<br/>
+  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示</p>
+
+<p>集成测试与controller测试的区别<br/>
+  需要对session，cookie等跨action的数据的正确性进行测试</p>
+
+<p>测试层次<br/>
+  1 model<br/>
+  2 controller<br/>
+  3 view（helper）<br/>
+  4 集成<br/>
+  5 验收<br/>
+  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br/>
+才能开始测试</p>
+
+<p>测试写到什么时候够了<br/>
+  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br/>
+测试，就像你永远也写不出完美的软件一样，够好，就可以了</p>
+
+<p>什么时候使用mock/stub<br/>
+  1 解决依赖性<br/>
+    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br/>
+  2 解决某些情况<br/>
+    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br/>
+         测试程序的失败情况，而失败情况可以用stub轻松生成<br/>
+  3 测试过程时，未实现的功能的替代<br/>
+  4 Interface Discovery<br/>
+    设计api时，你需要它</p>
+
+<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了</p>
+
+<p>是否测试负面情况<br/>
+  上帝保佑我们有足够的时间</p>
+
+<p>先写测试还是后写测试<br/>
+  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br/>
+里记住，先写测试可以改善代码质量</p>
+
+<p>mock类库<br/>
+  rails-test-prescription 7.7 已做出了明了的比较</p>
+
+<p>你至少需要熟悉的测试工具<br/>
+  1 rspec<br/>
+  2 cucumber<br/>
+  3 capybara<br/>
+  4 factory-girl<br/>
+  5 database-cleaner</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[转］iphone_openvpn - ChandleWEi's Blog</title>
+  <meta name="author" content="Chandler Wei">
+
+  
+  <meta name="description" content="May 20, 2010 越狱iPhone / iPad安装OpenVPN小指南 Filed under: iOS, iPhoneOS — 皇城老爹 @ 11:07 图中可见SBSettings加上OpenVPN Toggle的效果，旁边的VPN Toggle是用来切换iPhone自带VPN的。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ChandleWEi.github.io/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
+  
+    <h2>Welcome to our life, Roy</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[转］iphone_openvpn</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T12:41:00+08:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>May 20, 2010</h2>
+
+<h3><a href="http://fang.gfw.io/2010/05/20/iphone_openvpn_guide/">越狱iPhone / iPad安装OpenVPN小指南</a></h3>
+
+<p>Filed under: <a href="http://fang.gfw.io/category/ios/" title="View all posts in iOS">iOS</a>, <a href="http://fang.gfw.io/category/iphoneos/" title="View all posts in iPhoneOS">iPhoneOS</a> — 皇城老爹 @ 11:07</p>
+
+<p><a href="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg"> <img src="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg" title="OpenVPN Toggle in SBSettings" alt="" /> </a></p>
+
+<p>图中可见SBSettings加上OpenVPN Toggle的效果，旁边的VPN Toggle是用来切换iPhone自带VPN的。</p>
+
+<p>前阵子太忙，一直满足于在iPhone/iPad上用IPSec等方式连VPN，前两天终于有空折腾了一把在越狱iPhone/iPad上安装调试OpenVPN，以及通过SBSettings里面的OpenVPN Toggle来进行开关的切换。</p>
+
+<p>主要步骤如下：</p>
+
+<ol>
+<li><p>先下载两个.deb安装包：<br/>
+(1) <a href="http://apt.saurik.com/cydia/debs/">http://apt.saurik.com/cydia/debs/</a><br/>
+下载libpcap_1.0.0-4_iphoneos-arm.deb<br/>
+(2) <a href="http://github.com/jfx2006/OpenVPN_iphone/downloads">http://github.com/jfx2006/OpenVPN_iphone/downloads</a><br/>
+下载里面日期最新的release，例如目前最新版本是openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
+<li><p>用WinSCP或者其他SSH工具登录到iPhone/iPad上(你的iPhone/iPad要先安装OpenSSH，为了安全，也请确认修改过root密码），把刚才的两个.deb安装包拷贝到一个临时目录，比如/tmp下面。</p></li>
+<li><p>用Putty或者类似工具登录iPhone/iPad，在命令行使用下面的命令安装刚才放上去的两个.deb包：<br/>
+cd /tmp<br/>
+dpkg -i libpcap_1.0.0-4_iphoneos-arm.deb<br/>
+dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
+<li><p>进入Cydia，如果没装过SBSettings，先安装之。然后搜索OpenVPN toggle for SBSettings并安装。在SBSettings里面进入More/Set Toggles，把刚才新装的OpenVPN toggle打开，退出，系统会自动respring。</p></li>
+<li><p>准备好你使用的VPN服务的一套设置文件，包括conf.ovpn设置和证书文件等，用WinSCP传到/private/var/mobile /Library/OpenVpn/ 里面。有必要的话，conf.ovpn设置中有关证书文件路径的行要编辑一下，指向上面的路径。</p></li>
+<li><p>用WinSCP进入/private/var/mobile/Library/SBSettings/Commands/，编辑 com.offinf.openvpndown这个文件，把其中第三行前面加上一个半角的#号注释掉该行；(根据我自己的经验，如果不进行上面这一 步，SBSettings里面刚才添加的OpenVPN Toggle的图标有可能在respring或者重启后不能保存，还得重新添加）</p></li>
+</ol>
+
+
+<p>编辑com.offinf.openvpnup这个文件，第三行建议改成如下内容：<br/>
+/usr/bin/openvpn-iphone –script-security 2 –config /var/mobile/Library/OpenVpn/conf.ovpn &amp;</p>
+
+<p>另外上面一行里面的conf.ovpn的地方如果你的配置文件不是这个名字，要相应改成正确的。</p>
+
+<ol>
+<li>可以考虑把iPhone/iPad所用网络连接的DNS指向类似8.8.8.8或者OpenDNS的服务器。</li>
+</ol>
+
+
+<p>保险起见，重启一下iPhone / iPad，然后用SBSettings里面的OpenVPN toggle，打开，看看是否可以正常使用了？</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T12:41:00+08:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/05/24/avplayer/" title="Previous Post: avplayer">&laquo; avplayer</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/02/11/first-touch/" title="Next Post: first touch">first touch &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Chandler Wei -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

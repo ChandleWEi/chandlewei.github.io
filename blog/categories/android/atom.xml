@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[无尽的好奇心之android_step_1]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2008/01/14/%E6%97%A0%E5%B0%BD%E7%9A%84%E5%A5%BD%E5%A5%87%E5%BF%83%E4%B9%8Bandroid_step_1/"/>
+    <updated>2008-01-14T00:00:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2008/01/14/无尽的好奇心之android_step_1</id>
+    <content type="html"><![CDATA[<p>above all  你要有jdk jre ,是sun的版本，而不是gnu的版本，安装gnu的jvm 会有问题，我曾经安装之后安装了openoffice导致android报错，后来才发现是由于openoffice需要以来gnu java的包，所以不好意思你gnu java依赖的东西可能都没有了。</p>
+
+<p>1、下载个europe j2ee 版本的 eclipse 因为这个版本的eclipse的插件比较全，不需要额外装什么插件</p>
+
+<p> 2、用update site: <a href="https://dl-ssl.google.com/android/eclipse/%C2%A0">https://dl-ssl.google.com/android/eclipse/%C2%A0</a> 安装插件，这个插件很奇怪，每次只有在12点之后才能下到，白天从没有安装成功过</p>
+
+<p>3、下载android sdk ,然后 <code>export PATH=${PATH}:_&lt;your\_sdk\_dir&gt;_/tools ，最好把这句扔到.bashrc中去，奇怪的是eclipse仍然不能正确找到tools ，原因在于我是用xfce4 的快捷栏启动而不是在bash下启动eclipse所以也继承不到环境变量，so可以在eclipse Window-&gt; Preferences中的android 设置sdk路径</code></p>
+
+<p>第一步的基本安装就ok</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+]]></content>
+  </entry>
+  
+</feed>

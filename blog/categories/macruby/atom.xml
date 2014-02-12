@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Macruby | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/macruby/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-12T12:37:00+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[学习macruby]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2011/03/26/%E5%AD%A6%E4%B9%A0macruby/"/>
+    <updated>2011-03-26T19:29:00+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2011/03/26/学习macruby</id>
+    <content type="html"><![CDATA[<p>Why macruby</p>
+
+<p>It&rsquo;s developed and sponsored by Apple.</p>
+
+<p>I&rsquo;m start here <a href="http://www.macruby.org/documentation/tutorial.html">http://www.macruby.org/documentation/tutorial.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>
