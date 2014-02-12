@@ -1,16 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>
+            http://ChandleWEi.github.io/blog/2011/01/07/%E4%B8%80%E5%A4%B4%E7%89%B9%E7%AB%8B%E7%8B%AC%E8%A1%8C%E5%BE%97%E7%8C%AA/
+        </loc>
+        <lastmod>2014-02-12T11:18:11+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://ChandleWEi.github.io/blog/2014/02/11/first-touch/</loc>
         <lastmod>2014-02-11T15:32:37+08:00</lastmod>
     </url>
     <url>
         <loc>http://ChandleWEi.github.io/blog/archives/</loc>
-        <lastmod>2014-02-11T15:32:37+08:00</lastmod>
+        <lastmod>2014-02-12T11:18:11+08:00</lastmod>
     </url>
     <url>
         <loc>http://ChandleWEi.github.io/</loc>
-        <lastmod>2014-02-11T15:32:37+08:00</lastmod>
+        <lastmod>2014-02-12T11:18:11+08:00</lastmod>
     </url>
     <url>
         <loc>http://ChandleWEi.github.io/robots.txt</loc>
