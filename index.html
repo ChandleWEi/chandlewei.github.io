@@ -9,11 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="How to Wait for All Goroutines to Finish Executing Before Continuting go wait example `package main import ( "fmt"
-"io/ioutil"
-"log"
-"net/http"
-"sync &hellip;">
+  <meta name="description" content="How to Wait for All Goroutines to Finish Executing Before Continuting go wait example package main import ( "fmt" "io/ioutil" "log" "net/http" "sync &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,174 +98,55 @@
 
 <p>go wait example</p>
 
-<p>`package main</p>
+<pre><code>package main
 
-<p>import (</p>
+import (
+    "fmt"
+    "io/ioutil"
+    "log"
+    "net/http"
+    "sync"
+)
 
-<pre><code>"fmt"
-"io/ioutil"
-"log"
-"net/http"
-"sync"
-</code></pre>
-
-<p>)</p>
-
-<p>func main() {</p>
-
-<pre><code>urls := []string{
-    "http://www.reddit.com/r/aww.json",
-    "http://www.reddit.com/r/funny.json",
-    "http://www.reddit.com/r/programming.json",
-}
-jsonResponses := make(chan string)
-
-var wg sync.WaitGroup
-
-wg.Add(len(urls))
-
-for _, url := range urls {
-    go func(url string) {
-        defer wg.Done()
-        res, err := http.Get(url)
-        if err != nil {
-            log.Fatal(err)
-        } else {
-            defer res.Body.Close()
-            body, err := ioutil.ReadAll(res.Body)
-            if err != nil {
-                log.Fatal(err)
-            } else {
-                jsonResponses &lt;- string(body)
-            }
-        }
-    }(url)
-}
-
-go func() {
-    for response := range jsonResponses {
-        fmt.Println(response)
-    }
-}()
-
-wg.Wait()
-</code></pre>
-
-<p>}`</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-17T00:00:00+08:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<title>2014-02-17-go-wait-example.html</title>
-
-</head>
-
-<body>
-
-<hr />
-
-<p>layout: post
-title: &#8220;go wait example&#8221;
-date: 2014-02-17 10:57:16 +0800
-comments: true</p>
-
-<h2>categories: go</h2>
-
-<p><a href="http://nathanleclaire.com/blog/2014/02/15/how-to-wait-for-all-goroutines-to-finish-executing-before-continuing/" title="go">How to Wait for All Goroutines to Finish Executing Before Continuting</a></p>
-
-<p>go wait example</p>
-
-<p>`package main</p>
-
-<p>import (
-    &#8220;fmt&#8221;
-    &#8220;io/ioutil&#8221;
-    &#8220;log&#8221;
-    &#8220;net/http&#8221;
-    &#8220;sync&#8221;
-)</p>
-
-<p>func main() {
+func main() {
     urls := []string{
-        &#8220;http://www.reddit.com/r/aww.json&#8221;,
-        &#8220;http://www.reddit.com/r/funny.json&#8221;,
-        &#8220;http://www.reddit.com/r/programming.json&#8221;,
+        "http://www.reddit.com/r/aww.json",
+        "http://www.reddit.com/r/funny.json",
+        "http://www.reddit.com/r/programming.json",
     }
-    jsonResponses := make(chan string)</p>
+    jsonResponses := make(chan string)
 
-<pre><code>var wg sync.WaitGroup
+    var wg sync.WaitGroup
 
-wg.Add(len(urls))
+    wg.Add(len(urls))
 
-for _, url := range urls {
-    go func(url string) {
-        defer wg.Done()
-        res, err := http.Get(url)
-        if err != nil {
-            log.Fatal(err)
-        } else {
-            defer res.Body.Close()
-            body, err := ioutil.ReadAll(res.Body)
+    for _, url := range urls {
+        go func(url string) {
+            defer wg.Done()
+            res, err := http.Get(url)
             if err != nil {
                 log.Fatal(err)
             } else {
-                jsonResponses &lt;- string(body)
+                defer res.Body.Close()
+                body, err := ioutil.ReadAll(res.Body)
+                if err != nil {
+                    log.Fatal(err)
+                } else {
+                    jsonResponses &lt;- string(body)
+                }
             }
-        }
-    }(url)
-}
-
-go func() {
-    for response := range jsonResponses {
-        fmt.Println(response)
+        }(url)
     }
-}()
 
-wg.Wait()
+    go func() {
+        for response := range jsonResponses {
+            fmt.Println(response)
+        }
+    }()
+
+    wg.Wait()
+}
 </code></pre>
-
-<p>}`</p>
-
-</body>
-</html>
 </div>
   
   
@@ -689,6 +566,59 @@ Uses and Limitations</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/18/%E5%8E%A6%E9%97%A83/">厦门3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-18T15:48:00+08:00" pubdate data-updated="true">Apr 18<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>现在写东西很慢啊.一点都不像当年的我&hellip;因为很久没写长文字,刚打开页面的时候文思如泉涌，写着写着就歇菜了&hellip;</p>
+
+<p>哎，很崩溃的感觉&hellip;</p>
+
+<p>其实厦门3天确实是我们俩2年半里最成功的一次远途旅行了，每天的满足感都在递进式增长。回来之后回味无穷，哎&hellip;还特此制定短、中、长期旅游计划&hellip;</p>
+
+<p>最近你给我看张小砚台的书，让我对旅游的认识更加多了一层向往，以前只觉得旅游就是玩，就是看风景，拍照片，现在看了别人的生活经历，才开始觉得自己在现世广袤的生活里，蜷缩在偏安一隅的角落里，活的认认真真，辛辛苦苦，其实毫无乐趣可言。什么工资啊、结婚啊，在自由的生活态度面前，真是不堪一击，就和一个穿得冠冕堂皇实际内心枯竭的小子站在穿着乞丐装的小王子面前一样。</p>
+
+<p>你的生活有多重？<br/>
+一部电影叫《在云端》，里面提到的一个问题。<br/>
+“想象一下你背着一个背包，背带勒在肩膀上。现在，把生活中所有的东西都塞到包里。从小件开始，比如书架里，抽屉里的，小玩意，收藏品。感觉这些东西的重量。然后，开始收拾大件的。衣服，桌上电器，台灯，毛巾，电视……背包现在已经相当重了。接着收拾更大的。沙发，床，餐桌，全都放进去。车也放进去，还有你的房子……全都塞进背包里。现在，试着走两步。很困难吧？”<br/>
+这就是我们每天做的事情。我们不断给自己增重，直到寸步难行。然而，行动就是生命。</p>
+
+<p>我们那么认真的活着，积极的也罢，消极的被迫的也罢，终究只是为了一些别人眼里的认可，只有旅游，才是真正愉悦自己的经历吧。不必强求，不必谄媚。</p>
+
+<p>那么决定解放，即使只是暂时的解放，因为现实总是有更多比释放自我更”“重要的事情”，重要与否其实只是你内心的偏向而已，我们总是对自由有种莫名的强烈向往，但是越是自由，就越是意味着无限可能，无限可能既是不确定，不确定就缺乏安全感。既要冒险又想安全感，大多数人就在这种矛盾的心情中不做改变的活了一辈子吧。我们不可能放弃工作，不可能放弃亲情的羁绊，不可能放弃名利与曾经几十年奋斗的结果。不过，人不能放弃尝试的可能，哪怕只是一瞬间&hellip;所以那么多人如此着迷旅行的意义&hellip;.</p>
+
+<p>旅行就是要从自己活腻了的地方到别人活腻了地方去。人一辈子，小小足迹能涉及的范围与茫茫宇宙相比，该是多渺小啊&hellip;有生之年，我应该去哪儿呢？</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -708,10 +638,6 @@ Uses and Limitations</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -721,6 +647,10 @@ Uses and Limitations</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>

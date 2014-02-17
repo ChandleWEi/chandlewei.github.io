@@ -9,11 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="How to Wait for All Goroutines to Finish Executing Before Continuting go wait example `package main import ( "fmt"
-"io/ioutil"
-"log"
-"net/http"
-"sync &hellip;">
+  <meta name="description" content="How to Wait for All Goroutines to Finish Executing Before Continuting go wait example package main import ( "fmt" "io/ioutil" "log" "net/http" "sync &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,60 +95,55 @@
 
 <p>go wait example</p>
 
-<p>`package main</p>
+<pre><code>package main
 
-<p>import (</p>
+import (
+    "fmt"
+    "io/ioutil"
+    "log"
+    "net/http"
+    "sync"
+)
 
-<pre><code>"fmt"
-"io/ioutil"
-"log"
-"net/http"
-"sync"
-</code></pre>
+func main() {
+    urls := []string{
+        "http://www.reddit.com/r/aww.json",
+        "http://www.reddit.com/r/funny.json",
+        "http://www.reddit.com/r/programming.json",
+    }
+    jsonResponses := make(chan string)
 
-<p>)</p>
+    var wg sync.WaitGroup
 
-<p>func main() {</p>
+    wg.Add(len(urls))
 
-<pre><code>urls := []string{
-    "http://www.reddit.com/r/aww.json",
-    "http://www.reddit.com/r/funny.json",
-    "http://www.reddit.com/r/programming.json",
-}
-jsonResponses := make(chan string)
-
-var wg sync.WaitGroup
-
-wg.Add(len(urls))
-
-for _, url := range urls {
-    go func(url string) {
-        defer wg.Done()
-        res, err := http.Get(url)
-        if err != nil {
-            log.Fatal(err)
-        } else {
-            defer res.Body.Close()
-            body, err := ioutil.ReadAll(res.Body)
+    for _, url := range urls {
+        go func(url string) {
+            defer wg.Done()
+            res, err := http.Get(url)
             if err != nil {
                 log.Fatal(err)
             } else {
-                jsonResponses &lt;- string(body)
+                defer res.Body.Close()
+                body, err := ioutil.ReadAll(res.Body)
+                if err != nil {
+                    log.Fatal(err)
+                } else {
+                    jsonResponses &lt;- string(body)
+                }
             }
-        }
-    }(url)
-}
-
-go func() {
-    for response := range jsonResponses {
-        fmt.Println(response)
+        }(url)
     }
-}()
 
-wg.Wait()
+    go func() {
+        for response := range jsonResponses {
+            fmt.Println(response)
+        }
+    }()
+
+    wg.Wait()
+}
 </code></pre>
-
-<p>}`</p>
 </div>
 
 
@@ -200,7 +191,7 @@ wg.Wait()
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/02/17/go-wait-example/" title="Previous Post: Go Wait Example">&laquo; Go Wait Example</a>
+        <a class="basic-alignment left" href="/blog/2014/02/11/first-touch/" title="Previous Post: first touch">&laquo; first touch</a>
       
       
     </p>
@@ -220,10 +211,6 @@ wg.Wait()
       </li>
     
       <li class="post">
-        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -233,6 +220,10 @@ wg.Wait()
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>

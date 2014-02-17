@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content=" CFLAGS=-O3 ./configure &mdash;enable-perlinterp &mdash;enable-pythoninterp &mdash;enable-rubyinterp &mdash;enable-cscope &mdash;enable-multibyte &hellip;">
+  <meta name="description" content="aa.bbs &lt;&lt; bb (new) aa.bbs.build bb.attributes (update)
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,48 +66,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">重新编译了vim_么碰到什么问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-27T00:00:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p> CFLAGS=-O3 ./configure &mdash;enable-perlinterp &mdash;enable-pythoninterp &mdash;enable-rubyinterp &mdash;enable-cscope &mdash;enable-multibyte</p>
-
-<p>make &amp;&amp; sudo make install</p>
-
-<p> </p>
-
-<p>我对vim 不是很熟悉，各种原因重新下载了7。2编译了下</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -938,6 +897,63 @@ Pin-Priority: 900</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/">Secret_given_to_the_#protect_from_forgery_call_zz备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>secret given to the #protect_from_forgery call</h2>
+
+<h4>February 7th, 2008 by <a href="http://www.justinball.com/">Justin Ball</a></h4>
+
+<p>My code was running fine under Rails 2.0.2. Then I enabled the db based session store by uncommenting this:<br/>
+  <code>  
+config.action_controller.session_store = :active_record_store  
+</code><br/>
+in environment.rb.</p>
+
+<p>Anything that used the session after that gave me this error:<br/>
+  `<br/>
+No :secret given to the #protect_from_forgery call. Set that or use a</p>
+
+<pre><code>session store capable of generating its own keys (Cookie Session Store).  
+</code></pre>
+
+<p>`</p>
+
+<p>If you have the same problem. Go to application.rb and uncomment the secret then restart.</p>
+
+<p>All better.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -959,10 +975,6 @@ Pin-Priority: 900</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -972,6 +984,10 @@ Pin-Priority: 900</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>

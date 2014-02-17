@@ -9,7 +9,10 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="secret given to the #protect_from_forgery call February 7th, 2008 by Justin Ball My code was running fine under Rails 2.0.2. Then I enabled the db &hellip;">
+  <meta name="description" content="    CGI::Session::ActiveRecordStore::Session.class_eval do
+      set_table_name :sessions
+    end
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,63 +68,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/">Secret_given_to_the_#protect_from_forgery_call_zz备忘</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>secret given to the #protect_from_forgery call</h2>
-
-<h4>February 7th, 2008 by <a href="http://www.justinball.com/">Justin Ball</a></h4>
-
-<p>My code was running fine under Rails 2.0.2. Then I enabled the db based session store by uncommenting this:<br/>
-  <code>  
-config.action_controller.session_store = :active_record_store  
-</code><br/>
-in environment.rb.</p>
-
-<p>Anything that used the session after that gave me this error:<br/>
-  `<br/>
-No :secret given to the #protect_from_forgery call. Set that or use a</p>
-
-<pre><code>session store capable of generating its own keys (Cookie Session Store).  
-</code></pre>
-
-<p>`</p>
-
-<p>If you have the same problem. Go to application.rb and uncomment the secret then restart.</p>
-
-<p>All better.</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -589,7 +535,7 @@ end<br/>
 <p>在做任何改动之前，最好把自己的名字和 email 地址介绍给大家，最简单的方法就是:</p>
 
 <p>$ git config &mdash;global user.name &ldquo;Your Name Comes Here&#8221;<br/>
-$ git config &mdash;global user.email <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x79;&#x6f;&#117;&#64;&#121;&#x6f;&#x75;&#114;&#100;&#111;&#x6d;&#x61;&#105;&#110;&#46;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#111;&#x6d;">&#121;&#111;&#117;&#64;&#121;&#x6f;&#x75;&#x72;&#x64;&#111;&#109;&#97;&#105;&#110;&#46;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;</a></p>
+$ git config &mdash;global user.email <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#121;&#x6f;&#x75;&#64;&#121;&#111;&#117;&#114;&#x64;&#111;&#x6d;&#x61;&#x69;&#110;&#46;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#121;&#111;&#117;&#x40;&#x79;&#x6f;&#117;&#114;&#x64;&#111;&#x6d;&#x61;&#105;&#110;&#46;&#x65;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#x6d;</a></p>
 
 <h2>导入一个新项目</h2>
 
@@ -818,7 +764,7 @@ origin/master</p>
 
 <p>$ git log<br/>
 commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7<br/>
-Author: Junio C Hamano <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#106;&#x75;&#x6e;&#x6b;&#x69;&#111;&#64;&#x63;&#111;&#120;&#x2e;&#x6e;&#101;&#116;">&#x6a;&#117;&#110;&#x6b;&#x69;&#111;&#64;&#99;&#x6f;&#120;&#46;&#110;&#101;&#116;</a><br/>
+Author: Junio C Hamano <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6a;&#117;&#110;&#107;&#105;&#111;&#x40;&#x63;&#x6f;&#120;&#x2e;&#110;&#101;&#x74;">&#x6a;&#x75;&#x6e;&#x6b;&#x69;&#x6f;&#x40;&#x63;&#x6f;&#120;&#46;&#x6e;&#x65;&#x74;</a><br/>
 Date: Tue May 16 17:18:22 2006 -0700</p>
 
 <p>merge-base: Clarify the comments on post processing.</p>
@@ -1013,6 +959,48 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/10/16/cool_theme_about_emacs/">Cool_theme_about_emacs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-16T00:00:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>CFLAGS=-O3 ./configure &mdash;without-pop  &mdash;without-sound &mdash;without-sync-input &mdash;without-xpm &mdash;without-jpeg &mdash;without-tiff &mdash;without-gif &mdash;without-png &mdash;without-rsvg  &mdash;without-toolkit-scroll-bars &mdash;without-xaw3d &mdash;without-xim &mdash;without-gpm &mdash;without-dbus    &amp;&amp; make &amp;&amp; sudo make install</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><a href="http://redartisan.com/2008/5/27/twilight-emacs">http://redartisan.com/2008/5/27/twilight-emacs</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -1034,10 +1022,6 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -1047,6 +1031,10 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>

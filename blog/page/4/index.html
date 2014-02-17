@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="在mac 下调试 flex 将文本转 csv 然后让excel 读取 悲剧的是调试了很久 excel 读中文都是乱码 无论是 utf8 还是 gbk gb2312 一直以为是编码么有转对 等以沮丧的心情调试代码失败 回家的路上 怀疑是excel 在 mac 系统文件编码 中格式的问题 &hellip;">
+  <meta name="description" content="Why macruby It&rsquo;s developed and sponsored by Apple. I&rsquo;m start here http://www.macruby.org/documentation/tutorial.html
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,67 +66,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/26/flex_gbk_csv_excel_mac%E9%97%AE%E9%A2%98/">Flex_gbk_csv_excel_mac问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-26T22:49:00+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在mac 下调试 flex 将文本转 csv 然后让excel 读取</p>
-
-<p>悲剧的是调试了很久 excel 读中文都是乱码 无论是 utf8 还是 gbk gb2312 一直以为是编码么有转对</p>
-
-<p>等以沮丧的心情调试代码失败 回家的路上 怀疑是excel 在 mac 系统文件编码 中格式的问题</p>
-
-<p>开了windows下的excel 读csv 一切都ok</p>
-
-<p>以下是测试用的两种转换编码</p>
-
-<p>      Alert.show(&ldquo;test start&rdquo;);<br/>
-    ///var fr:FileReference=new FileReference();<br/>
-    ///var byteArray:ByteArray=new ByteArray();<br/>
-    ///byteArray.writeMultiByte(test,&ldquo;gbk&rdquo;);<br/>
-    ///fr.save(byteArray, &lsquo;chinese.csv&rsquo;)<br/>
-    var test:String = &lsquo;chandle,明天,郊游 &rsquo;;</p>
-
-<p>    var file:File = File.desktopDirectory.resolvePath(&ldquo;testgb2312.csv&rdquo;);<br/>
-    var fileStream:FileStream = new FileStream();<br/>
-    fileStream.open(file, FileMode.WRITE);<br/>
-   <br/>
-    fileStream.writeMultiByte(test, &ldquo;gbk&rdquo;);<br/>
-    fileStream.close();<br/>
-    Alert.show(&ldquo;test end&rdquo;);</p>
-
-<p>mac 下的excel 处处都很诡异 怎么都觉格格不入</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -639,6 +579,42 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/14/%E6%B4%9B%E5%A4%AB/">洛夫</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-14T13:53:00+08:00" pubdate data-updated="true">Feb 14<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>你务必要在雏菊尚未全部凋零之前 赶快发怒 或者发笑 赶快从箱子里找出我那件薄衫子 赶快对镜梳你那又黑又柔的妩媚 然后以整生的爱 点燃一盏灯 我是火 随时可能熄灭 因为风的缘故</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -660,10 +636,6 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -673,6 +645,10 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>

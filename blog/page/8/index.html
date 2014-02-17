@@ -9,10 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="强制 umount nfs文件系统 root@ubuntu:/# umount /app/nfs/
-umount.nfs: /app/nfs: device is busy
-umount.nfs: /app/nfs: device is busy 提示文件系统设置busy
-root@ubuntu &hellip;">
+  <meta name="description" content=" 内容区当设定的显示范围,容纳不了显示的内容的时候,就会出现滚动条,可根据自己的需要适当的改进width,height,overflow-x,overflow-y的属性,即可达到iframe的效果airzen整理  
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,79 +66,6 @@ root@ubuntu &hellip;">
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">强制_umount_nfs文件系统</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-22T00:00:00+08:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>强制 umount nfs文件系统</h3>
-
-<p>root@ubuntu:/# umount /app/nfs/<br/>
-umount.nfs: /app/nfs: device is busy<br/>
-umount.nfs: /app/nfs: device is busy</p>
-
-<p>提示文件系统设置busy<br/>
-root@ubuntu:/# fuser -km /app/nfs/   先使用这条命令<br/>
-/data/nfs/:                     8119c<br/>
-root@ubuntu:/# umount /app/nfs/      在umount 就可以了<br/>
-<a href="mailto:root@ubuntu:/">root@ubuntu:/</a>#</p>
-
-<p> </p>
-
-<p>也可使用 umount -f /app/nfs</p>
-
-<p> </p>
-
-<p>[root@dzxt ~]# fuser<br/>
-usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-             [ &ndash; ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-       fuser -l<br/>
-       fuser -V</p>
-
-<p>    -a        display unused files too<br/>
-    -k        kill processes accessing that file<br/>
-    -i        ask before killing (ignored without -k)<br/>
-    -l        list signal names<br/>
-    -m        mounted FS<br/>
-    -n space search in the specified name space (file, udp, or tcp)<br/>
-    -s        silent operation<br/>
-    -signal   send signal instead of SIGKILL<br/>
-    -u        display user ids<br/>
-    -v        verbose output<br/>
-    -V        display version information<br/>
-    -4        search IPv4 sockets only<br/>
-    -6        search IPv6 sockets only<br/>
-    -         reset options</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -837,6 +762,97 @@ W 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方�
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">zz_Memcache分布式部署方案</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-04T00:00:00+08:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2><a href="http://www.ccvita.com/395.html" title="Memcache分布式部署方案">Memcache分布式部署方案</a></h2>
+
+<p><strong>前言</strong><br/>
+应该是很久之前，我开始研究 <a href="http://www.danga.com/memcached/">Memcache</a>，写了一系列的学习心得，比如《 <a href="http://www.ccvita.com/261.html">Discuz!的Memcache缓存实现</a>》等。后面的好几十条回复也让这篇文章成为了此博客中颇受关注的一员。</p>
+
+<p>同时在百度和Google，关键词Memcache在长达一年多的时间里占据着第二位（第一位是官方），为很多需要了解或者应用Memcache的朋友提供了一些信息，但是我始终觉着还不够，于是本文诞生。</p>
+
+<p>唠唠叨叨说了半天，如果你觉着前面啰嗦，请直接看最后一大段，那是本文的重点。</p>
+
+<p><strong>基础环境</strong><br/>
+其实基于PHP扩展的Memcache客户端实际上早已经实现，而且非常稳定。先解释一些名词，Memcache是danga.com的一个开源项目，可以类比于MySQL这样的服务，而PHP扩展的Memcache实际上是连接Memcache的方式。</p>
+
+<p>首先，进行Memcache被安装具体可查看：<br/>
+  <a href="http://www.ccvita.com/257.html">Linux下的Memcache安装</a>：<a href="http://www.ccvita.com/257.html  ">http://www.ccvita.com/257.html  </a>
+  <a href="http://www.ccvita.com/258.html">Windows下的Memcache安装</a>：<a href="http://www.ccvita.com/258.html%EF%BC%9B  ">http://www.ccvita.com/258.html%EF%BC%9B  </a>
+其次，进行PHP扩展的安装，官方地址是<a href="http://pecl.php.net/package/memcache  ">http://pecl.php.net/package/memcache  </a>
+最后，启动Memcache服务，比如这样</p>
+
+<p>/usr/local/bin/memcached -d -p 11213 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
+/usr/local/bin/memcached -d -p 11214 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
+/usr/local/bin/memcached -d -p 11215 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid</p>
+
+<p>启动三个只使用10M内存以方便测试。</p>
+
+<p> </p>
+
+<p><strong>分布式部署</strong><br/>
+PHP的PECL扩展中的memcache实际上在2.0.0的版本中就已经实现多服务器支持，现在都已经2.2.5了。请看如下代码</p>
+
+<p>$memcache = new Memcache;<br/>
+$memcache->addServer(&lsquo;localhost&rsquo;, 11213);<br/>
+$memcache->addServer(&lsquo;localhost&rsquo;, 11214);<br/>
+$memcache->addServer(&lsquo;localhost&rsquo;, 11215);<br/>
+$memStats = $memcache->getExtendedStats();<br/>
+print_r($memStats);</p>
+
+<p>通过上例就已经实现Memcache的分布式部署，是不是非常简单。</p>
+
+<p><strong>分布式系统的良性运行</strong><br/>
+在Memcache的实际使用中，遇到的最严重的问题，就是在增减服务器的时候，会导致大范围的缓存丢失，从而可能会引导数据库的性能瓶颈，为了避免出现这种情况，请先看 <a href="http://en.wikipedia.org/wiki/Consistent_hashing">Consistent hashing</a>算法，中文的介绍可以参考 <a href="http://tech.idv2.com/2008/07/24/memcached-004/#content_2_6">这里</a>，通过存取时选定服务器算法的改变，来实现。</p>
+
+<p>修改PHP的Memcache扩展memcache.c的源代码中的</p>
+
+<p>&ldquo;memcache.hash_strategy&rdquo; = standard</p>
+
+<p>为</p>
+
+<p>&ldquo;memcache.hash_strategy&rdquo; = consistent</p>
+
+<p>重新编译，这时候就是使用Consistent hashing算法来寻找服务器存取数据了。</p>
+
+<p>有效测试数据表明，使用Consistent hashing可以极大的改善增删Memcache时缓存大范围丢失的情况。<br/>
+NonConsistentHash: 92% of lookups changed after adding a target to the existing 10<br/>
+NonConsistentHash: 90% of lookups changed after removing 1 of 10 targets<br/>
+ConsistentHash: 6% of lookups changed after adding a target to the existing 10<br/>
+ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -858,10 +874,6 @@ W 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方�
       </li>
     
       <li class="post">
-        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -871,6 +883,10 @@ W 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方�
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
