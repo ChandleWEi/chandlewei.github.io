@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="    Does this error message look familar when you script/console? &#8220; $> script/console
+  <meta name="description" content="    Does this error message look familar when you script/console? &#8220; $&gt; script/console
 Loading production environment (Rails 2.1.0)
 /usr/lib/ &hellip;">
   
@@ -102,27 +102,27 @@ Loading production environment (Rails 2.1.0)
 
 <p>Does this error message look familar when you script/console?</p>
 
-<p>  &#8220;</p>
+<p>&#8220;</p>
 
-<p>$> script/console<br/>
-Loading production environment (Rails 2.1.0)<br/>
+<p>$&gt; script/console<br />
+Loading production environment (Rails 2.1.0)<br />
 /usr/lib/ruby/1.8/irb/completion.rb:10:in <code>require': no such file to load -- readline (LoadError)  
 from /usr/lib/ruby/1.8/irb/completion.rb:10  
-from /usr/lib/ruby/1.8/irb/init.rb:252:in</code>require&#8217;<br/>
+from /usr/lib/ruby/1.8/irb/init.rb:252:in </code>require’<br />
 from /usr/lib/ruby/1.8/irb/init.rb:252:in <code>load\_modules'  
-from /usr/lib/ruby/1.8/irb/init.rb:250:in</code>each&#8217;<br/>
+from /usr/lib/ruby/1.8/irb/init.rb:250:in </code>each’<br />
 from /usr/lib/ruby/1.8/irb/init.rb:250:in <code>load\_modules'  
-from /usr/lib/ruby/1.8/irb/init.rb:21:in</code>setup&#8217;<br/>
-from /usr/lib/ruby/1.8/irb.rb:54:in `start&#8217;<br/>
-from /usr/bin/irb:13</p>
+from /usr/lib/ruby/1.8/irb/init.rb:21:in </code>setup’<br />
+from /usr/lib/ruby/1.8/irb.rb:54:in `start’<br />
+from /usr/bin/irb:13  </p>
 
 <p>This happens when readline is somehow different than your current version of ruby or corrupted. The quick fix is to recompile readline. To do it in CentOS with yum: &#8220;</p>
 
-<p>$> yum install readline-devel -y<br/>
-$> cd /root/src/ruby-1.8.6-p114/ext/readline/<br/>
-$> ruby extconf.rb<br/>
-$> make<br/>
-$> sudo make install</p>
+<p>$&gt; yum install readline-devel -y<br />
+$&gt; cd /root/src/ruby-1.8.6-p114/ext/readline/<br />
+$&gt; ruby extconf.rb<br />
+$&gt; make<br />
+$&gt; sudo make install  </p>
 
 <p>Now you should have script/console working.</p>
 </div>
@@ -196,6 +196,10 @@ $> sudo make install</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -209,10 +213,6 @@ $> sudo make install</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -232,6 +232,22 @@ $> sudo make install</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

@@ -96,7 +96,7 @@
 
 <div class="entry-content"><p>今天试验安装了gentoo,使用下面的官方安装指导</p>
 
-<p><a href="http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml">http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml</a></p>
+<p>http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml</p>
 
 <p> 我终于明白了gentoo的优化可能指的是什么了， emerge 获得获得源代码包然后你自己可以修改/etc/make.conf 参数 ，虽然gcc -O2 效能不错，不过你完全可以改成 -O3, 这样就编译优化，这样生成的二进制就优化了，而且是自动编译安装的，不过那个叫慢哦，如果不是服务器,那确实是浪费时间，不过对于服务器来说提高一点是一点，</p>
 
@@ -174,6 +174,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -187,10 +191,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -210,6 +210,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

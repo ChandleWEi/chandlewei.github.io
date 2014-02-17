@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content=" 笔记本坏了重装emacs,么想到以前用的cvs有问题，混乱的cvs sudo apt-get install build-essential sudo apt-get build-dep emacs21
-sudo apt-get install xserver-xorg-dev xorg-dev &hellip;">
+  <meta name="description" content=" 笔记本坏了重装emacs,么想到以前用的cvs有问题，混乱的cvs sudo apt-get install build-essential sudo apt-get build-dep emacs21 sudo apt-get install xserver-xorg-dev xorg-dev &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,11 +96,8 @@ sudo apt-get install xserver-xorg-dev xorg-dev &hellip;">
 
 <div class="entry-content"><p> 笔记本坏了重装emacs,么想到以前用的cvs有问题，混乱的cvs</p>
 
-<pre><code>sudo apt-get install build-essential  
+<pre><code>sudo apt-get install build-essential   sudo apt-get build-dep emacs21   sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgtk2.0-dev  
 </code></pre>
-
-<p>sudo apt-get build-dep emacs21<br/>
-sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgtk2.0-dev</p>
 
 <p>cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/emacs co emacs</p>
 
@@ -115,7 +111,7 @@ sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgt
 <pre><code>make bootstrap
 </code></pre>
 
-<p>make &amp;&amp; make install</p>
+<p>make &amp;&amp; make install  </p>
 
 <p> </p>
 </div>
@@ -189,6 +185,10 @@ sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgt
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -202,10 +202,6 @@ sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgt
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -225,6 +221,22 @@ sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgt
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

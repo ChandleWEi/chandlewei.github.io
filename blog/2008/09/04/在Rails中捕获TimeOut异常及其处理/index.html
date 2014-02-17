@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="window.onload=function(){ fiximage(&lsquo;500x500&rsquo;); } Submitted by iceskysl on 2008, April 7, 3:17 PM. 技术归总 | Technic alimama_pid=&ldquo; &hellip;">
+  <meta name="description" content="window.onload=function(){ fiximage(‘500x500’); } ## Submitted by ** iceskysl** on 2008, April 7, 3:17 PM. [技术归总 Technic](http://iceskysl.1sters.com/? &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,15 +94,22 @@
   </header>
 
 
-<div class="entry-content"><p>window.onload=function(){ fiximage(&lsquo;500x500&rsquo;); }</p>
+<div class="entry-content"><p>window.onload=function(){ fiximage(‘500x500’); }</p>
 
-<h2></h2>
+<p>##  </p>
 
-<p>Submitted by <strong> <a href="http://iceskysl.1sters.com/?action=finduser&amp;userid=1">iceskysl</a></strong> on 2008, April 7, 3:17 PM. <a href="http://iceskysl.1sters.com/?action=index&amp;cid=3">技术归总 | Technic</a></p>
+<table>
+  <tbody>
+    <tr>
+      <td>Submitted by ** <a href="http://iceskysl.1sters.com/?action=finduser&amp;userid=1">iceskysl</a>** on 2008, April 7, 3:17 PM. [技术归总</td>
+      <td>Technic](http://iceskysl.1sters.com/?action=index&amp;cid=3)</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>alimama_pid=&ldquo;mm_10001645_810081_2209991&rdquo;; alimama_titlecolor=&ldquo;535353&rdquo;; alimama_descolor =&ldquo;313131&rdquo;; alimama_bgcolor=&ldquo;FFFFFF&rdquo;; alimama_bordercolor=&ldquo;FFFFFF&rdquo;; alimama_linkcolor=&ldquo;4281BB&rdquo;; alimama_bottomcolor=&ldquo;FFFFFF&rdquo;; alimama_anglesize=&ldquo;8&rdquo;; alimama_bgpic=&ldquo;0&rdquo;; alimama_icon=&ldquo;0&rdquo;; alimama_sizecode=&ldquo;12&rdquo;; alimama_width=468; alimama_height=60; alimama_type=2; <img src="http://z.alimama.com/alimamal.php?i=mm_10001645_810081_2209991&amp;u=http%3A%2F%2Ficeskysl.1sters.com%2F%3Faction%3Dshow%26id%3D245&amp;w=468&amp;h=60&amp;re=1680x1050&amp;sz=12&amp;r=http%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Drails%2Btime%2Bout%25E9%2597%25AE%25E9%25A2%2598%26ie%3Dutf-8%26oe%3Dutf-8%26aq%3Dt%26rls%3Dcom.ubuntu%3Aen-US%3Aunofficial%26client%3Dfirefox-a&amp;cg=cf9c8a89fde77be2a4d7f47148866292&amp;prk=96568482&amp;cas=prk&amp;cah=1050&amp;caw=1680&amp;ccd=24&amp;ctz=8&amp;chl=4&amp;cpl=10&amp;cmm=41&amp;cf=9.0&amp;sx=534&amp;sy=181&amp;cbw=1458&amp;cbh=5591" alt="" /></p>
+<p>alimama_pid=”mm_10001645_810081_2209991”; alimama_titlecolor=”535353”; alimama_descolor =”313131”; alimama_bgcolor=”FFFFFF”; alimama_bordercolor=”FFFFFF”; alimama_linkcolor=”4281BB”; alimama_bottomcolor=”FFFFFF”; alimama_anglesize=”8”; alimama_bgpic=”0”; alimama_icon=”0”; alimama_sizecode=”12”; alimama_width=468; alimama_height=60; alimama_type=2; <img src="http://z.alimama.com/alimamal.php?i=mm_10001645_810081_2209991&amp;u=http%3A%2F%2Ficeskysl.1sters.com%2F%3Faction%3Dshow%26id%3D245&amp;w=468&amp;h=60&amp;re=1680x1050&amp;sz=12&amp;r=http%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Drails%2Btime%2Bout%25E9%2597%25AE%25E9%25A2%2598%26ie%3Dutf-8%26oe%3Dutf-8%26aq%3Dt%26rls%3Dcom.ubuntu%3Aen-US%3Aunofficial%26client%3Dfirefox-a&amp;cg=cf9c8a89fde77be2a4d7f47148866292&amp;prk=96568482&amp;cas=prk&amp;cah=1050&amp;caw=1680&amp;ccd=24&amp;ctz=8&amp;chl=4&amp;cpl=10&amp;cmm=41&amp;cf=9.0&amp;sx=534&amp;sy=181&amp;cbw=1458&amp;cbh=5591" alt="" /></p>
 
-<p>把应用迁移到新的服务器上以后，发现经常有”超时“的错误信息，如<em>/usr/lib/ruby/1.8/timeout.rb:54:in `rbuf_fill&#8217;: execution expired (Timeout::Error)</em>，恩，应该是网络不稳定或者是服务器响应太慢的结果，需要捕获下这个异常并做些处理，记录如下：</p>
+<p>把应用迁移到新的服务器上以后，发现经常有”超时“的错误信息，如<em>/usr/lib/ruby/1.8/timeout.rb:54:in `rbuf_fill’: execution expired (Timeout::Error)</em>，恩，应该是网络不稳定或者是服务器响应太慢的结果，需要捕获下这个异常并做些处理，记录如下：</p>
 
 <p>需要注意的是，<strong>Timeout::Error</strong>不是<strong>StandardError</strong>的子类, 而是继承至 <strong>Interrupt class</strong>，所以捕获的时候，需要格外注意，演示如下：</p>
 
@@ -111,15 +118,14 @@
 <p>Ruby代码</p>
 
 <ol>
-<li>require &#8217;net/pop3&#8217;  </li>
-<li>begin  </li>
-<li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
-<li>rescue => e  </li>
-<li>  write_error_to_logfile(e)  </li>
-<li>  do_something_sensible  </li>
-<li>end  </li>
+  <li>require ’net/pop3’  </li>
+  <li>begin  </li>
+  <li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
+  <li>rescue =&gt; e  </li>
+  <li>  write_error_to_logfile(e)  </li>
+  <li>  do_something_sensible  </li>
+  <li>end  </li>
 </ol>
-
 
 <p>看上面的这段代码，当POP3服务器不能及时响应的时候，所触发的异常并不能被下面捕获到，原因就是上面说的，再看正确的处理代码：</p>
 
@@ -128,18 +134,17 @@
 <p>Ruby代码</p>
 
 <ol>
-<li>require &#8217;net/pop3&#8217;  </li>
-<li>begin  </li>
-<li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
-<li>rescue => e  </li>
-<li>  write_error_to_logfile(e)  </li>
-<li>  do_something_sensible  </li>
-<li>rescue Timeout::Error => e  </li>
-<li>  write_error_to_logfile(e)  </li>
-<li>  do_something_sensible_for_timeout  </li>
-<li>end  </li>
+  <li>require ’net/pop3’  </li>
+  <li>begin  </li>
+  <li>  Net::POP3.auth_only(@server, @port, @username, @password)  </li>
+  <li>rescue =&gt; e  </li>
+  <li>  write_error_to_logfile(e)  </li>
+  <li>  do_something_sensible  </li>
+  <li>rescue Timeout::Error =&gt; e  </li>
+  <li>  write_error_to_logfile(e)  </li>
+  <li>  do_something_sensible_for_timeout  </li>
+  <li>end  </li>
 </ol>
-
 
 <p>这段代码可以正常工作，并按照我们的意愿来处理了。</p>
 
@@ -148,28 +153,27 @@
 <p>Ruby代码</p>
 
 <ol>
-<li>require &#8217;timeout&#8217;  </li>
-<li>  </li>
-<li>&hellip;  </li>
-<li>&hellip;  </li>
-<li>begin  </li>
-<li>  timeout(60) do  </li>
-<li>     resp, body=3Dh.get(&lsquo;/index.html&rsquo;)  </li>
-<li>     puts body  </li>
-<li>  end  </li>
-<li>rescue TimeoutError  </li>
-<li>       puts &#8221;Timed Out&#8221;  </li>
-<li>end </li>
+  <li>require ’timeout’  </li>
+  <li>  </li>
+  <li>…  </li>
+  <li>…  </li>
+  <li>begin  </li>
+  <li>  timeout(60) do  </li>
+  <li>     resp, body=3Dh.get(‘/index.html’)  </li>
+  <li>     puts body  </li>
+  <li>  end  </li>
+  <li>rescue TimeoutError  </li>
+  <li>       puts ”Timed Out”  </li>
+  <li>end   </li>
 </ol>
 
-
-<p>或者这样：（来源：<a href="http://textsnippets.com/posts/show/868%EF%BC%89">http://textsnippets.com/posts/show/868%EF%BC%89</a></p>
+<p>或者这样：（来源：http://textsnippets.com/posts/show/868）</p>
 
 <p>Ruby代码</p>
 
 <ol>
-<li>http = Net::HTTP.new(url.host, url.port)  </li>
-<li>http.read_timeout=time_out  </li>
+  <li>http = Net::HTTP.new(url.host, url.port)  </li>
+  <li>http.read_timeout=time_out  </li>
 </ol>
 
 </div>
@@ -243,6 +247,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -256,10 +264,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -279,6 +283,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

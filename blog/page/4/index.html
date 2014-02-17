@@ -9,9 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Why macruby It&rsquo;s developed and sponsored by Apple. I&rsquo;m start here http://www.macruby.org/documentation/tutorial.html
-">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -72,6 +71,70 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2011/03/26/flex_gbk_csv_excel_mac%E9%97%AE%E9%A2%98/">Flex_gbk_csv_excel_mac问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-26T22:49:00+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2011</time>
+        
+           | <a href="/blog/2011/03/26/flex_gbk_csv_excel_mac%E9%97%AE%E9%A2%98/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2011/03/26/flex_gbk_csv_excel_mac%E9%97%AE%E9%A2%98/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在mac 下调试 flex 将文本转 csv 然后让excel 读取</p>
+
+<p>悲剧的是调试了很久 excel 读中文都是乱码 无论是 utf8 还是 gbk gb2312 一直以为是编码么有转对</p>
+
+<p>等以沮丧的心情调试代码失败 回家的路上 怀疑是excel 在 mac 系统文件编码 中格式的问题</p>
+
+<p>开了windows下的excel 读csv 一切都ok</p>
+
+<p>以下是测试用的两种转换编码</p>
+
+<p>      Alert.show(“test start”);<br />
+    ///var fr:FileReference=new FileReference();<br />
+    ///var byteArray:ByteArray=new ByteArray();<br />
+    ///byteArray.writeMultiByte(test,”gbk”);<br />
+    ///fr.save(byteArray, ‘chinese.csv’)<br />
+    var test:String = ‘chandle,明天,郊游 ‘;  </p>
+
+<p>    var file:File = File.desktopDirectory.resolvePath(“testgb2312.csv”);<br />
+    var fileStream:FileStream = new FileStream();<br />
+    fileStream.open(file, FileMode.WRITE);<br />
+   <br />
+    fileStream.writeMultiByte(test, “gbk”);<br />
+    fileStream.close();<br />
+    Alert.show(“test end”);</p>
+
+<p>mac 下的excel 处处都很诡异 怎么都觉格格不入</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2011/03/26/%E5%AD%A6%E4%B9%A0macruby/">学习macruby</a></h1>
     
     
@@ -100,9 +163,9 @@
 
   <div class="entry-content"><p>Why macruby</p>
 
-<p>It&rsquo;s developed and sponsored by Apple.</p>
+<p>It’s developed and sponsored by Apple.</p>
 
-<p>I&rsquo;m start here <a href="http://www.macruby.org/documentation/tutorial.html">http://www.macruby.org/documentation/tutorial.html</a></p>
+<p>I’m start here http://www.macruby.org/documentation/tutorial.html</p>
 </div>
   
   
@@ -163,11 +226,11 @@
 
 <p>todo 系统</p>
 
-<p>&mdash;&mdash;todo&mdash;&mdash;</p>
+<p>—-todo—-</p>
 
-<p>fix bug for blogs of comments &mdash; done 同时添加小罗攀岩的favicon</p>
+<p>fix bug for blogs of comments – done 同时添加小罗攀岩的favicon</p>
 
-<p>scan xiaolai be friends for time  &mdash; 看到第三章结束</p>
+<p>scan xiaolai be friends for time  – 看到第三章结束</p>
 
 <p>背英文单词20个</p>
 
@@ -175,9 +238,9 @@
 
 <p>read android book for easy finished blogs</p>
 
-<p>check flash project for xiaodong &mdash; utf 的编码问题还没有解决</p>
+<p>check flash project for xiaodong – utf 的编码问题还没有解决</p>
 
-<p>&mdash;&mdash;furture&mdash;&ndash;</p>
+<p>—-furture—</p>
 
 <p>减肥</p>
 
@@ -230,19 +293,19 @@
 
 <p>弟弟的网站需要修改 争取今天改好他 － 修改好了下午4：35</p>
 
-<p>网易课程 <a href="http://v.163.com/movie/2010/1/H/0/M6LDTAPTU_M6LDTVGH0.html">http://v.163.com/movie/2010/1/H/0/M6LDTAPTU_M6LDTVGH0.html</a> －看了 有趣 上课还有糖吃</p>
+<p>网易课程 http://v.163.com/movie/2010/1/H/0/M6LDTAPTU_M6LDTVGH0.html －看了 有趣 上课还有糖吃</p>
 
 <p>白天确定好私活的合同－ 合同确定好了</p>
 
-<p>晚上找小东对下需求和实现可能 &mdash;需求确定好了 每个人都是一出韩国的肥皂剧 都有自己的开心与郁闷</p>
+<p>晚上找小东对下需求和实现可能 –需求确定好了 每个人都是一出韩国的肥皂剧 都有自己的开心与郁闷</p>
 
-<p>&mdash;&mdash;&mdash;&mdash;&mdash;todo&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
+<p>———-todo————-</p>
 
 <p>扫墓的锡伯还差10个早上么爬起来</p>
 
 <p>英语听力还要提高</p>
 
-<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;future&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
+<p>—————-future—————–</p>
 
 <p>昨天体重83.3 看来减肥还要继续</p>
 </div>
@@ -285,18 +348,17 @@
 
   <div class="entry-content"><p>   </p>
 
-<p><a href="http://www.macruby.org/">MacRuby</a> isn&rsquo;t 1.0 yet. But, we think it&rsquo;s exactly the right time to start building desktop apps in MacRuby. Here&rsquo;s why:</p>
+<p><a href="http://www.macruby.org/">MacRuby</a> isn’t 1.0 yet. But, we think it’s exactly the right time to start building desktop apps in MacRuby. Here’s why:</p>
 
 <ol>
-<li><strong>MacRuby in Lion: Apple is <a href="http://merbist.com/2011/03/07/hey-apple-please-be-nice-and-share/">including MacRuby as a private framework in Lion</a>. While MacRuby is not yet a public framework, its inclusion is a powerful signal of Apple&rsquo;s endorsement.</strong></li>
-<li><strong>Framework embedding.</strong> Distributing the MacRuby framework as part of your .app bundle is getting more efficient: Our application is 10.9MB GZIP&rsquo;d, including the embedded MacRuby framework and several Ruby gems. That&rsquo;s a big improvement form 18MB+ in previous versions of MacRuby.</li>
-<li><strong>Distribution of commercial apps:</strong> you can compile your MacRuby code prior to distribution &mdash; no need to reveal your source code. If you&rsquo;re developing a commercial product, this is a pretty key feature.</li>
-<li><strong>Xcode 4:</strong> Xcode 4 works with MacRuby! Xcode 4 is a joy compared to Xcode 3.</li>
-<li><strong>Community: </strong>developing in MacRuby reminds me of developing in Rails in the early days. People are beginning to see how productive it can be. There&rsquo;s a small but passionate group of advocates. There&rsquo;s a great energy and vibe in the community.</li>
-<li><strong>Timing: </strong>there are many talented Ruby programmers who are going to discover and embrace MacRuby on the desktop soon. As momentum builds, there will an influx of great Mac apps from these folks. I think this will be another wave that is &mdash; like Rails &mdash; both profitable and fun to be a part of.</li>
-<li><strong>Ruby Gem compatibility:</strong> Ruby has an amazing ecosystem of gems, and you get it for free with MacRuby. Compatibility is growing all the time. We&rsquo;ve used Nokogiri, SQLite, and more.</li>
+  <li><strong>MacRuby in Lion: Apple is <a href="http://merbist.com/2011/03/07/hey-apple-please-be-nice-and-share/">including MacRuby as a private framework in Lion</a>. While MacRuby is not yet a public framework, its inclusion is a powerful signal of Apple’s endorsement.</strong></li>
+  <li><strong>Framework embedding.</strong> Distributing the MacRuby framework as part of your .app bundle is getting more efficient: Our application is 10.9MB GZIP’d, including the embedded MacRuby framework and several Ruby gems. That’s a big improvement form 18MB+ in previous versions of MacRuby.</li>
+  <li><strong>Distribution of commercial apps:</strong> you can compile your MacRuby code prior to distribution – no need to reveal your source code. If you’re developing a commercial product, this is a pretty key feature.</li>
+  <li><strong>Xcode 4:</strong> Xcode 4 works with MacRuby! Xcode 4 is a joy compared to Xcode 3.</li>
+  <li>**Community: **developing in MacRuby reminds me of developing in Rails in the early days. People are beginning to see how productive it can be. There’s a small but passionate group of advocates. There’s a great energy and vibe in the community.</li>
+  <li>**Timing: **there are many talented Ruby programmers who are going to discover and embrace MacRuby on the desktop soon. As momentum builds, there will an influx of great Mac apps from these folks. I think this will be another wave that is – like Rails – both profitable and fun to be a part of.</li>
+  <li><strong>Ruby Gem compatibility:</strong> Ruby has an amazing ecosystem of gems, and you get it for free with MacRuby. Compatibility is growing all the time. We’ve used Nokogiri, SQLite, and more.</li>
 </ol>
-
 </div>
   
   
@@ -376,64 +438,64 @@
   </header>
 
 
-  <div class="entry-content"><p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a></p>
+  <div class="entry-content"><p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a>  </p>
 
 <p>rails test prescription 随感</p>
 
-<p>编程<br/>
-controller测试<br/>
-  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br/>
-  2 检测controller是否能够适当地处理不合格式的请求<br/>
-  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面</p>
+<p>编程<br />
+controller测试<br />
+  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br />
+  2 检测controller是否能够适当地处理不合格式的请求<br />
+  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面  </p>
 
-<p>view测试<br/>
-  1 view不报错<br/>
-  2 view中的数据是否是你计划生成的数据<br/>
-  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示</p>
+<p>view测试<br />
+  1 view不报错<br />
+  2 view中的数据是否是你计划生成的数据<br />
+  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示  </p>
 
-<p>集成测试与controller测试的区别<br/>
-  需要对session，cookie等跨action的数据的正确性进行测试</p>
+<p>集成测试与controller测试的区别<br />
+  需要对session，cookie等跨action的数据的正确性进行测试  </p>
 
-<p>测试层次<br/>
-  1 model<br/>
-  2 controller<br/>
-  3 view（helper）<br/>
-  4 集成<br/>
-  5 验收<br/>
-  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br/>
-才能开始测试</p>
+<p>测试层次<br />
+  1 model<br />
+  2 controller<br />
+  3 view（helper）<br />
+  4 集成<br />
+  5 验收<br />
+  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br />
+才能开始测试  </p>
 
-<p>测试写到什么时候够了<br/>
-  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br/>
-测试，就像你永远也写不出完美的软件一样，够好，就可以了</p>
+<p>测试写到什么时候够了<br />
+  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br />
+测试，就像你永远也写不出完美的软件一样，够好，就可以了  </p>
 
-<p>什么时候使用mock/stub<br/>
-  1 解决依赖性<br/>
-    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br/>
-  2 解决某些情况<br/>
-    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br/>
-         测试程序的失败情况，而失败情况可以用stub轻松生成<br/>
-  3 测试过程时，未实现的功能的替代<br/>
-  4 Interface Discovery<br/>
-    设计api时，你需要它</p>
+<p>什么时候使用mock/stub<br />
+  1 解决依赖性<br />
+    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br />
+  2 解决某些情况<br />
+    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br />
+         测试程序的失败情况，而失败情况可以用stub轻松生成<br />
+  3 测试过程时，未实现的功能的替代<br />
+  4 Interface Discovery<br />
+    设计api时，你需要它  </p>
 
-<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了</p>
+<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了  </p>
 
-<p>是否测试负面情况<br/>
-  上帝保佑我们有足够的时间</p>
+<p>是否测试负面情况<br />
+  上帝保佑我们有足够的时间  </p>
 
-<p>先写测试还是后写测试<br/>
-  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br/>
-里记住，先写测试可以改善代码质量</p>
+<p>先写测试还是后写测试<br />
+  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br />
+里记住，先写测试可以改善代码质量  </p>
 
-<p>mock类库<br/>
-  rails-test-prescription 7.7 已做出了明了的比较</p>
+<p>mock类库<br />
+  rails-test-prescription 7.7 已做出了明了的比较  </p>
 
-<p>你至少需要熟悉的测试工具<br/>
-  1 rspec<br/>
-  2 cucumber<br/>
-  3 capybara<br/>
-  4 factory-girl<br/>
+<p>你至少需要熟悉的测试工具<br />
+  1 rspec<br />
+  2 cucumber<br />
+  3 capybara<br />
+  4 factory-girl<br />
   5 database-cleaner</p>
 </div>
   
@@ -477,18 +539,18 @@ controller测试<br/>
 
 <p>参考如下没有成功</p>
 
-<p><a href="http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide">http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide</a></p>
+<p>http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide</p>
 
 <p>gdb shell 查看</p>
 
-<p>$ cat /proc/mtd<br/>
-dev:    size   erasesize  name<br/>
-mtd0: 00100000 00040000 &ldquo;misc&#8221;<br/>
-mtd1: 00480000 00040000 &#8220;recovery&#8221;<br/>
-mtd2: 00340000 00040000 &#8220;boot&#8221;<br/>
-mtd3: 0fa00000 00040000 &#8220;system&#8221;<br/>
-mtd4: 02800000 00040000 &#8220;cache&#8221;<br/>
-mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
+<p>$ cat /proc/mtd<br />
+dev:    size   erasesize  name<br />
+mtd0: 00100000 00040000 “misc”<br />
+mtd1: 00480000 00040000 “recovery”<br />
+mtd2: 00340000 00040000 “boot”<br />
+mtd3: 0fa00000 00040000 “system”<br />
+mtd4: 02800000 00040000 “cache”<br />
+mtd5: 096c0000 00040000 “userdata”</p>
 
 <p>pvt4 40000 看来是悲剧了</p>
 </div>
@@ -531,7 +593,7 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
 
   <div class="entry-content"><p>我是真心珍惜你。</p>
 
-<p>这样一想，不知道为啥，心都揪起来了&hellip;大概是我们太不顺利了吧..</p>
+<p>这样一想，不知道为啥，心都揪起来了…大概是我们太不顺利了吧..</p>
 
 <p>祝我的本命年，顺利点儿吧..</p>
 
@@ -578,66 +640,27 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
 
   <div class="entry-content"><p>为了表示诚意，大半夜，你在梦乡里，我却内疚得头昏脑胀，不把这种内疚一吐为快不能安心入眠，你应该心里平衡很多了吧。</p>
 
-<p>今天的事情我确实不对。具体怎样怎样，此处省略若干个字&hellip;.错了就错了，你已经说得够多了，我不必去辩解否则会再新增另一个辩论的方向了。</p>
+<p>今天的事情我确实不对。具体怎样怎样，此处省略若干个字….错了就错了，你已经说得够多了，我不必去辩解否则会再新增另一个辩论的方向了。</p>
 
 <p>反省的结论如下：</p>
 
-<p>1、所谓入得厨房 出得厅堂，并不是你对我的要求，而应该是我自己对自己的要求。有时候我什么都不在乎，有时候既小气又刻薄，凡事且暴躁，这都是我天性里带来的瑕疵。若一味的期望遇到一个完全可以把我瑕疵当宝贝来容忍的人，这是不可能的。所谓的大气、理性，我且得好好学。其实我知道这些，不过是希望你温婉点儿跟我说而已&hellip;.我完全无法接受我喜欢的人将一副朽木不可雕的怨气直直的朝我身上泼来，换作你，早火冒三丈了&hellip;</p>
+<p>1、所谓入得厨房 出得厅堂，并不是你对我的要求，而应该是我自己对自己的要求。有时候我什么都不在乎，有时候既小气又刻薄，凡事且暴躁，这都是我天性里带来的瑕疵。若一味的期望遇到一个完全可以把我瑕疵当宝贝来容忍的人，这是不可能的。所谓的大气、理性，我且得好好学。其实我知道这些，不过是希望你温婉点儿跟我说而已….我完全无法接受我喜欢的人将一副朽木不可雕的怨气直直的朝我身上泼来，换作你，早火冒三丈了…</p>
 
-<p>2、我们彼此都觉得对方做得太少，这说明其实尽管我们已经2年了，但其实并没有迈出实质性的步伐。比如无怨无悔的相互付出和随时随地的相互理解。所以，你总是在觉得我只为自己想，而我又老觉得你并不在乎且从不将就我的情绪。可能实际情况是我真的为你做得太少，但我的内心其实是愿意为你做任何事情的，我还没想明白现实与心理为啥会落差成这样&hellip;</p>
+<p>2、我们彼此都觉得对方做得太少，这说明其实尽管我们已经2年了，但其实并没有迈出实质性的步伐。比如无怨无悔的相互付出和随时随地的相互理解。所以，你总是在觉得我只为自己想，而我又老觉得你并不在乎且从不将就我的情绪。可能实际情况是我真的为你做得太少，但我的内心其实是愿意为你做任何事情的，我还没想明白现实与心理为啥会落差成这样…</p>
 
-<p>3、关于说话与做人，可能还觉得自己真的很小，还在一种随意的状态，所以，和你在一起的时间，总是大大咧咧口无遮拦，有时候甚至忘记场合。但其实你早就走过这一步了，而且现在，你希望我与你同步&hellip;我明白，两个人在一起，想法不能相差太远，否则，便真的渐行渐远了&hellip;所以，我会注意，小心，谨言慎行，三思多虑，以保证万无一失。</p>
+<p>3、关于说话与做人，可能还觉得自己真的很小，还在一种随意的状态，所以，和你在一起的时间，总是大大咧咧口无遮拦，有时候甚至忘记场合。但其实你早就走过这一步了，而且现在，你希望我与你同步…我明白，两个人在一起，想法不能相差太远，否则，便真的渐行渐远了…所以，我会注意，小心，谨言慎行，三思多虑，以保证万无一失。</p>
 
 <p>4、快乐要自调。期待对方能驱散内心的郁闷多半是没戏的。我曾经尝试过想让压力颇大的你开心起来，多以失败告终。最近的我是不开心，很难过，虽然我寄希望于你能多开导我，其实还是应该明白，要快乐靠自己。</p>
 
-<p>5、你和我在一起，是靠感情，不是靠责任感。是靠呵护，不是靠辩论。我心疼你，所以会回头等你。你心疼我的话，可以不可以和风细雨一点指出我的问题。当然，下次的情况应该是：如果我足够懂事，足够理解你，我应该压根儿就不生你的气。不过，不生气这是违背我天性的，需要漫长的过程调节。你至少给我稍许的体谅，你别跟我一块儿生气，这样，你不哄我，我不哄你，那就等着漫漫冷战与对吵吧&hellip;</p>
+<p>5、你和我在一起，是靠感情，不是靠责任感。是靠呵护，不是靠辩论。我心疼你，所以会回头等你。你心疼我的话，可以不可以和风细雨一点指出我的问题。当然，下次的情况应该是：如果我足够懂事，足够理解你，我应该压根儿就不生你的气。不过，不生气这是违背我天性的，需要漫长的过程调节。你至少给我稍许的体谅，你别跟我一块儿生气，这样，你不哄我，我不哄你，那就等着漫漫冷战与对吵吧…</p>
 
 <p>暂时想到这么多吧。</p>
 
-<p>晚安&hellip;希望我也能睡好觉了&hellip;</p>
+<p>晚安…希望我也能睡好觉了…</p>
 
 <p> </p>
 
 <p> </p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/14/%E6%B4%9B%E5%A4%AB/">洛夫</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-14T13:53:00+08:00" pubdate data-updated="true">Feb 14<span>th</span>, 2011</time>
-        
-           | <a href="/blog/2011/02/14/%E6%B4%9B%E5%A4%AB/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2011/02/14/%E6%B4%9B%E5%A4%AB/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>你务必要在雏菊尚未全部凋零之前 赶快发怒 或者发笑 赶快从箱子里找出我那件薄衫子 赶快对镜梳你那又黑又柔的妩媚 然后以整生的爱 点燃一盏灯 我是火 随时可能熄灭 因为风的缘故</p>
 </div>
   
   
@@ -662,6 +685,10 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -677,10 +704,6 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -691,12 +714,29 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

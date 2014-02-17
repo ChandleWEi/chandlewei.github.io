@@ -101,52 +101,53 @@
 <pre><code>package main
 
 import (
-    "fmt"
-    "io/ioutil"
-    "log"
-    "net/http"
-    "sync"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"sync"
 )
 
 func main() {
-    urls := []string{
-        "http://www.reddit.com/r/aww.json",
-        "http://www.reddit.com/r/funny.json",
-        "http://www.reddit.com/r/programming.json",
-    }
-    jsonResponses := make(chan string)
+	urls := []string{
+		"http://www.reddit.com/r/aww.json",
+		"http://www.reddit.com/r/funny.json",
+		"http://www.reddit.com/r/programming.json",
+	}
+	jsonResponses := make(chan string)
 
-    var wg sync.WaitGroup
+	var wg sync.WaitGroup
 
-    wg.Add(len(urls))
+	wg.Add(len(urls))
 
-    for _, url := range urls {
-        go func(url string) {
-            defer wg.Done()
-            res, err := http.Get(url)
-            if err != nil {
-                log.Fatal(err)
-            } else {
-                defer res.Body.Close()
-                body, err := ioutil.ReadAll(res.Body)
-                if err != nil {
-                    log.Fatal(err)
-                } else {
-                    jsonResponses &lt;- string(body)
-                }
-            }
-        }(url)
-    }
+	for _, url := range urls {
+		go func(url string) {
+			defer wg.Done()
+			res, err := http.Get(url)
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				defer res.Body.Close()
+				body, err := ioutil.ReadAll(res.Body)
+				if err != nil {
+					log.Fatal(err)
+				} else {
+					jsonResponses &lt;- string(body)
+				}
+			}
+		}(url)
+	}
 
-    go func() {
-        for response := range jsonResponses {
-            fmt.Println(response)
-        }
-    }()
+	go func() {
+		for response := range jsonResponses {
+			fmt.Println(response)
+		}
+	}()
 
-    wg.Wait()
+	wg.Wait()
 }
 </code></pre>
+
 </div>
 
 
@@ -197,6 +198,8 @@ func main() {
         <a class="basic-alignment left" href="/blog/2014/02/11/first-touch/" title="Previous Post: first touch">&laquo; first touch</a>
       
       
+        <a class="basic-alignment right" href="/blog/2014/02/17/latex-test/" title="Next Post: latex test">latex test &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -216,6 +219,10 @@ func main() {
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -229,10 +236,6 @@ func main() {
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -252,6 +255,22 @@ func main() {
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

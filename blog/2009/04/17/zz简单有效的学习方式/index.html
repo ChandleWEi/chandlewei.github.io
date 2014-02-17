@@ -96,13 +96,13 @@
   </header>
 
 
-<div class="entry-content"><p>1） 要熟练掌握至少一种编程语言。我觉得最好是C++。<br/>
-2） 不要寄希望于一次就把软件设计好。你所关注的重点应依次是Make it work, make it right, make it fast。<br/>
-3） 软件结构要分块分层。低层模块不要依赖于上层模块。一个类、一个接口或一个函数都应只做一件事。<br/>
-4） 软件设计的主要工作是给类分配责任（responsibilities）。要站在类的使用者角度设计类的外部行为。要讲究一点软件美学，即简单、清晰、一致、平衡等。<br/>
-5） 了解并运用UML、Design Patterns、Unit Test、Design by Contract等。<br/>
-6） 使用代码管理系统和质量跟踪系统。<br/>
-7） 了解各种软件开发过程控制方法，并找出适合你的方法。<br/>
+<div class="entry-content"><p>1） 要熟练掌握至少一种编程语言。我觉得最好是C++。<br />
+2） 不要寄希望于一次就把软件设计好。你所关注的重点应依次是Make it work, make it right, make it fast。<br />
+3） 软件结构要分块分层。低层模块不要依赖于上层模块。一个类、一个接口或一个函数都应只做一件事。<br />
+4） 软件设计的主要工作是给类分配责任（responsibilities）。要站在类的使用者角度设计类的外部行为。要讲究一点软件美学，即简单、清晰、一致、平衡等。<br />
+5） 了解并运用UML、Design Patterns、Unit Test、Design by Contract等。<br />
+6） 使用代码管理系统和质量跟踪系统。<br />
+7） 了解各种软件开发过程控制方法，并找出适合你的方法。<br />
 8） 阅读经典书籍，研读经典代码，订阅杂志，与同行切磋。</p>
 </div>
 
@@ -175,6 +175,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -188,10 +192,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -211,6 +211,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

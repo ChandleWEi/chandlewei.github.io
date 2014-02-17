@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -25,52 +25,53 @@
 <pre><code>package main
 
 import (
-    "fmt"
-    "io/ioutil"
-    "log"
-    "net/http"
-    "sync"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"sync"
 )
 
 func main() {
-    urls := []string{
-        "http://www.reddit.com/r/aww.json",
-        "http://www.reddit.com/r/funny.json",
-        "http://www.reddit.com/r/programming.json",
-    }
-    jsonResponses := make(chan string)
+	urls := []string{
+		"http://www.reddit.com/r/aww.json",
+		"http://www.reddit.com/r/funny.json",
+		"http://www.reddit.com/r/programming.json",
+	}
+	jsonResponses := make(chan string)
 
-    var wg sync.WaitGroup
+	var wg sync.WaitGroup
 
-    wg.Add(len(urls))
+	wg.Add(len(urls))
 
-    for _, url := range urls {
-        go func(url string) {
-            defer wg.Done()
-            res, err := http.Get(url)
-            if err != nil {
-                log.Fatal(err)
-            } else {
-                defer res.Body.Close()
-                body, err := ioutil.ReadAll(res.Body)
-                if err != nil {
-                    log.Fatal(err)
-                } else {
-                    jsonResponses &lt;- string(body)
-                }
-            }
-        }(url)
-    }
+	for _, url := range urls {
+		go func(url string) {
+			defer wg.Done()
+			res, err := http.Get(url)
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				defer res.Body.Close()
+				body, err := ioutil.ReadAll(res.Body)
+				if err != nil {
+					log.Fatal(err)
+				} else {
+					jsonResponses &lt;- string(body)
+				}
+			}
+		}(url)
+	}
 
-    go func() {
-        for response := range jsonResponses {
-            fmt.Println(response)
-        }
-    }()
+	go func() {
+		for response := range jsonResponses {
+			fmt.Println(response)
+		}
+	}()
 
-    wg.Wait()
+	wg.Wait()
 }
 </code></pre>
+
 ]]></content>
   </entry>
   

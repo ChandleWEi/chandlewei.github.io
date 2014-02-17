@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="    MacRuby isn&rsquo;t 1.0 yet. But, we think it&rsquo;s exactly the right time to start building desktop apps in MacRuby. Here&rsquo;s why: MacRuby &hellip;">
+  <meta name="description" content="    MacRuby isn’t 1.0 yet. But, we think it’s exactly the right time to start building desktop apps in MacRuby. Here’s why: MacRuby in Lion: Apple is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,18 +96,17 @@
 
 <div class="entry-content"><p>   </p>
 
-<p><a href="http://www.macruby.org/">MacRuby</a> isn&rsquo;t 1.0 yet. But, we think it&rsquo;s exactly the right time to start building desktop apps in MacRuby. Here&rsquo;s why:</p>
+<p><a href="http://www.macruby.org/">MacRuby</a> isn’t 1.0 yet. But, we think it’s exactly the right time to start building desktop apps in MacRuby. Here’s why:</p>
 
 <ol>
-<li><strong>MacRuby in Lion: Apple is <a href="http://merbist.com/2011/03/07/hey-apple-please-be-nice-and-share/">including MacRuby as a private framework in Lion</a>. While MacRuby is not yet a public framework, its inclusion is a powerful signal of Apple&rsquo;s endorsement.</strong></li>
-<li><strong>Framework embedding.</strong> Distributing the MacRuby framework as part of your .app bundle is getting more efficient: Our application is 10.9MB GZIP&rsquo;d, including the embedded MacRuby framework and several Ruby gems. That&rsquo;s a big improvement form 18MB+ in previous versions of MacRuby.</li>
-<li><strong>Distribution of commercial apps:</strong> you can compile your MacRuby code prior to distribution &mdash; no need to reveal your source code. If you&rsquo;re developing a commercial product, this is a pretty key feature.</li>
-<li><strong>Xcode 4:</strong> Xcode 4 works with MacRuby! Xcode 4 is a joy compared to Xcode 3.</li>
-<li><strong>Community: </strong>developing in MacRuby reminds me of developing in Rails in the early days. People are beginning to see how productive it can be. There&rsquo;s a small but passionate group of advocates. There&rsquo;s a great energy and vibe in the community.</li>
-<li><strong>Timing: </strong>there are many talented Ruby programmers who are going to discover and embrace MacRuby on the desktop soon. As momentum builds, there will an influx of great Mac apps from these folks. I think this will be another wave that is &mdash; like Rails &mdash; both profitable and fun to be a part of.</li>
-<li><strong>Ruby Gem compatibility:</strong> Ruby has an amazing ecosystem of gems, and you get it for free with MacRuby. Compatibility is growing all the time. We&rsquo;ve used Nokogiri, SQLite, and more.</li>
+  <li><strong>MacRuby in Lion: Apple is <a href="http://merbist.com/2011/03/07/hey-apple-please-be-nice-and-share/">including MacRuby as a private framework in Lion</a>. While MacRuby is not yet a public framework, its inclusion is a powerful signal of Apple’s endorsement.</strong></li>
+  <li><strong>Framework embedding.</strong> Distributing the MacRuby framework as part of your .app bundle is getting more efficient: Our application is 10.9MB GZIP’d, including the embedded MacRuby framework and several Ruby gems. That’s a big improvement form 18MB+ in previous versions of MacRuby.</li>
+  <li><strong>Distribution of commercial apps:</strong> you can compile your MacRuby code prior to distribution – no need to reveal your source code. If you’re developing a commercial product, this is a pretty key feature.</li>
+  <li><strong>Xcode 4:</strong> Xcode 4 works with MacRuby! Xcode 4 is a joy compared to Xcode 3.</li>
+  <li>**Community: **developing in MacRuby reminds me of developing in Rails in the early days. People are beginning to see how productive it can be. There’s a small but passionate group of advocates. There’s a great energy and vibe in the community.</li>
+  <li>**Timing: **there are many talented Ruby programmers who are going to discover and embrace MacRuby on the desktop soon. As momentum builds, there will an influx of great Mac apps from these folks. I think this will be another wave that is – like Rails – both profitable and fun to be a part of.</li>
+  <li><strong>Ruby Gem compatibility:</strong> Ruby has an amazing ecosystem of gems, and you get it for free with MacRuby. Compatibility is growing all the time. We’ve used Nokogiri, SQLite, and more.</li>
 </ol>
-
 </div>
 
 
@@ -179,6 +178,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -192,10 +195,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -215,6 +214,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

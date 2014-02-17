@@ -10,13 +10,16 @@
 
   
   <meta name="description" content="~$ telnet localhost 11211
-Trying 127.0.0.1&hellip;
+Trying 127.0.0.1…
 Connected to localhost.
-Escape character is &lsquo;^]&rsquo;.
+Escape character is ‘^]’.
 set foo 0 0 3
 bar
 STORED
-get foo &hellip;">
+get foo
+VALUE foo 0 3
+bar
+END ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,17 +104,17 @@ get foo &hellip;">
   </header>
 
 
-<div class="entry-content"><p>~$ telnet localhost 11211<br/>
-Trying 127.0.0.1&hellip;<br/>
-Connected to localhost.<br/>
-Escape character is &lsquo;^]&rsquo;.<br/>
-set foo 0 0 3<br/>
-bar<br/>
-STORED<br/>
-get foo<br/>
-VALUE foo 0 3<br/>
-bar<br/>
-END</p>
+<div class="entry-content"><p>~$ telnet localhost 11211<br />
+Trying 127.0.0.1…<br />
+Connected to localhost.<br />
+Escape character is ‘^]’.<br />
+set foo 0 0 3<br />
+bar<br />
+STORED<br />
+get foo<br />
+VALUE foo 0 3<br />
+bar<br />
+END  </p>
 </div>
 
 
@@ -183,6 +186,10 @@ END</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -196,10 +203,6 @@ END</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -219,6 +222,22 @@ END</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

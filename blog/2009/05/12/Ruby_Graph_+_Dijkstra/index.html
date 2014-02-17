@@ -94,133 +94,125 @@
   </header>
 
 
-<div class="entry-content"><h2><a href="http://feeds.dzone.com/%7Er/dzone/snippets/%7E3/9BentpSuQVw/7331">Ruby Graph + Dijkstra</a></h2>
+<div class="entry-content"><h2 id="ruby-graph--dijkstrahttpfeedsdzonecom7erdzonesnippets7e39bentpsuqvw7331"><a href="http://feeds.dzone.com/%7Er/dzone/snippets/%7E3/9BentpSuQVw/7331">Ruby Graph + Dijkstra</a></h2>
 
 <p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fsnippets.dzone.com%2Frss">DZone Snippets: Store, sort and share source code, with tag goodness</a> 作者：dennis (Dennis)</p>
 
-<p>Dijkstra implementation in ruby, the names of the nodes need not to be integers, works for non directed or directed graphs<br/>
-`<br/>
-class Graph</p>
+<p>Dijkstra implementation in ruby, the names of the nodes need not to be integers, works for non directed or directed graphs<br />
+`<br />
+class Graph  </p>
 
-<h1>Constructor</h1>
+<h1 id="constructor">Constructor</h1>
 
-<p>def initialize<br/>
-@g = {} # the graph // {node => { edge1 => weight, edge2 => weight}, node2 => &hellip;<br/>
-@nodes = Array.new<br/>
-@INFINITY = 1 &lt;&lt; 64<br/>
-end</p>
+<p>def initialize<br />
+@g = {} # the graph // {node =&gt; { edge1 =&gt; weight, edge2 =&gt; weight}, node2 =&gt; …<br />
+@nodes = Array.new<br />
+@INFINITY = 1 « 64<br />
+end  </p>
 
-<p>def add_edge(s,t,w) # s= source, t= target, w= weight<br/>
-if (not @g.has_key?(s))<br/>
-@g[s] = {t=>w}<br/>
-else<br/>
-@g[s][t] = w<br/>
-end</p>
+<p>def add_edge(s,t,w) # s= source, t= target, w= weight<br />
+if (not @g.has_key?(s))<br />
+@g[s] = {t=&gt;w}<br />
+else<br />
+@g[s][t] = w<br />
+end  </p>
 
-<h1>Begin code for non directed graph (inserts the other edge too)</h1>
+<h1 id="begin-code-for-non-directed-graph-inserts-the-other-edge-too">Begin code for non directed graph (inserts the other edge too)</h1>
 
-<p>if (not @g.has_key?(t))<br/>
-@g[t] = {s=>w}<br/>
-else<br/>
-@g[t][s] = w<br/>
-end</p>
+<p>if (not @g.has_key?(t))<br />
+@g[t] = {s=&gt;w}<br />
+else<br />
+@g[t][s] = w<br />
+end  </p>
 
-<h1>End code for non directed graph (ie. deleteme if you want it directed)</h1>
+<h1 id="end-code-for-non-directed-graph-ie-deleteme-if-you-want-it-directed">End code for non directed graph (ie. deleteme if you want it directed)</h1>
 
-<p>if (not @nodes.include?(s))<br/>
-@nodes &lt;&lt; s<br/>
-end<br/>
-if (not @nodes.include?(t))<br/>
-@nodes &lt;&lt; t<br/>
-end<br/>
-end</p>
+<p>if (not @nodes.include?(s))<br />
+@nodes « s<br />
+end<br />
+if (not @nodes.include?(t))<br />
+@nodes « t<br />
+end<br />
+end  </p>
 
-<h1>based of wikipedia&rsquo;s pseudocode: <a href="http://en.wikipedia.org/wiki/Dijkstra">http://en.wikipedia.org/wiki/Dijkstra</a>&rsquo;s_algorithm</h1>
+<h1 id="based-of-wikipedias-pseudocode-httpenwikipediaorgwikidijkstrasalgorithm">based of wikipedia’s pseudocode: http://en.wikipedia.org/wiki/Dijkstra’s_algorithm</h1>
 
-<p>def dijkstra(s)<br/>
-@d = {}<br/>
-@prev = {}</p>
+<p>def dijkstra(s)<br />
+@d = {}<br />
+@prev = {}  </p>
 
-<p>@nodes.each do |i|<br/>
-@d[i] = @INFINITY<br/>
-@prev[i] = -1<br/>
-end</p>
+<p>@nodes.each do |i|<br />
+@d[i] = @INFINITY<br />
+@prev[i] = -1<br />
+end  </p>
 
-<p>@d[s] = 0<br/>
-q = @nodes.compact<br/>
-while (q.size > 0)<br/>
-u = nil;<br/>
-q.each do |min|<br/>
-if (not u) or (@d[min] and @d[min] &lt; @d[u])<br/>
-u = min<br/>
-end<br/>
-end<br/>
-if (@d[u] == @INFINITY)<br/>
-break<br/>
-end<br/>
-q = q &ndash; [u]<br/>
-@g[u].keys.each do |v|<br/>
-alt = @d[u] + @g[u][v]<br/>
-if (alt &lt; @d[v])<br/>
-@d[v] = alt<br/>
-@prev[v] = u<br/>
-end<br/>
-end<br/>
-end<br/>
-end</p>
+<p>@d[s] = 0<br />
+q = @nodes.compact<br />
+while (q.size &gt; 0)<br />
+u = nil;<br />
+q.each do |min|<br />
+if (not u) or (@d[min] and @d[min] &lt; @d[u])<br />
+u = min<br />
+end<br />
+end<br />
+if (@d[u] == @INFINITY)<br />
+break<br />
+end<br />
+q = q - [u]<br />
+@g[u].keys.each do |v|<br />
+alt = @d[u] + @g[u][v]<br />
+if (alt &lt; @d[v])<br />
+@d[v] = alt<br />
+@prev[v] = u<br />
+end<br />
+end<br />
+end<br />
+end  </p>
 
-<h1>To print the full shortest route to a node</h1>
+<h1 id="to-print-the-full-shortest-route-to-a-node">To print the full shortest route to a node</h1>
 
-<p>def print_path(dest)<br/>
-if @prev[dest] != -1<br/>
-print_path @prev[dest]<br/>
-end<br/>
-print &ldquo;>#{dest}&#8221;<br/>
-end</p>
+<p>def print_path(dest)<br />
+if @prev[dest] != -1<br />
+print_path @prev[dest]<br />
+end<br />
+print “&gt;#{dest}”<br />
+end  </p>
 
-<h1>Gets all shortests paths using dijkstra</h1>
+<h1 id="gets-all-shortests-paths-using-dijkstra">Gets all shortests paths using dijkstra</h1>
 
-<p>def shortest_paths(s)<br/>
-@source = s<br/>
-dijkstra s<br/>
-puts &ldquo;Source: #{@source}&#8221;<br/>
-@nodes.each do |dest|<br/>
-puts &rdquo;</p>
+<p>def shortest_paths(s)<br />
+@source = s<br />
+dijkstra s<br />
+puts “Source: #{@source}”<br />
+@nodes.each do |dest|<br />
+puts “
+    Target: #{dest}”<br />
+print_path dest<br />
+if @d[dest] != @INFINITY<br />
+puts “
+    Distance: #{@d[dest]}”<br />
+else<br />
+puts “
+    NO PATH”<br />
+end<br />
+end<br />
+end<br />
+end  </p>
 
-<pre><code>Target: #{dest}"  
-</code></pre>
+<p>if <strong>FILE</strong> == $0<br />
+gr = Graph.new<br />
+gr.add_edge(“a”,”b”,5)<br />
+gr.add_edge(“b”,”c”,3)<br />
+gr.add_edge(“c”,”d”,1)<br />
+gr.add_edge(“a”,”d”,10)<br />
+gr.add_edge(“b”,”d”,2)<br />
+gr.add_edge(“f”,”g”,1)<br />
+gr.shortest_paths(“a”)<br />
+end<br />
+`  </p>
 
-<p>print_path dest<br/>
-if @d[dest] != @INFINITY<br/>
-puts &#8221;</p>
+<p>I hope it’s useful for somebody <img src="http://feeds2.feedburner.com/%7Er/dzone/snippets/%7E4/9BentpSuQVw" alt="" /></p>
 
-<pre><code>Distance: #{@d[dest]}"  
-</code></pre>
-
-<p>else<br/>
-puts &#8221;</p>
-
-<pre><code>NO PATH"  
-</code></pre>
-
-<p>end<br/>
-end<br/>
-end<br/>
-end</p>
-
-<p>if <strong>FILE</strong> == $0<br/>
-gr = Graph.new<br/>
-gr.add_edge(&ldquo;a&rdquo;,&ldquo;b&rdquo;,5)<br/>
-gr.add_edge(&ldquo;b&rdquo;,&ldquo;c&rdquo;,3)<br/>
-gr.add_edge(&ldquo;c&rdquo;,&ldquo;d&rdquo;,1)<br/>
-gr.add_edge(&ldquo;a&rdquo;,&ldquo;d&rdquo;,10)<br/>
-gr.add_edge(&ldquo;b&rdquo;,&ldquo;d&rdquo;,2)<br/>
-gr.add_edge(&ldquo;f&rdquo;,&ldquo;g&rdquo;,1)<br/>
-gr.shortest_paths(&ldquo;a&rdquo;)<br/>
-end<br/>
-`</p>
-
-<p>I hope it&rsquo;s useful for somebody <img src="http://feeds2.feedburner.com/%7Er/dzone/snippets/%7E4/9BentpSuQVw" alt="" /></p>
 </div>
 
 
@@ -286,6 +278,10 @@ end<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -299,10 +295,6 @@ end<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -322,6 +314,22 @@ end<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

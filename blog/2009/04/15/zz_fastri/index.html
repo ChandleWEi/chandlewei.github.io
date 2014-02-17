@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Overview FastRI is an alternative to the &ldquo;ri&rdquo; documentation browser for Ruby. FastRI can operate in standalone mode (without using a DRb &hellip;">
+  <meta name="description" content="Overview FastRI is an alternative to the “ri” documentation browser for Ruby. FastRI can operate in standalone mode (without using a DRb server, see &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,32 +94,31 @@
   </header>
 
 
-<div class="entry-content"><h3>Overview</h3>
+<div class="entry-content"><h3 id="overview">Overview</h3>
 
-<p><em>FastRI</em> is an alternative to the &ldquo;ri&rdquo; documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
+<p><em>FastRI</em> is an alternative to the “ri” documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
 
 <p>Why prefer it over ri? <em>FastRI</em></p>
 
 <ul>
-<li>actually works</li>
-<li>is *much* faster than ri</li>
-<li>can perform fast full-text searching over all your rdoc documentation</li>
-<li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the &ldquo;full path&rdquo;</li>
-<li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
-<li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
-<li>can serve RI documentation over DRb</li>
+  <li>actually works</li>
+  <li>is *much* faster than ri</li>
+  <li>can perform fast full-text searching over all your rdoc documentation</li>
+  <li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the “full path”</li>
+  <li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
+  <li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
+  <li>can serve RI documentation over DRb</li>
 </ul>
-
 
 <p>You can find more information about what makes <em>FastRI</em> faster than ri <a href="http://eigenclass.org/hiki/making+ruby+ri+faster">here</a>, and about its <a href="http://eigenclass.org/hiki/simple+full+text+search+engine">200 LoC full-text search engine here</a>.</p>
 
-<h3>Getting it</h3>
+<h3 id="getting-it">Getting it</h3>
 
 <p><em>FastRI</em> can be installed with RubyGems:</p>
 
-<p>gem install <em>fastri</em></p>
+<p>gem install <em>fastri</em>  </p>
 
-<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge&rsquo;s mirrors.</p>
+<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge’s mirrors.</p>
 
 <p><em>FastRI</em> is available in tarball format. The <em>fri</em> executable will run much faster if you install <em>FastRI</em> from a tarball, since RubyGems introduces a noticeable overhead.</p>
 
@@ -129,104 +128,102 @@
 
 <p>Just run</p>
 
-<p>setup.rb</p>
+<p>setup.rb  </p>
 
 <p>to install.</p>
 
-<h3>Usage</h3>
+<h3 id="usage">Usage</h3>
 
-<p>Starting from 0.3.0, fri can be used in either local mode (&mdash;local, -L) or remote mode (using a <em>fastri</em>-server, -R, &mdash;remote). By default, fri will run in remote mode. There&rsquo;s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
+<p>Starting from 0.3.0, fri can be used in either local mode (–local, -L) or remote mode (using a <em>fastri</em>-server, -R, –remote). By default, fri will run in remote mode. There’s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
 
 <p>Remote mode is slightly faster (typically about 150ms) , since the documentation index is kept in memory and needs not be read from disk.</p>
 
-<h4>Local mode</h4>
+<h4 id="local-mode">Local mode</h4>
 
-<p>$ qri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-Array indexing starts at 0, as in C or Java. A negative index is<br/>
-&hellip;</p>
+<p>$ qri Array<br />
+———————————————————– Class: Array<br />
+Arrays are ordered, integer-indexed collections of any object.<br />
+Array indexing starts at 0, as in C or Java. A negative index is<br />
+…  </p>
 
-<p>$ qri compact<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Array#compact</p>
+<p>$ qri compact<br />
+———————————————————- Array#compact<br />
+array.compact -&gt; an_array<br />
+————————————————————————<br />
+Returns a copy of self with all nil elements removed.  </p>
 
-<h2>array.compact &ndash;> an_array  </h2>
-
-<p>Returns a copy of self with all nil elements removed.</p>
-
-<h4>Remote mode</h4>
+<h4 id="remote-mode">Remote mode</h4>
 
 <p>There are two parts to using <em>FastRI</em> in remote mode:</p>
 
 <ul>
-<li>the server: <em>fastri</em>-server</li>
-<li>the client: fri</li>
+  <li>the server: <em>fastri</em>-server</li>
+  <li>the client: fri</li>
 </ul>
-
 
 <p><em>FastRI</em> uses a Rinda Ring to allow servers to be discovered automatically without needing to indicate the DRb URIs manually. It can work across machines if you make sure the ring server is bound to the correct interface, and the ACL permissions are correct.</p>
 
-<h5>Quickstart</h5>
+<h5 id="quickstart">Quickstart</h5>
 
 <p>First of all, the DRb server must be launched with</p>
 
-<p>$ <em>fastri</em>-server (blocks)</p>
+<p>$ <em>fastri</em>-server (blocks)  </p>
 
 <p>Later,</p>
 
-<p>$ fri String<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Class: String<br/>
-A String object holds and manipulates an arbitrary sequence of<br/>
-bytes, typically representing characters. String objects may be<br/>
-created using String::new or as literals.<br/>
-&hellip;</p>
+<p>$ fri String<br />
+———————————————————- Class: String<br />
+A String object holds and manipulates an arbitrary sequence of<br />
+bytes, typically representing characters. String objects may be<br />
+created using String::new or as literals.<br />
+…  </p>
 
 <p>Read on for more information, including how to make <em>FastRI</em> work across machines.</p>
 
-<h5>More about <em>fastri</em>-server</h5>
+<h5 id="more-about-fastri-server">More about <em>fastri</em>-server</h5>
 
 <p>For local usage, just</p>
 
-<p>$ <em>fastri</em>-server</p>
+<p>$ <em>fastri</em>-server  </p>
 
 <p>will do. The DRb service will bind to 127.0.0.1, and only connections from 127.0.0.1 will be allowed. If you want to allow fri to be used from other machines, you have to specify which interface to bind to, and allow incoming connections from the desired hosts. For example, if your network is 192.168.1.0, and your IP is 192.168.1.2, you can do</p>
 
-<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br/>
-<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br/>
-ACL:<br/>
-deny all<br/>
-allow localhost<br/>
-allow 192.168.1.0/24</p>
+<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br />
+<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br />
+ACL:<br />
+deny all<br />
+allow localhost<br />
+allow 192.168.1.0/24  </p>
 
 <p>Further options are documented in</p>
 
-<p>$ <em>fastri</em>-server -h</p>
+<p>$ <em>fastri</em>-server -h  </p>
 
-<h5>More about fri</h5>
+<h5 id="more-about-fri">More about fri</h5>
 
-<p>Running fri with no options (or -h/&mdash;help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
+<p>Running fri with no options (or -h/–help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
 
-<p>$ fri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-&hellip;</p>
+<p>$ fri Array<br />
+——————————————————- Class: Array<br />
+Arrays are ordered, integer-indexed collections of any object.<br />
+…  </p>
 
-<p>If you&rsquo;re on a different machine, you&rsquo;ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or &mdash;bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you&rsquo;re on 192.168.1.101, both</p>
+<p>If you’re on a different machine, you’ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or –bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you’re on 192.168.1.101, both</p>
 
-<p>export <em>FASTRI</em>_ADDR=&ldquo;192.168.1.101&#8221;<br/>
-fri Array</p>
+<p>export <em>FASTRI</em>_ADDR=”192.168.1.101”<br />
+fri Array  </p>
 
 <p>and</p>
 
-<p>fri -s 192.168.1.101 Array</p>
+<p>fri -s 192.168.1.101 Array  </p>
 
 <p>will work. Note that <em>FASTRI</em>_ADDR is the *local* address: the server will be discovered automatically. (The reason why the local address must be specified is that it will be given to the ring server, which must be able to establish a reverse connection through the local DRb service.)</p>
 
-<h3>Feedback</h3>
+<h3 id="feedback">Feedback</h3>
 
-<p>Bug reports, patches, comments&hellip; are appreciated. You can contact the author via <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#58;&#x6d;&#102;&#112;&#64;&#97;&#x63;&#109;&#46;&#111;&#114;&#103;">&#x6d;&#102;&#x70;&#64;&#97;&#x63;&#109;&#x2e;&#111;&#114;&#103;</a>. Please add &ldquo;<em>fastri</em>&rdquo; to the subject in order to bypass the spam filters.</p>
+<p>Bug reports, patches, comments… are appreciated. You can contact the author via <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#102;&#112;&#064;&#097;&#099;&#109;&#046;&#111;&#114;&#103;">&#109;&#102;&#112;&#064;&#097;&#099;&#109;&#046;&#111;&#114;&#103;</a>. Please add “<em>fastri</em>” to the subject in order to bypass the spam filters.</p>
 
-<h3>License</h3>
+<h3 id="license">License</h3>
 
 <p><em>FastRI</em> is licensed under the same terms as Ruby. See LICENSE</p>
 </div>
@@ -300,6 +297,10 @@ fri Array</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -313,10 +314,6 @@ fri Array</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -336,6 +333,22 @@ fri Array</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

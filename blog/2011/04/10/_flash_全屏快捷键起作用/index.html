@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="必须是flash 10 我是用flash cs 5 发布的
-代码如下 /*Note: App content in AIR can set the value of stage.displayState to
+  <meta name="description" content="必须是flash 10 我是用flash cs 5 发布的 代码如下 /*Note: App content in AIR can set the value of stage.displayState to
                     StageDisplayState. &hellip;">
   
 
@@ -97,26 +96,28 @@
 
 
 <div class="entry-content"><ol>
-<li><p>必须是flash 10 我是用flash cs 5 发布的</p></li>
-<li><p>代码如下</p></li>
+  <li>
+    <p>必须是flash 10 我是用flash cs 5 发布的</p>
+  </li>
+  <li>
+    <p>代码如下</p>
+  </li>
 </ol>
 
-
-<p>/*Note: App content in AIR can set the value of stage.displayState to<br/>
+<p>/*Note: App content in AIR can set the value of stage.displayState to<br />
                     StageDisplayState.FULL_SCREEN_INTERACTIVE for full keyboard support in full-screen mode.*/</p>
 
 <p>老的定义方式</p>
 
-<p> stage[&ldquo;displayState&rdquo;] = &ldquo;fullScreen&rdquo;;</p>
+<p> stage[“displayState”] = “fullScreen”;</p>
 
 <p>新的全屏起作用的定义方式</p>
 
 <p>stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;</p>
 
 <ol>
-<li>查阅的链接来自 <a href="http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5">http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5</a></li>
+  <li>查阅的链接来自 http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5</li>
 </ol>
-
 </div>
 
 
@@ -188,6 +189,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -201,10 +206,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -224,6 +225,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

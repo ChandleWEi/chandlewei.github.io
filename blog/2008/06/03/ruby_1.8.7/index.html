@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="|   | 1:44 AM (8 hours ago) Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 from Ruby Inside by Peter Cooper With all the &hellip;">
+  <meta name="description" content="  1:44 AM (8 hours ago) Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 from Ruby Inside by Peter Cooper With all the excitement &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,11 +94,17 @@
   </header>
 
 
-<div class="entry-content"><p>|   |</p>
+<div class="entry-content"><table>
+  <tbody>
+    <tr>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <p>1:44 AM (8 hours ago)</p>
 
-<h2><a href="http://feeds.feedburner.com/%7Er/RubyInside/%7E3/303060223/ruby-187-released-912.html">Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
+<h2 id="ruby-187-released-enumeration-object-support-backported-from-19-httpswwwgooglecomreaderui2412528845-go-togif-httpfeedsfeedburnercom7errubyinside7e3303060223ruby-187-released-912html"><a href="http://feeds.feedburner.com/%7Er/RubyInside/%7E3/303060223/ruby-187-released-912.html">Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
 
 <p>from <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Ffeeds.feedburner.com%2FRubyInside">Ruby Inside</a> by Peter Cooper</p>
 
@@ -110,39 +116,92 @@
 
 <p><strong>vendor_ruby</strong></p>
 
-<blockquote><p>A new library directory named <code>vendor\_ruby’ is introduced in addition to</code>site_ruby’. The idea is to separate libraries installed by the package system (<code>vendor’) from manually (</code>site’) installed libraries preventing the former from getting overwritten by the latter, while preserving the user option to override vendor libraries with site libraries. (<code>site\_ruby’ takes precedence over</code>vendor_ruby’)</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>A new library directory named <code>vendor\_ruby’ is introduced in addition to </code>site_ruby’. The idea is to separate libraries installed by the package system (<code>vendor’) from manually (</code>site’) installed libraries preventing the former from getting overwritten by the latter, while preserving the user option to override vendor libraries with site libraries. (<code>site\_ruby’ takes precedence over </code>vendor_ruby’)</p>
+</blockquote>
 
 <p><strong>securerandom</strong></p>
 
-<blockquote><p>securerandom is a Ruby 1.9 library that’s now part of the Ruby 1.8 standard library too. Example: require ’securerandom’; SecureRandom.random_bytes(16)</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>securerandom is a Ruby 1.9 library that’s now part of the Ruby 1.8 standard library too. Example: require ’securerandom’; SecureRandom.random_bytes(16)</p>
+</blockquote>
 
 <p><strong>Array#flatten changes</strong></p>
 
-<blockquote><p>Array#flatten now takes an optional argument that determines how deep to perform flattening.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Array#flatten now takes an optional argument that determines how deep to perform flattening.</p>
+</blockquote>
 
 <p><strong>Array method changes</strong></p>
 
-<blockquote><p>Array#collect!, Array#map!, Array#each, Array#each_index, Array#reverse_each, Array#reject, Array#reject! and Array#delete_if now return an enumerator if no block is given. Array#pop and Array#shift now take an optional argument specifying the number of elements to remove from the array.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Array#collect!, Array#map!, Array#each, Array#each_index, Array#reverse_each, Array#reject, Array#reject! and Array#delete_if now return an enumerator if no block is given. Array#pop and Array#shift now take an optional argument specifying the number of elements to remove from the array.</p>
+</blockquote>
 
 <p><strong>Binding#eva</strong>l</p>
 
-<blockquote><p>Binding#eval is a new method to enable evaluations to take place in the context of a binding.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Binding#eval is a new method to enable evaluations to take place in the context of a binding.</p>
+</blockquote>
 
 <p><strong>Enumerable::Enumerator added</strong></p>
 
-<blockquote><p><a href="http://ruby-doc.org/core/classes/Enumerable/Enumerator.html">Enumerable::Enumerator</a> adds support for enumerations to be dealt with as objects, as in Ruby 1.9.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p><a href="http://ruby-doc.org/core/classes/Enumerable/Enumerator.html">Enumerable::Enumerator</a> adds support for enumerations to be dealt with as objects, as in Ruby 1.9.</p>
+</blockquote>
 
 <p><strong>Enumerator support on many classes</strong></p>
 
-<blockquote><p>Many methods based on IO, Integer, Array (see above), ARGF, Numeric, ObjectSpace, Range, String, and Struct now support returning enumerator objects where no blocks are given.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Many methods based on IO, Integer, Array (see above), ARGF, Numeric, ObjectSpace, Range, String, and Struct now support returning enumerator objects where no blocks are given.</p>
+</blockquote>
 
 <p><strong>net/smtp</strong></p>
 
-<blockquote><p><a href="http://www.ruby-doc.org/stdlib/libdoc/net/smtp/rdoc/index.html">net/smtp</a> now supports SSL/TLS connections.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p><a href="http://www.ruby-doc.org/stdlib/libdoc/net/smtp/rdoc/index.html">net/smtp</a> now supports SSL/TLS connections.</p>
+</blockquote>
 
 <p>These items really only scratch the surface though. Dig into the <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7/NEWS">NEWS</a> file for more info.</p>
 
-<p>|</p>
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 </div>
 
 
@@ -214,6 +273,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -227,10 +290,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -250,6 +309,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

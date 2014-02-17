@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="openmoko用的是 vcard 3.0格式 。要自己重新写然后导入 参考 http://wiki.openmoko.org/wiki/Import_Vcf_Contacts%C2%A0 这里记录下我简单的步骤 1。用evolution 建立联系人表然后用vcard格式保存。：（ 2。wget &hellip;">
+  <meta name="description" content="openmoko用的是 vcard 3.0格式 。要自己重新写然后导入 参考 http://wiki.openmoko.org/wiki/Import_Vcf_Contacts  这里记录下我简单的步骤 1。用evolution 建立联系人表然后用vcard格式保存。：（ 2。wget -c  &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,20 +96,19 @@
 
 <div class="entry-content"><p>openmoko用的是 vcard 3.0格式 。要自己重新写然后导入</p>
 
-<p>参考 <a href="http://wiki.openmoko.org/wiki/Import_Vcf_Contacts%C2%A0">http://wiki.openmoko.org/wiki/Import_Vcf_Contacts%C2%A0</a></p>
+<p>参考 http://wiki.openmoko.org/wiki/Import_Vcf_Contacts </p>
 
 <p>这里记录下我简单的步骤</p>
 
 <p>1。用evolution 建立联系人表然后用vcard格式保存。：（</p>
 
-<p>2。wget -c  <a href="http://www.smurfy.de/files/neo/manage-contacts">http://www.smurfy.de/files/neo/manage-contacts</a></p>
+<p>2。wget -c  http://www.smurfy.de/files/neo/manage-contacts</p>
 
-<p>wget -c  <a href="http://www.smurfy.de/files/neo/remove_all_contacts">http://www.smurfy.de/files/neo/remove_all_contacts</a></p>
+<p>wget -c  http://www.smurfy.de/files/neo/remove_all_contacts</p>
 
 <ol>
-<li>先python manage-contacts dump > contacts 备份下</li>
+  <li>先python manage-contacts dump &gt; contacts 备份下</li>
 </ol>
-
 
 <p>4。 然后把evolution 保存的mobile.vcf copy到手机上</p>
 
@@ -117,14 +116,14 @@
 
 <p>============</p>
 
-<p>root@fic-gta02:/$ ps aux | grep today<br/>
-root      1320  3.7 11.5  33556 14100 ?        S    23:00   0:09 ope>>nmoko-today<br/>
-root      1369  0.0  0.4   2860   592 pts/0    S+   23:04   0:00 gre>>p today</p>
+<p>root@fic-gta02:/$ ps aux | grep today<br />
+root      1320  3.7 11.5  33556 14100 ?        S    23:00   0:09 ope»nmoko-today<br />
+root      1369  0.0  0.4   2860   592 pts/0    S+   23:04   0:00 gre»p today  </p>
 
-<p>root@fic-gta02:/$ cat /proc/1320/environ-</p>
+<p>root@fic-gta02:/$ cat /proc/1320/environ-  </p>
 
-<p>root@fic-gta02:/$ export   DBUS_SESSION_BUS_ADDRESS=unix:abstract=/t>>mp/dbus-80gSL9Q6F4,<br/>
-guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
+<p>root@fic-gta02:/$ export   DBUS_SESSION_BUS_ADDRESS=unix:abstract=/t»mp/dbus-80gSL9Q6F4,<br />
+guid=6efed88183a7f6b9210cf40047ba0dfe<br />
  ===========</p>
 
 <p>  python remove_all_contacts</p>
@@ -203,6 +202,10 @@ guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -216,10 +219,6 @@ guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -239,6 +238,22 @@ guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

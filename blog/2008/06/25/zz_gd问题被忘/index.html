@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Ruby CAPTCHA / Ruby-GD StringFT Errors Revisited Posted on July 09, 2007 Well, I finally solved the “ undefined methodstringFT&#8217; for GD::Image: &hellip;">
+  <meta name="description" content="Ruby CAPTCHA / Ruby-GD StringFT Errors Revisited Posted on July 09, 2007 Well, I finally solved the “ undefined method stringFT’ for GD::Image:Class &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,22 +94,17 @@
   </header>
 
 
-<div class="entry-content"><h2><a href="http://involution.com/2007/07/09/ruby-captcha-ruby-gd-stringft-errors-revisited/">Ruby CAPTCHA / Ruby-GD StringFT Errors Revisited</a></h2>
+<div class="entry-content"><h2 id="ruby-captcha--ruby-gd-stringft-errors-revisitedhttpinvolutioncom20070709ruby-captcha-ruby-gd-stringft-errors-revisited"><a href="http://involution.com/2007/07/09/ruby-captcha-ruby-gd-stringft-errors-revisited/">Ruby CAPTCHA / Ruby-GD StringFT Errors Revisited</a></h2>
 
 <p>Posted on July 09, 2007</p>
 
-<p>Well, I finally solved the “ <code>undefined method</code>stringFT&#8217; for GD::Image:Class` ” error under Mac OS X. The rb-gd darwinport seems to have fallen off the face of the earth. Fortunately, I’ve learned that you can download the source from ruby-lang.org. So, I just rolled my own GD.bundle.</p>
+<p>Well, I finally solved the “ <code>undefined method </code>stringFT’ for GD::Image:Class` ” error under Mac OS X. The rb-gd darwinport seems to have fallen off the face of the earth. Fortunately, I’ve learned that you can download the source from ruby-lang.org. So, I just rolled my own GD.bundle.</p>
 
-<pre><code>wget http://raa.ruby-lang.org/cache/ruby-gd/ruby-GD-0.7.4-1.tar.gz  
+<pre><code>wget http://raa.ruby-lang.org/cache/ruby-gd/ruby-GD-0.7.4-1.tar.gz   cd ruby-GD-0.7.4   ruby extconf.rb --with-freetype --with-xpm --with-ttf   make   sudo make install   sudo mv /usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.2/GD.bundle /usr/local/lib/ruby/1.8/i686-darwin8.8.2/  
 </code></pre>
 
-<p>cd ruby-GD-0.7.4<br/>
-ruby extconf.rb &mdash;with-freetype &mdash;with-xpm &mdash;with-ttf<br/>
-make<br/>
-sudo make install<br/>
-sudo mv /usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.2/GD.bundle /usr/local/lib/ruby/1.8/i686-darwin8.8.2/</p>
-
 <p>This only works if you have an up-to-date ruby installed under /usr/local (via the <a href="http://hivelogic.com/narrative/articles/ruby-rails-mongrel-mysql-osx">Hivelogic instructions</a>). If you’ve installed from ports or are using the older ruby shipped with Leopard, you’ll need to switch your prefix to <code>/opt/local</code> or <code>/usr</code> respectively.</p>
+
 </div>
 
 
@@ -181,6 +176,10 @@ sudo mv /usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.2/GD.bundle /usr/local/
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -194,10 +193,6 @@ sudo mv /usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.2/GD.bundle /usr/local/
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -217,6 +212,22 @@ sudo mv /usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.2/GD.bundle /usr/local/
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

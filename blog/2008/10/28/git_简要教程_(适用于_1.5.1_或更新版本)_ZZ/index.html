@@ -94,76 +94,68 @@
   </header>
 
 
-<div class="entry-content"><h1>git 简要教程 (适用于 1.5.1 或更新版本)</h1>
+<div class="entry-content"><h1 id="git---151-">git 简要教程 (适用于 1.5.1 或更新版本)</h1>
 
 <p>原文链接： <a href="http://www.kernel.org/pub/software/scm/git/docs/tutorial.html">http://www.kernel.org/pub/software/scm/git/docs/tutorial.html</a></p>
 
 <p>这个教程将介绍如何将一个新的项目导入到 git 之中，如何修改项目并如何将这些变更与其他开发者分享。</p>
 
-<p>如果你更感兴趣如何用 git 取出一个项目，比如，测试软件的最新版本，你可能更应该看看 <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">The Git User&rsquo;s Manual</a>的前两章。</p>
+<p>如果你更感兴趣如何用 git 取出一个项目，比如，测试软件的最新版本，你可能更应该看看 <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">The Git User’s Manual</a>的前两章。</p>
 
-<p>首先，记住你可以用 man 来获取 git 的文档，比如 &ldquo;git diff&rdquo; 的文档可以用如下命令察看:</p>
+<p>首先，记住你可以用 man 来获取 git 的文档，比如 “git diff” 的文档可以用如下命令察看:</p>
 
 <p>$ man git-diff</p>
 
 <p>在做任何改动之前，最好把自己的名字和 email 地址介绍给大家，最简单的方法就是:</p>
 
-<p>$ git config &mdash;global user.name &ldquo;Your Name Comes Here&#8221;<br/>
-$ git config &mdash;global user.email <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#121;&#x6f;&#x75;&#x40;&#x79;&#x6f;&#117;&#114;&#100;&#111;&#x6d;&#97;&#105;&#110;&#x2e;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x79;&#111;&#117;&#64;&#121;&#111;&#x75;&#x72;&#x64;&#111;&#109;&#x61;&#x69;&#x6e;&#46;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>$ git config –global user.name “Your Name Comes Here”<br />
+$ git config –global user.email you@yourdomain.example.com</p>
 
-<h2>导入一个新项目</h2>
+<h2 id="section">导入一个新项目</h2>
 
 <p>假设你有一个名为 project.tar.gz 的 tarball 作为项目的初始内容。你可以如下操作来把它至于 git 版本控制之下。</p>
 
-<p>$ tar xzf project.tar.gz<br/>
-$ cd project<br/>
+<p>$ tar xzf project.tar.gz<br />
+$ cd project<br />
 $ git init</p>
 
 <p>Git 将会如下回复:</p>
 
 <p>Initialized empty Git repository in .git/</p>
 
-<p>现在，你已经初始化了工作目录——你可能已经注意到了名为 &ldquo;.git&rdquo; 的一个新目录了。</p>
+<p>现在，你已经初始化了工作目录——你可能已经注意到了名为 “.git” 的一个新目录了。</p>
 
 <p>下一步就是使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git-add(1)</a> 命令告诉 git 当前目录的所有文件 (注意这个点：<em>.</em>) 全是项目的一个快照:</p>
 
 <p>$ git add .</p>
 
-<p>这个快照目前存放在一个临时区域之中，在 git 中称为 &ldquo;index&rdquo;(索引)。使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-commit.html">git-commit(1)</a> 命令，你可以把 index 的所有内容永久性地存放到软件仓库之中:</p>
+<p>这个快照目前存放在一个临时区域之中，在 git 中称为 “index”(索引)。使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-commit.html">git-commit(1)</a> 命令，你可以把 index 的所有内容永久性地存放到软件仓库之中:</p>
 
 <p>$ git commit</p>
 
 <p>这条命令会向你提示输入版本变更信息。这样，你的项目的第一个版本就已经存入 git 之中了。</p>
 
-<h2>进行修改</h2>
+<h2 id="section-1">进行修改</h2>
 
 <p>修改一些文件之后，你可以将更新这些内容到 index 之中:</p>
 
 <p>$ git add file1 file2 file3</p>
 
-<p>现在，你已经准备就绪，可以提交了。现在你可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a> 命令的 &mdash;cache 参数:</p>
+<p>现在，你已经准备就绪，可以提交了。现在你可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a> 命令的 –cache 参数:</p>
 
-<p>$ git diff &mdash;cached</p>
+<p>$ git diff –cached</p>
 
-<p>(如果不使用 &mdash;cached 参数， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a>会显示所有还没添加进 index 的已经做出的改动。) 你也可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-status.html">git-status(1)</a>来获得一些当前状况的概要信息:</p>
+<p>(如果不使用 –cached 参数， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a>会显示所有还没添加进 index 的已经做出的改动。) 你也可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-status.html">git-status(1)</a>来获得一些当前状况的概要信息:</p>
 
-<p>$ git status</p>
-
-<h1>On branch master</h1>
-
-<h1>Changes to be committed:</h1>
-
-<h1>(use &ldquo;git reset HEAD <file>&hellip;&rdquo; to unstage)</h1>
-
-<h1></h1>
-
-<h1>modified: file1</h1>
-
-<h1>modified: file2</h1>
-
-<h1>modified: file3</h1>
-
-<p>#</p>
+<p>$ git status<br />
+# On branch master<br />
+# Changes to be committed:<br />
+# (use “git reset HEAD <file>&#8230;&#8221; to unstage)  
+#  
+# modified: file1  
+# modified: file2  
+# modified: file3  
+#</file></p>
 
 <p>如果你需要进行更多改动，现在就可以进行，然后可以添加到 index 之中。最后，使用如下命令提交改动:</p>
 
@@ -179,11 +171,11 @@ $ git init</p>
 
 <p>关于提交的描述信息: 虽然这个信息不是必须的，但提交信息描述最好以一行不超过50个字符的概要性信息来开头，在一个空行之后再进行更多的描述。比如那些将 commit 转化为 email 的工具就会把这个第一行作为邮件标题，其余的提交内容则放在邮件内部。</p>
 
-<h2>Git 跟踪内容而不是文件</h2>
+<h2 id="git-">Git 跟踪内容而不是文件</h2>
 
-<p>很多版本控制系统提供了一个 &ldquo;add&rdquo; 命令用来记录一个新文件。而 git 的 &ldquo;add&rdquo; 命令更加简单也更加强大: git add既用于新文件也用于新近改动的文件，在所有这些情况下，它在 index 中对所有的文件与状态进行一次快照，这样就可以在下一次 commit 命令中进行提交。</p>
+<p>很多版本控制系统提供了一个 “add” 命令用来记录一个新文件。而 git 的 “add” 命令更加简单也更加强大: git add既用于新文件也用于新近改动的文件，在所有这些情况下，它在 index 中对所有的文件与状态进行一次快照，这样就可以在下一次 commit 命令中进行提交。</p>
 
-<h2>Viewing project history</h2>
+<h2 id="viewing-project-history">Viewing project history</h2>
 
 <p>在任何时候，你都可以如下查看所有你进行过的改动</p>
 
@@ -195,11 +187,11 @@ $ git init</p>
 
 <p>浏览改动的概要对于获得每一步修改的情况常常是比较有用的，可以使用如下命令</p>
 
-<p>$ git log &mdash;stat &mdash;summary</p>
+<p>$ git log –stat –summary</p>
 
-<h2>管理分支</h2>
+<h2 id="section-2">管理分支</h2>
 
-<p>一个 git 仓库可以包含多个开发分支。使用如下命令可以建立一个称为 &ldquo;experimental&rdquo; 的新分支</p>
+<p>一个 git 仓库可以包含多个开发分支。使用如下命令可以建立一个称为 “experimental” 的新分支</p>
 
 <p>$ git branch experimental</p>
 
@@ -209,24 +201,24 @@ $ git init</p>
 
 <p>你将可以得到类似下面的已有分支的列表</p>
 
-<p>experimental<br/>
+<p>experimental<br />
 * master</p>
 
-<p>&ldquo;experimental&rdquo; 就是你刚刚建立的那个分支，而 &ldquo;master&rdquo; 分支则是建立仓库的时候自动创建的缺省分支，里面的星号表示你当前所在的分支；输入命令</p>
+<p>“experimental” 就是你刚刚建立的那个分支，而 “master” 分支则是建立仓库的时候自动创建的缺省分支，里面的星号表示你当前所在的分支；输入命令</p>
 
 <p>$ git checkout experimental</p>
 
 <p>就可以切换到 experimental 分支。现在修改一个文件，并提交改变，然后重新回到 master 分支:</p>
 
-<p>(edit file)<br/>
-$ git commit -a<br/>
+<p>(edit file)<br />
+$ git commit -a<br />
 $ git checkout master</p>
 
 <p>你会发现，刚才的变更已经不可见了，这是因为这个改变是发生于 experimental 分支的，而你现在已经回到 master 分支了。</p>
 
 <p>现在，你可以在 master 分支上做一些不同的变更：</p>
 
-<p>(edit file)<br/>
+<p>(edit file)<br />
 $ git commit -a</p>
 
 <p>这里，两个分支已经产生不同了，每个分支上都发生了不同的改动。要把 experimental 中的改变也合并到 master 之中，运行命令</p>
@@ -259,7 +251,7 @@ $ git commit -a</p>
 
 <p>分支操作十分简单而且代价低廉，所以适合于尝试一些东西。</p>
 
-<h2>使用 git 进行协作</h2>
+<h2 id="git--1">使用 git 进行协作</h2>
 
 <p>假设 Alice 在 /home/alice/project 中的 git 仓库启动了一个新项目，而在本机中也拥有 home 目录的 Bob 想要贡献一些代码。</p>
 
@@ -267,28 +259,28 @@ $ git commit -a</p>
 
 <p>$ git clone /home/alice/project myrepo</p>
 
-<p>这会新建一个名为 &ldquo;myrepo&rdquo; 的目录，里面包含了 Alice 的仓库的一份克隆。这份克隆与原始项目完全一致，可以处理自己的一份原始项目历史。</p>
+<p>这会新建一个名为 “myrepo” 的目录，里面包含了 Alice 的仓库的一份克隆。这份克隆与原始项目完全一致，可以处理自己的一份原始项目历史。</p>
 
 <p>之后，Bob 进行了一些变更并提交了这些变动:</p>
 
-<p>(edit files)<br/>
-$ git commit -a<br/>
+<p>(edit files)<br />
+$ git commit -a<br />
 (repeat as necessary)</p>
 
 <p>当他完成的时候，他告诉 Alice 将 /home/bob/myrepo 之中的变动导入到原始仓库之中。她使用如下命令来完成这一工作:</p>
 
-<p>$ cd /home/alice/project<br/>
+<p>$ cd /home/alice/project<br />
 $ git pull /home/bob/myrepo master</p>
 
-<p>这会合并 Bob 的 &ldquo;master&rdquo; 分支到 Alice 的当前分支。如果 Alice 也已经修改了某些内容，她需要手工修复冲突。(注意，&#8221;master&#8221; 参数实际上并不是必要的，因为这是缺省分支。)</p>
+<p>这会合并 Bob 的 “master” 分支到 Alice 的当前分支。如果 Alice 也已经修改了某些内容，她需要手工修复冲突。(注意，”master” 参数实际上并不是必要的，因为这是缺省分支。)</p>
 
-<p>&ldquo;pull&rdquo; 命令包括两个操作: 从远端分支中取出改动，然后合并到当前分支之中。</p>
+<p>“pull” 命令包括两个操作: 从远端分支中取出改动，然后合并到当前分支之中。</p>
 
 <p>当你只在一个很小的小组里工作的时候，通常不会频繁地访问同一个仓库。通过定义仓库的快捷方式，可以让访问远程仓库更方便一些:</p>
 
 <p>$ git remote add bob /home/bob/myrepo</p>
 
-<p>这样，Alice 可以如下用 &ldquo;git fetch&rdquo; 命令仅取出改动，而不把它们合并到当前分支之中:</p>
+<p>这样，Alice 可以如下用 “git fetch” 命令仅取出改动，而不把它们合并到当前分支之中:</p>
 
 <p>$ git fetch bob</p>
 
@@ -314,14 +306,14 @@ $ git pull /home/bob/myrepo master</p>
 
 <p>这里，他不需要给出 Alice 的仓库的位置；当 Bob 克隆了 Alice 的仓库的时候，git 在仓库设置中保存了她的仓库的位置，即 pull 所使用的位置:</p>
 
-<p>$ git config &mdash;get remote.origin.url<br/>
+<p>$ git config –get remote.origin.url<br />
 /home/alice/project</p>
 
-<p>(git-clone 创建的完整配置信息可以用 &ldquo;git config -l&rdquo; 获得， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config(1)</a>的 man page 解释了所有选项的含义。)</p>
+<p>(git-clone 创建的完整配置信息可以用 “git config -l” 获得， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config(1)</a>的 man page 解释了所有选项的含义。)</p>
 
-<p>Git 也在 &ldquo;origin/master&rdquo; 分支保存了一份 Alice 的主分支的原始拷贝:</p>
+<p>Git 也在 “origin/master” 分支保存了一份 Alice 的主分支的原始拷贝:</p>
 
-<p>$ git branch -r<br/>
+<p>$ git branch -r<br />
 origin/master</p>
 
 <p>如果其后 Bob 决定转到另一台主机上工作，他还可以通过 ssh 来克隆原始仓库:</p>
@@ -332,14 +324,14 @@ origin/master</p>
 
 <p>Git 也可以使用类似 CVS 的工作方式，使用一个中心仓库，所有用户将改动推送到仓库之中，相关内容可以查阅 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push(1)</a>的手册页或 <a href="http://www.kernel.org/pub/software/scm/git/docs/cvs-migration.html">git for CVS users</a>。</p>
 
-<h2>浏览历史</h2>
+<h2 id="section-3">浏览历史</h2>
 
 <p>Git 的历史是通过一系列相互关联的 commit 构成的。我们已经通过 git log 命令看到了这些提交的列表。注意，每个 git log 条目的第一行是那次提交的名称:</p>
 
-<p>$ git log<br/>
-commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7<br/>
-Author: Junio C Hamano <a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#106;&#x75;&#x6e;&#107;&#105;&#111;&#x40;&#x63;&#111;&#x78;&#46;&#x6e;&#x65;&#116;">&#106;&#x75;&#x6e;&#107;&#105;&#111;&#64;&#99;&#x6f;&#x78;&#x2e;&#110;&#x65;&#116;</a><br/>
-Date: Tue May 16 17:18:22 2006 -0700</p>
+<p>$ git log<br />
+commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7<br />
+Author: Junio C Hamano <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#106;&#117;&#110;&#107;&#105;&#111;&#064;&#099;&#111;&#120;&#046;&#110;&#101;&#116;">&#106;&#117;&#110;&#107;&#105;&#111;&#064;&#099;&#111;&#120;&#046;&#110;&#101;&#116;</a><br />
+Date: Tue May 16 17:18:22 2006 -0700  </p>
 
 <p>merge-base: Clarify the comments on post processing.</p>
 
@@ -349,65 +341,59 @@ Date: Tue May 16 17:18:22 2006 -0700</p>
 
 <p>不过还有其他办法来指代这次提交。你可以只使用名称的开始部分，只要它足够长，保证在所有提交中是惟一的就行了:</p>
 
-<p>$ git show c82a22c39c # the first few characters of the name are</p>
+<p>$ git show c82a22c39c # the first few characters of the name are<br />
+# usually enough<br />
+$ git show HEAD # the tip of the current branch<br />
+$ git show experimental # the tip of the “experimental” branch</p>
 
-<h1>usually enough</h1>
+<p>每一次提交通常都有一次提交作为 “parent” ，它是项目的前一个状态:</p>
 
-<p>$ git show HEAD # the tip of the current branch<br/>
-$ git show experimental # the tip of the &ldquo;experimental&rdquo; branch</p>
-
-<p>每一次提交通常都有一次提交作为 &ldquo;parent&rdquo; ，它是项目的前一个状态:</p>
-
-<p>$ git show HEAD^ # to see the parent of HEAD<br/>
-$ git show HEAD^^ # to see the grandparent of HEAD<br/>
+<p>$ git show HEAD^ # to see the parent of HEAD<br />
+$ git show HEAD^^ # to see the grandparent of HEAD<br />
 $ git show HEAD~4 # to see the great-great grandparent of HEAD</p>
 
-<p>要注意，合并提交可能会有多个 &ldquo;parent&rdquo;:</p>
+<p>要注意，合并提交可能会有多个 “parent”:</p>
 
-<p>$ git show HEAD<sup>1</sup> # show the first parent of HEAD (same as HEAD^)<br/>
-$ git show HEAD<sup>2</sup> # show the second parent of HEAD</p>
+<p>$ git show HEAD^1 # show the first parent of HEAD (same as HEAD^)<br />
+$ git show HEAD^2 # show the second parent of HEAD</p>
 
 <p>你还可以给你的提交一个名字; 命令</p>
 
 <p>$ git-tag v2.5 1b2e1d63ff</p>
 
-<p>让你可以使用 &ldquo;v2.5&rdquo; 来指代 1b2e1d63ff。如果你想把这个名字与他人共享 (比如标记一个发布版本)，你应该建立一个 &ldquo;tag&rdquo; 对象，可能还需要签署它; 详情请查看 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag(1)</a>的 man page。</p>
+<p>让你可以使用 “v2.5” 来指代 1b2e1d63ff。如果你想把这个名字与他人共享 (比如标记一个发布版本)，你应该建立一个 “tag” 对象，可能还需要签署它; 详情请查看 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag(1)</a>的 man page。</p>
 
 <p>任何 git 命令都可以使用上述任何一种名字。比如:</p>
 
-<p>$ git diff v2.5 HEAD # compare the current HEAD to v2.5<br/>
-$ git branch stable v2.5 # start a new branch named &ldquo;stable&rdquo; based</p>
+<p>$ git diff v2.5 HEAD # compare the current HEAD to v2.5<br />
+$ git branch stable v2.5 # start a new branch named “stable” based<br />
+# at v2.5<br />
+$ git reset –hard HEAD^ # reset your current branch and working<br />
+# directory to its state at HEAD^</p>
 
-<h1>at v2.5</h1>
-
-<p>$ git reset &mdash;hard HEAD^ # reset your current branch and working</p>
-
-<h1>directory to its state at HEAD^</h1>
-
-<p>小心使用上述最后一个命令: 这将丢失工作目录中的所有改动，他还会清除本分支内随后的所有提交。如果这个分支是包含这些提交的惟一分支，它们将永远地丢失了。此外，不要对一个公众可 见的、有其他开发者从中 pull 内容的分支使用 &ldquo;git reset&rdquo; 命令，这将导致一些不必要的合并来清除其他开发者的历史信息。如果你需要取消已经推送的改动，可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a>命令。</p>
+<p>小心使用上述最后一个命令: 这将丢失工作目录中的所有改动，他还会清除本分支内随后的所有提交。如果这个分支是包含这些提交的惟一分支，它们将永远地丢失了。此外，不要对一个公众可 见的、有其他开发者从中 pull 内容的分支使用 “git reset” 命令，这将导致一些不必要的合并来清除其他开发者的历史信息。如果你需要取消已经推送的改动，可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a>命令。</p>
 
 <p>git grep 可以在项目的所有版本历史中寻找字符串，如下命令</p>
 
-<p>$ git grep &ldquo;hello&rdquo; v2.5</p>
+<p>$ git grep “hello” v2.5</p>
 
-<p>会在版本 v2.5 中寻找所有 &ldquo;hello&rdquo; 的踪迹。</p>
+<p>会在版本 v2.5 中寻找所有 “hello” 的踪迹。</p>
 
 <p>如果你不提供 commit 名称，git grep 会在你当前的目录中搜索所有由 git 管理的文件。于是，如下命令</p>
 
-<p>$ git grep &ldquo;hello&rdquo;</p>
+<p>$ git grep “hello”</p>
 
 <p>是搜索 git 跟踪的所有文件的便捷的方式。</p>
 
 <p>很多 git 命令可以处理一组提交，可以通过多种方式来指定版本。这里是一些 git log 的例子:</p>
 
-<p>$ git log v2.5..v2.6 # commits between v2.5 and v2.6<br/>
-$ git log v2.5.. # commits since v2.5<br/>
-$ git log &mdash;since=&ldquo;2 weeks ago&rdquo; # commits from the last 2 weeks<br/>
-$ git log v2.5.. Makefile # commits since v2.5 which modify</p>
+<p>$ git log v2.5..v2.6 # commits between v2.5 and v2.6<br />
+$ git log v2.5.. # commits since v2.5<br />
+$ git log –since=”2 weeks ago” # commits from the last 2 weeks<br />
+$ git log v2.5.. Makefile # commits since v2.5 which modify<br />
+# Makefile</p>
 
-<h1>Makefile</h1>
-
-<p>你给出的范围的上下边界不一定是严格的时间先后关系，比如，&#8221;stable-release&#8221; 分支可能会在 &ldquo;master&rdquo; 分支之后相当长一段时间才会引入同一个提交内容，这样</p>
+<p>你给出的范围的上下边界不一定是严格的时间先后关系，比如，”stable-release” 分支可能会在 “master” 分支之后相当长一段时间才会引入同一个提交内容，这样</p>
 
 <p>$ git log stable..experimental</p>
 
@@ -417,37 +403,35 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
 
 <p>将会列出 stable 中已有、但 experimental 却没有的提交。</p>
 
-<p>&ldquo;git log&rdquo; 命令有一个弱点：必须将所有提交在一个列表中呈现出来。当项目历史中有多个不同开发分支并最终合并到一起时，&#8221;git log&#8221; 中呈现出来的顺序可能没什么意义。</p>
+<p>“git log” 命令有一个弱点：必须将所有提交在一个列表中呈现出来。当项目历史中有多个不同开发分支并最终合并到一起时，”git log” 中呈现出来的顺序可能没什么意义。</p>
 
 <p>大部分有大量开发者的项目 (比如 linux kernel 或 git 本身) 都经常合并分支，gitk 可以更好地将这些合并变化展示出来。比如，</p>
 
-<p>$ gitk &mdash;since=&ldquo;2 weeks ago&rdquo; drivers/</p>
+<p>$ gitk –since=”2 weeks ago” drivers/</p>
 
-<p>这个命令允许你浏览过去两个星期中在 &ldquo;drivers&rdquo; 目录之中的任意提交。(注意: 你可以按住 ctrl 键然后用 &ldquo;&ndash;&rdquo; 和 &ldquo;+&rdquo; 来调整 gitk 的字体大小。)</p>
+<p>这个命令允许你浏览过去两个星期中在 “drivers” 目录之中的任意提交。(注意: 你可以按住 ctrl 键然后用 “-“ 和 “+” 来调整 gitk 的字体大小。)</p>
 
 <p>最后，大部分命令可以带有文件名，这可以用于指定某次提交中的某个文件，从而指定某个文件的某个版本:</p>
 
 <p>$ git diff v2.5:Makefile HEAD:Makefile.in</p>
 
-<p>你还可以用 &ldquo;git show&rdquo; 命令去查看任意文件的任意版本:</p>
+<p>你还可以用 “git show” 命令去查看任意文件的任意版本:</p>
 
 <p>$ git show v2.5:Makefile</p>
 
-<h2>下一步学习</h2>
+<h2 id="section-4">下一步学习</h2>
 
 <p>这个教程应该足够你的项目进行基本的项目发布版本管理。不过，要完全深入地理解 git 的强大功能可能还需要理解两个简单的概念:</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p>对象数据库是个相当阳春的系统，用于存储你的项目的历史，包括文件、目录以及各次提交。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p>索引文件是目录树的状态的缓存，用于建立提交、取出工作目录并保存一次合并中包含的不同的目录树。</p>
 
@@ -456,36 +440,32 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
 <p>如果你不想在这条路上继续下去，还有一些细枝末节的东西可能十分有趣:</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/git-format-patch.html">git-format-patch(1)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/git-am.html">git-am(1)</a>: 用于将一系列 git 提交转化成 email 发送的补丁或反之，对于 linux 内核这样的高度依赖于邮件发送的补丁的项目来说十分有用。</p>
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/git-format-patch.html">git-format-patch(1)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/git-am.html">git-am(1)</a>: 用于将一系列 git 提交转化成 email 发送的补丁或反之，对于 linux 内核这样的高度依赖于邮件发送的补丁的项目来说十分有用。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/git-bisect.html">git-bisect(1)</a>: 当你的项目发生问题 (功能或性能上的退步) 的时候，一个跟踪发现错误的方法就是通过历史发现那个罪魁祸首的提交。Git bisect 可以帮助你进行二分查找发现那个提交。它能在一个有很多分支合并的具有复杂非线性历史的项目中十分灵巧地进行接近最优的搜索。</p>
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/git-bisect.html">git-bisect(1)</a>: 当你的项目发生问题 (功能或性能上的退步) 的时候，一个跟踪发现错误的方法就是通过历史发现那个罪魁祸首的提交。Git bisect 可以帮助你进行二分查找发现那个提交。它能在一个有很多分支合并的具有复杂非线性历史的项目中十分灵巧地进行接近最优的搜索。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">Everyday GIT with 20 Commands Or So</a></p>
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">Everyday GIT with 20 Commands Or So</a></p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/cvs-migration.html">git for CVS users</a>.</p>
 
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/cvs-migration.html">git for CVS users</a>.</p>
-
-<p>原文最后更新 25-Aug-2007 03:53:15 UTC<br/>
-译文初稿：2007年7月，王旭 (gnawux<at>gmail.com)<br/>
-译文最后更新：2008年5月2日，王旭 (gnawux<at>gmail.com)</p>
+<p>原文最后更新 25-Aug-2007 03:53:15 UTC<br />
+译文初稿：2007年7月，王旭 (gnawux<at>gmail.com)  
+译文最后更新：2008年5月2日，王旭 (gnawux<at>gmail.com)</at></at></p>
 </div>
 
 
@@ -557,6 +537,10 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -570,10 +554,6 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -593,6 +573,22 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

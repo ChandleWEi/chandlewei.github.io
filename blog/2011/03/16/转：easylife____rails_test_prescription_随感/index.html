@@ -98,64 +98,64 @@ controller测试
   </header>
 
 
-<div class="entry-content"><p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a></p>
+<div class="entry-content"><p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a>  </p>
 
 <p>rails test prescription 随感</p>
 
-<p>编程<br/>
-controller测试<br/>
-  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br/>
-  2 检测controller是否能够适当地处理不合格式的请求<br/>
-  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面</p>
+<p>编程<br />
+controller测试<br />
+  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br />
+  2 检测controller是否能够适当地处理不合格式的请求<br />
+  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面  </p>
 
-<p>view测试<br/>
-  1 view不报错<br/>
-  2 view中的数据是否是你计划生成的数据<br/>
-  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示</p>
+<p>view测试<br />
+  1 view不报错<br />
+  2 view中的数据是否是你计划生成的数据<br />
+  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示  </p>
 
-<p>集成测试与controller测试的区别<br/>
-  需要对session，cookie等跨action的数据的正确性进行测试</p>
+<p>集成测试与controller测试的区别<br />
+  需要对session，cookie等跨action的数据的正确性进行测试  </p>
 
-<p>测试层次<br/>
-  1 model<br/>
-  2 controller<br/>
-  3 view（helper）<br/>
-  4 集成<br/>
-  5 验收<br/>
-  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br/>
-才能开始测试</p>
+<p>测试层次<br />
+  1 model<br />
+  2 controller<br />
+  3 view（helper）<br />
+  4 集成<br />
+  5 验收<br />
+  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br />
+才能开始测试  </p>
 
-<p>测试写到什么时候够了<br/>
-  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br/>
-测试，就像你永远也写不出完美的软件一样，够好，就可以了</p>
+<p>测试写到什么时候够了<br />
+  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br />
+测试，就像你永远也写不出完美的软件一样，够好，就可以了  </p>
 
-<p>什么时候使用mock/stub<br/>
-  1 解决依赖性<br/>
-    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br/>
-  2 解决某些情况<br/>
-    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br/>
-         测试程序的失败情况，而失败情况可以用stub轻松生成<br/>
-  3 测试过程时，未实现的功能的替代<br/>
-  4 Interface Discovery<br/>
-    设计api时，你需要它</p>
+<p>什么时候使用mock/stub<br />
+  1 解决依赖性<br />
+    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br />
+  2 解决某些情况<br />
+    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br />
+         测试程序的失败情况，而失败情况可以用stub轻松生成<br />
+  3 测试过程时，未实现的功能的替代<br />
+  4 Interface Discovery<br />
+    设计api时，你需要它  </p>
 
-<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了</p>
+<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了  </p>
 
-<p>是否测试负面情况<br/>
-  上帝保佑我们有足够的时间</p>
+<p>是否测试负面情况<br />
+  上帝保佑我们有足够的时间  </p>
 
-<p>先写测试还是后写测试<br/>
-  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br/>
-里记住，先写测试可以改善代码质量</p>
+<p>先写测试还是后写测试<br />
+  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br />
+里记住，先写测试可以改善代码质量  </p>
 
-<p>mock类库<br/>
-  rails-test-prescription 7.7 已做出了明了的比较</p>
+<p>mock类库<br />
+  rails-test-prescription 7.7 已做出了明了的比较  </p>
 
-<p>你至少需要熟悉的测试工具<br/>
-  1 rspec<br/>
-  2 cucumber<br/>
-  3 capybara<br/>
-  4 factory-girl<br/>
+<p>你至少需要熟悉的测试工具<br />
+  1 rspec<br />
+  2 cucumber<br />
+  3 capybara<br />
+  4 factory-girl<br />
   5 database-cleaner</p>
 </div>
 
@@ -228,6 +228,10 @@ controller测试<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -241,10 +245,6 @@ controller测试<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -264,6 +264,22 @@ controller测试<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

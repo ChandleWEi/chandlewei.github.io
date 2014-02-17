@@ -14,7 +14,7 @@
 很多人担心这样3.x环境下的IOS执行这种程序会有问题
 所以有人把SDK 3.x复制到xcode目录下来做兼容
 其实在真正发布的时候
-只在在project属性->Build->Deployment->iPhone &hellip;">
+只在在project属性-&gt;Build-&gt;Deployment-&gt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,13 +99,13 @@
   </header>
 
 
-<div class="entry-content"><p>当IOS SDK升级到 4.x之后.<br/>
-你在测试编译时能够选择的SDK 只有4.x<br/>
-很多人担心这样3.x环境下的IOS执行这种程序会有问题<br/>
-所以有人把SDK 3.x复制到xcode目录下来做兼容<br/>
-其实在真正发布的时候<br/>
-只在在project属性->Build->Deployment->iPhone Deployment Target里面选择对应的IOS版本即可<br/>
-  <a href="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS.png"> <img src="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS-300x217.png" title="IOS" alt="" /> </a></p>
+<div class="entry-content"><p>当IOS SDK升级到 4.x之后.<br />
+你在测试编译时能够选择的SDK 只有4.x<br />
+很多人担心这样3.x环境下的IOS执行这种程序会有问题<br />
+所以有人把SDK 3.x复制到xcode目录下来做兼容<br />
+其实在真正发布的时候<br />
+只在在project属性-&gt;Build-&gt;Deployment-&gt;iPhone Deployment Target里面选择对应的IOS版本即可<br />
+  <a href="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS.png"> <img src="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS-300x217.png" alt="" title="IOS" /> </a></p>
 </div>
 
 
@@ -177,6 +177,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -190,10 +194,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -213,6 +213,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content=" 内容区当设定的显示范围,容纳不了显示的内容的时候,就会出现滚动条,可根据自己的需要适当的改进width,height,overflow-x,overflow-y的属性,即可达到iframe的效果airzen整理  
-">
+  <meta name="description" content=" 内容区当设定的显示范围,容纳不了显示的内容的时候,就会出现滚动条,可根据自己的需要适当的改进width,height,overflow-x,overflow-y的属性,即可达到iframe的效果airzen整理   ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,8 +101,8 @@
     
 </div>
 
-
 <p> </p>
+
 </div>
 
 
@@ -175,6 +174,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -188,10 +191,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -211,6 +210,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

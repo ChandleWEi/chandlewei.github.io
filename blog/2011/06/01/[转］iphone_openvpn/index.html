@@ -94,13 +94,13 @@
   </header>
 
 
-<div class="entry-content"><h2>May 20, 2010</h2>
+<div class="entry-content"><h2 id="may-20-2010">May 20, 2010</h2>
 
-<h3><a href="http://fang.gfw.io/2010/05/20/iphone_openvpn_guide/">越狱iPhone / iPad安装OpenVPN小指南</a></h3>
+<h3 id="iphone--ipadopenvpnhttpfanggfwio20100520iphoneopenvpnguide"><a href="http://fang.gfw.io/2010/05/20/iphone_openvpn_guide/">越狱iPhone / iPad安装OpenVPN小指南</a></h3>
 
 <p>Filed under: <a href="http://fang.gfw.io/category/ios/" title="View all posts in iOS">iOS</a>, <a href="http://fang.gfw.io/category/iphoneos/" title="View all posts in iPhoneOS">iPhoneOS</a> — 皇城老爹 @ 11:07</p>
 
-<p><a href="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg"> <img src="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg" title="OpenVPN Toggle in SBSettings" alt="" /> </a></p>
+<p><a href="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg"> <img src="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg" alt="" title="OpenVPN Toggle in SBSettings" /> </a></p>
 
 <p>图中可见SBSettings加上OpenVPN Toggle的效果，旁边的VPN Toggle是用来切换iPhone自带VPN的。</p>
 
@@ -109,33 +109,44 @@
 <p>主要步骤如下：</p>
 
 <ol>
-<li><p>先下载两个.deb安装包：<br/>
-(1) <a href="http://apt.saurik.com/cydia/debs/">http://apt.saurik.com/cydia/debs/</a><br/>
-下载libpcap_1.0.0-4_iphoneos-arm.deb<br/>
-(2) <a href="http://github.com/jfx2006/OpenVPN_iphone/downloads">http://github.com/jfx2006/OpenVPN_iphone/downloads</a><br/>
-下载里面日期最新的release，例如目前最新版本是openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
-<li><p>用WinSCP或者其他SSH工具登录到iPhone/iPad上(你的iPhone/iPad要先安装OpenSSH，为了安全，也请确认修改过root密码），把刚才的两个.deb安装包拷贝到一个临时目录，比如/tmp下面。</p></li>
-<li><p>用Putty或者类似工具登录iPhone/iPad，在命令行使用下面的命令安装刚才放上去的两个.deb包：<br/>
-cd /tmp<br/>
-dpkg -i libpcap_1.0.0-4_iphoneos-arm.deb<br/>
-dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
-<li><p>进入Cydia，如果没装过SBSettings，先安装之。然后搜索OpenVPN toggle for SBSettings并安装。在SBSettings里面进入More/Set Toggles，把刚才新装的OpenVPN toggle打开，退出，系统会自动respring。</p></li>
-<li><p>准备好你使用的VPN服务的一套设置文件，包括conf.ovpn设置和证书文件等，用WinSCP传到/private/var/mobile /Library/OpenVpn/ 里面。有必要的话，conf.ovpn设置中有关证书文件路径的行要编辑一下，指向上面的路径。</p></li>
-<li><p>用WinSCP进入/private/var/mobile/Library/SBSettings/Commands/，编辑 com.offinf.openvpndown这个文件，把其中第三行前面加上一个半角的#号注释掉该行；(根据我自己的经验，如果不进行上面这一 步，SBSettings里面刚才添加的OpenVPN Toggle的图标有可能在respring或者重启后不能保存，还得重新添加）</p></li>
+  <li>
+    <p>先下载两个.deb安装包：<br />
+(1) <a href="http://apt.saurik.com/cydia/debs/">http://apt.saurik.com/cydia/debs/</a><br />
+下载libpcap_1.0.0-4_iphoneos-arm.deb<br />
+(2) <a href="http://github.com/jfx2006/OpenVPN_iphone/downloads">http://github.com/jfx2006/OpenVPN_iphone/downloads</a><br />
+下载里面日期最新的release，例如目前最新版本是openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p>
+  </li>
+  <li>
+    <p>用WinSCP或者其他SSH工具登录到iPhone/iPad上(你的iPhone/iPad要先安装OpenSSH，为了安全，也请确认修改过root密码），把刚才的两个.deb安装包拷贝到一个临时目录，比如/tmp下面。</p>
+  </li>
+  <li>
+    <p>用Putty或者类似工具登录iPhone/iPad，在命令行使用下面的命令安装刚才放上去的两个.deb包：<br />
+cd /tmp<br />
+dpkg -i libpcap_1.0.0-4_iphoneos-arm.deb<br />
+dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p>
+  </li>
+  <li>
+    <p>进入Cydia，如果没装过SBSettings，先安装之。然后搜索OpenVPN toggle for SBSettings并安装。在SBSettings里面进入More/Set Toggles，把刚才新装的OpenVPN toggle打开，退出，系统会自动respring。</p>
+  </li>
+  <li>
+    <p>准备好你使用的VPN服务的一套设置文件，包括conf.ovpn设置和证书文件等，用WinSCP传到/private/var/mobile /Library/OpenVpn/ 里面。有必要的话，conf.ovpn设置中有关证书文件路径的行要编辑一下，指向上面的路径。</p>
+  </li>
+  <li>
+    <p>用WinSCP进入/private/var/mobile/Library/SBSettings/Commands/，编辑 com.offinf.openvpndown这个文件，把其中第三行前面加上一个半角的#号注释掉该行；(根据我自己的经验，如果不进行上面这一 步，SBSettings里面刚才添加的OpenVPN Toggle的图标有可能在respring或者重启后不能保存，还得重新添加）</p>
+  </li>
 </ol>
 
-
-<p>编辑com.offinf.openvpnup这个文件，第三行建议改成如下内容：<br/>
+<p>编辑com.offinf.openvpnup这个文件，第三行建议改成如下内容：<br />
 /usr/bin/openvpn-iphone –script-security 2 –config /var/mobile/Library/OpenVpn/conf.ovpn &amp;</p>
 
 <p>另外上面一行里面的conf.ovpn的地方如果你的配置文件不是这个名字，要相应改成正确的。</p>
 
 <ol>
-<li>可以考虑把iPhone/iPad所用网络连接的DNS指向类似8.8.8.8或者OpenDNS的服务器。</li>
+  <li>可以考虑把iPhone/iPad所用网络连接的DNS指向类似8.8.8.8或者OpenDNS的服务器。</li>
 </ol>
 
-
 <p>保险起见，重启一下iPhone / iPad，然后用SBSettings里面的OpenVPN toggle，打开，看看是否可以正常使用了？</p>
+
 </div>
 
 
@@ -201,6 +212,10 @@ dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -214,10 +229,6 @@ dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -237,6 +248,22 @@ dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

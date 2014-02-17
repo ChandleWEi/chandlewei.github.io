@@ -99,13 +99,13 @@ sudo &hellip;">
 
 <div class="entry-content"><p> </p>
 
-<p>从昨天开始发现使用系统自带的spotlight查找文件时出现问题。开始是找的特别慢，完全没有往日的闪电侠风采，今天干脆找不到了，风火轮不停的转，msd进程占cpu的30%。猜测可能是索引出问题了，于是采用如下命令重建索引：<br/>
-sudo mdutil -i off /<br/>
-该命令用来关闭索引<br/>
-sudo mdutil -E /<br/>
-该命令用来删除索引<br/>
-sudo mdutil -i on /<br/>
-该命令用来重建索引<br/>
+<p>从昨天开始发现使用系统自带的spotlight查找文件时出现问题。开始是找的特别慢，完全没有往日的闪电侠风采，今天干脆找不到了，风火轮不停的转，msd进程占cpu的30%。猜测可能是索引出问题了，于是采用如下命令重建索引：<br />
+sudo mdutil -i off /<br />
+该命令用来关闭索引<br />
+sudo mdutil -E /<br />
+该命令用来删除索引<br />
+sudo mdutil -i on /<br />
+该命令用来重建索引<br />
 然后用快捷键呼出spotlight菜单，随便输入一个词，就能看到提示，正在进行索引，并且告诉你重建索引的时间。</p>
 
 <p>完成之后，spotlight又可以运转如飞了。</p>
@@ -176,6 +176,10 @@ sudo mdutil -i on /<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -189,10 +193,6 @@ sudo mdutil -i on /<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -212,6 +212,22 @@ sudo mdutil -i on /<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

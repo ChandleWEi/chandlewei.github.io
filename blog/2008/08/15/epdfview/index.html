@@ -10,7 +10,8 @@
 
   
   <meta name="description" content="cd /tmp
-wget http://www.ginguppin.de/files/epdfview_poppler.tar.bz2 wget http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/ &hellip;">
+wget http://www.ginguppin.de/files/epdfview_poppler.tar.bz2
+wget http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,13 +96,13 @@ wget http://www.ginguppin.de/files/epdfview_poppler.tar.bz2 wget http://www.angs
   </header>
 
 
-<div class="entry-content"><p>cd /tmp<br/>
-wget <a href="http://www.ginguppin.de/files/epdfview_poppler.tar.bz2  ">http://www.ginguppin.de/files/epdfview_poppler.tar.bz2  </a>
-wget <a href="http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk  ">http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk  </a>
-opk install libfreetype6_2.3.6-r0_armv4t.ipk<br/>
-opkg install libpoppler3_0.8.4-r0_armv4t.ipk<br/>
-opkg install poppler_0.8.4-r0_armv4t.ipk<br/>
-opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
+<div class="entry-content"><p>cd /tmp<br />
+wget http://www.ginguppin.de/files/epdfview_poppler.tar.bz2<br />
+wget http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk<br />
+opk install libfreetype6_2.3.6-r0_armv4t.ipk<br />
+opkg install libpoppler3_0.8.4-r0_armv4t.ipk<br />
+opkg install poppler_0.8.4-r0_armv4t.ipk<br />
+opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk  </p>
 
 <p>opkg install epdfview_0.1.6-r3_armv4t.ipk
  
@@ -177,6 +178,10 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -190,10 +195,6 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -213,6 +214,22 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

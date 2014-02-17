@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml 基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的 1.查找windows打印机 /usr/bin/ &hellip;">
+  <meta name="description" content="http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml 基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的 1.查找windows打印机
+#/usr/bin/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,110 +95,93 @@
   </header>
 
 
-<div class="entry-content"><p><a href="http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml">http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml</a></p>
+<div class="entry-content"><p>http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml  </p>
 
-<p>基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的</p>
+<p>基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的  </p>
 
-<p>1.查找windows打印机</p>
+<p>1.查找windows打印机<br />
+#/usr/bin/smbclient -L puma -U ttan<br />
+用ttan这个用户连上puma查看共享的目录或打印机  </p>
 
-<h1>/usr/bin/smbclient -L puma -U ttan</h1>
+<p>结果显示如下：  </p>
 
-<p>用ttan这个用户连上puma查看共享的目录或打印机</p>
+<p>Sharename Type Comment<br />
+——— —- ——-<br />
+print$ Disk ┤<br />
+C$ Disk ─<br />
+shared Disk<br />
+TD_Dir Disk TestDirector<br />
+download Disk<br />
+F$ Disk ─<br />
+IPC$ IPC<br />
+EPSONAL- Printer EPSON AL-C1100 Advanced<br />
+ADMIN$ Disk<br />
+D$ Disk ─<br />
+hpLaserJ Printer hp LaserJet 1320 PCL 6  </p>
 
-<p>结果显示如下：</p>
+<p>这里我们要用到的就是hpLaserJ这个打印机  </p>
 
-<p>Sharename Type Comment</p>
+<p>2.配置CUPS<br />
+#ls -l /usr/lib/cups/backend/smb<br />
+确认CUPS是否安装了smb。<br />
+如果没有<br />
+#ln -s <code>which smbspool</code> /usr/lib/cups/backend/smb  </p>
 
-<hr />
+<p>添加打印机<br />
+#lpadmin -p pumahp -v smb://ttan:password@puma/hpLaserJ -P<br />
+/usr/share/cups/model/laserjet.ppd.gz  </p>
 
-<p>print$ Disk ┤<br/>
-C$ Disk ─<br/>
-shared Disk<br/>
-TD_Dir Disk TestDirector<br/>
-download Disk<br/>
-F$ Disk ─<br/>
-IPC$ IPC<br/>
-EPSONAL- Printer EPSON AL-C1100 Advanced<br/>
-ADMIN$ Disk<br/>
-D$ Disk ─<br/>
-hpLaserJ Printer hp LaserJet 1320 PCL 6</p>
+<p>-p是打印机名称，这个可以自己设置<br />
+-v就是打印机设备的URI.<br />
+-P是使用的ppd，PostScript Printer Description  </p>
 
-<p>这里我们要用到的就是hpLaserJ这个打印机</p>
+<h1 id="usrbinenable-pumahp">/usr/bin/enable pumahp</h1>
+<p>启用打印机<br />
+#/usr/sbin/accept pumahp<br />
+打印系统接受发往pumahp的打印任务<br />
+#/usr/sbin/lpadmin -d pumahp<br />
+设置pumahp为默认打印机  </p>
 
-<p>2.配置CUPS</p>
+<p>3.开始打印咯<br />
+#lpr /etc/fstab<br />
+#lpq<br />
+pumahp is ready and printing<br />
+Rank Owner Job File(s) Total Size<br />
+active root 1 fstab 1024 bytes  </p>
 
-<h1>ls -l /usr/lib/cups/backend/smb</h1>
+<p>备注：<br />
+或者第二步可以直接修改配置文件<br />
+/etc/cups/printers.conf  </p>
 
-<p>确认CUPS是否安装了smb。<br/>
-如果没有</p>
-
-<h1>ln -s <code>which smbspool</code> /usr/lib/cups/backend/smb</h1>
-
-<p>添加打印机</p>
-
-<h1>lpadmin -p pumahp -v smb://ttan:password@puma/hpLaserJ -P</h1>
-
-<p>/usr/share/cups/model/laserjet.ppd.gz</p>
-
-<p>-p是打印机名称，这个可以自己设置<br/>
--v就是打印机设备的URI.<br/>
--P是使用的ppd，PostScript Printer Description</p>
-
-<h1>/usr/bin/enable pumahp</h1>
-
-<p>启用打印机</p>
-
-<h1>/usr/sbin/accept pumahp</h1>
-
-<p>打印系统接受发往pumahp的打印任务</p>
-
-<h1>/usr/sbin/lpadmin -d pumahp</h1>
-
-<p>设置pumahp为默认打印机</p>
-
-<p>3.开始打印咯</p>
-
-<h1>lpr /etc/fstab</h1>
-
-<h1>lpq</h1>
-
-<p>pumahp is ready and printing<br/>
-Rank Owner Job File(s) Total Size<br/>
-active root 1 fstab 1024 bytes</p>
-
-<p>备注：<br/>
-或者第二步可以直接修改配置文件<br/>
-/etc/cups/printers.conf</p>
-
-<p>Info pumahp<br/>
-DeviceURI smb://ttan:password@puma/hpLaserJ<br/>
-State Idle<br/>
-Accepting Yes<br/>
-JobSheets none none<br/>
-QuotaPeriod 0<br/>
-PageLimit 0<br/>
+<p>Info pumahp<br />
+DeviceURI smb://ttan:password@puma/hpLaserJ<br />
+State Idle<br />
+Accepting Yes<br />
+JobSheets none none<br />
+QuotaPeriod 0<br />
+PageLimit 0<br />
 KLimit 0</p>
 
 <p> </p>
 
 <p>=========================================================================</p>
 
-<p>  1 # Printer configuration file for CUPS v1.3.8<br/>
-  2 # Written by cupsd on 2009-03-19 11:51<br/>
-  3 <Printer iloho1><br/>
-  4 Info iloho1<br/>
-  5 DeviceURI smb://user:user@192.168.2.188/HPLaserJ1018<br/>
-  6 State Idle<br/>
-  7 StateTime 1237434675<br/>
-  8 Accepting Yes<br/>
-  9 Shared Yes<br/>
- 10 JobSheets none none<br/>
- 11 QuotaPeriod 0<br/>
- 12 PageLimit 0<br/>
- 13 KLimit 0<br/>
- 14 OpPolicy default<br/>
- 15 ErrorPolicy stop-printer<br/>
- 16 </Printer><br/>
+<p>  1 # Printer configuration file for CUPS v1.3.8<br />
+  2 # Written by cupsd on 2009-03-19 11:51<br />
+  3 <printer iloho1="">  
+  4 Info iloho1  
+  5 DeviceURI smb://user:user@192.168.2.188/HPLaserJ1018  
+  6 State Idle  
+  7 StateTime 1237434675  
+  8 Accepting Yes  
+  9 Shared Yes  
+ 10 JobSheets none none  
+ 11 QuotaPeriod 0  
+ 12 PageLimit 0  
+ 13 KLimit 0  
+ 14 OpPolicy default  
+ 15 ErrorPolicy stop-printer  
+ 16 </printer><br />
 ~</p>
 </div>
 
@@ -264,6 +248,10 @@ KLimit 0</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -277,10 +265,6 @@ KLimit 0</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -300,6 +284,22 @@ KLimit 0</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

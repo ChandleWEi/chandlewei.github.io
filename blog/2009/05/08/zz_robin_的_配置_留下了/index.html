@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="$HTTP[&ldquo;host&rdquo;] =~ &#8221;^([a-zA-Z0-9-.]+).java.com$&ldquo; {  
-  server.document-root = &#8221;/Users/robbin/projects/javaeye3/public&# &hellip;">
+  <meta name="description" content="$HTTP[“host”] =~ ”^([a-zA-Z0-9-.]+).java.com$” {     server.document-root = ”/Users/robbin/projects/javaeye3/public”     server.errorfile-prefix &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,18 +95,44 @@
 
 
 <div class="entry-content"><ol>
-<li>$HTTP[&ldquo;host&rdquo;] =~ &#8221;^([a-zA-Z0-9-.]+).java.com$&ldquo; {  </li>
-<li>  server.document-root = &#8221;/Users/robbin/projects/javaeye3/public&#8221;  </li>
-<li>  server.errorfile-prefix = &#8221;/Users/robbin/projects/javaeye3/public/error-&ldquo;  </li>
-<li>  $HTTP[&ldquo;url&rdquo;] !~ &#8221;(.(js|css|gif|jpg|jpeg|bmp|png|ico|txt|swf|mp3|html|xml|htm|)$)|/javascripts/|/stylesheets/|/images/|/upload/&ldquo; {  </li>
-<li>    server.error-handler-404 = &#8221;/dispatch.fcgi&#8221;  </li>
-<li>    fastcgi.server = (&ldquo;.fcgi&#8221; =>  </li>
-<li>      (  </li>
-<li>        ( &#8221;allow-x-send-file&#8221; => &#8221;enable&#8221;,  &#8221;socket&#8221;=>&ldquo;/Users/robbin/projects/lighttpd/javaeye.socket-0&rdquo;)  </li>
-<li>      )  </li>
-<li>    )  </li>
-<li>  }  </li>
-<li>} </li>
+  <li>$HTTP[“host”] =~ ”^([a-zA-Z0-9-.]+).java.com$” {  </li>
+  <li>  server.document-root = ”/Users/robbin/projects/javaeye3/public”  </li>
+  <li>  server.errorfile-prefix = ”/Users/robbin/projects/javaeye3/public/error-“  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>  $HTTP[“url”] !~ ”(.(js</td>
+          <td>css</td>
+          <td>gif</td>
+          <td>jpg</td>
+          <td>jpeg</td>
+          <td>bmp</td>
+          <td>png</td>
+          <td>ico</td>
+          <td>txt</td>
+          <td>swf</td>
+          <td>mp3</td>
+          <td>html</td>
+          <td>xml</td>
+          <td>htm</td>
+          <td>)$)</td>
+          <td>/javascripts/</td>
+          <td>/stylesheets/</td>
+          <td>/images/</td>
+          <td>/upload/” {  </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>    server.error-handler-404 = ”/dispatch.fcgi”  </li>
+  <li>    fastcgi.server = (“.fcgi” =&gt;  </li>
+  <li>      (  </li>
+  <li>        ( ”allow-x-send-file” =&gt; ”enable”,  ”socket”=&gt;”/Users/robbin/projects/lighttpd/javaeye.socket-0”)  </li>
+  <li>      )  </li>
+  <li>    )  </li>
+  <li>  }  </li>
+  <li>}   </li>
 </ol>
 
 </div>
@@ -181,6 +206,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -194,10 +223,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -217,6 +242,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="[MySQL FAQ]系列 &mdash; 用mysqlslap进行压力测试 从 MySQL 中文网 &ndash; 作者：yejr mysqlslap是官方提供的压力测试工具之一，官方介绍如下： mysqlslap is a diagnostic program designed to &hellip;">
+  <meta name="description" content="[MySQL FAQ]系列 – 用mysqlslap进行压力测试 从 MySQL 中文网 - 作者：yejr mysqlslap是官方提供的压力测试工具之一，官方介绍如下： mysqlslap is a diagnostic program designed to emulate client &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,53 +94,54 @@
   </header>
 
 
-<div class="entry-content"><h2><a href="http://imysql.cn/2009/04/24/using_mysqlslap_for_load_testing.html">[MySQL FAQ]系列 &mdash; 用mysqlslap进行压力测试</a></h2>
+<div class="entry-content"><h2 id="mysql-faq----mysqlslaphttpimysqlcn20090424usingmysqlslapforloadtestinghtml"><a href="http://imysql.cn/2009/04/24/using_mysqlslap_for_load_testing.html">[MySQL FAQ]系列 – 用mysqlslap进行压力测试</a></h2>
 
-<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fimysql.cn%2Fnode%2Ffeed">MySQL 中文网 &ndash;</a> 作者：yejr</p>
+<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fimysql.cn%2Fnode%2Ffeed">MySQL 中文网 -</a> 作者：yejr</p>
 
 <p>mysqlslap是官方提供的压力测试工具之一，官方介绍如下：</p>
 
-<p>mysqlslap is a diagnostic program designed to emulate client load for a MySQL server and to report<br/>
-the timing of each stage. It works as if multiple clients are accessing the server. mysqlslap is<br/>
-available as of MySQL 5.1.4.</p>
+<p>mysqlslap is a diagnostic program designed to emulate client load for a MySQL server and to report<br />
+the timing of each stage. It works as if multiple clients are accessing the server. mysqlslap is<br />
+available as of MySQL 5.1.4.  </p>
 
 <p>下面介绍一些常见参数：</p>
 
-<p>&mdash;auto-generate-sql-write-number</p>
+<p>–auto-generate-sql-write-number  </p>
 
 <p>每个线程中产生多少个insert</p>
 
-<p>&mdash;auto-generate-sql-guid-primary</p>
+<p>–auto-generate-sql-guid-primary  </p>
 
 <p>自动产生guid格式的主键</p>
 
-<p>&mdash;number-of-queries=50000</p>
+<p>–number-of-queries=50000  </p>
 
 <p>每个连接客户端总共发起的查询次数</p>
 
-<p>&mdash;concurrency=10,50,100</p>
+<p>–concurrency=10,50,100  </p>
 
 <p>并发连接线程数，分别是10、50、100个并发</p>
 
-<p>-i, &mdash;iterations</p>
+<p>-i, –iterations  </p>
 
 <p>重复执行测试的次数</p>
 
-<p>&mdash;number-char-cols=10</p>
+<p>–number-char-cols=10  </p>
 
 <p>创建测试表的 char 型字段数量</p>
 
-<p>&mdash;number-int-cols=10</p>
+<p>–number-int-cols=10  </p>
 
-<p>创建测试表的 int 型字段数量<br/>
+<p>创建测试表的 int 型字段数量<br />
 下面是一个完整的例子：</p>
 
-<p>mysqlslap -hlocalhost -uroot &mdash;engine=innodb &mdash;auto-generate-sql-write-number=100000<br/>
-&mdash;auto-generate-sql-guid-primary &mdash;concurrency=10,50,100 &mdash;number-of-queries=500000<br/>
-&mdash;iterations=2 &mdash;number-char-cols=10 &mdash;number-int-cols=10 &mdash;auto-generate-sql<br/>
-&mdash;create-schema=sbtest &mdash;auto-generate-sql-load-type=mixed</p>
+<p>mysqlslap -hlocalhost -uroot –engine=innodb –auto-generate-sql-write-number=100000<br />
+–auto-generate-sql-guid-primary –concurrency=10,50,100 –number-of-queries=500000<br />
+–iterations=2 –number-char-cols=10 –number-int-cols=10 –auto-generate-sql<br />
+–create-schema=sbtest –auto-generate-sql-load-type=mixed  </p>
 
 <p>具体的慢慢看手册吧，不多啰嗦了，哈。</p>
+
 </div>
 
 
@@ -212,6 +213,10 @@ available as of MySQL 5.1.4.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -225,10 +230,6 @@ available as of MySQL 5.1.4.</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -248,6 +249,22 @@ available as of MySQL 5.1.4.</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

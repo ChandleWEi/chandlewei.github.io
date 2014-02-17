@@ -9,8 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Overview FastRI is an alternative to the &ldquo;ri&rdquo; documentation browser for Ruby. FastRI can operate in standalone mode (without using a DRb &hellip;">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -71,6 +71,45 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Siege：压力模拟/测试工具 作者：车东 发表于：2004-02-13 20:02 最后更新于：2008-04-12 03:04 版权声明：可以任意转载，转载时请务必以超链接形式标明文章原始出处和作者信息及本版权声明。 http://www.chedong.com/blog/archives/000033.html 最早使用的压力测试工具是apache的ab(apache benchmark)，apache ab做重复压力测试不错，但是每次只能测试一个链接，如何测试一组链接（比如从日志中导出的1个小时的日志，做真实压力测试），后来找到了这个： Siege是一个压力测试和评测工具，设计用于WEB开发这评估应用在压力下的承受能力：可以根据配置对一个WEB站点进行多用户的并发访问，记录每个用户所有请求过程的相应时间，并在一定数量的并发访问下重复进行。 SIEGE is an http regressive testing and benchmarking utility. It was designed to let web developers measure the performance of their code under duress, to see how it will stand up to load on the internet. It lets the user hit a webserver with a configurable number of concurrent simulated users. Those users place the webserver “under siege.” The duration of the siege is measured in transactions, the sum of simulated users and the number of times each simulated user repeats the process of hitting the server. Thus 20 concurrent users 50 times is 1000 transactions, the length of the test. 下载/安装 Siege时一个开放源代码项目：http://www.joedog.org 下载： wget ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz 安装： %./configure ; make #make install siege包含了一组压力测试工具： SIEGE (1) Siege是一个HTTP压力测试和评测工具. 使用样例： 任务列表：www.chedong.com.url文件 http://www.chedong.com/tech/ http://www.chedong.com/tech/acdsee.html http://www.chedong.com/tech/ant.html http://www.chedong.com/tech/apache_install.html http://www.chedong.com/tech/awstats.html http://www.chedong.com/tech/cache.html http://www.chedong.com/tech/click.html http://www.chedong.com/tech/cms.html http://www.chedong.com/tech/compress.html http://www.chedong.com/tech/cvs_card.html http://www.chedong.com/tech/default.html http://www.chedong.com/tech/dev.html http://www.chedong.com/tech/gnu.html …. siege -c 20 -r 2 -f www.chedong.com.url 参数说明： -c 20 并发20个用户 -r 2 重复循环2次 -f www.chedong.com.url 任务列表：URL列表 输出样例： ** Siege 2.59 ** Preparing 20 concurrent users for battle. 这次“战斗”准备了20个并发用户 The server is now under siege.. done. 服务在“围攻”测试中： Transactions: 40 hits 完成40次处理 Availability: 100.00 % 成功率 Elapsed time: 7.67 secs 总共用时 Data transferred: 877340 bytes 共数据传输：877340字节 Response time: 1.65 secs 相应用时1.65秒：显示网络连接的速度 Transaction rate: 5.22 trans/sec 平均每秒完成5.22次处理：表示服务器后台处理的速度 Throughput: 114385.92 bytes/sec 平均每秒传送数据：114385.92字节 Concurrency: 8.59 最高并发数 8.59 Successful transactions: 40 成功处理次数 Failed transactions: 0 失败处理次数 注意：由于速度很快，可能会达不到并发速度很高就已经完成。Response time显示的是测试机器和被测试服务器之间网络链接状况。Transaction rate则表示服务器端任务处理的完成速度。 辅助工具： 增量压力测试： 为了方便增量压力测试，siege还包含了一些辅助工具： bombardment (1) 是一个辅助工具：用于按照增量用户压力测试： 使用样例： bombardment urlfile.txt 5 3 4 1 初始化URL列表：urlfile.txt 初始化为：5个用户 每次增加：3个用户 运行：4次 每个客户端之间的延迟为：1秒 输出成CSV格式： siege2csv.pl (1) siege2csv.pl将bombardment的输出变成CSV格式： Time Data Transferred Response Time Transaction Rate Throughput Concurrency Code 200 (note that this is horribly broken.) 242 60.22 603064 0.02 4.02 10014.35 0.08 605 59.98 1507660 0.01 10.09 25136.05 0.12 938 59.98 2337496 0.02 15.64 38971.26 0.26 1157 60 2883244 0.04 19.28 48054.07 0.78 参考： 开源测试工具：http://www.opensourcetesting.org/performance.php 压力测试工具：HammerHead 正在试用中</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2009/04/15/zz_fastri/">Zz_fastri</a></h1>
     
     
@@ -97,32 +136,31 @@
   </header>
 
 
-  <div class="entry-content"><h3>Overview</h3>
+  <div class="entry-content"><h3 id="overview">Overview</h3>
 
-<p><em>FastRI</em> is an alternative to the &ldquo;ri&rdquo; documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
+<p><em>FastRI</em> is an alternative to the “ri” documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
 
 <p>Why prefer it over ri? <em>FastRI</em></p>
 
 <ul>
-<li>actually works</li>
-<li>is *much* faster than ri</li>
-<li>can perform fast full-text searching over all your rdoc documentation</li>
-<li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the &ldquo;full path&rdquo;</li>
-<li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
-<li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
-<li>can serve RI documentation over DRb</li>
+  <li>actually works</li>
+  <li>is *much* faster than ri</li>
+  <li>can perform fast full-text searching over all your rdoc documentation</li>
+  <li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the “full path”</li>
+  <li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
+  <li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
+  <li>can serve RI documentation over DRb</li>
 </ul>
-
 
 <p>You can find more information about what makes <em>FastRI</em> faster than ri <a href="http://eigenclass.org/hiki/making+ruby+ri+faster">here</a>, and about its <a href="http://eigenclass.org/hiki/simple+full+text+search+engine">200 LoC full-text search engine here</a>.</p>
 
-<h3>Getting it</h3>
+<h3 id="getting-it">Getting it</h3>
 
 <p><em>FastRI</em> can be installed with RubyGems:</p>
 
-<p>gem install <em>fastri</em></p>
+<p>gem install <em>fastri</em>  </p>
 
-<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge&rsquo;s mirrors.</p>
+<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge’s mirrors.</p>
 
 <p><em>FastRI</em> is available in tarball format. The <em>fri</em> executable will run much faster if you install <em>FastRI</em> from a tarball, since RubyGems introduces a noticeable overhead.</p>
 
@@ -132,104 +170,102 @@
 
 <p>Just run</p>
 
-<p>setup.rb</p>
+<p>setup.rb  </p>
 
 <p>to install.</p>
 
-<h3>Usage</h3>
+<h3 id="usage">Usage</h3>
 
-<p>Starting from 0.3.0, fri can be used in either local mode (&mdash;local, -L) or remote mode (using a <em>fastri</em>-server, -R, &mdash;remote). By default, fri will run in remote mode. There&rsquo;s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
+<p>Starting from 0.3.0, fri can be used in either local mode (–local, -L) or remote mode (using a <em>fastri</em>-server, -R, –remote). By default, fri will run in remote mode. There’s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
 
 <p>Remote mode is slightly faster (typically about 150ms) , since the documentation index is kept in memory and needs not be read from disk.</p>
 
-<h4>Local mode</h4>
+<h4 id="local-mode">Local mode</h4>
 
-<p>$ qri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-Array indexing starts at 0, as in C or Java. A negative index is<br/>
-&hellip;</p>
+<p>$ qri Array<br />
+———————————————————– Class: Array<br />
+Arrays are ordered, integer-indexed collections of any object.<br />
+Array indexing starts at 0, as in C or Java. A negative index is<br />
+…  </p>
 
-<p>$ qri compact<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Array#compact</p>
+<p>$ qri compact<br />
+———————————————————- Array#compact<br />
+array.compact -&gt; an_array<br />
+————————————————————————<br />
+Returns a copy of self with all nil elements removed.  </p>
 
-<h2>array.compact &ndash;> an_array  </h2>
-
-<p>Returns a copy of self with all nil elements removed.</p>
-
-<h4>Remote mode</h4>
+<h4 id="remote-mode">Remote mode</h4>
 
 <p>There are two parts to using <em>FastRI</em> in remote mode:</p>
 
 <ul>
-<li>the server: <em>fastri</em>-server</li>
-<li>the client: fri</li>
+  <li>the server: <em>fastri</em>-server</li>
+  <li>the client: fri</li>
 </ul>
-
 
 <p><em>FastRI</em> uses a Rinda Ring to allow servers to be discovered automatically without needing to indicate the DRb URIs manually. It can work across machines if you make sure the ring server is bound to the correct interface, and the ACL permissions are correct.</p>
 
-<h5>Quickstart</h5>
+<h5 id="quickstart">Quickstart</h5>
 
 <p>First of all, the DRb server must be launched with</p>
 
-<p>$ <em>fastri</em>-server (blocks)</p>
+<p>$ <em>fastri</em>-server (blocks)  </p>
 
 <p>Later,</p>
 
-<p>$ fri String<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Class: String<br/>
-A String object holds and manipulates an arbitrary sequence of<br/>
-bytes, typically representing characters. String objects may be<br/>
-created using String::new or as literals.<br/>
-&hellip;</p>
+<p>$ fri String<br />
+———————————————————- Class: String<br />
+A String object holds and manipulates an arbitrary sequence of<br />
+bytes, typically representing characters. String objects may be<br />
+created using String::new or as literals.<br />
+…  </p>
 
 <p>Read on for more information, including how to make <em>FastRI</em> work across machines.</p>
 
-<h5>More about <em>fastri</em>-server</h5>
+<h5 id="more-about-fastri-server">More about <em>fastri</em>-server</h5>
 
 <p>For local usage, just</p>
 
-<p>$ <em>fastri</em>-server</p>
+<p>$ <em>fastri</em>-server  </p>
 
 <p>will do. The DRb service will bind to 127.0.0.1, and only connections from 127.0.0.1 will be allowed. If you want to allow fri to be used from other machines, you have to specify which interface to bind to, and allow incoming connections from the desired hosts. For example, if your network is 192.168.1.0, and your IP is 192.168.1.2, you can do</p>
 
-<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br/>
-<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br/>
-ACL:<br/>
-deny all<br/>
-allow localhost<br/>
-allow 192.168.1.0/24</p>
+<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br />
+<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br />
+ACL:<br />
+deny all<br />
+allow localhost<br />
+allow 192.168.1.0/24  </p>
 
 <p>Further options are documented in</p>
 
-<p>$ <em>fastri</em>-server -h</p>
+<p>$ <em>fastri</em>-server -h  </p>
 
-<h5>More about fri</h5>
+<h5 id="more-about-fri">More about fri</h5>
 
-<p>Running fri with no options (or -h/&mdash;help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
+<p>Running fri with no options (or -h/–help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
 
-<p>$ fri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-&hellip;</p>
+<p>$ fri Array<br />
+——————————————————- Class: Array<br />
+Arrays are ordered, integer-indexed collections of any object.<br />
+…  </p>
 
-<p>If you&rsquo;re on a different machine, you&rsquo;ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or &mdash;bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you&rsquo;re on 192.168.1.101, both</p>
+<p>If you’re on a different machine, you’ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or –bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you’re on 192.168.1.101, both</p>
 
-<p>export <em>FASTRI</em>_ADDR=&ldquo;192.168.1.101&#8221;<br/>
-fri Array</p>
+<p>export <em>FASTRI</em>_ADDR=”192.168.1.101”<br />
+fri Array  </p>
 
 <p>and</p>
 
-<p>fri -s 192.168.1.101 Array</p>
+<p>fri -s 192.168.1.101 Array  </p>
 
 <p>will work. Note that <em>FASTRI</em>_ADDR is the *local* address: the server will be discovered automatically. (The reason why the local address must be specified is that it will be given to the ring server, which must be able to establish a reverse connection through the local DRb service.)</p>
 
-<h3>Feedback</h3>
+<h3 id="feedback">Feedback</h3>
 
-<p>Bug reports, patches, comments&hellip; are appreciated. You can contact the author via <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#58;&#x6d;&#102;&#112;&#64;&#97;&#x63;&#109;&#46;&#111;&#114;&#103;">&#x6d;&#102;&#x70;&#64;&#97;&#x63;&#109;&#x2e;&#111;&#114;&#103;</a>. Please add &ldquo;<em>fastri</em>&rdquo; to the subject in order to bypass the spam filters.</p>
+<p>Bug reports, patches, comments… are appreciated. You can contact the author via <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#102;&#112;&#064;&#097;&#099;&#109;&#046;&#111;&#114;&#103;">&#109;&#102;&#112;&#064;&#097;&#099;&#109;&#046;&#111;&#114;&#103;</a>. Please add “<em>fastri</em>” to the subject in order to bypass the spam filters.</p>
 
-<h3>License</h3>
+<h3 id="license">License</h3>
 
 <p><em>FastRI</em> is licensed under the same terms as Ruby. See LICENSE</p>
 </div>
@@ -272,10 +308,10 @@ fri Array</p>
 
   <div class="entry-content"><p>text-decoration</p>
 
-<p>none :　 默认值。无装饰<br/>
-blink :　 闪烁<br/>
-underline :　 下划线<br/>
-line-through :　 贯穿线<br/>
+<p>none :　 默认值。无装饰<br />
+blink :　 闪烁<br />
+underline :　 下划线<br />
+line-through :　 贯穿线<br />
 overline :　 上划线</p>
 </div>
   
@@ -315,7 +351,14 @@ overline :　 上划线</p>
   </header>
 
 
-  <div class="entry-content"><p>Facebook 海量数据处理 作者: Fenng | 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及版权声明 网址: <a href="http://www.dbanotes.net/arch/facebook_photos_arch.html">http://www.dbanotes.net/arch/facebook_photos_arch.html</a> 对着眼前黑色支撑的天空 / 我突然只有沉默了 我驾着最后一班船离开 / 才发现所有的灯塔都消失了 这是如此触目惊心的 / 因为失去了方向我已停止了 就象一个半山腰的攀登者 / 凭着那一点勇气和激情来到这儿 如此上下都不着地地喘息着 / 闭上眼睛疼痛的感觉溶化了 &mdash;达达乐队《黄金时代》 好几个地方看到这个 Facebook &ndash; Needle in a Haystack: Efficient Storage of Billions of Photos，是 Facebook 的 Jason Sobel 做的一个 PPT，揭示了不少比较有参考价值的信息。【也别错过我过去的这篇Facebook 的PHP性能与扩展性】 图片规模 作为世界上最大的 SNS 站点之一，Facebook 图片有多少? 65 亿张原始图片，每张图片存为 4-5 个不同尺寸，这样总计图片文件有 300 亿左右，总容量 540T，天! 峰值的时候每秒钟请求 47.5 万个图片 (当然多数通过 CDN) ，每周上传 1 亿张图片。 图片存储 前一段时间说 Facebook 服务器超过 10000 台，现在打开不止了吧，Facebook 融到的大把银子都用来买硬件了。图片是存储在 Netapp NAS上的，采用 NFS 方式。 图片写入 Facebook_write.png 尽管这么大的量，似乎图片写入并不是问题。如上图，是直接通过 NFS 写的。 图片读取 Facebook.png CDN 和 Cachr 承担了大部分访问压力。尽管 Netapp 设备不便宜，但基本上不承担多大的访问压力，否则吃不消。CDN 针对 Profile 图象的命中率有 99.8%，普通图片也有 92% 的命中率。命中丢失的部分采由 Netapp 承担。 图中的 Cachr 这个组件，应该是用来消息通知(基于调整过的 evhttp的嘛)，Memcached 作为后端存储。Web 图片服务器是 Lighttpd，用于 FHC (文件处理 Cache)，后端也是 Memcached。Facebook 的 Memcached 服务器数量差不多世界上最大了，人家连 MYSQL 服务器还有两千台呢。 Haystacks &mdash;大海捞针 这么大的数据量如何进行索引? 如何快速定位文件? 这是通过 Haystacks 来做到的。Haystacks 是用户层抽象机制，简单的说就是把图片元数据的进行有效的存储管理。传统的方式可能是通过 DB 来做，Facebook 是通过文件系统来完成的。通过 GET / POST 进行读/写操作，应该说，这倒也是个比较有趣的思路，如果感兴趣的话，看一下 GET / POST 请求的方法或许能给我们点启发。 Facebook2.png 总体来看，Facebook 的图片处理还是采用成本偏高的方法来做的。技术含量貌似并不大。不清楚是否对图片作 Tweak，比如不影响图片质量的情况下减小图片尺寸。</p>
+  <div class="entry-content"><table>
+  <tbody>
+    <tr>
+      <td>Facebook 海量数据处理 作者: Fenng</td>
+      <td>可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及版权声明 网址: http://www.dbanotes.net/arch/facebook_photos_arch.html 对着眼前黑色支撑的天空 / 我突然只有沉默了 我驾着最后一班船离开 / 才发现所有的灯塔都消失了 这是如此触目惊心的 / 因为失去了方向我已停止了 就象一个半山腰的攀登者 / 凭着那一点勇气和激情来到这儿 如此上下都不着地地喘息着 / 闭上眼睛疼痛的感觉溶化了 –达达乐队《黄金时代》 好几个地方看到这个 Facebook - Needle in a Haystack: Efficient Storage of Billions of Photos，是 Facebook 的 Jason Sobel 做的一个 PPT，揭示了不少比较有参考价值的信息。【也别错过我过去的这篇Facebook 的PHP性能与扩展性】 图片规模 作为世界上最大的 SNS 站点之一，Facebook 图片有多少? 65 亿张原始图片，每张图片存为 4-5 个不同尺寸，这样总计图片文件有 300 亿左右，总容量 540T，天! 峰值的时候每秒钟请求 47.5 万个图片 (当然多数通过 CDN) ，每周上传 1 亿张图片。 图片存储 前一段时间说 Facebook 服务器超过 10000 台，现在打开不止了吧，Facebook 融到的大把银子都用来买硬件了。图片是存储在 Netapp NAS上的，采用 NFS 方式。 图片写入 Facebook_write.png 尽管这么大的量，似乎图片写入并不是问题。如上图，是直接通过 NFS 写的。 图片读取 Facebook.png CDN 和 Cachr 承担了大部分访问压力。尽管 Netapp 设备不便宜，但基本上不承担多大的访问压力，否则吃不消。CDN 针对 Profile 图象的命中率有 99.8%，普通图片也有 92% 的命中率。命中丢失的部分采由 Netapp 承担。 图中的 Cachr 这个组件，应该是用来消息通知(基于调整过的 evhttp的嘛)，Memcached 作为后端存储。Web 图片服务器是 Lighttpd，用于 FHC (文件处理 Cache)，后端也是 Memcached。Facebook 的 Memcached 服务器数量差不多世界上最大了，人家连 MYSQL 服务器还有两千台呢。 Haystacks –大海捞针 这么大的数据量如何进行索引? 如何快速定位文件? 这是通过 Haystacks 来做到的。Haystacks 是用户层抽象机制，简单的说就是把图片元数据的进行有效的存储管理。传统的方式可能是通过 DB 来做，Facebook 是通过文件系统来完成的。通过 GET / POST 进行读/写操作，应该说，这倒也是个比较有趣的思路，如果感兴趣的话，看一下 GET / POST 请求的方法或许能给我们点启发。 Facebook2.png 总体来看，Facebook 的图片处理还是采用成本偏高的方法来做的。技术含量貌似并不大。不清楚是否对图片作 Tweak，比如不影响图片质量的情况下减小图片尺寸。</td>
+    </tr>
+  </tbody>
+</table>
 </div>
   
   
@@ -354,7 +397,7 @@ overline :　 上划线</p>
   </header>
 
 
-  <div class="entry-content"><p>June 27, 2006 FeedBurner:基于MySQL和JAVA的可扩展Web应用 于敦德 2006-6-27 FeedBurner（以下简称FB，呵呵）我想应该是大家耳熟能详的一个名字，在国内我们有一个同样的服务商，叫做FeedSky。在2004年7月份，FB的流量是300kbps，托管是5600个源，到2005年4月份，流量已经增长到5Mbps，托管了47700个源；到 2005年9月份流量增长到20M，托管了109200个源，而到2006年4月份，流量已经到了115Mbps，270000个源，每天点击量一亿次。 FB的服务使用Java实现，使用了Mysql数据库。我们下面来看一下FB在发展的过程中碰到的问题，以及解决的方案。 在2004年8月份，FB的硬件设备包括3台Web服务器，3台应用服务器和两台数据库服务器，使用DNS轮循分布服务负载，将前端请求分布到三台 Web服务器上。说实话，如果不考虑稳定性，给5600个源提供服务应该用不了这么多服务器。现在的问题是即使用了这么多服务器他们还是无法避免单点问题，单点问题将至少影响到1/3的用户。FB采用了监控的办法来解决，当监控到有问题出现时及时重启来避免更多用户受到影响。FB采用了Cacti(<a href="http://www.cacti.net">http://www.cacti.net</a>)和Nagios(<a href="http://www.nagios.org">http://www.nagios.org</a>)来做监控。 FB碰到的第二个问题是访问统计和管理。可以想象，每当我们在RSS阅读器里点击FB发布的内容，都需要做实时的统计，这个工作量是多么的巨大。大量写操作将导致系统的效率急剧下降，如果是Myisam表的话还会导致表的死锁。FB一方面采用异步写入机制，通过创建执行池来缓冲写操作；只对本日的数据进行实时统计，而以前的数据以统计结果形式存储，进而避免每次查看访问统计时的重复计算。所以每一天第一次访问统计信息时速度可能会慢，这个时候应该是 FB在分析整理前一天的数据，而接下来的访问由于只针对当日数据进行分析，数据量小很多，当然也会快很多。FB的Presentation是这样写，但我发现好像我的FB里并没有今天实时的统计，也许是我观察的不够仔细-_&ndash;! 现在第三个问题出现了，由于大多数的操作都集中在主数据库上，数据库服务器的读写出现了冲突，前面提到过Myiasm类型的数据库在写入的时候会锁表，这样就导致了读写的冲突。在开始的时候由于读写操作比较少这个问题可能并不明显，但现在已经到了不能忽视的程度。解决方案是平衡读写的负载，以及扩展 HibernateDaoSupport，区分只读与读写操作，以实现针对读写操作的不同处理。 现在是第四个问题：数据库全面负载过高。由于使用数据库做为缓存，同时数据库被所有的应用服务器共享，速度越来越慢，而这时数据库大小也到了 Myisam的上限-4GB，FB的同学们自己都觉得自己有点懒。解决方案是使用内存做缓存，而非数据库，他们同样使用了我们前面推荐的 memcached，同时他们还使用了Ehcache(<a href="http://ehcache.sourceforge.net/">http://ehcache.sourceforge.net/</a>)，一款基于Java的分布式缓存工具。 第五个问题：流行rss源带来大量重复请求，导致系统待处理请求的堆积。同时我们注意到在RSS源小图标有时候会显示有多少用户订阅了这一RSS 源，这同样需要服务器去处理，而目前所有的订阅数都在同一时间进行计算，导致对系统资源的大量占用。解决方案，把计算时间错开，同时在晚间处理堆积下来的请求，但这仍然不够。 问题六：状态统计写入数据库又一次出问题了。越来越多的辅助数据（包括广告统计，文章点击统计，订阅统计）需要写入数据库，导致太多的写操作。解决方案：每天晚上处理完堆积下来的请求后对子表进行截断操作： – FLUSH TABLES; TRUNCATE TABLE ad_stats0; 这样的操作对Master数据库是成功的，但对Slave会失败，正确的截断子表方法是： – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats1,ad_stats2); – TRUNCATE TABLE ad_stats0; – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats0,ad_stats1,ad_stats2); 解决方案的另外一部分就是我们最常用的水平分割数据库。把最常用的表分出去，单独做集群，例如广告啊，订阅计算啊， 第七个问题，问题还真多，主数据库服务器的单点问题。虽然采用了Master-Slave模式，但主数据库Master和Slave都只有一台，当 Master出问题的时候需要太长的时间进行Myisam的修复，而Slave又无法很快的切换成为Master。FB试了好多办法，最终的解决方案好像也不是非常完美。从他们的实验过程来看，并没有试验Master-Master的结构，我想Live Journal的Master-Master方案对他们来说应该有用，当然要实现Master-Master需要改应用，还有有些麻烦的。 第八个问题，停电!芝加哥地区的供电状况看来不是很好，不过不管好不好，做好备份是最重要的，大家各显神通吧。 这个Presentation好像比较偏重数据库，当然了，谁让这是在Mysql Con上的发言，不过总给人一种不过瘾的感觉。另外一个感觉，FB的NO们一直在救火，没有做系统的分析和设计。 最后FB的运维总监Joe Kottke给了四点建议： 1、 监控网站数据库负载。 2、 “explain”所有的SQL语句。 3、 缓存所有能缓存的东西。 4、 归档好代码。 最后，FB用到的软件都不是最新的，够用就好，包括：Tomcat5.0，Mysql 4.1，Hibernate 2.1，Spring，DBCP。</p>
+  <div class="entry-content"><p>June 27, 2006 FeedBurner:基于MySQL和JAVA的可扩展Web应用 于敦德 2006-6-27 FeedBurner（以下简称FB，呵呵）我想应该是大家耳熟能详的一个名字，在国内我们有一个同样的服务商，叫做FeedSky。在2004年7月份，FB的流量是300kbps，托管是5600个源，到2005年4月份，流量已经增长到5Mbps，托管了47700个源；到 2005年9月份流量增长到20M，托管了109200个源，而到2006年4月份，流量已经到了115Mbps，270000个源，每天点击量一亿次。 FB的服务使用Java实现，使用了Mysql数据库。我们下面来看一下FB在发展的过程中碰到的问题，以及解决的方案。 在2004年8月份，FB的硬件设备包括3台Web服务器，3台应用服务器和两台数据库服务器，使用DNS轮循分布服务负载，将前端请求分布到三台 Web服务器上。说实话，如果不考虑稳定性，给5600个源提供服务应该用不了这么多服务器。现在的问题是即使用了这么多服务器他们还是无法避免单点问题，单点问题将至少影响到1/3的用户。FB采用了监控的办法来解决，当监控到有问题出现时及时重启来避免更多用户受到影响。FB采用了Cacti(http://www.cacti.net)和Nagios(http://www.nagios.org)来做监控。 FB碰到的第二个问题是访问统计和管理。可以想象，每当我们在RSS阅读器里点击FB发布的内容，都需要做实时的统计，这个工作量是多么的巨大。大量写操作将导致系统的效率急剧下降，如果是Myisam表的话还会导致表的死锁。FB一方面采用异步写入机制，通过创建执行池来缓冲写操作；只对本日的数据进行实时统计，而以前的数据以统计结果形式存储，进而避免每次查看访问统计时的重复计算。所以每一天第一次访问统计信息时速度可能会慢，这个时候应该是 FB在分析整理前一天的数据，而接下来的访问由于只针对当日数据进行分析，数据量小很多，当然也会快很多。FB的Presentation是这样写，但我发现好像我的FB里并没有今天实时的统计，也许是我观察的不够仔细-_-! 现在第三个问题出现了，由于大多数的操作都集中在主数据库上，数据库服务器的读写出现了冲突，前面提到过Myiasm类型的数据库在写入的时候会锁表，这样就导致了读写的冲突。在开始的时候由于读写操作比较少这个问题可能并不明显，但现在已经到了不能忽视的程度。解决方案是平衡读写的负载，以及扩展 HibernateDaoSupport，区分只读与读写操作，以实现针对读写操作的不同处理。 现在是第四个问题：数据库全面负载过高。由于使用数据库做为缓存，同时数据库被所有的应用服务器共享，速度越来越慢，而这时数据库大小也到了 Myisam的上限-4GB，FB的同学们自己都觉得自己有点懒。解决方案是使用内存做缓存，而非数据库，他们同样使用了我们前面推荐的 memcached，同时他们还使用了Ehcache(http://ehcache.sourceforge.net/)，一款基于Java的分布式缓存工具。 第五个问题：流行rss源带来大量重复请求，导致系统待处理请求的堆积。同时我们注意到在RSS源小图标有时候会显示有多少用户订阅了这一RSS 源，这同样需要服务器去处理，而目前所有的订阅数都在同一时间进行计算，导致对系统资源的大量占用。解决方案，把计算时间错开，同时在晚间处理堆积下来的请求，但这仍然不够。 问题六：状态统计写入数据库又一次出问题了。越来越多的辅助数据（包括广告统计，文章点击统计，订阅统计）需要写入数据库，导致太多的写操作。解决方案：每天晚上处理完堆积下来的请求后对子表进行截断操作： – FLUSH TABLES; TRUNCATE TABLE ad_stats0; 这样的操作对Master数据库是成功的，但对Slave会失败，正确的截断子表方法是： – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats1,ad_stats2); – TRUNCATE TABLE ad_stats0; – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats0,ad_stats1,ad_stats2); 解决方案的另外一部分就是我们最常用的水平分割数据库。把最常用的表分出去，单独做集群，例如广告啊，订阅计算啊， 第七个问题，问题还真多，主数据库服务器的单点问题。虽然采用了Master-Slave模式，但主数据库Master和Slave都只有一台，当 Master出问题的时候需要太长的时间进行Myisam的修复，而Slave又无法很快的切换成为Master。FB试了好多办法，最终的解决方案好像也不是非常完美。从他们的实验过程来看，并没有试验Master-Master的结构，我想Live Journal的Master-Master方案对他们来说应该有用，当然要实现Master-Master需要改应用，还有有些麻烦的。 第八个问题，停电!芝加哥地区的供电状况看来不是很好，不过不管好不好，做好备份是最重要的，大家各显神通吧。 这个Presentation好像比较偏重数据库，当然了，谁让这是在Mysql Con上的发言，不过总给人一种不过瘾的感觉。另外一个感觉，FB的NO们一直在救火，没有做系统的分析和设计。 最后FB的运维总监Joe Kottke给了四点建议： 1、 监控网站数据库负载。 2、 “explain”所有的SQL语句。 3、 缓存所有能缓存的东西。 4、 归档好代码。 最后，FB用到的软件都不是最新的，够用就好，包括：Tomcat5.0，Mysql 4.1，Hibernate 2.1，Spring，DBCP。</p>
 </div>
   
   
@@ -393,17 +436,17 @@ overline :　 上划线</p>
   </header>
 
 
-  <div class="entry-content"><p>~$ telnet localhost 11211<br/>
-Trying 127.0.0.1&hellip;<br/>
-Connected to localhost.<br/>
-Escape character is &lsquo;^]&rsquo;.<br/>
-set foo 0 0 3<br/>
-bar<br/>
-STORED<br/>
-get foo<br/>
-VALUE foo 0 3<br/>
-bar<br/>
-END</p>
+  <div class="entry-content"><p>~$ telnet localhost 11211<br />
+Trying 127.0.0.1…<br />
+Connected to localhost.<br />
+Escape character is ‘^]’.<br />
+set foo 0 0 3<br />
+bar<br />
+STORED<br />
+get foo<br />
+VALUE foo 0 3<br />
+bar<br />
+END  </p>
 </div>
   
   
@@ -442,24 +485,75 @@ END</p>
   </header>
 
 
-  <div class="entry-content"><p>  | <code>$!</code> | latest error message |
-| <code>$@</code> | location of error |
-| <code>$_</code> | string last read by <code>gets</code> |
-| <code>$.</code> | line <em>number</em> last read by interpreter |
-| <code>$&amp;</code> | string last matched by regexp |
-| <code>$~</code> | the last regexp match, as an array of subexpressions |
-| <code>$</code> <em>n</em> | the <em>nth</em> subexpression in the last match (same as <code>$~[</code> <em>n</em> <code>]</code> ) |
-| <code>$=</code> | case-insensitivity flag |
-| <code>$/</code> | input record separator |
-| <code>$</code> | output record separator |
-| <code>$0</code> | the name of the ruby script file |
-| <code>$*</code> | the command line arguments |
-| <code>$$</code> | interpreter&rsquo;s process ID |
-| <code>$?</code> |</p>
+  <div class="entry-content"><table>
+  <tbody>
+    <tr>
+      <td><code>$!</code></td>
+      <td>latest error message</td>
+    </tr>
+    <tr>
+      <td><code>$@</code></td>
+      <td>location of error</td>
+    </tr>
+    <tr>
+      <td><code>$_</code></td>
+      <td>string last read by <code>gets</code></td>
+    </tr>
+    <tr>
+      <td><code>$.</code></td>
+      <td>line <em>number</em> last read by interpreter</td>
+    </tr>
+    <tr>
+      <td><code>$&amp;</code></td>
+      <td>string last matched by regexp</td>
+    </tr>
+    <tr>
+      <td><code>$~</code></td>
+      <td>the last regexp match, as an array of subexpressions</td>
+    </tr>
+    <tr>
+      <td><code>$</code> <em>n</em></td>
+      <td>the <em>nth</em> subexpression in the last match (same as <code>$~[</code> <em>n</em> <code>]</code> )</td>
+    </tr>
+    <tr>
+      <td><code>$=</code></td>
+      <td>case-insensitivity flag</td>
+    </tr>
+    <tr>
+      <td><code>$/</code></td>
+      <td>input record separator</td>
+    </tr>
+    <tr>
+      <td><code>$</code></td>
+      <td>output record separator</td>
+    </tr>
+    <tr>
+      <td><code>$0</code></td>
+      <td>the name of the ruby script file</td>
+    </tr>
+    <tr>
+      <td><code>$*</code></td>
+      <td>the command line arguments</td>
+    </tr>
+    <tr>
+      <td><code>$$</code></td>
+      <td>interpreter’s process ID</td>
+    </tr>
+    <tr>
+      <td><code>$?</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <p>exit status of last executed child process</p>
 
-<p>  |</p>
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 </div>
   
   
@@ -498,7 +592,7 @@ END</p>
   </header>
 
 
-  <div class="entry-content"><p>GNU Emacs 23.0.92.1 (i686-pc-linux-gnu, GTK+ Version 2.14.7)<br/>
+  <div class="entry-content"><p>GNU Emacs 23.0.92.1 (i686-pc-linux-gnu, GTK+ Version 2.14.7)<br />
  of 2009-04-01 on ChandleWEi</p>
 
 <p>么什么改变，看了下changelog 变化不大，边用边体验</p>
@@ -540,20 +634,20 @@ END</p>
   </header>
 
 
-  <div class="entry-content"><p>Some useful references about C:<br/>
- &lt; <a href="http://www.ungerhu.com/jxh/clc.welcome.txt">http://www.ungerhu.com/jxh/clc.welcome.txt</a>><br/>
- &lt; <a href="http://c-faq.com/">http://c-faq.com/</a>>                                       (C-faq)<br/>
- &lt; <a href="http://benpfaff.org/writings/clc/off-topic.html">http://benpfaff.org/writings/clc/off-topic.html</a>><br/>
- &lt; <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf</a>> (C99)<br/>
- &lt; <a href="http://cbfalconer.home.att.net/download/n869_txt.bz2">http://cbfalconer.home.att.net/download/n869_txt.bz2</a>>  (pre-C99)<br/>
- &lt; <a href="http://www.dinkumware.com/c99.aspx">http://www.dinkumware.com/c99.aspx</a>>                  (C-library}<br/>
- &lt; <a href="http://gcc.gnu.org/onlinedocs/">http://gcc.gnu.org/onlinedocs/</a>>                       (GNU docs)<br/>
- &lt; <a href="http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction">http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction</a>><br/>
- &lt; <a href="http://clc-wiki.net/wiki/Introduction_to_comp.lang.c">http://clc-wiki.net/wiki/Introduction_to_comp.lang.c</a>></p>
+  <div class="entry-content"><p>Some useful references about C:<br />
+ &lt; <a href="http://www.ungerhu.com/jxh/clc.welcome.txt">http://www.ungerhu.com/jxh/clc.welcome.txt</a>&gt;<br />
+ &lt; <a href="http://c-faq.com/">http://c-faq.com/</a>&gt;                                       (C-faq)<br />
+ &lt; <a href="http://benpfaff.org/writings/clc/off-topic.html">http://benpfaff.org/writings/clc/off-topic.html</a>&gt;<br />
+ &lt; <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf</a>&gt; (C99)<br />
+ &lt; <a href="http://cbfalconer.home.att.net/download/n869_txt.bz2">http://cbfalconer.home.att.net/download/n869_txt.bz2</a>&gt;  (pre-C99)<br />
+ &lt; <a href="http://www.dinkumware.com/c99.aspx">http://www.dinkumware.com/c99.aspx</a>&gt;                  (C-library}<br />
+ &lt; <a href="http://gcc.gnu.org/onlinedocs/">http://gcc.gnu.org/onlinedocs/</a>&gt;                       (GNU docs)<br />
+ &lt; <a href="http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction">http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction</a>&gt;<br />
+ &lt; <a href="http://clc-wiki.net/wiki/Introduction_to_comp.lang.c">http://clc-wiki.net/wiki/Introduction_to_comp.lang.c</a>&gt;</p>
 
-<p><a href="http://clc-wiki.net/wiki/K%26R2_solutions">http://clc-wiki.net/wiki/K%26R2_solutions</a></p>
+<p>http://clc-wiki.net/wiki/K%26R2_solutions</p>
 
-<p><a href="http://c-faq.com/">http://c-faq.com/</a></p>
+<p>http://c-faq.com/</p>
 
 <p>gdb</p>
 
@@ -563,7 +657,7 @@ END</p>
 
 <p>书</p>
 
-<p>C: A Reference Manual&#8221; by Harbison &amp; Steele</p>
+<p>C: A Reference Manual” by Harbison &amp; Steele</p>
 
 <p> </p>
 </div>
@@ -604,156 +698,94 @@ END</p>
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml">http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml</a></p>
+  <div class="entry-content"><p>http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml  </p>
 
-<p>基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的</p>
+<p>基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的  </p>
 
-<p>1.查找windows打印机</p>
+<p>1.查找windows打印机<br />
+#/usr/bin/smbclient -L puma -U ttan<br />
+用ttan这个用户连上puma查看共享的目录或打印机  </p>
 
-<h1>/usr/bin/smbclient -L puma -U ttan</h1>
+<p>结果显示如下：  </p>
 
-<p>用ttan这个用户连上puma查看共享的目录或打印机</p>
+<p>Sharename Type Comment<br />
+——— —- ——-<br />
+print$ Disk ┤<br />
+C$ Disk ─<br />
+shared Disk<br />
+TD_Dir Disk TestDirector<br />
+download Disk<br />
+F$ Disk ─<br />
+IPC$ IPC<br />
+EPSONAL- Printer EPSON AL-C1100 Advanced<br />
+ADMIN$ Disk<br />
+D$ Disk ─<br />
+hpLaserJ Printer hp LaserJet 1320 PCL 6  </p>
 
-<p>结果显示如下：</p>
+<p>这里我们要用到的就是hpLaserJ这个打印机  </p>
 
-<p>Sharename Type Comment</p>
+<p>2.配置CUPS<br />
+#ls -l /usr/lib/cups/backend/smb<br />
+确认CUPS是否安装了smb。<br />
+如果没有<br />
+#ln -s <code>which smbspool</code> /usr/lib/cups/backend/smb  </p>
 
-<hr />
+<p>添加打印机<br />
+#lpadmin -p pumahp -v smb://ttan:password@puma/hpLaserJ -P<br />
+/usr/share/cups/model/laserjet.ppd.gz  </p>
 
-<p>print$ Disk ┤<br/>
-C$ Disk ─<br/>
-shared Disk<br/>
-TD_Dir Disk TestDirector<br/>
-download Disk<br/>
-F$ Disk ─<br/>
-IPC$ IPC<br/>
-EPSONAL- Printer EPSON AL-C1100 Advanced<br/>
-ADMIN$ Disk<br/>
-D$ Disk ─<br/>
-hpLaserJ Printer hp LaserJet 1320 PCL 6</p>
+<p>-p是打印机名称，这个可以自己设置<br />
+-v就是打印机设备的URI.<br />
+-P是使用的ppd，PostScript Printer Description  </p>
 
-<p>这里我们要用到的就是hpLaserJ这个打印机</p>
+<h1 id="usrbinenable-pumahp">/usr/bin/enable pumahp</h1>
+<p>启用打印机<br />
+#/usr/sbin/accept pumahp<br />
+打印系统接受发往pumahp的打印任务<br />
+#/usr/sbin/lpadmin -d pumahp<br />
+设置pumahp为默认打印机  </p>
 
-<p>2.配置CUPS</p>
+<p>3.开始打印咯<br />
+#lpr /etc/fstab<br />
+#lpq<br />
+pumahp is ready and printing<br />
+Rank Owner Job File(s) Total Size<br />
+active root 1 fstab 1024 bytes  </p>
 
-<h1>ls -l /usr/lib/cups/backend/smb</h1>
+<p>备注：<br />
+或者第二步可以直接修改配置文件<br />
+/etc/cups/printers.conf  </p>
 
-<p>确认CUPS是否安装了smb。<br/>
-如果没有</p>
-
-<h1>ln -s <code>which smbspool</code> /usr/lib/cups/backend/smb</h1>
-
-<p>添加打印机</p>
-
-<h1>lpadmin -p pumahp -v smb://ttan:password@puma/hpLaserJ -P</h1>
-
-<p>/usr/share/cups/model/laserjet.ppd.gz</p>
-
-<p>-p是打印机名称，这个可以自己设置<br/>
--v就是打印机设备的URI.<br/>
--P是使用的ppd，PostScript Printer Description</p>
-
-<h1>/usr/bin/enable pumahp</h1>
-
-<p>启用打印机</p>
-
-<h1>/usr/sbin/accept pumahp</h1>
-
-<p>打印系统接受发往pumahp的打印任务</p>
-
-<h1>/usr/sbin/lpadmin -d pumahp</h1>
-
-<p>设置pumahp为默认打印机</p>
-
-<p>3.开始打印咯</p>
-
-<h1>lpr /etc/fstab</h1>
-
-<h1>lpq</h1>
-
-<p>pumahp is ready and printing<br/>
-Rank Owner Job File(s) Total Size<br/>
-active root 1 fstab 1024 bytes</p>
-
-<p>备注：<br/>
-或者第二步可以直接修改配置文件<br/>
-/etc/cups/printers.conf</p>
-
-<p>Info pumahp<br/>
-DeviceURI smb://ttan:password@puma/hpLaserJ<br/>
-State Idle<br/>
-Accepting Yes<br/>
-JobSheets none none<br/>
-QuotaPeriod 0<br/>
-PageLimit 0<br/>
+<p>Info pumahp<br />
+DeviceURI smb://ttan:password@puma/hpLaserJ<br />
+State Idle<br />
+Accepting Yes<br />
+JobSheets none none<br />
+QuotaPeriod 0<br />
+PageLimit 0<br />
 KLimit 0</p>
 
 <p> </p>
 
 <p>=========================================================================</p>
 
-<p>  1 # Printer configuration file for CUPS v1.3.8<br/>
-  2 # Written by cupsd on 2009-03-19 11:51<br/>
-  3 <Printer iloho1><br/>
-  4 Info iloho1<br/>
-  5 DeviceURI smb://user:user@192.168.2.188/HPLaserJ1018<br/>
-  6 State Idle<br/>
-  7 StateTime 1237434675<br/>
-  8 Accepting Yes<br/>
-  9 Shared Yes<br/>
- 10 JobSheets none none<br/>
- 11 QuotaPeriod 0<br/>
- 12 PageLimit 0<br/>
- 13 KLimit 0<br/>
- 14 OpPolicy default<br/>
- 15 ErrorPolicy stop-printer<br/>
- 16 </Printer><br/>
+<p>  1 # Printer configuration file for CUPS v1.3.8<br />
+  2 # Written by cupsd on 2009-03-19 11:51<br />
+  3 <printer iloho1="">  
+  4 Info iloho1  
+  5 DeviceURI smb://user:user@192.168.2.188/HPLaserJ1018  
+  6 State Idle  
+  7 StateTime 1237434675  
+  8 Accepting Yes  
+  9 Shared Yes  
+ 10 JobSheets none none  
+ 11 QuotaPeriod 0  
+ 12 PageLimit 0  
+ 13 KLimit 0  
+ 14 OpPolicy default  
+ 15 ErrorPolicy stop-printer  
+ 16 </printer><br />
 ~</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">重新编译了vim_么碰到什么问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-27T00:00:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p> CFLAGS=-O3 ./configure &mdash;enable-perlinterp &mdash;enable-pythoninterp &mdash;enable-rubyinterp &mdash;enable-cscope &mdash;enable-multibyte</p>
-
-<p>make &amp;&amp; sudo make install</p>
-
-<p> </p>
-
-<p>我对vim 不是很熟悉，各种原因重新下载了7。2编译了下</p>
 </div>
   
   
@@ -778,6 +810,10 @@ KLimit 0</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -793,10 +829,6 @@ KLimit 0</p>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -807,12 +839,29 @@ KLimit 0</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

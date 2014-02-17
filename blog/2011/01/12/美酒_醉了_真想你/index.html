@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="老路上好多惠安人&hellip;. 他们都是惠安人。。。 你在好远好远的地方 我跑的好快啊 我一边哭一边跑 我们家在哪里啊&hellip; 找不到了。。。 呜呜 你在哪里&hellip;. 在哪里
+  <meta name="description" content="老路上好多惠安人…. 他们都是惠安人。。。 你在好远好远的地方 我跑的好快啊 我一边哭一边跑 我们家在哪里啊… 找不到了。。。 呜呜 你在哪里…. 在哪里
 ">
   
 
@@ -95,7 +95,7 @@
   </header>
 
 
-<div class="entry-content"><p>老路上好多惠安人&hellip;.</p>
+<div class="entry-content"><p>老路上好多惠安人….</p>
 
 <p>他们都是惠安人。。。</p>
 
@@ -105,13 +105,13 @@
 
 <p>我一边哭一边跑</p>
 
-<p>我们家在哪里啊&hellip;</p>
+<p>我们家在哪里啊…</p>
 
 <p>找不到了。。。</p>
 
 <p>呜呜</p>
 
-<p>你在哪里&hellip;.</p>
+<p>你在哪里….</p>
 
 <p>在哪里</p>
 </div>
@@ -179,6 +179,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -192,10 +196,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -215,6 +215,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

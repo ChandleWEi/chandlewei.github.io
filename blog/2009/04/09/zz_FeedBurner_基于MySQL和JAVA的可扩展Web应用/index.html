@@ -94,7 +94,7 @@
   </header>
 
 
-<div class="entry-content"><p>June 27, 2006 FeedBurner:基于MySQL和JAVA的可扩展Web应用 于敦德 2006-6-27 FeedBurner（以下简称FB，呵呵）我想应该是大家耳熟能详的一个名字，在国内我们有一个同样的服务商，叫做FeedSky。在2004年7月份，FB的流量是300kbps，托管是5600个源，到2005年4月份，流量已经增长到5Mbps，托管了47700个源；到 2005年9月份流量增长到20M，托管了109200个源，而到2006年4月份，流量已经到了115Mbps，270000个源，每天点击量一亿次。 FB的服务使用Java实现，使用了Mysql数据库。我们下面来看一下FB在发展的过程中碰到的问题，以及解决的方案。 在2004年8月份，FB的硬件设备包括3台Web服务器，3台应用服务器和两台数据库服务器，使用DNS轮循分布服务负载，将前端请求分布到三台 Web服务器上。说实话，如果不考虑稳定性，给5600个源提供服务应该用不了这么多服务器。现在的问题是即使用了这么多服务器他们还是无法避免单点问题，单点问题将至少影响到1/3的用户。FB采用了监控的办法来解决，当监控到有问题出现时及时重启来避免更多用户受到影响。FB采用了Cacti(<a href="http://www.cacti.net">http://www.cacti.net</a>)和Nagios(<a href="http://www.nagios.org">http://www.nagios.org</a>)来做监控。 FB碰到的第二个问题是访问统计和管理。可以想象，每当我们在RSS阅读器里点击FB发布的内容，都需要做实时的统计，这个工作量是多么的巨大。大量写操作将导致系统的效率急剧下降，如果是Myisam表的话还会导致表的死锁。FB一方面采用异步写入机制，通过创建执行池来缓冲写操作；只对本日的数据进行实时统计，而以前的数据以统计结果形式存储，进而避免每次查看访问统计时的重复计算。所以每一天第一次访问统计信息时速度可能会慢，这个时候应该是 FB在分析整理前一天的数据，而接下来的访问由于只针对当日数据进行分析，数据量小很多，当然也会快很多。FB的Presentation是这样写，但我发现好像我的FB里并没有今天实时的统计，也许是我观察的不够仔细-_&ndash;! 现在第三个问题出现了，由于大多数的操作都集中在主数据库上，数据库服务器的读写出现了冲突，前面提到过Myiasm类型的数据库在写入的时候会锁表，这样就导致了读写的冲突。在开始的时候由于读写操作比较少这个问题可能并不明显，但现在已经到了不能忽视的程度。解决方案是平衡读写的负载，以及扩展 HibernateDaoSupport，区分只读与读写操作，以实现针对读写操作的不同处理。 现在是第四个问题：数据库全面负载过高。由于使用数据库做为缓存，同时数据库被所有的应用服务器共享，速度越来越慢，而这时数据库大小也到了 Myisam的上限-4GB，FB的同学们自己都觉得自己有点懒。解决方案是使用内存做缓存，而非数据库，他们同样使用了我们前面推荐的 memcached，同时他们还使用了Ehcache(<a href="http://ehcache.sourceforge.net/">http://ehcache.sourceforge.net/</a>)，一款基于Java的分布式缓存工具。 第五个问题：流行rss源带来大量重复请求，导致系统待处理请求的堆积。同时我们注意到在RSS源小图标有时候会显示有多少用户订阅了这一RSS 源，这同样需要服务器去处理，而目前所有的订阅数都在同一时间进行计算，导致对系统资源的大量占用。解决方案，把计算时间错开，同时在晚间处理堆积下来的请求，但这仍然不够。 问题六：状态统计写入数据库又一次出问题了。越来越多的辅助数据（包括广告统计，文章点击统计，订阅统计）需要写入数据库，导致太多的写操作。解决方案：每天晚上处理完堆积下来的请求后对子表进行截断操作： – FLUSH TABLES; TRUNCATE TABLE ad_stats0; 这样的操作对Master数据库是成功的，但对Slave会失败，正确的截断子表方法是： – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats1,ad_stats2); – TRUNCATE TABLE ad_stats0; – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats0,ad_stats1,ad_stats2); 解决方案的另外一部分就是我们最常用的水平分割数据库。把最常用的表分出去，单独做集群，例如广告啊，订阅计算啊， 第七个问题，问题还真多，主数据库服务器的单点问题。虽然采用了Master-Slave模式，但主数据库Master和Slave都只有一台，当 Master出问题的时候需要太长的时间进行Myisam的修复，而Slave又无法很快的切换成为Master。FB试了好多办法，最终的解决方案好像也不是非常完美。从他们的实验过程来看，并没有试验Master-Master的结构，我想Live Journal的Master-Master方案对他们来说应该有用，当然要实现Master-Master需要改应用，还有有些麻烦的。 第八个问题，停电!芝加哥地区的供电状况看来不是很好，不过不管好不好，做好备份是最重要的，大家各显神通吧。 这个Presentation好像比较偏重数据库，当然了，谁让这是在Mysql Con上的发言，不过总给人一种不过瘾的感觉。另外一个感觉，FB的NO们一直在救火，没有做系统的分析和设计。 最后FB的运维总监Joe Kottke给了四点建议： 1、 监控网站数据库负载。 2、 “explain”所有的SQL语句。 3、 缓存所有能缓存的东西。 4、 归档好代码。 最后，FB用到的软件都不是最新的，够用就好，包括：Tomcat5.0，Mysql 4.1，Hibernate 2.1，Spring，DBCP。</p>
+<div class="entry-content"><p>June 27, 2006 FeedBurner:基于MySQL和JAVA的可扩展Web应用 于敦德 2006-6-27 FeedBurner（以下简称FB，呵呵）我想应该是大家耳熟能详的一个名字，在国内我们有一个同样的服务商，叫做FeedSky。在2004年7月份，FB的流量是300kbps，托管是5600个源，到2005年4月份，流量已经增长到5Mbps，托管了47700个源；到 2005年9月份流量增长到20M，托管了109200个源，而到2006年4月份，流量已经到了115Mbps，270000个源，每天点击量一亿次。 FB的服务使用Java实现，使用了Mysql数据库。我们下面来看一下FB在发展的过程中碰到的问题，以及解决的方案。 在2004年8月份，FB的硬件设备包括3台Web服务器，3台应用服务器和两台数据库服务器，使用DNS轮循分布服务负载，将前端请求分布到三台 Web服务器上。说实话，如果不考虑稳定性，给5600个源提供服务应该用不了这么多服务器。现在的问题是即使用了这么多服务器他们还是无法避免单点问题，单点问题将至少影响到1/3的用户。FB采用了监控的办法来解决，当监控到有问题出现时及时重启来避免更多用户受到影响。FB采用了Cacti(http://www.cacti.net)和Nagios(http://www.nagios.org)来做监控。 FB碰到的第二个问题是访问统计和管理。可以想象，每当我们在RSS阅读器里点击FB发布的内容，都需要做实时的统计，这个工作量是多么的巨大。大量写操作将导致系统的效率急剧下降，如果是Myisam表的话还会导致表的死锁。FB一方面采用异步写入机制，通过创建执行池来缓冲写操作；只对本日的数据进行实时统计，而以前的数据以统计结果形式存储，进而避免每次查看访问统计时的重复计算。所以每一天第一次访问统计信息时速度可能会慢，这个时候应该是 FB在分析整理前一天的数据，而接下来的访问由于只针对当日数据进行分析，数据量小很多，当然也会快很多。FB的Presentation是这样写，但我发现好像我的FB里并没有今天实时的统计，也许是我观察的不够仔细-_-! 现在第三个问题出现了，由于大多数的操作都集中在主数据库上，数据库服务器的读写出现了冲突，前面提到过Myiasm类型的数据库在写入的时候会锁表，这样就导致了读写的冲突。在开始的时候由于读写操作比较少这个问题可能并不明显，但现在已经到了不能忽视的程度。解决方案是平衡读写的负载，以及扩展 HibernateDaoSupport，区分只读与读写操作，以实现针对读写操作的不同处理。 现在是第四个问题：数据库全面负载过高。由于使用数据库做为缓存，同时数据库被所有的应用服务器共享，速度越来越慢，而这时数据库大小也到了 Myisam的上限-4GB，FB的同学们自己都觉得自己有点懒。解决方案是使用内存做缓存，而非数据库，他们同样使用了我们前面推荐的 memcached，同时他们还使用了Ehcache(http://ehcache.sourceforge.net/)，一款基于Java的分布式缓存工具。 第五个问题：流行rss源带来大量重复请求，导致系统待处理请求的堆积。同时我们注意到在RSS源小图标有时候会显示有多少用户订阅了这一RSS 源，这同样需要服务器去处理，而目前所有的订阅数都在同一时间进行计算，导致对系统资源的大量占用。解决方案，把计算时间错开，同时在晚间处理堆积下来的请求，但这仍然不够。 问题六：状态统计写入数据库又一次出问题了。越来越多的辅助数据（包括广告统计，文章点击统计，订阅统计）需要写入数据库，导致太多的写操作。解决方案：每天晚上处理完堆积下来的请求后对子表进行截断操作： – FLUSH TABLES; TRUNCATE TABLE ad_stats0; 这样的操作对Master数据库是成功的，但对Slave会失败，正确的截断子表方法是： – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats1,ad_stats2); – TRUNCATE TABLE ad_stats0; – ALTER TABLE ad_stats TYPE=MERGE UNION=(ad_stats0,ad_stats1,ad_stats2); 解决方案的另外一部分就是我们最常用的水平分割数据库。把最常用的表分出去，单独做集群，例如广告啊，订阅计算啊， 第七个问题，问题还真多，主数据库服务器的单点问题。虽然采用了Master-Slave模式，但主数据库Master和Slave都只有一台，当 Master出问题的时候需要太长的时间进行Myisam的修复，而Slave又无法很快的切换成为Master。FB试了好多办法，最终的解决方案好像也不是非常完美。从他们的实验过程来看，并没有试验Master-Master的结构，我想Live Journal的Master-Master方案对他们来说应该有用，当然要实现Master-Master需要改应用，还有有些麻烦的。 第八个问题，停电!芝加哥地区的供电状况看来不是很好，不过不管好不好，做好备份是最重要的，大家各显神通吧。 这个Presentation好像比较偏重数据库，当然了，谁让这是在Mysql Con上的发言，不过总给人一种不过瘾的感觉。另外一个感觉，FB的NO们一直在救火，没有做系统的分析和设计。 最后FB的运维总监Joe Kottke给了四点建议： 1、 监控网站数据库负载。 2、 “explain”所有的SQL语句。 3、 缓存所有能缓存的东西。 4、 归档好代码。 最后，FB用到的软件都不是最新的，够用就好，包括：Tomcat5.0，Mysql 4.1，Hibernate 2.1，Spring，DBCP。</p>
 </div>
 
 
@@ -166,6 +166,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -179,10 +183,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -202,6 +202,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

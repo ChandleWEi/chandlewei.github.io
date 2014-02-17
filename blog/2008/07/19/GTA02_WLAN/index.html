@@ -10,7 +10,9 @@
 
   
   <meta name="description" content="openmoko 的dhclient有问题真的很奇怪。dhclient 2050 null point 的问题 ifconfig eth0 up
-iwconfig eth0 essid XXXXX iwconfig eth0 key on  iwconfig eth0 key s: &hellip;">
+iwconfig eth0 essid XXXXX
+# iwconfig eth0 key on
+ iwconfig eth0 key s: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,18 +99,16 @@ iwconfig eth0 essid XXXXX iwconfig eth0 key on  iwconfig eth0 key s: &hellip;">
 
 <div class="entry-content"><p>openmoko 的dhclient有问题真的很奇怪。dhclient 2050 null point 的问题</p>
 
-<p>ifconfig eth0 up<br/>
-iwconfig eth0 essid XXXXX</p>
-
-<h1>iwconfig eth0 key on</h1>
-
-<p> iwconfig eth0 key s:xxxxxxxxxxxxxx</p>
+<p>ifconfig eth0 up<br />
+iwconfig eth0 essid XXXXX<br />
+# iwconfig eth0 key on<br />
+ iwconfig eth0 key s:xxxxxxxxxxxxxx</p>
 
 <p>or</p>
 
 <p>iwconfig eth0 key restricted xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
 
-<h1>dhclient eth0 不能在openmoko下运行只能运行下面的命令.</h1>
+<h1 id="dhclient-eth0-openmoko">dhclient eth0 不能在openmoko下运行只能运行下面的命令.</h1>
 
 <p>udhcpc eth0</p>
 </div>
@@ -182,6 +182,10 @@ iwconfig eth0 essid XXXXX</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -195,10 +199,6 @@ iwconfig eth0 essid XXXXX</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -218,6 +218,22 @@ iwconfig eth0 essid XXXXX</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

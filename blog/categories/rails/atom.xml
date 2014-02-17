@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rails | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -18,64 +18,64 @@
     <link href="http://ChandleWEi.github.io/blog/2011/03/16/%E8%BD%AC%EF%BC%9Aeasylife____rails_test_prescription_%E9%9A%8F%E6%84%9F/"/>
     <updated>2011-03-16T23:30:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/03/16/转：easylife____rails_test_prescription_随感</id>
-    <content type="html"><![CDATA[<p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a></p>
+    <content type="html"><![CDATA[<p>转： <a href="http://easylife.javaeye.com/blog/933375">easylife </a>  </p>
 
 <p>rails test prescription 随感</p>
 
-<p>编程<br/>
-controller测试<br/>
-  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br/>
-  2 检测controller是否能够适当地处理不合格式的请求<br/>
-  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面</p>
+<p>编程<br />
+controller测试<br />
+  1 看一个普通，基本的用户请求是否能引发预计的ActiveRecord正常工作，需要的数据是否传给了view<br />
+  2 检测controller是否能够适当地处理不合格式的请求<br />
+  3 检测权限系统是否正常工作，比如一个用户请求了登录或者特定角色才能访问的页面  </p>
 
-<p>view测试<br/>
-  1 view不报错<br/>
-  2 view中的数据是否是你计划生成的数据<br/>
-  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示</p>
+<p>view测试<br />
+  1 view不报错<br />
+  2 view中的数据是否是你计划生成的数据<br />
+  3 检测根据角色动态生成的部分，比如：登录链接，管理员链接等是否正确显示  </p>
 
-<p>集成测试与controller测试的区别<br/>
-  需要对session，cookie等跨action的数据的正确性进行测试</p>
+<p>集成测试与controller测试的区别<br />
+  需要对session，cookie等跨action的数据的正确性进行测试  </p>
 
-<p>测试层次<br/>
-  1 model<br/>
-  2 controller<br/>
-  3 view（helper）<br/>
-  4 集成<br/>
-  5 验收<br/>
-  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br/>
-才能开始测试</p>
+<p>测试层次<br />
+  1 model<br />
+  2 controller<br />
+  3 view（helper）<br />
+  4 集成<br />
+  5 验收<br />
+  要遵照mvc结构。反例是如果将属于model层的东西放到controller中，那么，你至少需要模拟一个http请求，<br />
+才能开始测试  </p>
 
-<p>测试写到什么时候够了<br/>
-  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br/>
-测试，就像你永远也写不出完美的软件一样，够好，就可以了</p>
+<p>测试写到什么时候够了<br />
+  我只能说，你可以在rcov中达到100%，但是rcov（或者其他测试工具）的计算方式是有问题的，你永远无法100%<br />
+测试，就像你永远也写不出完美的软件一样，够好，就可以了  </p>
 
-<p>什么时候使用mock/stub<br/>
-  1 解决依赖性<br/>
-    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br/>
-  2 解决某些情况<br/>
-    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br/>
-         测试程序的失败情况，而失败情况可以用stub轻松生成<br/>
-  3 测试过程时，未实现的功能的替代<br/>
-  4 Interface Discovery<br/>
-    设计api时，你需要它</p>
+<p>什么时候使用mock/stub<br />
+  1 解决依赖性<br />
+    比如：你在写一个支付接口，但是现在你在开发阶段，还不想和银行打交道<br />
+  2 解决某些情况<br />
+    比如：你写了一个扔色子系统，随机生成1-6的数字，而你需要对掷出6点时的程序进行测试<br />
+         测试程序的失败情况，而失败情况可以用stub轻松生成<br />
+  3 测试过程时，未实现的功能的替代<br />
+  4 Interface Discovery<br />
+    设计api时，你需要它  </p>
 
-<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了</p>
+<p>一个测试不要使用太多mock或者stub，使用三个以上就要注意了  </p>
 
-<p>是否测试负面情况<br/>
-  上帝保佑我们有足够的时间</p>
+<p>是否测试负面情况<br />
+  上帝保佑我们有足够的时间  </p>
 
-<p>先写测试还是后写测试<br/>
-  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br/>
-里记住，先写测试可以改善代码质量</p>
+<p>先写测试还是后写测试<br />
+  如果你接下来要做的只是验证正确性，那么你可以后写测试，不过，验证正确性只是TDD的目的之一，你至少要在心<br />
+里记住，先写测试可以改善代码质量  </p>
 
-<p>mock类库<br/>
-  rails-test-prescription 7.7 已做出了明了的比较</p>
+<p>mock类库<br />
+  rails-test-prescription 7.7 已做出了明了的比较  </p>
 
-<p>你至少需要熟悉的测试工具<br/>
-  1 rspec<br/>
-  2 cucumber<br/>
-  3 capybara<br/>
-  4 factory-girl<br/>
+<p>你至少需要熟悉的测试工具<br />
+  1 rspec<br />
+  2 cucumber<br />
+  3 capybara<br />
+  4 factory-girl<br />
   5 database-cleaner</p>
 ]]></content>
   </entry>
@@ -87,16 +87,42 @@ controller测试<br/>
     <id>http://ChandleWEi.github.io/blog/2010/09/16/find_in_batches</id>
     <content type="html"><![CDATA[<p>如果你有10,000,000个用户，每周需要給他们发送最新的推广邮件，你可能会从数据库中这样操作:</p>
 
-<p>User.each do |user| NewsLetter.weekly_deliver(user) end</p>
+<table>
+  <tbody>
+    <tr>
+      <td>User.each do</td>
+      <td>user</td>
+      <td>NewsLetter.weekly_deliver(user) end</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>但这样做会让ruby从数据库中一次取出10,000,000条数据，并创建10,000,000个对象，服务器内存会大量消耗，因此这样做是不行的，<br/>
+<p>但这样做会让ruby从数据库中一次取出10,000,000条数据，并创建10,000,000个对象，服务器内存会大量消耗，因此这样做是不行的，<br />
 从rails 2.3开始你就可以使用find_each和find_in_batches方法了，这两个方法专门用于分批查询数据和处理，默认情况下 find_each和find_in_batches每次会查出1000条数据记录，你可以可以指定每次取出的数量:batch_size，</p>
 
-<p>User.find_each do |user| NewsLetter.weekly_deliver(user) end</p>
+<table>
+  <tbody>
+    <tr>
+      <td>User.find_each do</td>
+      <td>user</td>
+      <td>NewsLetter.weekly_deliver(user) end</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>find_in_batches是返还一个数据对象:</p>
 
-<p>User.find_in_batches(:batch_size => 5000) do |users| users.each { |user| NewsLetter.weekly_deliver(user) } end</p>
+<table>
+  <tbody>
+    <tr>
+      <td>User.find_in_batches(:batch_size =&gt; 5000) do</td>
+      <td>users</td>
+      <td>users.each {</td>
+      <td>user</td>
+      <td>NewsLetter.weekly_deliver(user) } end</td>
+    </tr>
+  </tbody>
+</table>
 ]]></content>
   </entry>
   
@@ -105,20 +131,20 @@ controller测试<br/>
     <link href="http://ChandleWEi.github.io/blog/2009/05/12/Write_integer_value_to_a_binary_file/"/>
     <updated>2009-05-12T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/05/12/Write_integer_value_to_a_binary_file</id>
-    <content type="html"><![CDATA[<p>Write integer value to a binary file<br/>
-<code>  
-num = [1234567]  
-File.open("test.file", "wb") { |f|  
-f.write num.pack("I")  
-}  
-</code></p>
+    <content type="html"><![CDATA[<p>Write integer value to a binary file<br />
+`<br />
+num = [1234567]<br />
+File.open(“test.file”, “wb”) { |f|<br />
+f.write num.pack(“I”)<br />
+}<br />
+`  </p>
 
-<p>Read integer value from binary file:<br/>
-<code>  
-a = []  
-File.open("test.file", "rb") { |f|  
-a = f.read(4).unpack("I")  
-}</code></p>
+<p>Read integer value from binary file:<br />
+`<br />
+a = []<br />
+File.open(“test.file”, “rb”) { |f|<br />
+a = f.read(4).unpack(“I”)<br />
+}`</p>
 ]]></content>
   </entry>
   
@@ -133,27 +159,27 @@ a = f.read(4).unpack("I")
 
 <p>Does this error message look familar when you script/console?</p>
 
-<p>  ``</p>
+<p>``</p>
 
-<p>$> script/console<br/>
-Loading production environment (Rails 2.1.0)<br/>
+<p>$&gt; script/console<br />
+Loading production environment (Rails 2.1.0)<br />
 /usr/lib/ruby/1.8/irb/completion.rb:10:in <code>require': no such file to load -- readline (LoadError)  
 from /usr/lib/ruby/1.8/irb/completion.rb:10  
-from /usr/lib/ruby/1.8/irb/init.rb:252:in</code>require'<br/>
+from /usr/lib/ruby/1.8/irb/init.rb:252:in </code>require’<br />
 from /usr/lib/ruby/1.8/irb/init.rb:252:in <code>load\_modules'  
-from /usr/lib/ruby/1.8/irb/init.rb:250:in</code>each'<br/>
+from /usr/lib/ruby/1.8/irb/init.rb:250:in </code>each’<br />
 from /usr/lib/ruby/1.8/irb/init.rb:250:in <code>load\_modules'  
-from /usr/lib/ruby/1.8/irb/init.rb:21:in</code>setup'<br/>
-from /usr/lib/ruby/1.8/irb.rb:54:in `start'<br/>
-from /usr/bin/irb:13</p>
+from /usr/lib/ruby/1.8/irb/init.rb:21:in </code>setup’<br />
+from /usr/lib/ruby/1.8/irb.rb:54:in `start’<br />
+from /usr/bin/irb:13  </p>
 
 <p>This happens when readline is somehow different than your current version of ruby or corrupted. The quick fix is to recompile readline. To do it in CentOS with yum: ``</p>
 
-<p>$> yum install readline-devel -y<br/>
-$> cd /root/src/ruby-1.8.6-p114/ext/readline/<br/>
-$> ruby extconf.rb<br/>
-$> make<br/>
-$> sudo make install</p>
+<p>$&gt; yum install readline-devel -y<br />
+$&gt; cd /root/src/ruby-1.8.6-p114/ext/readline/<br />
+$&gt; ruby extconf.rb<br />
+$&gt; make<br />
+$&gt; sudo make install  </p>
 
 <p>Now you should have script/console working.</p>
 ]]></content>
@@ -164,32 +190,31 @@ $> sudo make install</p>
     <link href="http://ChandleWEi.github.io/blog/2009/04/15/zz_fastri/"/>
     <updated>2009-04-15T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/15/zz_fastri</id>
-    <content type="html"><![CDATA[<h3>Overview</h3>
+    <content type="html"><![CDATA[<h3 id="overview">Overview</h3>
 
-<p><em>FastRI</em> is an alternative to the &ldquo;ri&rdquo; documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
+<p><em>FastRI</em> is an alternative to the “ri” documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
 
 <p>Why prefer it over ri? <em>FastRI</em></p>
 
 <ul>
-<li>actually works</li>
-<li>is *much* faster than ri</li>
-<li>can perform fast full-text searching over all your rdoc documentation</li>
-<li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the &ldquo;full path&rdquo;</li>
-<li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
-<li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
-<li>can serve RI documentation over DRb</li>
+  <li>actually works</li>
+  <li>is *much* faster than ri</li>
+  <li>can perform fast full-text searching over all your rdoc documentation</li>
+  <li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the “full path”</li>
+  <li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
+  <li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
+  <li>can serve RI documentation over DRb</li>
 </ul>
-
 
 <p>You can find more information about what makes <em>FastRI</em> faster than ri <a href="http://eigenclass.org/hiki/making+ruby+ri+faster">here</a>, and about its <a href="http://eigenclass.org/hiki/simple+full+text+search+engine">200 LoC full-text search engine here</a>.</p>
 
-<h3>Getting it</h3>
+<h3 id="getting-it">Getting it</h3>
 
 <p><em>FastRI</em> can be installed with RubyGems:</p>
 
-<p>gem install <em>fastri</em></p>
+<p>gem install <em>fastri</em>  </p>
 
-<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge&rsquo;s mirrors.</p>
+<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge’s mirrors.</p>
 
 <p><em>FastRI</em> is available in tarball format. The <em>fri</em> executable will run much faster if you install <em>FastRI</em> from a tarball, since RubyGems introduces a noticeable overhead.</p>
 
@@ -199,104 +224,102 @@ $> sudo make install</p>
 
 <p>Just run</p>
 
-<p>setup.rb</p>
+<p>setup.rb  </p>
 
 <p>to install.</p>
 
-<h3>Usage</h3>
+<h3 id="usage">Usage</h3>
 
-<p>Starting from 0.3.0, fri can be used in either local mode (&mdash;local, -L) or remote mode (using a <em>fastri</em>-server, -R, &mdash;remote). By default, fri will run in remote mode. There&rsquo;s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
+<p>Starting from 0.3.0, fri can be used in either local mode (–local, -L) or remote mode (using a <em>fastri</em>-server, -R, –remote). By default, fri will run in remote mode. There’s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
 
 <p>Remote mode is slightly faster (typically about 150ms) , since the documentation index is kept in memory and needs not be read from disk.</p>
 
-<h4>Local mode</h4>
+<h4 id="local-mode">Local mode</h4>
 
-<p>$ qri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-Array indexing starts at 0, as in C or Java. A negative index is<br/>
-&hellip;</p>
+<p>$ qri Array<br />
+———————————————————– Class: Array<br />
+Arrays are ordered, integer-indexed collections of any object.<br />
+Array indexing starts at 0, as in C or Java. A negative index is<br />
+…  </p>
 
-<p>$ qri compact<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Array#compact</p>
+<p>$ qri compact<br />
+———————————————————- Array#compact<br />
+array.compact -&gt; an_array<br />
+————————————————————————<br />
+Returns a copy of self with all nil elements removed.  </p>
 
-<h2>array.compact &ndash;> an_array  </h2>
-
-<p>Returns a copy of self with all nil elements removed.</p>
-
-<h4>Remote mode</h4>
+<h4 id="remote-mode">Remote mode</h4>
 
 <p>There are two parts to using <em>FastRI</em> in remote mode:</p>
 
 <ul>
-<li>the server: <em>fastri</em>-server</li>
-<li>the client: fri</li>
+  <li>the server: <em>fastri</em>-server</li>
+  <li>the client: fri</li>
 </ul>
-
 
 <p><em>FastRI</em> uses a Rinda Ring to allow servers to be discovered automatically without needing to indicate the DRb URIs manually. It can work across machines if you make sure the ring server is bound to the correct interface, and the ACL permissions are correct.</p>
 
-<h5>Quickstart</h5>
+<h5 id="quickstart">Quickstart</h5>
 
 <p>First of all, the DRb server must be launched with</p>
 
-<p>$ <em>fastri</em>-server (blocks)</p>
+<p>$ <em>fastri</em>-server (blocks)  </p>
 
 <p>Later,</p>
 
-<p>$ fri String<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Class: String<br/>
-A String object holds and manipulates an arbitrary sequence of<br/>
-bytes, typically representing characters. String objects may be<br/>
-created using String::new or as literals.<br/>
-&hellip;</p>
+<p>$ fri String<br />
+———————————————————- Class: String<br />
+A String object holds and manipulates an arbitrary sequence of<br />
+bytes, typically representing characters. String objects may be<br />
+created using String::new or as literals.<br />
+…  </p>
 
 <p>Read on for more information, including how to make <em>FastRI</em> work across machines.</p>
 
-<h5>More about <em>fastri</em>-server</h5>
+<h5 id="more-about-fastri-server">More about <em>fastri</em>-server</h5>
 
 <p>For local usage, just</p>
 
-<p>$ <em>fastri</em>-server</p>
+<p>$ <em>fastri</em>-server  </p>
 
 <p>will do. The DRb service will bind to 127.0.0.1, and only connections from 127.0.0.1 will be allowed. If you want to allow fri to be used from other machines, you have to specify which interface to bind to, and allow incoming connections from the desired hosts. For example, if your network is 192.168.1.0, and your IP is 192.168.1.2, you can do</p>
 
-<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br/>
-<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br/>
-ACL:<br/>
-deny all<br/>
-allow localhost<br/>
-allow 192.168.1.0/24</p>
+<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br />
+<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br />
+ACL:<br />
+deny all<br />
+allow localhost<br />
+allow 192.168.1.0/24  </p>
 
 <p>Further options are documented in</p>
 
-<p>$ <em>fastri</em>-server -h</p>
+<p>$ <em>fastri</em>-server -h  </p>
 
-<h5>More about fri</h5>
+<h5 id="more-about-fri">More about fri</h5>
 
-<p>Running fri with no options (or -h/&mdash;help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
+<p>Running fri with no options (or -h/–help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
 
-<p>$ fri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-&hellip;</p>
+<p>$ fri Array<br />
+——————————————————- Class: Array<br />
+Arrays are ordered, integer-indexed collections of any object.<br />
+…  </p>
 
-<p>If you&rsquo;re on a different machine, you&rsquo;ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or &mdash;bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you&rsquo;re on 192.168.1.101, both</p>
+<p>If you’re on a different machine, you’ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or –bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you’re on 192.168.1.101, both</p>
 
-<p>export <em>FASTRI</em>_ADDR=&ldquo;192.168.1.101"<br/>
-fri Array</p>
+<p>export <em>FASTRI</em>_ADDR=”192.168.1.101”<br />
+fri Array  </p>
 
 <p>and</p>
 
-<p>fri -s 192.168.1.101 Array</p>
+<p>fri -s 192.168.1.101 Array  </p>
 
 <p>will work. Note that <em>FASTRI</em>_ADDR is the *local* address: the server will be discovered automatically. (The reason why the local address must be specified is that it will be given to the ring server, which must be able to establish a reverse connection through the local DRb service.)</p>
 
-<h3>Feedback</h3>
+<h3 id="feedback">Feedback</h3>
 
-<p>Bug reports, patches, comments&hellip; are appreciated. You can contact the author via <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#58;&#109;&#x66;&#x70;&#x40;&#97;&#99;&#x6d;&#46;&#111;&#x72;&#103;">&#109;&#x66;&#x70;&#64;&#97;&#99;&#x6d;&#46;&#111;&#114;&#103;</a>. Please add &ldquo;<em>fastri</em>&rdquo; to the subject in order to bypass the spam filters.</p>
+<p>Bug reports, patches, comments… are appreciated. You can contact the author via <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#102;&#112;&#064;&#097;&#099;&#109;&#046;&#111;&#114;&#103;">&#109;&#102;&#112;&#064;&#097;&#099;&#109;&#046;&#111;&#114;&#103;</a>. Please add “<em>fastri</em>” to the subject in order to bypass the spam filters.</p>
 
-<h3>License</h3>
+<h3 id="license">License</h3>
 
 <p><em>FastRI</em> is licensed under the same terms as Ruby. See LICENSE</p>
 ]]></content>

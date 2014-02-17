@@ -101,11 +101,11 @@
 <p>Here’s how.</p>
 
 <ul>
-<li>Download the most recent Perl 5.10 RC from <a href="http://search.cpan.org/%7Ergarcia/">Rafael Garcia-Suarez’s CPAN directory</a>.
-
-<h2>&ndash; Unpack the tarball to a temporary directory where you can build software.</h2></li>
+  <li>Download the most recent Perl 5.10 RC from <a href="http://search.cpan.org/%7Ergarcia/">Rafael Garcia-Suarez’s CPAN directory</a>.</li>
+  <li>
+    <h2 id="unpack-the-tarball-to-a-temporary-directory-where-you-can-build-software">Unpack the tarball to a temporary directory where you can build software.</h2>
+  </li>
 </ul>
-
 
 <p>Configure Perl for building. I used the instructions in the <em>README</em> file and supplied an installation prefix. This is useful for testing, as it installs Perl and its core libraries beneath a single, specific directory:</p>
 
@@ -113,14 +113,17 @@
 </code></pre>
 
 <ul>
-<li><p>Build Perl. You need a <code>make</code> utility, but I assume that most people reading this either are familiar enough with building their software on their own platforms that I don’t have to mention it, or are my parents (Hi, Mom and Dad!) and just like to see what I do during the week:</p>
+  <li>
+    <p>Build Perl. You need a <code>make</code> utility, but I assume that most people reading this either are familiar enough with building their software on their own platforms that I don’t have to mention it, or are my parents (Hi, Mom and Dad!) and just like to see what I do during the week:</p>
 
-<p>  make<br/>
-make test # wait a few minutes here<br/>
-make install</p></li>
-<li><p>Optionally report success or failure with <code>make ok</code> or <code>make nok</code> . Success is most useful on slightly exotic platforms, but failures are interesting on any platform.</p></li>
+    <p>make<br />
+make test # wait a few minutes here<br />
+make install</p>
+  </li>
+  <li>
+    <p>Optionally report success or failure with <code>make ok</code> or <code>make nok</code> . Success is most useful on slightly exotic platforms, but failures are interesting on any platform.</p>
+  </li>
 </ul>
-
 
 <p>Now you have a nice shiny new Perl 5.10 built for your platform (or you’re waiting anxiously for a patch to come out to fix your test failures, but I can’t help you there here). It’s time to test your code with this new version of Perl.</p>
 
@@ -144,11 +147,8 @@ make install</p></li>
 
 <p>After installing the module, I re-ran <em>Build.PL</em> and tested my code as normal:</p>
 
-<pre><code>perl Build.PL  
+<pre><code>perl Build.PL   ./Build   ./Build test
 </code></pre>
-
-<p>./Build<br/>
-./Build test</p>
 
 <p>If you run into problems, check the RT queue available from the CPAN page of the distribution you’re trying to install. Most authors expect to receive bugs reported through that interface (though do check the documentation; some authors prefer standard e-mail).</p>
 
@@ -224,6 +224,10 @@ make install</p></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -237,10 +241,6 @@ make install</p></li>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -260,6 +260,22 @@ make install</p></li>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

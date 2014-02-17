@@ -9,7 +9,13 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Write integer value to a binary file num = [1234567] File.open("test.file", "wb") { |f| f.write num.pack("I") } Read integer value from binary file: &hellip;">
+  <meta name="description" content="Write integer value to a binary file
+`
+num = [1234567]
+File.open(“test.file”, “wb”) { |f|
+f.write num.pack(“I”)
+}
+` Read integer value from binary &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,20 +100,20 @@
   </header>
 
 
-<div class="entry-content"><p>Write integer value to a binary file<br/>
-<code>  
-num = [1234567]  
-File.open("test.file", "wb") { |f|  
-f.write num.pack("I")  
-}  
-</code></p>
+<div class="entry-content"><p>Write integer value to a binary file<br />
+`<br />
+num = [1234567]<br />
+File.open(“test.file”, “wb”) { |f|<br />
+f.write num.pack(“I”)<br />
+}<br />
+`  </p>
 
-<p>Read integer value from binary file:<br/>
-<code>  
-a = []  
-File.open("test.file", "rb") { |f|  
-a = f.read(4).unpack("I")  
-}</code></p>
+<p>Read integer value from binary file:<br />
+`<br />
+a = []<br />
+File.open(“test.file”, “rb”) { |f|<br />
+a = f.read(4).unpack(“I”)<br />
+}`</p>
 </div>
 
 
@@ -179,6 +185,10 @@ a = f.read(4).unpack("I")
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -192,10 +202,6 @@ a = f.read(4).unpack("I")
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -215,6 +221,22 @@ a = f.read(4).unpack("I")
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

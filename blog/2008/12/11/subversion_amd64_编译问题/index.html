@@ -96,17 +96,19 @@
 
 <div class="entry-content"><p>Neon库，是用来作为Subversion服务器和HTTP客户端进行通讯的库，通常被编译成静态库。但是它后来被链接到不同的动态链接库中，这会导致在AMD 64位操作系统系统上面编译的过程出现错误，出现类似下面的信息：</p>
 
-<blockquote></blockquote>
+<blockquote>
 
-<p>subversion-1.4.6/neon/src/.libs/libneon.a(ne_request.o): relocation R_X86_64_32<br/>
-against `a local symbol&#8217; can not be used when making a shared object;<br/>
-recompile with -fPIC<br/>
-/home/jrandom/subversion/subversion-1.4.6/neon/src/.libs/libneon.a: could not<br/>
-read symbols: Bad value</p>
+</blockquote>
+
+<p>subversion-1.4.6/neon/src/.libs/libneon.a(ne_request.o): relocation R_X86<em>64</em>32<br />
+against `a local symbol’ can not be used when making a shared object;<br />
+recompile with -fPIC<br />
+/home/jrandom/subversion/subversion-1.4.6/neon/src/.libs/libneon.a: could not<br />
+read symbols: Bad value  </p>
 
 <p>在开发者邮件列表中有一篇文章提到了这一点。</p>
 
-<p>解决方法就是为Subversion的配置脚本提供一个“&mdash;enable-shared”的参数。</p>
+<p>解决方法就是为Subversion的配置脚本提供一个“–enable-shared”的参数。</p>
 </div>
 
 
@@ -172,6 +174,10 @@ read symbols: Bad value</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -185,10 +191,6 @@ read symbols: Bad value</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -208,6 +210,22 @@ read symbols: Bad value</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

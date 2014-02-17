@@ -98,18 +98,18 @@
 
 <p>参考如下没有成功</p>
 
-<p><a href="http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide">http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide</a></p>
+<p>http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide</p>
 
 <p>gdb shell 查看</p>
 
-<p>$ cat /proc/mtd<br/>
-dev:    size   erasesize  name<br/>
-mtd0: 00100000 00040000 &ldquo;misc&#8221;<br/>
-mtd1: 00480000 00040000 &#8220;recovery&#8221;<br/>
-mtd2: 00340000 00040000 &#8220;boot&#8221;<br/>
-mtd3: 0fa00000 00040000 &#8220;system&#8221;<br/>
-mtd4: 02800000 00040000 &#8220;cache&#8221;<br/>
-mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
+<p>$ cat /proc/mtd<br />
+dev:    size   erasesize  name<br />
+mtd0: 00100000 00040000 “misc”<br />
+mtd1: 00480000 00040000 “recovery”<br />
+mtd2: 00340000 00040000 “boot”<br />
+mtd3: 0fa00000 00040000 “system”<br />
+mtd4: 02800000 00040000 “cache”<br />
+mtd5: 096c0000 00040000 “userdata”</p>
 
 <p>pvt4 40000 看来是悲剧了</p>
 </div>
@@ -183,6 +183,10 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -196,10 +200,6 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -219,6 +219,22 @@ mtd5: 096c0000 00040000 &#8220;userdata&rdquo;</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

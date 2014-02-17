@@ -94,7 +94,7 @@
   </header>
 
 
-<div class="entry-content"><p>Siege：压力模拟/测试工具 作者：车东 发表于：2004-02-13 20:02 最后更新于：2008-04-12 03:04 版权声明：可以任意转载，转载时请务必以超链接形式标明文章原始出处和作者信息及本版权声明。 <a href="http://www.chedong.com/blog/archives/000033.html">http://www.chedong.com/blog/archives/000033.html</a> 最早使用的压力测试工具是apache的ab(apache benchmark)，apache ab做重复压力测试不错，但是每次只能测试一个链接，如何测试一组链接（比如从日志中导出的1个小时的日志，做真实压力测试），后来找到了这个： Siege是一个压力测试和评测工具，设计用于WEB开发这评估应用在压力下的承受能力：可以根据配置对一个WEB站点进行多用户的并发访问，记录每个用户所有请求过程的相应时间，并在一定数量的并发访问下重复进行。 SIEGE is an http regressive testing and benchmarking utility. It was designed to let web developers measure the performance of their code under duress, to see how it will stand up to load on the internet. It lets the user hit a webserver with a configurable number of concurrent simulated users. Those users place the webserver &ldquo;under siege.&rdquo; The duration of the siege is measured in transactions, the sum of simulated users and the number of times each simulated user repeats the process of hitting the server. Thus 20 concurrent users 50 times is 1000 transactions, the length of the test. 下载/安装 Siege时一个开放源代码项目：<a href="http://www.joedog.org">http://www.joedog.org</a> 下载： wget <a href="ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz">ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz</a> 安装： %./configure ; make #make install siege包含了一组压力测试工具： SIEGE (1) Siege是一个HTTP压力测试和评测工具. 使用样例： 任务列表：www.chedong.com.url文件 <a href="http://www.chedong.com/tech/">http://www.chedong.com/tech/</a> <a href="http://www.chedong.com/tech/acdsee.html">http://www.chedong.com/tech/acdsee.html</a> <a href="http://www.chedong.com/tech/ant.html">http://www.chedong.com/tech/ant.html</a> <a href="http://www.chedong.com/tech/apache_install.html">http://www.chedong.com/tech/apache_install.html</a> <a href="http://www.chedong.com/tech/awstats.html">http://www.chedong.com/tech/awstats.html</a> <a href="http://www.chedong.com/tech/cache.html">http://www.chedong.com/tech/cache.html</a> <a href="http://www.chedong.com/tech/click.html">http://www.chedong.com/tech/click.html</a> <a href="http://www.chedong.com/tech/cms.html">http://www.chedong.com/tech/cms.html</a> <a href="http://www.chedong.com/tech/compress.html">http://www.chedong.com/tech/compress.html</a> <a href="http://www.chedong.com/tech/cvs_card.html">http://www.chedong.com/tech/cvs_card.html</a> <a href="http://www.chedong.com/tech/default.html">http://www.chedong.com/tech/default.html</a> <a href="http://www.chedong.com/tech/dev.html">http://www.chedong.com/tech/dev.html</a> <a href="http://www.chedong.com/tech/gnu.html">http://www.chedong.com/tech/gnu.html</a> &hellip;. siege -c 20 -r 2 -f www.chedong.com.url 参数说明： -c 20 并发20个用户 -r 2 重复循环2次 -f www.chedong.com.url 任务列表：URL列表 输出样例： ** Siege 2.59 ** Preparing 20 concurrent users for battle. 这次“战斗”准备了20个并发用户 The server is now under siege.. done. 服务在“围攻”测试中： Transactions: 40 hits 完成40次处理 Availability: 100.00 % 成功率 Elapsed time: 7.67 secs 总共用时 Data transferred: 877340 bytes 共数据传输：877340字节 Response time: 1.65 secs 相应用时1.65秒：显示网络连接的速度 Transaction rate: 5.22 trans/sec 平均每秒完成5.22次处理：表示服务器后台处理的速度 Throughput: 114385.92 bytes/sec 平均每秒传送数据：114385.92字节 Concurrency: 8.59 最高并发数 8.59 Successful transactions: 40 成功处理次数 Failed transactions: 0 失败处理次数 注意：由于速度很快，可能会达不到并发速度很高就已经完成。Response time显示的是测试机器和被测试服务器之间网络链接状况。Transaction rate则表示服务器端任务处理的完成速度。 辅助工具： 增量压力测试： 为了方便增量压力测试，siege还包含了一些辅助工具： bombardment (1) 是一个辅助工具：用于按照增量用户压力测试： 使用样例： bombardment urlfile.txt 5 3 4 1 初始化URL列表：urlfile.txt 初始化为：5个用户 每次增加：3个用户 运行：4次 每个客户端之间的延迟为：1秒 输出成CSV格式： siege2csv.pl (1) siege2csv.pl将bombardment的输出变成CSV格式： Time Data Transferred Response Time Transaction Rate Throughput Concurrency Code 200 (note that this is horribly broken.) 242 60.22 603064 0.02 4.02 10014.35 0.08 605 59.98 1507660 0.01 10.09 25136.05 0.12 938 59.98 2337496 0.02 15.64 38971.26 0.26 1157 60 2883244 0.04 19.28 48054.07 0.78 参考： 开源测试工具：<a href="http://www.opensourcetesting.org/performance.php">http://www.opensourcetesting.org/performance.php</a> 压力测试工具：HammerHead 正在试用中</p>
+<div class="entry-content"><p>Siege：压力模拟/测试工具 作者：车东 发表于：2004-02-13 20:02 最后更新于：2008-04-12 03:04 版权声明：可以任意转载，转载时请务必以超链接形式标明文章原始出处和作者信息及本版权声明。 http://www.chedong.com/blog/archives/000033.html 最早使用的压力测试工具是apache的ab(apache benchmark)，apache ab做重复压力测试不错，但是每次只能测试一个链接，如何测试一组链接（比如从日志中导出的1个小时的日志，做真实压力测试），后来找到了这个： Siege是一个压力测试和评测工具，设计用于WEB开发这评估应用在压力下的承受能力：可以根据配置对一个WEB站点进行多用户的并发访问，记录每个用户所有请求过程的相应时间，并在一定数量的并发访问下重复进行。 SIEGE is an http regressive testing and benchmarking utility. It was designed to let web developers measure the performance of their code under duress, to see how it will stand up to load on the internet. It lets the user hit a webserver with a configurable number of concurrent simulated users. Those users place the webserver “under siege.” The duration of the siege is measured in transactions, the sum of simulated users and the number of times each simulated user repeats the process of hitting the server. Thus 20 concurrent users 50 times is 1000 transactions, the length of the test. 下载/安装 Siege时一个开放源代码项目：http://www.joedog.org 下载： wget ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz 安装： %./configure ; make #make install siege包含了一组压力测试工具： SIEGE (1) Siege是一个HTTP压力测试和评测工具. 使用样例： 任务列表：www.chedong.com.url文件 http://www.chedong.com/tech/ http://www.chedong.com/tech/acdsee.html http://www.chedong.com/tech/ant.html http://www.chedong.com/tech/apache_install.html http://www.chedong.com/tech/awstats.html http://www.chedong.com/tech/cache.html http://www.chedong.com/tech/click.html http://www.chedong.com/tech/cms.html http://www.chedong.com/tech/compress.html http://www.chedong.com/tech/cvs_card.html http://www.chedong.com/tech/default.html http://www.chedong.com/tech/dev.html http://www.chedong.com/tech/gnu.html …. siege -c 20 -r 2 -f www.chedong.com.url 参数说明： -c 20 并发20个用户 -r 2 重复循环2次 -f www.chedong.com.url 任务列表：URL列表 输出样例： ** Siege 2.59 ** Preparing 20 concurrent users for battle. 这次“战斗”准备了20个并发用户 The server is now under siege.. done. 服务在“围攻”测试中： Transactions: 40 hits 完成40次处理 Availability: 100.00 % 成功率 Elapsed time: 7.67 secs 总共用时 Data transferred: 877340 bytes 共数据传输：877340字节 Response time: 1.65 secs 相应用时1.65秒：显示网络连接的速度 Transaction rate: 5.22 trans/sec 平均每秒完成5.22次处理：表示服务器后台处理的速度 Throughput: 114385.92 bytes/sec 平均每秒传送数据：114385.92字节 Concurrency: 8.59 最高并发数 8.59 Successful transactions: 40 成功处理次数 Failed transactions: 0 失败处理次数 注意：由于速度很快，可能会达不到并发速度很高就已经完成。Response time显示的是测试机器和被测试服务器之间网络链接状况。Transaction rate则表示服务器端任务处理的完成速度。 辅助工具： 增量压力测试： 为了方便增量压力测试，siege还包含了一些辅助工具： bombardment (1) 是一个辅助工具：用于按照增量用户压力测试： 使用样例： bombardment urlfile.txt 5 3 4 1 初始化URL列表：urlfile.txt 初始化为：5个用户 每次增加：3个用户 运行：4次 每个客户端之间的延迟为：1秒 输出成CSV格式： siege2csv.pl (1) siege2csv.pl将bombardment的输出变成CSV格式： Time Data Transferred Response Time Transaction Rate Throughput Concurrency Code 200 (note that this is horribly broken.) 242 60.22 603064 0.02 4.02 10014.35 0.08 605 59.98 1507660 0.01 10.09 25136.05 0.12 938 59.98 2337496 0.02 15.64 38971.26 0.26 1157 60 2883244 0.04 19.28 48054.07 0.78 参考： 开源测试工具：http://www.opensourcetesting.org/performance.php 压力测试工具：HammerHead 正在试用中</p>
 </div>
 
 
@@ -166,6 +166,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -179,10 +183,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -202,6 +202,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

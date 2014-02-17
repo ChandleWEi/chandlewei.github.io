@@ -9,9 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content=" 内容区当设定的显示范围,容纳不了显示的内容的时候,就会出现滚动条,可根据自己的需要适当的改进width,height,overflow-x,overflow-y的属性,即可达到iframe的效果airzen整理  
-">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -72,6 +71,82 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">强制_umount_nfs文件系统</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-22T00:00:00+08:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2009</time>
+        
+           | <a href="/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3 id="umount-nfs">强制 umount nfs文件系统</h3>
+
+<p>root@ubuntu:/# umount /app/nfs/<br />
+umount.nfs: /app/nfs: device is busy<br />
+umount.nfs: /app/nfs: device is busy</p>
+
+<p>提示文件系统设置busy<br />
+root@ubuntu:/# fuser -km /app/nfs/   先使用这条命令<br />
+/data/nfs/:                     8119c<br />
+root@ubuntu:/# umount /app/nfs/      在umount 就可以了<br />
+<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#114;&#111;&#111;&#116;&#064;&#117;&#098;&#117;&#110;&#116;&#117;&#058;&#047;">&#114;&#111;&#111;&#116;&#064;&#117;&#098;&#117;&#110;&#116;&#117;&#058;&#047;</a>#</p>
+
+<p> </p>
+
+<p>也可使用 umount -f /app/nfs</p>
+
+<p> </p>
+
+<p>[root@dzxt ~]# fuser<br />
+usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name …<br />
+             [ - ] [ -n space ] [ -signal ] [ -kimuv ] name …<br />
+       fuser -l<br />
+       fuser -V</p>
+
+<p>    -a        display unused files too<br />
+    -k        kill processes accessing that file<br />
+    -i        ask before killing (ignored without -k)<br />
+    -l        list signal names<br />
+    -m        mounted FS<br />
+    -n space search in the specified name space (file, udp, or tcp)<br />
+    -s        silent operation<br />
+    -signal   send signal instead of SIGKILL<br />
+    -u        display user ids<br />
+    -v        verbose output<br />
+    -V        display version information<br />
+    -4        search IPv4 sockets only<br />
+    -6        search IPv6 sockets only<br />
+    -         reset options</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2009/06/06/css%E6%BB%9A%E5%8A%A8%E6%9D%A1/">Css滚动条</a></h1>
     
     
@@ -105,8 +180,8 @@
     
 </div>
 
-
 <p> </p>
+
 </div>
   
   
@@ -145,20 +220,20 @@
   </header>
 
 
-  <div class="entry-content"><p>wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb  ">http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb  </a>
-wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnutls_0.28.2-6.1_i386.deb">http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnutls_0.28.2-6.1_i386.deb</a></p>
+  <div class="entry-content"><p>wget -c http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb<br />
+wget -c http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnutls_0.28.2-6.1_i386.deb</p>
 
 <p>sudo dpkg -i libneon27_0.28.2-6.1_i386.deb</p>
 
 <p>sudo dpkg -i libneon27-gnutls_0.28.2-6.1_i386.deb</p>
 
-<p>sudo dpkg &mdash;get-selections * > selections.txt</p>
+<p>sudo dpkg –get-selections * &gt; selections.txt</p>
 
 <p> </p>
 
 <p>change install to hold</p>
 
-<p>sudo dpkg &mdash;set-selections &lt; selections.txt</p>
+<p>sudo dpkg –set-selections &lt; selections.txt</p>
 
 <p> </p>
 
@@ -201,18 +276,18 @@ wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnut
   </header>
 
 
-  <div class="entry-content"><p>因为是要对大表做数据的水平拆分，将数据拆分到多个数据库上，有几个重要的问题需要思考：<br/>
-1.怎么把在ORACLE中几十亿的数据按规则迁到mysql集群中；<br/>
-2.如何产生主键唯一值；<br/>
-3.大表根据规则拆成小表，具体拆分粒度是多少？每个库多少表？<br/>
-4.如何解决这么多库这么多表的路由问题；<br/>
-5.如何解决跨库的merge与sort；<br/>
-6.如何对连接进行管理；<br/>
-7.如何做数据订正；<br/>
-8.我们需要开发哪些集群管理工具，比如说建表工具；<br/>
-9.集群遇到停电怎么办？<br/>
-10.如何对集群中的数据进行历史迁移？<br/>
-11.尽管集群采用廉价的PC，但具体采用何种PC,差别还是挺大的，如何平衡集群的规模与可管理性方面的问题?<br/>
+  <div class="entry-content"><p>因为是要对大表做数据的水平拆分，将数据拆分到多个数据库上，有几个重要的问题需要思考：<br />
+1.怎么把在ORACLE中几十亿的数据按规则迁到mysql集群中；<br />
+2.如何产生主键唯一值；<br />
+3.大表根据规则拆成小表，具体拆分粒度是多少？每个库多少表？<br />
+4.如何解决这么多库这么多表的路由问题；<br />
+5.如何解决跨库的merge与sort；<br />
+6.如何对连接进行管理；<br />
+7.如何做数据订正；<br />
+8.我们需要开发哪些集群管理工具，比如说建表工具；<br />
+9.集群遇到停电怎么办？<br />
+10.如何对集群中的数据进行历史迁移？<br />
+11.尽管集群采用廉价的PC，但具体采用何种PC,差别还是挺大的，如何平衡集群的规模与可管理性方面的问题?<br />
 12.集群对机房电力的消耗与机柜占用问题?</p>
 </div>
   
@@ -258,11 +333,11 @@ wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnut
 
 <p>David Chelimsky:</p>
 
-<p>Stubs are all about stubbing out an object or a method to act predictively<br/>
-and then verifying the state of your test subject<br/>
+<p>Stubs are all about stubbing out an object or a method to act predictively<br />
+and then verifying the state of your test subject<br />
 after an interaction,</p>
 
-<p>在一次交互作用后 Stubs 是关于 ,(stubbing out)清除? 模拟 一个对象或方法 then 预先工作然后验证你测试对象的状态</p>
+<p>在一次交互作用后 Stubs 是关于 ,(stubbing out)清除? 模拟 一个对象或方法 then 预先工作然后验证你测试对象的状态  </p>
 
 <p>while mocks are meant to verify the actual interactions, i.e. that a certain method is invoked with certain arguments.</p>
 
@@ -270,13 +345,13 @@ after an interaction,</p>
 
 <p>Chelimsky revealed that he was working on a new project called Stubble, which allows for much DRY’er controller testing than is done today,</p>
 
-<p>Chelimsky 透露 他正在为一个新项目&#8221;Stubble&#8221;工作 ，那个允许做更少的重复测试</p>
+<p>Chelimsky 透露 他正在为一个新项目”Stubble”工作 ，那个允许做更少的重复测试</p>
 
 <p>and he also mentioned a new solution for testing chains in the upcoming version of Rspec, which will make tests more expressive.</p>
 
 <p>同时他提到一个新的 测试链 解决方案 在新版本rspec , 他将使测试更具有表现能力</p>
 
-<p>For example:<br/>
+<p>For example:<br />
 User.stub_chain(:find, :friends, :favorite).and_return(friend)</p>
 
 <p> </p>
@@ -285,7 +360,7 @@ User.stub_chain(:find, :friends, :favorite).and_return(friend)</p>
 
 <p>You can’t take a standard Rails application and deploy to App Engine, however, because ActiveRecord, writing files, opening sockets and many other things are not supported</p>
 
-<p>还是不支持阿google 的 engine app</p>
+<p>还是不支持阿google 的 engine app  </p>
 
 <p> </p>
 
@@ -328,20 +403,20 @@ User.stub_chain(:find, :friends, :favorite).and_return(friend)</p>
   </header>
 
 
-  <div class="entry-content"><p>Write integer value to a binary file<br/>
-<code>  
-num = [1234567]  
-File.open("test.file", "wb") { |f|  
-f.write num.pack("I")  
-}  
-</code></p>
+  <div class="entry-content"><p>Write integer value to a binary file<br />
+`<br />
+num = [1234567]<br />
+File.open(“test.file”, “wb”) { |f|<br />
+f.write num.pack(“I”)<br />
+}<br />
+`  </p>
 
-<p>Read integer value from binary file:<br/>
-<code>  
-a = []  
-File.open("test.file", "rb") { |f|  
-a = f.read(4).unpack("I")  
-}</code></p>
+<p>Read integer value from binary file:<br />
+`<br />
+a = []<br />
+File.open(“test.file”, “rb”) { |f|<br />
+a = f.read(4).unpack(“I”)<br />
+}`</p>
 </div>
   
   
@@ -380,133 +455,125 @@ a = f.read(4).unpack("I")
   </header>
 
 
-  <div class="entry-content"><h2><a href="http://feeds.dzone.com/%7Er/dzone/snippets/%7E3/9BentpSuQVw/7331">Ruby Graph + Dijkstra</a></h2>
+  <div class="entry-content"><h2 id="ruby-graph--dijkstrahttpfeedsdzonecom7erdzonesnippets7e39bentpsuqvw7331"><a href="http://feeds.dzone.com/%7Er/dzone/snippets/%7E3/9BentpSuQVw/7331">Ruby Graph + Dijkstra</a></h2>
 
 <p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fsnippets.dzone.com%2Frss">DZone Snippets: Store, sort and share source code, with tag goodness</a> 作者：dennis (Dennis)</p>
 
-<p>Dijkstra implementation in ruby, the names of the nodes need not to be integers, works for non directed or directed graphs<br/>
-`<br/>
-class Graph</p>
+<p>Dijkstra implementation in ruby, the names of the nodes need not to be integers, works for non directed or directed graphs<br />
+`<br />
+class Graph  </p>
 
-<h1>Constructor</h1>
+<h1 id="constructor">Constructor</h1>
 
-<p>def initialize<br/>
-@g = {} # the graph // {node => { edge1 => weight, edge2 => weight}, node2 => &hellip;<br/>
-@nodes = Array.new<br/>
-@INFINITY = 1 &lt;&lt; 64<br/>
-end</p>
+<p>def initialize<br />
+@g = {} # the graph // {node =&gt; { edge1 =&gt; weight, edge2 =&gt; weight}, node2 =&gt; …<br />
+@nodes = Array.new<br />
+@INFINITY = 1 « 64<br />
+end  </p>
 
-<p>def add_edge(s,t,w) # s= source, t= target, w= weight<br/>
-if (not @g.has_key?(s))<br/>
-@g[s] = {t=>w}<br/>
-else<br/>
-@g[s][t] = w<br/>
-end</p>
+<p>def add_edge(s,t,w) # s= source, t= target, w= weight<br />
+if (not @g.has_key?(s))<br />
+@g[s] = {t=&gt;w}<br />
+else<br />
+@g[s][t] = w<br />
+end  </p>
 
-<h1>Begin code for non directed graph (inserts the other edge too)</h1>
+<h1 id="begin-code-for-non-directed-graph-inserts-the-other-edge-too">Begin code for non directed graph (inserts the other edge too)</h1>
 
-<p>if (not @g.has_key?(t))<br/>
-@g[t] = {s=>w}<br/>
-else<br/>
-@g[t][s] = w<br/>
-end</p>
+<p>if (not @g.has_key?(t))<br />
+@g[t] = {s=&gt;w}<br />
+else<br />
+@g[t][s] = w<br />
+end  </p>
 
-<h1>End code for non directed graph (ie. deleteme if you want it directed)</h1>
+<h1 id="end-code-for-non-directed-graph-ie-deleteme-if-you-want-it-directed">End code for non directed graph (ie. deleteme if you want it directed)</h1>
 
-<p>if (not @nodes.include?(s))<br/>
-@nodes &lt;&lt; s<br/>
-end<br/>
-if (not @nodes.include?(t))<br/>
-@nodes &lt;&lt; t<br/>
-end<br/>
-end</p>
+<p>if (not @nodes.include?(s))<br />
+@nodes « s<br />
+end<br />
+if (not @nodes.include?(t))<br />
+@nodes « t<br />
+end<br />
+end  </p>
 
-<h1>based of wikipedia&rsquo;s pseudocode: <a href="http://en.wikipedia.org/wiki/Dijkstra">http://en.wikipedia.org/wiki/Dijkstra</a>&rsquo;s_algorithm</h1>
+<h1 id="based-of-wikipedias-pseudocode-httpenwikipediaorgwikidijkstrasalgorithm">based of wikipedia’s pseudocode: http://en.wikipedia.org/wiki/Dijkstra’s_algorithm</h1>
 
-<p>def dijkstra(s)<br/>
-@d = {}<br/>
-@prev = {}</p>
+<p>def dijkstra(s)<br />
+@d = {}<br />
+@prev = {}  </p>
 
-<p>@nodes.each do |i|<br/>
-@d[i] = @INFINITY<br/>
-@prev[i] = -1<br/>
-end</p>
+<p>@nodes.each do |i|<br />
+@d[i] = @INFINITY<br />
+@prev[i] = -1<br />
+end  </p>
 
-<p>@d[s] = 0<br/>
-q = @nodes.compact<br/>
-while (q.size > 0)<br/>
-u = nil;<br/>
-q.each do |min|<br/>
-if (not u) or (@d[min] and @d[min] &lt; @d[u])<br/>
-u = min<br/>
-end<br/>
-end<br/>
-if (@d[u] == @INFINITY)<br/>
-break<br/>
-end<br/>
-q = q &ndash; [u]<br/>
-@g[u].keys.each do |v|<br/>
-alt = @d[u] + @g[u][v]<br/>
-if (alt &lt; @d[v])<br/>
-@d[v] = alt<br/>
-@prev[v] = u<br/>
-end<br/>
-end<br/>
-end<br/>
-end</p>
+<p>@d[s] = 0<br />
+q = @nodes.compact<br />
+while (q.size &gt; 0)<br />
+u = nil;<br />
+q.each do |min|<br />
+if (not u) or (@d[min] and @d[min] &lt; @d[u])<br />
+u = min<br />
+end<br />
+end<br />
+if (@d[u] == @INFINITY)<br />
+break<br />
+end<br />
+q = q - [u]<br />
+@g[u].keys.each do |v|<br />
+alt = @d[u] + @g[u][v]<br />
+if (alt &lt; @d[v])<br />
+@d[v] = alt<br />
+@prev[v] = u<br />
+end<br />
+end<br />
+end<br />
+end  </p>
 
-<h1>To print the full shortest route to a node</h1>
+<h1 id="to-print-the-full-shortest-route-to-a-node">To print the full shortest route to a node</h1>
 
-<p>def print_path(dest)<br/>
-if @prev[dest] != -1<br/>
-print_path @prev[dest]<br/>
-end<br/>
-print &ldquo;>#{dest}&#8221;<br/>
-end</p>
+<p>def print_path(dest)<br />
+if @prev[dest] != -1<br />
+print_path @prev[dest]<br />
+end<br />
+print “&gt;#{dest}”<br />
+end  </p>
 
-<h1>Gets all shortests paths using dijkstra</h1>
+<h1 id="gets-all-shortests-paths-using-dijkstra">Gets all shortests paths using dijkstra</h1>
 
-<p>def shortest_paths(s)<br/>
-@source = s<br/>
-dijkstra s<br/>
-puts &ldquo;Source: #{@source}&#8221;<br/>
-@nodes.each do |dest|<br/>
-puts &rdquo;</p>
+<p>def shortest_paths(s)<br />
+@source = s<br />
+dijkstra s<br />
+puts “Source: #{@source}”<br />
+@nodes.each do |dest|<br />
+puts “
+    Target: #{dest}”<br />
+print_path dest<br />
+if @d[dest] != @INFINITY<br />
+puts “
+    Distance: #{@d[dest]}”<br />
+else<br />
+puts “
+    NO PATH”<br />
+end<br />
+end<br />
+end<br />
+end  </p>
 
-<pre><code>Target: #{dest}"  
-</code></pre>
+<p>if <strong>FILE</strong> == $0<br />
+gr = Graph.new<br />
+gr.add_edge(“a”,”b”,5)<br />
+gr.add_edge(“b”,”c”,3)<br />
+gr.add_edge(“c”,”d”,1)<br />
+gr.add_edge(“a”,”d”,10)<br />
+gr.add_edge(“b”,”d”,2)<br />
+gr.add_edge(“f”,”g”,1)<br />
+gr.shortest_paths(“a”)<br />
+end<br />
+`  </p>
 
-<p>print_path dest<br/>
-if @d[dest] != @INFINITY<br/>
-puts &#8221;</p>
+<p>I hope it’s useful for somebody <img src="http://feeds2.feedburner.com/%7Er/dzone/snippets/%7E4/9BentpSuQVw" alt="" /></p>
 
-<pre><code>Distance: #{@d[dest]}"  
-</code></pre>
-
-<p>else<br/>
-puts &#8221;</p>
-
-<pre><code>NO PATH"  
-</code></pre>
-
-<p>end<br/>
-end<br/>
-end<br/>
-end</p>
-
-<p>if <strong>FILE</strong> == $0<br/>
-gr = Graph.new<br/>
-gr.add_edge(&ldquo;a&rdquo;,&ldquo;b&rdquo;,5)<br/>
-gr.add_edge(&ldquo;b&rdquo;,&ldquo;c&rdquo;,3)<br/>
-gr.add_edge(&ldquo;c&rdquo;,&ldquo;d&rdquo;,1)<br/>
-gr.add_edge(&ldquo;a&rdquo;,&ldquo;d&rdquo;,10)<br/>
-gr.add_edge(&ldquo;b&rdquo;,&ldquo;d&rdquo;,2)<br/>
-gr.add_edge(&ldquo;f&rdquo;,&ldquo;g&rdquo;,1)<br/>
-gr.shortest_paths(&ldquo;a&rdquo;)<br/>
-end<br/>
-`</p>
-
-<p>I hope it&rsquo;s useful for somebody <img src="http://feeds2.feedburner.com/%7Er/dzone/snippets/%7E4/9BentpSuQVw" alt="" /></p>
 </div>
   
   
@@ -546,18 +613,44 @@ end<br/>
 
 
   <div class="entry-content"><ol>
-<li>$HTTP[&ldquo;host&rdquo;] =~ &#8221;^([a-zA-Z0-9-.]+).java.com$&ldquo; {  </li>
-<li>  server.document-root = &#8221;/Users/robbin/projects/javaeye3/public&#8221;  </li>
-<li>  server.errorfile-prefix = &#8221;/Users/robbin/projects/javaeye3/public/error-&ldquo;  </li>
-<li>  $HTTP[&ldquo;url&rdquo;] !~ &#8221;(.(js|css|gif|jpg|jpeg|bmp|png|ico|txt|swf|mp3|html|xml|htm|)$)|/javascripts/|/stylesheets/|/images/|/upload/&ldquo; {  </li>
-<li>    server.error-handler-404 = &#8221;/dispatch.fcgi&#8221;  </li>
-<li>    fastcgi.server = (&ldquo;.fcgi&#8221; =>  </li>
-<li>      (  </li>
-<li>        ( &#8221;allow-x-send-file&#8221; => &#8221;enable&#8221;,  &#8221;socket&#8221;=>&ldquo;/Users/robbin/projects/lighttpd/javaeye.socket-0&rdquo;)  </li>
-<li>      )  </li>
-<li>    )  </li>
-<li>  }  </li>
-<li>} </li>
+  <li>$HTTP[“host”] =~ ”^([a-zA-Z0-9-.]+).java.com$” {  </li>
+  <li>  server.document-root = ”/Users/robbin/projects/javaeye3/public”  </li>
+  <li>  server.errorfile-prefix = ”/Users/robbin/projects/javaeye3/public/error-“  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>  $HTTP[“url”] !~ ”(.(js</td>
+          <td>css</td>
+          <td>gif</td>
+          <td>jpg</td>
+          <td>jpeg</td>
+          <td>bmp</td>
+          <td>png</td>
+          <td>ico</td>
+          <td>txt</td>
+          <td>swf</td>
+          <td>mp3</td>
+          <td>html</td>
+          <td>xml</td>
+          <td>htm</td>
+          <td>)$)</td>
+          <td>/javascripts/</td>
+          <td>/stylesheets/</td>
+          <td>/images/</td>
+          <td>/upload/” {  </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>    server.error-handler-404 = ”/dispatch.fcgi”  </li>
+  <li>    fastcgi.server = (“.fcgi” =&gt;  </li>
+  <li>      (  </li>
+  <li>        ( ”allow-x-send-file” =&gt; ”enable”,  ”socket”=&gt;”/Users/robbin/projects/lighttpd/javaeye.socket-0”)  </li>
+  <li>      )  </li>
+  <li>    )  </li>
+  <li>  }  </li>
+  <li>}   </li>
 </ol>
 
 </div>
@@ -598,102 +691,102 @@ end<br/>
   </header>
 
 
-  <div class="entry-content"><h2><a href="http://www.hiadmin.com/top-%e5%91%bd%e4%bb%a4%e8%a7%a3%e9%87%8a/">top 命令解释</a></h2>
+  <div class="entry-content"><h2 id="top-httpwwwhiadmincomtop-e591bde4bba4e8a7a3e9878a"><a href="http://www.hiadmin.com/top-%e5%91%bd%e4%bb%a4%e8%a7%a3%e9%87%8a/">top 命令解释</a></h2>
 
 <p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fwww.hiadmin.com%2F%3Ffeed%3Drss2">架构研究室</a> 作者：ready</p>
 
 <p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器。下面详细介绍它的使用方法。</p>
 
-<p>top &ndash; 01:06:48 up 1:22, 1 user, load average: 0.06, 0.60, 0.48<br/>
-Tasks: 29 total, 1 running, 28 sleeping, 0 stopped, 0 zombie<br/>
-Cpu(s): 0.3% us, 1.0% sy, 0.0% ni, 98.7% id, 0.0% wa, 0.0% hi, 0.0% si<br/>
-Mem: 191272k total, 173656k used, 17616k free, 22052k buffers<br/>
+<p>top - 01:06:48 up 1:22, 1 user, load average: 0.06, 0.60, 0.48<br />
+Tasks: 29 total, 1 running, 28 sleeping, 0 stopped, 0 zombie<br />
+Cpu(s): 0.3% us, 1.0% sy, 0.0% ni, 98.7% id, 0.0% wa, 0.0% hi, 0.0% si<br />
+Mem: 191272k total, 173656k used, 17616k free, 22052k buffers<br />
 Swap: 192772k total, 0k used, 192772k free, 123988k cached</p>
 
-<p>PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND<br/>
-1379 root 16 0 7976 2456 1980 S 0.7 1.3 0:11.03 sshd<br/>
-14704 root 16 0 2128 980 796 R 0.7 0.5 0:02.72 top<br/>
-1 root 16 0 1992 632 544 S 0.0 0.3 0:00.90 init<br/>
-2 root 34 19 0 0 0 S 0.0 0.0 0:00.00 ksoftirqd/0<br/>
+<p>PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND<br />
+1379 root 16 0 7976 2456 1980 S 0.7 1.3 0:11.03 sshd<br />
+14704 root 16 0 2128 980 796 R 0.7 0.5 0:02.72 top<br />
+1 root 16 0 1992 632 544 S 0.0 0.3 0:00.90 init<br />
+2 root 34 19 0 0 0 S 0.0 0.0 0:00.00 ksoftirqd/0<br />
 3 root RT 0 0 0 0 S 0.0 0.0 0:00.00 watchdog/0</p>
 
-<p>统计信息区<br/>
+<p>统计信息区<br />
 前五行是系统整体的统计信息。第一行是任务队列信息，同 uptime 命令的执行结果。其内容如下：</p>
 
-<p>01:06:48 当前时间<br/>
-up 1:22 系统运行时间，格式为时:分<br/>
-1 user 当前登录用户数<br/>
-load average: 0.06, 0.60, 0.48 系统负载，即任务队列的平均长度。<br/>
+<p>01:06:48 当前时间<br />
+up 1:22 系统运行时间，格式为时:分<br />
+1 user 当前登录用户数<br />
+load average: 0.06, 0.60, 0.48 系统负载，即任务队列的平均长度。<br />
 三个数值分别为 1分钟、5分钟、15分钟前到现在的平均值。</p>
 
 <p>第二、三行为进程和CPU的信息。当有多个CPU时，这些内容可能会超过两行。内容如下：</p>
 
-<p>Tasks: 29 total 进程总数<br/>
-1 running 正在运行的进程数<br/>
-28 sleeping 睡眠的进程数<br/>
-0 stopped 停止的进程数<br/>
-0 zombie 僵尸进程数<br/>
-Cpu(s): 0.3% us 用户空间占用CPU百分比<br/>
-1.0% sy 内核空间占用CPU百分比<br/>
-0.0% ni 用户进程空间内改变过优先级的进程占用CPU百分比<br/>
-98.7% id 空闲CPU百分比<br/>
-0.0% wa 等待输入输出的CPU时间百分比<br/>
-0.0% hi<br/>
+<p>Tasks: 29 total 进程总数<br />
+1 running 正在运行的进程数<br />
+28 sleeping 睡眠的进程数<br />
+0 stopped 停止的进程数<br />
+0 zombie 僵尸进程数<br />
+Cpu(s): 0.3% us 用户空间占用CPU百分比<br />
+1.0% sy 内核空间占用CPU百分比<br />
+0.0% ni 用户进程空间内改变过优先级的进程占用CPU百分比<br />
+98.7% id 空闲CPU百分比<br />
+0.0% wa 等待输入输出的CPU时间百分比<br />
+0.0% hi<br />
 0.0% si</p>
 
 <p>最后两行为内存信息。内容如下：</p>
 
-<p>Mem: 191272k total 物理内存总量<br/>
-173656k used 使用的物理内存总量<br/>
-17616k free 空闲内存总量<br/>
-22052k buffers 用作内核缓存的内存量<br/>
-Swap: 192772k total 交换区总量<br/>
-0k used 使用的交换区总量<br/>
-192772k free 空闲交换区总量<br/>
-123988k cached 缓冲的交换区总量。<br/>
-内存中的内容被换出到交换区，而后又被换入到内存，但使用过的交换区尚未被覆盖，<br/>
-该数值即为这些内容已存在于内存中的交换区的大小。<br/>
+<p>Mem: 191272k total 物理内存总量<br />
+173656k used 使用的物理内存总量<br />
+17616k free 空闲内存总量<br />
+22052k buffers 用作内核缓存的内存量<br />
+Swap: 192772k total 交换区总量<br />
+0k used 使用的交换区总量<br />
+192772k free 空闲交换区总量<br />
+123988k cached 缓冲的交换区总量。<br />
+内存中的内容被换出到交换区，而后又被换入到内存，但使用过的交换区尚未被覆盖，<br />
+该数值即为这些内容已存在于内存中的交换区的大小。<br />
 相应的内存再次被换出时可不必再对交换区写入。</p>
 
-<p>进程信息区<br/>
+<p>进程信息区<br />
 统计信息区域的下方显示了各个进程的详细信息。首先来认识一下各列的含义。</p>
 
-<p>序号 列名 含义<br/>
-a PID 进程id<br/>
-b PPID 父进程id<br/>
-c RUSER Real user name<br/>
-d UID 进程所有者的用户id<br/>
-e USER 进程所有者的用户名<br/>
-f GROUP 进程所有者的组名<br/>
-g TTY 启动进程的终端名。不是从终端启动的进程则显示为 ?<br/>
-h PR 优先级<br/>
-i NI nice值。负值表示高优先级，正值表示低优先级<br/>
-j P 最后使用的CPU，仅在多CPU环境下有意义<br/>
-k %CPU 上次更新到现在的CPU时间占用百分比<br/>
-l TIME 进程使用的CPU时间总计，单位秒<br/>
-m TIME+ 进程使用的CPU时间总计，单位1/100秒<br/>
-n %MEM 进程使用的物理内存百分比<br/>
-o VIRT 进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES<br/>
-p SWAP 进程使用的虚拟内存中，被换出的大小，单位kb。<br/>
-q RES 进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA<br/>
-r CODE 可执行代码占用的物理内存大小，单位kb<br/>
-s DATA 可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb<br/>
-t SHR 共享内存大小，单位kb<br/>
-u nFLT 页面错误次数<br/>
-v nDRT 最后一次写入到现在，被修改过的页面数。<br/>
-w S 进程状态。<br/>
-D=不可中断的睡眠状态<br/>
-R=运行<br/>
-S=睡眠<br/>
-T=跟踪/停止<br/>
-Z=僵尸进程<br/>
-x COMMAND 命令名/命令行<br/>
-y WCHAN 若该进程在睡眠，则显示睡眠中的系统函数名<br/>
+<p>序号 列名 含义<br />
+a PID 进程id<br />
+b PPID 父进程id<br />
+c RUSER Real user name<br />
+d UID 进程所有者的用户id<br />
+e USER 进程所有者的用户名<br />
+f GROUP 进程所有者的组名<br />
+g TTY 启动进程的终端名。不是从终端启动的进程则显示为 ?<br />
+h PR 优先级<br />
+i NI nice值。负值表示高优先级，正值表示低优先级<br />
+j P 最后使用的CPU，仅在多CPU环境下有意义<br />
+k %CPU 上次更新到现在的CPU时间占用百分比<br />
+l TIME 进程使用的CPU时间总计，单位秒<br />
+m TIME+ 进程使用的CPU时间总计，单位1/100秒<br />
+n %MEM 进程使用的物理内存百分比<br />
+o VIRT 进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES<br />
+p SWAP 进程使用的虚拟内存中，被换出的大小，单位kb。<br />
+q RES 进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA<br />
+r CODE 可执行代码占用的物理内存大小，单位kb<br />
+s DATA 可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb<br />
+t SHR 共享内存大小，单位kb<br />
+u nFLT 页面错误次数<br />
+v nDRT 最后一次写入到现在，被修改过的页面数。<br />
+w S 进程状态。<br />
+D=不可中断的睡眠状态<br />
+R=运行<br />
+S=睡眠<br />
+T=跟踪/停止<br />
+Z=僵尸进程<br />
+x COMMAND 命令名/命令行<br />
+y WCHAN 若该进程在睡眠，则显示睡眠中的系统函数名<br />
 z Flags 任务标志，参考 sched.h</p>
 
 <p>默认情况下仅显示比较重要的 PID、USER、PR、NI、VIRT、RES、SHR、S、%CPU、%MEM、TIME+、COMMAND 列。可以通过下面的快捷键来更改显示内容。</p>
 
-<p>更改显示内容<br/>
+<p>更改显示内容<br />
 通过 f 键可以选择显示的内容。按 f 键之后会显示列的列表，按 a-z 即可显示或隐藏对应的列，最后按回车键确定。</p>
 
 <p>按 o 键可以改变列的显示顺序。按小写的 a-z 可以将相应的列向右移动，而大写的 A-Z 可以将相应的列向左移动。最后按回车键确定。</p>
@@ -702,43 +795,44 @@ z Flags 任务标志，参考 sched.h</p>
 
 <p>命令使用</p>
 
-<p>1． 工具（命令）名称<br/>
-top<br/>
-2．工具（命令）作用<br/>
-显示系统当前的进程和其他状况； top是一个动态显示过程,即可以通过用户按键来不断刷新当前状态.如果在前台执行该命令,它将独占前台,直到用户终止该程序为止. 比较准确的说,top命令提供了实时的对系统处理器的状态监视.它将显示系统中CPU最“敏感”的任务列表.该命令可以按CPU使用.内存使用和执行时间 对任务进行排序；而且该命令的很多特性都可以通过交互式命令或者在个人定制文件中进行设定.<br/>
-3．环境设置<br/>
-在Linux下使用。<br/>
-4．使用方法<br/>
-4．1使用格式<br/>
-top [&ndash;] [d] [p] [q] [c] [C] [S] [s] [n]<br/>
-4．2参数说明<br/>
-d 指定每两次屏幕信息刷新之间的时间间隔。当然用户可以使用s交互命令来改变之。<br/>
-p 通过指定监控进程ID来仅仅监控某个进程的状态。<br/>
-q该选项将使top没有任何延迟的进行刷新。如果调用程序有超级用户权限，那么top将以尽可能高的优先级运行。<br/>
-S 指定累计模式<br/>
-s 使top命令在安全模式中运行。这将去除交互命令所带来的潜在危险。<br/>
-i 使top不显示任何闲置或者僵死进程。<br/>
-c 显示整个命令行而不只是显示命令名<br/>
-4.3其他<br/>
-　　下面介绍在top命令执行过程中可以使用的一些交互命令。从使用角度来看，熟练的掌握这些命令比掌握选项还重要一些。这些命令都是单字母的，如果在命令行选项中使用了s选项，则可能其中一些命令会被屏蔽掉。<br/>
-　　Ctrl+L 擦除并且重写屏幕。<br/>
-　　h或者? 显示帮助画面，给出一些简短的命令总结说明。<br/>
-　　k 终止一个进程。系统将提示用户输入需要终止的进程PID，以及需要发送给该进程什么样的信号。一般的终止进程可以使用15信号；如果不能正常结束那就使用信号9强制结束该进程。默认值是信号15。在安全模式中此命令被屏蔽。<br/>
-　　i 忽略闲置和僵死进程。这是一个开关式命令。<br/>
-　　q 退出程序。<br/>
-　　r 重新安排一个进程的优先级别。系统提示用户输入需要改变的进程PID以及需要设置的进程优先级值。输入一个正值将使优先级降低，反之则可以使该进程拥有更高的优先权。默认值是10。<br/>
-　　S 切换到累计模式。<br/>
-　　s 改变两次刷新之间的延迟时间。系统将提示用户输入新的时间，单位为s。如果有小数，就换算成m s。输入0值则系统将不断刷新，默认值是5 s。需要注意的是如果设置太小的时间，很可能会引起不断刷新，从而根本来不及看清显示的情况，而且系统负载也会大大增加。<br/>
-　　f或者F 从当前显示中添加或者删除项目。<br/>
-　　o或者O 改变显示项目的顺序。<br/>
-　　l 切换显示平均负载和启动时间信息。<br/>
-　　m 切换显示内存信息。<br/>
-　　t 切换显示进程和CPU状态信息。<br/>
-　　c 切换显示命令名称和完整命令行。<br/>
-　　M 根据驻留内存大小进行排序。<br/>
-　　P 根据CPU使用百分比大小进行排序。<br/>
-　　T 根据时间/累计时间进行排序。<br/>
+<p>1． 工具（命令）名称<br />
+top<br />
+2．工具（命令）作用<br />
+显示系统当前的进程和其他状况； top是一个动态显示过程,即可以通过用户按键来不断刷新当前状态.如果在前台执行该命令,它将独占前台,直到用户终止该程序为止. 比较准确的说,top命令提供了实时的对系统处理器的状态监视.它将显示系统中CPU最“敏感”的任务列表.该命令可以按CPU使用.内存使用和执行时间 对任务进行排序；而且该命令的很多特性都可以通过交互式命令或者在个人定制文件中进行设定.<br />
+3．环境设置<br />
+在Linux下使用。<br />
+4．使用方法<br />
+4．1使用格式<br />
+top [-] [d] [p] [q] [c] [C] [S] [s] [n]<br />
+4．2参数说明<br />
+d 指定每两次屏幕信息刷新之间的时间间隔。当然用户可以使用s交互命令来改变之。<br />
+p 通过指定监控进程ID来仅仅监控某个进程的状态。<br />
+q该选项将使top没有任何延迟的进行刷新。如果调用程序有超级用户权限，那么top将以尽可能高的优先级运行。<br />
+S 指定累计模式<br />
+s 使top命令在安全模式中运行。这将去除交互命令所带来的潜在危险。<br />
+i 使top不显示任何闲置或者僵死进程。<br />
+c 显示整个命令行而不只是显示命令名<br />
+4.3其他<br />
+　　下面介绍在top命令执行过程中可以使用的一些交互命令。从使用角度来看，熟练的掌握这些命令比掌握选项还重要一些。这些命令都是单字母的，如果在命令行选项中使用了s选项，则可能其中一些命令会被屏蔽掉。<br />
+　　Ctrl+L 擦除并且重写屏幕。<br />
+　　h或者? 显示帮助画面，给出一些简短的命令总结说明。<br />
+　　k 终止一个进程。系统将提示用户输入需要终止的进程PID，以及需要发送给该进程什么样的信号。一般的终止进程可以使用15信号；如果不能正常结束那就使用信号9强制结束该进程。默认值是信号15。在安全模式中此命令被屏蔽。<br />
+　　i 忽略闲置和僵死进程。这是一个开关式命令。<br />
+　　q 退出程序。<br />
+　　r 重新安排一个进程的优先级别。系统提示用户输入需要改变的进程PID以及需要设置的进程优先级值。输入一个正值将使优先级降低，反之则可以使该进程拥有更高的优先权。默认值是10。<br />
+　　S 切换到累计模式。<br />
+　　s 改变两次刷新之间的延迟时间。系统将提示用户输入新的时间，单位为s。如果有小数，就换算成m s。输入0值则系统将不断刷新，默认值是5 s。需要注意的是如果设置太小的时间，很可能会引起不断刷新，从而根本来不及看清显示的情况，而且系统负载也会大大增加。<br />
+　　f或者F 从当前显示中添加或者删除项目。<br />
+　　o或者O 改变显示项目的顺序。<br />
+　　l 切换显示平均负载和启动时间信息。<br />
+　　m 切换显示内存信息。<br />
+　　t 切换显示进程和CPU状态信息。<br />
+　　c 切换显示命令名称和完整命令行。<br />
+　　M 根据驻留内存大小进行排序。<br />
+　　P 根据CPU使用百分比大小进行排序。<br />
+　　T 根据时间/累计时间进行排序。<br />
 W 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方法。</p>
+
 </div>
   
   
@@ -777,105 +871,18 @@ W 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方�
   </header>
 
 
-  <div class="entry-content"><p>find . -name &ldquo;*.[ch]&rdquo; -exec grep -i -H &ldquo;search pharse&rdquo; {} ;</p>
+  <div class="entry-content"><p>find . -name “*.[ch]” -exec grep -i -H “search pharse” {} ;</p>
 
 <p> </p>
 
-<p>lsof -i | grep -i estab</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">zz_Memcache分布式部署方案</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-05-04T00:00:00+08:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2><a href="http://www.ccvita.com/395.html" title="Memcache分布式部署方案">Memcache分布式部署方案</a></h2>
-
-<p><strong>前言</strong><br/>
-应该是很久之前，我开始研究 <a href="http://www.danga.com/memcached/">Memcache</a>，写了一系列的学习心得，比如《 <a href="http://www.ccvita.com/261.html">Discuz!的Memcache缓存实现</a>》等。后面的好几十条回复也让这篇文章成为了此博客中颇受关注的一员。</p>
-
-<p>同时在百度和Google，关键词Memcache在长达一年多的时间里占据着第二位（第一位是官方），为很多需要了解或者应用Memcache的朋友提供了一些信息，但是我始终觉着还不够，于是本文诞生。</p>
-
-<p>唠唠叨叨说了半天，如果你觉着前面啰嗦，请直接看最后一大段，那是本文的重点。</p>
-
-<p><strong>基础环境</strong><br/>
-其实基于PHP扩展的Memcache客户端实际上早已经实现，而且非常稳定。先解释一些名词，Memcache是danga.com的一个开源项目，可以类比于MySQL这样的服务，而PHP扩展的Memcache实际上是连接Memcache的方式。</p>
-
-<p>首先，进行Memcache被安装具体可查看：<br/>
-  <a href="http://www.ccvita.com/257.html">Linux下的Memcache安装</a>：<a href="http://www.ccvita.com/257.html  ">http://www.ccvita.com/257.html  </a>
-  <a href="http://www.ccvita.com/258.html">Windows下的Memcache安装</a>：<a href="http://www.ccvita.com/258.html%EF%BC%9B  ">http://www.ccvita.com/258.html%EF%BC%9B  </a>
-其次，进行PHP扩展的安装，官方地址是<a href="http://pecl.php.net/package/memcache  ">http://pecl.php.net/package/memcache  </a>
-最后，启动Memcache服务，比如这样</p>
-
-<p>/usr/local/bin/memcached -d -p 11213 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
-/usr/local/bin/memcached -d -p 11214 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
-/usr/local/bin/memcached -d -p 11215 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid</p>
-
-<p>启动三个只使用10M内存以方便测试。</p>
-
-<p> </p>
-
-<p><strong>分布式部署</strong><br/>
-PHP的PECL扩展中的memcache实际上在2.0.0的版本中就已经实现多服务器支持，现在都已经2.2.5了。请看如下代码</p>
-
-<p>$memcache = new Memcache;<br/>
-$memcache->addServer(&lsquo;localhost&rsquo;, 11213);<br/>
-$memcache->addServer(&lsquo;localhost&rsquo;, 11214);<br/>
-$memcache->addServer(&lsquo;localhost&rsquo;, 11215);<br/>
-$memStats = $memcache->getExtendedStats();<br/>
-print_r($memStats);</p>
-
-<p>通过上例就已经实现Memcache的分布式部署，是不是非常简单。</p>
-
-<p><strong>分布式系统的良性运行</strong><br/>
-在Memcache的实际使用中，遇到的最严重的问题，就是在增减服务器的时候，会导致大范围的缓存丢失，从而可能会引导数据库的性能瓶颈，为了避免出现这种情况，请先看 <a href="http://en.wikipedia.org/wiki/Consistent_hashing">Consistent hashing</a>算法，中文的介绍可以参考 <a href="http://tech.idv2.com/2008/07/24/memcached-004/#content_2_6">这里</a>，通过存取时选定服务器算法的改变，来实现。</p>
-
-<p>修改PHP的Memcache扩展memcache.c的源代码中的</p>
-
-<p>&ldquo;memcache.hash_strategy&rdquo; = standard</p>
-
-<p>为</p>
-
-<p>&ldquo;memcache.hash_strategy&rdquo; = consistent</p>
-
-<p>重新编译，这时候就是使用Consistent hashing算法来寻找服务器存取数据了。</p>
-
-<p>有效测试数据表明，使用Consistent hashing可以极大的改善增删Memcache时缓存大范围丢失的情况。<br/>
-NonConsistentHash: 92% of lookups changed after adding a target to the existing 10<br/>
-NonConsistentHash: 90% of lookups changed after removing 1 of 10 targets<br/>
-ConsistentHash: 6% of lookups changed after adding a target to the existing 10<br/>
-ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
+<table>
+  <tbody>
+    <tr>
+      <td>lsof -i</td>
+      <td>grep -i estab</td>
+    </tr>
+  </tbody>
+</table>
 </div>
   
   
@@ -900,6 +907,10 @@ ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -915,10 +926,6 @@ ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -929,12 +936,29 @@ ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

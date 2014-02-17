@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="从 DebianTimes Article submitted by Noel David Torres Taño. Guess what? We still need you to submit good articles about software you like! One of the &hellip;">
+  <meta name="description" content="## 从 DebianTimes Article submitted by Noel David Torres Taño. Guess what? We still need you to submit good articles about software you like! One of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,7 +94,7 @@
   </header>
 
 
-<div class="entry-content"><h2></h2>
+<div class="entry-content"><p>##  </p>
 
 <p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Ftimes.debian.net%2F%3Fformat%3Drss20.xml">DebianTimes</a></p>
 
@@ -110,56 +110,54 @@
 
 <p><code>smartctl</code> can ask the disk for its smart identification:</p>
 
-<h1>smartctl -i /dev/sda</h1>
+<h1 id="smartctl--i-devsda">smartctl -i /dev/sda</h1>
+<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright (C) 2002-8 Bruce Allen<br />
+Home page is http://smartmontools.sourceforge.net/  </p>
 
-<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
-Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
-
-<p>=== START OF INFORMATION SECTION ===<br/>
-Model Family: Fujitsu MHV series<br/>
-Device Model: FUJITSU MHV2060BH<br/>
-Serial Number: NW10T652991F<br/>
-Firmware Version: 00850028<br/>
-User Capacity: 60,011,642,880 bytes<br/>
-Device is: In smartctl database [for details use: -P show]<br/>
-ATA Version is: 7<br/>
-ATA Standard is: ATA/ATAPI-7 T13 1532D revision 4a<br/>
-Local Time is: Mon May 12 02:39:31 2008 CEST<br/>
-SMART support is: Available &ndash; device has SMART capability.<br/>
+<p>=== START OF INFORMATION SECTION ===<br />
+Model Family: Fujitsu MHV series<br />
+Device Model: FUJITSU MHV2060BH<br />
+Serial Number: NW10T652991F<br />
+Firmware Version: 00850028<br />
+User Capacity: 60,011,642,880 bytes<br />
+Device is: In smartctl database [for details use: -P show]<br />
+ATA Version is: 7<br />
+ATA Standard is: ATA/ATAPI-7 T13 1532D revision 4a<br />
+Local Time is: Mon May 12 02:39:31 2008 CEST<br />
+SMART support is: Available - device has SMART capability.<br />
 SMART support is: Enabled</p>
 
 <p>More interesting, <code>smartctl</code> can ask the disk for its parameter values:</p>
 
-<h1>smartctl -A /dev/sda</h1>
+<h1 id="smartctl--a-devsda">smartctl -A /dev/sda</h1>
+<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright (C) 2002-8 Bruce Allen<br />
+Home page is http://smartmontools.sourceforge.net/  </p>
 
-<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
-Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
-
-<p>=== START OF READ SMART DATA SECTION ===<br/>
-SMART Attributes Data Structure revision number: 16<br/>
-Vendor Specific SMART Attributes with Thresholds:<br/>
-ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE<br/>
-1 Raw_Read_Error_Rate 0x000f 100 100 046 Pre-fail Always &ndash; 124253<br/>
-2 Throughput_Performance 0x0004 100 100 000 Old_age Offline &ndash; 18284544<br/>
-3 Spin_Up_Time 0x0003 100 100 025 Pre-fail Always &ndash; 0<br/>
-4 Start_Stop_Count 0x0032 099 099 000 Old_age Always &ndash; 1199<br/>
-5 Reallocated_Sector_Ct 0x0033 100 100 024 Pre-fail Always &ndash; 8589934592000<br/>
-7 Seek_Error_Rate 0x000e 100 087 000 Old_age Always &ndash; 1761<br/>
-8 Seek_Time_Performance 0x0004 100 100 000 Old_age Offline &ndash; 0<br/>
-9 Power_On_Seconds 0x0032 079 079 000 Old_age Always &ndash; 10866h+57m+47s<br/>
-10 Spin_Retry_Count 0x0012 100 100 000 Old_age Always &ndash; 0<br/>
-12 Power_Cycle_Count 0x0032 100 100 000 Old_age Always &ndash; 1199<br/>
-192 Power-Off_Retract_Count 0x0032 099 099 000 Old_age Always &ndash; 283<br/>
-193 Load_Cycle_Count 0x0032 100 100 000 Old_age Always &ndash; 6953<br/>
-194 Temperature_Celsius 0x0022 100 100 000 Old_age Always &ndash; 45 (Lifetime Min/Max 14/58)<br/>
-195 Hardware_ECC_Recovered 0x001a 100 100 000 Old_age Always &ndash; 62<br/>
-196 Reallocated_Event_Count 0x0032 100 100 000 Old_age Always &ndash; 459276288<br/>
-197 Current_Pending_Sector 0x0012 100 100 000 Old_age Always &ndash; 0<br/>
-198 Offline_Uncorrectable 0x0010 100 100 000 Old_age Offline &ndash; 0<br/>
-199 UDMA_CRC_Error_Count 0x003e 200 200 000 Old_age Always &ndash; 0<br/>
-200 Multi_Zone_Error_Rate 0x000e 100 082 000 Old_age Always &ndash; 22371<br/>
-203 Run_Out_Cancel 0x0002 100 100 000 Old_age Always &ndash; 1533257648465<br/>
-240 Head_Flying_Hours 0x003e 200 200 000 Old_age Always &ndash; 0</p>
+<p>=== START OF READ SMART DATA SECTION ===<br />
+SMART Attributes Data Structure revision number: 16<br />
+Vendor Specific SMART Attributes with Thresholds:<br />
+ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE<br />
+1 Raw_Read_Error_Rate 0x000f 100 100 046 Pre-fail Always - 124253<br />
+2 Throughput_Performance 0x0004 100 100 000 Old_age Offline - 18284544<br />
+3 Spin_Up_Time 0x0003 100 100 025 Pre-fail Always - 0<br />
+4 Start_Stop_Count 0x0032 099 099 000 Old_age Always - 1199<br />
+5 Reallocated_Sector_Ct 0x0033 100 100 024 Pre-fail Always - 8589934592000<br />
+7 Seek_Error_Rate 0x000e 100 087 000 Old_age Always - 1761<br />
+8 Seek_Time_Performance 0x0004 100 100 000 Old_age Offline - 0<br />
+9 Power_On_Seconds 0x0032 079 079 000 Old_age Always - 10866h+57m+47s<br />
+10 Spin_Retry_Count 0x0012 100 100 000 Old_age Always - 0<br />
+12 Power_Cycle_Count 0x0032 100 100 000 Old_age Always - 1199<br />
+192 Power-Off_Retract_Count 0x0032 099 099 000 Old_age Always - 283<br />
+193 Load_Cycle_Count 0x0032 100 100 000 Old_age Always - 6953<br />
+194 Temperature_Celsius 0x0022 100 100 000 Old_age Always - 45 (Lifetime Min/Max 14/58)<br />
+195 Hardware_ECC_Recovered 0x001a 100 100 000 Old_age Always - 62<br />
+196 Reallocated_Event_Count 0x0032 100 100 000 Old_age Always - 459276288<br />
+197 Current_Pending_Sector 0x0012 100 100 000 Old_age Always - 0<br />
+198 Offline_Uncorrectable 0x0010 100 100 000 Old_age Offline - 0<br />
+199 UDMA_CRC_Error_Count 0x003e 200 200 000 Old_age Always - 0<br />
+200 Multi_Zone_Error_Rate 0x000e 100 082 000 Old_age Always - 22371<br />
+203 Run_Out_Cancel 0x0002 100 100 000 Old_age Always - 1533257648465<br />
+240 Head_Flying_Hours 0x003e 200 200 000 Old_age Always - 0</p>
 
 <p>As you can see, there are some attributes marked as “Pre-fail”. If any of these attributes goes beyond its threshold, the disk is about to fail in hours, maybe minutes.</p>
 
@@ -167,19 +165,18 @@ ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE<br
 
 <p>smartctl -t launches a disk test. It needs a parameter indicating the type of the test, and in the longest case it can last for tens of minutes and will check the electrical and mechanical performance as well as the read performance of the disk, going through all its surface. smartctl -a, in its turn, shows all available information about the disk, including self testing results. Since tests will span minutes or tens of minutes, we can not see them happening. All what we will get when launching tests is like:</p>
 
-<h1>smartctl -t long /dev/sda</h1>
+<h1 id="smartctl--t-long-devsda">smartctl -t long /dev/sda</h1>
+<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright (C) 2002-8 Bruce Allen<br />
+Home page is http://smartmontools.sourceforge.net/  </p>
 
-<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
-Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
-
-<p>=== START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION ===<br/>
-Sending command: &ldquo;Execute SMART Extended self-test routine immediately in<br/>
-off-line mode&rdquo;.<br/>
-Drive command &ldquo;Execute SMART Extended self-test routine immediately in<br/>
-off-line mode&rdquo; successful.<br/>
-Testing has begun.<br/>
-Please wait 41 minutes for test to complete.<br/>
-Test will complete after Mon May 12 05:44:03 2008</p>
+<p>=== START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION ===<br />
+Sending command: “Execute SMART Extended self-test routine immediately in<br />
+off-line mode”.<br />
+Drive command “Execute SMART Extended self-test routine immediately in<br />
+off-line mode” successful.<br />
+Testing has begun.<br />
+Please wait 41 minutes for test to complete.<br />
+Test will complete after Mon May 12 05:44:03 2008  </p>
 
 <p>Use smartctl -X to abort test.</p>
 
@@ -255,6 +252,10 @@ Test will complete after Mon May 12 05:44:03 2008</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -268,10 +269,6 @@ Test will complete after Mon May 12 05:44:03 2008</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -291,6 +288,22 @@ Test will complete after Mon May 12 05:44:03 2008</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

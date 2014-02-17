@@ -94,24 +94,21 @@
   </header>
 
 
-<div class="entry-content"><h2>secret given to the #protect_from_forgery call</h2>
+<div class="entry-content"><h2 id="secret-given-to-the-protectfromforgery-call">secret given to the #protect_from_forgery call</h2>
 
-<h4>February 7th, 2008 by <a href="http://www.justinball.com/">Justin Ball</a></h4>
+<h4 id="february-7th-2008-by-justin-ballhttpwwwjustinballcom">February 7th, 2008 by <a href="http://www.justinball.com/">Justin Ball</a></h4>
 
-<p>My code was running fine under Rails 2.0.2. Then I enabled the db based session store by uncommenting this:<br/>
-  <code>  
-config.action_controller.session_store = :active_record_store  
-</code><br/>
+<p>My code was running fine under Rails 2.0.2. Then I enabled the db based session store by uncommenting this:<br />
+  `<br />
+config.action_controller.session_store = :active_record_store<br />
+`<br />
 in environment.rb.</p>
 
-<p>Anything that used the session after that gave me this error:<br/>
-  `<br/>
-No :secret given to the #protect_from_forgery call. Set that or use a</p>
-
-<pre><code>session store capable of generating its own keys (Cookie Session Store).  
-</code></pre>
-
-<p>`</p>
+<p>Anything that used the session after that gave me this error:<br />
+  `<br />
+No :secret given to the #protect_from_forgery call. Set that or use a
+    session store capable of generating its own keys (Cookie Session Store).<br />
+`</p>
 
 <p>If you have the same problem. Go to application.rb and uncomment the secret then restart.</p>
 
@@ -181,6 +178,10 @@ No :secret given to the #protect_from_forgery call. Set that or use a</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -194,10 +195,6 @@ No :secret given to the #protect_from_forgery call. Set that or use a</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -217,6 +214,22 @@ No :secret given to the #protect_from_forgery call. Set that or use a</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

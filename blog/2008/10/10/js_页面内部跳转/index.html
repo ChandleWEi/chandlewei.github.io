@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="                                                                                                                                      
-  &lt;script &hellip;">
+  <meta name="description" content="                                                                                                                                         &lt;script &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,34 +94,35 @@
   </header>
 
 
-<div class="entry-content"><p><html>                                                                                                                                      <br/>
-  &lt;script   >                                                                                                                               <br/>
-    function   go()                                                                                                                         <br/>
-    {                                                                                                                                       <br/>
-    if   (Form1.radio[0].checked)                                                                                                           <br/>
-    window.location.href=&ldquo;#add&#8221;                                                                                                             <br/>
-    else   if   (Form1.radio[1].checked)                                                                                                    <br/>
-    window.location.href=&rdquo;#edit&#8221;                                                                                                            <br/>
-    else                                                                                                                                    <br/>
-    window.location.href=&ldquo;#delete&#8221;                                                                                                          <br/>
-    }                                                                                                                                       <br/>
-  </script>                                                                                                                                 <br/>
-  <body>                                                                                                                                    <br/>
-    <a name="add">test</a>                                                                                                                  <br/>
-    <a name="edit">test</a>                                                                                                                 <br/>
-    <a name="delete">test</a>                                                                                                          <br/>
-       <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />   <br/>
-    &lt;form   name=Form1>                                                                                                                     <br/>
-      &lt;input   type=radio   name=&#8221;radio&#8221;   CHECKED>AAAAAAAA                                                                                 <br/>
-      &lt;input   type=radio   name=&#8221;radio&rdquo;>BBBBBBB                                                                                            <br/>
-      &lt;input   type=radio   name=&ldquo;radio&rdquo;>CCCCCCCCCC                                                                                         <br/>
-      &lt;input   type=&ldquo;button&#8221;   value=&#8221;跳转&#8221;   name=&#8221;cmdok&#8221;   onclick=&#8221;go();&rdquo;>                                                               <br/>
-    </form>                                                                                                                                 <br/>
-    <br />                                                                                                                                  <br/>
-                                                                                                                                            <br/>
-    <a href="#test">to test</a>                                                                                                             <br/>
-  </body>                                                                                                                                   <br/>
-<html>       </p>
+<div class="entry-content"><html>                                                                                                                                        
+  &lt;script   &gt;                                                                                                                                 
+    function   go()                                                                                                                           
+    {                                                                                                                                         
+    if   (Form1.radio[0].checked)                                                                                                             
+    window.location.href=&#8221;#add&#8221;                                                                                                               
+    else   if   (Form1.radio[1].checked)                                                                                                      
+    window.location.href=&#8221;#edit&#8221;                                                                                                              
+    else                                                                                                                                      
+    window.location.href=&#8221;#delete&#8221;                                                                                                            
+    }                                                                                                                                         
+                                                                                                                                     
+  <body>                                                                                                                                      
+    <a name="add">test</a>                                                                                                                    
+    <a name="edit">test</a>                                                                                                                   
+    <a name="delete">test</a>                                                                                                            
+       <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />  <br />     
+    &lt;form   name=Form1&gt;                                                                                                                       
+      &lt;input   type=radio   name=&#8221;radio&#8221;   CHECKED&gt;AAAAAAAA                                                                                   
+      &lt;input   type=radio   name=&#8221;radio&#8221;&gt;BBBBBBB                                                                                              
+      &lt;input   type=radio   name=&#8221;radio&#8221;&gt;CCCCCCCCCC                                                                                           
+      &lt;input   type=&#8221;button&#8221;   value=&#8221;跳转&#8221;   name=&#8221;cmdok&#8221;   onclick=&#8221;go();&#8221;&gt;                                                                 
+                                                                                                                                       
+    <br />                                                                                                                                    
+                                                                                                                                              
+    <a href="#test">to test</a>                                                                                                               
+  </body>                                                                                                                                     
+<html>       
+</html></html>
 </div>
 
 
@@ -194,6 +194,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -207,10 +211,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -230,6 +230,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

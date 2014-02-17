@@ -95,45 +95,42 @@ I suppose you want to have a little clock in the titlebar?! Which Image are you 
   </header>
 
 
-<div class="entry-content"><p>Hey!<br/>
-I suppose you want to have a little clock in the titlebar?!</p>
+<div class="entry-content"><p>Hey!<br />
+I suppose you want to have a little clock in the titlebar?!  </p>
 
-<p>Which Image are you using? 2007.2? ASU?</p>
+<p>Which Image are you using? 2007.2? ASU?  </p>
 
-<p>If you are using the 2007.2 Image, do the following in your moko-shell:</p>
-
-<ol>
-<li>minimize current clock:
-
-<h1>dbus-launch gconftool-2 &mdash;type bool &mdash;set</h1>
-
-/desktop/poky/interface/small_clock true
-
-<h1>/etc/init.d/xserver-nodm restart</h1></li>
-</ol>
-
-
-<p>&ndash;> ths big clock in the middle of the scrren will be gone. Just the<br/>
-bar at the bottom of the page showing the date will remain.</p>
+<p>If you are using the 2007.2 Image, do the following in your moko-shell:  </p>
 
 <ol>
-<li>To add the clock to the title bar, edit /etc/matchbox/session. In<br/>
-the list of applets after &mdash;end-applets, add &lsquo;openmoko-panel-clock,&rsquo;,<br/>
-and restart your X server</li>
+  <li>minimize current clock:<br />
+#dbus-launch gconftool-2 –type bool –set<br />
+/desktop/poky/interface/small_clock true<br />
+# /etc/init.d/xserver-nodm restart  </li>
 </ol>
 
+<p>-&gt; ths big clock in the middle of the scrren will be gone. Just the<br />
+bar at the bottom of the page showing the date will remain.  </p>
 
-<p>hope that helps<br/>
-Bastian</p>
+<ol>
+  <li>To add the clock to the title bar, edit /etc/matchbox/session. In<br />
+the list of applets after –end-applets, add ‘openmoko-panel-clock,’,<br />
+and restart your X server  </li>
+</ol>
 
-<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#99;&#x68;&#97;&#110;&#x64;&#108;&#101;&#46;&#x77;&#101;&#105;&#64;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#104;&#97;&#110;&#x64;&#x6c;&#101;&#x2e;&#x77;&#101;&#x69;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a> wrote:</p>
+<p>hope that helps<br />
+Bastian  </p>
 
-<blockquote><p>how to set home page clock to right top.</p>
+<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> wrote:<br />
+&gt; how to set home page clock to right top.<br />
+&gt;<br />
+&gt;<br />
+&gt; _______________________________________________<br />
+&gt; support mailing list<br />
+&gt; support@lists.openmoko.org<br />
+&gt; https://lists.openmoko.org/mailman/listinfo/support<br />
+&gt;  </p>
 
-<p>_______________________________________________<br/>
-support mailing list<br/>
-support@lists.openmoko.org<br/>
-<a href="https://lists.openmoko.org/mailman/listinfo/support">https://lists.openmoko.org/mailman/listinfo/support</a></p></blockquote>
 </div>
 
 
@@ -205,6 +202,10 @@ support@lists.openmoko.org<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -218,10 +219,6 @@ support@lists.openmoko.org<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -241,6 +238,22 @@ support@lists.openmoko.org<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

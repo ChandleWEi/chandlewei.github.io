@@ -9,8 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="[MySQL FAQ]系列 &mdash; 用mysqlslap进行压力测试 从 MySQL 中文网 &ndash; 作者：yejr mysqlslap是官方提供的压力测试工具之一，官方介绍如下： mysqlslap is a diagnostic program designed to &hellip;">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -71,6 +71,100 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">zz_Memcache分布式部署方案</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-04T00:00:00+08:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="memcachehttpwwwccvitacom395html-memcache"><a href="http://www.ccvita.com/395.html" title="Memcache分布式部署方案">Memcache分布式部署方案</a></h2>
+
+<p><strong>前言</strong><br />
+应该是很久之前，我开始研究 <a href="http://www.danga.com/memcached/">Memcache</a>，写了一系列的学习心得，比如《 <a href="http://www.ccvita.com/261.html">Discuz!的Memcache缓存实现</a>》等。后面的好几十条回复也让这篇文章成为了此博客中颇受关注的一员。</p>
+
+<p>同时在百度和Google，关键词Memcache在长达一年多的时间里占据着第二位（第一位是官方），为很多需要了解或者应用Memcache的朋友提供了一些信息，但是我始终觉着还不够，于是本文诞生。</p>
+
+<p>唠唠叨叨说了半天，如果你觉着前面啰嗦，请直接看最后一大段，那是本文的重点。</p>
+
+<p><strong>基础环境</strong><br />
+其实基于PHP扩展的Memcache客户端实际上早已经实现，而且非常稳定。先解释一些名词，Memcache是danga.com的一个开源项目，可以类比于MySQL这样的服务，而PHP扩展的Memcache实际上是连接Memcache的方式。</p>
+
+<p>首先，进行Memcache被安装具体可查看：<br />
+  <a href="http://www.ccvita.com/257.html">Linux下的Memcache安装</a>：http://www.ccvita.com/257.html<br />
+  <a href="http://www.ccvita.com/258.html">Windows下的Memcache安装</a>：http://www.ccvita.com/258.html；<br />
+其次，进行PHP扩展的安装，官方地址是http://pecl.php.net/package/memcache<br />
+最后，启动Memcache服务，比如这样</p>
+
+<p>/usr/local/bin/memcached -d -p 11213 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br />
+/usr/local/bin/memcached -d -p 11214 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br />
+/usr/local/bin/memcached -d -p 11215 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid</p>
+
+<p>启动三个只使用10M内存以方便测试。</p>
+
+<p> </p>
+
+<p><strong>分布式部署</strong><br />
+PHP的PECL扩展中的memcache实际上在2.0.0的版本中就已经实现多服务器支持，现在都已经2.2.5了。请看如下代码</p>
+
+<p>$memcache = new Memcache;<br />
+$memcache-&gt;addServer(‘localhost’, 11213);<br />
+$memcache-&gt;addServer(‘localhost’, 11214);<br />
+$memcache-&gt;addServer(‘localhost’, 11215);<br />
+$memStats = $memcache-&gt;getExtendedStats();<br />
+print_r($memStats);</p>
+
+<p>通过上例就已经实现Memcache的分布式部署，是不是非常简单。</p>
+
+<p><strong>分布式系统的良性运行</strong><br />
+在Memcache的实际使用中，遇到的最严重的问题，就是在增减服务器的时候，会导致大范围的缓存丢失，从而可能会引导数据库的性能瓶颈，为了避免出现这种情况，请先看 <a href="http://en.wikipedia.org/wiki/Consistent_hashing">Consistent hashing</a>算法，中文的介绍可以参考 <a href="http://tech.idv2.com/2008/07/24/memcached-004/#content_2_6">这里</a>，通过存取时选定服务器算法的改变，来实现。</p>
+
+<p>修改PHP的Memcache扩展memcache.c的源代码中的</p>
+
+<p>“memcache.hash_strategy” = standard</p>
+
+<p>为</p>
+
+<p>“memcache.hash_strategy” = consistent</p>
+
+<p>重新编译，这时候就是使用Consistent hashing算法来寻找服务器存取数据了。</p>
+
+<p>有效测试数据表明，使用Consistent hashing可以极大的改善增删Memcache时缓存大范围丢失的情况。<br />
+NonConsistentHash: 92% of lookups changed after adding a target to the existing 10<br />
+NonConsistentHash: 90% of lookups changed after removing 1 of 10 targets<br />
+ConsistentHash: 6% of lookups changed after adding a target to the existing 10<br />
+ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2009/04/28/zz%5BMySQL_FAQ%5D%E7%B3%BB%E5%88%97_--_%E7%94%A8mysqlslap%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">zz[MySQL_FAQ]系列_&#8211;_用mysqlslap进行压力测试</a></h1>
     
     
@@ -97,53 +191,54 @@
   </header>
 
 
-  <div class="entry-content"><h2><a href="http://imysql.cn/2009/04/24/using_mysqlslap_for_load_testing.html">[MySQL FAQ]系列 &mdash; 用mysqlslap进行压力测试</a></h2>
+  <div class="entry-content"><h2 id="mysql-faq----mysqlslaphttpimysqlcn20090424usingmysqlslapforloadtestinghtml"><a href="http://imysql.cn/2009/04/24/using_mysqlslap_for_load_testing.html">[MySQL FAQ]系列 – 用mysqlslap进行压力测试</a></h2>
 
-<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fimysql.cn%2Fnode%2Ffeed">MySQL 中文网 &ndash;</a> 作者：yejr</p>
+<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fimysql.cn%2Fnode%2Ffeed">MySQL 中文网 -</a> 作者：yejr</p>
 
 <p>mysqlslap是官方提供的压力测试工具之一，官方介绍如下：</p>
 
-<p>mysqlslap is a diagnostic program designed to emulate client load for a MySQL server and to report<br/>
-the timing of each stage. It works as if multiple clients are accessing the server. mysqlslap is<br/>
-available as of MySQL 5.1.4.</p>
+<p>mysqlslap is a diagnostic program designed to emulate client load for a MySQL server and to report<br />
+the timing of each stage. It works as if multiple clients are accessing the server. mysqlslap is<br />
+available as of MySQL 5.1.4.  </p>
 
 <p>下面介绍一些常见参数：</p>
 
-<p>&mdash;auto-generate-sql-write-number</p>
+<p>–auto-generate-sql-write-number  </p>
 
 <p>每个线程中产生多少个insert</p>
 
-<p>&mdash;auto-generate-sql-guid-primary</p>
+<p>–auto-generate-sql-guid-primary  </p>
 
 <p>自动产生guid格式的主键</p>
 
-<p>&mdash;number-of-queries=50000</p>
+<p>–number-of-queries=50000  </p>
 
 <p>每个连接客户端总共发起的查询次数</p>
 
-<p>&mdash;concurrency=10,50,100</p>
+<p>–concurrency=10,50,100  </p>
 
 <p>并发连接线程数，分别是10、50、100个并发</p>
 
-<p>-i, &mdash;iterations</p>
+<p>-i, –iterations  </p>
 
 <p>重复执行测试的次数</p>
 
-<p>&mdash;number-char-cols=10</p>
+<p>–number-char-cols=10  </p>
 
 <p>创建测试表的 char 型字段数量</p>
 
-<p>&mdash;number-int-cols=10</p>
+<p>–number-int-cols=10  </p>
 
-<p>创建测试表的 int 型字段数量<br/>
+<p>创建测试表的 int 型字段数量<br />
 下面是一个完整的例子：</p>
 
-<p>mysqlslap -hlocalhost -uroot &mdash;engine=innodb &mdash;auto-generate-sql-write-number=100000<br/>
-&mdash;auto-generate-sql-guid-primary &mdash;concurrency=10,50,100 &mdash;number-of-queries=500000<br/>
-&mdash;iterations=2 &mdash;number-char-cols=10 &mdash;number-int-cols=10 &mdash;auto-generate-sql<br/>
-&mdash;create-schema=sbtest &mdash;auto-generate-sql-load-type=mixed</p>
+<p>mysqlslap -hlocalhost -uroot –engine=innodb –auto-generate-sql-write-number=100000<br />
+–auto-generate-sql-guid-primary –concurrency=10,50,100 –number-of-queries=500000<br />
+–iterations=2 –number-char-cols=10 –number-int-cols=10 –auto-generate-sql<br />
+–create-schema=sbtest –auto-generate-sql-load-type=mixed  </p>
 
 <p>具体的慢慢看手册吧，不多啰嗦了，哈。</p>
+
 </div>
   
   
@@ -182,25 +277,33 @@ available as of MySQL 5.1.4.</p>
   </header>
 
 
-  <div class="entry-content"><p>echo &ldquo;Hello world&rdquo; | base64</p>
+  <div class="entry-content"><table>
+  <tbody>
+    <tr>
+      <td>echo “Hello world”</td>
+      <td>base64</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>Encryption with base64</p>
 
 <p>Also works with files:</p>
 
-<p>  <code>$ cat file</code></p>
+<p><code>$ cat file</code></p>
 
 <p>Hello world</p>
 
-<p>  <code>$ base64 file</code></p>
+<p><code>$ base64 file</code></p>
 
 <p>SGVsbG8gd29ybGQK</p>
 
 <p>To decrypt use the -d option:</p>
 
-<p>  <code>$ echo SGVsbG8gd29ybGQK | base64 -d</code></p>
+<p><code>$ echo SGVsbG8gd29ybGQK | base64 -d</code></p>
 
 <p>Hello world</p>
+
 </div>
   
   
@@ -239,9 +342,9 @@ available as of MySQL 5.1.4.</p>
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.capify.org/getting-started/basics/">http://www.capify.org/getting-started/basics/</a></p>
+  <div class="entry-content"><p>http://www.capify.org/getting-started/basics/</p>
 
-<p><a href="http://www.capify.org/getting-started/from-the-beginning/">http://www.capify.org/getting-started/from-the-beginning/</a></p>
+<p>http://www.capify.org/getting-started/from-the-beginning/</p>
 </div>
   
   
@@ -280,48 +383,45 @@ available as of MySQL 5.1.4.</p>
   </header>
 
 
-  <div class="entry-content"><h1>How to use Capistrano with Rails 2.3</h1>
+  <div class="entry-content"><h1 id="how-to-use-capistrano-with-rails-23">How to use Capistrano with Rails 2.3</h1>
 
-<p><a href="http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3">http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3</a></p>
+<p>http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3</p>
 
 <p> </p>
 
-<h3>From Capistrano Wiki</h3>
+<h3 id="from-capistrano-wiki">From Capistrano Wiki</h3>
 
 <p>Jump to: <a href="http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3#column-one">navigation</a>, <a href="http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3#searchInput">search</a></p>
 
-<p>On <a href="http://capify.org/getting-started/rails" title="http://capify.org/getting-started/rails">http://capify.org/getting-started/rails</a>, under &ldquo;Enabling Capistrano&rdquo;, there should be an additional paragraph that reads as follows:</p>
+<p>On <a href="http://capify.org/getting-started/rails" title="http://capify.org/getting-started/rails">http://capify.org/getting-started/rails</a>, under “Enabling Capistrano”, there should be an additional paragraph that reads as follows:</p>
 
-<p>NOTE: If your project uses Rails 2.3 or later, you must install the irs_process_scripts plugin in order for Capistrano to deploy the project if you still use the old inspector-reaper-spawner method to run Ruby on Rails instances. To do so, run the following command from your project&rsquo;s root directory:</p>
+<p>NOTE: If your project uses Rails 2.3 or later, you must install the irs_process_scripts plugin in order for Capistrano to deploy the project if you still use the old inspector-reaper-spawner method to run Ruby on Rails instances. To do so, run the following command from your project’s root directory:</p>
 
 <p>./script/plugin install git://github.com/rails/irs_process_scripts.git</p>
 
-<p>Retrieved from &ldquo; <a href="http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3">http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3</a>&rdquo;</p>
+<p>Retrieved from “ <a href="http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3">http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3</a>”</p>
 
-<h5>Views</h5>
-
-<ul>
-<li><a href="http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3" title="View the content page [alt-c]">Page</a></li>
-<li><a href="http://wiki.capify.org/index.php?title=Talk:How_to_use_Capistrano_with_Rails_2.3&amp;action=edit" title="Discussion about the content page [alt-t]">Discussion</a></li>
-<li><a href="http://wiki.capify.org/index.php?title=How_to_use_Capistrano_with_Rails_2.3&amp;action=edit" title="This page is protected. You can view its source. [alt-e]">View source</a></li>
-<li><a href="http://wiki.capify.org/index.php?title=How_to_use_Capistrano_with_Rails_2.3&amp;action=history" title="Past versions of this page. [alt-h]">History</a></li>
-</ul>
-
-
-<h5>Personal tools</h5>
+<h5 id="views">Views</h5>
 
 <ul>
-<li><a href="http://wiki.capify.org/index.php?title=Special:Userlogin&amp;returnto=How_to_use_Capistrano_with_Rails_2.3" title="You are encouraged to log in, it is not mandatory however. [alt-o]">Log in / create account</a></li>
+  <li><a href="http://wiki.capify.org/index.php/How_to_use_Capistrano_with_Rails_2.3" title="View the content page [alt-c]">Page</a></li>
+  <li><a href="http://wiki.capify.org/index.php?title=Talk:How_to_use_Capistrano_with_Rails_2.3&amp;action=edit" title="Discussion about the content page [alt-t]">Discussion</a></li>
+  <li><a href="http://wiki.capify.org/index.php?title=How_to_use_Capistrano_with_Rails_2.3&amp;action=edit" title="This page is protected. You can view its source. [alt-e]">View source</a></li>
+  <li><a href="http://wiki.capify.org/index.php?title=How_to_use_Capistrano_with_Rails_2.3&amp;action=history" title="Past versions of this page. [alt-h]">History</a></li>
 </ul>
 
-
-<h5>Navigation</h5>
+<h5 id="personal-tools">Personal tools</h5>
 
 <ul>
-<li><a href="http://wiki.capify.org/index.php/Main_Page">Home</a></li>
-<li><a href="http://wiki.capify.org/index.php/Action">Action Module</a></li>
+  <li><a href="http://wiki.capify.org/index.php?title=Special:Userlogin&amp;returnto=How_to_use_Capistrano_with_Rails_2.3" title="You are encouraged to log in, it is not mandatory however. [alt-o]">Log in / create account</a></li>
 </ul>
 
+<h5 id="navigation">Navigation</h5>
+
+<ul>
+  <li><a href="http://wiki.capify.org/index.php/Main_Page">Home</a></li>
+  <li><a href="http://wiki.capify.org/index.php/Action">Action Module</a></li>
+</ul>
 </div>
   
   
@@ -360,32 +460,32 @@ available as of MySQL 5.1.4.</p>
   </header>
 
 
-  <div class="entry-content"><p>建议学习路径：</p>
+  <div class="entry-content"><p>建议学习路径：  </p>
 
-<p>　　首先先学学编辑器，vim, emacs什么的都行。<br/>
-然后学make file文件，只要知道一点就行，这样就可以准备编程序了。</p>
+<p>　　首先先学学编辑器，vim, emacs什么的都行。<br />
+然后学make file文件，只要知道一点就行，这样就可以准备编程序了。  </p>
 
-<p>　　然后看看《C程序设计语言》K&amp;R，这样呢，基本上就可以进行一般的编程了，顺便找本数据结构的书来看。</p>
+<p>　　然后看看《C程序设计语言》K&amp;R，这样呢，基本上就可以进行一般的编程了，顺便找本数据结构的书来看。  </p>
 
-<p>　　如果想学习UNIX/LINUX的编程，《APUE》绝对经典的教材，加深一下功底，学习《UNP》的第二卷。这样基本上系统方面的就可以掌握了。</p>
+<p>　　如果想学习UNIX/LINUX的编程，《APUE》绝对经典的教材，加深一下功底，学习《UNP》的第二卷。这样基本上系统方面的就可以掌握了。  </p>
 
-<p>　　然后再看Douglus E. Comer的《用TCP/IP进行网际互连》第一卷，学习一下网络的知识，再看《UNP》的第一卷，不仅学习网络编程，而且对系统编程的一些常用的技巧就 很熟悉了，如果继续网络编程，建议看《TCP/IP进行网际互连》的第三卷，里面有很多关于应用协议telnet、ftp等协议的编程。<br/>
-如果想写设备驱动程序，首先您的系统编程的接口比如文件、IPC等必须要熟知了，再学习《LDD》2。</p>
+<p>　　然后再看Douglus E. Comer的《用TCP/IP进行网际互连》第一卷，学习一下网络的知识，再看《UNP》的第一卷，不仅学习网络编程，而且对系统编程的一些常用的技巧就 很熟悉了，如果继续网络编程，建议看《TCP/IP进行网际互连》的第三卷，里面有很多关于应用协议telnet、ftp等协议的编程。<br />
+如果想写设备驱动程序，首先您的系统编程的接口比如文件、IPC等必须要熟知了，再学习《LDD》2。  </p>
 
-<p>　　对于几本经典教材的评价：</p>
+<p>　　对于几本经典教材的评价：  </p>
 
-<p>　　《The C Programing Language》K&amp;R 经典的C语言程序设计教材，作者是C语言的发明者，教材内容深入浅出。虽然有点老，但是必备的一本手册，现在有时候我还常翻翻。篇幅比较小，但是每看一 遍，就有一遍的收获。另外也可用谭浩强的《C语言程序设计》代替。</p>
+<p>　　《The C Programing Language》K&amp;R 经典的C语言程序设计教材，作者是C语言的发明者，教材内容深入浅出。虽然有点老，但是必备的一本手册，现在有时候我还常翻翻。篇幅比较小，但是每看一 遍，就有一遍的收获。另外也可用谭浩强的《C语言程序设计》代替。  </p>
 
-<p>　　《Advanced Programing in Unix Envirement》 W.Richard Stevens：也是非常经典的书（废话，Stevens的书哪有不经典的！），虽然初学者就可以看，但是事实上它是《Unix Network Programing》的一本辅助资料。国内的翻译的《UNIX环境高级编程》的水平不怎么样，现在有影印版，直接读英文比读中文来得容易。</p>
+<p>　　《Advanced Programing in Unix Envirement》 W.Richard Stevens：也是非常经典的书（废话，Stevens的书哪有不经典的！），虽然初学者就可以看，但是事实上它是《Unix Network Programing》的一本辅助资料。国内的翻译的《UNIX环境高级编程》的水平不怎么样，现在有影印版，直接读英文比读中文来得容易。  </p>
 
-<p>　　《Unix Network Programing》W.Richard Stevens：第一卷讲BSD Socket网络编程接口和另外一种网络编程接口的，不过现在一般都用BSD Socket，所以这本书只要看大约一半多就可以了。第二卷没有设计到网络的东西，主要讲进程间通讯和Posix线程。所以看了《APUE》以后，就可以 看它了，基本上系统的东西就由《APUE》和《UNP》vol2概括了。看过《UNP》以后，您就会知道系统编程的绝大部分编程技巧，即使卷一是讲网络编 程的。国内是清华翻译得《Unix网络编程》，翻译者得功底也比较高，翻译地比较好。所以建议还是看中文版。</p>
+<p>　　《Unix Network Programing》W.Richard Stevens：第一卷讲BSD Socket网络编程接口和另外一种网络编程接口的，不过现在一般都用BSD Socket，所以这本书只要看大约一半多就可以了。第二卷没有设计到网络的东西，主要讲进程间通讯和Posix线程。所以看了《APUE》以后，就可以 看它了，基本上系统的东西就由《APUE》和《UNP》vol2概括了。看过《UNP》以后，您就会知道系统编程的绝大部分编程技巧，即使卷一是讲网络编 程的。国内是清华翻译得《Unix网络编程》，翻译者得功底也比较高，翻译地比较好。所以建议还是看中文版。  </p>
 
-<p>　　《TCP/IP祥解》一共三卷，卷一讲协议，卷二讲实现，卷三讲编程应用。我没有怎么看过。，但是据说也很经典的，因为我没有时间看卷二，所以不便评价。</p>
+<p>　　《TCP/IP祥解》一共三卷，卷一讲协议，卷二讲实现，卷三讲编程应用。我没有怎么看过。，但是据说也很经典的，因为我没有时间看卷二，所以不便评价。  </p>
 
-<p>　　《用TCP/IP进行网际互连》Douglus.E.Comer 一共三卷，卷一讲原理，卷二讲实现，卷三讲高级协议。感觉上这一套要比Stevens的那一套要好，就连Stevens也不得不承认它的第一卷非常经典。 事实上，第一卷即使你没有一点网络的知识，看完以后也会对网络的来龙去脉了如指掌。第一卷中还有很多习题也设计得经典和实用，因为作者本身就是一位教师， 并且卷一是国外研究生的教材。习题并没有答案，留给读者思考，因为问题得答案可以让你成为一个中级的Hacker，这些问题的答案可以象Douglus索 取，不过只有他只给教师卷二我没有怎么看，卷三可以作为参考手册，其中地例子也很经典。如果您看过Qterm的源代码，就会知道Qterm的telnet 实现部分大多数就是从这本书的源代码过来的。对于网络原理的书，我推荐它，而不是Stevens的《TCP/IP祥解》。</p>
+<p>　　《用TCP/IP进行网际互连》Douglus.E.Comer 一共三卷，卷一讲原理，卷二讲实现，卷三讲高级协议。感觉上这一套要比Stevens的那一套要好，就连Stevens也不得不承认它的第一卷非常经典。 事实上，第一卷即使你没有一点网络的知识，看完以后也会对网络的来龙去脉了如指掌。第一卷中还有很多习题也设计得经典和实用，因为作者本身就是一位教师， 并且卷一是国外研究生的教材。习题并没有答案，留给读者思考，因为问题得答案可以让你成为一个中级的Hacker，这些问题的答案可以象Douglus索 取，不过只有他只给教师卷二我没有怎么看，卷三可以作为参考手册，其中地例子也很经典。如果您看过Qterm的源代码，就会知道Qterm的telnet 实现部分大多数就是从这本书的源代码过来的。对于网络原理的书，我推荐它，而不是Stevens的《TCP/IP祥解》。  </p>
 
-<p>　　《Operating System &ndash; Design and Implement》这个是讲操作系统的书，用Minix做的例子。作者母语不是英文，所以英文看起来比较晦涩。国内翻译的是《操作系统 设计与实现》，我没看过中文版，因为翻译者是尤晋元，他翻译的《APUE》已经让我失望头顶了。读了这本书，对操作系统的底层怎么工作的就会<br/>
-有一个清晰的认识。</p>
+<p>　　《Operating System - Design and Implement》这个是讲操作系统的书，用Minix做的例子。作者母语不是英文，所以英文看起来比较晦涩。国内翻译的是《操作系统 设计与实现》，我没看过中文版，因为翻译者是尤晋元，他翻译的《APUE》已经让我失望头顶了。读了这本书，对操作系统的底层怎么工作的就会<br />
+有一个清晰的认识。  </p>
 
 <p>　　《Linux Device Driver》2e ，为数不多的关于Linux设备驱动程序的好书。不过内容有些杂乱，如果您没有一些写驱动的经验，初次看会有些摸不着南北。国内翻译的是《Linux设备 驱动程序》第二版，第一版，第二版的译者我都有很深的接触，不过总体上来说，虽然第二版翻译的有些不尽人意，但是相比第一版来说已经超出了一大截。要读这 一本书，至少应该先找一些《计算机原理》《计算机体系结构》的书来马马虎虎读读，至少应该对硬件和计算机的工作过程有一些了解。</p>
 </div>
@@ -432,27 +532,27 @@ available as of MySQL 5.1.4.</p>
 
 <p>Does this error message look familar when you script/console?</p>
 
-<p>  &#8220;</p>
+<p>&#8220;</p>
 
-<p>$> script/console<br/>
-Loading production environment (Rails 2.1.0)<br/>
+<p>$&gt; script/console<br />
+Loading production environment (Rails 2.1.0)<br />
 /usr/lib/ruby/1.8/irb/completion.rb:10:in <code>require': no such file to load -- readline (LoadError)  
 from /usr/lib/ruby/1.8/irb/completion.rb:10  
-from /usr/lib/ruby/1.8/irb/init.rb:252:in</code>require&#8217;<br/>
+from /usr/lib/ruby/1.8/irb/init.rb:252:in </code>require’<br />
 from /usr/lib/ruby/1.8/irb/init.rb:252:in <code>load\_modules'  
-from /usr/lib/ruby/1.8/irb/init.rb:250:in</code>each&#8217;<br/>
+from /usr/lib/ruby/1.8/irb/init.rb:250:in </code>each’<br />
 from /usr/lib/ruby/1.8/irb/init.rb:250:in <code>load\_modules'  
-from /usr/lib/ruby/1.8/irb/init.rb:21:in</code>setup&#8217;<br/>
-from /usr/lib/ruby/1.8/irb.rb:54:in `start&#8217;<br/>
-from /usr/bin/irb:13</p>
+from /usr/lib/ruby/1.8/irb/init.rb:21:in </code>setup’<br />
+from /usr/lib/ruby/1.8/irb.rb:54:in `start’<br />
+from /usr/bin/irb:13  </p>
 
 <p>This happens when readline is somehow different than your current version of ruby or corrupted. The quick fix is to recompile readline. To do it in CentOS with yum: &#8220;</p>
 
-<p>$> yum install readline-devel -y<br/>
-$> cd /root/src/ruby-1.8.6-p114/ext/readline/<br/>
-$> ruby extconf.rb<br/>
-$> make<br/>
-$> sudo make install</p>
+<p>$&gt; yum install readline-devel -y<br />
+$&gt; cd /root/src/ruby-1.8.6-p114/ext/readline/<br />
+$&gt; ruby extconf.rb<br />
+$&gt; make<br />
+$&gt; sudo make install  </p>
 
 <p>Now you should have script/console working.</p>
 </div>
@@ -493,72 +593,116 @@ $> sudo make install</p>
   </header>
 
 
-  <div class="entry-content"><h2></h2>
-
-<p> </p>
+  <div class="entry-content"><p>##<br />
+ </p>
 
 <p>本来想彻底的来一次lfs的，可惜实在是没有时间，所以就对gcc来了次小升级，gcc的编译安装是个非常头疼的事情，失败了好几次终于安装成功。下述安装过程在CentOS5上测试成功。。。  </p>
 
 <ol>
-<li><p>$ tar xvf gcc-4.2.3.tar.gz</p></li>
-<li><p>$ mkdir gcc-build</p></li>
-<li><p>$ cd gcc-build</p></li>
-<li><p>$../gcc-4.2.3/configure &mdash;prefix=/usr/local/gcc-4.2.3   </p></li>
-<li><p>                        &mdash;enable-threads=posix &mdash;disable-checking   </p></li>
-<li><p>                        &mdash;enable&mdash;long-long   </p></li>
-<li><p>                        &mdash;host=i386-redhat-linux   </p></li>
-<li><p>                        &mdash;with-system-zlib   </p></li>
-<li><p>                        &mdash;enable-languages=c,c++,java</p></li>
-<li><p> </p></li>
-<li><p>$ make bootstrap                        //重复编译自身</p></li>
-<li><p>$ make -k check 2>&amp;1 | tee gcc-check-log//-k跳过错误重定向到gcc-check-log</p></li>
-<li><p>$ grep Error gcc-check-log              //查看错误信息</p></li>
-<li><h1>make install</h1></li>
+  <li>
+    <p>$ tar xvf gcc-4.2.3.tar.gz</p>
+  </li>
+  <li>
+    <p>$ mkdir gcc-build</p>
+  </li>
+  <li>
+    <p>$ cd gcc-build</p>
+  </li>
+  <li>
+    <p>$../gcc-4.2.3/configure –prefix=/usr/local/gcc-4.2.3   </p>
+  </li>
+  <li>
+    <p>                        –enable-threads=posix –disable-checking   </p>
+  </li>
+  <li>
+    <p>                        –enable–long-long   </p>
+  </li>
+  <li>
+    <p>                        –host=i386-redhat-linux   </p>
+  </li>
+  <li>
+    <p>                        –with-system-zlib   </p>
+  </li>
+  <li>
+    <p>                        –enable-languages=c,c++,java</p>
+  </li>
+  <li>
+    <p> </p>
+  </li>
+  <li>
+    <p>$ make bootstrap                        //重复编译自身</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$ make -k check 2&gt;&amp;1</td>
+          <td>tee gcc-check-log//-k跳过错误重定向到gcc-check-log</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>$ grep Error gcc-check-log              //查看错误信息</p>
+  </li>
+  <li>
+    <h1 id="make-install">make install</h1>
+  </li>
 </ol>
 
+<p>若想重新编译 make clean 清除上次编译遗留下的文件  </p>
 
-<p>若想重新编译 make clean 清除上次编译遗留下的文件</p>
+<p><strong>uninstallation</strong>  </p>
 
-<p><strong>uninstallation</strong></p>
-
-<p>因为我的旧版是RPM包的，查看版本号 gcc &mdash;version 然后 rpm -e 删除了</p>
+<p>因为我的旧版是RPM包的，查看版本号 gcc –version 然后 rpm -e 删除了</p>
 
 <p>若旧版是用源码安装的，whereis gcc 或者 which gcc 来查看所在路径，删除即可</p>
 
-<p>工具链设置:</p>
+<p>工具链设置:  </p>
 
 <p>命令文件符号连接到 /usr/bin 目录下：</p>
 
 <ol>
-<li><p>$  cd /usr/bin</p></li>
-<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcc gcc</p></li>
-<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/g++ g++</p></li>
-<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcj gcj</p></li>
+  <li>
+    <p>$  cd /usr/bin</p>
+  </li>
+  <li>
+    <p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcc gcc</p>
+  </li>
+  <li>
+    <p>$  ln -sv /usr/local/gcc-4.2.3/bin/g++ g++</p>
+  </li>
+  <li>
+    <p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcj gcj</p>
+  </li>
 </ol>
 
-
-<p>库文件设置：</p>
+<p>库文件设置：  </p>
 
 <p>将/usr/local/gcc-4.2.3/lib 路径添加到环境变量LD_LIBRARY_PATH中</p>
 
 <ol>
-<li><h1>vi /etc/profile</h1></li>
+  <li>
+    <h1 id="vi-etcprofile">vi /etc/profile</h1>
+  </li>
 </ol>
 
+<p>添加下列代码  </p>
 
-<p>添加下列代码</p>
-
-<p>setenv LD_LIBRARY_PATH /usr/local/gcc-4.2.3/lib:$LD_LIBRARY_PATH</p>
+<p>setenv LD_LIBRARY_PATH /usr/local/gcc-4.2.3/lib:$LD_LIBRARY_PATH  </p>
 
 <p>清理现场</p>
 
 <ol>
-<li><p>$ rm -rf gcc-4.2.3</p></li>
-<li><p>$ rm -rf gcc-build</p></li>
+  <li>
+    <p>$ rm -rf gcc-4.2.3</p>
+  </li>
+  <li>
+    <p>$ rm -rf gcc-build</p>
+  </li>
 </ol>
 
-
-<p>要装binson</p>
+<p>要装binson  </p>
 </div>
   
   
@@ -597,13 +741,13 @@ $> sudo make install</p>
   </header>
 
 
-  <div class="entry-content"><p>1） 要熟练掌握至少一种编程语言。我觉得最好是C++。<br/>
-2） 不要寄希望于一次就把软件设计好。你所关注的重点应依次是Make it work, make it right, make it fast。<br/>
-3） 软件结构要分块分层。低层模块不要依赖于上层模块。一个类、一个接口或一个函数都应只做一件事。<br/>
-4） 软件设计的主要工作是给类分配责任（responsibilities）。要站在类的使用者角度设计类的外部行为。要讲究一点软件美学，即简单、清晰、一致、平衡等。<br/>
-5） 了解并运用UML、Design Patterns、Unit Test、Design by Contract等。<br/>
-6） 使用代码管理系统和质量跟踪系统。<br/>
-7） 了解各种软件开发过程控制方法，并找出适合你的方法。<br/>
+  <div class="entry-content"><p>1） 要熟练掌握至少一种编程语言。我觉得最好是C++。<br />
+2） 不要寄希望于一次就把软件设计好。你所关注的重点应依次是Make it work, make it right, make it fast。<br />
+3） 软件结构要分块分层。低层模块不要依赖于上层模块。一个类、一个接口或一个函数都应只做一件事。<br />
+4） 软件设计的主要工作是给类分配责任（responsibilities）。要站在类的使用者角度设计类的外部行为。要讲究一点软件美学，即简单、清晰、一致、平衡等。<br />
+5） 了解并运用UML、Design Patterns、Unit Test、Design by Contract等。<br />
+6） 使用代码管理系统和质量跟踪系统。<br />
+7） 了解各种软件开发过程控制方法，并找出适合你的方法。<br />
 8） 阅读经典书籍，研读经典代码，订阅杂志，与同行切磋。</p>
 </div>
   
@@ -643,123 +787,84 @@ $> sudo make install</p>
   </header>
 
 
-  <div class="entry-content"><p>  <a href="http://www.cppblog.com/jinq0123/archive/2007/08/29/UnixPhilosophy.html">Unix编程哲学</a></p>
+  <div class="entry-content"><p><a href="http://www.cppblog.com/jinq0123/archive/2007/08/29/UnixPhilosophy.html">Unix编程哲学</a></p>
 
-<p>Unix编程哲学</p>
+<p>Unix编程哲学  </p>
 
-<p>参考其它另外三个不同版本的翻译：<br/>
-* <a href="http://www.china-pub.com/computers/common/info.asp?id=23013">Imperfect C++中文版</a><br/>
-* <a href="http://www.blogcn.com/user3/hufey/blog/346394.html">心开天籁</a><br/>
-* <a href="http://blog.csdn.net/swordll80/archive/2006/09/01/1156991.aspx">Unix编程哲学</a></p>
+<p>参考其它另外三个不同版本的翻译：<br />
+* <a href="http://www.china-pub.com/computers/common/info.asp?id=23013">Imperfect C++中文版</a><br />
+* <a href="http://www.blogcn.com/user3/hufey/blog/346394.html">心开天籁</a><br />
+* <a href="http://blog.csdn.net/swordll80/archive/2006/09/01/1156991.aspx">Unix编程哲学</a>  </p>
 
-<p>1.Rule of Modularity: Write simple parts connected by clean interfaces.</p>
+<p>1.Rule of Modularity: Write simple parts connected by clean interfaces.  </p>
 
-<p>模块化准则：编写简单的模块，并用清晰的接口连接它们。</p>
+<p>模块化准则：编写简单的模块，并用清晰的接口连接它们。  </p>
 
-<p>2.Rule of Clarity:Clarity is better than cleverness.</p>
+<p>2.Rule of Clarity:Clarity is better than cleverness.  </p>
 
-<p>清晰性准则：清晰胜于机巧。</p>
+<p>清晰性准则：清晰胜于机巧。  </p>
 
-<p>3.Rule of Composition: Design programs to be connected to other programs.</p>
+<p>3.Rule of Composition: Design programs to be connected to other programs.  </p>
 
-<p>组合准则：设计可以相互连接的程序。</p>
+<p>组合准则：设计可以相互连接的程序。  </p>
 
-<p>4.Rule of Separation:Separate policy form mechanism; separate interfaces from engines.</p>
+<p>4.Rule of Separation:Separate policy form mechanism; separate interfaces from engines.  </p>
 
-<p>分离准则：策略同机制分离；接口同引擎分离</p>
+<p>分离准则：策略同机制分离；接口同引擎分离  </p>
 
-<p>5.Rule of Simplicity: Design for simplicity; add complexity only where you must.</p>
+<p>5.Rule of Simplicity: Design for simplicity; add complexity only where you must.  </p>
 
-<p>简单性准则：设计要简单，必要时才添加复杂性。</p>
+<p>简单性准则：设计要简单，必要时才添加复杂性。  </p>
 
-<p>6:Rule of Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.</p>
+<p>6:Rule of Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.  </p>
 
-<p>吝啬准则：除非确无它法，不要编写庞大的程序。</p>
+<p>吝啬准则：除非确无它法，不要编写庞大的程序。  </p>
 
-<p>7:Rule of Transparency: Design for visibility to make inspection and debug going easier.</p>
+<p>7:Rule of Transparency: Design for visibility to make inspection and debug going easier.  </p>
 
-<p>透明性准则：设计要直白，使检查和调试更易容。</p>
+<p>透明性准则：设计要直白，使检查和调试更易容。  </p>
 
-<p>8:Rules of Robustness:Robustness is the child of transparency and simplicity.</p>
+<p>8:Rules of Robustness:Robustness is the child of transparency and simplicity.  </p>
 
-<p>健壮性准则：健壮性源自于透明性与简单性。</p>
+<p>健壮性准则：健壮性源自于透明性与简单性。  </p>
 
-<p>9:Rule of Representation:Fold knowledge into data so program logic can be stupid and robust.</p>
+<p>9:Rule of Representation:Fold knowledge into data so program logic can be stupid and robust.  </p>
 
-<p>表示准则：数据体现知识，让逻辑单纯而健壮</p>
+<p>表示准则：数据体现知识，让逻辑单纯而健壮  </p>
 
-<p>10:Rule of  Least Surprise:In interface design, always do the least surprising thing.</p>
+<p>10:Rule of  Least Surprise:In interface design, always do the least surprising thing.  </p>
 
-<p>最小惊奇准则：在接口设计中，避免出乎意料。</p>
+<p>最小惊奇准则：在接口设计中，避免出乎意料。  </p>
 
-<p>11:Rule of Silence: When a program has nothing surprising to say, it should say nothing.</p>
+<p>11:Rule of Silence: When a program has nothing surprising to say, it should say nothing.  </p>
 
-<p>沉默准则：如果程序没有什么好说的，就应该保持沉默。</p>
+<p>沉默准则：如果程序没有什么好说的，就应该保持沉默。  </p>
 
-<p>12:Rule of Repair:When you must fail, fail nosily and as soon as possible.</p>
+<p>12:Rule of Repair:When you must fail, fail nosily and as soon as possible.  </p>
 
-<p>修复准则：如果注定失败，要尽早，要大声。</p>
+<p>修复准则：如果注定失败，要尽早，要大声。  </p>
 
-<p>13:Rule of Economy:Programmer time is expensive; conserve it in preference to machine time.</p>
+<p>13:Rule of Economy:Programmer time is expensive; conserve it in preference to machine time.  </p>
 
-<p>经济性准则：和机器的时间比较，程序员的时间是更宝贵的。</p>
+<p>经济性准则：和机器的时间比较，程序员的时间是更宝贵的。  </p>
 
-<p>14:Rule of Generation:Avoid hand-hacking, write programs to write programs when you can.</p>
+<p>14:Rule of Generation:Avoid hand-hacking, write programs to write programs when you can.  </p>
 
-<p>生成准则：避免手工编程，如果可能，编写程序去生成程序。</p>
+<p>生成准则：避免手工编程，如果可能，编写程序去生成程序。  </p>
 
-<p>15:Rule of Optimization:Prototype before polishing. Get it working before you optimize it.</p>
+<p>15:Rule of Optimization:Prototype before polishing. Get it working before you optimize it.  </p>
 
-<p>优化准则：打磨前先成型，优化前先使它工作。</p>
+<p>优化准则：打磨前先成型，优化前先使它工作。  </p>
 
-<p>16:Rule of Diversity:Distrust all claims for &ldquo;one true way&rdquo;.</p>
+<p>16:Rule of Diversity:Distrust all claims for “one true way”.  </p>
 
-<p>多样性准则：不相信“唯一正途”。</p>
+<p>多样性准则：不相信“唯一正途”。  </p>
 
-<p>17:Rule of Extensibility:Design for the future, because it will be here sooner than you think.</p>
+<p>17:Rule of Extensibility:Design for the future, because it will be here sooner than you think.  </p>
 
-<p>扩展性准则：为未来设计，因为它来的比你想得早。</p>
+<p>扩展性准则：为未来设计，因为它来的比你想得早。  </p>
 
 <p>（转载请注明来源于金庆的专栏）</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Siege：压力模拟/测试工具 作者：车东 发表于：2004-02-13 20:02 最后更新于：2008-04-12 03:04 版权声明：可以任意转载，转载时请务必以超链接形式标明文章原始出处和作者信息及本版权声明。 <a href="http://www.chedong.com/blog/archives/000033.html">http://www.chedong.com/blog/archives/000033.html</a> 最早使用的压力测试工具是apache的ab(apache benchmark)，apache ab做重复压力测试不错，但是每次只能测试一个链接，如何测试一组链接（比如从日志中导出的1个小时的日志，做真实压力测试），后来找到了这个： Siege是一个压力测试和评测工具，设计用于WEB开发这评估应用在压力下的承受能力：可以根据配置对一个WEB站点进行多用户的并发访问，记录每个用户所有请求过程的相应时间，并在一定数量的并发访问下重复进行。 SIEGE is an http regressive testing and benchmarking utility. It was designed to let web developers measure the performance of their code under duress, to see how it will stand up to load on the internet. It lets the user hit a webserver with a configurable number of concurrent simulated users. Those users place the webserver &ldquo;under siege.&rdquo; The duration of the siege is measured in transactions, the sum of simulated users and the number of times each simulated user repeats the process of hitting the server. Thus 20 concurrent users 50 times is 1000 transactions, the length of the test. 下载/安装 Siege时一个开放源代码项目：<a href="http://www.joedog.org">http://www.joedog.org</a> 下载： wget <a href="ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz">ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz</a> 安装： %./configure ; make #make install siege包含了一组压力测试工具： SIEGE (1) Siege是一个HTTP压力测试和评测工具. 使用样例： 任务列表：www.chedong.com.url文件 <a href="http://www.chedong.com/tech/">http://www.chedong.com/tech/</a> <a href="http://www.chedong.com/tech/acdsee.html">http://www.chedong.com/tech/acdsee.html</a> <a href="http://www.chedong.com/tech/ant.html">http://www.chedong.com/tech/ant.html</a> <a href="http://www.chedong.com/tech/apache_install.html">http://www.chedong.com/tech/apache_install.html</a> <a href="http://www.chedong.com/tech/awstats.html">http://www.chedong.com/tech/awstats.html</a> <a href="http://www.chedong.com/tech/cache.html">http://www.chedong.com/tech/cache.html</a> <a href="http://www.chedong.com/tech/click.html">http://www.chedong.com/tech/click.html</a> <a href="http://www.chedong.com/tech/cms.html">http://www.chedong.com/tech/cms.html</a> <a href="http://www.chedong.com/tech/compress.html">http://www.chedong.com/tech/compress.html</a> <a href="http://www.chedong.com/tech/cvs_card.html">http://www.chedong.com/tech/cvs_card.html</a> <a href="http://www.chedong.com/tech/default.html">http://www.chedong.com/tech/default.html</a> <a href="http://www.chedong.com/tech/dev.html">http://www.chedong.com/tech/dev.html</a> <a href="http://www.chedong.com/tech/gnu.html">http://www.chedong.com/tech/gnu.html</a> &hellip;. siege -c 20 -r 2 -f www.chedong.com.url 参数说明： -c 20 并发20个用户 -r 2 重复循环2次 -f www.chedong.com.url 任务列表：URL列表 输出样例： ** Siege 2.59 ** Preparing 20 concurrent users for battle. 这次“战斗”准备了20个并发用户 The server is now under siege.. done. 服务在“围攻”测试中： Transactions: 40 hits 完成40次处理 Availability: 100.00 % 成功率 Elapsed time: 7.67 secs 总共用时 Data transferred: 877340 bytes 共数据传输：877340字节 Response time: 1.65 secs 相应用时1.65秒：显示网络连接的速度 Transaction rate: 5.22 trans/sec 平均每秒完成5.22次处理：表示服务器后台处理的速度 Throughput: 114385.92 bytes/sec 平均每秒传送数据：114385.92字节 Concurrency: 8.59 最高并发数 8.59 Successful transactions: 40 成功处理次数 Failed transactions: 0 失败处理次数 注意：由于速度很快，可能会达不到并发速度很高就已经完成。Response time显示的是测试机器和被测试服务器之间网络链接状况。Transaction rate则表示服务器端任务处理的完成速度。 辅助工具： 增量压力测试： 为了方便增量压力测试，siege还包含了一些辅助工具： bombardment (1) 是一个辅助工具：用于按照增量用户压力测试： 使用样例： bombardment urlfile.txt 5 3 4 1 初始化URL列表：urlfile.txt 初始化为：5个用户 每次增加：3个用户 运行：4次 每个客户端之间的延迟为：1秒 输出成CSV格式： siege2csv.pl (1) siege2csv.pl将bombardment的输出变成CSV格式： Time Data Transferred Response Time Transaction Rate Throughput Concurrency Code 200 (note that this is horribly broken.) 242 60.22 603064 0.02 4.02 10014.35 0.08 605 59.98 1507660 0.01 10.09 25136.05 0.12 938 59.98 2337496 0.02 15.64 38971.26 0.26 1157 60 2883244 0.04 19.28 48054.07 0.78 参考： 开源测试工具：<a href="http://www.opensourcetesting.org/performance.php">http://www.opensourcetesting.org/performance.php</a> 压力测试工具：HammerHead 正在试用中</p>
 </div>
   
   
@@ -784,6 +889,10 @@ $> sudo make install</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -799,10 +908,6 @@ $> sudo make install</p>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -813,12 +918,29 @@ $> sudo make install</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

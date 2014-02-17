@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Htc Desire | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/htc-desire/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -22,18 +22,18 @@
 
 <p>参考如下没有成功</p>
 
-<p><a href="http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide">http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide</a></p>
+<p>http://wiki.cyanogenmod.com/index.php?title=HTC_Desire_%28GSM%29:_Full_Update_Guide</p>
 
 <p>gdb shell 查看</p>
 
-<p>$ cat /proc/mtd<br/>
-dev:    size   erasesize  name<br/>
-mtd0: 00100000 00040000 &ldquo;misc"<br/>
-mtd1: 00480000 00040000 "recovery"<br/>
-mtd2: 00340000 00040000 "boot"<br/>
-mtd3: 0fa00000 00040000 "system"<br/>
-mtd4: 02800000 00040000 "cache"<br/>
-mtd5: 096c0000 00040000 "userdata&rdquo;</p>
+<p>$ cat /proc/mtd<br />
+dev:    size   erasesize  name<br />
+mtd0: 00100000 00040000 “misc”<br />
+mtd1: 00480000 00040000 “recovery”<br />
+mtd2: 00340000 00040000 “boot”<br />
+mtd3: 0fa00000 00040000 “system”<br />
+mtd4: 02800000 00040000 “cache”<br />
+mtd5: 096c0000 00040000 “userdata”</p>
 
 <p>pvt4 40000 看来是悲剧了</p>
 ]]></content>

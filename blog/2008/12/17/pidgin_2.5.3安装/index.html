@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="受够了 debian 的 pidgin 2.4.3的问题去官方网站一看我考都，2。5。3了赶快弄下来编译   CFLAGS=-O3 ./configure &mdash;disable-nm make  make check make install sudo ldconfig 万事ok, 2.5 &hellip;">
+  <meta name="description" content="受够了 debian 的 pidgin 2.4.3的问题去官方网站一看我考都，2。5。3了赶快弄下来编译   CFLAGS=-O3 ./configure –disable-nm make  make check make install sudo ldconfig 万事ok, 2.5.2开始了
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,7 +97,7 @@
 
 <div class="entry-content"><p>受够了 debian 的 pidgin 2.4.3的问题去官方网站一看我考都，2。5。3了赶快弄下来编译</p>
 
-<p>  CFLAGS=-O3 ./configure &mdash;disable-nm</p>
+<p>  CFLAGS=-O3 ./configure –disable-nm</p>
 
 <p>make </p>
 
@@ -178,6 +179,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -191,10 +196,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -214,6 +215,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

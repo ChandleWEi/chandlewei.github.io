@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Hpricot research X doc.search(&ldquo;Location&rdquo;).attr(&ldquo;citycode&rdquo;) &lt;-This is not working, it will replace this attribute with &hellip;">
+  <meta name="description" content="Hpricot research X doc.search(“Location”).attr(“citycode”) &lt;-This is not working, it will replace this attribute with empty.
+# Search element of “ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,67 +95,51 @@
   </header>
 
 
-<div class="entry-content"><p>Hpricot research</p>
+<div class="entry-content"><p>Hpricot research  </p>
 
-<p>X doc.search(&ldquo;Location&rdquo;).attr(&ldquo;citycode&rdquo;) &lt;-This is not working, it will replace this attribute with empty.</p>
+<p>X doc.search(“Location”).attr(“citycode”) &lt;-This is not working, it will replace this attribute with empty.<br />
+# Search element of “Location”<br />
+doc.search(“Location”)<br />
+# Traversal element: break elements by tag name, useful for invalid nested html<br />
+doc.traverse_element(“LookupLocation”,”Location”) {|e| p e}<br />
+# Traverse text: extract content by order, useful for screen scrapingdoc.traverse_text {|e| p e}  </p>
 
-<h1>Search element of &ldquo;Location&rdquo;</h1>
+<p>Sample code and tests<br />
+require ‘hpricot’<br />
+@tokenClass =  Oag::Token.new<br />
+@token = @tokenClass.get_token<br />
+@solid_token = @tokenClass.get_valid_token_from_database<br />
+city_airport_name = @tokenClass.get_city_airport_name(@solid_token,’LON’)<br />
+doc = Hpricot.XML(city_airport_name)<br />
+#Search in attribute<br />
+#attribute has citycode and portcode<br />
+doc.search(“[@citycode][@portcode]”)<br />
+doc/”[@citycode][@portcode]”<br />
+#citycode = LOD<br />
+doc/”Location[@citycode=’LOD’]”<br />
+# Search in content<br />
+doc/”Location:contains(‘Canada’)”<br />
+# List attribute contents, returns an array<br />
+(doc/’Location[@citycode]’).map {|x| x[‘citycode’]}</p>
 
-<p>doc.search(&ldquo;Location&rdquo;)</p>
+<h1 id="hpricotat">Hpricot#at</h1>
 
-<h1>Traversal element: break elements by tag name, useful for invalid nested html</h1>
+<p>doc.at(‘Dep’)</p>
 
-<p>doc.traverse_element(&ldquo;LookupLocation&rdquo;,&ldquo;Location&rdquo;) {|e| p e}</p>
+<h1 id="get-attribute-value-only-one-at-a-time">Get attribute value (only one at a time)</h1>
 
-<h1>Traverse text: extract content by order, useful for screen scrapingdoc.traverse_text {|e| p e}</h1>
-
-<p>Sample code and tests<br/>
-require &lsquo;hpricot&#8217;<br/>
-@tokenClass =  Oag::Token.new<br/>
-@token = @tokenClass.get_token<br/>
-@solid_token = @tokenClass.get_valid_token_from_database<br/>
-city_airport_name = @tokenClass.get_city_airport_name(@solid_token,&#8217;LON&rsquo;)<br/>
-doc = Hpricot.XML(city_airport_name)</p>
-
-<h1>Search in attribute</h1>
-
-<h1>attribute has citycode and portcode</h1>
-
-<p>doc.search(&ldquo;[@citycode][@portcode]&rdquo;)<br/>
-doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
-
-<h1>citycode = LOD</h1>
-
-<p>doc/&ldquo;Location[@citycode=&lsquo;LOD&rsquo;]&rdquo;</p>
-
-<h1>Search in content</h1>
-
-<p>doc/&ldquo;Location:contains(&lsquo;Canada&rsquo;)&rdquo;</p>
-
-<h1>List attribute contents, returns an array</h1>
-
-<p>(doc/&lsquo;Location[@citycode]&rsquo;).map {|x| x[&lsquo;citycode&rsquo;]}</p>
-
-<h1>Hpricot#at</h1>
-
-<p>doc.at(&lsquo;Dep&rsquo;)</p>
-
-<h1>Get attribute value (only one at a time)</h1>
-
-<p>doc.at(&lsquo;Dep&rsquo;)[:LegID]</p>
+<p>doc.at(‘Dep’)[:LegID]</p>
 
 <p>(doc % :Dep)[:LegID]</p>
 
-<p>doc.at(&lsquo;Dep&rsquo;)[:ElapsedTime]
-&hellip;&hellip;.</p>
+<p>doc.at(‘Dep’)[:ElapsedTime]
+…….  </p>
 
-<h1>Ignore case: (upcase, downcase)</h1>
+<h1 id="ignore-case-upcase-downcase">Ignore case: (upcase, downcase)</h1>
+<p>Hpricot.parse(xml.downcase))  </p>
 
-<p>Hpricot.parse(xml.downcase))</p>
-
-<h1>Show today in YYYY-mm-dd format</h1>
-
-<p>Time.today.strftime(&lsquo;%Y-%m-%d&rsquo;)</p>
+<h1 id="show-today-in-yyyy-mm-dd-format">Show today in YYYY-mm-dd format</h1>
+<p>Time.today.strftime(‘%Y-%m-%d’)</p>
 </div>
 
 
@@ -226,6 +211,10 @@ doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -239,10 +228,6 @@ doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -262,6 +247,22 @@ doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

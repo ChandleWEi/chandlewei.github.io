@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="用ruby压缩，解压缩zip文件 关键字: zip, unzip
+  <meta name="description" content="用ruby压缩，解压缩zip文件
+关键字: zip, unzip
 项目中有一个小需求：
 一个csv文件定期在服务器端更新，并用打包压缩成zip格式文件存储到一个固定位置，文件名固定
 而我的任务是写一个脚本，定期取得这个文件，解压缩，并用得到的csv生成一个sqlite3数据库 需求很简单， &hellip;">
@@ -97,50 +98,59 @@
   </header>
 
 
-<div class="entry-content"><h3><a href="http://lgn21st.javaeye.com/blog/138264">用ruby压缩，解压缩zip文件</a></h3>
-
+<div class="entry-content"><h3 id="rubyziphttplgn21stjavaeyecomblog138264"><a href="http://lgn21st.javaeye.com/blog/138264">用ruby压缩，解压缩zip文件</a></h3>
 <p><strong>关键字: zip, unzip</strong>
-项目中有一个小需求：<br/>
-一个csv文件定期在服务器端更新，并用打包压缩成zip格式文件存储到一个固定位置，文件名固定<br/>
-而我的任务是写一个脚本，定期取得这个文件，解压缩，并用得到的csv生成一个sqlite3数据库</p>
+项目中有一个小需求：<br />
+一个csv文件定期在服务器端更新，并用打包压缩成zip格式文件存储到一个固定位置，文件名固定<br />
+而我的任务是写一个脚本，定期取得这个文件，解压缩，并用得到的csv生成一个sqlite3数据库  </p>
 
-<p>需求很简单，在javaeye上搜到一个 <a href="http://www.javaeye.com/topic/134858">帖子</a>关于如何压缩zip文件，以及递归目录下所有子目录的办法<br/>
-帖子里面 <a href="http://gigix.javaeye.com/">gigix</a>回复用很简单的方法，启动一个外部进程，我一开始也才用这个办法：</p>
-
-<p>ruby 代码</p>
-
-<p> </p>
-
-<ol>
-<li>system(&ldquo;unzip -q -o #{ARGV[0]} somefile.csv&rdquo;)  </li>
-</ol>
-
-
-<p>不过后来需要把这个脚本放到另外一个服务器上，而那个服务器没有安装”unzip“，我又没有sudo权限<br/>
-没有办法，只好回去用ruby的方法实现，麻烦一点，好处是跨平台，没有什么其他系统依赖<br/>
-仅仅依赖一个gems：rubyzip</p>
-
-<p>把代码留在这里做个记录，以备将来查找方便：</p>
+<p>需求很简单，在javaeye上搜到一个 <a href="http://www.javaeye.com/topic/134858">帖子</a>关于如何压缩zip文件，以及递归目录下所有子目录的办法<br />
+帖子里面 <a href="http://gigix.javaeye.com/">gigix</a>回复用很简单的方法，启动一个外部进程，我一开始也才用这个办法：  </p>
 
 <p>ruby 代码</p>
 
 <p> </p>
 
 <ol>
-<li>require &#8221;rubygems&#8221;  </li>
-<li><h1> 这里gem用来检测系统是否安装”rubyzip“  </h1></li>
-<li>gem &#8217;rubyzip&#8217;  </li>
-<li>require &#8217;zip/zip&#8217;  </li>
-<li>  </li>
-<li>Zip::ZipFile.open(&lsquo;down.zip&rsquo;) do |zipfile|  </li>
-<li>  zipfile.extract(&lsquo;somefile.csv&rsquo;, &#8217;somefile.csv&#8217;) {true}  </li>
-<li>end  </li>
-<li>  </li>
-<li>csv = open(‘somefile.csv&#8217;).read  </li>
+  <li>system(“unzip -q -o #{ARGV[0]} somefile.csv”)  </li>
 </ol>
 
+<p>不过后来需要把这个脚本放到另外一个服务器上，而那个服务器没有安装”unzip“，我又没有sudo权限<br />
+没有办法，只好回去用ruby的方法实现，麻烦一点，好处是跨平台，没有什么其他系统依赖<br />
+仅仅依赖一个gems：rubyzip  </p>
 
-<p>ZipFile的实例方法extract接受两个参数跟一个proc对象，第一个参数表示压缩包内的文件，第二个参数表示解压缩后另存文件名<br/>
+<p>把代码留在这里做个记录，以备将来查找方便：  </p>
+
+<p>ruby 代码</p>
+
+<p> </p>
+
+<ol>
+  <li>require ”rubygems”  </li>
+  <li>
+    <h1 id="gemrubyzip"> 这里gem用来检测系统是否安装”rubyzip“  </h1>
+  </li>
+  <li>gem ’rubyzip’  </li>
+  <li>require ’zip/zip’  </li>
+  <li>  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Zip::ZipFile.open(‘down.zip’) do </td>
+          <td>zipfile</td>
+          <td>  </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>  zipfile.extract(‘somefile.csv’, ’somefile.csv’) {true}  </li>
+  <li>end  </li>
+  <li>  </li>
+  <li>csv = open(‘somefile.csv’).read  </li>
+</ol>
+
+<p>ZipFile的实例方法extract接受两个参数跟一个proc对象，第一个参数表示压缩包内的文件，第二个参数表示解压缩后另存文件名<br />
 proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已存在文件。</p>
 </div>
 
@@ -213,6 +223,10 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -226,10 +240,6 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -249,6 +259,22 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

@@ -96,15 +96,15 @@
   </header>
 
 
-<div class="entry-content"><p>天尝试使用curl请求lighttpd数据，发现总是报错(417) Expectation Failed。<br/>
-经查，是lighttp不支持curl默认发送的头信息: Expect: 100-continue.</p>
+<div class="entry-content"><p>天尝试使用curl请求lighttpd数据，发现总是报错(417) Expectation Failed。<br />
+经查，是lighttp不支持curl默认发送的头信息: Expect: 100-continue.  </p>
 
-<p>解决方式：</p>
+<p>解决方式：  </p>
 
-<p>在curl中指定发送一个空的Except头信息即可解决。<br/>
-代码：</p>
+<p>在curl中指定发送一个空的Except头信息即可解决。<br />
+代码：  </p>
 
-<p>curl_setopt($ch, CURLOPT_HTTPHEADER, array(&lsquo;Expect:&rsquo;));</p>
+<p>curl_setopt($ch, CURLOPT_HTTPHEADER, array(‘Expect:’));</p>
 </div>
 
 
@@ -176,6 +176,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -189,10 +193,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -212,6 +212,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

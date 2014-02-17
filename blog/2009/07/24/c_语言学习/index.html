@@ -100,9 +100,9 @@ more01.c: In &hellip;">
 
 <p> </p>
 
-<p>more01.c: In function ‘main’:<br/>
-more01.c:22: warning: incompatible implicit declaration of built-in function ‘exit’<br/>
-more01.c: In function ‘do_more’:<br/>
+<p>more01.c: In function ‘main’:<br />
+more01.c:22: warning: incompatible implicit declaration of built-in function ‘exit’<br />
+more01.c: In function ‘do_more’:<br />
 more01.c:42: warning: incompatible implicit declaration of built-in function ‘exit’</p>
 </div>
 
@@ -175,6 +175,10 @@ more01.c:42: warning: incompatible implicit declaration of built-in function ‘
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -188,10 +192,6 @@ more01.c:42: warning: incompatible implicit declaration of built-in function ‘
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -211,6 +211,22 @@ more01.c:42: warning: incompatible implicit declaration of built-in function ‘
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

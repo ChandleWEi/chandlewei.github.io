@@ -95,14 +95,14 @@
   </header>
 
 
-<div class="entry-content"><h2>哪种图像格式最好？</h2>
+<div class="entry-content"><h2 id="section">哪种图像格式最好？</h2>
 
-<p>作者：Jonathan Snook<br/>
+<p>作者：Jonathan Snook<br />
 翻译：htmlor</p>
 
 <p>在网站开发过程中，用什么图像格式你可能不会考虑太多。不过，明智的选择会为你自己（或公司）节省一大笔带宽开支。当今主流的web图像压缩格式有3种：GIF、JPEG和PNG。它们采用不同的图像信息压缩技术，各有利弊。</p>
 
-<h3>GIF</h3>
+<h3 id="gif">GIF</h3>
 
 <p>（htmlor注：Graphics Interchange Format，图形交换格式。）</p>
 
@@ -116,13 +116,13 @@
 
 <p>（有利自然有弊）GIF格式的最大不足，就是它对256色之外的颜色无能为力。如果一幅含有成千上万种色彩的照片用GIF格式压缩，将会变得惨不忍睹。</p>
 
-<h3>JPEG</h3>
+<h3 id="jpeg">JPEG</h3>
 
 <p>（htmlor注：Joint Photographic Experts Group，联合图像专家小组。文件扩展名通常简化为JPG。）</p>
 
 <p>JPEG是有损压缩，即在压缩过程中图像质量会有损失。其压缩过程首先把图像从 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/RGB">RGB</a>转换为 <a href="https://secure.wikimedia.org/wikipedia/en/wiki/YUV">YUV</a>，用亮度、色调和饱和度储存每个象素的信息。然后减少色调和饱和度的信息数量，这种差别不容易被肉眼察觉到。在图像字节数递减时（比如在photoshop里移动质量控制滑块），你会看到在色块上产生模糊的斑点，尤其是边缘附近。<strong>总的来说，JPEG格式最适用于色彩丰富的图像。</strong>（因为）把含有渐变色彩的图像或者照片压缩成低质量，损失并不显眼（却能大幅减少字节数）。而包含文字或者有大块实心背景色的图像的压缩，更适合交给GIF和PNG格式去做。</p>
 
-<h3>PNG</h3>
+<h3 id="png">PNG</h3>
 
 <p>（htmlor注：Portable Network Graphics，便携式网络图形。）</p>
 
@@ -132,7 +132,7 @@
 
 <p>（人家的优点它都有，缺点自然也少不了）PNG的缺点跟GIF相同：对于照片的优化，不如JPEG好。</p>
 
-<h3>谁是老大？</h3>
+<h3 id="section-1">谁是老大？</h3>
 
 <p>没有哪种图像格式独领风骚、老少咸宜。所以，该用哪个用哪个、该怎么压缩怎么压缩，不拘泥于一种格式，就是最好的方案。</p>
 
@@ -212,6 +212,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -225,10 +229,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -248,6 +248,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

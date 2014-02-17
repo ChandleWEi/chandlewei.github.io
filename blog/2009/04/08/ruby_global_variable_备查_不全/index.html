@@ -9,11 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="| $! | latest error message |
-| $@ | location of error |
-| $_ | string last read by gets |
-| $. | line number last read by interpreter |
-| $&amp; | &hellip;">
+  <meta name="description" content="$! latest error message $@ location of error $_ string last read by gets $. line number last read by interpreter $&amp; string last matched by &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -98,24 +94,75 @@
   </header>
 
 
-<div class="entry-content"><p>  | <code>$!</code> | latest error message |
-| <code>$@</code> | location of error |
-| <code>$_</code> | string last read by <code>gets</code> |
-| <code>$.</code> | line <em>number</em> last read by interpreter |
-| <code>$&amp;</code> | string last matched by regexp |
-| <code>$~</code> | the last regexp match, as an array of subexpressions |
-| <code>$</code> <em>n</em> | the <em>nth</em> subexpression in the last match (same as <code>$~[</code> <em>n</em> <code>]</code> ) |
-| <code>$=</code> | case-insensitivity flag |
-| <code>$/</code> | input record separator |
-| <code>$</code> | output record separator |
-| <code>$0</code> | the name of the ruby script file |
-| <code>$*</code> | the command line arguments |
-| <code>$$</code> | interpreter&rsquo;s process ID |
-| <code>$?</code> |</p>
+<div class="entry-content"><table>
+  <tbody>
+    <tr>
+      <td><code>$!</code></td>
+      <td>latest error message</td>
+    </tr>
+    <tr>
+      <td><code>$@</code></td>
+      <td>location of error</td>
+    </tr>
+    <tr>
+      <td><code>$_</code></td>
+      <td>string last read by <code>gets</code></td>
+    </tr>
+    <tr>
+      <td><code>$.</code></td>
+      <td>line <em>number</em> last read by interpreter</td>
+    </tr>
+    <tr>
+      <td><code>$&amp;</code></td>
+      <td>string last matched by regexp</td>
+    </tr>
+    <tr>
+      <td><code>$~</code></td>
+      <td>the last regexp match, as an array of subexpressions</td>
+    </tr>
+    <tr>
+      <td><code>$</code> <em>n</em></td>
+      <td>the <em>nth</em> subexpression in the last match (same as <code>$~[</code> <em>n</em> <code>]</code> )</td>
+    </tr>
+    <tr>
+      <td><code>$=</code></td>
+      <td>case-insensitivity flag</td>
+    </tr>
+    <tr>
+      <td><code>$/</code></td>
+      <td>input record separator</td>
+    </tr>
+    <tr>
+      <td><code>$</code></td>
+      <td>output record separator</td>
+    </tr>
+    <tr>
+      <td><code>$0</code></td>
+      <td>the name of the ruby script file</td>
+    </tr>
+    <tr>
+      <td><code>$*</code></td>
+      <td>the command line arguments</td>
+    </tr>
+    <tr>
+      <td><code>$$</code></td>
+      <td>interpreter’s process ID</td>
+    </tr>
+    <tr>
+      <td><code>$?</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <p>exit status of last executed child process</p>
 
-<p>  |</p>
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 </div>
 
 
@@ -181,6 +228,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -194,10 +245,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -217,6 +264,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

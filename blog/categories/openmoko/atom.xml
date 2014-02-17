@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Openmoko | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/openmoko/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -18,7 +18,7 @@
     <link href="http://ChandleWEi.github.io/blog/2008/10/30/openmoko_%E7%9F%AD_%E6%B6%88%E6%81%AF_%E4%B8%AD%E6%96%87%E8%A2%AB%E5%BF%98/"/>
     <updated>2008-10-30T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/10/30/openmoko_短_消息_中文被忘</id>
-    <content type="html"><![CDATA[<p>我从拿到NEO1973那天就想的找办法让NEO1973显示中文短信，只要将windwos下的simhei.ttf  CP到/usr/share/fonts/truetype#<br/>
+    <content type="html"><![CDATA[<p>我从拿到NEO1973那天就想的找办法让NEO1973显示中文短信，只要将windwos下的simhei.ttf  CP到/usr/share/fonts/truetype#<br />
 下就可以了</p>
 ]]></content>
   </entry>
@@ -28,13 +28,13 @@
     <link href="http://ChandleWEi.github.io/blog/2008/08/15/epdfview/"/>
     <updated>2008-08-15T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/08/15/epdfview</id>
-    <content type="html"><![CDATA[<p>cd /tmp<br/>
-wget <a href="http://www.ginguppin.de/files/epdfview_poppler.tar.bz2  ">http://www.ginguppin.de/files/epdfview_poppler.tar.bz2  </a>
-wget <a href="http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk  ">http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk  </a>
-opk install libfreetype6_2.3.6-r0_armv4t.ipk<br/>
-opkg install libpoppler3_0.8.4-r0_armv4t.ipk<br/>
-opkg install poppler_0.8.4-r0_armv4t.ipk<br/>
-opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
+    <content type="html"><![CDATA[<p>cd /tmp<br />
+wget http://www.ginguppin.de/files/epdfview_poppler.tar.bz2<br />
+wget http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk<br />
+opk install libfreetype6_2.3.6-r0_armv4t.ipk<br />
+opkg install libpoppler3_0.8.4-r0_armv4t.ipk<br />
+opkg install poppler_0.8.4-r0_armv4t.ipk<br />
+opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk  </p>
 
 <p>opkg install epdfview_0.1.6-r3_armv4t.ipk
  
@@ -49,20 +49,19 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
     <id>http://ChandleWEi.github.io/blog/2008/08/14/openmoko_联系人的设置方式</id>
     <content type="html"><![CDATA[<p>openmoko用的是 vcard 3.0格式 。要自己重新写然后导入</p>
 
-<p>参考 <a href="http://wiki.openmoko.org/wiki/Import_Vcf_Contacts%C2%A0">http://wiki.openmoko.org/wiki/Import_Vcf_Contacts%C2%A0</a></p>
+<p>参考 http://wiki.openmoko.org/wiki/Import_Vcf_Contacts </p>
 
 <p>这里记录下我简单的步骤</p>
 
 <p>1。用evolution 建立联系人表然后用vcard格式保存。：（</p>
 
-<p>2。wget -c  <a href="http://www.smurfy.de/files/neo/manage-contacts">http://www.smurfy.de/files/neo/manage-contacts</a></p>
+<p>2。wget -c  http://www.smurfy.de/files/neo/manage-contacts</p>
 
-<p>wget -c  <a href="http://www.smurfy.de/files/neo/remove_all_contacts">http://www.smurfy.de/files/neo/remove_all_contacts</a></p>
+<p>wget -c  http://www.smurfy.de/files/neo/remove_all_contacts</p>
 
 <ol>
-<li>先python manage-contacts dump > contacts 备份下</li>
+  <li>先python manage-contacts dump &gt; contacts 备份下</li>
 </ol>
-
 
 <p>4。 然后把evolution 保存的mobile.vcf copy到手机上</p>
 
@@ -70,14 +69,14 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
 
 <p>============</p>
 
-<p>root@fic-gta02:/$ ps aux | grep today<br/>
-root      1320  3.7 11.5  33556 14100 ?        S    23:00   0:09 ope>>nmoko-today<br/>
-root      1369  0.0  0.4   2860   592 pts/0    S+   23:04   0:00 gre>>p today</p>
+<p>root@fic-gta02:/$ ps aux | grep today<br />
+root      1320  3.7 11.5  33556 14100 ?        S    23:00   0:09 ope»nmoko-today<br />
+root      1369  0.0  0.4   2860   592 pts/0    S+   23:04   0:00 gre»p today  </p>
 
-<p>root@fic-gta02:/$ cat /proc/1320/environ-</p>
+<p>root@fic-gta02:/$ cat /proc/1320/environ-  </p>
 
-<p>root@fic-gta02:/$ export   DBUS_SESSION_BUS_ADDRESS=unix:abstract=/t>>mp/dbus-80gSL9Q6F4,<br/>
-guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
+<p>root@fic-gta02:/$ export   DBUS_SESSION_BUS_ADDRESS=unix:abstract=/t»mp/dbus-80gSL9Q6F4,<br />
+guid=6efed88183a7f6b9210cf40047ba0dfe<br />
  ===========</p>
 
 <p>  python remove_all_contacts</p>
@@ -93,45 +92,42 @@ guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
     <link href="http://ChandleWEi.github.io/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/"/>
     <updated>2008-07-21T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/07/21/openmoko_顶上时间设置</id>
-    <content type="html"><![CDATA[<p>Hey!<br/>
-I suppose you want to have a little clock in the titlebar?!</p>
+    <content type="html"><![CDATA[<p>Hey!<br />
+I suppose you want to have a little clock in the titlebar?!  </p>
 
-<p>Which Image are you using? 2007.2? ASU?</p>
+<p>Which Image are you using? 2007.2? ASU?  </p>
 
-<p>If you are using the 2007.2 Image, do the following in your moko-shell:</p>
-
-<ol>
-<li>minimize current clock:
-
-<h1>dbus-launch gconftool-2 &mdash;type bool &mdash;set</h1>
-
-/desktop/poky/interface/small_clock true
-
-<h1>/etc/init.d/xserver-nodm restart</h1></li>
-</ol>
-
-
-<p>&ndash;> ths big clock in the middle of the scrren will be gone. Just the<br/>
-bar at the bottom of the page showing the date will remain.</p>
+<p>If you are using the 2007.2 Image, do the following in your moko-shell:  </p>
 
 <ol>
-<li>To add the clock to the title bar, edit /etc/matchbox/session. In<br/>
-the list of applets after &mdash;end-applets, add &lsquo;openmoko-panel-clock,&rsquo;,<br/>
-and restart your X server</li>
+  <li>minimize current clock:<br />
+#dbus-launch gconftool-2 –type bool –set<br />
+/desktop/poky/interface/small_clock true<br />
+# /etc/init.d/xserver-nodm restart  </li>
 </ol>
 
+<p>-&gt; ths big clock in the middle of the scrren will be gone. Just the<br />
+bar at the bottom of the page showing the date will remain.  </p>
 
-<p>hope that helps<br/>
-Bastian</p>
+<ol>
+  <li>To add the clock to the title bar, edit /etc/matchbox/session. In<br />
+the list of applets after –end-applets, add ‘openmoko-panel-clock,’,<br />
+and restart your X server  </li>
+</ol>
 
-<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#58;&#x63;&#104;&#x61;&#110;&#x64;&#x6c;&#x65;&#x2e;&#x77;&#x65;&#105;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#x63;&#x68;&#x61;&#110;&#100;&#108;&#x65;&#x2e;&#119;&#x65;&#105;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a> wrote:</p>
+<p>hope that helps<br />
+Bastian  </p>
 
-<blockquote><p>how to set home page clock to right top.</p>
+<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> wrote:<br />
+&gt; how to set home page clock to right top.<br />
+&gt;<br />
+&gt;<br />
+&gt; _______________________________________________<br />
+&gt; support mailing list<br />
+&gt; support@lists.openmoko.org<br />
+&gt; https://lists.openmoko.org/mailman/listinfo/support<br />
+&gt;  </p>
 
-<p>_______________________________________________<br/>
-support mailing list<br/>
-support@lists.openmoko.org<br/>
-<a href="https://lists.openmoko.org/mailman/listinfo/support">https://lists.openmoko.org/mailman/listinfo/support</a></p></blockquote>
 ]]></content>
   </entry>
   
@@ -142,18 +138,16 @@ support@lists.openmoko.org<br/>
     <id>http://ChandleWEi.github.io/blog/2008/07/19/GTA02_WLAN</id>
     <content type="html"><![CDATA[<p>openmoko 的dhclient有问题真的很奇怪。dhclient 2050 null point 的问题</p>
 
-<p>ifconfig eth0 up<br/>
-iwconfig eth0 essid XXXXX</p>
-
-<h1>iwconfig eth0 key on</h1>
-
-<p> iwconfig eth0 key s:xxxxxxxxxxxxxx</p>
+<p>ifconfig eth0 up<br />
+iwconfig eth0 essid XXXXX<br />
+# iwconfig eth0 key on<br />
+ iwconfig eth0 key s:xxxxxxxxxxxxxx</p>
 
 <p>or</p>
 
 <p>iwconfig eth0 key restricted xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
 
-<h1>dhclient eth0 不能在openmoko下运行只能运行下面的命令.</h1>
+<h1 id="dhclient-eth0-openmoko">dhclient eth0 不能在openmoko下运行只能运行下面的命令.</h1>
 
 <p>udhcpc eth0</p>
 ]]></content>

@@ -96,36 +96,36 @@ C-x r SPC                    point-to &hellip;">
   </header>
 
 
-<div class="entry-content"><p>不敢独享，与大家分享。也可以在Emacs中用C-x C-h列出全部命令，查找C-x r c，所有列模式命令都是以C-x r开始的<br/>
-C-x r C-@                    point-to-register<br/>
-C-x r SPC                    point-to-register<br/>
-C-x r +        increment-register<br/>
-C-x r b        bookmark-jump<br/>
-C-x r c        clear-rectangle<br/>
-先用C-space或者C-@设一个mark，移动光标到另一点，使用C-x r c可以清楚mark到光标处的矩形区域，该区域留下空白。<br/>
-C-x r d        delete-rectangle<br/>
-删除矩形区域，不留空白，后面的字符前移<br/>
-C-x r f        frame-configuration-to-register<br/>
-C-x r g        insert-register<br/>
-C-x r i        insert-register<br/>
-将某个寄存器的内容插入某处<br/>
-C-x r j        jump-to-register<br/>
-C-x r k        kill-rectangle<br/>
-就是剪切某个选定的矩形区域，用C-x r y可以贴上<br/>
-C-x r l        bookmark-bmenu-list<br/>
-C-x r m        bookmark-set<br/>
-C-x r n        number-to-register<br/>
-C-x r o        open-rectangle<br/>
-在选定的矩形区域插入空白<br/>
-C-x r r        copy-rectangle-to-register<br/>
-将选定的矩形区域复制到某个寄存器<br/>
-C-x r s        copy-to-register<br/>
-C-x r t        string-rectangle<br/>
-在选定区域所有列前插入同样的字符<br/>
-C-x r w        window-configuration-to-register<br/>
-C-x r x        copy-to-register<br/>
-C-x r y        yank-rectangle<br/>
-类似于矩形区域的粘贴，就是将刚用C-x r k剪切的矩形区域粘贴过来<br/>
+<div class="entry-content"><p>不敢独享，与大家分享。也可以在Emacs中用C-x C-h列出全部命令，查找C-x r c，所有列模式命令都是以C-x r开始的<br />
+C-x r C-@                    point-to-register<br />
+C-x r SPC                    point-to-register<br />
+C-x r +        increment-register<br />
+C-x r b        bookmark-jump<br />
+C-x r c        clear-rectangle<br />
+先用C-space或者C-@设一个mark，移动光标到另一点，使用C-x r c可以清楚mark到光标处的矩形区域，该区域留下空白。<br />
+C-x r d        delete-rectangle<br />
+删除矩形区域，不留空白，后面的字符前移<br />
+C-x r f        frame-configuration-to-register<br />
+C-x r g        insert-register<br />
+C-x r i        insert-register<br />
+将某个寄存器的内容插入某处<br />
+C-x r j        jump-to-register<br />
+C-x r k        kill-rectangle<br />
+就是剪切某个选定的矩形区域，用C-x r y可以贴上<br />
+C-x r l        bookmark-bmenu-list<br />
+C-x r m        bookmark-set<br />
+C-x r n        number-to-register<br />
+C-x r o        open-rectangle<br />
+在选定的矩形区域插入空白<br />
+C-x r r        copy-rectangle-to-register<br />
+将选定的矩形区域复制到某个寄存器<br />
+C-x r s        copy-to-register<br />
+C-x r t        string-rectangle<br />
+在选定区域所有列前插入同样的字符<br />
+C-x r w        window-configuration-to-register<br />
+C-x r x        copy-to-register<br />
+C-x r y        yank-rectangle<br />
+类似于矩形区域的粘贴，就是将刚用C-x r k剪切的矩形区域粘贴过来<br />
 C-x r C-SPC    point-to-register</p>
 </div>
 
@@ -198,6 +198,10 @@ C-x r C-SPC    point-to-register</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -211,10 +215,6 @@ C-x r C-SPC    point-to-register</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -234,6 +234,22 @@ C-x r C-SPC    point-to-register</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

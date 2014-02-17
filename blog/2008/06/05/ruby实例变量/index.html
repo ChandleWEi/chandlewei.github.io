@@ -10,8 +10,8 @@
 
   
   <meta name="description" content="http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby   class ExampleClass
-@variable = &ldquo;foo&#8221;
-@@ &hellip;">
+@variable = “foo”
+@@variable = “bar &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,44 +96,44 @@
   </header>
 
 
-<div class="entry-content"><p><a href="http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby">http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby</a></p>
+<div class="entry-content"><p>http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby</p>
 
 <p> </p>
 
-<p>class ExampleClass<br/>
-@variable = &ldquo;foo&#8221;<br/>
-@@variable = &#8220;bar&rdquo;</p>
+<p>class ExampleClass<br />
+@variable = “foo”<br />
+@@variable = “bar”  </p>
 
-<p>def initialize<br/>
-@variable = &ldquo;baz&#8221;<br/>
-end</p>
+<p>def initialize<br />
+@variable = “baz”<br />
+end  </p>
 
-<p>def self.test<br/>
-puts @variable<br/>
-end</p>
+<p>def self.test<br />
+puts @variable<br />
+end  </p>
 
-<p>def test<br/>
-self.class.test<br/>
-puts @@variable<br/>
-puts @variable<br/>
-end<br/>
-end</p>
+<p>def test<br />
+self.class.test<br />
+puts @@variable<br />
+puts @variable<br />
+end<br />
+end  </p>
 
-<p>class ExampleSubclass &lt; ExampleClass<br/>
-@variable = &ldquo;1&#8221;<br/>
-@@variable = &#8220;2&rdquo;</p>
+<p>class ExampleSubclass &lt; ExampleClass<br />
+@variable = “1”<br />
+@@variable = “2”  </p>
 
-<p>def initialize<br/>
-@variable = &ldquo;3&#8221;<br/>
-end<br/>
-end</p>
+<p>def initialize<br />
+@variable = “3”<br />
+end<br />
+end  </p>
 
-<p>first_example = ExampleClass.new<br/>
-first_example.test</p>
+<p>first_example = ExampleClass.new<br />
+first_example.test  </p>
 
-<p>puts &ldquo;&mdash;&ndash;&rdquo;</p>
+<p>puts “—”  </p>
 
-<p>second_example = ExampleSubclass.new<br/>
+<p>second_example = ExampleSubclass.new<br />
 second_example.test</p>
 
 <p> </p>
@@ -208,6 +208,10 @@ second_example.test</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -221,10 +225,6 @@ second_example.test</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -244,6 +244,22 @@ second_example.test</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

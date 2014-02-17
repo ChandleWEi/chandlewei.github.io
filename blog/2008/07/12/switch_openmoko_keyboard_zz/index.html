@@ -94,19 +94,19 @@
   </header>
 
 
-<div class="entry-content"><p>zz from  <a href="http://www.ginguppin.de/node/15">http://www.ginguppin.de/node/15</a></p>
+<div class="entry-content"><p>zz from  http://www.ginguppin.de/node/15</p>
 
 <p>you can tar.gz from above url </p>
 
-<p>download tar.bz2, unpack and move the resulting 3 *.ipk to your freerunner:<br/>
-scp *.ipk root@openmoko:/tmp/<br/>
-ssh to the freerunner and do the following:<br/>
-opkg remove -force-depends multitap-pad<br/>
-opkg install /tmp/matchbox-keyboard-inputmethod_0.0+svnr1910-r10_armv4t.ipk<br/>
-opkg install /tmp/matchbox-keyboard-im_0.0+svnr1910-r10_armv4t.ipk<br/>
+<p>download tar.bz2, unpack and move the resulting 3 *.ipk to your freerunner:<br />
+scp *.ipk root@openmoko:/tmp/<br />
+ssh to the freerunner and do the following:<br />
+opkg remove -force-depends multitap-pad<br />
+opkg install /tmp/matchbox-keyboard-inputmethod_0.0+svnr1910-r10_armv4t.ipk<br />
+opkg install /tmp/matchbox-keyboard-im_0.0+svnr1910-r10_armv4t.ipk<br />
 opkg install /tmp/matchbox-keyboard-applet_0.0+svnr1910-r10_armv4t.ipk</p>
 
-<p>reboot the freerunner and enjoy &hellip;</p>
+<p>reboot the freerunner and enjoy …</p>
 </div>
 
 
@@ -178,6 +178,10 @@ opkg install /tmp/matchbox-keyboard-applet_0.0+svnr1910-r10_armv4t.ipk</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -191,10 +195,6 @@ opkg install /tmp/matchbox-keyboard-applet_0.0+svnr1910-r10_armv4t.ipk</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -214,6 +214,22 @@ opkg install /tmp/matchbox-keyboard-applet_0.0+svnr1910-r10_armv4t.ipk</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

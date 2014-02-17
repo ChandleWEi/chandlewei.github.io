@@ -9,8 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="从 老王的技术手册 作者：thinkinginlamp 有 15 人喜欢此条目 作者：老王 周末重读了一遍《高性能MySQL》，发现有些知识点看过便忘了，没有实际动手操作一遍就是记不牢，所以今天动手操作了一下“找出谁持有锁”，并把实验步骤记录下来，有兴趣的网友可以参照一二。 问题的背景： &hellip;">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -71,6 +71,51 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2010/09/13/%E5%BD%93IOS_SDK%E5%8D%87%E7%BA%A7%E5%88%B0_4.x%E4%B9%8B%E5%90%8E./">当IOS_SDK升级到_4.x之后.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-13T00:00:00+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2010</time>
+        
+           | <a href="/blog/2010/09/13/%E5%BD%93IOS_SDK%E5%8D%87%E7%BA%A7%E5%88%B0_4.x%E4%B9%8B%E5%90%8E./#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2010/09/13/%E5%BD%93IOS_SDK%E5%8D%87%E7%BA%A7%E5%88%B0_4.x%E4%B9%8B%E5%90%8E./">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>当IOS SDK升级到 4.x之后.<br />
+你在测试编译时能够选择的SDK 只有4.x<br />
+很多人担心这样3.x环境下的IOS执行这种程序会有问题<br />
+所以有人把SDK 3.x复制到xcode目录下来做兼容<br />
+其实在真正发布的时候<br />
+只在在project属性-&gt;Build-&gt;Deployment-&gt;iPhone Deployment Target里面选择对应的IOS版本即可<br />
+  <a href="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS.png"> <img src="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS-300x217.png" alt="" title="IOS" /> </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2010/09/13/zz_%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%89%BE%E5%87%BA%E8%B0%81%E6%8C%81%E6%9C%89%E9%94%81/">zz_高性能MySQL读书笔记：找出谁持有锁</a></h1>
     
     
@@ -97,59 +142,59 @@
   </header>
 
 
-  <div class="entry-content"><h2></h2>
+  <div class="entry-content"><p>##  </p>
 
 <p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fhi.baidu.com%2Fthinkinginlamp%2Frss">老王的技术手册</a> 作者：thinkinginlamp</p>
 
 <p>有 15 人喜欢此条目</p>
 
-<p>作者：老王</p>
+<p>作者：老王  </p>
 
-<p>周末重读了一遍《高性能MySQL》，发现有些知识点看过便忘了，没有实际动手操作一遍就是记不牢，所以今天动手操作了一下“找出谁持有锁”，并把实验步骤记录下来，有兴趣的网友可以参照一二。</p>
+<p>周末重读了一遍《高性能MySQL》，发现有些知识点看过便忘了，没有实际动手操作一遍就是记不牢，所以今天动手操作了一下“找出谁持有锁”，并把实验步骤记录下来，有兴趣的网友可以参照一二。  </p>
 
-<p>问题的背景：在实际使用MySQL时，如果访问量比较大，那么很可能会出现大量Locked状态的进程，但是却不能方便的识别是哪条SQL引起的问题，很 多人遇到此类问题时，多半是通过PhpMyAdmin查询可疑SQL，然后KILL掉，但问题是可疑SQL可能会很多，这样逐一尝试太过笨拙，有的人一怒 之下很可能会重启MySQL，但如此治标不治本的方法肯定更不可取。</p>
+<p>问题的背景：在实际使用MySQL时，如果访问量比较大，那么很可能会出现大量Locked状态的进程，但是却不能方便的识别是哪条SQL引起的问题，很 多人遇到此类问题时，多半是通过PhpMyAdmin查询可疑SQL，然后KILL掉，但问题是可疑SQL可能会很多，这样逐一尝试太过笨拙，有的人一怒 之下很可能会重启MySQL，但如此治标不治本的方法肯定更不可取。  </p>
 
-<p>开始实验，在test数据库先建立一个测试表foo（注意：是InnoDB表类型），添加若干数据：</p>
+<p>开始实验，在test数据库先建立一个测试表foo（注意：是InnoDB表类型），添加若干数据：  </p>
 
-<p>CREATE TABLE IF NOT EXISTS <code>foo</code> (<br/>
-<code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br/>
-<code>str</code> varchar(100) NOT NULL,<br/>
-PRIMARY KEY (<code>id</code>)<br/>
-) ENGINE=InnoDB;</p>
+<p>CREATE TABLE IF NOT EXISTS <code>foo</code> (<br />
+<code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br />
+<code>str</code> varchar(100) NOT NULL,<br />
+PRIMARY KEY (<code>id</code>)<br />
+) ENGINE=InnoDB;  </p>
 
-<p>INSERT INTO <code>foo</code> (<code>id</code>, <code>str</code>) VALUES<br/>
-(1, &lsquo;a&rsquo;),<br/>
-(2, &lsquo;b&rsquo;);</p>
+<p>INSERT INTO <code>foo</code> (<code>id</code>, <code>str</code>) VALUES<br />
+(1, ‘a’),<br />
+(2, ‘b’);  </p>
 
-<p>打开一个MySQL命令行终端：</p>
+<p>打开一个MySQL命令行终端：  </p>
 
-<p>mysql> USE test;<br/>
-mysql> SELECT SLEEP(12345) FROM foo;</p>
+<p>mysql&gt; USE test;<br />
+mysql&gt; SELECT SLEEP(12345) FROM foo;  </p>
 
-<p>再打开一个MySQL命令行终端：</p>
+<p>再打开一个MySQL命令行终端：  </p>
 
-<p>mysql> USE test;<br/>
-mysql> UPDATE foo SET str=&lsquo;bar&rsquo;;</p>
+<p>mysql&gt; USE test;<br />
+mysql&gt; UPDATE foo SET str=’bar’;  </p>
 
-<p>此时执行SHOW PROCESSLIST，可以看到已经出现Locked现象了：</p>
+<p>此时执行SHOW PROCESSLIST，可以看到已经出现Locked现象了：  </p>
 
-<p>10  User sleep  SELECT sleep(12345) FROM foo<br/>
-20  Locked      UPDATE foo SET str = &lsquo;bar&rsquo;</p>
+<p>10  User sleep  SELECT sleep(12345) FROM foo<br />
+20  Locked      UPDATE foo SET str = ‘bar’  </p>
 
-<p>当然，我们知道是SLEEP堵塞了UPDATE，但如果不是这个实验，面对同样的情况，比如说几百个SQL查询同时映入眼帘，我们如何来判断呢？此时没人能打包票，只能瞎蒙了，经验有时候很重要，但我们还需要明确的命令，在这里就是：</p>
+<p>当然，我们知道是SLEEP堵塞了UPDATE，但如果不是这个实验，面对同样的情况，比如说几百个SQL查询同时映入眼帘，我们如何来判断呢？此时没人能打包票，只能瞎蒙了，经验有时候很重要，但我们还需要明确的命令，在这里就是：  </p>
 
-<p>mysqladmin debug</p>
+<p>mysqladmin debug  </p>
 
-<p>注意：如何你没有设定“.my.cnf”配置文件的话，可能需要输入用户名和密码参数</p>
+<p>注意：如何你没有设定“.my.cnf”配置文件的话，可能需要输入用户名和密码参数  </p>
 
-<p>命令执行后，不会有任何明确的输出，不要着急，有价值的东西此时已经被保存到了错误日志里：</p>
+<p>命令执行后，不会有任何明确的输出，不要着急，有价值的东西此时已经被保存到了错误日志里：  </p>
 
-<p>mysql> SHOW VARIABLES LIKE &lsquo;log_error&rsquo;;</p>
+<p>mysql&gt; SHOW VARIABLES LIKE ‘log_error’;  </p>
 
-<p>找到错误日志的具体路径后，打开，查看日志的最后部分：</p>
+<p>找到错误日志的具体路径后，打开，查看日志的最后部分：  </p>
 
-<p>10  test.foo    Locked &ndash; read       Low priority read lock<br/>
-20  test.foo    Waiting &ndash; write     High priority write lock</p>
+<p>10  test.foo    Locked - read       Low priority read lock<br />
+20  test.foo    Waiting - write     High priority write lock  </p>
 
 <p>如此，我们就能看到id是10的SQL堵塞了id是20的SQL，至于具体的SQL，到SHOW PROCESSLIST里对照一下就</p>
 </div>
@@ -229,38 +274,38 @@ mysql> UPDATE foo SET str=&lsquo;bar&rsquo;;</p>
   </header>
 
 
-  <div class="entry-content"><h1>用mysqldumpslow分析mysql的slow query log</h1>
+  <div class="entry-content"><h1 id="mysqldumpslowmysqlslow-query-log">用mysqldumpslow分析mysql的slow query log</h1>
 
-<p>  2007年六月7日 由 贝贝爸 <a href="http://www.juyimeng.com/analyze-mysql-slow-query-log-with-mysqldumpslow.html#comments">Leave a reply »</a></p>
+<p>2007年六月7日 由 贝贝爸 <a href="http://www.juyimeng.com/analyze-mysql-slow-query-log-with-mysqldumpslow.html#comments">Leave a reply »</a></p>
 
 <p><strong>mysql</strong>有一个功能就<strong>是</strong>可以<strong>log</strong>下来运行的比较慢的sql语句，默认<strong>是</strong>没有这个<strong>log</strong>的，为了开启这个功能，要修改my.cnf或者在<strong>mysql</strong>启动的时候加入一些参数。如果在my.cnf里面修改，需增加如下几行</p>
 
-<p>long_query_time = 1<br/>
-<strong>log</strong>&ndash;<strong>slow</strong>-queries = /var/youpath/<strong>slow</strong>.<strong>log</strong><br/>
+<p>long_query_time = 1<br />
+<strong>log</strong>-<strong>slow</strong>-queries = /var/youpath/<strong>slow</strong>.<strong>log</strong><br />
 <strong>log</strong>-queries-not-using-indexes</p>
 
-<p>long_query_time <strong>是</strong>指执行超过多久的sql会被<strong>log</strong>下来，这里<strong>是</strong>1秒。<br/>
-<strong>log</strong>&ndash;<strong>slow</strong>-queries 设置把日志写在那里，可以为空，系统会给一个缺省的文件<em>host_name</em>&ndash;<strong>slow</strong>.<strong>log</strong>，我生成的<strong>log</strong>就在<strong>mysql</strong>的data目录<br/>
+<p>long_query_time <strong>是</strong>指执行超过多久的sql会被<strong>log</strong>下来，这里<strong>是</strong>1秒。<br />
+<strong>log</strong>-<strong>slow</strong>-queries 设置把日志写在那里，可以为空，系统会给一个缺省的文件_host_name_-<strong>slow</strong>.<strong>log</strong>，我生成的<strong>log</strong>就在<strong>mysql</strong>的data目录<br />
 <strong>log</strong>-queries-not-using-indexes 就<strong>是</strong>字面意思，<strong>log</strong>下来没有使用索引的query。</p>
 
 <p>把上述参数打开，运行一段时间，就可以关掉了，省得影响生产环境。</p>
 
-<p>接下来就<strong>是</strong>分析了，我这里的文件名字叫host-<strong>slow</strong>.<strong>log</strong>。<br/>
-先<strong>mysql</strong>dump<strong>slow</strong> –help以下，俺主要用的<strong>是</strong><br/>
--s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br/>
--t NUM just show the top n queries<br/>
+<p>接下来就<strong>是</strong>分析了，我这里的文件名字叫host-<strong>slow</strong>.<strong>log</strong>。<br />
+先<strong>mysql</strong>dump<strong>slow</strong> –help以下，俺主要用的<strong>是</strong><br />
+-s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br />
+-t NUM just show the top n queries<br />
 -g PATTERN grep: only consider stmts that include this string</p>
 
-<p>-s，<strong>是</strong>order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br/>
-c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br/>
--t，<strong>是</strong>top n的意思，即为返回前面多少条的数据<br/>
+<p>-s，<strong>是</strong>order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br />
+c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br />
+-t，<strong>是</strong>top n的意思，即为返回前面多少条的数据<br />
 -g，后边可以写一个正则匹配模式，大小写不敏感的</p>
 
-<p><strong>mysql</strong>dump<strong>slow</strong> -s c -t 20 host-<strong>slow</strong>.<strong>log</strong><br/>
+<p><strong>mysql</strong>dump<strong>slow</strong> -s c -t 20 host-<strong>slow</strong>.<strong>log</strong><br />
 <strong>mysql</strong>dump<strong>slow</strong> -s r -t 20 host-<strong>slow</strong>.<strong>log</strong></p>
 
-<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br/>
-<strong>mysql</strong>dump<strong>slow</strong> -t 10 -s t -g “left join” host-<strong>slow</strong>.<strong>log</strong><br/>
+<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br />
+<strong>mysql</strong>dump<strong>slow</strong> -t 10 -s t -g “left join” host-<strong>slow</strong>.<strong>log</strong><br />
 这个<strong>是</strong>按照时间返回前10条里面含有左连接的sql语句。</p>
 
 <p>用了这个工具就可以查询出来那些sql语句<strong>是</strong>性能的瓶颈，进行优化，比如加索引，该应用的实现方式等。</p>
@@ -302,20 +347,20 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
   </header>
 
 
-  <div class="entry-content"><h1><a href="http://blog.chinaunix.net/u1/50920/showart_424394.html">[zz]只管去做-用emacs的org-mode做时间管理 </a></h1>
+  <div class="entry-content"><h1 id="zz-emacsorg-mode-httpblogchinaunixnetu150920showart424394html"><a href="http://blog.chinaunix.net/u1/50920/showart_424394.html">[zz]只管去做-用emacs的org-mode做时间管理 </a></h1>
 
-<h3>wheer</h3>
+<h3 id="wheer">wheer</h3>
 
-<h1>目录</h1>
+<h1 id="section">目录</h1>
 
-<p><a href="http://cnlox.is-programmer.com/#tth_sEc1">1  序</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc2">2  收集、处理</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc3">3  规划、执行</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc4">4  回顾、简化</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc5">5  反省、激情</a><br/>
+<p><a href="http://cnlox.is-programmer.com/#tth_sEc1">1  序</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc2">2  收集、处理</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc3">3  规划、执行</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc4">4  回顾、简化</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc5">5  反省、激情</a><br />
   <a href="http://cnlox.is-programmer.com/#tth_sEc6">6  完结</a></p>
 
-<h2>1  序</h2>
+<h2 id="section-1">1  序</h2>
 
 <p>用org-mode有一周了，期间翻了翻戴维·艾伦的《尽管去做-无压工作的艺术》(getting things done, GTD)一书，感觉这个理念很有意思，我喜欢。</p>
 
@@ -324,47 +369,45 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
 <p>那究竟是什么地方出了问题呢，至少有几点：</p>
 
 <ol>
-<li>自上而下列举事项的方式可能让你照顾不到一些细微不入流的事项，而这些事在任何一天都有可能爆发</li>
-<li>你列出的事有些不是必须当天做的，强制列上会牵制你的精力</li>
-<li>一般的时间管理只列出了你很少一部分而不是全部要操心的事，仍然有大量琐事在你心中萦绕，影响工作效率</li>
-<li>任何临时突发事件均使得你先前的安排作费</li>
+  <li>自上而下列举事项的方式可能让你照顾不到一些细微不入流的事项，而这些事在任何一天都有可能爆发</li>
+  <li>你列出的事有些不是必须当天做的，强制列上会牵制你的精力</li>
+  <li>一般的时间管理只列出了你很少一部分而不是全部要操心的事，仍然有大量琐事在你心中萦绕，影响工作效率</li>
+  <li>任何临时突发事件均使得你先前的安排作费</li>
 </ol>
-
 
 <p>而GTD的出现正是针对以上几点的。在正式进入正题之间，我们应该先确立一些理念，因为要做好任何事都是需要信仰的(正如开源、Emacs、LATEX，没有信仰是坚持不下来的:)，具体如下</p>
 
 <ol>
-<li>心中装的事情越少，工作效率越高</li>
-<li>事情极少由于时间匮乏而受阻(尽管每个人都这么认为)，它们陷入困境往往是由于一开始不知道如何采取行动而造成的</li>
-<li>自下而上地将所有可能萦绕在你心中的事列出来，用一个可靠的外部体系来替你管理它们</li>
-<li>收集自己所有的想法，只鼓励不打击，追求数量不求质量</li>
-<li>经常回顾、整理那个外部体系，分析每件事并确定下一步行动</li>
+  <li>心中装的事情越少，工作效率越高</li>
+  <li>事情极少由于时间匮乏而受阻(尽管每个人都这么认为)，它们陷入困境往往是由于一开始不知道如何采取行动而造成的</li>
+  <li>自下而上地将所有可能萦绕在你心中的事列出来，用一个可靠的外部体系来替你管理它们</li>
+  <li>收集自己所有的想法，只鼓励不打击，追求数量不求质量</li>
+  <li>经常回顾、整理那个外部体系，分析每件事并确定下一步行动</li>
 </ol>
 
+<h2 id="section-2">2  收集、处理</h2>
 
-<h2>2  收集、处理</h2>
-
-<p>根据只管去做(GTD)的理念，你需要一个可靠的外部系统来接管所有可能扰乱你心绪的事情，而你的心中应该是无所牵挂，可以&#8221;只管去做&#8221;的。</p>
+<p>根据只管去做(GTD)的理念，你需要一个可靠的外部系统来接管所有可能扰乱你心绪的事情，而你的心中应该是无所牵挂，可以”只管去做”的。</p>
 
 <p>在这里，org-mode自然就是那个可靠的外部系统了，这在emacs23下是自带的，稍稍在.emacs下加点配置</p>
 
-<p>(add-to-list &#8217;auto-mode-alist &#8217;(&ldquo;.org$&#8221; . org-mode))<br/>
-(define-key global-map &#8221;C-cl&#8221; &#8217;org-store-link)<br/>
-(define-key global-map &#8221;C-ca&#8221; &#8217;org-agenda)<br/>
-(setq org-hide-leading-stars t)<br/>
-(setq org-log-done t)</p>
+<p>(add-to-list ’auto-mode-alist ’(“.org$” . org-mode))<br />
+(define-key global-map ”C-cl” ’org-store-link)<br />
+(define-key global-map ”C-ca” ’org-agenda)<br />
+(setq org-hide-leading-stars t)<br />
+(setq org-log-done t)  </p>
 
 <p>下面就正式开始吧，先建个文件夹，如 /.org/，在里面新建org文件，比如与工作无关的个人事务都放在self.org里，它的大概样子如下(第一行以后再解释)：</p>
 
-<p>+TAGS: EASY(e) COMM&copy; OFFICE(o) READ&reg; URGENT(u) FUTURE(f) WAIT(w) MEMO(m)<br/>
-* 阅读、充电<br/>
-** 计算机<br/>
-* 强身健体<br/>
-** 力量、健美<br/>
-** 有氧运动<br/>
-* 人际关系<br/>
-* Basket<br/>
-** 临时篮子</p>
+<p>+TAGS: EASY(e) COMM(c) OFFICE(o) READ(r) URGENT(u) FUTURE(f) WAIT(w) MEMO(m)<br />
+* 阅读、充电<br />
+** 计算机<br />
+* 强身健体<br />
+** 力量、健美<br />
+** 有氧运动<br />
+* 人际关系<br />
+* Basket<br />
+** 临时篮子  </p>
 
 <p>然后就开始静下心来，耐心地，自下而上地将你所有萦绕于心中的所有事情转移到这个系统中去。记住是所有，不要留任何隐患，所有具体不具体的，成熟不成熟的都要写下来，总之就是不要让它再幽魂不散地骚扰你的心境了。</p>
 
@@ -372,71 +415,71 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
 
 <p>以下仍然只是个示例：</p>
 
-<h1>+TAGS: EASY(e) COMM&copy; OFFICE(o) READING&reg; URGENT(u) FUTURE(f) WAIT(w) MEMO(m)</h1>
-
-<p>* 阅读、充电<br/>
-** 养成阅读习惯<br/>
-*** 没有条件创造条件也要上，晚上远离电脑两个小时，去图书馆 :EASY:<br/>
-*** TODO 下载感兴趣的jar电子书传到手机上，利用一切间隙看<br/>
-** 计算机<br/>
-*** 阅读&lt;Mastering Algorithms with perl>         :FUTURE:<br/>
-*** 学习blender三维建模                         :FUTURE:<br/>
-** 英语<br/>
-*** 千万别学英语                                 :EASY:<br/>
-  - [ ] 每天反复听同一盒磁带<br/>
-  - [ ] 反复听一个月后听写、跟读<br/>
-* 强身健体<br/>
-** 力量、健美<br/>
-*** TODO 去趟天成买对哑铃                         :EASY:<br/>
-** 有氧运动<br/>
-*** 去八达岭残长城转转<br/>
-*** 参加一次1.3+级的穿越<br/>
-*** 骑车绕北京城半圈<br/>
-* 人际关系<br/>
-*** 好久没见老同学了<br/>
-* Basket<br/>
-** 临时篮子<br/>
-*** 文献中心二楼的研究生自习室很好，很强大         :MEMO:<br/>
-*** 提高一下表达、写作能力                         :URGENT:<br/>
-*** 提高演讲能力                                 :FUTURE:<br/>
-*** 阅读&lt;哲学的故事>                             :READING:</p>
+<h1 id="tagseasyecommcofficeoreadingrurgentufuturefwaitwmemom">+TAGS: EASY(e) COMM(c) OFFICE(o) READING(r) URGENT(u) FUTURE(f) WAIT(w) MEMO(m)</h1>
+<p>* 阅读、充电<br />
+** 养成阅读习惯<br />
+*** 没有条件创造条件也要上，晚上远离电脑两个小时，去图书馆 :EASY:<br />
+*** TODO 下载感兴趣的jar电子书传到手机上，利用一切间隙看<br />
+** 计算机<br />
+*** 阅读&lt;Mastering Algorithms with perl&gt;         :FUTURE:<br />
+*** 学习blender三维建模                         :FUTURE:<br />
+** 英语<br />
+*** 千万别学英语                                 :EASY:<br />
+  - [ ] 每天反复听同一盒磁带<br />
+  - [ ] 反复听一个月后听写、跟读<br />
+* 强身健体<br />
+** 力量、健美<br />
+*** TODO 去趟天成买对哑铃                         :EASY:<br />
+** 有氧运动<br />
+*** 去八达岭残长城转转<br />
+*** 参加一次1.3+级的穿越<br />
+*** 骑车绕北京城半圈<br />
+* 人际关系<br />
+*** 好久没见老同学了<br />
+* Basket<br />
+** 临时篮子<br />
+*** 文献中心二楼的研究生自习室很好，很强大         :MEMO:<br />
+*** 提高一下表达、写作能力                         :URGENT:<br />
+*** 提高演讲能力                                 :FUTURE:<br />
+*** 阅读<哲学的故事>                             :READING:  </哲学的故事></p>
 
 <p>所有事项都以*开头，*数目代表了级数，org-mode其实就是一种outline mode，带*的是outline项。org-mode支持对outline项作以下操作(鼠标在outline项上)：</p>
 
 <ol>
-<li>TAB折叠、打开子项，Shift-TAB折叠、打开整个文档</li>
-<li>C-c C-c指定当前项标签，如上面的:URGENT:, :MEMO:等，方便以后分类查找</li>
-<li>M-左右方向键减/增*数目</li>
-<li>M-上下方向键移动当前项位置</li>
-<li>C-c C-t设定当前项状态为TODO DONE或空白</li>
-<li>C-c C-s规划时间(只建议用于约会或非此时不可的情形)</li>
-<li>C-c C-d设定最后期限(deadline)</li>
+  <li>TAB折叠、打开子项，Shift-TAB折叠、打开整个文档</li>
+  <li>C-c C-c指定当前项标签，如上面的:URGENT:, :MEMO:等，方便以后分类查找</li>
+  <li>M-左右方向键减/增*数目</li>
+  <li>M-上下方向键移动当前项位置</li>
+  <li>C-c C-t设定当前项状态为TODO DONE或空白</li>
+  <li>C-c C-s规划时间(只建议用于约会或非此时不可的情形)</li>
+  <li>C-c C-d设定最后期限(deadline)</li>
 </ol>
-
 
 <p>好了，现在假设你现在已经有了一个长达几百行的列表，千万别让它就这么堆着，那样你就前功尽弃了，好不容易从脑中清除出来的东西可能过不多久又重新萦绕在你脑中。你现在要做的便是清理你放在这个你所依赖的系统里的所有信息，具体过程如下:</p>
 
 <ol>
-<li>逐一处理，马上作出决定，不要积压</li>
-<li>如果认定是垃圾，删除</li>
-<li>如果可委派别人，委派出去，将该项标签设为:WAIT:，这个标签下的事情都不用你干(爽吧)</li>
-<li>2分钟可完成的立刻干掉</li>
-<li>应该尽快采取行动但超过2分钟的，C-c C-t设为TODO</li>
-<li>这是一件不具体的事务(如养成阅读习惯)，那么确定如何实施下一步(创造条件，下载jar书)</li>
-<li>也许在将来再做的事设标签为:FUTURE:</li>
-<li>不要剩余有未处理的事项，以后注意随时添加，及时检查处理(比如前面的例子就还有四、五项未处理，不应该)</li>
+  <li>逐一处理，马上作出决定，不要积压</li>
+  <li>如果认定是垃圾，删除</li>
+  <li>如果可委派别人，委派出去，将该项标签设为:WAIT:，这个标签下的事情都不用你干(爽吧)</li>
+  <li>2分钟可完成的立刻干掉</li>
+  <li>应该尽快采取行动但超过2分钟的，C-c C-t设为TODO</li>
+  <li>这是一件不具体的事务(如养成阅读习惯)，那么确定如何实施下一步(创造条件，下载jar书)</li>
+  <li>也许在将来再做的事设标签为:FUTURE:</li>
+  <li>不要剩余有未处理的事项，以后注意随时添加，及时检查处理(比如前面的例子就还有四、五项未处理，不应该)</li>
 </ol>
 
-
-<h2>3  规划、执行</h2>
-
-<blockquote><p>一个大学讲师在上课的时候带了一袋沙子、一袋小鹅卵石、几块大石头和一个木桶，问有没有人能把这几种不同形状的东西都装进木桶。一个热心的学生自告奋勇走 上讲台随手抓起沙袋就往木桶里倒，然后把小鹅卵石也放了进去，但是轮到大石头的时候，他发现木桶里的空间已经不够了。讲师遗憾地摇了摇头。他把木桶清空 了，先把那几块大石头放进木桶，再把小鹅卵石放进去，然后倒入沙子。最后他摇了摇木桶，只见这三种不同形状的东西配合得天衣无缝，把木桶挤得满满的。</p></blockquote>
+<h2 id="section-3">3  规划、执行</h2>
+<blockquote>
+  <p>一个大学讲师在上课的时候带了一袋沙子、一袋小鹅卵石、几块大石头和一个木桶，问有没有人能把这几种不同形状的东西都装进木桶。一个热心的学生自告奋勇走 上讲台随手抓起沙袋就往木桶里倒，然后把小鹅卵石也放了进去，但是轮到大石头的时候，他发现木桶里的空间已经不够了。讲师遗憾地摇了摇头。他把木桶清空 了，先把那几块大石头放进木桶，再把小鹅卵石放进去，然后倒入沙子。最后他摇了摇木桶，只见这三种不同形状的东西配合得天衣无缝，把木桶挤得满满的。</p>
+</blockquote>
 
 <p>我们做规划的第一个原则是优先放置大石头，每周前把一周要做的重要事情在org-mode中将其优先级设为最高(shift+上下键设定每项的优化 级)，但设定的事情尽量要少，因为这些事情是必须完成而且应尽早完成的。至于要不要一开始就设定日期，就看个人喜好了，有人在时限压力下工作更好，有人则 会产生焦虑，但一般GTD不建议一开始将日期都定好（当然一些本身具有时限性的事情除外)。</p>
 
 <p>然后是每天的规划了，同样是应当确定大石头，一般是两到三件最重要的事，在org-mode中C-c C-s将其规划到当天，并且优先级设为最高(shift+上下键设定每项的优化级)，事情应该描述得尽量具体，且保证当天能完成(完不成就细化)。然后就 是尽早搞定你大石头了，一定不要找延误的理由，做完后表扬一下自己。至于其它事务，你一高兴当然会多少顺便做一些的，不是么？等一段时间后回头你就会发现 不少事在不知不觉中就完成了，特别是重要的事都没延误。</p>
 
-<blockquote><p>如果你有定力地全神贯注投入工作几个小时，一定会比不断分心的工作一天取得更多的成果。一般进入专注状态需要15分钟时间，所以 能保持专注状态的外界环境和心理环境十分重要。进入专注状态前花几分钟清空头脑中萦绕的琐事(写到org中)，总比你进入专注状态后再被干扰要好。</p></blockquote>
+<blockquote>
+  <p>如果你有定力地全神贯注投入工作几个小时，一定会比不断分心的工作一天取得更多的成果。一般进入专注状态需要15分钟时间，所以 能保持专注状态的外界环境和心理环境十分重要。进入专注状态前花几分钟清空头脑中萦绕的琐事(写到org中)，总比你进入专注状态后再被干扰要好。</p>
+</blockquote>
 
 <p>至于执行，不用说，当然越专注越好，一次只做一件事，而做事时头脑中的琐事已经被事先清理出去了。另外，尽可能改善你的工作环境。</p>
 
@@ -445,45 +488,42 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
 <p>至于扫描清单，因为列表太长了，自然org-mode会贴心地提供一系列帮助你查找的方法：</p>
 
 <ol>
-<li>C-c /: 在当前org中按关键词查看，比如你可查找某个tag如office：C-c / <ret> office <ret></li>
-<li>C-c a a: 日程表，在日程表状态下，d或w为按日或周查看，.为跳到当日，左右键为前后一天(周)</li>
-<li>C-c a t: 列出所有TODO，每项上按中键可跳到对应的org，至于其中的操作也很方便，自己看菜单了解一下吧</li>
-<li>C-c a m: 根据tag来查找，这就是一开始每件事都要用标签定性的原因，这时候查就方便了，比如你要办公室就查office，要外出就看看trip中有什么可顺便完 成的事，觉得头脑发胀要换思路就查查有什么easy的事，如果想气使颐指一下就看看wait中别人有什么事没给你做完，正豪情万丈中就看看future中 有什么伟大的规划&hellip;.</li>
-<li>c-a a M: 根据tag来查找，但只针对TODO项</li>
-<li>另外C-a a C可以自定义一些查找方式，自己试试吧</li>
+  <li>C-c /: 在当前org中按关键词查看，比如你可查找某个tag如office：C-c / <ret> office <ret></ret></ret></li>
+  <li>C-c a a: 日程表，在日程表状态下，d或w为按日或周查看，.为跳到当日，左右键为前后一天(周)</li>
+  <li>C-c a t: 列出所有TODO，每项上按中键可跳到对应的org，至于其中的操作也很方便，自己看菜单了解一下吧</li>
+  <li>C-c a m: 根据tag来查找，这就是一开始每件事都要用标签定性的原因，这时候查就方便了，比如你要办公室就查office，要外出就看看trip中有什么可顺便完 成的事，觉得头脑发胀要换思路就查查有什么easy的事，如果想气使颐指一下就看看wait中别人有什么事没给你做完，正豪情万丈中就看看future中 有什么伟大的规划….</li>
+  <li>c-a a M: 根据tag来查找，但只针对TODO项</li>
+  <li>另外C-a a C可以自定义一些查找方式，自己试试吧</li>
 </ol>
 
-
-<h2>4  回顾、简化</h2>
+<h2 id="section-4">4  回顾、简化</h2>
 
 <p>这里的回顾不是指周末或每天晚上的反省，而是对目标和org-mode中所记录的所有事情的回顾。</p>
 
 <p>每周回顾的重要意义在此: 它给了你一次机会, 来重新整理所有的事情并检视什么是最重要的任务。 以下是GTD每周回顾的一些步骤：</p>
 
 <ol>
-<li>回顾你的长期目标，中期目标和短期目标</li>
-<li>将没归类的(一般集中放在最后，或者平时用纸记着)、还没确定下一步是什么的事情逐一处理、具体化，加上标签(C-c C-c)，归入相应情境</li>
-<li>C-c a a 看看日程表，看看有什么约会或有deadline的事</li>
-<li>按每种情境(C-c a m)查看任务清单，心里有数</li>
-<li>设定大石头，但不着急放到每一天</li>
+  <li>回顾你的长期目标，中期目标和短期目标</li>
+  <li>将没归类的(一般集中放在最后，或者平时用纸记着)、还没确定下一步是什么的事情逐一处理、具体化，加上标签(C-c C-c)，归入相应情境</li>
+  <li>C-c a a 看看日程表，看看有什么约会或有deadline的事</li>
+  <li>按每种情境(C-c a m)查看任务清单，心里有数</li>
+  <li>设定大石头，但不着急放到每一天</li>
 </ol>
-
 
 <p>至于每一天开始时的回顾，最重要的就是先设定三件最重要的事了，三件就行了，而且描述得尽量具体可行，尽量在早晨就完成，这样在反省时不至于觉得当天没做什么。还有就是三块大石头中应当有一件与你的中长期目标或人生规划相关，这样能增进成就感。</p>
 
 <p>再有就是简化，因为GTD始终原则就是保证你能专注地只管去做一件事。它建立一个系统帮助你把头绪里的琐事清理出来就是为了你专注，它不提前把乱七 八糟的事安排满你的日程也是为了你专注，它每天只在日程中定三件事同样是为了你专注。那么你的org-mode中列表那么长是不是有点影响你的专注了哈， 那就简化它吧。</p>
 
 <ol>
-<li>清除。有时候我们认真权衡一下会发现很多事是没必要做或可以拖延的，还有很多事2分钟就搞定了，这些都清除或搞定之</li>
-<li>对你的目标足够明确，然后结合你的目标来筛选，同样还有可清除的</li>
-<li>减少你的承诺</li>
-<li>把能堆一起的波速堆一起，合适时突击全部完成</li>
-<li>永远只在当日日程中只安排三件事，最重要的三件，而且有一件与你的中长期规划有关</li>
-<li>将 一些琐碎的东西分离出去，比如我的日程表(C-c a)只搜索两个org文件:work.org, self.org，但我可以还有其它一堆org文件，比如是某门学科或某本书的研习计划(顺便说一下用org做学习笔记不错，比如可先列出书中章节，每章 节下面用 &ndash; [ ] Question 的形式列出所有要了解的问题，了解每一项后更新问题答案并C-c C-c之使其变成 &ndash; [X] Answer 的形式) 对于分离出去的org文件，可以用[[file:name.org][description]]的形式来相互链接。事实上, org提供的链接功能很强，甚至可用shell命令。</li>
+  <li>清除。有时候我们认真权衡一下会发现很多事是没必要做或可以拖延的，还有很多事2分钟就搞定了，这些都清除或搞定之</li>
+  <li>对你的目标足够明确，然后结合你的目标来筛选，同样还有可清除的</li>
+  <li>减少你的承诺</li>
+  <li>把能堆一起的波速堆一起，合适时突击全部完成</li>
+  <li>永远只在当日日程中只安排三件事，最重要的三件，而且有一件与你的中长期规划有关</li>
+  <li>将 一些琐碎的东西分离出去，比如我的日程表(C-c a)只搜索两个org文件:work.org, self.org，但我可以还有其它一堆org文件，比如是某门学科或某本书的研习计划(顺便说一下用org做学习笔记不错，比如可先列出书中章节，每章 节下面用 - [ ] Question 的形式列出所有要了解的问题，了解每一项后更新问题答案并C-c C-c之使其变成 - [X] Answer 的形式) 对于分离出去的org文件，可以用[[file:name.org][description]]的形式来相互链接。事实上, org提供的链接功能很强，甚至可用shell命令。</li>
 </ol>
 
-
-<h2>5  反省、激情</h2>
+<h2 id="section-5">5  反省、激情</h2>
 
 <p>用GTD或者org-mode做时间管理的根本目的就是要掌控自己的生活，既不要被一些毫无意义的事情耽延，也不要陷入看起来没完没了的工作中被消磨掉所有锐气。</p>
 
@@ -491,51 +531,51 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
 
 <p>为了充分反省，不妨新建个review.org，没必要加入日程表中，内容示例如下，当然究竟写成什么样必须根据你个人情况来，自己构想来的系统用起来才真正有效：</p>
 
-<p>* REVIEW<br/>
-** 每日反思<br/>
- - [ ] 今天我有什么样的付出？我是用什么的方式付出？<br/>
- - [ ] 今天三块大石头是什么？哪项与我的人生规划有关？都放下了吗？没有的话，下一步是什么？<br/>
-    - [ ] 1.<br/>
-    - [ ] 2.<br/>
-    - [ ] 3.<br/>
- - [ ] 今天我学到了什么？<br/>
- - [ ] 今天我给自己的人生提高了什么品质？对于未来，我在今天作了什么样的投资？<br/>
-** 周末反思<br/>
- - [ ] 这周的规划都完成？效果如何？<br/>
- - [ ] 这周的工作有没有陷入手忙脚乱中？哪些需要调整？<br/>
- - [ ] 这周的工作状态是不是专注？是什么事情让我分神或担忧？怎么消除？<br/>
- - [ ] 这周有什么事情坚持每天做了(如背英语文章、看书、培养某项习惯等)？如果没有，为什么不坚持？<br/>
-** 感觉无趣时反思一下<br/>
- - [ ] 此刻人生中有什么让我觉得快乐？让我快乐到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么让我觉得振奋？让我振奋到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么让我觉得感激？让我感激到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么让我觉得欣赏？让我欣赏到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么值得我努力的？让我努力到什么程度？带给我什么样的感受？<br/>
- - [ ] 我喜欢什么样的人？什么的人喜欢我？让我喜欢到什么程度？带给我什么样的感受？</p>
+<p>* REVIEW<br />
+** 每日反思<br />
+ - [ ] 今天我有什么样的付出？我是用什么的方式付出？<br />
+ - [ ] 今天三块大石头是什么？哪项与我的人生规划有关？都放下了吗？没有的话，下一步是什么？<br />
+    - [ ] 1.<br />
+    - [ ] 2.<br />
+    - [ ] 3.<br />
+ - [ ] 今天我学到了什么？<br />
+ - [ ] 今天我给自己的人生提高了什么品质？对于未来，我在今天作了什么样的投资？<br />
+** 周末反思<br />
+ - [ ] 这周的规划都完成？效果如何？<br />
+ - [ ] 这周的工作有没有陷入手忙脚乱中？哪些需要调整？<br />
+ - [ ] 这周的工作状态是不是专注？是什么事情让我分神或担忧？怎么消除？<br />
+ - [ ] 这周有什么事情坚持每天做了(如背英语文章、看书、培养某项习惯等)？如果没有，为什么不坚持？<br />
+** 感觉无趣时反思一下<br />
+ - [ ] 此刻人生中有什么让我觉得快乐？让我快乐到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么让我觉得振奋？让我振奋到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么让我觉得感激？让我感激到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么让我觉得欣赏？让我欣赏到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么值得我努力的？让我努力到什么程度？带给我什么样的感受？<br />
+ - [ ] 我喜欢什么样的人？什么的人喜欢我？让我喜欢到什么程度？带给我什么样的感受？  </p>
 
 <p>最后很重要的一点就是做你想做的事。试想你每天在做的每一件事都是你所喜欢做的，那么你肯定会愿意付出更多努力来做你想做的事的，也就是说，耽延自 然就会少了，事情也就几乎不可能被堆积下来(前面不止一次说过，事情没完成永远不会是因为时间不够，要么是你不知道下一步怎么走，要么就是你根本没走)</p>
 
-<p>你也许会笑：&#8221;做我想做的事，说得轻巧，由得了我吗？&#8221;那么我问你，你知道你究竟想做什么吗？如果你知道了，你知道下步是什么吗？你所说的下一步已经具体到马上可以执行了吗？如果以上你的回答都是，那么为什么不去做呢？</p>
+<p>你也许会笑：”做我想做的事，说得轻巧，由得了我吗？”那么我问你，你知道你究竟想做什么吗？如果你知道了，你知道下步是什么吗？你所说的下一步已经具体到马上可以执行了吗？如果以上你的回答都是，那么为什么不去做呢？</p>
 
 <p>比如说你现在的工作烦透了，是该反省做改变的时候了，那就在review.org后面加上：</p>
 
-<p>** 我要找份喜欢的工作<br/>
-*** 调查<br/>
-  - [ ] 有谁在从事你心仪的工作？<br/>
-  - [ ] 他们是如何得到这份工作的？<br/>
-  - [ ] 获取这份工作有什么要求与标准？或者说绊脚石是什么？<br/>
-      - [ ] 一份更高的学位?<br/>
-      - [ ] 一份不错的工作经验?<br/>
-      - [ ] 或者其他的技能？<br/>
-*** 设定计划：想出一些有用的方法去解决你的绊脚石<br/>
-  - [ ] 进修、培训<br/>
-  - [ ] 求教，有意积累相关经验<br/>
-  - [ ] 自学<br/>
-*** 开始行动, 不要等待<br/>
-  - [ ] 每天反省：我有没除掉了哪颗绊脚石或向目标迈进了一步？下一步是什么？<br/>
-  - [ ] 每周反省：我有没有坚持不懈？下面该怎么走？</p>
+<p>** 我要找份喜欢的工作<br />
+*** 调查<br />
+  - [ ] 有谁在从事你心仪的工作？<br />
+  - [ ] 他们是如何得到这份工作的？<br />
+  - [ ] 获取这份工作有什么要求与标准？或者说绊脚石是什么？<br />
+      - [ ] 一份更高的学位?<br />
+      - [ ] 一份不错的工作经验?<br />
+      - [ ] 或者其他的技能？<br />
+*** 设定计划：想出一些有用的方法去解决你的绊脚石<br />
+  - [ ] 进修、培训<br />
+  - [ ] 求教，有意积累相关经验<br />
+  - [ ] 自学<br />
+*** 开始行动, 不要等待<br />
+  - [ ] 每天反省：我有没除掉了哪颗绊脚石或向目标迈进了一步？下一步是什么？<br />
+  - [ ] 每周反省：我有没有坚持不懈？下面该怎么走？  </p>
 
-<h2>6  完结</h2>
+<h2 id="section-6">6  完结</h2>
 
 <p>GTD(只管去做)是我在搜索org-mode时无意中看到的，其实也是粗粗看了一下，可能远未得精髓，但还是挺喜欢这套理论的，包括org-mode也挺合我品味，不仅用来做日常计划，还读书笔记、学习计划和学习笔记都用它了。</p>
 
@@ -547,40 +587,40 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
 
 <p>最后说一下org-mode是可以导出为html或text的(还有xoxo格式其实也是html，自己试试看吧)。但默认的html样式实在不怎样，好在可自定义，先在.emacs上加：</p>
 
-<p>(defcustom org-export-html-style<br/>
-&ldquo;&lt;link rel=&#8221;stylesheet&#8221; type=&#8221;text/css&#8221; href=&#8221;wheer.css&rdquo;>&ldquo; &rdquo;&ldquo;<br/>
-  :group &#8217;org-export-html<br/>
-  :type &#8217;string)</p>
+<p>(defcustom org-export-html-style<br />
+“&lt;link rel=”stylesheet” type=”text/css” href=”wheer.css”&gt;” ””  
+  :group ’org-export-html<br />
+  :type ’string)  </p>
 
 <p>然后输出的html就可以用自定义的css了，以下只是个示例：</p>
 
-<p>html {font-family: Times, serif;font-size: 12pt;}<br/>
-.title,.author { display:none; }<br/>
-.todo { color: red; }<br/>
-.done { color: green; }<br/>
-.timestamp { color: grey }<br/>
-.timestamp-kwd { color: CadetBlue }<br/>
-.tag { background-color:lightblue; font-weight:normal }<br/>
-.target { background-color: lavender; }<br/>
-pre {border: 1pt solid #AEBDCC;background-color: #F3F5F7;<br/>
-    padding: 5pt;font-family: courier, monospace;}<br/>
-table { border-collapse: collapse; }<br/>
-td, th {vertical-align: top;border: 1pt solid #ADB9CC;}<br/>
-h2{ margin: 5px 0 10px 0;background-color: #AEC5CE; font-size:1.5em;}<br/>
-h3{ margin: 0px 0px 5px 0;padding: 5px 5px 5px 10px;<br/>
-    font-size:1.2em; border-top: solid 1px #9AB7C2;<br/>
-    border-bottom: solid 1px #9AB7C2; font-variant: small-caps; }<br/>
-h4{ color: black; margin: 3px 0px 5px 0px;<br/>
-  padding: 3px 5px 3px 15px; font-size: 1em;}<br/>
-h5{ color: black; margin: 3px 0px 3px 0px;<br/>
-  padding: 3px 5px 3px 25px; font-size: 1em;}<br/>
-p{ margin:0px 10px 0px 18px; }</p>
+<p>html {font-family: Times, serif;font-size: 12pt;}<br />
+.title,.author { display:none; }<br />
+.todo { color: red; }<br />
+.done { color: green; }<br />
+.timestamp { color: grey }<br />
+.timestamp-kwd { color: CadetBlue }<br />
+.tag { background-color:lightblue; font-weight:normal }<br />
+.target { background-color: lavender; }<br />
+pre {border: 1pt solid #AEBDCC;background-color: #F3F5F7;<br />
+    padding: 5pt;font-family: courier, monospace;}<br />
+table { border-collapse: collapse; }<br />
+td, th {vertical-align: top;border: 1pt solid #ADB9CC;}<br />
+h2{ margin: 5px 0 10px 0;background-color: #AEC5CE; font-size:1.5em;}<br />
+h3{ margin: 0px 0px 5px 0;padding: 5px 5px 5px 10px;<br />
+    font-size:1.2em; border-top: solid 1px #9AB7C2;<br />
+    border-bottom: solid 1px #9AB7C2; font-variant: small-caps; }<br />
+h4{ color: black; margin: 3px 0px 5px 0px;<br />
+  padding: 3px 5px 3px 15px; font-size: 1em;}<br />
+h5{ color: black; margin: 3px 0px 3px 0px;<br />
+  padding: 3px 5px 3px 25px; font-size: 1em;}<br />
+p{ margin:0px 10px 0px 18px; }  </p>
 
 <p> </p>
 
 <hr />
 
-<p>File translated from TEX by <a href="http://hutchinson.belmont.ma.us/tth/"> TTH</a>, version 3.80.<br/>
+<p>File translated from TEX by <a href="http://hutchinson.belmont.ma.us/tth/"> TTH</a>, version 3.80.<br />
 On 9 Aug 2009, 11:35.</p>
 </div>
   
@@ -626,19 +666,19 @@ On 9 Aug 2009, 11:35.</p>
 
 <p> </p>
 
-<p>check process lighttpd with pidfile /var/run/lighttpd.pid<br/>
-start program = &ldquo;/etc/init.d/lighttpd start&#8221;<br/>
-stop program = &rdquo;/etc/init.d/lighttpd stop&#8221;<br/>
-if cpu > 60% for 2 cycles then alert<br/>
-if cpu > 80% for 5 cycles then restart<br/>
-if totalmem > 200.0 MB for 5 cycles then restart<br/>
-if children > 250 then restart<br/>
-if loadavg(5min) greater than 10 for 8 cycles then stop<br/>
-if failed host 127.0.0.1 port 82 protocol http<br/>
-then restart<br/>
-if failed host 127.0.0.1 port 443 type tcpssl protocol http<br/>
-with timeout 15 seconds<br/>
-then restart<br/>
+<p>check process lighttpd with pidfile /var/run/lighttpd.pid<br />
+start program = “/etc/init.d/lighttpd start”<br />
+stop program = “/etc/init.d/lighttpd stop”<br />
+if cpu &gt; 60% for 2 cycles then alert<br />
+if cpu &gt; 80% for 5 cycles then restart<br />
+if totalmem &gt; 200.0 MB for 5 cycles then restart<br />
+if children &gt; 250 then restart<br />
+if loadavg(5min) greater than 10 for 8 cycles then stop<br />
+if failed host 127.0.0.1 port 82 protocol http<br />
+then restart<br />
+if failed host 127.0.0.1 port 443 type tcpssl protocol http<br />
+with timeout 15 seconds<br />
+then restart<br />
 if 3 restarts within 5 cycles then timeout</p>
 </div>
   
@@ -684,17 +724,17 @@ if 3 restarts within 5 cycles then timeout</p>
 
 <p>安装</p>
 
-<p><a href="http://www.gentoo.org/doc/en/gentoo-x86-quickinstall.xml">http://www.gentoo.org/doc/en/gentoo-x86-quickinstall.xml</a></p>
+<p>http://www.gentoo.org/doc/en/gentoo-x86-quickinstall.xml</p>
 
 <p>xfce4</p>
 
-<p><a href="http://www.gentoo.org/doc/zh_cn/xfce-config.xml">http://www.gentoo.org/doc/zh_cn/xfce-config.xml</a></p>
+<p>http://www.gentoo.org/doc/zh_cn/xfce-config.xml</p>
 
 <p>a2ps 问题 参考</p>
 
-<p><a href="http://forums.gentoo.org/viewtopic-p-5760560.html">http://forums.gentoo.org/viewtopic-p-5760560.html</a></p>
+<p>http://forums.gentoo.org/viewtopic-p-5760560.html</p>
 
-<p><a href="http://bugs.gentoo.org/269638">http://bugs.gentoo.org/269638</a></p>
+<p>http://bugs.gentoo.org/269638</p>
 
 <p> </p>
 
@@ -702,25 +742,25 @@ if 3 restarts within 5 cycles then timeout</p>
 
 <p>wireless</p>
 
-<p><a href="http://en.gentoo-wiki.com/wiki/Iwlwifi#Kernels_.3E.3D2.6.30">http://en.gentoo-wiki.com/wiki/Iwlwifi#Kernels_.3E.3D2.6.30</a></p>
+<p>http://en.gentoo-wiki.com/wiki/Iwlwifi#Kernels_.3E.3D2.6.30</p>
 
-<p>CONFIG_IWLWIFI_DEBUG:                                                     │ <br/>
-  │                                                                           │ <br/>
-  │ This option will enable debug tracing output for the iwlwifi drivers      │ <br/>
-  │                                                                           │ <br/>
-  │ This will result in the kernel module being ~100k larger.  You can        │ <br/>
-  │ control which debug output is sent to the kernel log by setting the       │ <br/>
-  │ value in                                                                  │ <br/>
-  │                                                                           │ <br/>
-  │       /sys/class/net/wlan0/device/debug_level                             │ <br/>
-  │                                                                           │ <br/>
-  │ This entry will only exist if this option is enabled.                     │ <br/>
-  │                                                                           │ <br/>
-  │ To set a value, simply echo an 8-byte hex value to the same file:         │ <br/>
-  │                                                                           │ <br/>
-  │         % echo 0x43fff > /sys/class/net/wlan0/device/debug_level          │ <br/>
-  │                                                                           │ <br/>
-  │ You can find the list of debug mask values in:                            │ <br/>
+<p>CONFIG_IWLWIFI_DEBUG:                                                     │ <br />
+  │                                                                           │ <br />
+  │ This option will enable debug tracing output for the iwlwifi drivers      │ <br />
+  │                                                                           │ <br />
+  │ This will result in the kernel module being ~100k larger.  You can        │ <br />
+  │ control which debug output is sent to the kernel log by setting the       │ <br />
+  │ value in                                                                  │ <br />
+  │                                                                           │ <br />
+  │       /sys/class/net/wlan0/device/debug_level                             │ <br />
+  │                                                                           │ <br />
+  │ This entry will only exist if this option is enabled.                     │ <br />
+  │                                                                           │ <br />
+  │ To set a value, simply echo an 8-byte hex value to the same file:         │ <br />
+  │                                                                           │ <br />
+  │         % echo 0x43fff &gt; /sys/class/net/wlan0/device/debug_level          │ <br />
+  │                                                                           │ <br />
+  │ You can find the list of debug mask values in:                            │ <br />
   │         drivers/net/wireless/iwlwifi/iwl-debug.h</p>
 
 <p> </p>
@@ -737,7 +777,7 @@ if 3 restarts within 5 cycles then timeout</p>
 
 <p>加入到 如果要加载 module 的话</p>
 
-<p>真奇怪 官方文档上面说 如果是 /etc/modules.autoload.d/kernel.2.6 ＆＆ update-modules 的时候其实应该 可以的 但是不可以 freenode 上<matomic>给出的/etc/conf.d/modules</p>
+<p>真奇怪 官方文档上面说 如果是 /etc/modules.autoload.d/kernel.2.6 ＆＆ update-modules 的时候其实应该 可以的 但是不可以 freenode 上<matomic>给出的/etc/conf.d/modules</matomic></p>
 
 <p> </p>
 
@@ -753,7 +793,14 @@ if 3 restarts within 5 cycles then timeout</p>
 
 <p> </p>
 
-<p>2.6.30 alsa 驱动直接内核里选择 选择哪个用lspci -v |grep -i audio自己看 ，alsa-mixer 里面00 有声音 mm静音</p>
+<table>
+  <tbody>
+    <tr>
+      <td>2.6.30 alsa 驱动直接内核里选择 选择哪个用lspci -v</td>
+      <td>grep -i audio自己看 ，alsa-mixer 里面00 有声音 mm静音</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>lib utils tools 装上</p>
 
@@ -767,35 +814,51 @@ if 3 restarts within 5 cycles then timeout</p>
 
 <p>layman -f</p>
 
-<p>echo &ldquo;source /usr/local/portage/layman/make.conf&rdquo; >> /etc/make.conf</p>
+<p>echo “source /usr/local/portage/layman/make.conf” » /etc/make.conf</p>
 
 <p>layman -a zen-overlay</p>
 
-<p>emerge -av zen-sources</p>
+<p>emerge -av zen-sources  </p>
 
-<p><a href="http://zen-sources.org/content/gentoo-install-guide">http://zen-sources.org/content/gentoo-install-guide</a></p>
-
-<p> </p>
-
-<p><a href="http://www.gentoo.org/proj/en/overlays/userguide.xml">http://www.gentoo.org/proj/en/overlays/userguide.xml</a></p>
+<p>http://zen-sources.org/content/gentoo-install-guide</p>
 
 <p> </p>
 
+<p>http://www.gentoo.org/proj/en/overlays/userguide.xml</p>
+
+<p> </p>
+
 <p> </p>
 
 <p> </p>
 
-<p>  /*&lt;![CDATA[*/ #usrbar{padding:4px 10px 3px 0;font-size:12px;height:19px;line-height:19px;color:#000000;font-family:Arial;text-align:right;background:#ffffff;filter:alpha(opacity=65);-moz-opacity:0.5;width:auto !important;width:100%;letter-spacing:normal} #usrbar a,#usrbar a:link,#usrbar a:visited{color:#0000CC;text-decoration:underline} #ft{clear:both;height:20px;line-height:20px;color:#666666;font-size:12px;font-family:Arial;text-align:center} #ft a,#ft a:link,#ft a:visited{color:#7777CC;text-decoration:underline} #usrbar,#usrbar a,#usrbar a:link,#usrbar a:visited,#ft,#ft a,#ft a:link,#ft a:visited{letter-spacing:normal} /*]]>*/</p>
+<p>/*&lt;![CDATA[*/ #usrbar{padding:4px 10px 3px 0;font-size:12px;height:19px;line-height:19px;color:#000000;font-family:Arial;text-align:right;background:#ffffff;filter:alpha(opacity=65);-moz-opacity:0.5;width:auto !important;width:100%;letter-spacing:normal} #usrbar a,#usrbar a:link,#usrbar a:visited{color:#0000CC;text-decoration:underline} #ft{clear:both;height:20px;line-height:20px;color:#666666;font-size:12px;font-family:Arial;text-align:center} #ft a,#ft a:link,#ft a:visited{color:#7777CC;text-decoration:underline} #usrbar,#usrbar a,#usrbar a:link,#usrbar a:visited,#ft,#ft a,#ft a:link,#ft a:visited{letter-spacing:normal} /*]]&gt;*/</p>
 
-<p>  <a href="http://hi.baidu.com/">百度空间</a> |  <a href="http://www.baidu.com/">百度首页</a>  | <a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http://hi.baidu.com%2Fshura%2Fblog%2Fitem%2F9641b21b4d029f1f8618bfca%252Ehtml">登录</a></p>
+<table>
+  <tbody>
+    <tr>
+      <td><a href="http://hi.baidu.com/">百度空间</a> </td>
+      <td>  <a href="http://www.baidu.com/">百度首页</a> </td>
+      <td><a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http://hi.baidu.com%2Fshura%2Fblog%2Fitem%2F9641b21b4d029f1f8618bfca%252Ehtml">登录</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <p><a href="http://hi.baidu.com/shura" title="shurarai的空间 http://hi.baidu.com/shura">hello,world!</a></p>
 
 <p> </p>
 
-<p><a href="http://hi.baidu.com/shura">主页</a> <a href="http://hi.baidu.com/shura/blog">博客</a> <a href="http://hi.baidu.com/shura/album">相册</a>| <a href="http://hi.baidu.com/shura/profile">个人档案</a> | <a href="http://hi.baidu.com/shura/friends">好友</a></p>
+<table>
+  <tbody>
+    <tr>
+      <td><a href="http://hi.baidu.com/shura">主页</a> <a href="http://hi.baidu.com/shura/blog">博客</a> <a href="http://hi.baidu.com/shura/album">相册</a></td>
+      <td><a href="http://hi.baidu.com/shura/profile">个人档案</a></td>
+      <td><a href="http://hi.baidu.com/shura/friends">好友</a></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>  |   |<br/>
+<p>|   |<br />
 查看文章
   |   |   |</p>
 
@@ -803,142 +866,153 @@ if 3 restarts within 5 cycles then timeout</p>
 
 <p>2008-08-22 15:00</p>
 
-<p>  |</p>
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 
-<h2>手工添加</h2>
+<h2 id="section">手工添加</h2>
 
 <p>如果您需要手工添加 <a href="http://zh.gentoo-wiki.com/index.php?title=Portage&amp;action=edit&amp;redlink=1" title="Portage (尚未撰写)">Portage</a>里尚未提供或不能提供的字体，您按照下面的步骤手工添加。此处以simsun.ttc为例。</p>
 
-<h3>拷贝字体</h3>
+<h3 id="section-1">拷贝字体</h3>
 
 <p>拷贝字体文件到/usr/share/fonts下的一个文件夹里，比如/usr/share/fonts/TTF。然后修改文件权限</p>
 
 <table>
-<thead>
-<tr>
-<th>  </th>
-<th> <strong>代码：</strong> 修改权限 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td># chmod 644 /usr/share/fonts/TTF/simsun.ttc </td>
-<td></td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td><strong>代码：</strong> 修改权限</td>
+    </tr>
+    <tr>
+      <td> </td>
+    </tr>
+    <tr>
+      <td># chmod 644 /usr/share/fonts/TTF/simsun.ttc</td>
+    </tr>
+  </tbody>
 </table>
 
+<h3 id="etcx11xorgconf">修改/etc/X11/xorg.conf</h3>
 
-<h3>修改/etc/X11/xorg.conf</h3>
-
-<p>保证/etc/X11/xorg.conf的Section &ldquo;Files&#8221;里有相应的路径，比如：</p>
+<p>保证/etc/X11/xorg.conf的Section “Files”里有相应的路径，比如：</p>
 
 <table>
-<thead>
-<tr>
-<th>  </th>
-<th> <strong>文件：</strong> /etc/X11/xorg.conf </th>
-</tr>
-</thead>
-<tbody>
-</tbody>
+  <tbody>
+    <tr>
+      <td><strong>文件：</strong> /etc/X11/xorg.conf</td>
+    </tr>
+    <tr>
+      <td> </td>
+    </tr>
+  </tbody>
 </table>
 
-
-<p>Section &ldquo;Files&#8221;<br/>
-&hellip;<br/>
-FontPath &rdquo;/usr/share/fonts/TTF&#8221;<br/>
-&hellip;<br/>
+<p>Section “Files”<br />
+…<br />
+FontPath “/usr/share/fonts/TTF”<br />
+…<br />
 EndSection
   |</p>
 
-<h3>产生fonts.dir和fonts.scale</h3>
+<h3 id="fontsdirfontsscale">产生fonts.dir和fonts.scale</h3>
 
 <p>这一步的作用是为了使使用X核心字体API的程序可以利用本字体。这类程序的例子有xterm，emacs，xmms等。</p>
 
 <p>安装 <a href="http://gentoo-portage.com/Search?search=x11-apps/mkfontdir" title="ebuild:x11-apps/mkfontdir">x11-apps/mkfontdir</a>和 <a href="http://gentoo-portage.com/Search?search=x11-apps/mkfontscale" title="ebuild:x11-apps/mkfontscale">x11-apps/mkfontscale</a>并产生fonts.dir和fonts.scale</p>
 
-<table>
-<thead>
-<tr>
-<th>  </th>
-<th> <strong>代码：</strong> 安装mkfontdir和mkfontscale </th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-
-<p>$ emerge mkfontdir mkfontscale<br/>
-$ cd /usr/share/fonts/TTF<br/>
-$ sudo mkfontdir<br/>
+<p>| <strong>代码：</strong> 安装mkfontdir和mkfontscale |
+|<br />
+$ emerge mkfontdir mkfontscale<br />
+$ cd /usr/share/fonts/TTF<br />
+$ sudo mkfontdir<br />
 $ sudo mkfontscale |</p>
 
-<h3>更新fontconfig的cache</h3>
+<h3 id="fontconfigcache">更新fontconfig的cache</h3>
 
 <p>这一步的作用是为了使使用fontconfig来配置字体的程序可以利用本字体。qt程序和gtk+2程序皆属此类。</p>
 
 <table>
-<thead>
-<tr>
-<th>  </th>
-<th> <strong>代码：</strong> fc-cache -fv </th>
-</tr>
-</thead>
-<tbody>
-</tbody>
+  <tbody>
+    <tr>
+      <td><strong>代码：</strong> fc-cache -fv</td>
+    </tr>
+    <tr>
+      <td> </td>
+    </tr>
+  </tbody>
 </table>
-
 
 <p>$ sudo fc-cache -fv</p>
 
-<p>  |</p>
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 
-<h2>验证安装成功</h2>
+<h2 id="section-2">验证安装成功</h2>
 
-<p>  | <strong> 提示！</strong> 做完上面这些步骤之后您可能需要重启一下你的X,然后继续下面的操作 |</p>
+<table>
+  <tbody>
+    <tr>
+      <td>** 提示！** 做完上面这些步骤之后您可能需要重启一下你的X,然后继续下面的操作</td>
+    </tr>
+  </tbody>
+</table>
 
-<h3>使用X核心字体API的程序</h3>
+<h3 id="xapi">使用X核心字体API的程序</h3>
 
 <p>安装 <a href="http://gentoo-portage.com/Search?search=x11-apps/xlsfonts" title="ebuild:x11-apps/xlsfonts">x11-apps/xlsfonts</a>，执行xlsfonts看是否可以列出刚才安装的字体名。X核心字体的名字很长，比如：</p>
 
-<table>
-<thead>
-<tr>
-<th>  </th>
-<th> <strong>代码：</strong> X核心字体名 </th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-
-<p>-misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-ascii-0<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-gb18030.2000-0<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-gb2312.1980-0<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-gbk-0<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-ibm-cp850<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-iso10646-1<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-iso8859-1<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-iso8859-15<br/>
--misc-simsun-medium-r-normal&mdash;0-0-0-0-c-0-koi8-r |</p>
+<p>| <strong>代码：</strong> X核心字体名 |
+|<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-ascii-0<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-gb18030.2000-0<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-gb2312.1980-0<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-gbk-0<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-ibm-cp850<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-iso10646-1<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-iso8859-1<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-iso8859-15<br />
+-misc-simsun-medium-r-normal–0-0-0-0-c-0-koi8-r |</p>
 
 <p>如果有，那么xmms这样的程序就可以使用。</p>
 
-<p>  | <strong> 提示！</strong> xlsfonts命令需要在X下的Terminal执行,不然你需要加参数-display displayname指定displayname |</p>
+<table>
+  <tbody>
+    <tr>
+      <td>** 提示！** xlsfonts命令需要在X下的Terminal执行,不然你需要加参数-display displayname指定displayname</td>
+    </tr>
+  </tbody>
+</table>
 
-<h3>使用fontconfig的程序</h3>
+<h3 id="fontconfig">使用fontconfig的程序</h3>
 
 <p>执行fc-list看是否可以列出刚才安装的字体名。</p>
 
-<p>  |</p>
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 
-<p>  |   |   |   |</p>
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <p>©2009 Baidu
-  <img src="http://c.baidu.com/c.gif?t=6&amp;p=3" alt="" /></p>
+  <img src="http://c.baidu.com/c.gif?t=6&amp;p=3" alt="" />  </p>
 </div>
   
   
@@ -977,15 +1051,15 @@ $ sudo mkfontscale |</p>
   </header>
 
 
-  <div class="entry-content"><p>天尝试使用curl请求lighttpd数据，发现总是报错(417) Expectation Failed。<br/>
-经查，是lighttp不支持curl默认发送的头信息: Expect: 100-continue.</p>
+  <div class="entry-content"><p>天尝试使用curl请求lighttpd数据，发现总是报错(417) Expectation Failed。<br />
+经查，是lighttp不支持curl默认发送的头信息: Expect: 100-continue.  </p>
 
-<p>解决方式：</p>
+<p>解决方式：  </p>
 
-<p>在curl中指定发送一个空的Except头信息即可解决。<br/>
-代码：</p>
+<p>在curl中指定发送一个空的Except头信息即可解决。<br />
+代码：  </p>
 
-<p>curl_setopt($ch, CURLOPT_HTTPHEADER, array(&lsquo;Expect:&rsquo;));</p>
+<p>curl_setopt($ch, CURLOPT_HTTPHEADER, array(‘Expect:’));</p>
 </div>
   
   
@@ -1028,9 +1102,9 @@ $ sudo mkfontscale |</p>
 
 <p> </p>
 
-<p>more01.c: In function ‘main’:<br/>
-more01.c:22: warning: incompatible implicit declaration of built-in function ‘exit’<br/>
-more01.c: In function ‘do_more’:<br/>
+<p>more01.c: In function ‘main’:<br />
+more01.c:22: warning: incompatible implicit declaration of built-in function ‘exit’<br />
+more01.c: In function ‘do_more’:<br />
 more01.c:42: warning: incompatible implicit declaration of built-in function ‘exit’</p>
 </div>
   
@@ -1070,440 +1144,355 @@ more01.c:42: warning: incompatible implicit declaration of built-in function ‘
   </header>
 
 
-  <div class="entry-content"><p>比如，要将目录/modules下面所有文件中的zhangsan都修改成lisi，这样做：</p>
+  <div class="entry-content"><p>比如，要将目录/modules下面所有文件中的zhangsan都修改成lisi，这样做：  </p>
 
-<p>sed -i &ldquo;s/zhangsan/lisi/g&rdquo; <code>grep zhangsan -rl /modules</code></p>
+<p>sed -i “s/zhangsan/lisi/g” <code>grep zhangsan -rl /modules</code>  </p>
 
-<p>解释一下：</p>
+<p>解释一下：  </p>
 
-<p>  -i 表示inplace edit，就地修改文件<br/>
--r 表示搜索子目录<br/>
--l 表示输出匹配的文件名</p>
+<p>-i 表示inplace edit，就地修改文件<br />
+-r 表示搜索子目录<br />
+-l 表示输出匹配的文件名  </p>
 
 <p>这个命令组合很强大，要注意备份文件。</p>
 
-<p>（1）sed &lsquo;y/1234567890/ABCDEFGHIJ/&rsquo; test_sed</p>
+<p>（1）sed ‘y/1234567890/ABCDEFGHIJ/’ test_sed</p>
 
-<p>sed &lsquo;y/1234567890/ABCDEFGHIJ/&rsquo; filename<br/>
-ABCDEFGHIJ<br/>
-BCDEFGHIJA<br/>
-CDEFGHIJAB<br/>
-DEFGHIJABC<br/>
+<p>sed ‘y/1234567890/ABCDEFGHIJ/’ filename<br />
+ABCDEFGHIJ<br />
+BCDEFGHIJA<br />
+CDEFGHIJAB<br />
+DEFGHIJABC<br />
 注意变换关系是按两个list的位置对应变换</p>
 
 <p>其中：test_sed的内容是：</p>
 
-<p>1234567890<br/>
-2345678901<br/>
-3456789012<br/>
+<p>1234567890<br />
+2345678901<br />
+3456789012<br />
 4567890123</p>
 
 <p>(2)替换每行所有匹配</p>
 
-<p>sed &rsquo;s/01/Ab/g&#8217; test_sed<br/>
-1234567890<br/>
-23456789Ab<br/>
-3456789Ab2<br/>
+<p>sed ‘s/01/Ab/g’ test_sed<br />
+1234567890<br />
+23456789Ab<br />
+3456789Ab2<br />
 456789Ab23</p>
 
-<p>  注意：第一行的0，1没有分别替换为A,b</p>
+<p>注意：第一行的0，1没有分别替换为A,b</p>
 
 <p>删除：d命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;2d&rsquo; example&mdash;&mdash;-删除example文件的第二行。</p>
+<p>$ sed ‘2d’ example—–删除example文件的第二行。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;2,$d&rsquo; example&mdash;&mdash;-删除example文件的第二行到末尾所有行。</p>
+<p>$ sed ‘2,$d’ example—–删除example文件的第二行到末尾所有行。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;$d&rsquo; example&mdash;&mdash;-删除example文件的最后一行。</p>
+<p>$ sed ‘$d’ example—–删除example文件的最后一行。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;/test/&rsquo;d example&mdash;&mdash;-删除example文件所有包含test的行。</p>
+<p>$ sed ‘/test/’d example—–删除example文件所有包含test的行。</p>
 
 <p>替换：s命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &rsquo;s/test/mytest/g&#8217; example&mdash;&mdash;-在整行范围内把test替换为mytest。如果没有g标记，则只有每行第一个匹配的test被替换成mytest。</p>
+<p>$ sed ‘s/test/mytest/g’ example—–在整行范围内把test替换为mytest。如果没有g标记，则只有每行第一个匹配的test被替换成mytest。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed -n &rsquo;s/^test/mytest/p&#8217; example&mdash;&mdash;&ndash;(-n)选项和p标志一起使用表示只打印那些发生替换的行。也就是说，如果某一行开头的test被替换成mytest，就打印它。</p>
+<p>$ sed -n ‘s/^test/mytest/p’ example—–(-n)选项和p标志一起使用表示只打印那些发生替换的行。也就是说，如果某一行开头的test被替换成mytest，就打印它。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &rsquo;s/^192.168.0.1/&amp;localhost/&lsquo; example&mdash;&mdash;&ndash;&amp;符号表示替换换字符串中被找到的部份。所有以192.168.0.1开头的行都会被替换成它自已加 localhost，变成192.168.0.1localhost。</p>
+<p>$ sed ‘s/^192.168.0.1/&amp;localhost/’ example—–&amp;符号表示替换换字符串中被找到的部份。所有以192.168.0.1开头的行都会被替换成它自已加 localhost，变成192.168.0.1localhost。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed -n &rsquo;s/(love)able/1rs/p&#8217; example&mdash;&mdash;-love被标记为1，所有loveable会被替换成lovers，而且替换的行会被打印出来。</p>
+<p>$ sed -n ‘s/(love)able/1rs/p’ example—–love被标记为1，所有loveable会被替换成lovers，而且替换的行会被打印出来。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &rsquo;s#10#100#g&#8217; example&mdash;&mdash;-不论什么字符，紧跟着s命令的都被认为是新的分隔符，所以，“#”在这里是分隔符，代替了默认的“/”分隔符。表示把所有10替换成100。</p>
+<p>$ sed ‘s#10#100#g’ example—–不论什么字符，紧跟着s命令的都被认为是新的分隔符，所以，“#”在这里是分隔符，代替了默认的“/”分隔符。表示把所有10替换成100。</p>
 
 <p>选定行的范围：逗号</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed -n &lsquo;/test/,/check/p&rsquo; example&mdash;&mdash;-所有在模板test和check所确定的范围内的行都被打印。</p>
+<p>$ sed -n ‘/test/,/check/p’ example—–所有在模板test和check所确定的范围内的行都被打印。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed -n &lsquo;5,/^test/p&rsquo; example&mdash;&mdash;-打印从第五行开始到第一个包含以test开始的行之间的所有行。</p>
+<p>$ sed -n ‘5,/^test/p’ example—–打印从第五行开始到第一个包含以test开始的行之间的所有行。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;/test/,/check/s/$/sed test/&rsquo; example&mdash;&mdash;-对于模板test和west之间的行，每行的末尾用字符串sed test替换。</p>
+<p>$ sed ‘/test/,/check/s/$/sed test/’ example—–对于模板test和west之间的行，每行的末尾用字符串sed test替换。</p>
 
 <p>多点编辑：e命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed -e &lsquo;1,5d&rsquo; -e &rsquo;s/test/check/&lsquo; example&mdash;&mdash;&ndash;(-e)选项允许在同一行里执行多条命令。如例子所示，第一条命令删除1至5行，第二条命令用check替换test。命令的执 行顺序对结果有影响。如果两个命令都是替换命令，那么第一个替换命令将影响第二个替换命令的结果。</p>
+<p>$ sed -e ‘1,5d’ -e ‘s/test/check/’ example—–(-e)选项允许在同一行里执行多条命令。如例子所示，第一条命令删除1至5行，第二条命令用check替换test。命令的执 行顺序对结果有影响。如果两个命令都是替换命令，那么第一个替换命令将影响第二个替换命令的结果。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &mdash;expression=&rsquo;s/test/check/&lsquo; &mdash;expression=&rsquo;/love/d&#8217; example&mdash;&mdash;-一个比-e更好的命令是&mdash;expression。它能给sed表达式赋值。</p>
+<p>$ sed –expression=’s/test/check/’ –expression=’/love/d’ example—–一个比-e更好的命令是–expression。它能给sed表达式赋值。</p>
 
 <p>从文件读入：r命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;/test/r file&rsquo; example&mdash;&mdash;-file里的内容被读进来，显示在与test匹配的行后面，如果匹配多行，则file的内容将显示在所有匹配行的下面。</p>
+<p>$ sed ‘/test/r file’ example—–file里的内容被读进来，显示在与test匹配的行后面，如果匹配多行，则file的内容将显示在所有匹配行的下面。</p>
 
 <p>写入文件：w命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed -n &lsquo;/test/w file&rsquo; example&mdash;&mdash;-在example中所有包含test的行都被写入file里。</p>
+<p>$ sed -n ‘/test/w file’ example—–在example中所有包含test的行都被写入file里。</p>
 
 <p>追加命令：a命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;/^test/a-&mdash;>this is a example&rsquo; example&lt;&mdash;&mdash;&ndash;&lsquo;this is a example&#8217;被追加到以test开头的行后面，sed要求命令a后面有一个反斜杠。</p>
+<p>$ sed ‘/^test/a-–&gt;this is a example’ example&lt;—–‘this is a example’被追加到以test开头的行后面，sed要求命令a后面有一个反斜杠。</p>
 
 <p>插入：i命令</p>
 
-<p>$ sed &lsquo;/test/i\</p>
+<p>$ sed ‘/test/i\</p>
 
 <p>new line</p>
 
-<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;&lsquo; example</p>
+<p>————————-‘ example</p>
 
 <p>如果test被匹配，则把反斜杠后面的文本插入到匹配行的前面。</p>
 
 <p>下一个：n命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;/test/{ n; s/aa/bb/; }&rsquo; example&mdash;&mdash;-如果test被匹配，则移动到匹配行的下一行，替换这一行的aa，变为bb，并打印该行，然后继续。</p>
+<p>$ sed ‘/test/{ n; s/aa/bb/; }’ example—–如果test被匹配，则移动到匹配行的下一行，替换这一行的aa，变为bb，并打印该行，然后继续。</p>
 
 <p>变形：y命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;1,10y/abcde/ABCDE/&rsquo; example&mdash;&mdash;-把1&mdash;10行内所有abcde转变为大写，注意，正则表达式元字符不能使用这个命令。</p>
+<p>$ sed ‘1,10y/abcde/ABCDE/’ example—–把1–10行内所有abcde转变为大写，注意，正则表达式元字符不能使用这个命令。</p>
 
 <p>退出：q命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed &lsquo;10q&rsquo; example&mdash;&mdash;-打印完第10行后，退出sed。</p>
+<p>$ sed ‘10q’ example—–打印完第10行后，退出sed。</p>
 
 <p>保持和获取：h命令和G命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>$ sed -e &lsquo;/test/h&rsquo; -e &lsquo;$G example&mdash;&mdash;-在sed处理文件的时候，每一行都被保存在一个叫模式空间的临时缓冲区中，除非行被删除或者输出被取消，否则所有被处理的行都将 打印在屏幕上。接着模式空间被清空，并存入新的一行等待处理。在这个例子里，匹配test的行被找到后，将存入模式空间，h命令将其复制并存入一个称为保 持缓存区的特殊缓冲区内。第二条语句的意思是，当到达最后一行后，G命令取出保持缓冲区的行，然后把它放回模式空间中，且追加到现在已经存在于模式空间中 的行的末尾。在这个例子中就是追加到最后一行。简单来说，任何包含test的行都被复制并追加到该文件的末尾。</p>
+<p>$ sed -e ‘/test/h’ -e ‘$G example—–在sed处理文件的时候，每一行都被保存在一个叫模式空间的临时缓冲区中，除非行被删除或者输出被取消，否则所有被处理的行都将 打印在屏幕上。接着模式空间被清空，并存入新的一行等待处理。在这个例子里，匹配test的行被找到后，将存入模式空间，h命令将其复制并存入一个称为保 持缓存区的特殊缓冲区内。第二条语句的意思是，当到达最后一行后，G命令取出保持缓冲区的行，然后把它放回模式空间中，且追加到现在已经存在于模式空间中 的行的末尾。在这个例子中就是追加到最后一行。简单来说，任何包含test的行都被复制并追加到该文件的末尾。</p>
 
 <p>保持和互换：h命令和x命令</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p>$ sed -e ‘/test/h’ -e ‘/check/x’ example —–互换模式空间和保持缓冲区的内容。也就是把包含test与check的行互换。</p>
 
-<p>$ sed -e &lsquo;/test/h&rsquo; -e &lsquo;/check/x&rsquo; example &mdash;&mdash;-互换模式空间和保持缓冲区的内容。也就是把包含test与check的行互换。</p>
-
-<h2>7. 脚本</h2>
+<h2 id="section">7. 脚本</h2>
 
 <p>Sed脚本是一个sed的命令清单，启动Sed时以-f选项引导脚本文件名。Sed对于脚本中输入的命令非常挑剔，在命令的末尾不能有任何空白或文本，如果在一行中有多个命令，要用分号分隔。以#开头的行为注释行，且不能跨行。</p>
 
-<h2>8. 小技巧</h2>
+<h2 id="section-1">8. 小技巧</h2>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p>在sed的命令行中引用shell变量时要使用双引号，而不是通常所用的单引号。下面是一个根据name变量的内容来删除named.conf文件中zone段的脚本：</p>
 
-<p>name=&lsquo;zone &ldquo;localhost&rdquo;&#8217;<br/>
-sed &ldquo;/$name/,/};/d&rdquo; named.conf</p>
+<p>name=’zone “localhost”’  
+sed “/$name/,/};/d” named.conf</p>
 
-<p>sed -i &ldquo;s/oldstring/newstring/g&rdquo; <code>grep oldstring -rl yourdir</code></p>
+<p>sed -i “s/oldstring/newstring/g” <code>grep oldstring -rl yourdir</code>  </p>
 
-<p>例如：替换/home下所有文件中的www.bcak.com.cn为bcak.com.cn</p>
+<p>例如：替换/home下所有文件中的www.bcak.com.cn为bcak.com.cn  </p>
 
-<p>sed -i &ldquo;s/www.bcak.com.cn/bcak.com.cn/g&rdquo; <code>grep [www.bcak.com.cn](http://www.bcak.com.cn/) -rl /home</code></p>
+<p>sed -i “s/www.bcak.com.cn/bcak.com.cn/g” <code>grep [www.bcak.com.cn](http://www.bcak.com.cn/) -rl /home</code></p>
 
 <p>二、下面这条命令：</p>
 
-<p>perl -pi -e &rsquo;s|ABCD|Linux|g&#8217; <code>find ./ -type f</code><br/>
-将调用perl执行一条替换命令，把find命令找到的所有文件内容中的ABCD替换为Linux</p>
+<p>perl -pi -e ‘s|ABCD|Linux|g’ <code>find ./ -type f</code><br />
+将调用perl执行一条替换命令，把find命令找到的所有文件内容中的ABCD替换为Linux  </p>
 
-<p>find ./ -type f<br/>
-此命令是显示当前目录下所有的文件</p>
+<p>find ./ -type f<br />
+此命令是显示当前目录下所有的文件  </p>
 
-<p>上面的“s|ABCD|Linux| g”是perl要执行的脚本，即把所有ABCD替换为Linux<br/>
-如果不写最后的那个g，“s|ABCD|Linux| ”将只替换每一行开头的ABCD</p>
+<table>
+  <tbody>
+    <tr>
+      <td>上面的“s</td>
+      <td>ABCD</td>
+      <td>Linux</td>
+      <td>g”是perl要执行的脚本，即把所有ABCD替换为Linux</td>
+    </tr>
+    <tr>
+      <td>如果不写最后的那个g，“s</td>
+      <td>ABCD</td>
+      <td>Linux</td>
+      <td>”将只替换每一行开头的ABCD</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>当编辑指令(参照[section2.2])在命令列上执行时,其前必须加上选项-e。其命令格式如下:</p>
+<p>当编辑指令(参照[section2.2])在命令列上执行时,其前必须加上选项-e。其命令格式如下:  </p>
 
-<p>sed-e&#8217;编辑指令1&#8217;-e&#8217;编辑指令2&#8217;&hellip;文件档</p>
+<p>sed-e’编辑指令1’-e’编辑指令2’…文件档  </p>
 
-<p>其中,所有编辑指令都紧接在选项-e之後,并置於两个&#8221;&lsquo;&ldquo;特殊字元间。另外,命令上编辑指令的执行是由</p>
+<p>其中,所有编辑指令都紧接在选项-e之後,并置於两个”&#8217;”特殊字元间。另外,命令上编辑指令的执行是由  </p>
 
-<p>左而右。</p>
+<p>左而右。  </p>
 
-<p>一般编辑指令不多时,使用者通常直接在命令上执行它们。例如,删除yel.dat内1至10行资料,并将其</p>
+<p>一般编辑指令不多时,使用者通常直接在命令上执行它们。例如,删除yel.dat内1至10行资料,并将其  </p>
 
-<p>馀文字中的&#8221;yellow&#8221;字串改成&#8221;black&#8221;字串。此时,可将编辑指令直接在命令上执行,其命令如下:</p>
+<p>馀文字中的”yellow”字串改成”black”字串。此时,可将编辑指令直接在命令上执行,其命令如下:  </p>
 
-<p>sed-e&#8217;1,10d&#8217;-e&rsquo;s/yellow/black/g&#8217;yel.dat</p>
+<p>sed-e’1,10d’-e’s/yellow/black/g’yel.dat  </p>
 
-<p>在命令中,编辑指令&#8217;1,10d&#8217;(解[5])执行删除1至10行资料;编辑指令&rsquo;s/yellow/black/g&#8217;(解[6]),</p>
+<p>在命令中,编辑指令’1,10d’(解[5])执行删除1至10行资料;编辑指令’s/yellow/black/g’(解[6]),  </p>
 
-<p>&ldquo;yellow&#8221;字串替换(substuite)成&#8221;black&#8221;字串。</p>
+<p>“yellow”字串替换(substuite)成”black”字串。  </p>
 
-<p>2.2sed的编辑指令</p>
+<p>2.2sed的编辑指令  </p>
 
-<p>sed编辑指令的格式如下:</p>
+<p>sed编辑指令的格式如下:  </p>
 
-<p>[address1[,address2]]function[argument]</p>
+<p>[address1[,address2]]function[argument]  </p>
 
-<p>其中,位址参数address1、address2为行数或regularexpression字串,表示所执行编辑的资料行;函数参</p>
+<p>其中,位址参数address1、address2为行数或regularexpression字串,表示所执行编辑的资料行;函数参  </p>
 
-<p>数function[argument]为sed的内定函数,表示执行的编辑动作。</p>
+<p>数function[argument]为sed的内定函数,表示执行的编辑动作。  </p>
 
-<p>下面两小节,将仔细介绍位址参数的表示法与有哪些函数参数供选择。</p>
+<p>下面两小节,将仔细介绍位址参数的表示法与有哪些函数参数供选择。  </p>
 
-<p>2.2.1位址(address)参数的表示法</p>
+<p>2.2.1位址(address)参数的表示法  </p>
 
-<p>实际上,位址参数表示法只是将要编辑的资料行,用它们的行数或其中的字串来代替表示它们。下面举几个例子</p>
+<p>实际上,位址参数表示法只是将要编辑的资料行,用它们的行数或其中的字串来代替表示它们。下面举几个例子  </p>
 
-<p>说明(指令都以函数参数d(参照[section4.2])为例):</p>
+<p>说明(指令都以函数参数d(参照[section4.2])为例):  </p>
 
-<p>删除档内第10行资料,则指令为10d。</p>
+<p>删除档内第10行资料,则指令为10d。  </p>
 
-<p>删除含有&#8221;man&#8221;字串的资料行时,则指令为/man/d。</p>
+<p>删除含有”man”字串的资料行时,则指令为/man/d。  </p>
 
-<p>删除档内第10行到第200行资料,则指令为10,200d。</p>
+<p>删除档内第10行到第200行资料,则指令为10,200d。  </p>
 
-<p>删除档内第10行到含&#8221;man&#8221;字串的资料行,则指令为10,/man/d。</p>
+<p>删除档内第10行到含”man”字串的资料行,则指令为10,/man/d。  </p>
 
-<p>接下来,以位址参数的内容与其个数两点,完整说明指令中位址参数的表示法(同样也以函数参数d为例)。</p>
+<p>接下来,以位址参数的内容与其个数两点,完整说明指令中位址参数的表示法(同样也以函数参数d为例)。  </p>
 
-<p>位址参数的内容:</p>
+<p>位址参数的内容:  </p>
 
-<p>位址为十进位数字:此数字表示行数。当指令执行时,将对符合此行数的资料执行函数参数指示的编辑动作。例如,</p>
+<p>位址为十进位数字:此数字表示行数。当指令执行时,将对符合此行数的资料执行函数参数指示的编辑动作。例如,  </p>
 
-<p>删除资料档中的第15行资料,则指令为15d(参照[section4.2])。其馀类推,如删除资料档中的第m行资料,则</p>
+<p>删除资料档中的第15行资料,则指令为15d(参照[section4.2])。其馀类推,如删除资料档中的第m行资料,则  </p>
 
-<p>指令为md。</p>
+<p>指令为md。  </p>
 
-<p>位址为regularexpression(参照[附录A]):</p>
+<p>位址为regularexpression(参照[附录A]):  </p>
 
-<p>当资料行中有符合regularexpression所表示的字串时,则执行函数参数指示的编辑动作。另外,在</p>
+<p>当资料行中有符合regularexpression所表示的字串时,则执行函数参数指示的编辑动作。另外,在  </p>
 
-<p>regularexpression前後必须加上&#8221;/&ldquo;。例如指令为/t.*t/d,表示删除所有含两&#8221;t&#8221;字母的资料行。其中,&rdquo;.&#8221;</p>
+<p>regularexpression前後必须加上”/”。例如指令为/t.*t/d,表示删除所有含两”t”字母的资料行。其中,”.”  </p>
 
-<p>表示任意字元;&ldquo;*&#8221;表示其前字元可重任意次,它们结合&rdquo;.*&ldquo;表示两&#8221;t&#8221;字母间的任意字串。</p>
+<p>表示任意字元;”*“表示其前字元可重任意次,它们结合”.*“表示两”t”字母间的任意字串。  </p>
 
-<p>位址参数的个数:在指令中,当没有位址参数时,表示全部资料行执行函数参数所指示的编辑动作;当只有一位址</p>
+<p>位址参数的个数:在指令中,当没有位址参数时,表示全部资料行执行函数参数所指示的编辑动作;当只有一位址  </p>
 
-<p>参数时,表示只有符合位址的资料行才编辑;当有两个位址参数,如address1,address2时,表示对资料区执行</p>
+<p>参数时,表示只有符合位址的资料行才编辑;当有两个位址参数,如address1,address2时,表示对资料区执行  </p>
 
-<p>编辑,address1代表起始资料行,address2代表结束资料行。对於上述内容,以下面例子做具说明。</p>
+<p>编辑,address1代表起始资料行,address2代表结束资料行。对於上述内容,以下面例子做具说明。  </p>
 
-<p>例如指令为</p>
+<p>例如指令为  </p>
 
-<p>d</p>
+<p>d  </p>
 
-<p>其表示删除档内所有资料行。</p>
+<p>其表示删除档内所有资料行。  </p>
 
-<p>例如指令为</p>
+<p>例如指令为  </p>
 
-<p>5d</p>
+<p>5d  </p>
 
-<p>其表示删除档内第五行资料。</p>
+<p>其表示删除档内第五行资料。  </p>
 
-<p>例如指令为</p>
+<p>例如指令为  </p>
 
-<p>1,/apple/d</p>
+<p>1,/apple/d  </p>
 
-<p>其表示删除资料区,由档内第一行至内有&#8221;apple&#8221;字串的资料行。</p>
+<p>其表示删除资料区,由档内第一行至内有”apple”字串的资料行。  </p>
 
-<p>例如指令为</p>
+<p>例如指令为  </p>
 
-<p>/apple/,/orange/d</p>
+<p>/apple/,/orange/d  </p>
 
-<p>其表示删除资料区,由档内含有&#8221;apple&#8221;字串至含有&#8221;orange&#8221;字串的资料行</p>
+<p>其表示删除资料区,由档内含有”apple”字串至含有”orange”字串的资料行  </p>
 
-<p>2.2.2有那些函数(function)参数</p>
+<p>2.2.2有那些函数(function)参数  </p>
 
-<p>下页表中介绍所有sed的函数参数(参照[chapter4])的功能。</p>
+<p>下页表中介绍所有sed的函数参数(参照[chapter4])的功能。  </p>
 
-<p>函数参数功能</p>
+<p>函数参数功能  </p>
 
 <p>:label建立scriptfile内指令互相参考的位置。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">强制_umount_nfs文件系统</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-22T00:00:00+08:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2009</time>
-        
-           | <a href="/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>强制 umount nfs文件系统</h3>
-
-<p>root@ubuntu:/# umount /app/nfs/<br/>
-umount.nfs: /app/nfs: device is busy<br/>
-umount.nfs: /app/nfs: device is busy</p>
-
-<p>提示文件系统设置busy<br/>
-root@ubuntu:/# fuser -km /app/nfs/   先使用这条命令<br/>
-/data/nfs/:                     8119c<br/>
-root@ubuntu:/# umount /app/nfs/      在umount 就可以了<br/>
-<a href="mailto:root@ubuntu:/">root@ubuntu:/</a>#</p>
-
-<p> </p>
-
-<p>也可使用 umount -f /app/nfs</p>
-
-<p> </p>
-
-<p>[root@dzxt ~]# fuser<br/>
-usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-             [ &ndash; ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-       fuser -l<br/>
-       fuser -V</p>
-
-<p>    -a        display unused files too<br/>
-    -k        kill processes accessing that file<br/>
-    -i        ask before killing (ignored without -k)<br/>
-    -l        list signal names<br/>
-    -m        mounted FS<br/>
-    -n space search in the specified name space (file, udp, or tcp)<br/>
-    -s        silent operation<br/>
-    -signal   send signal instead of SIGKILL<br/>
-    -u        display user ids<br/>
-    -v        verbose output<br/>
-    -V        display version information<br/>
-    -4        search IPv4 sockets only<br/>
-    -6        search IPv6 sockets only<br/>
-    -         reset options</p>
 </div>
   
   
@@ -1528,6 +1517,10 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -1543,10 +1536,6 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -1557,12 +1546,29 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

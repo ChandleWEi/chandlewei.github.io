@@ -100,11 +100,25 @@
 
 <p>~# railroad -a -i -o models.dot -M 则在ror工程目录下生成一个models.dot的文件。然后执行如下命令：</p>
 
-<p>~# railroad -M | dot -Tsvg > models.svg 就生成了此项目整个model的uml关系图。 同样的，可以生成controller的uml图。</p>
+<table>
+  <tbody>
+    <tr>
+      <td>~# railroad -M</td>
+      <td>dot -Tsvg &gt; models.svg 就生成了此项目整个model的uml关系图。 同样的，可以生成controller的uml图。</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>~# railroad -a -i -o controllers.dot -C</p>
 
-<p>~# railroad -C | dot -Tpng > controllers.png</p>
+<table>
+  <tbody>
+    <tr>
+      <td>~# railroad -C</td>
+      <td>dot -Tpng &gt; controllers.png</td>
+    </tr>
+  </tbody>
+</table>
 
 <p> </p>
 
@@ -180,6 +194,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -193,10 +211,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -216,6 +230,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

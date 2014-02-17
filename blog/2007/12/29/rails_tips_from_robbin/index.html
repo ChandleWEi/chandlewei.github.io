@@ -97,15 +97,15 @@ gem install ruby-debug-ide -y 然后开你的netbeans，打开调试器功能，
 
 <div class="entry-content"><p>五、调试器</p>
 
-<p>别看ruby是动态语言，其实调试器功能并不比Java差，开命令窗口：<br/>
+<p>别看ruby是动态语言，其实调试器功能并不比Java差，开命令窗口：<br />
 gem install ruby-debug-ide -y</p>
 
 <p>然后开你的netbeans，打开调试器功能，以debug方式启动rails项目，哈哈，和Eclipse一样强大，在断点可以跟踪堆栈，watch变量，单步执行等等：</p>
 
 <p>六、测试覆盖率</p>
 
-<p>想知道项目的测试覆盖率吗？开命令窗口：<br/>
-gem install rcov<br/>
+<p>想知道项目的测试覆盖率吗？开命令窗口：<br />
+gem install rcov<br />
 然后配置一下rake tasks，执行就可以获得整个项目的测试覆盖率，不错吧？</p>
 </div>
 
@@ -178,6 +178,10 @@ gem install rcov<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -191,10 +195,6 @@ gem install rcov<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -214,6 +214,22 @@ gem install rcov<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="echo &ldquo;Hello world&rdquo; | base64 Encryption with base64 Also works with files: $ cat file Hello world $ base64 file SGVsbG8gd29ybGQK To &hellip;">
+  <meta name="description" content="echo “Hello world” base64 Encryption with base64 Also works with files: $ cat file Hello world $ base64 file SGVsbG8gd29ybGQK To decrypt use the -d &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,25 +94,33 @@
   </header>
 
 
-<div class="entry-content"><p>echo &ldquo;Hello world&rdquo; | base64</p>
+<div class="entry-content"><table>
+  <tbody>
+    <tr>
+      <td>echo “Hello world”</td>
+      <td>base64</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>Encryption with base64</p>
 
 <p>Also works with files:</p>
 
-<p>  <code>$ cat file</code></p>
+<p><code>$ cat file</code></p>
 
 <p>Hello world</p>
 
-<p>  <code>$ base64 file</code></p>
+<p><code>$ base64 file</code></p>
 
 <p>SGVsbG8gd29ybGQK</p>
 
 <p>To decrypt use the -d option:</p>
 
-<p>  <code>$ echo SGVsbG8gd29ybGQK | base64 -d</code></p>
+<p><code>$ echo SGVsbG8gd29ybGQK | base64 -d</code></p>
 
 <p>Hello world</p>
+
 </div>
 
 
@@ -184,6 +192,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -197,10 +209,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -220,6 +228,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

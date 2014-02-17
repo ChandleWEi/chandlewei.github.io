@@ -9,8 +9,9 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="xfce4-terminal 有bug和xorg有兼容问题， 以前从么想过解决下，今天去xfce4-terminal的列表看了下，原来是这个问题吧  72 Section &ldquo;Extensions&#8221;
- 73     #Option &#8220;Composite&rdquo &hellip;">
+  <meta name="description" content="xfce4-terminal 有bug和xorg有兼容问题， 以前从么想过解决下，今天去xfce4-terminal的列表看了下，原来是这个问题吧  72 Section “Extensions”
+ 73     #Option “Composite” “Enable”
+ 74     &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,9 +98,9 @@
 
 <div class="entry-content"><p>xfce4-terminal 有bug和xorg有兼容问题， 以前从么想过解决下，今天去xfce4-terminal的列表看了下，原来是这个问题吧</p>
 
-<p> 72 Section &ldquo;Extensions&#8221;<br/>
- 73     #Option &#8220;Composite&rdquo; &ldquo;Enable&#8221;<br/>
- 74     Option &#8220;Composite&rdquo; &ldquo;Disable&#8221;<br/>
+<p> 72 Section “Extensions”<br />
+ 73     #Option “Composite” “Enable”<br />
+ 74     Option “Composite” “Disable”<br />
  75 EndSection</p>
 
 <p> </p>
@@ -178,6 +179,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -191,10 +196,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -214,6 +215,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

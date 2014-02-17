@@ -9,8 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Hpricot research X doc.search(&ldquo;Location&rdquo;).attr(&ldquo;citycode&rdquo;) &lt;-This is not working, it will replace this attribute with &hellip;">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -71,6 +71,104 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz/">rails_2.0.2_的转变_zz</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Instiki and Rails 2.0  </p>
+
+<p>I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was based on. At least, for the present, I made the bare minimum of changes in Instiki, required. Even so, one gets a whole raft of improvements, “for free.”  </p>
+
+<p>Mostly, there were silly little things.  </p>
+
+<p>    render_text “You c’yan come in.”, ‘403 Forbidden’  </p>
+
+<p>for instance, became  </p>
+
+<p>    render :text =&gt; “You c’yan come in.”, :status =&gt; 403  </p>
+
+<p>and  </p>
+
+<p>    response.headers[‘Content-Type’] = ‘application/xhtml+xml’  </p>
+
+<p>became  </p>
+
+<p>    response.headers[‘type’] = ‘application/xhtml+xml’  </p>
+
+<p>More interesting was that sessions are now, by default, stored in a cookie, rather than on the server. There was, apparently, quite some brouhaha surrounding this change. The session is stored in a cookie as a cryptographically-signed (base64-encoded) cleartext. Many of the objections would, presumably, go away if the session were encrypted, rather than simply signed — a relatively trivial change in the code.  </p>
+
+<p>Whatever … there’s nothing particularly earthshaking in Instiki’s session data.  </p>
+
+<p>But there’s still the matter of generating a secret signing key. That, I provided by the following bit of code in config/environment.rb  </p>
+
+<p>    # Secret session key<br />
+    generator = Rails::SecretKeyGenerator.new(“Instiki”)<br />
+    config.action_controller.session = {<br />
+      :session_key =&gt; “instiki_session”,<br />
+      :secret =&gt; generator.generate_secret<br />
+    }  </p>
+
+<p>so a new key is generated every time the server starts up.  </p>
+
+<p>In looking through the list of changes to Rails, I was struck by the new Sanitizer code, something I’d complained about previously. It looked vaguely … familiar. But its successor is still superior.  </p>
+
+<p>I also squashed a few bugs.  </p>
+
+<p>   1. The first (reported by Diego Restrepo) led to equations not rendering, in certain circumstances, when utf-8 (non-ascii) text was present.  </p>
+
+<p>   2. The second had to do with WikiWord processing being mistakenly applied to camel-cased elements, attributes or attribute values (with potentially disastrous, non-well-formed results).  </p>
+
+<p>   3.  </p>
+
+<p>      The third (reported by Saji N. Hameed) was in the S5 generation code. Or, more correctly, in the latest version of REXML.  </p>
+
+<p>          element.write(out_string,indent,transitive=true,ie_hack)  </p>
+
+<p>      generates an error. Instead, you need to  </p>
+
+<p>          formatter = REXML::Formatters::Default.new(ie_hack)<br />
+          formatter.write(element, out_string)  </p>
+
+<p>Anyway, enjoy the new version of Instiki … something shiny and new for the Holidays.  </p>
+
+<p>Update (12/28/2007):<br />
+ Speaking of shiny and new, Ruby 1.9 has just been released. Rails 2.0.2 is not compatible with Ruby 1.9 and, hence, neither is Instiki. When there’s a Ruby 1.9.x-compatible version, I’ll let you know.  </p>
+
+<p>Posted by distler at December 23, 2007  9:52 PM  </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2008/08/29/hpricot_research/">Hpricot_research</a></h1>
     
     
@@ -97,67 +195,51 @@
   </header>
 
 
-  <div class="entry-content"><p>Hpricot research</p>
+  <div class="entry-content"><p>Hpricot research  </p>
 
-<p>X doc.search(&ldquo;Location&rdquo;).attr(&ldquo;citycode&rdquo;) &lt;-This is not working, it will replace this attribute with empty.</p>
+<p>X doc.search(“Location”).attr(“citycode”) &lt;-This is not working, it will replace this attribute with empty.<br />
+# Search element of “Location”<br />
+doc.search(“Location”)<br />
+# Traversal element: break elements by tag name, useful for invalid nested html<br />
+doc.traverse_element(“LookupLocation”,”Location”) {|e| p e}<br />
+# Traverse text: extract content by order, useful for screen scrapingdoc.traverse_text {|e| p e}  </p>
 
-<h1>Search element of &ldquo;Location&rdquo;</h1>
+<p>Sample code and tests<br />
+require ‘hpricot’<br />
+@tokenClass =  Oag::Token.new<br />
+@token = @tokenClass.get_token<br />
+@solid_token = @tokenClass.get_valid_token_from_database<br />
+city_airport_name = @tokenClass.get_city_airport_name(@solid_token,’LON’)<br />
+doc = Hpricot.XML(city_airport_name)<br />
+#Search in attribute<br />
+#attribute has citycode and portcode<br />
+doc.search(“[@citycode][@portcode]”)<br />
+doc/”[@citycode][@portcode]”<br />
+#citycode = LOD<br />
+doc/”Location[@citycode=’LOD’]”<br />
+# Search in content<br />
+doc/”Location:contains(‘Canada’)”<br />
+# List attribute contents, returns an array<br />
+(doc/’Location[@citycode]’).map {|x| x[‘citycode’]}</p>
 
-<p>doc.search(&ldquo;Location&rdquo;)</p>
+<h1 id="hpricotat">Hpricot#at</h1>
 
-<h1>Traversal element: break elements by tag name, useful for invalid nested html</h1>
+<p>doc.at(‘Dep’)</p>
 
-<p>doc.traverse_element(&ldquo;LookupLocation&rdquo;,&ldquo;Location&rdquo;) {|e| p e}</p>
+<h1 id="get-attribute-value-only-one-at-a-time">Get attribute value (only one at a time)</h1>
 
-<h1>Traverse text: extract content by order, useful for screen scrapingdoc.traverse_text {|e| p e}</h1>
-
-<p>Sample code and tests<br/>
-require &lsquo;hpricot&#8217;<br/>
-@tokenClass =  Oag::Token.new<br/>
-@token = @tokenClass.get_token<br/>
-@solid_token = @tokenClass.get_valid_token_from_database<br/>
-city_airport_name = @tokenClass.get_city_airport_name(@solid_token,&#8217;LON&rsquo;)<br/>
-doc = Hpricot.XML(city_airport_name)</p>
-
-<h1>Search in attribute</h1>
-
-<h1>attribute has citycode and portcode</h1>
-
-<p>doc.search(&ldquo;[@citycode][@portcode]&rdquo;)<br/>
-doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
-
-<h1>citycode = LOD</h1>
-
-<p>doc/&ldquo;Location[@citycode=&lsquo;LOD&rsquo;]&rdquo;</p>
-
-<h1>Search in content</h1>
-
-<p>doc/&ldquo;Location:contains(&lsquo;Canada&rsquo;)&rdquo;</p>
-
-<h1>List attribute contents, returns an array</h1>
-
-<p>(doc/&lsquo;Location[@citycode]&rsquo;).map {|x| x[&lsquo;citycode&rsquo;]}</p>
-
-<h1>Hpricot#at</h1>
-
-<p>doc.at(&lsquo;Dep&rsquo;)</p>
-
-<h1>Get attribute value (only one at a time)</h1>
-
-<p>doc.at(&lsquo;Dep&rsquo;)[:LegID]</p>
+<p>doc.at(‘Dep’)[:LegID]</p>
 
 <p>(doc % :Dep)[:LegID]</p>
 
-<p>doc.at(&lsquo;Dep&rsquo;)[:ElapsedTime]
-&hellip;&hellip;.</p>
+<p>doc.at(‘Dep’)[:ElapsedTime]
+…….  </p>
 
-<h1>Ignore case: (upcase, downcase)</h1>
+<h1 id="ignore-case-upcase-downcase">Ignore case: (upcase, downcase)</h1>
+<p>Hpricot.parse(xml.downcase))  </p>
 
-<p>Hpricot.parse(xml.downcase))</p>
-
-<h1>Show today in YYYY-mm-dd format</h1>
-
-<p>Time.today.strftime(&lsquo;%Y-%m-%d&rsquo;)</p>
+<h1 id="show-today-in-yyyy-mm-dd-format">Show today in YYYY-mm-dd format</h1>
+<p>Time.today.strftime(‘%Y-%m-%d’)</p>
 </div>
   
   
@@ -196,66 +278,66 @@ doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
   </header>
 
 
-  <div class="entry-content"><p>Instiki and Rails 2.0</p>
+  <div class="entry-content"><p>Instiki and Rails 2.0  </p>
 
-<p>I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was based on. At least, for the present, I made the bare minimum of changes in Instiki, required. Even so, one gets a whole raft of improvements, “for free.”</p>
+<p>I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was based on. At least, for the present, I made the bare minimum of changes in Instiki, required. Even so, one gets a whole raft of improvements, “for free.”  </p>
 
-<p>Mostly, there were silly little things.</p>
+<p>Mostly, there were silly little things.  </p>
 
-<p>    render_text &ldquo;You c&#8217;yan come in.&rdquo;, &lsquo;403 Forbidden&rsquo;</p>
+<p>    render_text “You c’yan come in.”, ‘403 Forbidden’  </p>
 
-<p>for instance, became</p>
+<p>for instance, became  </p>
 
-<p>    render :text => &ldquo;You c&#8217;yan come in.&rdquo;, :status => 403</p>
+<p>    render :text =&gt; “You c’yan come in.”, :status =&gt; 403  </p>
 
-<p>and</p>
+<p>and  </p>
 
-<p>    response.headers[&lsquo;Content-Type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+<p>    response.headers[‘Content-Type’] = ‘application/xhtml+xml’  </p>
 
-<p>became</p>
+<p>became  </p>
 
-<p>    response.headers[&lsquo;type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+<p>    response.headers[‘type’] = ‘application/xhtml+xml’  </p>
 
-<p>More interesting was that sessions are now, by default, stored in a cookie, rather than on the server. There was, apparently, quite some brouhaha surrounding this change. The session is stored in a cookie as a cryptographically-signed (base64-encoded) cleartext. Many of the objections would, presumably, go away if the session were encrypted, rather than simply signed — a relatively trivial change in the code.</p>
+<p>More interesting was that sessions are now, by default, stored in a cookie, rather than on the server. There was, apparently, quite some brouhaha surrounding this change. The session is stored in a cookie as a cryptographically-signed (base64-encoded) cleartext. Many of the objections would, presumably, go away if the session were encrypted, rather than simply signed — a relatively trivial change in the code.  </p>
 
-<p>Whatever … there’s nothing particularly earthshaking in Instiki’s session data.</p>
+<p>Whatever … there’s nothing particularly earthshaking in Instiki’s session data.  </p>
 
-<p>But there’s still the matter of generating a secret signing key. That, I provided by the following bit of code in config/environment.rb</p>
+<p>But there’s still the matter of generating a secret signing key. That, I provided by the following bit of code in config/environment.rb  </p>
 
-<p>    # Secret session key<br/>
-    generator = Rails::SecretKeyGenerator.new(&ldquo;Instiki&rdquo;)<br/>
-    config.action_controller.session = {<br/>
-      :session_key => &ldquo;instiki_session&rdquo;,<br/>
-      :secret => generator.generate_secret<br/>
-    }</p>
+<p>    # Secret session key<br />
+    generator = Rails::SecretKeyGenerator.new(“Instiki”)<br />
+    config.action_controller.session = {<br />
+      :session_key =&gt; “instiki_session”,<br />
+      :secret =&gt; generator.generate_secret<br />
+    }  </p>
 
-<p>so a new key is generated every time the server starts up.</p>
+<p>so a new key is generated every time the server starts up.  </p>
 
-<p>In looking through the list of changes to Rails, I was struck by the new Sanitizer code, something I’d complained about previously. It looked vaguely … familiar. But its successor is still superior.</p>
+<p>In looking through the list of changes to Rails, I was struck by the new Sanitizer code, something I’d complained about previously. It looked vaguely … familiar. But its successor is still superior.  </p>
 
-<p>I also squashed a few bugs.</p>
+<p>I also squashed a few bugs.  </p>
 
-<p>   1. The first (reported by Diego Restrepo) led to equations not rendering, in certain circumstances, when utf-8 (non-ascii) text was present.</p>
+<p>   1. The first (reported by Diego Restrepo) led to equations not rendering, in certain circumstances, when utf-8 (non-ascii) text was present.  </p>
 
-<p>   2. The second had to do with WikiWord processing being mistakenly applied to camel-cased elements, attributes or attribute values (with potentially disastrous, non-well-formed results).</p>
+<p>   2. The second had to do with WikiWord processing being mistakenly applied to camel-cased elements, attributes or attribute values (with potentially disastrous, non-well-formed results).  </p>
 
-<p>   3.</p>
+<p>   3.  </p>
 
-<p>      The third (reported by Saji N. Hameed) was in the S5 generation code. Or, more correctly, in the latest version of REXML.</p>
+<p>      The third (reported by Saji N. Hameed) was in the S5 generation code. Or, more correctly, in the latest version of REXML.  </p>
 
-<p>          element.write(out_string,indent,transitive=true,ie_hack)</p>
+<p>          element.write(out_string,indent,transitive=true,ie_hack)  </p>
 
-<p>      generates an error. Instead, you need to</p>
+<p>      generates an error. Instead, you need to  </p>
 
-<p>          formatter = REXML::Formatters::Default.new(ie_hack)<br/>
-          formatter.write(element, out_string)</p>
+<p>          formatter = REXML::Formatters::Default.new(ie_hack)<br />
+          formatter.write(element, out_string)  </p>
 
-<p>Anyway, enjoy the new version of Instiki … something shiny and new for the Holidays.</p>
+<p>Anyway, enjoy the new version of Instiki … something shiny and new for the Holidays.  </p>
 
-<p>Update (12/28/2007):<br/>
- Speaking of shiny and new, Ruby 1.9 has just been released. Rails 2.0.2 is not compatible with Ruby 1.9 and, hence, neither is Instiki. When there’s a Ruby 1.9.x-compatible version, I’ll let you know.</p>
+<p>Update (12/28/2007):<br />
+ Speaking of shiny and new, Ruby 1.9 has just been released. Rails 2.0.2 is not compatible with Ruby 1.9 and, hence, neither is Instiki. When there’s a Ruby 1.9.x-compatible version, I’ll let you know.  </p>
 
-<p>Posted by distler at December 23, 2007  9:52 PM</p>
+<p>Posted by distler at December 23, 2007  9:52 PM  </p>
 </div>
   
   
@@ -304,10 +386,7 @@ doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
 
 <p><a href="http://auction1.taobao.com/auction/item_detail-0db1-a7f8708a0bf8fd783b23c4284f490735.jhtml">http://auction1.taobao.com/auction/item_detail-0db1-a7f8708a0bf8fd783b23c4284f490735.jhtml</a></p>
 
-<ol>
-<li></li>
-</ol>
-
+<p>2.</p>
 
 <p><a href="http://www.slanya.com/softdown/soft/HP">http://www.slanya.com/softdown/soft/HP</a>惠普笔记本Bluetooth内置蓝牙模块最新驱动/HP惠普笔记本Bluetooth内置蓝牙模块最新驱动.rar</p>
 </div>
@@ -389,13 +468,13 @@ doc/&ldquo;[@citycode][@portcode]&rdquo;</p>
   </header>
 
 
-  <div class="entry-content"><p>cd /tmp<br/>
-wget <a href="http://www.ginguppin.de/files/epdfview_poppler.tar.bz2  ">http://www.ginguppin.de/files/epdfview_poppler.tar.bz2  </a>
-wget <a href="http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk  ">http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk  </a>
-opk install libfreetype6_2.3.6-r0_armv4t.ipk<br/>
-opkg install libpoppler3_0.8.4-r0_armv4t.ipk<br/>
-opkg install poppler_0.8.4-r0_armv4t.ipk<br/>
-opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
+  <div class="entry-content"><p>cd /tmp<br />
+wget http://www.ginguppin.de/files/epdfview_poppler.tar.bz2<br />
+wget http://www.angstrom-distribution.org/feeds/2008/ipk/glibc/armv4t/base/libfreetype6_2.3.6-r0_armv4t.ipk<br />
+opk install libfreetype6_2.3.6-r0_armv4t.ipk<br />
+opkg install libpoppler3_0.8.4-r0_armv4t.ipk<br />
+opkg install poppler_0.8.4-r0_armv4t.ipk<br />
+opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk  </p>
 
 <p>opkg install epdfview_0.1.6-r3_armv4t.ipk
  
@@ -440,20 +519,19 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
 
   <div class="entry-content"><p>openmoko用的是 vcard 3.0格式 。要自己重新写然后导入</p>
 
-<p>参考 <a href="http://wiki.openmoko.org/wiki/Import_Vcf_Contacts%C2%A0">http://wiki.openmoko.org/wiki/Import_Vcf_Contacts%C2%A0</a></p>
+<p>参考 http://wiki.openmoko.org/wiki/Import_Vcf_Contacts </p>
 
 <p>这里记录下我简单的步骤</p>
 
 <p>1。用evolution 建立联系人表然后用vcard格式保存。：（</p>
 
-<p>2。wget -c  <a href="http://www.smurfy.de/files/neo/manage-contacts">http://www.smurfy.de/files/neo/manage-contacts</a></p>
+<p>2。wget -c  http://www.smurfy.de/files/neo/manage-contacts</p>
 
-<p>wget -c  <a href="http://www.smurfy.de/files/neo/remove_all_contacts">http://www.smurfy.de/files/neo/remove_all_contacts</a></p>
+<p>wget -c  http://www.smurfy.de/files/neo/remove_all_contacts</p>
 
 <ol>
-<li>先python manage-contacts dump > contacts 备份下</li>
+  <li>先python manage-contacts dump &gt; contacts 备份下</li>
 </ol>
-
 
 <p>4。 然后把evolution 保存的mobile.vcf copy到手机上</p>
 
@@ -461,14 +539,14 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk</p>
 
 <p>============</p>
 
-<p>root@fic-gta02:/$ ps aux | grep today<br/>
-root      1320  3.7 11.5  33556 14100 ?        S    23:00   0:09 ope>>nmoko-today<br/>
-root      1369  0.0  0.4   2860   592 pts/0    S+   23:04   0:00 gre>>p today</p>
+<p>root@fic-gta02:/$ ps aux | grep today<br />
+root      1320  3.7 11.5  33556 14100 ?        S    23:00   0:09 ope»nmoko-today<br />
+root      1369  0.0  0.4   2860   592 pts/0    S+   23:04   0:00 gre»p today  </p>
 
-<p>root@fic-gta02:/$ cat /proc/1320/environ-</p>
+<p>root@fic-gta02:/$ cat /proc/1320/environ-  </p>
 
-<p>root@fic-gta02:/$ export   DBUS_SESSION_BUS_ADDRESS=unix:abstract=/t>>mp/dbus-80gSL9Q6F4,<br/>
-guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
+<p>root@fic-gta02:/$ export   DBUS_SESSION_BUS_ADDRESS=unix:abstract=/t»mp/dbus-80gSL9Q6F4,<br />
+guid=6efed88183a7f6b9210cf40047ba0dfe<br />
  ===========</p>
 
 <p>  python remove_all_contacts</p>
@@ -555,11 +633,8 @@ guid=6efed88183a7f6b9210cf40047ba0dfe<br/>
 
   <div class="entry-content"><p> 笔记本坏了重装emacs,么想到以前用的cvs有问题，混乱的cvs</p>
 
-<pre><code>sudo apt-get install build-essential  
+<pre><code>sudo apt-get install build-essential   sudo apt-get build-dep emacs21   sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgtk2.0-dev  
 </code></pre>
-
-<p>sudo apt-get build-dep emacs21<br/>
-sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgtk2.0-dev</p>
 
 <p>cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/emacs co emacs</p>
 
@@ -573,7 +648,7 @@ sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgt
 <pre><code>make bootstrap
 </code></pre>
 
-<p>make &amp;&amp; make install</p>
+<p>make &amp;&amp; make install  </p>
 
 <p> </p>
 </div>
@@ -614,99 +689,42 @@ sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgt
   </header>
 
 
-  <div class="entry-content"><p>Hey!<br/>
-I suppose you want to have a little clock in the titlebar?!</p>
+  <div class="entry-content"><p>Hey!<br />
+I suppose you want to have a little clock in the titlebar?!  </p>
 
-<p>Which Image are you using? 2007.2? ASU?</p>
+<p>Which Image are you using? 2007.2? ASU?  </p>
 
-<p>If you are using the 2007.2 Image, do the following in your moko-shell:</p>
-
-<ol>
-<li>minimize current clock:
-
-<h1>dbus-launch gconftool-2 &mdash;type bool &mdash;set</h1>
-
-/desktop/poky/interface/small_clock true
-
-<h1>/etc/init.d/xserver-nodm restart</h1></li>
-</ol>
-
-
-<p>&ndash;> ths big clock in the middle of the scrren will be gone. Just the<br/>
-bar at the bottom of the page showing the date will remain.</p>
+<p>If you are using the 2007.2 Image, do the following in your moko-shell:  </p>
 
 <ol>
-<li>To add the clock to the title bar, edit /etc/matchbox/session. In<br/>
-the list of applets after &mdash;end-applets, add &lsquo;openmoko-panel-clock,&rsquo;,<br/>
-and restart your X server</li>
+  <li>minimize current clock:<br />
+#dbus-launch gconftool-2 –type bool –set<br />
+/desktop/poky/interface/small_clock true<br />
+# /etc/init.d/xserver-nodm restart  </li>
 </ol>
 
+<p>-&gt; ths big clock in the middle of the scrren will be gone. Just the<br />
+bar at the bottom of the page showing the date will remain.  </p>
 
-<p>hope that helps<br/>
-Bastian</p>
+<ol>
+  <li>To add the clock to the title bar, edit /etc/matchbox/session. In<br />
+the list of applets after –end-applets, add ‘openmoko-panel-clock,’,<br />
+and restart your X server  </li>
+</ol>
 
-<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#x3a;&#99;&#x68;&#97;&#110;&#x64;&#108;&#101;&#46;&#x77;&#101;&#105;&#64;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#104;&#97;&#110;&#x64;&#x6c;&#101;&#x2e;&#x77;&#101;&#x69;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a> wrote:</p>
+<p>hope that helps<br />
+Bastian  </p>
 
-<blockquote><p>how to set home page clock to right top.</p>
+<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> wrote:<br />
+&gt; how to set home page clock to right top.<br />
+&gt;<br />
+&gt;<br />
+&gt; _______________________________________________<br />
+&gt; support mailing list<br />
+&gt; support@lists.openmoko.org<br />
+&gt; https://lists.openmoko.org/mailman/listinfo/support<br />
+&gt;  </p>
 
-<p>_______________________________________________<br/>
-support mailing list<br/>
-support@lists.openmoko.org<br/>
-<a href="https://lists.openmoko.org/mailman/listinfo/support">https://lists.openmoko.org/mailman/listinfo/support</a></p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/07/19/GTA02_WLAN/">GTA02_WLAN</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-07-19T00:00:00+08:00" pubdate data-updated="true">Jul 19<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/07/19/GTA02_WLAN/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/07/19/GTA02_WLAN/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>openmoko 的dhclient有问题真的很奇怪。dhclient 2050 null point 的问题</p>
-
-<p>ifconfig eth0 up<br/>
-iwconfig eth0 essid XXXXX</p>
-
-<h1>iwconfig eth0 key on</h1>
-
-<p> iwconfig eth0 key s:xxxxxxxxxxxxxx</p>
-
-<p>or</p>
-
-<p>iwconfig eth0 key restricted xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-
-<h1>dhclient eth0 不能在openmoko下运行只能运行下面的命令.</h1>
-
-<p>udhcpc eth0</p>
 </div>
   
   
@@ -731,6 +749,10 @@ iwconfig eth0 essid XXXXX</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -746,10 +768,6 @@ iwconfig eth0 essid XXXXX</p>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -760,12 +778,29 @@ iwconfig eth0 essid XXXXX</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

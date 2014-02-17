@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="解决 Pidgin 的登录问题 galeki posted @ 2009年1月13日 01:50 in 实用软件 with tags pecan MSN , 121 阅读 还以为是我的 rpwt，到了晚上才发现大家都登录不了 Pidgin 的 MSN 帐号了。 原因是微软不在对第三方的 IM &hellip;">
+  <meta name="description" content="解决 Pidgin 的登录问题 ** galeki** posted @ 2009年1月13日 01:50 in 实用软件 with tags pecan MSN , 121 阅读 还以为是我的 rpwt，到了晚上才发现大家都登录不了 Pidgin 的 MSN 帐号了。 原因是微软不在对第三方的 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,17 +94,25 @@
   </header>
 
 
-<div class="entry-content"><h1>解决 Pidgin 的登录问题</h1>
+<div class="entry-content"><h1 id="pidgin-">解决 Pidgin 的登录问题</h1>
 
-<p><strong> galeki</strong> posted @ 2009年1月13日 01:50 in <a href="http://www.linuxgem.org/categories/1489/posts">实用软件</a> with tags <a href="http://www.linuxgem.org/tag/pecan">pecan</a> <a href="http://www.linuxgem.org/tag/MSN">MSN</a> , 121 阅读</p>
+<p>** galeki** posted @ 2009年1月13日 01:50 in <a href="http://www.linuxgem.org/categories/1489/posts">实用软件</a> with tags <a href="http://www.linuxgem.org/tag/pecan">pecan</a> <a href="http://www.linuxgem.org/tag/MSN">MSN</a> , 121 阅读</p>
 
 <p>还以为是我的 rpwt，到了晚上才发现大家都登录不了 Pidgin 的 MSN 帐号了。</p>
 
 <p>原因是微软不在对第三方的 IM 软件进行支持，所有 P15 协议的 IM 都受到了牵连：</p>
 
-<blockquote><p><strong>著名苹果版IM通用软件Adium官方Blog刚刚宣布，微软MSN服务器从1月11日起停止了对第三方IM软件的登录请求支持，包括Adium、Pidgin在内的多款流行非Windows平台IM软件受到牵连。</strong> 据称，此次受到微软“屏蔽”的第三方IM软件均为支持P15 MSN传输协议的版本。</p>
+<blockquote>
 
-<p>来自 <a href="http://www.cnbeta.com/articles/74636.htm">cnBate</a></p></blockquote>
+</blockquote>
+
+<blockquote>
+  <p><strong>著名苹果版IM通用软件Adium官方Blog刚刚宣布，微软MSN服务器从1月11日起停止了对第三方IM软件的登录请求支持，包括Adium、Pidgin在内的多款流行非Windows平台IM软件受到牵连。</strong> 据称，此次受到微软“屏蔽”的第三方IM软件均为支持P15 MSN传输协议的版本。</p>
+</blockquote>
+
+<blockquote>
+  <p>来自 <a href="http://www.cnbeta.com/articles/74636.htm">cnBate</a></p>
+</blockquote>
 
 <p>不过天无绝人之路，传说中的 <a href="http://code.google.com/p/msn-pecan/">Pecan</a> 项目就可以解决这个问题。Pecan 是一个 MSN 的 Pidgin 插件，相比 Pidgin 内置的 MSN 支持，Pecan 支援更新的传输协议版本，更多的 MSN 功能，和更快的登录速度和文件传输速度。</p>
 
@@ -112,7 +120,7 @@
 
 <p>Pecan 的安装方法可以参考： <a href="http://code.google.com/p/msn-pecan/wiki/HowToInstall">HowtoInstall</a></p>
 
-<p>安装好之后，新建一个帐号，协议中选择 &ldquo;<strong>WLM</strong>&rdquo; 就可以了：</p>
+<p>安装好之后，新建一个帐号，协议中选择 “<strong>WLM</strong>” 就可以了：</p>
 
 <p><img src="http://www.linuxgem.org/user_files/linuxgem/Image/Screenshot-MSN-Pecan.png" alt="" /></p>
 </div>
@@ -186,6 +194,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -199,10 +211,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -222,6 +230,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

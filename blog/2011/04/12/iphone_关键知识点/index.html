@@ -9,7 +9,9 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="General User-Interface Classes For the overall functioning of a user interface, the AppKit provides the following classes: The global application &hellip;">
+  <meta name="description" content="General User-Interface Classes
+For the overall functioning of a user interface, the AppKit provides the following classes:
+- The global application &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,16 +96,15 @@
   </header>
 
 
-<div class="entry-content"><h4>General User-Interface Classes</h4>
-
-<h2>For the overall functioning of a user interface, the AppKit provides the following classes:</h2>
+<div class="entry-content"><h4 id="general-user-interface-classes">General User-Interface Classes</h4>
+<p>For the overall functioning of a user interface, the AppKit provides the following classes:
+-  </p>
 
 <p><strong>The global application object</strong>. Every application uses a singleton instance of <code>NSApplication</code> to control the main event loop, keep track of the application’s windows and menus, distribute events to the appropriate objects (that is, itself or one of its windows), set up top-level autorelease pools, and receive notification of application-level events. An <code>NSApplication</code> object has a delegate (an object that you assign) that is notified when the application starts or terminates, is hidden or activated, should open a file selected by the user, and so forth. By setting the <code>NSApplication</code> object’s delegate and implementing the delegate methods, you customize the behavior of your application without having to subclass <code>NSApplication</code> .</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p><strong>Windows and views</strong>. The window and view classes, <code>NSWindow</code> and <code>NSView</code> , also inherit from <code>NSResponder</code> , and so are designed to respond to user actions. An <code>NSApplication</code> object maintains a list of <code>NSWindow</code> objects—one for each window belonging to the application—and each <code>NSWindow</code> object maintains a hierarchy of <code>NSView</code> objects. The view hierarchy is used for drawing and handling events within a window. An <code>NSWindow</code> object handles window-level events, distributes other events to its views, and provides a drawing area for its views. An <code>NSWindow</code> object also has a delegate allowing you to customize its behavior.</p>
 
@@ -112,39 +113,35 @@
 <p><code>NSView</code> is the superclass for all objects displayed in a window. All subclasses implement a drawing method using graphics functions; <code>drawRect:</code> is the primary method you override when creating a new <code>NSView</code> .</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p><strong>Controller classes for Cocoa bindings</strong>. The abstract <code>NSController</code> class and its concrete subclasses <code>NSObjectController</code> , <code>NSArrayController</code> , <code>NSDictionaryController</code> , and <code>NSTreeController</code> are part of the implementation of Cocoa bindings. This technology automatically synchronizes the application data stored in objects and the presentation of that data in a user interface. See <a href="http://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CocoaFundamentals/CocoaDesignPatterns/CocoaDesignPatterns.html#//apple_ref/doc/uid/TP40002974-CH6-SW1">“The Model-View-Controller Design Pattern”</a> for a description of these types of controller objects.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p><strong> Panels (dialogs)</strong>. The <code>NSPanel</code> class is a subclass of <code>NSWindow</code> that you use to display transient, global, or pressing information. For example, you would use an instance of <code>NSPanel</code> , rather than an instance of <code>NSWindow</code> , to display error messages or to query the user for a response to remarkable or unusual circumstances. The AppKit implements some common dialogs for you such as the Save, Open, and Print dialogs, used to save, open, and print documents. Using these dialogs gives the user a consistent look and feel across applications for common operations.</p>
+<p>** Panels (dialogs)**. The <code>NSPanel</code> class is a subclass of <code>NSWindow</code> that you use to display transient, global, or pressing information. For example, you would use an instance of <code>NSPanel</code> , rather than an instance of <code>NSWindow</code> , to display error messages or to query the user for a response to remarkable or unusual circumstances. The AppKit implements some common dialogs for you such as the Save, Open, and Print dialogs, used to save, open, and print documents. Using these dialogs gives the user a consistent look and feel across applications for common operations.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p><strong> Menus and cursors</strong>. The <code>NSMenu</code> , <code>NSMenuItem</code> , and <code>NSCursor</code> classes define the look and behavior of the menus and cursors that your application displays to the user.</p>
+<p>** Menus and cursors**. The <code>NSMenu</code> , <code>NSMenuItem</code> , and <code>NSCursor</code> classes define the look and behavior of the menus and cursors that your application displays to the user.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p><strong>Grouping and scrolling views</strong>. The <code>NSBox</code> , <code>NSScrollView</code> , and <code>NSSplitView</code> classes provide graphic “accessories” to other view objects or collections of views in windows. With the <code>NSBox</code> class, you can group elements in windows and draw a border around the entire group. The <code>NSSplitView</code> class lets you append views vertically or horizontally, apportioning to each view some amount of a common territory; a sliding control bar lets the user redistribute the territory among views. The <code>NSScrollView</code> class and its helper class, <code>NSClipView</code> , provide a scrolling mechanism as well as the graphic objects that let the user initiate and control a scroll. The <code>NSRulerView</code> class allows you to add a ruler and markers to a scroll view.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p>** Table views and outline views**. The <code>NSTableView</code> class displays data in rows and columns. <code>NSTableView</code> is ideal for, but not limited to, displaying database records, where rows correspond to each record and columns contain record attributes. The user can edit individual cells and rearrange the columns. You control the behavior and content of an <code>NSTableView</code> object by setting its delegate and data source objects. Outline views (instances of <code>NSOutlineView</code> , a subclass of <code>NSTableView</code> ) offer another approach to displaying tabular data. With the <code>NSBrowser</code> class you can create an object with which users can display and navigate hierarchical data.</p>
 
-<p><strong> Table views and outline views</strong>. The <code>NSTableView</code> class displays data in rows and columns. <code>NSTableView</code> is ideal for, but not limited to, displaying database records, where rows correspond to each record and columns contain record attributes. The user can edit individual cells and rearrange the columns. You control the behavior and content of an <code>NSTableView</code> object by setting its delegate and data source objects. Outline views (instances of <code>NSOutlineView</code> , a subclass of <code>NSTableView</code> ) offer another approach to displaying tabular data. With the <code>NSBrowser</code> class you can create an object with which users can display and navigate hierarchical data.</p>
 </div>
 
 
@@ -216,6 +213,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -229,10 +230,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -252,6 +249,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

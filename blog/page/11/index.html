@@ -9,9 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="aa.bbs &lt;&lt; bb (new) aa.bbs.build bb.attributes (update)
-">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -72,6 +71,51 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">重新编译了vim_么碰到什么问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-27T00:00:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> CFLAGS=-O3 ./configure –enable-perlinterp –enable-pythoninterp –enable-rubyinterp –enable-cscope –enable-multibyte</p>
+
+<p>make &amp;&amp; sudo make install</p>
+
+<p> </p>
+
+<p>我对vim 不是很熟悉，各种原因重新下载了7。2编译了下</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2009/02/25/rails_many_update_question/">Rails_many_update_question</a></h1>
     
     
@@ -98,7 +142,7 @@
   </header>
 
 
-  <div class="entry-content"><p>aa.bbs &lt;&lt; bb (new)</p>
+  <div class="entry-content"><p>aa.bbs « bb (new)</p>
 
 <p>aa.bbs.build bb.attributes (update)</p>
 </div>
@@ -139,139 +183,138 @@
   </header>
 
 
-  <div class="entry-content"><p>套件管理工具比較<br/>
-比較一下現在市面上幾種套件管理工具<br/>
-(debian &ndash; apt , gentoo &ndash; emerge , freebsd &ndash; prots)</p>
+  <div class="entry-content"><p>套件管理工具比較<br />
+比較一下現在市面上幾種套件管理工具<br />
+(debian - apt , gentoo - emerge , freebsd - prots)  </p>
 
-<p>其它參考: APT 用法、emerge 用法</p>
+<p>其它參考: APT 用法、emerge 用法  </p>
 
-<p>深入內容中有 emerge, apt, ports 的語法比較(也可以說是語法教學吧)</p>
+<p>深入內容中有 emerge, apt, ports 的語法比較(也可以說是語法教學吧)  </p>
 
-<p>emerge -s packagename 可以搜索阿，而且忽略大小写，能够模糊查找<br/>
-emerge -p packagename 可以输出关联包<br/>
-emerge &mdash;nodeps packagename 可以忽略关联<br/>
-emerge -C 还可以卸载不记关联，很方便</p>
+<p>emerge -s packagename 可以搜索阿，而且忽略大小写，能够模糊查找<br />
+emerge -p packagename 可以输出关联包<br />
+emerge –nodeps packagename 可以忽略关联<br />
+emerge -C 还可以卸载不记关联，很方便  </p>
 
-<p>以下轉載自: Gentoo/Debian/FreeBSD套件管理memo</p>
+<p>以下轉載自: Gentoo/Debian/FreeBSD套件管理memo  </p>
 
-<p>以關鍵字搜尋軟體<br/>
-Gentoo: emerge -s<br/>
-輸出會有這個 pkg 的簡介 , 關鍵字都可以用正規表示式<br/>
-Debian: apt-cache search<br/>
-FreeBSD: make search name= 或<br/>
-ports_glob &mdash; need portupgrade</p>
+<p>以關鍵字搜尋軟體<br />
+Gentoo: emerge -s<br />
+輸出會有這個 pkg 的簡介 , 關鍵字都可以用正規表示式<br />
+Debian: apt-cache search<br />
+FreeBSD: make search name= 或<br />
+ports_glob – need portupgrade  </p>
 
-<p>安裝軟體<br/>
-Gentoo: emerge<br/>
-Debian: apt-get install<br/>
-FreeBSD: portinstall</p>
+<p>安裝軟體<br />
+Gentoo: emerge<br />
+Debian: apt-get install<br />
+FreeBSD: portinstall  </p>
 
-<p>移除軟體<br/>
-Gentoo: emerge unmerge<br/>
-Debian: apt-get remove<br/>
-FreeBSD: pkg_deinstall</p>
+<p>移除軟體<br />
+Gentoo: emerge unmerge<br />
+Debian: apt-get remove<br />
+FreeBSD: pkg_deinstall  </p>
 
-<p>升級單一軟體<br/>
-Gentoo: emerge -u <package><br/>
-Debian: apt-get install <package><br/>
-FreeBSD: portupgrade <package></p>
+<p>升級單一軟體<br />
+Gentoo: emerge -u <package>  
+Debian: apt-get install <package>  
+FreeBSD: portupgrade <package>  </package></package></package></p>
 
-<p>察看升級全系統會動到哪些套件：<br/>
-Gentoo: emerge -puDv world<br/>
-Debian: apt-get -u dist-upgrade<br/>
-FreeBSD: portupgrade -arnv</p>
+<p>察看升級全系統會動到哪些套件：<br />
+Gentoo: emerge -puDv world<br />
+Debian: apt-get -u dist-upgrade<br />
+FreeBSD: portupgrade -arnv  </p>
 
-<p>升級全系統<br/>
-Gentoo: emerge -u &mdash;deep world<br/>
-Debian: apt-get dist-upgrade<br/>
-FreeBSD: make world ; portupgrade -ar</p>
+<p>升級全系統<br />
+Gentoo: emerge -u –deep world<br />
+Debian: apt-get dist-upgrade<br />
+FreeBSD: make world ; portupgrade -ar  </p>
 
-<p>查詢系統裝了哪些軟體<br/>
-Gentoo: emerge -pe world 或 qpkg -I -v<br/>
-Debian: dpkg &mdash;get-selections<br/>
-FreeBSD: pkg_info</p>
+<p>查詢系統裝了哪些軟體<br />
+Gentoo: emerge -pe world 或 qpkg -I -v<br />
+Debian: dpkg –get-selections<br />
+FreeBSD: pkg_info  </p>
 
-<p>查詢某檔案屬於哪個軟體<br/>
-Gentoo: qpkg -f<br/>
-(need gentoolkit)<br/>
-Debian: dpkg -S<br/>
-FreeBSD: pkg_info -W</p>
+<p>查詢某檔案屬於哪個軟體<br />
+Gentoo: qpkg -f<br />
+(need gentoolkit)<br />
+Debian: dpkg -S<br />
+FreeBSD: pkg_info -W  </p>
 
-<p>查詢某個套件安裝了什麼檔案<br/>
-Gentoo: qpkg -l <package><br/>
-Debian: dpkg -L <package><br/>
-FreeBSD: pkg_info -L <package></p>
+<p>查詢某個套件安裝了什麼檔案<br />
+Gentoo: qpkg -l <package>  
+Debian: dpkg -L <package>  
+FreeBSD: pkg\_info -L <package>  </package></package></package></p>
 
-<p>查詢有沒有裝這個關鍵字的套件<br/>
-Gentoo: qpkg -I | grep (qpkg再加上 -v 看版本號碼)<br/>
-Debian: dpkg -qa | grep<br/>
-FreeBSD: pkg_info | grep</p>
+<p>查詢有沒有裝這個關鍵字的套件<br />
+Gentoo: qpkg -I | grep (qpkg再加上 -v 看版本號碼)<br />
+Debian: dpkg -qa | grep<br />
+FreeBSD: pkg_info | grep  </p>
 
-<p>找哪些 pkg &ldquo;簡介&rdquo; 裡含有你要找的關鍵字:<br/>
-Gentoo: emerge -S &lt;關鍵字><br/>
-輸出方式和前者一樣, 關鍵字都可以用正規表示式<br/>
-Debian: apt-cache search<br/>
-FreeBSD: make search key=</p>
+<p>找哪些 pkg “簡介” 裡含有你要找的關鍵字:<br />
+Gentoo: emerge -S <關鍵字>  
+輸出方式和前者一樣, 關鍵字都可以用正規表示式  
+Debian: apt-cache search  
+FreeBSD: make search key=  </關鍵字></p>
 
-<p>不管相依性強制移除某套件<br/>
-Gentoo: emerge -C<br/>
-Debian:<br/>
-FreeBSD: pkg_delete -f</p>
+<p>不管相依性強制移除某套件<br />
+Gentoo: emerge -C<br />
+Debian:<br />
+FreeBSD: pkg_delete -f  </p>
 
-<p>全系統重新編譯<br/>
-Gentoo: emerge -e world<br/>
-Debian: ?<br/>
-FreeBSD: make world ; portupgrade -arf</p>
+<p>全系統重新編譯<br />
+Gentoo: emerge -e world<br />
+Debian: ?<br />
+FreeBSD: make world ; portupgrade -arf  </p>
 
-<p>========<br/>
-補充:<br/>
-qpkg -f<br/>
-ps: emerge gentoolkit first.</p>
+<p>========<br />
+補充:<br />
+qpkg -f<br />
+ps: emerge gentoolkit first.  </p>
 
-<p>&mdash;<br/>
-gentoo 裡:<br/>
-查詢某個套件安裝了什麼檔案:<br/>
-qpkg -l<br/>
-查詢有沒有裝這個關鍵字的套件:<br/>
-qpkg -I (再加上 -v 看版本號碼)<br/>
-不管相依性強制移除某套件:<br/>
-emerge -C</p>
+<p>–<br />
+gentoo 裡:<br />
+查詢某個套件安裝了什麼檔案:<br />
+qpkg -l<br />
+查詢有沒有裝這個關鍵字的套件:<br />
+qpkg -I (再加上 -v 看版本號碼)<br />
+不管相依性強制移除某套件:<br />
+emerge -C  </p>
 
-<p>&mdash;<br/>
-仔細看一下 man emerge<br/>
-要找一個 pkg 的 &ldquo;名稱&rdquo;:<br/>
-emerge -s &lt;關鍵字><br/>
-輸出會有這個 pkg 的簡介</p>
+<p>–<br />
+仔細看一下 man emerge<br />
+要找一個 pkg 的 “名稱”:<br />
+emerge -s <關鍵字>  
+輸出會有這個 pkg 的簡介  </關鍵字></p>
 
-<p>找哪些 pkg &ldquo;簡介&rdquo; 裡含有你要找的關鍵字:<br/>
-emerge -S &lt;關鍵字><br/>
-輸出方式和前者一樣</p>
+<p>找哪些 pkg “簡介” 裡含有你要找的關鍵字:<br />
+emerge -S <關鍵字>  
+輸出方式和前者一樣  </關鍵字></p>
 
-<p>更厲害的是上面的關鍵字都可以用正規表示式!!</p>
+<p>更厲害的是上面的關鍵字都可以用正規表示式!!  </p>
 
-<p>&mdash;<br/>
-emerge -f (fetchonly)<br/>
-好處在於當你emerge 兩個package以上的時候,可以先把source給抓回來,不過需要再emerge</p>
+<p>–<br />
+emerge -f (fetchonly)<br />
+好處在於當你emerge 兩個package以上的時候,可以先把source給抓回來,不過需要再emerge  </p>
 
-<p>emerge -p (pretend)<br/>
-看要裝些什麼東西,</p>
+<p>emerge -p (pretend)<br />
+看要裝些什麼東西,  </p>
 
-<h2>小弟認為這兩個指令對撥接使用者很重要,尤其 -f .一來可以大略知道下載時間,二來可以隨時中斷,然後在續傳(感謝偉大的wget)  </h2>
+<h2 id="f-wget">小弟認為這兩個指令對撥接使用者很重要,尤其 -f .一來可以大略知道下載時間,二來可以隨時中斷,然後在續傳(感謝偉大的wget)</h2>
+<p>升級單一軟體<br />
+Gentoo: emerge -u<br />
+Debian: apt-get install<br />
+FreeBSD: portupgrade  </p>
 
-<p>升級單一軟體<br/>
-Gentoo: emerge -u<br/>
-Debian: apt-get install<br/>
-FreeBSD: portupgrade</p>
+<p>查詢某個套件安裝了什麼檔案<br />
+Gentoo: qpkg -l<br />
+credit to <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#112;&#097;&#097;&#114;&#064;&#103;&#101;&#110;&#116;&#111;&#111;&#046;&#111;&#114;&#103;&#046;&#116;&#119;">&#112;&#097;&#097;&#114;&#064;&#103;&#101;&#110;&#116;&#111;&#111;&#046;&#111;&#114;&#103;&#046;&#116;&#119;</a><br />
+Debian: dpkg -L<br />
+FreeBSD: pkg_info -L  </p>
 
-<p>查詢某個套件安裝了什麼檔案<br/>
-Gentoo: qpkg -l<br/>
-credit to <a href="mailto:paar@gentoo.org.tw">paar@gentoo.org.tw</a><br/>
-Debian: dpkg -L<br/>
-FreeBSD: pkg_info -L</p>
-
-<p>全系統重新編譯<br/>
-Gentoo: emerge -e world<br/>
-Debian: apt-get update;apt-get upgrade<br/>
+<p>全系統重新編譯<br />
+Gentoo: emerge -e world<br />
+Debian: apt-get update;apt-get upgrade<br />
 FreeBSD: make world ; portupgrade -arf</p>
 </div>
   
@@ -313,9 +356,9 @@ FreeBSD: make world ; portupgrade -arf</p>
 
   <div class="entry-content"><p>xfce4-terminal 有bug和xorg有兼容问题， 以前从么想过解决下，今天去xfce4-terminal的列表看了下，原来是这个问题吧</p>
 
-<p> 72 Section &ldquo;Extensions&#8221;<br/>
- 73     #Option &#8220;Composite&rdquo; &ldquo;Enable&#8221;<br/>
- 74     Option &#8220;Composite&rdquo; &ldquo;Disable&#8221;<br/>
+<p> 72 Section “Extensions”<br />
+ 73     #Option “Composite” “Enable”<br />
+ 74     Option “Composite” “Disable”<br />
  75 EndSection</p>
 
 <p> </p>
@@ -361,9 +404,9 @@ FreeBSD: make world ; portupgrade -arf</p>
   </header>
 
 
-  <div class="entry-content"><p>%s/&lt;wsdl:operation name=&ldquo;(w+)&rdquo;>/1/gc</p>
+  <div class="entry-content"><p>%s/<wsdl:operation name="(w+)">/1/gc</wsdl:operation></p>
 
-<p>:%s/&ldquo;(.*)&rdquo; &ndash;%>/&ldquo;1&rdquo;>1</label>/gc</p>
+<p>:%s/”(.*)” -%&gt;/”1”&gt;1&lt;/label&gt;/gc</p>
 </div>
   
   
@@ -402,17 +445,25 @@ FreeBSD: make world ; portupgrade -arf</p>
   </header>
 
 
-  <div class="entry-content"><h1>解决 Pidgin 的登录问题</h1>
+  <div class="entry-content"><h1 id="pidgin-">解决 Pidgin 的登录问题</h1>
 
-<p><strong> galeki</strong> posted @ 2009年1月13日 01:50 in <a href="http://www.linuxgem.org/categories/1489/posts">实用软件</a> with tags <a href="http://www.linuxgem.org/tag/pecan">pecan</a> <a href="http://www.linuxgem.org/tag/MSN">MSN</a> , 121 阅读</p>
+<p>** galeki** posted @ 2009年1月13日 01:50 in <a href="http://www.linuxgem.org/categories/1489/posts">实用软件</a> with tags <a href="http://www.linuxgem.org/tag/pecan">pecan</a> <a href="http://www.linuxgem.org/tag/MSN">MSN</a> , 121 阅读</p>
 
 <p>还以为是我的 rpwt，到了晚上才发现大家都登录不了 Pidgin 的 MSN 帐号了。</p>
 
 <p>原因是微软不在对第三方的 IM 软件进行支持，所有 P15 协议的 IM 都受到了牵连：</p>
 
-<blockquote><p><strong>著名苹果版IM通用软件Adium官方Blog刚刚宣布，微软MSN服务器从1月11日起停止了对第三方IM软件的登录请求支持，包括Adium、Pidgin在内的多款流行非Windows平台IM软件受到牵连。</strong> 据称，此次受到微软“屏蔽”的第三方IM软件均为支持P15 MSN传输协议的版本。</p>
+<blockquote>
 
-<p>来自 <a href="http://www.cnbeta.com/articles/74636.htm">cnBate</a></p></blockquote>
+</blockquote>
+
+<blockquote>
+  <p><strong>著名苹果版IM通用软件Adium官方Blog刚刚宣布，微软MSN服务器从1月11日起停止了对第三方IM软件的登录请求支持，包括Adium、Pidgin在内的多款流行非Windows平台IM软件受到牵连。</strong> 据称，此次受到微软“屏蔽”的第三方IM软件均为支持P15 MSN传输协议的版本。</p>
+</blockquote>
+
+<blockquote>
+  <p>来自 <a href="http://www.cnbeta.com/articles/74636.htm">cnBate</a></p>
+</blockquote>
 
 <p>不过天无绝人之路，传说中的 <a href="http://code.google.com/p/msn-pecan/">Pecan</a> 项目就可以解决这个问题。Pecan 是一个 MSN 的 Pidgin 插件，相比 Pidgin 内置的 MSN 支持，Pecan 支援更新的传输协议版本，更多的 MSN 功能，和更快的登录速度和文件传输速度。</p>
 
@@ -420,7 +471,7 @@ FreeBSD: make world ; portupgrade -arf</p>
 
 <p>Pecan 的安装方法可以参考： <a href="http://code.google.com/p/msn-pecan/wiki/HowToInstall">HowtoInstall</a></p>
 
-<p>安装好之后，新建一个帐号，协议中选择 &ldquo;<strong>WLM</strong>&rdquo; 就可以了：</p>
+<p>安装好之后，新建一个帐号，协议中选择 “<strong>WLM</strong>” 就可以了：</p>
 
 <p><img src="http://www.linuxgem.org/user_files/linuxgem/Image/Screenshot-MSN-Pecan.png" alt="" /></p>
 </div>
@@ -463,7 +514,7 @@ FreeBSD: make world ; portupgrade -arf</p>
 
   <div class="entry-content"><p>受够了 debian 的 pidgin 2.4.3的问题去官方网站一看我考都，2。5。3了赶快弄下来编译</p>
 
-<p>  CFLAGS=-O3 ./configure &mdash;disable-nm</p>
+<p>  CFLAGS=-O3 ./configure –disable-nm</p>
 
 <p>make </p>
 
@@ -512,53 +563,53 @@ FreeBSD: make world ; portupgrade -arf</p>
   </header>
 
 
-  <div class="entry-content"><h2></h2>
+  <div class="entry-content"><p>##  </p>
 
-<p>仔细考虑rpm的依赖关系<br/>
-其实发现redhat当初考虑rpm<br/>
-只是考虑到了从光盘这个给定范围内安装指定包的途径<br/>
-由于源的范围很窄<br/>
-所以他没有过多考虑卸载软件已经更新软件<br/>
-他们当时需要的只是一个能够解决依赖关系<br/>
-解决当安装A的时候要把B也安装进去问题的方法<br/>
-从这个角度来看RPM工作的不错<br/>
-其实你只是从redhat的光盘上安装软件<br/>
-他看起来也不错.虽然有时候会安装你觉得完全依赖不到的东西<br/>
-但是他们的解决方法就是.为了万无一失.凡是引用到的东西统统装进去.反正是从光盘上的.速度不会太差<br/>
-但是遇到信息爆炸和软件数量激增的情况下<br/>
-就很难去管理这么大一个库<br/>
+<p>仔细考虑rpm的依赖关系<br />
+其实发现redhat当初考虑rpm<br />
+只是考虑到了从光盘这个给定范围内安装指定包的途径<br />
+由于源的范围很窄<br />
+所以他没有过多考虑卸载软件已经更新软件<br />
+他们当时需要的只是一个能够解决依赖关系<br />
+解决当安装A的时候要把B也安装进去问题的方法<br />
+从这个角度来看RPM工作的不错<br />
+其实你只是从redhat的光盘上安装软件<br />
+他看起来也不错.虽然有时候会安装你觉得完全依赖不到的东西<br />
+但是他们的解决方法就是.为了万无一失.凡是引用到的东西统统装进去.反正是从光盘上的.速度不会太差<br />
+但是遇到信息爆炸和软件数量激增的情况下<br />
+就很难去管理这么大一个库<br />
 而rpm的设计方式注定了无法别人参与维护这个源</p>
 
-<p>而deb的管理.其实应该说是apt的管理<br/>
-从一开始就源于debian的包或者源不可能只有一个组织维护<br/>
-其贡献者会非常多<br/>
-所以他的依赖比较松散,而且对卸载和更新的要求考虑的比较周到<br/>
-而之后的yum,只能是把rpm的依赖关系搬移到网上<br/>
-并没有本质上解决rpm的痼疾.<br/>
-所以当rpm遇见个人发布的内容的时候<br/>
-如果使用默认的rpm打包方式<br/>
-会发现你打出的包由于依赖关系安装很麻烦.卸载更加是件几乎不可能的事情.<br/>
+<p>而deb的管理.其实应该说是apt的管理<br />
+从一开始就源于debian的包或者源不可能只有一个组织维护<br />
+其贡献者会非常多<br />
+所以他的依赖比较松散,而且对卸载和更新的要求考虑的比较周到<br />
+而之后的yum,只能是把rpm的依赖关系搬移到网上<br />
+并没有本质上解决rpm的痼疾.<br />
+所以当rpm遇见个人发布的内容的时候<br />
+如果使用默认的rpm打包方式<br />
+会发现你打出的包由于依赖关系安装很麻烦.卸载更加是件几乎不可能的事情.<br />
 因为你的应用不是redhat的.不在他们的光盘中</p>
 
-<p>redhat之所以放弃桌面版linux市场<br/>
-其一是linux桌面版确实很难盈利<br/>
-其二是在本身就是开源环境的条件下<br/>
-软件的更新和加入如此频繁.<br/>
-在网络速度已经很高的前提下就开始暴露出来的rpm打包软件难以维护的问题<br/>
-到后面已经是积重难返了.<br/>
-而退缩企业市场,企业市场出于稳定性和可靠性,<br/>
-不可能安装来自那么多第三方源的软件<br/>
+<p>redhat之所以放弃桌面版linux市场<br />
+其一是linux桌面版确实很难盈利<br />
+其二是在本身就是开源环境的条件下<br />
+软件的更新和加入如此频繁.<br />
+在网络速度已经很高的前提下就开始暴露出来的rpm打包软件难以维护的问题<br />
+到后面已经是积重难返了.<br />
+而退缩企业市场,企业市场出于稳定性和可靠性,<br />
+不可能安装来自那么多第三方源的软件<br />
 这样redhat维护和管理一个较小的软件源的可能性就大大增加了.</p>
 
-<p>我们看到debian或者ubuntu的系统<br/>
-都是一张CD,而这在他们看来是基础CD<br/>
-可以通过这个CD扩展<br/>
-而redhat和suse的概念就不同<br/>
-要不是DVD,要不就是几张或者十几张CD<br/>
-这些CD.就是他们的全部内容<br/>
+<p>我们看到debian或者ubuntu的系统<br />
+都是一张CD,而这在他们看来是基础CD<br />
+可以通过这个CD扩展<br />
+而redhat和suse的概念就不同<br />
+要不是DVD,要不就是几张或者十几张CD<br />
+这些CD.就是他们的全部内容<br />
 你要安装这之外的软件.将会非常困难.</p>
 
-<p>由此我觉得.redhat的rpm代表的是狭隘以及短视,封闭<br/>
+<p>由此我觉得.redhat的rpm代表的是狭隘以及短视,封闭<br />
 而deb或者gentoo的包管理方式.更加开放和富有远见.</p>
 </div>
   
@@ -600,17 +651,19 @@ FreeBSD: make world ; portupgrade -arf</p>
 
   <div class="entry-content"><p>Neon库，是用来作为Subversion服务器和HTTP客户端进行通讯的库，通常被编译成静态库。但是它后来被链接到不同的动态链接库中，这会导致在AMD 64位操作系统系统上面编译的过程出现错误，出现类似下面的信息：</p>
 
-<blockquote></blockquote>
+<blockquote>
 
-<p>subversion-1.4.6/neon/src/.libs/libneon.a(ne_request.o): relocation R_X86_64_32<br/>
-against `a local symbol&#8217; can not be used when making a shared object;<br/>
-recompile with -fPIC<br/>
-/home/jrandom/subversion/subversion-1.4.6/neon/src/.libs/libneon.a: could not<br/>
-read symbols: Bad value</p>
+</blockquote>
+
+<p>subversion-1.4.6/neon/src/.libs/libneon.a(ne_request.o): relocation R_X86<em>64</em>32<br />
+against `a local symbol’ can not be used when making a shared object;<br />
+recompile with -fPIC<br />
+/home/jrandom/subversion/subversion-1.4.6/neon/src/.libs/libneon.a: could not<br />
+read symbols: Bad value  </p>
 
 <p>在开发者邮件列表中有一篇文章提到了这一点。</p>
 
-<p>解决方法就是为Subversion的配置脚本提供一个“&mdash;enable-shared”的参数。</p>
+<p>解决方法就是为Subversion的配置脚本提供一个“–enable-shared”的参数。</p>
 </div>
   
   
@@ -649,334 +702,231 @@ read symbols: Bad value</p>
   </header>
 
 
-  <div class="entry-content"><h2><a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6" title="permanent link to ubuntu 8.10 downgrade ruby 1.8.7 to 1.8.6">Ubuntu 8.10 Downgrade Ruby 1.8.7 to 1.8.6</a></h2>
+  <div class="entry-content"><h2 id="ubuntu-810-downgrade-ruby-187-to-186httprailsgeekcom20081127ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6-permanent-link-to-ubuntu-810-downgrade-ruby-187-to-186"><a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6" title="permanent link to ubuntu 8.10 downgrade ruby 1.8.7 to 1.8.6">Ubuntu 8.10 Downgrade Ruby 1.8.7 to 1.8.6</a></h2>
 
 <p>November 27, 2008 at 10:51 AM · Posted under <a href="http://railsgeek.com/ubuntu-linux" title="all posts in ubuntu linux">Ubuntu Linux</a></p>
 
-<p>As you may know Ruby 1.8.7 don&rsquo;t compatable with Rails( <a href="http://www.rubyonrails.org/down">http://www.rubyonrails.org/down</a>)<br/>
+<p>As you may know Ruby 1.8.7 don’t compatable with Rails( <a href="http://www.rubyonrails.org/down">http://www.rubyonrails.org/down</a>)<br />
 _We recommend Ruby 1.8.6 for use with Rails. Ruby 1.8.7, 1.8.5, 1.8.4 and 1.8.2 are still usable too, but version 1.8.3 is not. Ruby 1.8.7 still has some bugs to straighten out. _</p>
 
-<h4>Step-by-step to downgrade Ruby to 1.8.6</h4>
+<h4 id="step-by-step-to-downgrade-ruby-to-186">Step-by-step to downgrade Ruby to 1.8.6</h4>
 
 <p>1) Replace <strong>/etc/apt/sources.list</strong> file with follow data:</p>
 
-<h1>deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ &ndash; Release i386 (20071016)]/ gutsy main restricted</h1>
-
-<h1>See <a href="http://help.ubuntu.com/community/UpgradeNotes">http://help.ubuntu.com/community/UpgradeNotes</a> for how to upgrade to</h1>
-
-<h1>newer versions of the distribution.</h1>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid main restricted<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy main restricted</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid main restricted<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy main restricted</p>
-
-<h2>Major bug fix updates produced after the final release of the</h2>
-
-<h2>distribution.</h2>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates main restricted<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates main restricted</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates main restricted<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates main restricted</p>
-
-<h2>N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
-
-<h2>team, and may not be under a free licence. Please satisfy yourself as to</h2>
-
-<h2>your rights to use the software. Also, please note that software in</h2>
-
-<h2>universe WILL NOT receive any review or updates from the Ubuntu security</h2>
-
-<h2>team.</h2>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid universe<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy universe</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid universe<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy universe</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates universe<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates universe</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates universe<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates universe</p>
-
-<h2>N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
-
-<h2>team, and may not be under a free licence. Please satisfy yourself as to</h2>
-
-<h2>your rights to use the software. Also, please note that software in</h2>
-
-<h2>multiverse WILL NOT receive any review or updates from the Ubuntu</h2>
-
-<h2>security team.</h2>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid multiverse<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy multiverse</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy multiverse<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid multiverse</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates multiverse<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates multiverse</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-updates multiverse<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-updates multiverse</p>
-
-<h2>Uncomment the following two lines to add software from the &lsquo;backports&rsquo;</h2>
-
-<h2>repository.</h2>
-
-<h2>N.B. software from this repository may not have been tested as</h2>
-
-<h2>extensively as that contained in the main release, although it includes</h2>
-
-<h2>newer versions of some applications which may provide useful features.</h2>
-
-<h2>Also, please note that software in backports WILL NOT receive any review</h2>
-
-<h2>or updates from the Ubuntu security team.</h2>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-backports main restricted universe multiverse<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-backports main restricted universe multiverse</p>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-backports main restricted universe multiverse<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-backports main restricted universe multiverse</p>
-
-<h2>Uncomment the following two lines to add software from Canonical&rsquo;s</h2>
-
-<h2>&lsquo;partner&rsquo; repository. This software is not part of Ubuntu, but is</h2>
-
-<h2>offered by Canonical and the respective vendors as a service to Ubuntu</h2>
-
-<h2>users.</h2>
-
-<p>deb <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> intrepid partner<br/>
-deb <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> hardy partner</p>
-
-<p>deb-src <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> intrepid partner<br/>
-deb-src <a href="http://archive.canonical.com/ubuntu">http://archive.canonical.com/ubuntu</a> hardy partner</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security main restricted<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security main restricted</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security main restricted<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security main restricted</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security universe<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security universe</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security universe<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security universe</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security multiverse<br/>
-deb <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security multiverse</p>
-
-<h1>Line commented out by installer because it failed to verify:</h1>
-
-<p>deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> intrepid-security multiverse<br/>
-deb-src <a href="http://mirror.cs.umn.edu/ubuntu/">http://mirror.cs.umn.edu/ubuntu/</a> hardy-security multiverse</p>
+<h1 id="deb-cdromubuntu-710-gutsy-gibbon---release-i386-20071016-gutsy-main-restricted">deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ - Release i386 (20071016)]/ gutsy main restricted</h1>
+<p># See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to<br />
+# newer versions of the distribution.  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify">Line commented out by installer because it failed to verify:</h1>
+<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid main restricted<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy main restricted<br />
+# Line commented out by installer because it failed to verify:<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid main restricted<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy main restricted  </p>
+
+<h2 id="major-bug-fix-updates-produced-after-the-final-release-of-the">Major bug fix updates produced after the final release of the</h2>
+<p>## distribution.<br />
+# Line commented out by installer because it failed to verify:<br />
+deb http://mirror.cs.umn.edu/ubuntu/ intrepid-updates main restricted<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy-updates main restricted  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-1">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-updates main restricted<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-updates main restricted  </p>
+
+<h2 id="nb-software-from-this-repository-is-entirely-unsupported-by-the-ubuntu">N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
+<p>## team, and may not be under a free licence. Please satisfy yourself as to<br />
+## your rights to use the software. Also, please note that software in<br />
+## universe WILL NOT receive any review or updates from the Ubuntu security<br />
+## team.<br />
+# Line commented out by installer because it failed to verify:<br />
+deb http://mirror.cs.umn.edu/ubuntu/ intrepid universe<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy universe  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-2">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid universe<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy universe  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-3">Line commented out by installer because it failed to verify:</h1>
+<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-updates universe<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy-updates universe  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-4">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-updates universe<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-updates universe  </p>
+
+<h2 id="nb-software-from-this-repository-is-entirely-unsupported-by-the-ubuntu-1">N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
+<p>## team, and may not be under a free licence. Please satisfy yourself as to<br />
+## your rights to use the software. Also, please note that software in<br />
+## multiverse WILL NOT receive any review or updates from the Ubuntu<br />
+## security team.<br />
+# Line commented out by installer because it failed to verify:<br />
+deb http://mirror.cs.umn.edu/ubuntu/ intrepid multiverse<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy multiverse  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-5">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ hardy multiverse<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid multiverse  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-6">Line commented out by installer because it failed to verify:</h1>
+<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-updates multiverse<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy-updates multiverse  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-7">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-updates multiverse<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-updates multiverse  </p>
+
+<h2 id="uncomment-the-following-two-lines-to-add-software-from-the-backports">Uncomment the following two lines to add software from the ‘backports’</h2>
+<p>## repository.<br />
+## N.B. software from this repository may not have been tested as<br />
+## extensively as that contained in the main release, although it includes<br />
+## newer versions of some applications which may provide useful features.<br />
+## Also, please note that software in backports WILL NOT receive any review<br />
+## or updates from the Ubuntu security team.<br />
+deb http://mirror.cs.umn.edu/ubuntu/ intrepid-backports main restricted universe multiverse<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy-backports main restricted universe multiverse  </p>
+
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-backports main restricted universe multiverse<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-backports main restricted universe multiverse  </p>
+
+<h2 id="uncomment-the-following-two-lines-to-add-software-from-canonicals">Uncomment the following two lines to add software from Canonical’s</h2>
+<p>## ‘partner’ repository. This software is not part of Ubuntu, but is<br />
+## offered by Canonical and the respective vendors as a service to Ubuntu<br />
+## users.<br />
+deb http://archive.canonical.com/ubuntu intrepid partner<br />
+deb http://archive.canonical.com/ubuntu hardy partner  </p>
+
+<p>deb-src http://archive.canonical.com/ubuntu intrepid partner<br />
+deb-src http://archive.canonical.com/ubuntu hardy partner  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-8">Line commented out by installer because it failed to verify:</h1>
+<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-security main restricted<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy-security main restricted  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-9">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-security main restricted<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-security main restricted  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-10">Line commented out by installer because it failed to verify:</h1>
+<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-security universe<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy-security universe  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-11">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-security universe<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-security universe  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-12">Line commented out by installer because it failed to verify:</h1>
+<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-security multiverse<br />
+deb http://mirror.cs.umn.edu/ubuntu/ hardy-security multiverse  </p>
+
+<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-13">Line commented out by installer because it failed to verify:</h1>
+<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-security multiverse<br />
+deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-security multiverse  </p>
 
 <p>2) Create new file <strong>/etc/apt/preferences</strong></p>
 
-<p>Package: ruby<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: ruby<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: rdoc1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: rdoc1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: ri1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: ri1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libgtk2-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libgtk2-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libdbd-sqlite3-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libdbd-sqlite3-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libopenssl-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libopenssl-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libsqlite3-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libsqlite3-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: ruby1.8-dev<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: ruby1.8-dev<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libdbi-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libdbi-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libatk1-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libatk1-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libpango1-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libpango1-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libatk1-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libatk1-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libgdk-pixbuf2-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libgdk-pixbuf2-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libglib2-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libglib2-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libcairo-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libcairo-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: irb1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: irb1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libreadline-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libreadline-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: rails<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: rails<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>Package: libncurses-ruby1.8<br/>
-Pin: release a=hardy<br/>
-Pin-Priority: 900</p>
+<p>Package: libncurses-ruby1.8<br />
+Pin: release a=hardy<br />
+Pin-Priority: 900  </p>
 
-<p>3) Open synaptic and find &ldquo;ruby&rdquo; relate packages (just search &ldquo;ruby&rdquo;). Check for completly removal installed packages (3-7 installed packages will be here)<br/>
-4) sudo apt-get update<br/>
+<p>3) Open synaptic and find “ruby” relate packages (just search “ruby”). Check for completly removal installed packages (3-7 installed packages will be here)<br />
+4) sudo apt-get update<br />
 5) sudo apt-get install ruby rdoc irb libyaml-ruby libzlib-ruby ri libopenssl-ruby ruby1.8-dev build-essential</p>
 
-<h4>That&rsquo;s all :)</h4>
+<h4 id="thats-all-">That’s all :)</h4>
 
 <p>I use the article: <a href="http://sudan.ubuntuforums.com/showthread.php?t=964978">http://sudan.ubuntuforums.com/showthread.php?t=964978</a></p>
 
 <p><a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6" title="permanent link to ubuntu 8.10 downgrade ruby 1.8.7 to 1.8.6">Permalink</a></p>
 
-<h3>Lis said</h3>
+<h3 id="lis-said">Lis said</h3>
 
 <p>Dec 01, 2008 @ <a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6#comment-8" title="permanent link to this comment">12:22 PM</a></p>
 
-<p>As I said before, &ldquo;Now upgrade it back :D&rdquo;</p>
+<p>As I said before, “Now upgrade it back :D”</p>
 
 <p>but your blog ate russian characters</p>
-</div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/">Secret_given_to_the_#protect_from_forgery_call_zz备忘</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>secret given to the #protect_from_forgery call</h2>
-
-<h4>February 7th, 2008 by <a href="http://www.justinball.com/">Justin Ball</a></h4>
-
-<p>My code was running fine under Rails 2.0.2. Then I enabled the db based session store by uncommenting this:<br/>
-  <code>  
-config.action_controller.session_store = :active_record_store  
-</code><br/>
-in environment.rb.</p>
-
-<p>Anything that used the session after that gave me this error:<br/>
-  `<br/>
-No :secret given to the #protect_from_forgery call. Set that or use a</p>
-
-<pre><code>session store capable of generating its own keys (Cookie Session Store).  
-</code></pre>
-
-<p>`</p>
-
-<p>If you have the same problem. Go to application.rb and uncomment the secret then restart.</p>
-
-<p>All better.</p>
 </div>
   
   
@@ -1001,6 +951,10 @@ No :secret given to the #protect_from_forgery call. Set that or use a</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -1016,10 +970,6 @@ No :secret given to the #protect_from_forgery call. Set that or use a</p>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -1030,12 +980,29 @@ No :secret given to the #protect_from_forgery call. Set that or use a</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

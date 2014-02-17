@@ -9,11 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="    CGI::Session::ActiveRecordStore::Session.class_eval do
-      set_table_name :sessions
-    end
-">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -74,6 +71,63 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/">Secret_given_to_the_#protect_from_forgery_call_zz备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="secret-given-to-the-protectfromforgery-call">secret given to the #protect_from_forgery call</h2>
+
+<h4 id="february-7th-2008-by-justin-ballhttpwwwjustinballcom">February 7th, 2008 by <a href="http://www.justinball.com/">Justin Ball</a></h4>
+
+<p>My code was running fine under Rails 2.0.2. Then I enabled the db based session store by uncommenting this:<br />
+  `<br />
+config.action_controller.session_store = :active_record_store<br />
+`<br />
+in environment.rb.</p>
+
+<p>Anything that used the session after that gave me this error:<br />
+  `<br />
+No :secret given to the #protect_from_forgery call. Set that or use a
+    session store capable of generating its own keys (Cookie Session Store).<br />
+`</p>
+
+<p>If you have the same problem. Go to application.rb and uncomment the secret then restart.</p>
+
+<p>All better.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2008/11/05/activerecord_sessions/">Activerecord_sessions</a></h1>
     
     
@@ -100,8 +154,8 @@
   </header>
 
 
-  <div class="entry-content"><p>    CGI::Session::ActiveRecordStore::Session.class_eval do<br/>
-      set_table_name :sessions<br/>
+  <div class="entry-content"><p>    CGI::Session::ActiveRecordStore::Session.class_eval do<br />
+      set_table_name :sessions<br />
     end</p>
 </div>
   
@@ -141,7 +195,7 @@
   </header>
 
 
-  <div class="entry-content"><p>deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-updates main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-updates main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-backports main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-backports main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-security main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-security main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-proposed main multiverse restricted universe deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-proposed main restricted universe multiverse</p>
+  <div class="entry-content"><p>deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-updates main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-updates main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-backports main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-backports main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-security main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-security main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-proposed main multiverse restricted universe deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-proposed main restricted universe multiverse</p>
 </div>
   
   
@@ -180,50 +234,59 @@
   </header>
 
 
-  <div class="entry-content"><h3><a href="http://lgn21st.javaeye.com/blog/138264">用ruby压缩，解压缩zip文件</a></h3>
-
+  <div class="entry-content"><h3 id="rubyziphttplgn21stjavaeyecomblog138264"><a href="http://lgn21st.javaeye.com/blog/138264">用ruby压缩，解压缩zip文件</a></h3>
 <p><strong>关键字: zip, unzip</strong>
-项目中有一个小需求：<br/>
-一个csv文件定期在服务器端更新，并用打包压缩成zip格式文件存储到一个固定位置，文件名固定<br/>
-而我的任务是写一个脚本，定期取得这个文件，解压缩，并用得到的csv生成一个sqlite3数据库</p>
+项目中有一个小需求：<br />
+一个csv文件定期在服务器端更新，并用打包压缩成zip格式文件存储到一个固定位置，文件名固定<br />
+而我的任务是写一个脚本，定期取得这个文件，解压缩，并用得到的csv生成一个sqlite3数据库  </p>
 
-<p>需求很简单，在javaeye上搜到一个 <a href="http://www.javaeye.com/topic/134858">帖子</a>关于如何压缩zip文件，以及递归目录下所有子目录的办法<br/>
-帖子里面 <a href="http://gigix.javaeye.com/">gigix</a>回复用很简单的方法，启动一个外部进程，我一开始也才用这个办法：</p>
-
-<p>ruby 代码</p>
-
-<p> </p>
-
-<ol>
-<li>system(&ldquo;unzip -q -o #{ARGV[0]} somefile.csv&rdquo;)  </li>
-</ol>
-
-
-<p>不过后来需要把这个脚本放到另外一个服务器上，而那个服务器没有安装”unzip“，我又没有sudo权限<br/>
-没有办法，只好回去用ruby的方法实现，麻烦一点，好处是跨平台，没有什么其他系统依赖<br/>
-仅仅依赖一个gems：rubyzip</p>
-
-<p>把代码留在这里做个记录，以备将来查找方便：</p>
+<p>需求很简单，在javaeye上搜到一个 <a href="http://www.javaeye.com/topic/134858">帖子</a>关于如何压缩zip文件，以及递归目录下所有子目录的办法<br />
+帖子里面 <a href="http://gigix.javaeye.com/">gigix</a>回复用很简单的方法，启动一个外部进程，我一开始也才用这个办法：  </p>
 
 <p>ruby 代码</p>
 
 <p> </p>
 
 <ol>
-<li>require &#8221;rubygems&#8221;  </li>
-<li><h1> 这里gem用来检测系统是否安装”rubyzip“  </h1></li>
-<li>gem &#8217;rubyzip&#8217;  </li>
-<li>require &#8217;zip/zip&#8217;  </li>
-<li>  </li>
-<li>Zip::ZipFile.open(&lsquo;down.zip&rsquo;) do |zipfile|  </li>
-<li>  zipfile.extract(&lsquo;somefile.csv&rsquo;, &#8217;somefile.csv&#8217;) {true}  </li>
-<li>end  </li>
-<li>  </li>
-<li>csv = open(‘somefile.csv&#8217;).read  </li>
+  <li>system(“unzip -q -o #{ARGV[0]} somefile.csv”)  </li>
 </ol>
 
+<p>不过后来需要把这个脚本放到另外一个服务器上，而那个服务器没有安装”unzip“，我又没有sudo权限<br />
+没有办法，只好回去用ruby的方法实现，麻烦一点，好处是跨平台，没有什么其他系统依赖<br />
+仅仅依赖一个gems：rubyzip  </p>
 
-<p>ZipFile的实例方法extract接受两个参数跟一个proc对象，第一个参数表示压缩包内的文件，第二个参数表示解压缩后另存文件名<br/>
+<p>把代码留在这里做个记录，以备将来查找方便：  </p>
+
+<p>ruby 代码</p>
+
+<p> </p>
+
+<ol>
+  <li>require ”rubygems”  </li>
+  <li>
+    <h1 id="gemrubyzip"> 这里gem用来检测系统是否安装”rubyzip“  </h1>
+  </li>
+  <li>gem ’rubyzip’  </li>
+  <li>require ’zip/zip’  </li>
+  <li>  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Zip::ZipFile.open(‘down.zip’) do </td>
+          <td>zipfile</td>
+          <td>  </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>  zipfile.extract(‘somefile.csv’, ’somefile.csv’) {true}  </li>
+  <li>end  </li>
+  <li>  </li>
+  <li>csv = open(‘somefile.csv’).read  </li>
+</ol>
+
+<p>ZipFile的实例方法extract接受两个参数跟一个proc对象，第一个参数表示压缩包内的文件，第二个参数表示解压缩后另存文件名<br />
 proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已存在文件。</p>
 </div>
   
@@ -263,7 +326,7 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
   </header>
 
 
-  <div class="entry-content"><p>config.gem &ldquo;rmagick&rdquo;, :lib => &ldquo;RMagick&rdquo;</p>
+  <div class="entry-content"><p>config.gem “rmagick”, :lib =&gt; “RMagick”</p>
 </div>
   
   
@@ -304,16 +367,16 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
 
   <div class="entry-content"><p>今天scan了下yahoo的天气列表，发现以下的城市是没有办法获得天气的 </p>
 
-<p>1 North America,Mexico,Chila,MXPA1704,,<br/>
-  2 Europe,Germany,Amberg,GMXX0164,,<br/>
-  3 Europe,Germany,Furth,GMXX0043,,<br/>
-  4 Europe,Germany,Neuenburg,GMXX3351,,<br/>
-  5 Europe,Germany,Pocking,GMXX5671,,<br/>
-  6 Europe,Germany,Thalmassing,GMXX2320,,<br/>
-  7 Oceania,Australia,Launceston,ASXX0331,,<br/>
-  8 South America,Brazil,Anastacio,BRXX0008,,<br/>
-  9 South America,Brazil,Ijui,BRXX2042,,<br/>
- 10 South America,Brazil,Pau d&#8217;Arco,BRXX2893,,</p>
+<p>1 North America,Mexico,Chila,MXPA1704,,<br />
+  2 Europe,Germany,Amberg,GMXX0164,,<br />
+  3 Europe,Germany,Furth,GMXX0043,,<br />
+  4 Europe,Germany,Neuenburg,GMXX3351,,<br />
+  5 Europe,Germany,Pocking,GMXX5671,,<br />
+  6 Europe,Germany,Thalmassing,GMXX2320,,<br />
+  7 Oceania,Australia,Launceston,ASXX0331,,<br />
+  8 South America,Brazil,Anastacio,BRXX0008,,<br />
+  9 South America,Brazil,Ijui,BRXX2042,,<br />
+ 10 South America,Brazil,Pau d’Arco,BRXX2893,,  </p>
 </div>
   
   
@@ -352,7 +415,7 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
   </header>
 
 
-  <div class="entry-content"><p>我从拿到NEO1973那天就想的找办法让NEO1973显示中文短信，只要将windwos下的simhei.ttf  CP到/usr/share/fonts/truetype#<br/>
+  <div class="entry-content"><p>我从拿到NEO1973那天就想的找办法让NEO1973显示中文短信，只要将windwos下的simhei.ttf  CP到/usr/share/fonts/truetype#<br />
 下就可以了</p>
 </div>
   
@@ -392,7 +455,7 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
   </header>
 
 
-  <div class="entry-content"><h2><a href="http://kudelabs.com/2008/09/18/rails-2-x-named-scope">Rails 2.x Named Scope</a></h2>
+  <div class="entry-content"><h2 id="rails-2x-named-scopehttpkudelabscom20080918rails-2-x-named-scope"><a href="http://kudelabs.com/2008/09/18/rails-2-x-named-scope">Rails 2.x Named Scope</a></h2>
 
 <p>我在实际项目中发现 named_scope 的好处，下面翻译了 What’s New in Edge Rails: Has Finder Functionality 这篇文章，同时结合自己使用的心得与 Rails 爱好者们共享。</p>
 
@@ -400,43 +463,38 @@ proc对象返回true表示覆盖已存在文件按，返回false则不覆盖已�
 
 <p>Rails 2.x 整合了 Nick Kallen 的 has_finder plugin，改名为 named_scope。首先，在 User Model 中定义 named_scope：</p>
 
-<p>  &#8220;
-class User &lt; ActiveRecord::Base<br/>
-named_scope :active, :conditions => {:active => true}<br/>
-named_scope :inactive, :conditions => {:active => false}<br/>
-named_scope :recent, lambda { { :conditions => [&lsquo;created_at > ?&rsquo;, 1.week.ago] } }<br/>
-end</p>
+<p>&#8220;
+class User &lt; ActiveRecord::Base<br />
+named_scope :active, :conditions =&gt; {:active =&gt; true}<br />
+named_scope :inactive, :conditions =&gt; {:active =&gt; false}<br />
+named_scope :recent, lambda { { :conditions =&gt; [‘created_at &gt; ?’, 1.week.ago] } }<br />
+end  </p>
 
-<h2>标准的使用：</h2>
-
-<p>  <code>
+<h2 id="section">标准的使用：</h2>
+<p><code>
 User.active # 相当于 User.find(:all, :conditions =&gt; {:active =&gt; true})  
 User.inactive # 相当于 User.find(:all, :conditions =&gt; {:active =&gt; false})  
 User.recent # 相当于 User.find(:all, :conditions =&gt; ['created\_at &gt; ?', 1.week.ago])  
 不同的 named\_scope 之间可以嵌套使用：</code>
-User.active.recent<br/>
-这相当于下面的用法： &#8220;</p>
+User.active.recent<br />
+这相当于下面的用法： &#8220;
+# User.with_scope(:conditions =&gt; {:active =&gt; true}) do<br />
+# User.find(:all, :conditions =&gt; [‘created_at &gt; ?’, 1.week.ago])<br />
+# end  </p>
 
-<h1>User.with_scope(:conditions => {:active => true}) do</h1>
-
-<h1>User.find(:all, :conditions => [&lsquo;created_at > ?&rsquo;, 1.week.ago])</h1>
-
-<h1>end</h1>
-
-<h2>高级使用：</h2>
-
+<h2 id="section-1">高级使用：</h2>
 <p>named_scope 允许在执行时，传递参数来定义查询条件。 &#8220;
-class User &lt; ActiveRecord::Base<br/>
-named_scope :registered, lambda { |time_ago| { :conditions => [&lsquo;created_at > ?&rsquo;, time_ago] }<br/>
-end</p>
+class User &lt; ActiveRecord::Base<br />
+named_scope :registered, lambda { |time_ago| { :conditions =&gt; [‘created_at &gt; ?’, time_ago] }<br />
+end  </p>
 
-<p>User.registered 7.days.ago # 相当于 User.find(:all, :conditions => [‘created_at > ?’, 7.days.ago])</p>
+<p>User.registered 7.days.ago # 相当于 User.find(:all, :conditions =&gt; [‘created_at &gt; ?’, 7.days.ago])</p>
 
-<h2>named_scope 扩展</h2>
+<h2 id="namedscope-">named_scope 扩展</h2>
 
 <p>与 association extensions 相似， named_scope 也可以扩展。</p>
 
-<p>  <code>
+<p><code>
 class User &lt; ActiveRecord::Base  
 named\_scope :inactive, :conditions =&gt; {:active =&gt; false} do  
 def activate  
@@ -444,66 +502,68 @@ each { |i| i.update\_attribute(:active, true) }
 end  
 end  
 end  
- </code></p>
+ </code>
+# 重新激活所有未激活用户<br />
+User.inactive.activate  </p>
 
-<h1>重新激活所有未激活用户</h1>
-
-<p>User.inactive.activate</p>
-
-<h2>匿名 Scopes</h2>
+<h2 id="scopes">匿名 Scopes</h2>
 
 <p>通过对类对象 class objects 使用 scoped 方法，你可以快速地建立 scope。</p>
 
-<p>  &#8220;</p>
+<p>&#8220;
+# 定义 named scopes<br />
+active = User.scoped(:conditions =&gt; {:active =&gt; true})<br />
+recent = User.scoped(:conditions =&gt; [‘created_at &gt; ?’, 7.days.ago])  </p>
 
-<h1>定义 named scopes</h1>
+<h1 id="section-2">嵌套使用</h1>
+<p>recent_active = recent.active  </p>
 
-<p>active = User.scoped(:conditions => {:active => true})<br/>
-recent = User.scoped(:conditions => [&lsquo;created_at > ?&rsquo;, 7.days.ago])</p>
-
-<h1>嵌套使用</h1>
-
-<p>recent_active = recent.active</p>
-
-<h1>对返回的对象进行操作</h1>
-
-<p>recent_active.each { |u| &hellip; }</p>
+<h1 id="section-3">对返回的对象进行操作</h1>
+<p>recent_active.each { |u| … }  </p>
 
 <p>=============================================================================</p>
 
 <p>单纯的 scope ，例如 User.active， User.inactive 等只是提供简单的快捷方法，并不具备强大的功能特性。我们在实际项目中，很多时候是得益于 scope 的嵌套使用。我认为嵌套使用主要有五个好处：</p>
 
 <ol>
-<li><p>scope 的嵌套使用，能够多层次（只要符合逻辑，几乎为无限）的组合查询条件。例如User.active.recent， User.active.recent.female， User.active.recent.female.adult……</p></li>
-<li><p>能够与 association 结合使用，限定外部 scope。举个例子，假如 User Belongs To Club，你可以将查询限制到具体一个 Club 的范围，如 Club.first.users.active.recent。</p></li>
-<li><p>用面向对象的方式，使得复杂查询在一个 SQL 语句中完成，减少编写复杂 SQL 语句的次数。例如 User.active.recent.female.adult，该查询只会触发一次 SQL 语句，而且非常简洁。在过去我们只能通过类似下面的语句来完成该查询： User.find(:all, :conditions => [“active = true AND created_at > ? AND gender = ‘female’ AND age > 25”, 1.week.ago]。</p></li>
-<li><p>符合 DRY 精神，精心定义的 scope，可以避免很多重复的 SQL conditions，其复用性相当高！</p></li>
-<li><p>scope 返回的对象仍然具备所有 SQL 查询功能。例如，User.active.rencet.find_by_first_name(“Jim”)，或User.active.recent.find_all_by_last_name(“Green”)，同样可以工作，而且仍然只触发一次 SQL 查询。</p></li>
+  <li>
+    <p>scope 的嵌套使用，能够多层次（只要符合逻辑，几乎为无限）的组合查询条件。例如User.active.recent， User.active.recent.female， User.active.recent.female.adult……</p>
+  </li>
+  <li>
+    <p>能够与 association 结合使用，限定外部 scope。举个例子，假如 User Belongs To Club，你可以将查询限制到具体一个 Club 的范围，如 Club.first.users.active.recent。</p>
+  </li>
+  <li>
+    <p>用面向对象的方式，使得复杂查询在一个 SQL 语句中完成，减少编写复杂 SQL 语句的次数。例如 User.active.recent.female.adult，该查询只会触发一次 SQL 语句，而且非常简洁。在过去我们只能通过类似下面的语句来完成该查询： User.find(:all, :conditions =&gt; [“active = true AND created_at &gt; ? AND gender = ‘female’ AND age &gt; 25”, 1.week.ago]。</p>
+  </li>
+  <li>
+    <p>符合 DRY 精神，精心定义的 scope，可以避免很多重复的 SQL conditions，其复用性相当高！</p>
+  </li>
+  <li>
+    <p>scope 返回的对象仍然具备所有 SQL 查询功能。例如，User.active.rencet.find_by_first_name(“Jim”)，或User.active.recent.find_all_by_last_name(“Green”)，同样可以工作，而且仍然只触发一次 SQL 查询。</p>
+  </li>
 </ol>
 
-
-<h2>Named scope 需要注意的问题：</h2>
+<h2 id="named-scope-">Named scope 需要注意的问题：</h2>
 
 <ol>
-<li>嵌套 scope 只能提供交集查询，如果要查询多个 scope 的并集，只能通过数组的 + 操作。例如，User.active + User.recent。但是这样做的一个问题是返回的结果为普通的数组，我们无法再使用上述第5个好处了。针对该问题，我们的处理方法是在必要时候，定 义更灵活的 scope。例如，使用 scope 的参数传递功能：</li>
+  <li>嵌套 scope 只能提供交集查询，如果要查询多个 scope 的并集，只能通过数组的 + 操作。例如，User.active + User.recent。但是这样做的一个问题是返回的结果为普通的数组，我们无法再使用上述第5个好处了。针对该问题，我们的处理方法是在必要时候，定 义更灵活的 scope。例如，使用 scope 的参数传递功能：</li>
 </ol>
 
+<p>&#8220;
+named_scope :active_or_recent, lambda { |args*|<br />
+time_ago = args.first  </p>
 
-<p>  &#8220;
-named_scope :active_or_recent, lambda { |args*|<br/>
-time_ago = args.first</p>
+<p>if time_ago<br />
+{ :conditions =&gt; [‘active = true OR created_at &gt; ?’, time_ago] }<br />
+else<br />
+{ :conditions =&gt; [‘active = true’] }<br />
+end<br />
+}  </p>
 
-<p>if time_ago<br/>
-{ :conditions => [‘active = true OR created_at > ?’, time_ago] }<br/>
-else<br/>
-{ :conditions => [‘active = true’] }<br/>
-end<br/>
-}</p>
-
-<p>这样，User.active_or_recent(7.days.ago) 使用的条件为{ :conditions => [‘active = true OR created_at > ?’, time_ago] }，而 User.active_or_recent 使用的条件为{ :conditions => [‘active = true’] }。</p>
+<p>这样，User.active_or_recent(7.days.ago) 使用的条件为{ :conditions =&gt; [‘active = true OR created_at &gt; ?’, time_ago] }，而 User.active_or_recent 使用的条件为{ :conditions =&gt; [‘active = true’] }。</p>
 
 <ol>
-<li>突然忘了，请等待更新：）</li>
+  <li>突然忘了，请等待更新：）</li>
 </ol>
 
 </div>
@@ -544,76 +604,68 @@ end<br/>
   </header>
 
 
-  <div class="entry-content"><h1>git 简要教程 (适用于 1.5.1 或更新版本)</h1>
+  <div class="entry-content"><h1 id="git---151-">git 简要教程 (适用于 1.5.1 或更新版本)</h1>
 
 <p>原文链接： <a href="http://www.kernel.org/pub/software/scm/git/docs/tutorial.html">http://www.kernel.org/pub/software/scm/git/docs/tutorial.html</a></p>
 
 <p>这个教程将介绍如何将一个新的项目导入到 git 之中，如何修改项目并如何将这些变更与其他开发者分享。</p>
 
-<p>如果你更感兴趣如何用 git 取出一个项目，比如，测试软件的最新版本，你可能更应该看看 <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">The Git User&rsquo;s Manual</a>的前两章。</p>
+<p>如果你更感兴趣如何用 git 取出一个项目，比如，测试软件的最新版本，你可能更应该看看 <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">The Git User’s Manual</a>的前两章。</p>
 
-<p>首先，记住你可以用 man 来获取 git 的文档，比如 &ldquo;git diff&rdquo; 的文档可以用如下命令察看:</p>
+<p>首先，记住你可以用 man 来获取 git 的文档，比如 “git diff” 的文档可以用如下命令察看:</p>
 
 <p>$ man git-diff</p>
 
 <p>在做任何改动之前，最好把自己的名字和 email 地址介绍给大家，最简单的方法就是:</p>
 
-<p>$ git config &mdash;global user.name &ldquo;Your Name Comes Here&#8221;<br/>
-$ git config &mdash;global user.email <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#121;&#x6f;&#x75;&#x40;&#x79;&#x6f;&#117;&#114;&#100;&#111;&#x6d;&#97;&#105;&#110;&#x2e;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x79;&#111;&#117;&#64;&#121;&#111;&#x75;&#x72;&#x64;&#111;&#109;&#x61;&#x69;&#x6e;&#46;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>$ git config –global user.name “Your Name Comes Here”<br />
+$ git config –global user.email you@yourdomain.example.com</p>
 
-<h2>导入一个新项目</h2>
+<h2 id="section">导入一个新项目</h2>
 
 <p>假设你有一个名为 project.tar.gz 的 tarball 作为项目的初始内容。你可以如下操作来把它至于 git 版本控制之下。</p>
 
-<p>$ tar xzf project.tar.gz<br/>
-$ cd project<br/>
+<p>$ tar xzf project.tar.gz<br />
+$ cd project<br />
 $ git init</p>
 
 <p>Git 将会如下回复:</p>
 
 <p>Initialized empty Git repository in .git/</p>
 
-<p>现在，你已经初始化了工作目录——你可能已经注意到了名为 &ldquo;.git&rdquo; 的一个新目录了。</p>
+<p>现在，你已经初始化了工作目录——你可能已经注意到了名为 “.git” 的一个新目录了。</p>
 
 <p>下一步就是使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git-add(1)</a> 命令告诉 git 当前目录的所有文件 (注意这个点：<em>.</em>) 全是项目的一个快照:</p>
 
 <p>$ git add .</p>
 
-<p>这个快照目前存放在一个临时区域之中，在 git 中称为 &ldquo;index&rdquo;(索引)。使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-commit.html">git-commit(1)</a> 命令，你可以把 index 的所有内容永久性地存放到软件仓库之中:</p>
+<p>这个快照目前存放在一个临时区域之中，在 git 中称为 “index”(索引)。使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-commit.html">git-commit(1)</a> 命令，你可以把 index 的所有内容永久性地存放到软件仓库之中:</p>
 
 <p>$ git commit</p>
 
 <p>这条命令会向你提示输入版本变更信息。这样，你的项目的第一个版本就已经存入 git 之中了。</p>
 
-<h2>进行修改</h2>
+<h2 id="section-1">进行修改</h2>
 
 <p>修改一些文件之后，你可以将更新这些内容到 index 之中:</p>
 
 <p>$ git add file1 file2 file3</p>
 
-<p>现在，你已经准备就绪，可以提交了。现在你可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a> 命令的 &mdash;cache 参数:</p>
+<p>现在，你已经准备就绪，可以提交了。现在你可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a> 命令的 –cache 参数:</p>
 
-<p>$ git diff &mdash;cached</p>
+<p>$ git diff –cached</p>
 
-<p>(如果不使用 &mdash;cached 参数， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a>会显示所有还没添加进 index 的已经做出的改动。) 你也可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-status.html">git-status(1)</a>来获得一些当前状况的概要信息:</p>
+<p>(如果不使用 –cached 参数， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git-diff(1)</a>会显示所有还没添加进 index 的已经做出的改动。) 你也可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-status.html">git-status(1)</a>来获得一些当前状况的概要信息:</p>
 
-<p>$ git status</p>
-
-<h1>On branch master</h1>
-
-<h1>Changes to be committed:</h1>
-
-<h1>(use &ldquo;git reset HEAD <file>&hellip;&rdquo; to unstage)</h1>
-
-<h1></h1>
-
-<h1>modified: file1</h1>
-
-<h1>modified: file2</h1>
-
-<h1>modified: file3</h1>
-
-<p>#</p>
+<p>$ git status<br />
+# On branch master<br />
+# Changes to be committed:<br />
+# (use “git reset HEAD <file>&#8230;&#8221; to unstage)  
+#  
+# modified: file1  
+# modified: file2  
+# modified: file3  
+#</file></p>
 
 <p>如果你需要进行更多改动，现在就可以进行，然后可以添加到 index 之中。最后，使用如下命令提交改动:</p>
 
@@ -629,11 +681,11 @@ $ git init</p>
 
 <p>关于提交的描述信息: 虽然这个信息不是必须的，但提交信息描述最好以一行不超过50个字符的概要性信息来开头，在一个空行之后再进行更多的描述。比如那些将 commit 转化为 email 的工具就会把这个第一行作为邮件标题，其余的提交内容则放在邮件内部。</p>
 
-<h2>Git 跟踪内容而不是文件</h2>
+<h2 id="git-">Git 跟踪内容而不是文件</h2>
 
-<p>很多版本控制系统提供了一个 &ldquo;add&rdquo; 命令用来记录一个新文件。而 git 的 &ldquo;add&rdquo; 命令更加简单也更加强大: git add既用于新文件也用于新近改动的文件，在所有这些情况下，它在 index 中对所有的文件与状态进行一次快照，这样就可以在下一次 commit 命令中进行提交。</p>
+<p>很多版本控制系统提供了一个 “add” 命令用来记录一个新文件。而 git 的 “add” 命令更加简单也更加强大: git add既用于新文件也用于新近改动的文件，在所有这些情况下，它在 index 中对所有的文件与状态进行一次快照，这样就可以在下一次 commit 命令中进行提交。</p>
 
-<h2>Viewing project history</h2>
+<h2 id="viewing-project-history">Viewing project history</h2>
 
 <p>在任何时候，你都可以如下查看所有你进行过的改动</p>
 
@@ -645,11 +697,11 @@ $ git init</p>
 
 <p>浏览改动的概要对于获得每一步修改的情况常常是比较有用的，可以使用如下命令</p>
 
-<p>$ git log &mdash;stat &mdash;summary</p>
+<p>$ git log –stat –summary</p>
 
-<h2>管理分支</h2>
+<h2 id="section-2">管理分支</h2>
 
-<p>一个 git 仓库可以包含多个开发分支。使用如下命令可以建立一个称为 &ldquo;experimental&rdquo; 的新分支</p>
+<p>一个 git 仓库可以包含多个开发分支。使用如下命令可以建立一个称为 “experimental” 的新分支</p>
 
 <p>$ git branch experimental</p>
 
@@ -659,24 +711,24 @@ $ git init</p>
 
 <p>你将可以得到类似下面的已有分支的列表</p>
 
-<p>experimental<br/>
+<p>experimental<br />
 * master</p>
 
-<p>&ldquo;experimental&rdquo; 就是你刚刚建立的那个分支，而 &ldquo;master&rdquo; 分支则是建立仓库的时候自动创建的缺省分支，里面的星号表示你当前所在的分支；输入命令</p>
+<p>“experimental” 就是你刚刚建立的那个分支，而 “master” 分支则是建立仓库的时候自动创建的缺省分支，里面的星号表示你当前所在的分支；输入命令</p>
 
 <p>$ git checkout experimental</p>
 
 <p>就可以切换到 experimental 分支。现在修改一个文件，并提交改变，然后重新回到 master 分支:</p>
 
-<p>(edit file)<br/>
-$ git commit -a<br/>
+<p>(edit file)<br />
+$ git commit -a<br />
 $ git checkout master</p>
 
 <p>你会发现，刚才的变更已经不可见了，这是因为这个改变是发生于 experimental 分支的，而你现在已经回到 master 分支了。</p>
 
 <p>现在，你可以在 master 分支上做一些不同的变更：</p>
 
-<p>(edit file)<br/>
+<p>(edit file)<br />
 $ git commit -a</p>
 
 <p>这里，两个分支已经产生不同了，每个分支上都发生了不同的改动。要把 experimental 中的改变也合并到 master 之中，运行命令</p>
@@ -709,7 +761,7 @@ $ git commit -a</p>
 
 <p>分支操作十分简单而且代价低廉，所以适合于尝试一些东西。</p>
 
-<h2>使用 git 进行协作</h2>
+<h2 id="git--1">使用 git 进行协作</h2>
 
 <p>假设 Alice 在 /home/alice/project 中的 git 仓库启动了一个新项目，而在本机中也拥有 home 目录的 Bob 想要贡献一些代码。</p>
 
@@ -717,28 +769,28 @@ $ git commit -a</p>
 
 <p>$ git clone /home/alice/project myrepo</p>
 
-<p>这会新建一个名为 &ldquo;myrepo&rdquo; 的目录，里面包含了 Alice 的仓库的一份克隆。这份克隆与原始项目完全一致，可以处理自己的一份原始项目历史。</p>
+<p>这会新建一个名为 “myrepo” 的目录，里面包含了 Alice 的仓库的一份克隆。这份克隆与原始项目完全一致，可以处理自己的一份原始项目历史。</p>
 
 <p>之后，Bob 进行了一些变更并提交了这些变动:</p>
 
-<p>(edit files)<br/>
-$ git commit -a<br/>
+<p>(edit files)<br />
+$ git commit -a<br />
 (repeat as necessary)</p>
 
 <p>当他完成的时候，他告诉 Alice 将 /home/bob/myrepo 之中的变动导入到原始仓库之中。她使用如下命令来完成这一工作:</p>
 
-<p>$ cd /home/alice/project<br/>
+<p>$ cd /home/alice/project<br />
 $ git pull /home/bob/myrepo master</p>
 
-<p>这会合并 Bob 的 &ldquo;master&rdquo; 分支到 Alice 的当前分支。如果 Alice 也已经修改了某些内容，她需要手工修复冲突。(注意，&#8221;master&#8221; 参数实际上并不是必要的，因为这是缺省分支。)</p>
+<p>这会合并 Bob 的 “master” 分支到 Alice 的当前分支。如果 Alice 也已经修改了某些内容，她需要手工修复冲突。(注意，”master” 参数实际上并不是必要的，因为这是缺省分支。)</p>
 
-<p>&ldquo;pull&rdquo; 命令包括两个操作: 从远端分支中取出改动，然后合并到当前分支之中。</p>
+<p>“pull” 命令包括两个操作: 从远端分支中取出改动，然后合并到当前分支之中。</p>
 
 <p>当你只在一个很小的小组里工作的时候，通常不会频繁地访问同一个仓库。通过定义仓库的快捷方式，可以让访问远程仓库更方便一些:</p>
 
 <p>$ git remote add bob /home/bob/myrepo</p>
 
-<p>这样，Alice 可以如下用 &ldquo;git fetch&rdquo; 命令仅取出改动，而不把它们合并到当前分支之中:</p>
+<p>这样，Alice 可以如下用 “git fetch” 命令仅取出改动，而不把它们合并到当前分支之中:</p>
 
 <p>$ git fetch bob</p>
 
@@ -764,14 +816,14 @@ $ git pull /home/bob/myrepo master</p>
 
 <p>这里，他不需要给出 Alice 的仓库的位置；当 Bob 克隆了 Alice 的仓库的时候，git 在仓库设置中保存了她的仓库的位置，即 pull 所使用的位置:</p>
 
-<p>$ git config &mdash;get remote.origin.url<br/>
+<p>$ git config –get remote.origin.url<br />
 /home/alice/project</p>
 
-<p>(git-clone 创建的完整配置信息可以用 &ldquo;git config -l&rdquo; 获得， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config(1)</a>的 man page 解释了所有选项的含义。)</p>
+<p>(git-clone 创建的完整配置信息可以用 “git config -l” 获得， <a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config(1)</a>的 man page 解释了所有选项的含义。)</p>
 
-<p>Git 也在 &ldquo;origin/master&rdquo; 分支保存了一份 Alice 的主分支的原始拷贝:</p>
+<p>Git 也在 “origin/master” 分支保存了一份 Alice 的主分支的原始拷贝:</p>
 
-<p>$ git branch -r<br/>
+<p>$ git branch -r<br />
 origin/master</p>
 
 <p>如果其后 Bob 决定转到另一台主机上工作，他还可以通过 ssh 来克隆原始仓库:</p>
@@ -782,14 +834,14 @@ origin/master</p>
 
 <p>Git 也可以使用类似 CVS 的工作方式，使用一个中心仓库，所有用户将改动推送到仓库之中，相关内容可以查阅 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-push.html">git-push(1)</a>的手册页或 <a href="http://www.kernel.org/pub/software/scm/git/docs/cvs-migration.html">git for CVS users</a>。</p>
 
-<h2>浏览历史</h2>
+<h2 id="section-3">浏览历史</h2>
 
 <p>Git 的历史是通过一系列相互关联的 commit 构成的。我们已经通过 git log 命令看到了这些提交的列表。注意，每个 git log 条目的第一行是那次提交的名称:</p>
 
-<p>$ git log<br/>
-commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7<br/>
-Author: Junio C Hamano <a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#106;&#x75;&#x6e;&#107;&#105;&#111;&#x40;&#x63;&#111;&#x78;&#46;&#x6e;&#x65;&#116;">&#106;&#x75;&#x6e;&#107;&#105;&#111;&#64;&#99;&#x6f;&#x78;&#x2e;&#110;&#x65;&#116;</a><br/>
-Date: Tue May 16 17:18:22 2006 -0700</p>
+<p>$ git log<br />
+commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7<br />
+Author: Junio C Hamano <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#106;&#117;&#110;&#107;&#105;&#111;&#064;&#099;&#111;&#120;&#046;&#110;&#101;&#116;">&#106;&#117;&#110;&#107;&#105;&#111;&#064;&#099;&#111;&#120;&#046;&#110;&#101;&#116;</a><br />
+Date: Tue May 16 17:18:22 2006 -0700  </p>
 
 <p>merge-base: Clarify the comments on post processing.</p>
 
@@ -799,65 +851,59 @@ Date: Tue May 16 17:18:22 2006 -0700</p>
 
 <p>不过还有其他办法来指代这次提交。你可以只使用名称的开始部分，只要它足够长，保证在所有提交中是惟一的就行了:</p>
 
-<p>$ git show c82a22c39c # the first few characters of the name are</p>
+<p>$ git show c82a22c39c # the first few characters of the name are<br />
+# usually enough<br />
+$ git show HEAD # the tip of the current branch<br />
+$ git show experimental # the tip of the “experimental” branch</p>
 
-<h1>usually enough</h1>
+<p>每一次提交通常都有一次提交作为 “parent” ，它是项目的前一个状态:</p>
 
-<p>$ git show HEAD # the tip of the current branch<br/>
-$ git show experimental # the tip of the &ldquo;experimental&rdquo; branch</p>
-
-<p>每一次提交通常都有一次提交作为 &ldquo;parent&rdquo; ，它是项目的前一个状态:</p>
-
-<p>$ git show HEAD^ # to see the parent of HEAD<br/>
-$ git show HEAD^^ # to see the grandparent of HEAD<br/>
+<p>$ git show HEAD^ # to see the parent of HEAD<br />
+$ git show HEAD^^ # to see the grandparent of HEAD<br />
 $ git show HEAD~4 # to see the great-great grandparent of HEAD</p>
 
-<p>要注意，合并提交可能会有多个 &ldquo;parent&rdquo;:</p>
+<p>要注意，合并提交可能会有多个 “parent”:</p>
 
-<p>$ git show HEAD<sup>1</sup> # show the first parent of HEAD (same as HEAD^)<br/>
-$ git show HEAD<sup>2</sup> # show the second parent of HEAD</p>
+<p>$ git show HEAD^1 # show the first parent of HEAD (same as HEAD^)<br />
+$ git show HEAD^2 # show the second parent of HEAD</p>
 
 <p>你还可以给你的提交一个名字; 命令</p>
 
 <p>$ git-tag v2.5 1b2e1d63ff</p>
 
-<p>让你可以使用 &ldquo;v2.5&rdquo; 来指代 1b2e1d63ff。如果你想把这个名字与他人共享 (比如标记一个发布版本)，你应该建立一个 &ldquo;tag&rdquo; 对象，可能还需要签署它; 详情请查看 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag(1)</a>的 man page。</p>
+<p>让你可以使用 “v2.5” 来指代 1b2e1d63ff。如果你想把这个名字与他人共享 (比如标记一个发布版本)，你应该建立一个 “tag” 对象，可能还需要签署它; 详情请查看 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag(1)</a>的 man page。</p>
 
 <p>任何 git 命令都可以使用上述任何一种名字。比如:</p>
 
-<p>$ git diff v2.5 HEAD # compare the current HEAD to v2.5<br/>
-$ git branch stable v2.5 # start a new branch named &ldquo;stable&rdquo; based</p>
+<p>$ git diff v2.5 HEAD # compare the current HEAD to v2.5<br />
+$ git branch stable v2.5 # start a new branch named “stable” based<br />
+# at v2.5<br />
+$ git reset –hard HEAD^ # reset your current branch and working<br />
+# directory to its state at HEAD^</p>
 
-<h1>at v2.5</h1>
-
-<p>$ git reset &mdash;hard HEAD^ # reset your current branch and working</p>
-
-<h1>directory to its state at HEAD^</h1>
-
-<p>小心使用上述最后一个命令: 这将丢失工作目录中的所有改动，他还会清除本分支内随后的所有提交。如果这个分支是包含这些提交的惟一分支，它们将永远地丢失了。此外，不要对一个公众可 见的、有其他开发者从中 pull 内容的分支使用 &ldquo;git reset&rdquo; 命令，这将导致一些不必要的合并来清除其他开发者的历史信息。如果你需要取消已经推送的改动，可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a>命令。</p>
+<p>小心使用上述最后一个命令: 这将丢失工作目录中的所有改动，他还会清除本分支内随后的所有提交。如果这个分支是包含这些提交的惟一分支，它们将永远地丢失了。此外，不要对一个公众可 见的、有其他开发者从中 pull 内容的分支使用 “git reset” 命令，这将导致一些不必要的合并来清除其他开发者的历史信息。如果你需要取消已经推送的改动，可以使用 <a href="http://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a>命令。</p>
 
 <p>git grep 可以在项目的所有版本历史中寻找字符串，如下命令</p>
 
-<p>$ git grep &ldquo;hello&rdquo; v2.5</p>
+<p>$ git grep “hello” v2.5</p>
 
-<p>会在版本 v2.5 中寻找所有 &ldquo;hello&rdquo; 的踪迹。</p>
+<p>会在版本 v2.5 中寻找所有 “hello” 的踪迹。</p>
 
 <p>如果你不提供 commit 名称，git grep 会在你当前的目录中搜索所有由 git 管理的文件。于是，如下命令</p>
 
-<p>$ git grep &ldquo;hello&rdquo;</p>
+<p>$ git grep “hello”</p>
 
 <p>是搜索 git 跟踪的所有文件的便捷的方式。</p>
 
 <p>很多 git 命令可以处理一组提交，可以通过多种方式来指定版本。这里是一些 git log 的例子:</p>
 
-<p>$ git log v2.5..v2.6 # commits between v2.5 and v2.6<br/>
-$ git log v2.5.. # commits since v2.5<br/>
-$ git log &mdash;since=&ldquo;2 weeks ago&rdquo; # commits from the last 2 weeks<br/>
-$ git log v2.5.. Makefile # commits since v2.5 which modify</p>
+<p>$ git log v2.5..v2.6 # commits between v2.5 and v2.6<br />
+$ git log v2.5.. # commits since v2.5<br />
+$ git log –since=”2 weeks ago” # commits from the last 2 weeks<br />
+$ git log v2.5.. Makefile # commits since v2.5 which modify<br />
+# Makefile</p>
 
-<h1>Makefile</h1>
-
-<p>你给出的范围的上下边界不一定是严格的时间先后关系，比如，&#8221;stable-release&#8221; 分支可能会在 &ldquo;master&rdquo; 分支之后相当长一段时间才会引入同一个提交内容，这样</p>
+<p>你给出的范围的上下边界不一定是严格的时间先后关系，比如，”stable-release” 分支可能会在 “master” 分支之后相当长一段时间才会引入同一个提交内容，这样</p>
 
 <p>$ git log stable..experimental</p>
 
@@ -867,37 +913,35 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
 
 <p>将会列出 stable 中已有、但 experimental 却没有的提交。</p>
 
-<p>&ldquo;git log&rdquo; 命令有一个弱点：必须将所有提交在一个列表中呈现出来。当项目历史中有多个不同开发分支并最终合并到一起时，&#8221;git log&#8221; 中呈现出来的顺序可能没什么意义。</p>
+<p>“git log” 命令有一个弱点：必须将所有提交在一个列表中呈现出来。当项目历史中有多个不同开发分支并最终合并到一起时，”git log” 中呈现出来的顺序可能没什么意义。</p>
 
 <p>大部分有大量开发者的项目 (比如 linux kernel 或 git 本身) 都经常合并分支，gitk 可以更好地将这些合并变化展示出来。比如，</p>
 
-<p>$ gitk &mdash;since=&ldquo;2 weeks ago&rdquo; drivers/</p>
+<p>$ gitk –since=”2 weeks ago” drivers/</p>
 
-<p>这个命令允许你浏览过去两个星期中在 &ldquo;drivers&rdquo; 目录之中的任意提交。(注意: 你可以按住 ctrl 键然后用 &ldquo;&ndash;&rdquo; 和 &ldquo;+&rdquo; 来调整 gitk 的字体大小。)</p>
+<p>这个命令允许你浏览过去两个星期中在 “drivers” 目录之中的任意提交。(注意: 你可以按住 ctrl 键然后用 “-“ 和 “+” 来调整 gitk 的字体大小。)</p>
 
 <p>最后，大部分命令可以带有文件名，这可以用于指定某次提交中的某个文件，从而指定某个文件的某个版本:</p>
 
 <p>$ git diff v2.5:Makefile HEAD:Makefile.in</p>
 
-<p>你还可以用 &ldquo;git show&rdquo; 命令去查看任意文件的任意版本:</p>
+<p>你还可以用 “git show” 命令去查看任意文件的任意版本:</p>
 
 <p>$ git show v2.5:Makefile</p>
 
-<h2>下一步学习</h2>
+<h2 id="section-4">下一步学习</h2>
 
 <p>这个教程应该足够你的项目进行基本的项目发布版本管理。不过，要完全深入地理解 git 的强大功能可能还需要理解两个简单的概念:</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p>对象数据库是个相当阳春的系统，用于存储你的项目的历史，包括文件、目录以及各次提交。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p>索引文件是目录树的状态的缓存，用于建立提交、取出工作目录并保存一次合并中包含的不同的目录树。</p>
 
@@ -906,36 +950,32 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
 <p>如果你不想在这条路上继续下去，还有一些细枝末节的东西可能十分有趣:</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/git-format-patch.html">git-format-patch(1)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/git-am.html">git-am(1)</a>: 用于将一系列 git 提交转化成 email 发送的补丁或反之，对于 linux 内核这样的高度依赖于邮件发送的补丁的项目来说十分有用。</p>
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/git-format-patch.html">git-format-patch(1)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/git-am.html">git-am(1)</a>: 用于将一系列 git 提交转化成 email 发送的补丁或反之，对于 linux 内核这样的高度依赖于邮件发送的补丁的项目来说十分有用。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/git-bisect.html">git-bisect(1)</a>: 当你的项目发生问题 (功能或性能上的退步) 的时候，一个跟踪发现错误的方法就是通过历史发现那个罪魁祸首的提交。Git bisect 可以帮助你进行二分查找发现那个提交。它能在一个有很多分支合并的具有复杂非线性历史的项目中十分灵巧地进行接近最优的搜索。</p>
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/git-bisect.html">git-bisect(1)</a>: 当你的项目发生问题 (功能或性能上的退步) 的时候，一个跟踪发现错误的方法就是通过历史发现那个罪魁祸首的提交。Git bisect 可以帮助你进行二分查找发现那个提交。它能在一个有很多分支合并的具有复杂非线性历史的项目中十分灵巧地进行接近最优的搜索。</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">Everyday GIT with 20 Commands Or So</a></p>
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">Everyday GIT with 20 Commands Or So</a></p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p><a href="http://www.kernel.org/pub/software/scm/git/docs/cvs-migration.html">git for CVS users</a>.</p>
 
-<p>  <a href="http://www.kernel.org/pub/software/scm/git/docs/cvs-migration.html">git for CVS users</a>.</p>
-
-<p>原文最后更新 25-Aug-2007 03:53:15 UTC<br/>
-译文初稿：2007年7月，王旭 (gnawux<at>gmail.com)<br/>
-译文最后更新：2008年5月2日，王旭 (gnawux<at>gmail.com)</p>
+<p>原文最后更新 25-Aug-2007 03:53:15 UTC<br />
+译文初稿：2007年7月，王旭 (gnawux<at>gmail.com)  
+译文最后更新：2008年5月2日，王旭 (gnawux<at>gmail.com)</at></at></p>
 </div>
   
   
@@ -986,51 +1026,6 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/10/16/cool_theme_about_emacs/">Cool_theme_about_emacs</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-10-16T00:00:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/10/16/cool_theme_about_emacs/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/10/16/cool_theme_about_emacs/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>CFLAGS=-O3 ./configure &mdash;without-pop  &mdash;without-sound &mdash;without-sync-input &mdash;without-xpm &mdash;without-jpeg &mdash;without-tiff &mdash;without-gif &mdash;without-png &mdash;without-rsvg  &mdash;without-toolkit-scroll-bars &mdash;without-xaw3d &mdash;without-xim &mdash;without-gpm &mdash;without-dbus    &amp;&amp; make &amp;&amp; sudo make install</p>
-
-<p> </p>
-
-<p> </p>
-
-<p><a href="http://redartisan.com/2008/5/27/twilight-emacs">http://redartisan.com/2008/5/27/twilight-emacs</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -1048,6 +1043,10 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -1063,10 +1062,6 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -1077,12 +1072,29 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

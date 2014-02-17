@@ -10,8 +10,7 @@
 
   
   <meta name="description" content="让Ctrl-Alt-Backspace组合键不重启X
-　　备份/etc/X11/xorg.conf文件。 | 代码: |
-| sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf_backup | 　　编辑/etc/X11/xorg.conf。 | 代码 &hellip;">
+　　备份/etc/X11/xorg.conf文件。 代码: sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf_backup 　　编辑/etc/X11/xorg.conf。 代码: sudo gedit &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,22 +95,38 @@
   </header>
 
 
-<div class="entry-content"><p>让Ctrl-Alt-Backspace组合键不重启X<br/>
-　　备份/etc/X11/xorg.conf文件。</p>
+<div class="entry-content"><p>让Ctrl-Alt-Backspace组合键不重启X<br />
+　　备份/etc/X11/xorg.conf文件。  </p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>代码:</strong></td>
+    </tr>
+    <tr>
+      <td>sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf_backup</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　　编辑/etc/X11/xorg.conf。  </p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>代码:</strong></td>
+    </tr>
+    <tr>
+      <td>sudo gedit /etc/X11/xorg.conf</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>　　在文件末尾加上  </p>
 
 <p>| <strong>代码:</strong> |
-| sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf_backup |</p>
-
-<p>　　编辑/etc/X11/xorg.conf。</p>
-
-<p>| <strong>代码:</strong> |
-| sudo gedit /etc/X11/xorg.conf |</p>
-
-<p>　　在文件末尾加上</p>
-
-<p>| <strong>代码:</strong> |
-| Section &ldquo;ServerFlags&#8221;<br/>
-Option &#8220;DontZap&rdquo; &ldquo;yes&#8221;<br/>
+| Section “ServerFlags”<br />
+Option “DontZap” “yes”<br />
 EndSection |</p>
 </div>
 
@@ -184,6 +199,10 @@ EndSection |</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -197,10 +216,6 @@ EndSection |</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -220,6 +235,22 @@ EndSection |</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

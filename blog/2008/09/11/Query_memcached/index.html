@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Query memcached 8 Sep 08 The last month I have been working in Query Memcached, a plugin that replaces the Query Cache that comes with Rails, adding &hellip;">
+  <meta name="description" content="Query memcached
+8 Sep 08 The last month I have been working in Query Memcached, a plugin that replaces the Query Cache that comes with Rails, adding &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,19 +95,18 @@
   </header>
 
 
-<div class="entry-content"><h2><a href="http://www.inwebwetrust.net/post/2008/09/08/query-memcached">Query memcached</a></h2>
+<div class="entry-content"><h2 id="query-memcachedhttpwwwinwebwetrustnetpost20080908query-memcached"><a href="http://www.inwebwetrust.net/post/2008/09/08/query-memcached">Query memcached</a></h2>
+<p>8 Sep 08</p>
 
-<p>  8 Sep 08</p>
+<p>The last month I have been working in <a href="http://github.com/ferblape/query_memcached">Query Memcached</a>, a plugin that replaces the Query Cache that comes with Rails, adding a Memcache layer for persisting the query’s cache between requests. That means that the cache does not expire at the end of the request, because it is stored in Memcached.</p>
 
-<p>The last month I have been working in <a href="http://github.com/ferblape/query_memcached">Query Memcached</a>, a plugin that replaces the Query Cache that comes with Rails, adding a Memcache layer for persisting the query&rsquo;s cache between requests. That means that the cache does not expire at the end of the request, because it is stored in Memcached.</p>
-
-<p>If you are not familiar with <a href="http://www.railsenvy.com/2007/3/20/ruby-on-rails-caching-tutorial-part-2#activerecordcaching">Query Cache</a>, you only have to know that it&rsquo;s a very simple caching system from ActiveRecord that stores in memory all the queries performed during a request. If a query is fired more than one time, it will be in cache, so the database won&rsquo;t be affected.</p>
+<p>If you are not familiar with <a href="http://www.railsenvy.com/2007/3/20/ruby-on-rails-caching-tutorial-part-2#activerecordcaching">Query Cache</a>, you only have to know that it’s a very simple caching system from ActiveRecord that stores in memory all the queries performed during a request. If a query is fired more than one time, it will be in cache, so the database won’t be affected.</p>
 
 <p>The adventages of my approach are evident: you only use the database when some table has been modified or when a new query is executed. So you can get a notice an important speed improvement.</p>
 
 <p>It is ideal for pages which have a lot of customization for the user logged in the application: in that cases it is very difficult to cache fragments or pages, because of the expiring of all that cache, and so many things.</p>
 
-<h3>Cache expiring</h3>
+<h3 id="cache-expiring">Cache expiring</h3>
 
 <p>For expiring this cache, each Memcached key contains a sum of all the version numbers of the tables involved in the query. If one of that tables is modified, then the version number for that table is increased.</p>
 
@@ -114,20 +114,20 @@
 
 <p>So, the version for the cache of that query will be the sum of the cache version of the table <em>items</em> and the cache version of the table <em>places</em>.</p>
 
-<h3>Disclaimer</h3>
+<h3 id="disclaimer">Disclaimer</h3>
 
-<p>We are using this plugin in two on-line web projects: <a href="http://unvlog.com/">unvlog.com</a> and <a href="http://iwannagothere.net/">iwannagothere</a>, and everything seems to work fine (and faster than before), but these sites don&rsquo;t have so much traffic (about 30.000 req/day), so, there are stille possibilities that appear bugs and &ldquo;unexpected behaviours&rdquo;.</p>
+<p>We are using this plugin in two on-line web projects: <a href="http://unvlog.com/">unvlog.com</a> and <a href="http://iwannagothere.net/">iwannagothere</a>, and everything seems to work fine (and faster than before), but these sites don’t have so much traffic (about 30.000 req/day), so, there are stille possibilities that appear bugs and “unexpected behaviours”.</p>
 
 <p>In spite of all that, if you still are encouraged to try feel free to ask me anythin.</p>
 
 <p>More information at <a href="http://github.com/ferblape/query_memcached/tree/master/README.markdown">README</a>.</p>
 
 <p><strong>Posts relacionados:</strong>
-&ndash; <a href="http://www.inwebwetrust.net/post/2007/01/02/una-introduccion-ruby-on-rails">Una introducción a Ruby on Rails</a>
-&ndash; <a href="http://www.inwebwetrust.net/post/2006/10/07/acomo-saber-si-plugin-esta-cargado-ruby-on-rails-">¿Cómo saber si un plugin está cargado en Ruby on Rails?</a>
-&ndash; <a href="http://www.inwebwetrust.net/post/2006/09/18/como-realizar-tests-unidad-con-javascript-un-proyecto-ruby">Cómo realizar tests de unidad con Javascript en un proyecto Ruby on Rails</a>
-&ndash; <a href="http://www.lacoctelera.com/antoniogarrote/post/2007/08/26/billetes-el-tren-aprendiendo-programar-con-ruby-on-rails-2">Billetes para el tren: aprendiendo a programar con Ruby on Rails (2)</a>
-&ndash; <a href="http://www.lacoctelera.com/fj2c/post/2007/03/01/empezando-con-ruby-on-rails">Empezando con ruby on rails</a></p>
+- <a href="http://www.inwebwetrust.net/post/2007/01/02/una-introduccion-ruby-on-rails">Una introducción a Ruby on Rails</a>
+- <a href="http://www.inwebwetrust.net/post/2006/10/07/acomo-saber-si-plugin-esta-cargado-ruby-on-rails-">¿Cómo saber si un plugin está cargado en Ruby on Rails?</a>
+- <a href="http://www.inwebwetrust.net/post/2006/09/18/como-realizar-tests-unidad-con-javascript-un-proyecto-ruby">Cómo realizar tests de unidad con Javascript en un proyecto Ruby on Rails</a>
+- <a href="http://www.lacoctelera.com/antoniogarrote/post/2007/08/26/billetes-el-tren-aprendiendo-programar-con-ruby-on-rails-2">Billetes para el tren: aprendiendo a programar con Ruby on Rails (2)</a>
+- <a href="http://www.lacoctelera.com/fj2c/post/2007/03/01/empezando-con-ruby-on-rails">Empezando con ruby on rails</a></p>
 </div>
 
 
@@ -199,6 +199,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -212,10 +216,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -235,6 +235,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

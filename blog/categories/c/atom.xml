@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/c/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -18,15 +18,15 @@
     <link href="http://ChandleWEi.github.io/blog/2009/07/31/curl/"/>
     <updated>2009-07-31T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/07/31/curl</id>
-    <content type="html"><![CDATA[<p>天尝试使用curl请求lighttpd数据，发现总是报错(417) Expectation Failed。<br/>
-经查，是lighttp不支持curl默认发送的头信息: Expect: 100-continue.</p>
+    <content type="html"><![CDATA[<p>天尝试使用curl请求lighttpd数据，发现总是报错(417) Expectation Failed。<br />
+经查，是lighttp不支持curl默认发送的头信息: Expect: 100-continue.  </p>
 
-<p>解决方式：</p>
+<p>解决方式：  </p>
 
-<p>在curl中指定发送一个空的Except头信息即可解决。<br/>
-代码：</p>
+<p>在curl中指定发送一个空的Except头信息即可解决。<br />
+代码：  </p>
 
-<p>curl_setopt($ch, CURLOPT_HTTPHEADER, array(&lsquo;Expect:&rsquo;));</p>
+<p>curl_setopt($ch, CURLOPT_HTTPHEADER, array(‘Expect:’));</p>
 ]]></content>
   </entry>
   
@@ -39,9 +39,9 @@
 
 <p> </p>
 
-<p>more01.c: In function ‘main’:<br/>
-more01.c:22: warning: incompatible implicit declaration of built-in function ‘exit’<br/>
-more01.c: In function ‘do_more’:<br/>
+<p>more01.c: In function ‘main’:<br />
+more01.c:22: warning: incompatible implicit declaration of built-in function ‘exit’<br />
+more01.c: In function ‘do_more’:<br />
 more01.c:42: warning: incompatible implicit declaration of built-in function ‘exit’</p>
 ]]></content>
   </entry>

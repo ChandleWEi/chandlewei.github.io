@@ -11,7 +11,7 @@
   
   <meta name="description" content="套件管理工具比較
 比較一下現在市面上幾種套件管理工具
-(debian &ndash; apt , gentoo &ndash; emerge , freebsd &ndash; prots) 其它參考: APT 用法、emerge 用法 深入內容中有 emerge, apt, ports &hellip;">
+(debian - apt , gentoo - emerge , freebsd - prots) 其它參考: APT 用法、emerge 用法 深入內容中有 emerge, apt, ports 的語法比較(也可以說是語法教學吧) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,139 +96,138 @@
   </header>
 
 
-<div class="entry-content"><p>套件管理工具比較<br/>
-比較一下現在市面上幾種套件管理工具<br/>
-(debian &ndash; apt , gentoo &ndash; emerge , freebsd &ndash; prots)</p>
+<div class="entry-content"><p>套件管理工具比較<br />
+比較一下現在市面上幾種套件管理工具<br />
+(debian - apt , gentoo - emerge , freebsd - prots)  </p>
 
-<p>其它參考: APT 用法、emerge 用法</p>
+<p>其它參考: APT 用法、emerge 用法  </p>
 
-<p>深入內容中有 emerge, apt, ports 的語法比較(也可以說是語法教學吧)</p>
+<p>深入內容中有 emerge, apt, ports 的語法比較(也可以說是語法教學吧)  </p>
 
-<p>emerge -s packagename 可以搜索阿，而且忽略大小写，能够模糊查找<br/>
-emerge -p packagename 可以输出关联包<br/>
-emerge &mdash;nodeps packagename 可以忽略关联<br/>
-emerge -C 还可以卸载不记关联，很方便</p>
+<p>emerge -s packagename 可以搜索阿，而且忽略大小写，能够模糊查找<br />
+emerge -p packagename 可以输出关联包<br />
+emerge –nodeps packagename 可以忽略关联<br />
+emerge -C 还可以卸载不记关联，很方便  </p>
 
-<p>以下轉載自: Gentoo/Debian/FreeBSD套件管理memo</p>
+<p>以下轉載自: Gentoo/Debian/FreeBSD套件管理memo  </p>
 
-<p>以關鍵字搜尋軟體<br/>
-Gentoo: emerge -s<br/>
-輸出會有這個 pkg 的簡介 , 關鍵字都可以用正規表示式<br/>
-Debian: apt-cache search<br/>
-FreeBSD: make search name= 或<br/>
-ports_glob &mdash; need portupgrade</p>
+<p>以關鍵字搜尋軟體<br />
+Gentoo: emerge -s<br />
+輸出會有這個 pkg 的簡介 , 關鍵字都可以用正規表示式<br />
+Debian: apt-cache search<br />
+FreeBSD: make search name= 或<br />
+ports_glob – need portupgrade  </p>
 
-<p>安裝軟體<br/>
-Gentoo: emerge<br/>
-Debian: apt-get install<br/>
-FreeBSD: portinstall</p>
+<p>安裝軟體<br />
+Gentoo: emerge<br />
+Debian: apt-get install<br />
+FreeBSD: portinstall  </p>
 
-<p>移除軟體<br/>
-Gentoo: emerge unmerge<br/>
-Debian: apt-get remove<br/>
-FreeBSD: pkg_deinstall</p>
+<p>移除軟體<br />
+Gentoo: emerge unmerge<br />
+Debian: apt-get remove<br />
+FreeBSD: pkg_deinstall  </p>
 
-<p>升級單一軟體<br/>
-Gentoo: emerge -u <package><br/>
-Debian: apt-get install <package><br/>
-FreeBSD: portupgrade <package></p>
+<p>升級單一軟體<br />
+Gentoo: emerge -u <package>  
+Debian: apt-get install <package>  
+FreeBSD: portupgrade <package>  </package></package></package></p>
 
-<p>察看升級全系統會動到哪些套件：<br/>
-Gentoo: emerge -puDv world<br/>
-Debian: apt-get -u dist-upgrade<br/>
-FreeBSD: portupgrade -arnv</p>
+<p>察看升級全系統會動到哪些套件：<br />
+Gentoo: emerge -puDv world<br />
+Debian: apt-get -u dist-upgrade<br />
+FreeBSD: portupgrade -arnv  </p>
 
-<p>升級全系統<br/>
-Gentoo: emerge -u &mdash;deep world<br/>
-Debian: apt-get dist-upgrade<br/>
-FreeBSD: make world ; portupgrade -ar</p>
+<p>升級全系統<br />
+Gentoo: emerge -u –deep world<br />
+Debian: apt-get dist-upgrade<br />
+FreeBSD: make world ; portupgrade -ar  </p>
 
-<p>查詢系統裝了哪些軟體<br/>
-Gentoo: emerge -pe world 或 qpkg -I -v<br/>
-Debian: dpkg &mdash;get-selections<br/>
-FreeBSD: pkg_info</p>
+<p>查詢系統裝了哪些軟體<br />
+Gentoo: emerge -pe world 或 qpkg -I -v<br />
+Debian: dpkg –get-selections<br />
+FreeBSD: pkg_info  </p>
 
-<p>查詢某檔案屬於哪個軟體<br/>
-Gentoo: qpkg -f<br/>
-(need gentoolkit)<br/>
-Debian: dpkg -S<br/>
-FreeBSD: pkg_info -W</p>
+<p>查詢某檔案屬於哪個軟體<br />
+Gentoo: qpkg -f<br />
+(need gentoolkit)<br />
+Debian: dpkg -S<br />
+FreeBSD: pkg_info -W  </p>
 
-<p>查詢某個套件安裝了什麼檔案<br/>
-Gentoo: qpkg -l <package><br/>
-Debian: dpkg -L <package><br/>
-FreeBSD: pkg_info -L <package></p>
+<p>查詢某個套件安裝了什麼檔案<br />
+Gentoo: qpkg -l <package>  
+Debian: dpkg -L <package>  
+FreeBSD: pkg\_info -L <package>  </package></package></package></p>
 
-<p>查詢有沒有裝這個關鍵字的套件<br/>
-Gentoo: qpkg -I | grep (qpkg再加上 -v 看版本號碼)<br/>
-Debian: dpkg -qa | grep<br/>
-FreeBSD: pkg_info | grep</p>
+<p>查詢有沒有裝這個關鍵字的套件<br />
+Gentoo: qpkg -I | grep (qpkg再加上 -v 看版本號碼)<br />
+Debian: dpkg -qa | grep<br />
+FreeBSD: pkg_info | grep  </p>
 
-<p>找哪些 pkg &ldquo;簡介&rdquo; 裡含有你要找的關鍵字:<br/>
-Gentoo: emerge -S &lt;關鍵字><br/>
-輸出方式和前者一樣, 關鍵字都可以用正規表示式<br/>
-Debian: apt-cache search<br/>
-FreeBSD: make search key=</p>
+<p>找哪些 pkg “簡介” 裡含有你要找的關鍵字:<br />
+Gentoo: emerge -S <關鍵字>  
+輸出方式和前者一樣, 關鍵字都可以用正規表示式  
+Debian: apt-cache search  
+FreeBSD: make search key=  </關鍵字></p>
 
-<p>不管相依性強制移除某套件<br/>
-Gentoo: emerge -C<br/>
-Debian:<br/>
-FreeBSD: pkg_delete -f</p>
+<p>不管相依性強制移除某套件<br />
+Gentoo: emerge -C<br />
+Debian:<br />
+FreeBSD: pkg_delete -f  </p>
 
-<p>全系統重新編譯<br/>
-Gentoo: emerge -e world<br/>
-Debian: ?<br/>
-FreeBSD: make world ; portupgrade -arf</p>
+<p>全系統重新編譯<br />
+Gentoo: emerge -e world<br />
+Debian: ?<br />
+FreeBSD: make world ; portupgrade -arf  </p>
 
-<p>========<br/>
-補充:<br/>
-qpkg -f<br/>
-ps: emerge gentoolkit first.</p>
+<p>========<br />
+補充:<br />
+qpkg -f<br />
+ps: emerge gentoolkit first.  </p>
 
-<p>&mdash;<br/>
-gentoo 裡:<br/>
-查詢某個套件安裝了什麼檔案:<br/>
-qpkg -l<br/>
-查詢有沒有裝這個關鍵字的套件:<br/>
-qpkg -I (再加上 -v 看版本號碼)<br/>
-不管相依性強制移除某套件:<br/>
-emerge -C</p>
+<p>–<br />
+gentoo 裡:<br />
+查詢某個套件安裝了什麼檔案:<br />
+qpkg -l<br />
+查詢有沒有裝這個關鍵字的套件:<br />
+qpkg -I (再加上 -v 看版本號碼)<br />
+不管相依性強制移除某套件:<br />
+emerge -C  </p>
 
-<p>&mdash;<br/>
-仔細看一下 man emerge<br/>
-要找一個 pkg 的 &ldquo;名稱&rdquo;:<br/>
-emerge -s &lt;關鍵字><br/>
-輸出會有這個 pkg 的簡介</p>
+<p>–<br />
+仔細看一下 man emerge<br />
+要找一個 pkg 的 “名稱”:<br />
+emerge -s <關鍵字>  
+輸出會有這個 pkg 的簡介  </關鍵字></p>
 
-<p>找哪些 pkg &ldquo;簡介&rdquo; 裡含有你要找的關鍵字:<br/>
-emerge -S &lt;關鍵字><br/>
-輸出方式和前者一樣</p>
+<p>找哪些 pkg “簡介” 裡含有你要找的關鍵字:<br />
+emerge -S <關鍵字>  
+輸出方式和前者一樣  </關鍵字></p>
 
-<p>更厲害的是上面的關鍵字都可以用正規表示式!!</p>
+<p>更厲害的是上面的關鍵字都可以用正規表示式!!  </p>
 
-<p>&mdash;<br/>
-emerge -f (fetchonly)<br/>
-好處在於當你emerge 兩個package以上的時候,可以先把source給抓回來,不過需要再emerge</p>
+<p>–<br />
+emerge -f (fetchonly)<br />
+好處在於當你emerge 兩個package以上的時候,可以先把source給抓回來,不過需要再emerge  </p>
 
-<p>emerge -p (pretend)<br/>
-看要裝些什麼東西,</p>
+<p>emerge -p (pretend)<br />
+看要裝些什麼東西,  </p>
 
-<h2>小弟認為這兩個指令對撥接使用者很重要,尤其 -f .一來可以大略知道下載時間,二來可以隨時中斷,然後在續傳(感謝偉大的wget)  </h2>
+<h2 id="f-wget">小弟認為這兩個指令對撥接使用者很重要,尤其 -f .一來可以大略知道下載時間,二來可以隨時中斷,然後在續傳(感謝偉大的wget)</h2>
+<p>升級單一軟體<br />
+Gentoo: emerge -u<br />
+Debian: apt-get install<br />
+FreeBSD: portupgrade  </p>
 
-<p>升級單一軟體<br/>
-Gentoo: emerge -u<br/>
-Debian: apt-get install<br/>
-FreeBSD: portupgrade</p>
+<p>查詢某個套件安裝了什麼檔案<br />
+Gentoo: qpkg -l<br />
+credit to <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#112;&#097;&#097;&#114;&#064;&#103;&#101;&#110;&#116;&#111;&#111;&#046;&#111;&#114;&#103;&#046;&#116;&#119;">&#112;&#097;&#097;&#114;&#064;&#103;&#101;&#110;&#116;&#111;&#111;&#046;&#111;&#114;&#103;&#046;&#116;&#119;</a><br />
+Debian: dpkg -L<br />
+FreeBSD: pkg_info -L  </p>
 
-<p>查詢某個套件安裝了什麼檔案<br/>
-Gentoo: qpkg -l<br/>
-credit to <a href="mailto:paar@gentoo.org.tw">paar@gentoo.org.tw</a><br/>
-Debian: dpkg -L<br/>
-FreeBSD: pkg_info -L</p>
-
-<p>全系統重新編譯<br/>
-Gentoo: emerge -e world<br/>
-Debian: apt-get update;apt-get upgrade<br/>
+<p>全系統重新編譯<br />
+Gentoo: emerge -e world<br />
+Debian: apt-get update;apt-get upgrade<br />
 FreeBSD: make world ; portupgrade -arf</p>
 </div>
 
@@ -301,6 +300,10 @@ FreeBSD: make world ; portupgrade -arf</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -314,10 +317,6 @@ FreeBSD: make world ; portupgrade -arf</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -337,6 +336,22 @@ FreeBSD: make world ; portupgrade -arf</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

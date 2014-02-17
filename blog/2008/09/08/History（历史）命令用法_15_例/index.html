@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="2008-09-07 Toy Posted in CLI, Featured Post, Tips RSS Trackback 如果你经常使用 Linux 命令行，那么使用 history（历史）命令可以有效地提升你的效率。本文将通过实例的方式向你介绍 history 命令的 15 个用法。 &hellip;">
+  <meta name="description" content="## 2008-09-07 Toy Posted in CLI, Featured Post, Tips RSS Trackback 如果你经常使用 Linux 命令行，那么使用 history（历史）命令可以有效地提升你的效率。本文将通过实例的方式向你介绍 history 命令的 15 个用法 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,318 +94,239 @@
   </header>
 
 
-<div class="entry-content"><h2></h2>
+<div class="entry-content"><p>##  </p>
 
 <p>2008-09-07 <a href="http://linuxtoy.org/archives/author/admin/" title="Posts by Toy">Toy</a> Posted in <a href="http://linuxtoy.org/category/cli" title="View all posts in CLI">CLI</a>, <a href="http://linuxtoy.org/category/featured-post" title="View all posts in Featured Post">Featured Post</a>, <a href="http://linuxtoy.org/category/tips" title="View all posts in Tips">Tips</a> <a href="http://linuxtoy.org/archives/history-command-usage-examples.html/feed">RSS</a> <a href="http://linuxtoy.org/archives/history-command-usage-examples.html/trackback" title="copy this URI and ping to this post from ur own site">Trackback</a></p>
 
 <p>如果你经常使用 Linux 命令行，那么使用 history（历史）命令可以有效地提升你的效率。本文将通过实例的方式向你介绍 history 命令的 15 个用法。</p>
 
 <ol>
-<li><strong>使用 HISTTIMEFORMAT 显示时间戳</strong></li>
+  <li><strong>使用 HISTTIMEFORMAT 显示时间戳</strong></li>
 </ol>
 
-
-<p>当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行：<br/>
-  `</p>
-
-<h1>export HISTTIMEFORMAT=&lsquo;%F %T &rsquo;</h1>
-
-<h1>history | more</h1>
-
-<p>1 2008-08-05 19:02:39 service network restart<br/>
-2 2008-08-05 19:02:39 exit<br/>
-3 2008-08-05 19:02:39 id<br/>
-4 2008-08-05 19:02:39 cat /etc/redhat-release<br/>
+<p>当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行：<br />
+  `<br />
+# export HISTTIMEFORMAT=’%F %T ‘<br />
+# history | more<br />
+1 2008-08-05 19:02:39 service network restart<br />
+2 2008-08-05 19:02:39 exit<br />
+3 2008-08-05 19:02:39 id<br />
+4 2008-08-05 19:02:39 cat /etc/redhat-release<br />
 `</p>
 
 <p><strong>注意</strong>：这个功能只能用在当 HISTTIMEFORMAT 这个环境变量被设置之后，之后的那些新执行的 bash 命令才会被打上正确的时间戳。在此之前的所有命令，都将会显示成设置 HISTTIMEFORMAT 变量的时间。[感谢 NightOwl 读者补充]</p>
 
 <ol>
-<li><strong>使用 Ctrl+R 搜索历史</strong></li>
+  <li><strong>使用 Ctrl+R 搜索历史</strong></li>
 </ol>
 
-
-<p>Ctrl+R 是我经常使用的一个快捷键。此快捷键让你对命令历史进行搜索，对于想要重复执行某个命令的时候非常有用。当找到命令后，通常再按回车键就可以执行该命令。如果想对找到的命令进行调整后再执行，则可以按一下左或右方向键。<br/>
-  `</p>
-
-<h1>[Press Ctrl+R from the command prompt, which will display the reverse-i-search prompt]</h1>
-
-<p>(reverse-i-search)`red‘: cat /etc/redhat-release<br/>
-[Note: Press enter when you see your command, which will execute the command from the history]</p>
-
-<h1>cat /etc/redhat-release</h1>
-
-<p>Fedora release 9 (Sulphur)<br/>
-`</p>
+<p>Ctrl+R 是我经常使用的一个快捷键。此快捷键让你对命令历史进行搜索，对于想要重复执行某个命令的时候非常有用。当找到命令后，通常再按回车键就可以执行该命令。如果想对找到的命令进行调整后再执行，则可以按一下左或右方向键。<br />
+  `<br />
+# [Press Ctrl+R from the command prompt, which will display the reverse-i-search prompt]<br />
+(reverse-i-search)<code>red‘: cat /etc/redhat-release  
+[Note: Press enter when you see your command, which will execute the command from the history]  
+# cat /etc/redhat-release  
+Fedora release 9 (Sulphur)  
+</code></p>
 
 <ol>
-<li><strong>快速重复执行上一条命令</strong></li>
+  <li><strong>快速重复执行上一条命令</strong></li>
 </ol>
-
 
 <p>有 4 种方法可以重复执行上一条命令：</p>
 
 <ol>
-<li> 使用上方向键，并回车执行。</li>
-<li> 按 !! 并回车执行。</li>
-<li> 输入 !-1 并回车执行。</li>
-<li><p> 按 Ctrl+P 并回车执行。</p></li>
-<li><p><strong>从命令历史中执行一个指定的命令</strong></p></li>
+  <li>使用上方向键，并回车执行。</li>
+  <li>按 !! 并回车执行。</li>
+  <li>输入 !-1 并回车执行。</li>
+  <li>
+    <p>按 Ctrl+P 并回车执行。</p>
+  </li>
+  <li><strong>从命令历史中执行一个指定的命令</strong></li>
 </ol>
 
-
-<p>在下面的例子中，如果你想重复执行第 4 条命令，那么可以执行 !4：<br/>
-  `</p>
-
-<h1>history | more</h1>
-
-<p>1 service network restart<br/>
-2 exit<br/>
-3 id<br/>
-4 cat /etc/redhat-release</p>
-
-<h1>!4</h1>
-
-<p>cat /etc/redhat-release<br/>
-Fedora release 9 (Sulphur)<br/>
+<p>在下面的例子中，如果你想重复执行第 4 条命令，那么可以执行 !4：<br />
+  `<br />
+# history | more<br />
+1 service network restart<br />
+2 exit<br />
+3 id<br />
+4 cat /etc/redhat-release<br />
+# !4<br />
+cat /etc/redhat-release<br />
+Fedora release 9 (Sulphur)<br />
 `</p>
 
 <ol>
-<li><strong>通过指定关键字来执行以前的命令</strong></li>
+  <li><strong>通过指定关键字来执行以前的命令</strong></li>
 </ol>
 
-
-<p>在下面的例子，输入 !ps 并回车，将执行以 ps 打头的命令：<br/>
-  `</p>
-
-<h1>!ps</h1>
-
-<p>ps aux | grep yp<br/>
-root 16947 0.0 0.1 36516 1264 ? Sl 13:10 0:00 ypbind<br/>
-root 17503 0.0 0.0 4124 740 pts/0 S+ 19:19 0:00 grep yp<br/>
+<p>在下面的例子，输入 !ps 并回车，将执行以 ps 打头的命令：<br />
+  `<br />
+# !ps<br />
+ps aux | grep yp<br />
+root 16947 0.0 0.1 36516 1264 ? Sl 13:10 0:00 ypbind<br />
+root 17503 0.0 0.0 4124 740 pts/0 S+ 19:19 0:00 grep yp<br />
 `</p>
 
 <ol>
-<li><strong>使用 HISTSIZE 控制历史命令记录的总行数</strong></li>
+  <li><strong>使用 HISTSIZE 控制历史命令记录的总行数</strong></li>
 </ol>
 
-
-<p>将下面两行内容追加到 .bash_profile 文件并重新登录 bash shell，命令历史的记录数将变成 450 条：<br/>
-  `</p>
-
-<h1>vi ~/.bash_profile</h1>
-
-<p>HISTSIZE=450<br/>
-HISTFILESIZE=450<br/>
+<p>将下面两行内容追加到 .bash_profile 文件并重新登录 bash shell，命令历史的记录数将变成 450 条：<br />
+  `<br />
+# vi ~/.bash_profile<br />
+HISTSIZE=450<br />
+HISTFILESIZE=450<br />
 `</p>
 
 <ol>
-<li><strong>使用 HISTFILE 更改历史文件名称</strong></li>
+  <li><strong>使用 HISTFILE 更改历史文件名称</strong></li>
 </ol>
 
-
-<p>默认情况下，命令历史存储在 ~/.bash_history 文件中。添加下列内容到 .bash_profile 文件并重新登录 bash shell，将使用 .commandline_warrior 来存储命令历史：<br/>
-  `</p>
-
-<h1>vi ~/.bash_profile</h1>
-
-<p>HISTFILE=/root/.commandline_warrior<br/>
+<p>默认情况下，命令历史存储在 ~/.bash_history 文件中。添加下列内容到 .bash_profile 文件并重新登录 bash shell，将使用 .commandline_warrior 来存储命令历史：<br />
+  `<br />
+# vi ~/.bash_profile<br />
+HISTFILE=/root/.commandline_warrior<br />
 `</p>
 
 <ol>
-<li><strong>使用 HISTCONTROL 从命令历史中剔除连续重复的条目</strong></li>
+  <li><strong>使用 HISTCONTROL 从命令历史中剔除连续重复的条目</strong></li>
 </ol>
 
-
-<p>在下面的例子中，pwd 命令被连续执行了三次。执行 history 后你会看到三条重复的条目。要剔除这些重复的条目，你可以将 HISTCONTROL 设置为 ignoredups：<br/>
-  `</p>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>history | tail -4</h1>
-
-<p>44 pwd<br/>
-45 pwd<br/>
-46 pwd [Note that there are three pwd commands in history, after executing pwd 3 times as shown above]<br/>
-47 history | tail -4</p>
-
-<h1>export HISTCONTROL=ignoredups</h1>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>history | tail -3</h1>
-
-<p>56 export HISTCONTROL=ignoredups<br/>
-57 pwd [Note that there is only one pwd command in the history, even after executing pwd 3 times as shown above]<br/>
-58 history | tail -4<br/>
+<p>在下面的例子中，pwd 命令被连续执行了三次。执行 history 后你会看到三条重复的条目。要剔除这些重复的条目，你可以将 HISTCONTROL 设置为 ignoredups：<br />
+  `<br />
+# pwd<br />
+# pwd<br />
+# pwd<br />
+# history | tail -4<br />
+44 pwd<br />
+45 pwd<br />
+46 pwd [Note that there are three pwd commands in history, after executing pwd 3 times as shown above]<br />
+47 history | tail -4<br />
+# export HISTCONTROL=ignoredups<br />
+# pwd<br />
+# pwd<br />
+# pwd<br />
+# history | tail -3<br />
+56 export HISTCONTROL=ignoredups<br />
+57 pwd [Note that there is only one pwd command in the history, even after executing pwd 3 times as shown above]<br />
+58 history | tail -4<br />
 `</p>
 
 <ol>
-<li><strong>使用 HISTCONTROL 清除整个命令历史中的重复条目</strong></li>
+  <li><strong>使用 HISTCONTROL 清除整个命令历史中的重复条目</strong></li>
 </ol>
 
-
-<p>上例中的 ignoredups 只能剔除连续的重复条目。要清除整个命令历史中的重复条目，可以将 HISTCONTROL 设置成 erasedups：<br/>
-  `</p>
-
-<h1>export HISTCONTROL=erasedups</h1>
-
-<h1>pwd</h1>
-
-<h1>service httpd stop</h1>
-
-<h1>history | tail -3</h1>
-
-<p>38 pwd<br/>
-39 service httpd stop<br/>
-40 history | tail -3</p>
-
-<h1>ls -ltr</h1>
-
-<h1>service httpd stop</h1>
-
-<h1>history | tail -6</h1>
-
-<p>35 export HISTCONTROL=erasedups<br/>
-36 pwd<br/>
-37 history | tail -3<br/>
-38 ls -ltr<br/>
-39 service httpd stop<br/>
-[Note that the previous service httpd stop after pwd got erased]<br/>
-40 history | tail -6<br/>
+<p>上例中的 ignoredups 只能剔除连续的重复条目。要清除整个命令历史中的重复条目，可以将 HISTCONTROL 设置成 erasedups：<br />
+  `<br />
+# export HISTCONTROL=erasedups<br />
+# pwd<br />
+# service httpd stop<br />
+# history | tail -3<br />
+38 pwd<br />
+39 service httpd stop<br />
+40 history | tail -3<br />
+# ls -ltr<br />
+# service httpd stop<br />
+# history | tail -6<br />
+35 export HISTCONTROL=erasedups<br />
+36 pwd<br />
+37 history | tail -3<br />
+38 ls -ltr<br />
+39 service httpd stop<br />
+[Note that the previous service httpd stop after pwd got erased]<br />
+40 history | tail -6<br />
 `</p>
 
 <ol>
-<li><strong>使用 HISTCONTROL 强制 history 不记住特定的命令</strong></li>
+  <li><strong>使用 HISTCONTROL 强制 history 不记住特定的命令</strong></li>
 </ol>
-
 
 <p>将 HISTCONTROL 设置为 ignorespace，并在不想被记住的命令前面输入一个空格：</p>
 
-<h1>export HISTCONTROL=ignorespace</h1>
-
-<h1>ls -ltr</h1>
-
-<h1>pwd</h1>
-
-<h1>service httpd stop [Note that there is a space at the beginning of service, to ignore this command from history]</h1>
-
-<h1>history | tail -3</h1>
-
-<p>67 ls -ltr<br/>
-68 pwd<br/>
-69 history | tail -3</p>
+<h1 id="export-histcontrolignorespace">export HISTCONTROL=ignorespace</h1>
+<p># ls -ltr<br />
+# pwd<br />
+# service httpd stop [Note that there is a space at the beginning of service, to ignore this command from history]<br />
+# history | tail -3<br />
+67 ls -ltr<br />
+68 pwd<br />
+69 history | tail -3  </p>
 
 <ol>
-<li><strong>使用 -c 选项清除所有的命令历史</strong></li>
+  <li><strong>使用 -c 选项清除所有的命令历史</strong></li>
 </ol>
-
 
 <p>如果你想清除所有的命令历史，可以执行：</p>
 
 <p><code># history -c</code></p>
 
 <ol>
-<li><strong>命令替换</strong></li>
+  <li><strong>命令替换</strong></li>
 </ol>
 
-
-<p>在下面的例子里，!!:$ 将为当前的命令获得上一条命令的参数：<br/>
-  `</p>
-
-<h1>ls anaconda-ks.cfg</h1>
-
-<p>anaconda-ks.cfg</p>
-
-<h1>vi !!:$</h1>
-
-<p>vi anaconda-ks.cfg<br/>
+<p>在下面的例子里，!!:$ 将为当前的命令获得上一条命令的参数：<br />
+  `<br />
+# ls anaconda-ks.cfg<br />
+anaconda-ks.cfg<br />
+# vi !!:$<br />
+vi anaconda-ks.cfg<br />
 `</p>
 
 <p><strong>补充</strong>：使用 !$ 可以达到同样的效果，而且更简单。[感谢 wanzigunzi 读者补充]</p>
 
-<p>下例中，!^ 从上一条命令获得第一项参数：<br/>
-  `</p>
-
-<h1>cp anaconda-ks.cfg anaconda-ks.cfg.bak</h1>
-
-<p>anaconda-ks.cfg</p>
-
-<h1>vi -5 !^</h1>
-
-<p>vi anaconda-ks.cfg<br/>
+<p>下例中，!^ 从上一条命令获得第一项参数：<br />
+  `<br />
+# cp anaconda-ks.cfg anaconda-ks.cfg.bak<br />
+anaconda-ks.cfg<br />
+# vi -5 !^<br />
+vi anaconda-ks.cfg<br />
 `</p>
 
 <ol>
-<li><strong>为特定的命令替换指定的参数</strong></li>
+  <li><strong>为特定的命令替换指定的参数</strong></li>
 </ol>
 
-
-<p>在下面的例子，!cp:2 从命令历史中搜索以 cp 开头的命令，并获取它的第二项参数：<br/>
-  `</p>
-
-<h1>cp ~/longname.txt /really/a/very/long/path/long-filename.txt</h1>
-
-<h1>ls -l !cp:2</h1>
-
-<p>ls -l /really/a/very/long/path/long-filename.txt<br/>
+<p>在下面的例子，!cp:2 从命令历史中搜索以 cp 开头的命令，并获取它的第二项参数：<br />
+  `<br />
+# cp ~/longname.txt /really/a/very/long/path/long-filename.txt<br />
+# ls -l !cp:2<br />
+ls -l /really/a/very/long/path/long-filename.txt<br />
 `</p>
 
-<p>下例里，!cp:$ 获取 cp 命令的最后一项参数：<br/>
-  `</p>
-
-<h1>ls -l !cp:$</h1>
-
-<p>ls -l /really/a/very/long/path/long-filename.txt<br/>
+<p>下例里，!cp:$ 获取 cp 命令的最后一项参数：<br />
+  `<br />
+# ls -l !cp:$<br />
+ls -l /really/a/very/long/path/long-filename.txt<br />
 `</p>
 
 <ol>
-<li><strong>使用 HISTSIZE 禁用 history</strong></li>
+  <li><strong>使用 HISTSIZE 禁用 history</strong></li>
 </ol>
 
-
-<p>如果你想禁用 history，可以将 HISTSIZE 设置为 0：<br/>
-  `</p>
-
-<h1>export HISTSIZE=0</h1>
-
-<h1>history</h1>
-
-<h1>[Note that history did not display anything]</h1>
-
-<p>`</p>
+<p>如果你想禁用 history，可以将 HISTSIZE 设置为 0：<br />
+  `<br />
+# export HISTSIZE=0<br />
+# history<br />
+# [Note that history did not display anything]<br />
+`</p>
 
 <ol>
-<li><strong>使用 HISTIGNORE 忽略历史中的特定命令</strong></li>
+  <li><strong>使用 HISTIGNORE 忽略历史中的特定命令</strong></li>
 </ol>
 
-
-<p>下面的例子，将忽略 pwd、ls、ls -ltr 等命令：<br/>
-  `</p>
-
-<h1>export HISTIGNORE=”pwd:ls:ls -ltr:”</h1>
-
-<h1>pwd</h1>
-
-<h1>ls</h1>
-
-<h1>ls -ltr</h1>
-
-<h1>service httpd stop</h1>
-
-<h1>history | tail -3</h1>
-
-<p>79 export HISTIGNORE=”pwd:ls:ls -ltr:”<br/>
-80 service httpd stop<br/>
-81 history<br/>
+<p>下面的例子，将忽略 pwd、ls、ls -ltr 等命令：<br />
+  `<br />
+# export HISTIGNORE=”pwd:ls:ls -ltr:”<br />
+# pwd<br />
+# ls<br />
+# ls -ltr<br />
+# service httpd stop<br />
+# history | tail -3<br />
+79 export HISTIGNORE=”pwd:ls:ls -ltr:”<br />
+80 service httpd stop<br />
+81 history<br />
 [Note that history did not record pwd, ls and ls -ltr]`</p>
 </div>
 
@@ -478,6 +399,10 @@ HISTFILESIZE=450<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -491,10 +416,6 @@ HISTFILESIZE=450<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -514,6 +435,22 @@ HISTFILESIZE=450<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

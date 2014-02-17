@@ -97,17 +97,17 @@ root@ubuntu &hellip;">
   </header>
 
 
-<div class="entry-content"><h3>强制 umount nfs文件系统</h3>
+<div class="entry-content"><h3 id="umount-nfs">强制 umount nfs文件系统</h3>
 
-<p>root@ubuntu:/# umount /app/nfs/<br/>
-umount.nfs: /app/nfs: device is busy<br/>
+<p>root@ubuntu:/# umount /app/nfs/<br />
+umount.nfs: /app/nfs: device is busy<br />
 umount.nfs: /app/nfs: device is busy</p>
 
-<p>提示文件系统设置busy<br/>
-root@ubuntu:/# fuser -km /app/nfs/   先使用这条命令<br/>
-/data/nfs/:                     8119c<br/>
-root@ubuntu:/# umount /app/nfs/      在umount 就可以了<br/>
-<a href="mailto:root@ubuntu:/">root@ubuntu:/</a>#</p>
+<p>提示文件系统设置busy<br />
+root@ubuntu:/# fuser -km /app/nfs/   先使用这条命令<br />
+/data/nfs/:                     8119c<br />
+root@ubuntu:/# umount /app/nfs/      在umount 就可以了<br />
+<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#114;&#111;&#111;&#116;&#064;&#117;&#098;&#117;&#110;&#116;&#117;&#058;&#047;">&#114;&#111;&#111;&#116;&#064;&#117;&#098;&#117;&#110;&#116;&#117;&#058;&#047;</a>#</p>
 
 <p> </p>
 
@@ -115,25 +115,25 @@ root@ubuntu:/# umount /app/nfs/      在umount 就可以了<br/>
 
 <p> </p>
 
-<p>[root@dzxt ~]# fuser<br/>
-usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-             [ &ndash; ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-       fuser -l<br/>
+<p>[root@dzxt ~]# fuser<br />
+usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name …<br />
+             [ - ] [ -n space ] [ -signal ] [ -kimuv ] name …<br />
+       fuser -l<br />
        fuser -V</p>
 
-<p>    -a        display unused files too<br/>
-    -k        kill processes accessing that file<br/>
-    -i        ask before killing (ignored without -k)<br/>
-    -l        list signal names<br/>
-    -m        mounted FS<br/>
-    -n space search in the specified name space (file, udp, or tcp)<br/>
-    -s        silent operation<br/>
-    -signal   send signal instead of SIGKILL<br/>
-    -u        display user ids<br/>
-    -v        verbose output<br/>
-    -V        display version information<br/>
-    -4        search IPv4 sockets only<br/>
-    -6        search IPv6 sockets only<br/>
+<p>    -a        display unused files too<br />
+    -k        kill processes accessing that file<br />
+    -i        ask before killing (ignored without -k)<br />
+    -l        list signal names<br />
+    -m        mounted FS<br />
+    -n space search in the specified name space (file, udp, or tcp)<br />
+    -s        silent operation<br />
+    -signal   send signal instead of SIGKILL<br />
+    -u        display user ids<br />
+    -v        verbose output<br />
+    -V        display version information<br />
+    -4        search IPv4 sockets only<br />
+    -6        search IPv6 sockets only<br />
     -         reset options</p>
 </div>
 
@@ -206,6 +206,10 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -219,10 +223,6 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -242,6 +242,22 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

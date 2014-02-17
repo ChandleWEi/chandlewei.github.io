@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="仔细考虑rpm的依赖关系
+  <meta name="description" content="## 仔细考虑rpm的依赖关系
 其实发现redhat当初考虑rpm
 只是考虑到了从光盘这个给定范围内安装指定包的途径
 由于源的范围很窄
@@ -101,53 +101,53 @@
   </header>
 
 
-<div class="entry-content"><h2></h2>
+<div class="entry-content"><p>##  </p>
 
-<p>仔细考虑rpm的依赖关系<br/>
-其实发现redhat当初考虑rpm<br/>
-只是考虑到了从光盘这个给定范围内安装指定包的途径<br/>
-由于源的范围很窄<br/>
-所以他没有过多考虑卸载软件已经更新软件<br/>
-他们当时需要的只是一个能够解决依赖关系<br/>
-解决当安装A的时候要把B也安装进去问题的方法<br/>
-从这个角度来看RPM工作的不错<br/>
-其实你只是从redhat的光盘上安装软件<br/>
-他看起来也不错.虽然有时候会安装你觉得完全依赖不到的东西<br/>
-但是他们的解决方法就是.为了万无一失.凡是引用到的东西统统装进去.反正是从光盘上的.速度不会太差<br/>
-但是遇到信息爆炸和软件数量激增的情况下<br/>
-就很难去管理这么大一个库<br/>
+<p>仔细考虑rpm的依赖关系<br />
+其实发现redhat当初考虑rpm<br />
+只是考虑到了从光盘这个给定范围内安装指定包的途径<br />
+由于源的范围很窄<br />
+所以他没有过多考虑卸载软件已经更新软件<br />
+他们当时需要的只是一个能够解决依赖关系<br />
+解决当安装A的时候要把B也安装进去问题的方法<br />
+从这个角度来看RPM工作的不错<br />
+其实你只是从redhat的光盘上安装软件<br />
+他看起来也不错.虽然有时候会安装你觉得完全依赖不到的东西<br />
+但是他们的解决方法就是.为了万无一失.凡是引用到的东西统统装进去.反正是从光盘上的.速度不会太差<br />
+但是遇到信息爆炸和软件数量激增的情况下<br />
+就很难去管理这么大一个库<br />
 而rpm的设计方式注定了无法别人参与维护这个源</p>
 
-<p>而deb的管理.其实应该说是apt的管理<br/>
-从一开始就源于debian的包或者源不可能只有一个组织维护<br/>
-其贡献者会非常多<br/>
-所以他的依赖比较松散,而且对卸载和更新的要求考虑的比较周到<br/>
-而之后的yum,只能是把rpm的依赖关系搬移到网上<br/>
-并没有本质上解决rpm的痼疾.<br/>
-所以当rpm遇见个人发布的内容的时候<br/>
-如果使用默认的rpm打包方式<br/>
-会发现你打出的包由于依赖关系安装很麻烦.卸载更加是件几乎不可能的事情.<br/>
+<p>而deb的管理.其实应该说是apt的管理<br />
+从一开始就源于debian的包或者源不可能只有一个组织维护<br />
+其贡献者会非常多<br />
+所以他的依赖比较松散,而且对卸载和更新的要求考虑的比较周到<br />
+而之后的yum,只能是把rpm的依赖关系搬移到网上<br />
+并没有本质上解决rpm的痼疾.<br />
+所以当rpm遇见个人发布的内容的时候<br />
+如果使用默认的rpm打包方式<br />
+会发现你打出的包由于依赖关系安装很麻烦.卸载更加是件几乎不可能的事情.<br />
 因为你的应用不是redhat的.不在他们的光盘中</p>
 
-<p>redhat之所以放弃桌面版linux市场<br/>
-其一是linux桌面版确实很难盈利<br/>
-其二是在本身就是开源环境的条件下<br/>
-软件的更新和加入如此频繁.<br/>
-在网络速度已经很高的前提下就开始暴露出来的rpm打包软件难以维护的问题<br/>
-到后面已经是积重难返了.<br/>
-而退缩企业市场,企业市场出于稳定性和可靠性,<br/>
-不可能安装来自那么多第三方源的软件<br/>
+<p>redhat之所以放弃桌面版linux市场<br />
+其一是linux桌面版确实很难盈利<br />
+其二是在本身就是开源环境的条件下<br />
+软件的更新和加入如此频繁.<br />
+在网络速度已经很高的前提下就开始暴露出来的rpm打包软件难以维护的问题<br />
+到后面已经是积重难返了.<br />
+而退缩企业市场,企业市场出于稳定性和可靠性,<br />
+不可能安装来自那么多第三方源的软件<br />
 这样redhat维护和管理一个较小的软件源的可能性就大大增加了.</p>
 
-<p>我们看到debian或者ubuntu的系统<br/>
-都是一张CD,而这在他们看来是基础CD<br/>
-可以通过这个CD扩展<br/>
-而redhat和suse的概念就不同<br/>
-要不是DVD,要不就是几张或者十几张CD<br/>
-这些CD.就是他们的全部内容<br/>
+<p>我们看到debian或者ubuntu的系统<br />
+都是一张CD,而这在他们看来是基础CD<br />
+可以通过这个CD扩展<br />
+而redhat和suse的概念就不同<br />
+要不是DVD,要不就是几张或者十几张CD<br />
+这些CD.就是他们的全部内容<br />
 你要安装这之外的软件.将会非常困难.</p>
 
-<p>由此我觉得.redhat的rpm代表的是狭隘以及短视,封闭<br/>
+<p>由此我觉得.redhat的rpm代表的是狭隘以及短视,封闭<br />
 而deb或者gentoo的包管理方式.更加开放和富有远见.</p>
 </div>
 
@@ -220,6 +220,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -233,10 +237,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -256,6 +256,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

@@ -94,66 +94,66 @@
   </header>
 
 
-<div class="entry-content"><p>Instiki and Rails 2.0</p>
+<div class="entry-content"><p>Instiki and Rails 2.0  </p>
 
-<p>I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was based on. At least, for the present, I made the bare minimum of changes in Instiki, required. Even so, one gets a whole raft of improvements, “for free.”</p>
+<p>I upgraded Instiki to Rails 2.0.2. There are many, many changes to Rails, from 1.2.5, which is what Instiki, previously, was based on. At least, for the present, I made the bare minimum of changes in Instiki, required. Even so, one gets a whole raft of improvements, “for free.”  </p>
 
-<p>Mostly, there were silly little things.</p>
+<p>Mostly, there were silly little things.  </p>
 
-<p>    render_text &ldquo;You c&#8217;yan come in.&rdquo;, &lsquo;403 Forbidden&rsquo;</p>
+<p>    render_text “You c’yan come in.”, ‘403 Forbidden’  </p>
 
-<p>for instance, became</p>
+<p>for instance, became  </p>
 
-<p>    render :text => &ldquo;You c&#8217;yan come in.&rdquo;, :status => 403</p>
+<p>    render :text =&gt; “You c’yan come in.”, :status =&gt; 403  </p>
 
-<p>and</p>
+<p>and  </p>
 
-<p>    response.headers[&lsquo;Content-Type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+<p>    response.headers[‘Content-Type’] = ‘application/xhtml+xml’  </p>
 
-<p>became</p>
+<p>became  </p>
 
-<p>    response.headers[&lsquo;type&rsquo;] = &lsquo;application/xhtml+xml&rsquo;</p>
+<p>    response.headers[‘type’] = ‘application/xhtml+xml’  </p>
 
-<p>More interesting was that sessions are now, by default, stored in a cookie, rather than on the server. There was, apparently, quite some brouhaha surrounding this change. The session is stored in a cookie as a cryptographically-signed (base64-encoded) cleartext. Many of the objections would, presumably, go away if the session were encrypted, rather than simply signed — a relatively trivial change in the code.</p>
+<p>More interesting was that sessions are now, by default, stored in a cookie, rather than on the server. There was, apparently, quite some brouhaha surrounding this change. The session is stored in a cookie as a cryptographically-signed (base64-encoded) cleartext. Many of the objections would, presumably, go away if the session were encrypted, rather than simply signed — a relatively trivial change in the code.  </p>
 
-<p>Whatever … there’s nothing particularly earthshaking in Instiki’s session data.</p>
+<p>Whatever … there’s nothing particularly earthshaking in Instiki’s session data.  </p>
 
-<p>But there’s still the matter of generating a secret signing key. That, I provided by the following bit of code in config/environment.rb</p>
+<p>But there’s still the matter of generating a secret signing key. That, I provided by the following bit of code in config/environment.rb  </p>
 
-<p>    # Secret session key<br/>
-    generator = Rails::SecretKeyGenerator.new(&ldquo;Instiki&rdquo;)<br/>
-    config.action_controller.session = {<br/>
-      :session_key => &ldquo;instiki_session&rdquo;,<br/>
-      :secret => generator.generate_secret<br/>
-    }</p>
+<p>    # Secret session key<br />
+    generator = Rails::SecretKeyGenerator.new(“Instiki”)<br />
+    config.action_controller.session = {<br />
+      :session_key =&gt; “instiki_session”,<br />
+      :secret =&gt; generator.generate_secret<br />
+    }  </p>
 
-<p>so a new key is generated every time the server starts up.</p>
+<p>so a new key is generated every time the server starts up.  </p>
 
-<p>In looking through the list of changes to Rails, I was struck by the new Sanitizer code, something I’d complained about previously. It looked vaguely … familiar. But its successor is still superior.</p>
+<p>In looking through the list of changes to Rails, I was struck by the new Sanitizer code, something I’d complained about previously. It looked vaguely … familiar. But its successor is still superior.  </p>
 
-<p>I also squashed a few bugs.</p>
+<p>I also squashed a few bugs.  </p>
 
-<p>   1. The first (reported by Diego Restrepo) led to equations not rendering, in certain circumstances, when utf-8 (non-ascii) text was present.</p>
+<p>   1. The first (reported by Diego Restrepo) led to equations not rendering, in certain circumstances, when utf-8 (non-ascii) text was present.  </p>
 
-<p>   2. The second had to do with WikiWord processing being mistakenly applied to camel-cased elements, attributes or attribute values (with potentially disastrous, non-well-formed results).</p>
+<p>   2. The second had to do with WikiWord processing being mistakenly applied to camel-cased elements, attributes or attribute values (with potentially disastrous, non-well-formed results).  </p>
 
-<p>   3.</p>
+<p>   3.  </p>
 
-<p>      The third (reported by Saji N. Hameed) was in the S5 generation code. Or, more correctly, in the latest version of REXML.</p>
+<p>      The third (reported by Saji N. Hameed) was in the S5 generation code. Or, more correctly, in the latest version of REXML.  </p>
 
-<p>          element.write(out_string,indent,transitive=true,ie_hack)</p>
+<p>          element.write(out_string,indent,transitive=true,ie_hack)  </p>
 
-<p>      generates an error. Instead, you need to</p>
+<p>      generates an error. Instead, you need to  </p>
 
-<p>          formatter = REXML::Formatters::Default.new(ie_hack)<br/>
-          formatter.write(element, out_string)</p>
+<p>          formatter = REXML::Formatters::Default.new(ie_hack)<br />
+          formatter.write(element, out_string)  </p>
 
-<p>Anyway, enjoy the new version of Instiki … something shiny and new for the Holidays.</p>
+<p>Anyway, enjoy the new version of Instiki … something shiny and new for the Holidays.  </p>
 
-<p>Update (12/28/2007):<br/>
- Speaking of shiny and new, Ruby 1.9 has just been released. Rails 2.0.2 is not compatible with Ruby 1.9 and, hence, neither is Instiki. When there’s a Ruby 1.9.x-compatible version, I’ll let you know.</p>
+<p>Update (12/28/2007):<br />
+ Speaking of shiny and new, Ruby 1.9 has just been released. Rails 2.0.2 is not compatible with Ruby 1.9 and, hence, neither is Instiki. When there’s a Ruby 1.9.x-compatible version, I’ll let you know.  </p>
 
-<p>Posted by distler at December 23, 2007  9:52 PM</p>
+<p>Posted by distler at December 23, 2007  9:52 PM  </p>
 </div>
 
 
@@ -225,6 +225,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -238,10 +242,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -261,6 +261,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

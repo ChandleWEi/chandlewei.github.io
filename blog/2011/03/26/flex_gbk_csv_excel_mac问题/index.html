@@ -104,20 +104,20 @@
 
 <p>以下是测试用的两种转换编码</p>
 
-<p>      Alert.show(&ldquo;test start&rdquo;);<br/>
-    ///var fr:FileReference=new FileReference();<br/>
-    ///var byteArray:ByteArray=new ByteArray();<br/>
-    ///byteArray.writeMultiByte(test,&ldquo;gbk&rdquo;);<br/>
-    ///fr.save(byteArray, &lsquo;chinese.csv&rsquo;)<br/>
-    var test:String = &lsquo;chandle,明天,郊游 &rsquo;;</p>
+<p>      Alert.show(“test start”);<br />
+    ///var fr:FileReference=new FileReference();<br />
+    ///var byteArray:ByteArray=new ByteArray();<br />
+    ///byteArray.writeMultiByte(test,”gbk”);<br />
+    ///fr.save(byteArray, ‘chinese.csv’)<br />
+    var test:String = ‘chandle,明天,郊游 ‘;  </p>
 
-<p>    var file:File = File.desktopDirectory.resolvePath(&ldquo;testgb2312.csv&rdquo;);<br/>
-    var fileStream:FileStream = new FileStream();<br/>
-    fileStream.open(file, FileMode.WRITE);<br/>
-   <br/>
-    fileStream.writeMultiByte(test, &ldquo;gbk&rdquo;);<br/>
-    fileStream.close();<br/>
-    Alert.show(&ldquo;test end&rdquo;);</p>
+<p>    var file:File = File.desktopDirectory.resolvePath(“testgb2312.csv”);<br />
+    var fileStream:FileStream = new FileStream();<br />
+    fileStream.open(file, FileMode.WRITE);<br />
+   <br />
+    fileStream.writeMultiByte(test, “gbk”);<br />
+    fileStream.close();<br />
+    Alert.show(“test end”);</p>
 
 <p>mac 下的excel 处处都很诡异 怎么都觉格格不入</p>
 </div>
@@ -191,6 +191,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -204,10 +208,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -227,6 +227,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

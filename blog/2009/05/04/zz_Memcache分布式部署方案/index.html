@@ -95,61 +95,61 @@
   </header>
 
 
-<div class="entry-content"><h2><a href="http://www.ccvita.com/395.html" title="Memcache分布式部署方案">Memcache分布式部署方案</a></h2>
+<div class="entry-content"><h2 id="memcachehttpwwwccvitacom395html-memcache"><a href="http://www.ccvita.com/395.html" title="Memcache分布式部署方案">Memcache分布式部署方案</a></h2>
 
-<p><strong>前言</strong><br/>
+<p><strong>前言</strong><br />
 应该是很久之前，我开始研究 <a href="http://www.danga.com/memcached/">Memcache</a>，写了一系列的学习心得，比如《 <a href="http://www.ccvita.com/261.html">Discuz!的Memcache缓存实现</a>》等。后面的好几十条回复也让这篇文章成为了此博客中颇受关注的一员。</p>
 
 <p>同时在百度和Google，关键词Memcache在长达一年多的时间里占据着第二位（第一位是官方），为很多需要了解或者应用Memcache的朋友提供了一些信息，但是我始终觉着还不够，于是本文诞生。</p>
 
 <p>唠唠叨叨说了半天，如果你觉着前面啰嗦，请直接看最后一大段，那是本文的重点。</p>
 
-<p><strong>基础环境</strong><br/>
+<p><strong>基础环境</strong><br />
 其实基于PHP扩展的Memcache客户端实际上早已经实现，而且非常稳定。先解释一些名词，Memcache是danga.com的一个开源项目，可以类比于MySQL这样的服务，而PHP扩展的Memcache实际上是连接Memcache的方式。</p>
 
-<p>首先，进行Memcache被安装具体可查看：<br/>
-  <a href="http://www.ccvita.com/257.html">Linux下的Memcache安装</a>：<a href="http://www.ccvita.com/257.html  ">http://www.ccvita.com/257.html  </a>
-  <a href="http://www.ccvita.com/258.html">Windows下的Memcache安装</a>：<a href="http://www.ccvita.com/258.html%EF%BC%9B  ">http://www.ccvita.com/258.html%EF%BC%9B  </a>
-其次，进行PHP扩展的安装，官方地址是<a href="http://pecl.php.net/package/memcache  ">http://pecl.php.net/package/memcache  </a>
+<p>首先，进行Memcache被安装具体可查看：<br />
+  <a href="http://www.ccvita.com/257.html">Linux下的Memcache安装</a>：http://www.ccvita.com/257.html<br />
+  <a href="http://www.ccvita.com/258.html">Windows下的Memcache安装</a>：http://www.ccvita.com/258.html；<br />
+其次，进行PHP扩展的安装，官方地址是http://pecl.php.net/package/memcache<br />
 最后，启动Memcache服务，比如这样</p>
 
-<p>/usr/local/bin/memcached -d -p 11213 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
-/usr/local/bin/memcached -d -p 11214 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
+<p>/usr/local/bin/memcached -d -p 11213 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br />
+/usr/local/bin/memcached -d -p 11214 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br />
 /usr/local/bin/memcached -d -p 11215 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid</p>
 
 <p>启动三个只使用10M内存以方便测试。</p>
 
 <p> </p>
 
-<p><strong>分布式部署</strong><br/>
+<p><strong>分布式部署</strong><br />
 PHP的PECL扩展中的memcache实际上在2.0.0的版本中就已经实现多服务器支持，现在都已经2.2.5了。请看如下代码</p>
 
-<p>$memcache = new Memcache;<br/>
-$memcache->addServer(&lsquo;localhost&rsquo;, 11213);<br/>
-$memcache->addServer(&lsquo;localhost&rsquo;, 11214);<br/>
-$memcache->addServer(&lsquo;localhost&rsquo;, 11215);<br/>
-$memStats = $memcache->getExtendedStats();<br/>
+<p>$memcache = new Memcache;<br />
+$memcache-&gt;addServer(‘localhost’, 11213);<br />
+$memcache-&gt;addServer(‘localhost’, 11214);<br />
+$memcache-&gt;addServer(‘localhost’, 11215);<br />
+$memStats = $memcache-&gt;getExtendedStats();<br />
 print_r($memStats);</p>
 
 <p>通过上例就已经实现Memcache的分布式部署，是不是非常简单。</p>
 
-<p><strong>分布式系统的良性运行</strong><br/>
+<p><strong>分布式系统的良性运行</strong><br />
 在Memcache的实际使用中，遇到的最严重的问题，就是在增减服务器的时候，会导致大范围的缓存丢失，从而可能会引导数据库的性能瓶颈，为了避免出现这种情况，请先看 <a href="http://en.wikipedia.org/wiki/Consistent_hashing">Consistent hashing</a>算法，中文的介绍可以参考 <a href="http://tech.idv2.com/2008/07/24/memcached-004/#content_2_6">这里</a>，通过存取时选定服务器算法的改变，来实现。</p>
 
 <p>修改PHP的Memcache扩展memcache.c的源代码中的</p>
 
-<p>&ldquo;memcache.hash_strategy&rdquo; = standard</p>
+<p>“memcache.hash_strategy” = standard</p>
 
 <p>为</p>
 
-<p>&ldquo;memcache.hash_strategy&rdquo; = consistent</p>
+<p>“memcache.hash_strategy” = consistent</p>
 
 <p>重新编译，这时候就是使用Consistent hashing算法来寻找服务器存取数据了。</p>
 
-<p>有效测试数据表明，使用Consistent hashing可以极大的改善增删Memcache时缓存大范围丢失的情况。<br/>
-NonConsistentHash: 92% of lookups changed after adding a target to the existing 10<br/>
-NonConsistentHash: 90% of lookups changed after removing 1 of 10 targets<br/>
-ConsistentHash: 6% of lookups changed after adding a target to the existing 10<br/>
+<p>有效测试数据表明，使用Consistent hashing可以极大的改善增删Memcache时缓存大范围丢失的情况。<br />
+NonConsistentHash: 92% of lookups changed after adding a target to the existing 10<br />
+NonConsistentHash: 90% of lookups changed after removing 1 of 10 targets<br />
+ConsistentHash: 6% of lookups changed after adding a target to the existing 10<br />
 ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
 </div>
 
@@ -216,6 +216,10 @@ ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -229,10 +233,6 @@ ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -252,6 +252,22 @@ ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

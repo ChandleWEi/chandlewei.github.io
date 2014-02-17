@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Perl | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/perl/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -18,7 +18,7 @@
     <link href="http://ChandleWEi.github.io/blog/2007/12/16/whats-new-in-perl-510%28%E8%83%8C%E5%BF%98%E5%9C%B0%E5%9D%80%29/"/>
     <updated>2007-12-16T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2007/12/16/whats-new-in-perl-510(背忘地址)</id>
-    <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/acme/whats-new-in-perl-510">http://www.slideshare.net/acme/whats-new-in-perl-510</a></p>
+    <content type="html"><![CDATA[<p>http://www.slideshare.net/acme/whats-new-in-perl-510</p>
 ]]></content>
   </entry>
   
@@ -34,11 +34,11 @@
 <p>Here’s how.</p>
 
 <ul>
-<li>Download the most recent Perl 5.10 RC from <a href="http://search.cpan.org/%7Ergarcia/">Rafael Garcia-Suarez’s CPAN directory</a>.
-
-<h2>&ndash; Unpack the tarball to a temporary directory where you can build software.</h2></li>
+  <li>Download the most recent Perl 5.10 RC from <a href="http://search.cpan.org/%7Ergarcia/">Rafael Garcia-Suarez’s CPAN directory</a>.</li>
+  <li>
+    <h2 id="unpack-the-tarball-to-a-temporary-directory-where-you-can-build-software">Unpack the tarball to a temporary directory where you can build software.</h2>
+  </li>
 </ul>
-
 
 <p>Configure Perl for building. I used the instructions in the <em>README</em> file and supplied an installation prefix. This is useful for testing, as it installs Perl and its core libraries beneath a single, specific directory:</p>
 
@@ -46,14 +46,17 @@
 </code></pre>
 
 <ul>
-<li><p>Build Perl. You need a <code>make</code> utility, but I assume that most people reading this either are familiar enough with building their software on their own platforms that I don’t have to mention it, or are my parents (Hi, Mom and Dad!) and just like to see what I do during the week:</p>
+  <li>
+    <p>Build Perl. You need a <code>make</code> utility, but I assume that most people reading this either are familiar enough with building their software on their own platforms that I don’t have to mention it, or are my parents (Hi, Mom and Dad!) and just like to see what I do during the week:</p>
 
-<p>  make<br/>
-make test # wait a few minutes here<br/>
-make install</p></li>
-<li><p>Optionally report success or failure with <code>make ok</code> or <code>make nok</code> . Success is most useful on slightly exotic platforms, but failures are interesting on any platform.</p></li>
+    <p>make<br />
+make test # wait a few minutes here<br />
+make install</p>
+  </li>
+  <li>
+    <p>Optionally report success or failure with <code>make ok</code> or <code>make nok</code> . Success is most useful on slightly exotic platforms, but failures are interesting on any platform.</p>
+  </li>
 </ul>
-
 
 <p>Now you have a nice shiny new Perl 5.10 built for your platform (or you’re waiting anxiously for a patch to come out to fix your test failures, but I can’t help you there here). It’s time to test your code with this new version of Perl.</p>
 
@@ -77,11 +80,8 @@ make install</p></li>
 
 <p>After installing the module, I re-ran <em>Build.PL</em> and tested my code as normal:</p>
 
-<pre><code>perl Build.PL  
+<pre><code>perl Build.PL   ./Build   ./Build test
 </code></pre>
-
-<p>./Build<br/>
-./Build test</p>
 
 <p>If you run into problems, check the RT queue available from the CPAN page of the distribution you’re trying to install. Most authors expect to receive bugs reported through that interface (though do check the documentation; some authors prefer standard e-mail).</p>
 

@@ -95,19 +95,18 @@
 
 
 <div class="entry-content"><ol>
-<li>AVPlayer can play from AVPlayerItem using AVURLAsset with an iPod library url. The AVAudioPlayer cannot play from an iPod library url.  </li>
-<li></li>
+  <li>AVPlayer can play from AVPlayerItem using AVURLAsset with an iPod library url. The AVAudioPlayer cannot play from an iPod library url.  </li>
+  <li></li>
 </ol>
-
 
 <p>AVPlayer has no volume property and requires the use of the system volume setting which can be controlled only by the hardware switch or an MPVolumeView. But you can set the mix volume of AVAudioPlayer.</p>
 
 <ol>
-<li></li>
+  <li></li>
 </ol>
 
-
 <p>AVPlayer seems to report an incorrect currentTime after seeking. But AVAudioPlayer reports accurately.</p>
+
 </div>
 
 
@@ -179,6 +178,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -192,10 +195,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -215,6 +214,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

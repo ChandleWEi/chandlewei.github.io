@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="wget -c http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb wget -c http://debian.cn99.com/debian/pool/main/n/neon27/ &hellip;">
+  <meta name="description" content="wget -c http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb
+wget -c http://debian.cn99.com/debian/pool/main/n/neon27/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,20 +95,20 @@
   </header>
 
 
-<div class="entry-content"><p>wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb  ">http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb  </a>
-wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnutls_0.28.2-6.1_i386.deb">http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnutls_0.28.2-6.1_i386.deb</a></p>
+<div class="entry-content"><p>wget -c http://debian.cn99.com/debian/pool/main/n/neon27/libneon27_0.28.2-6.1_i386.deb<br />
+wget -c http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnutls_0.28.2-6.1_i386.deb</p>
 
 <p>sudo dpkg -i libneon27_0.28.2-6.1_i386.deb</p>
 
 <p>sudo dpkg -i libneon27-gnutls_0.28.2-6.1_i386.deb</p>
 
-<p>sudo dpkg &mdash;get-selections * > selections.txt</p>
+<p>sudo dpkg –get-selections * &gt; selections.txt</p>
 
 <p> </p>
 
 <p>change install to hold</p>
 
-<p>sudo dpkg &mdash;set-selections &lt; selections.txt</p>
+<p>sudo dpkg –set-selections &lt; selections.txt</p>
 
 <p> </p>
 
@@ -177,6 +178,10 @@ wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnut
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -190,10 +195,6 @@ wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnut
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -213,6 +214,22 @@ wget -c <a href="http://debian.cn99.com/debian/pool/main/n/neon27/libneon27-gnut
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

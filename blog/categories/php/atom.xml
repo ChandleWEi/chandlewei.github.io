@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -20,24 +20,24 @@
     <id>http://ChandleWEi.github.io/blog/2007/12/12/XCache_php_加速_quick_guide</id>
     <content type="html"><![CDATA[<p>在网络想闲逛时候发现有人用做为嵌入开发的结构非常好奇
 以前只是试验过用c 的cgic模块来生成嵌入的 web应用可以得到良好的性能
-特别截流下以备忘</p>
+特别截流下以备忘  </p>
 
-<p>lhttpd+XCache+php+mysql</p>
+<p>lhttpd+XCache+php+mysql  </p>
 
 <p>[code]
-~/src $ wget <a href="http://...">http://...</a> (the release url)<br/>
-~/src $ tar -zxf xcache-*.tar.gz<br/>
-~/src $ cd xcache<br/>
-~/src/xcache $ phpize<br/>
-~/src/xcache $ ./configure &mdash;enable-xcache<br/>
-~/src/xcache $ make<br/>
-~/src/xcache $ su<br/>
-~/src/xcache # make install<br/>
-~/src/xcache # cat xcache.ini >> /etc/php.ini<br/>
-(it&rsquo;s two > not one)</p>
+~/src $ wget http://… (the release url)<br />
+~/src $ tar -zxf xcache-*.tar.gz<br />
+~/src $ cd xcache<br />
+~/src/xcache $ phpize<br />
+~/src/xcache $ ./configure –enable-xcache<br />
+~/src/xcache $ make<br />
+~/src/xcache $ su<br />
+~/src/xcache # make install<br />
+~/src/xcache # cat xcache.ini » /etc/php.ini<br />
+(it’s two &gt; not one)  </p>
 
-<p>(now edit /etc/php.ini with your favorite editor)<br/>
-~/src/xcache # $EDITOR /etc/php.ini<br/>
+<p>(now edit /etc/php.ini with your favorite editor)<br />
+~/src/xcache # $EDITOR /etc/php.ini<br />
 (make sure zend_extension=../../xcache.so is the first before any other zend_extension=***)[/code]</p>
 ]]></content>
   </entry>

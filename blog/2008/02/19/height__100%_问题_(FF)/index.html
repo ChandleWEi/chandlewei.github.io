@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="Firefox浏览器中使用“height: 100%”会固定其高度，而不是自动延伸成100%的高度，这个在IE浏览器中非常非常正常的一个CSS定义，到Firefox浏览器中就会有问题,  但是如果使用以下头定义 &lt;!DOCTYPE html PUBLIC &ldquo;&ndash;// &hellip;">
+  <meta name="description" content="Firefox浏览器中使用“height: 100%”会固定其高度，而不是自动延伸成100%的高度，这个在IE浏览器中非常非常正常的一个CSS定义，到Firefox浏览器中就会有问题,  但是如果使用以下头定义 &lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -98,7 +98,7 @@
 
 <p> 但是如果使用以下头定义</p>
 
-<p>&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Transitional//EN&rdquo; &ldquo;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>&rdquo;></p>
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”&gt;</p>
 
 <p>则会使不符合w3c的定义失效，所以今天碰的问题是</p>
 
@@ -176,6 +176,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -189,10 +193,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -212,6 +212,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

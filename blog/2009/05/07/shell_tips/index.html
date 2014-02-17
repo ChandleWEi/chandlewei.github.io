@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="find . -name &ldquo;*.[ch]&rdquo; -exec grep -i -H &ldquo;search pharse&rdquo; {} ;   lsof -i | grep -i estab
-">
+  <meta name="description" content="find . -name “*.[ch]” -exec grep -i -H “search pharse” {} ;   lsof -i grep -i estab ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,11 +94,18 @@
   </header>
 
 
-<div class="entry-content"><p>find . -name &ldquo;*.[ch]&rdquo; -exec grep -i -H &ldquo;search pharse&rdquo; {} ;</p>
+<div class="entry-content"><p>find . -name “*.[ch]” -exec grep -i -H “search pharse” {} ;</p>
 
 <p> </p>
 
-<p>lsof -i | grep -i estab</p>
+<table>
+  <tbody>
+    <tr>
+      <td>lsof -i</td>
+      <td>grep -i estab</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
 
@@ -171,6 +177,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -184,10 +194,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -207,6 +213,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

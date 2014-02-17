@@ -9,9 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="  本来想彻底的来一次lfs的，可惜实在是没有时间，所以就对gcc来了次小升级，gcc的编译安装是个非常头疼的事情，失败了好几次终于安装成功。下述安装过程在CentOS5上测试成功。。。   $ tar xvf gcc-4.2.3.tar.gz
-$ mkdir gcc-build
-$ cd &hellip;">
+  <meta name="description" content="##
+  本来想彻底的来一次lfs的，可惜实在是没有时间，所以就对gcc来了次小升级，gcc的编译安装是个非常头疼的事情，失败了好几次终于安装成功。下述安装过程在CentOS5上测试成功。。。   $ tar xvf gcc-4.2.3.tar.gz $ mkdir gcc-build $ cd &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,72 +95,116 @@ $ cd &hellip;">
   </header>
 
 
-<div class="entry-content"><h2></h2>
-
-<p> </p>
+<div class="entry-content"><p>##<br />
+ </p>
 
 <p>本来想彻底的来一次lfs的，可惜实在是没有时间，所以就对gcc来了次小升级，gcc的编译安装是个非常头疼的事情，失败了好几次终于安装成功。下述安装过程在CentOS5上测试成功。。。  </p>
 
 <ol>
-<li><p>$ tar xvf gcc-4.2.3.tar.gz</p></li>
-<li><p>$ mkdir gcc-build</p></li>
-<li><p>$ cd gcc-build</p></li>
-<li><p>$../gcc-4.2.3/configure &mdash;prefix=/usr/local/gcc-4.2.3   </p></li>
-<li><p>                        &mdash;enable-threads=posix &mdash;disable-checking   </p></li>
-<li><p>                        &mdash;enable&mdash;long-long   </p></li>
-<li><p>                        &mdash;host=i386-redhat-linux   </p></li>
-<li><p>                        &mdash;with-system-zlib   </p></li>
-<li><p>                        &mdash;enable-languages=c,c++,java</p></li>
-<li><p> </p></li>
-<li><p>$ make bootstrap                        //重复编译自身</p></li>
-<li><p>$ make -k check 2>&amp;1 | tee gcc-check-log//-k跳过错误重定向到gcc-check-log</p></li>
-<li><p>$ grep Error gcc-check-log              //查看错误信息</p></li>
-<li><h1>make install</h1></li>
+  <li>
+    <p>$ tar xvf gcc-4.2.3.tar.gz</p>
+  </li>
+  <li>
+    <p>$ mkdir gcc-build</p>
+  </li>
+  <li>
+    <p>$ cd gcc-build</p>
+  </li>
+  <li>
+    <p>$../gcc-4.2.3/configure –prefix=/usr/local/gcc-4.2.3   </p>
+  </li>
+  <li>
+    <p>                        –enable-threads=posix –disable-checking   </p>
+  </li>
+  <li>
+    <p>                        –enable–long-long   </p>
+  </li>
+  <li>
+    <p>                        –host=i386-redhat-linux   </p>
+  </li>
+  <li>
+    <p>                        –with-system-zlib   </p>
+  </li>
+  <li>
+    <p>                        –enable-languages=c,c++,java</p>
+  </li>
+  <li>
+    <p> </p>
+  </li>
+  <li>
+    <p>$ make bootstrap                        //重复编译自身</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>$ make -k check 2&gt;&amp;1</td>
+          <td>tee gcc-check-log//-k跳过错误重定向到gcc-check-log</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>$ grep Error gcc-check-log              //查看错误信息</p>
+  </li>
+  <li>
+    <h1 id="make-install">make install</h1>
+  </li>
 </ol>
 
+<p>若想重新编译 make clean 清除上次编译遗留下的文件  </p>
 
-<p>若想重新编译 make clean 清除上次编译遗留下的文件</p>
+<p><strong>uninstallation</strong>  </p>
 
-<p><strong>uninstallation</strong></p>
-
-<p>因为我的旧版是RPM包的，查看版本号 gcc &mdash;version 然后 rpm -e 删除了</p>
+<p>因为我的旧版是RPM包的，查看版本号 gcc –version 然后 rpm -e 删除了</p>
 
 <p>若旧版是用源码安装的，whereis gcc 或者 which gcc 来查看所在路径，删除即可</p>
 
-<p>工具链设置:</p>
+<p>工具链设置:  </p>
 
 <p>命令文件符号连接到 /usr/bin 目录下：</p>
 
 <ol>
-<li><p>$  cd /usr/bin</p></li>
-<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcc gcc</p></li>
-<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/g++ g++</p></li>
-<li><p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcj gcj</p></li>
+  <li>
+    <p>$  cd /usr/bin</p>
+  </li>
+  <li>
+    <p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcc gcc</p>
+  </li>
+  <li>
+    <p>$  ln -sv /usr/local/gcc-4.2.3/bin/g++ g++</p>
+  </li>
+  <li>
+    <p>$  ln -sv /usr/local/gcc-4.2.3/bin/gcj gcj</p>
+  </li>
 </ol>
 
-
-<p>库文件设置：</p>
+<p>库文件设置：  </p>
 
 <p>将/usr/local/gcc-4.2.3/lib 路径添加到环境变量LD_LIBRARY_PATH中</p>
 
 <ol>
-<li><h1>vi /etc/profile</h1></li>
+  <li>
+    <h1 id="vi-etcprofile">vi /etc/profile</h1>
+  </li>
 </ol>
 
+<p>添加下列代码  </p>
 
-<p>添加下列代码</p>
-
-<p>setenv LD_LIBRARY_PATH /usr/local/gcc-4.2.3/lib:$LD_LIBRARY_PATH</p>
+<p>setenv LD_LIBRARY_PATH /usr/local/gcc-4.2.3/lib:$LD_LIBRARY_PATH  </p>
 
 <p>清理现场</p>
 
 <ol>
-<li><p>$ rm -rf gcc-4.2.3</p></li>
-<li><p>$ rm -rf gcc-build</p></li>
+  <li>
+    <p>$ rm -rf gcc-4.2.3</p>
+  </li>
+  <li>
+    <p>$ rm -rf gcc-build</p>
+  </li>
 </ol>
 
-
-<p>要装binson</p>
+<p>要装binson  </p>
 </div>
 
 
@@ -233,6 +276,10 @@ $ cd &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -246,10 +293,6 @@ $ cd &hellip;">
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -269,6 +312,22 @@ $ cd &hellip;">
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

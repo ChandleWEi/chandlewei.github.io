@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="如果你有10,000,000个用户，每周需要給他们发送最新的推广邮件，你可能会从数据库中这样操作: User.each do |user| NewsLetter.weekly_deliver(user) end 但这样做会让ruby从数据库中一次取出10,000,000条数据，并创建10,000, &hellip;">
+  <meta name="description" content="如果你有10,000,000个用户，每周需要給他们发送最新的推广邮件，你可能会从数据库中这样操作: User.each do user NewsLetter.weekly_deliver(user) end 但这样做会让ruby从数据库中一次取出10,000,000条数据，并创建10,000, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,16 +96,42 @@
 
 <div class="entry-content"><p>如果你有10,000,000个用户，每周需要給他们发送最新的推广邮件，你可能会从数据库中这样操作:</p>
 
-<p>User.each do |user| NewsLetter.weekly_deliver(user) end</p>
+<table>
+  <tbody>
+    <tr>
+      <td>User.each do</td>
+      <td>user</td>
+      <td>NewsLetter.weekly_deliver(user) end</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>但这样做会让ruby从数据库中一次取出10,000,000条数据，并创建10,000,000个对象，服务器内存会大量消耗，因此这样做是不行的，<br/>
+<p>但这样做会让ruby从数据库中一次取出10,000,000条数据，并创建10,000,000个对象，服务器内存会大量消耗，因此这样做是不行的，<br />
 从rails 2.3开始你就可以使用find_each和find_in_batches方法了，这两个方法专门用于分批查询数据和处理，默认情况下 find_each和find_in_batches每次会查出1000条数据记录，你可以可以指定每次取出的数量:batch_size，</p>
 
-<p>User.find_each do |user| NewsLetter.weekly_deliver(user) end</p>
+<table>
+  <tbody>
+    <tr>
+      <td>User.find_each do</td>
+      <td>user</td>
+      <td>NewsLetter.weekly_deliver(user) end</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>find_in_batches是返还一个数据对象:</p>
 
-<p>User.find_in_batches(:batch_size => 5000) do |users| users.each { |user| NewsLetter.weekly_deliver(user) } end</p>
+<table>
+  <tbody>
+    <tr>
+      <td>User.find_in_batches(:batch_size =&gt; 5000) do</td>
+      <td>users</td>
+      <td>users.each {</td>
+      <td>user</td>
+      <td>NewsLetter.weekly_deliver(user) } end</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
 
@@ -177,6 +203,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -190,10 +220,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -213,6 +239,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

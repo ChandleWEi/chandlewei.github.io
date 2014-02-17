@@ -100,15 +100,15 @@ tv，电视机； &hellip;">
   </header>
 
 
-<div class="entry-content"><p>media=“”指定这个CSS用于何种设备。具体参数如下：</p>
+<div class="entry-content"><p>media=“”指定这个CSS用于何种设备。具体参数如下：  </p>
 
-<p>screen (缺省值)，提交到计算机屏幕；<br/>
-print， 输出到打印机；<br/>
-projection，提交到投影机；<br/>
-aural，扬声器；<br/>
-braille，提交到凸字触觉感知设备；<br/>
-tty，电传打字机 (使用固定的字体)；<br/>
-tv，电视机；<br/>
+<p>screen (缺省值)，提交到计算机屏幕；<br />
+print， 输出到打印机；<br />
+projection，提交到投影机；<br />
+aural，扬声器；<br />
+braille，提交到凸字触觉感知设备；<br />
+tty，电传打字机 (使用固定的字体)；<br />
+tv，电视机；<br />
 all，所有输出设备</p>
 </div>
 
@@ -181,6 +181,10 @@ all，所有输出设备</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -194,10 +198,6 @@ all，所有输出设备</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -217,6 +217,22 @@ all，所有输出设备</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

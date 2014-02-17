@@ -99,18 +99,18 @@
   </header>
 
 
-<div class="entry-content"><p>因为是要对大表做数据的水平拆分，将数据拆分到多个数据库上，有几个重要的问题需要思考：<br/>
-1.怎么把在ORACLE中几十亿的数据按规则迁到mysql集群中；<br/>
-2.如何产生主键唯一值；<br/>
-3.大表根据规则拆成小表，具体拆分粒度是多少？每个库多少表？<br/>
-4.如何解决这么多库这么多表的路由问题；<br/>
-5.如何解决跨库的merge与sort；<br/>
-6.如何对连接进行管理；<br/>
-7.如何做数据订正；<br/>
-8.我们需要开发哪些集群管理工具，比如说建表工具；<br/>
-9.集群遇到停电怎么办？<br/>
-10.如何对集群中的数据进行历史迁移？<br/>
-11.尽管集群采用廉价的PC，但具体采用何种PC,差别还是挺大的，如何平衡集群的规模与可管理性方面的问题?<br/>
+<div class="entry-content"><p>因为是要对大表做数据的水平拆分，将数据拆分到多个数据库上，有几个重要的问题需要思考：<br />
+1.怎么把在ORACLE中几十亿的数据按规则迁到mysql集群中；<br />
+2.如何产生主键唯一值；<br />
+3.大表根据规则拆成小表，具体拆分粒度是多少？每个库多少表？<br />
+4.如何解决这么多库这么多表的路由问题；<br />
+5.如何解决跨库的merge与sort；<br />
+6.如何对连接进行管理；<br />
+7.如何做数据订正；<br />
+8.我们需要开发哪些集群管理工具，比如说建表工具；<br />
+9.集群遇到停电怎么办？<br />
+10.如何对集群中的数据进行历史迁移？<br />
+11.尽管集群采用廉价的PC，但具体采用何种PC,差别还是挺大的，如何平衡集群的规模与可管理性方面的问题?<br />
 12.集群对机房电力的消耗与机柜占用问题?</p>
 </div>
 
@@ -183,6 +183,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -196,10 +200,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -219,6 +219,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

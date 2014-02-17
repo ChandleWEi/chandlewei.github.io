@@ -10,8 +10,8 @@
 
   
   <meta name="description" content="Some useful references about C:
- &lt; http://www.ungerhu.com/jxh/clc.welcome.txt>
- &lt; http://c-faq.com/>                                       (C- &hellip;">
+ &lt; http://www.ungerhu.com/jxh/clc.welcome.txt&gt;
+ &lt; http://c-faq.com/&gt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,20 +96,20 @@
   </header>
 
 
-<div class="entry-content"><p>Some useful references about C:<br/>
- &lt; <a href="http://www.ungerhu.com/jxh/clc.welcome.txt">http://www.ungerhu.com/jxh/clc.welcome.txt</a>><br/>
- &lt; <a href="http://c-faq.com/">http://c-faq.com/</a>>                                       (C-faq)<br/>
- &lt; <a href="http://benpfaff.org/writings/clc/off-topic.html">http://benpfaff.org/writings/clc/off-topic.html</a>><br/>
- &lt; <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf</a>> (C99)<br/>
- &lt; <a href="http://cbfalconer.home.att.net/download/n869_txt.bz2">http://cbfalconer.home.att.net/download/n869_txt.bz2</a>>  (pre-C99)<br/>
- &lt; <a href="http://www.dinkumware.com/c99.aspx">http://www.dinkumware.com/c99.aspx</a>>                  (C-library}<br/>
- &lt; <a href="http://gcc.gnu.org/onlinedocs/">http://gcc.gnu.org/onlinedocs/</a>>                       (GNU docs)<br/>
- &lt; <a href="http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction">http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction</a>><br/>
- &lt; <a href="http://clc-wiki.net/wiki/Introduction_to_comp.lang.c">http://clc-wiki.net/wiki/Introduction_to_comp.lang.c</a>></p>
+<div class="entry-content"><p>Some useful references about C:<br />
+ &lt; <a href="http://www.ungerhu.com/jxh/clc.welcome.txt">http://www.ungerhu.com/jxh/clc.welcome.txt</a>&gt;<br />
+ &lt; <a href="http://c-faq.com/">http://c-faq.com/</a>&gt;                                       (C-faq)<br />
+ &lt; <a href="http://benpfaff.org/writings/clc/off-topic.html">http://benpfaff.org/writings/clc/off-topic.html</a>&gt;<br />
+ &lt; <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf</a>&gt; (C99)<br />
+ &lt; <a href="http://cbfalconer.home.att.net/download/n869_txt.bz2">http://cbfalconer.home.att.net/download/n869_txt.bz2</a>&gt;  (pre-C99)<br />
+ &lt; <a href="http://www.dinkumware.com/c99.aspx">http://www.dinkumware.com/c99.aspx</a>&gt;                  (C-library}<br />
+ &lt; <a href="http://gcc.gnu.org/onlinedocs/">http://gcc.gnu.org/onlinedocs/</a>&gt;                       (GNU docs)<br />
+ &lt; <a href="http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction">http://clc-wiki.net/wiki/C_community:comp.lang.c:Introduction</a>&gt;<br />
+ &lt; <a href="http://clc-wiki.net/wiki/Introduction_to_comp.lang.c">http://clc-wiki.net/wiki/Introduction_to_comp.lang.c</a>&gt;</p>
 
-<p><a href="http://clc-wiki.net/wiki/K%26R2_solutions">http://clc-wiki.net/wiki/K%26R2_solutions</a></p>
+<p>http://clc-wiki.net/wiki/K%26R2_solutions</p>
 
-<p><a href="http://c-faq.com/">http://c-faq.com/</a></p>
+<p>http://c-faq.com/</p>
 
 <p>gdb</p>
 
@@ -119,7 +119,7 @@
 
 <p>书</p>
 
-<p>C: A Reference Manual&#8221; by Harbison &amp; Steele</p>
+<p>C: A Reference Manual” by Harbison &amp; Steele</p>
 
 <p> </p>
 </div>
@@ -187,6 +187,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -200,10 +204,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -223,6 +223,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

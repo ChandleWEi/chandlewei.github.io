@@ -96,55 +96,42 @@
 
 <div class="entry-content"><p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fwww.hiadmin.com%2F%3Ffeed%3Drss2">架构研究室</a> 作者：John.Lv</p>
 
-<p>由于最近刚接手一批oracle数据库服务器，只能使用指定用户oracle进行相关操作。而且ssh没有做public key，并且也没有权限做ssh的public key，使用shell脚本居然问我一次又一次的要密码，怎么脚本自动化？没办法，只能使用expect来实现了。<br/>
+<p>由于最近刚接手一批oracle数据库服务器，只能使用指定用户oracle进行相关操作。而且ssh没有做public key，并且也没有权限做ssh的public key，使用shell脚本居然问我一次又一次的要密码，怎么脚本自动化？没办法，只能使用expect来实现了。<br />
 一般使用ssh的public key的ssh脚本如下：</p>
 
-<h1>!/bin/sh</h1>
-
-<p>servers=<code>cat /etc/hosts | grep -v ^# | grep ^192.168.1 | cut -f1</code><br/>
-username=&ldquo;oracle&#8221;<br/>
-echo exec cmd all&hellip;<br/>
-for server in $servers; do<br/>
-        echo &rdquo;##########################################&ldquo;<br/>
-        echo $server<br/>
-        ssh  $username@$server $1<br/>
-        echo &rdquo;##########################################&ldquo;<br/>
-done<br/>
-wait<br/>
+<h1 id="binsh">!/bin/sh</h1>
+<p>servers=<code>cat /etc/hosts | grep -v ^# | grep ^192.168.1 | cut -f1</code><br />
+username=”oracle”<br />
+echo exec cmd all…<br />
+for server in $servers; do<br />
+        echo “##########################################”<br />
+        echo $server<br />
+        ssh  $username@$server $1<br />
+        echo “##########################################”<br />
+done<br />
+wait<br />
 echo complete!</p>
 
-<p>上面是shell脚本，这里就不多解释了，相信大家都能看明白。$1可以是运行命令也可以执行脚本，随便你，只要你喜欢！<br/>
+<p>上面是shell脚本，这里就不多解释了，相信大家都能看明白。$1可以是运行命令也可以执行脚本，随便你，只要你喜欢！<br />
 如果不允许或者没有权限使用ssh的public key，那么只能使用expect进行ssh自动交互了</p>
 
-<h1>!/usr/bin/expect</h1>
-
-<p>set username &ldquo;oracle&rdquo;</p>
-
-<h1>ssh的用户名</h1>
-
-<p>set passwd &ldquo;oracle11&rdquo;</p>
-
-<h1>ssh的密码</h1>
-
-<p>set servers [exec cat /etc/hosts | grep -v ^# | grep ^192.168.1 | cut -f1]</p>
-
-<h1>读取hosts中要访问的主机</h1>
-
-<p>foreach server $servers {</p>
-
-<h1>循环</h1>
-
-<p>spawn ssh $username@$server &ldquo;[lindex $argv 0]&rdquo;;</p>
-
-<h1>执行ssh，注意expect中输入的第一个变量用$argv 0表示。</h1>
-
-<p>expect &ldquo;*password: &rdquo;;<br/>
-sleep .1;<br/>
-send &ldquo;$passwd&rdquo;;</p>
-
-<h1>当出现提示输入密码时，自动输入密码</h1>
-
-<p>interact;<br/>
+<h1 id="usrbinexpect">!/usr/bin/expect</h1>
+<p>set username “oracle”<br />
+#ssh的用户名<br />
+set passwd “oracle11”<br />
+#ssh的密码<br />
+set servers [exec cat /etc/hosts | grep -v ^# | grep ^192.168.1 | cut -f1]<br />
+#读取hosts中要访问的主机<br />
+foreach server $servers {<br />
+#循环<br />
+spawn ssh $username@$server “[lindex $argv 0]”;<br />
+#执行ssh，注意expect中输入的第一个变量用$argv 0表示。<br />
+expect “*password: “;<br />
+sleep .1;<br />
+send “$passwd
+“;<br />
+#当出现提示输入密码时，自动输入密码<br />
+interact;<br />
 }</p>
 
 <p>ok，这样指定的一般用户在ssh且不能使用key时就不用一次次输入密码了。</p>
@@ -219,6 +206,10 @@ send &ldquo;$passwd&rdquo;;</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -232,10 +223,6 @@ send &ldquo;$passwd&rdquo;;</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -255,6 +242,22 @@ send &ldquo;$passwd&rdquo;;</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

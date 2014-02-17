@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -18,20 +18,20 @@
     <link href="http://ChandleWEi.github.io/blog/2009/08/17/zz_%E5%8F%AA%E7%AE%A1%E5%8E%BB%E5%81%9A-%E7%94%A8emacs%E7%9A%84org-mode%E5%81%9A%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
     <updated>2009-08-17T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/08/17/zz_只管去做-用emacs的org-mode做时间管理</id>
-    <content type="html"><![CDATA[<h1><a href="http://blog.chinaunix.net/u1/50920/showart_424394.html">[zz]只管去做-用emacs的org-mode做时间管理 </a></h1>
+    <content type="html"><![CDATA[<h1 id="zz-emacsorg-mode-httpblogchinaunixnetu150920showart424394html"><a href="http://blog.chinaunix.net/u1/50920/showart_424394.html">[zz]只管去做-用emacs的org-mode做时间管理 </a></h1>
 
-<h3>wheer</h3>
+<h3 id="wheer">wheer</h3>
 
-<h1>目录</h1>
+<h1 id="section">目录</h1>
 
-<p><a href="http://cnlox.is-programmer.com/#tth_sEc1">1  序</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc2">2  收集、处理</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc3">3  规划、执行</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc4">4  回顾、简化</a><br/>
-  <a href="http://cnlox.is-programmer.com/#tth_sEc5">5  反省、激情</a><br/>
+<p><a href="http://cnlox.is-programmer.com/#tth_sEc1">1  序</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc2">2  收集、处理</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc3">3  规划、执行</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc4">4  回顾、简化</a><br />
+  <a href="http://cnlox.is-programmer.com/#tth_sEc5">5  反省、激情</a><br />
   <a href="http://cnlox.is-programmer.com/#tth_sEc6">6  完结</a></p>
 
-<h2>1  序</h2>
+<h2 id="section-1">1  序</h2>
 
 <p>用org-mode有一周了，期间翻了翻戴维·艾伦的《尽管去做-无压工作的艺术》(getting things done, GTD)一书，感觉这个理念很有意思，我喜欢。</p>
 
@@ -40,47 +40,45 @@
 <p>那究竟是什么地方出了问题呢，至少有几点：</p>
 
 <ol>
-<li>自上而下列举事项的方式可能让你照顾不到一些细微不入流的事项，而这些事在任何一天都有可能爆发</li>
-<li>你列出的事有些不是必须当天做的，强制列上会牵制你的精力</li>
-<li>一般的时间管理只列出了你很少一部分而不是全部要操心的事，仍然有大量琐事在你心中萦绕，影响工作效率</li>
-<li>任何临时突发事件均使得你先前的安排作费</li>
+  <li>自上而下列举事项的方式可能让你照顾不到一些细微不入流的事项，而这些事在任何一天都有可能爆发</li>
+  <li>你列出的事有些不是必须当天做的，强制列上会牵制你的精力</li>
+  <li>一般的时间管理只列出了你很少一部分而不是全部要操心的事，仍然有大量琐事在你心中萦绕，影响工作效率</li>
+  <li>任何临时突发事件均使得你先前的安排作费</li>
 </ol>
-
 
 <p>而GTD的出现正是针对以上几点的。在正式进入正题之间，我们应该先确立一些理念，因为要做好任何事都是需要信仰的(正如开源、Emacs、LATEX，没有信仰是坚持不下来的:)，具体如下</p>
 
 <ol>
-<li>心中装的事情越少，工作效率越高</li>
-<li>事情极少由于时间匮乏而受阻(尽管每个人都这么认为)，它们陷入困境往往是由于一开始不知道如何采取行动而造成的</li>
-<li>自下而上地将所有可能萦绕在你心中的事列出来，用一个可靠的外部体系来替你管理它们</li>
-<li>收集自己所有的想法，只鼓励不打击，追求数量不求质量</li>
-<li>经常回顾、整理那个外部体系，分析每件事并确定下一步行动</li>
+  <li>心中装的事情越少，工作效率越高</li>
+  <li>事情极少由于时间匮乏而受阻(尽管每个人都这么认为)，它们陷入困境往往是由于一开始不知道如何采取行动而造成的</li>
+  <li>自下而上地将所有可能萦绕在你心中的事列出来，用一个可靠的外部体系来替你管理它们</li>
+  <li>收集自己所有的想法，只鼓励不打击，追求数量不求质量</li>
+  <li>经常回顾、整理那个外部体系，分析每件事并确定下一步行动</li>
 </ol>
 
+<h2 id="section-2">2  收集、处理</h2>
 
-<h2>2  收集、处理</h2>
-
-<p>根据只管去做(GTD)的理念，你需要一个可靠的外部系统来接管所有可能扰乱你心绪的事情，而你的心中应该是无所牵挂，可以"只管去做"的。</p>
+<p>根据只管去做(GTD)的理念，你需要一个可靠的外部系统来接管所有可能扰乱你心绪的事情，而你的心中应该是无所牵挂，可以”只管去做”的。</p>
 
 <p>在这里，org-mode自然就是那个可靠的外部系统了，这在emacs23下是自带的，稍稍在.emacs下加点配置</p>
 
-<p>(add-to-list 'auto-mode-alist '(&ldquo;.org$" . org-mode))<br/>
-(define-key global-map "C-cl" 'org-store-link)<br/>
-(define-key global-map "C-ca" 'org-agenda)<br/>
-(setq org-hide-leading-stars t)<br/>
-(setq org-log-done t)</p>
+<p>(add-to-list ’auto-mode-alist ’(“.org$” . org-mode))<br />
+(define-key global-map ”C-cl” ’org-store-link)<br />
+(define-key global-map ”C-ca” ’org-agenda)<br />
+(setq org-hide-leading-stars t)<br />
+(setq org-log-done t)  </p>
 
 <p>下面就正式开始吧，先建个文件夹，如 /.org/，在里面新建org文件，比如与工作无关的个人事务都放在self.org里，它的大概样子如下(第一行以后再解释)：</p>
 
-<p>+TAGS: EASY(e) COMM&copy; OFFICE(o) READ&reg; URGENT(u) FUTURE(f) WAIT(w) MEMO(m)<br/>
-* 阅读、充电<br/>
-** 计算机<br/>
-* 强身健体<br/>
-** 力量、健美<br/>
-** 有氧运动<br/>
-* 人际关系<br/>
-* Basket<br/>
-** 临时篮子</p>
+<p>+TAGS: EASY(e) COMM(c) OFFICE(o) READ(r) URGENT(u) FUTURE(f) WAIT(w) MEMO(m)<br />
+* 阅读、充电<br />
+** 计算机<br />
+* 强身健体<br />
+** 力量、健美<br />
+** 有氧运动<br />
+* 人际关系<br />
+* Basket<br />
+** 临时篮子  </p>
 
 <p>然后就开始静下心来，耐心地，自下而上地将你所有萦绕于心中的所有事情转移到这个系统中去。记住是所有，不要留任何隐患，所有具体不具体的，成熟不成熟的都要写下来，总之就是不要让它再幽魂不散地骚扰你的心境了。</p>
 
@@ -88,71 +86,71 @@
 
 <p>以下仍然只是个示例：</p>
 
-<h1>+TAGS: EASY(e) COMM&copy; OFFICE(o) READING&reg; URGENT(u) FUTURE(f) WAIT(w) MEMO(m)</h1>
-
-<p>* 阅读、充电<br/>
-** 养成阅读习惯<br/>
-*** 没有条件创造条件也要上，晚上远离电脑两个小时，去图书馆 :EASY:<br/>
-*** TODO 下载感兴趣的jar电子书传到手机上，利用一切间隙看<br/>
-** 计算机<br/>
-*** 阅读&lt;Mastering Algorithms with perl>         :FUTURE:<br/>
-*** 学习blender三维建模                         :FUTURE:<br/>
-** 英语<br/>
-*** 千万别学英语                                 :EASY:<br/>
-  - [ ] 每天反复听同一盒磁带<br/>
-  - [ ] 反复听一个月后听写、跟读<br/>
-* 强身健体<br/>
-** 力量、健美<br/>
-*** TODO 去趟天成买对哑铃                         :EASY:<br/>
-** 有氧运动<br/>
-*** 去八达岭残长城转转<br/>
-*** 参加一次1.3+级的穿越<br/>
-*** 骑车绕北京城半圈<br/>
-* 人际关系<br/>
-*** 好久没见老同学了<br/>
-* Basket<br/>
-** 临时篮子<br/>
-*** 文献中心二楼的研究生自习室很好，很强大         :MEMO:<br/>
-*** 提高一下表达、写作能力                         :URGENT:<br/>
-*** 提高演讲能力                                 :FUTURE:<br/>
-*** 阅读&lt;哲学的故事>                             :READING:</p>
+<h1 id="tagseasyecommcofficeoreadingrurgentufuturefwaitwmemom">+TAGS: EASY(e) COMM(c) OFFICE(o) READING(r) URGENT(u) FUTURE(f) WAIT(w) MEMO(m)</h1>
+<p>* 阅读、充电<br />
+** 养成阅读习惯<br />
+*** 没有条件创造条件也要上，晚上远离电脑两个小时，去图书馆 :EASY:<br />
+*** TODO 下载感兴趣的jar电子书传到手机上，利用一切间隙看<br />
+** 计算机<br />
+*** 阅读&lt;Mastering Algorithms with perl&gt;         :FUTURE:<br />
+*** 学习blender三维建模                         :FUTURE:<br />
+** 英语<br />
+*** 千万别学英语                                 :EASY:<br />
+  - [ ] 每天反复听同一盒磁带<br />
+  - [ ] 反复听一个月后听写、跟读<br />
+* 强身健体<br />
+** 力量、健美<br />
+*** TODO 去趟天成买对哑铃                         :EASY:<br />
+** 有氧运动<br />
+*** 去八达岭残长城转转<br />
+*** 参加一次1.3+级的穿越<br />
+*** 骑车绕北京城半圈<br />
+* 人际关系<br />
+*** 好久没见老同学了<br />
+* Basket<br />
+** 临时篮子<br />
+*** 文献中心二楼的研究生自习室很好，很强大         :MEMO:<br />
+*** 提高一下表达、写作能力                         :URGENT:<br />
+*** 提高演讲能力                                 :FUTURE:<br />
+*** 阅读<哲学的故事>                             :READING:  </哲学的故事></p>
 
 <p>所有事项都以*开头，*数目代表了级数，org-mode其实就是一种outline mode，带*的是outline项。org-mode支持对outline项作以下操作(鼠标在outline项上)：</p>
 
 <ol>
-<li>TAB折叠、打开子项，Shift-TAB折叠、打开整个文档</li>
-<li>C-c C-c指定当前项标签，如上面的:URGENT:, :MEMO:等，方便以后分类查找</li>
-<li>M-左右方向键减/增*数目</li>
-<li>M-上下方向键移动当前项位置</li>
-<li>C-c C-t设定当前项状态为TODO DONE或空白</li>
-<li>C-c C-s规划时间(只建议用于约会或非此时不可的情形)</li>
-<li>C-c C-d设定最后期限(deadline)</li>
+  <li>TAB折叠、打开子项，Shift-TAB折叠、打开整个文档</li>
+  <li>C-c C-c指定当前项标签，如上面的:URGENT:, :MEMO:等，方便以后分类查找</li>
+  <li>M-左右方向键减/增*数目</li>
+  <li>M-上下方向键移动当前项位置</li>
+  <li>C-c C-t设定当前项状态为TODO DONE或空白</li>
+  <li>C-c C-s规划时间(只建议用于约会或非此时不可的情形)</li>
+  <li>C-c C-d设定最后期限(deadline)</li>
 </ol>
-
 
 <p>好了，现在假设你现在已经有了一个长达几百行的列表，千万别让它就这么堆着，那样你就前功尽弃了，好不容易从脑中清除出来的东西可能过不多久又重新萦绕在你脑中。你现在要做的便是清理你放在这个你所依赖的系统里的所有信息，具体过程如下:</p>
 
 <ol>
-<li>逐一处理，马上作出决定，不要积压</li>
-<li>如果认定是垃圾，删除</li>
-<li>如果可委派别人，委派出去，将该项标签设为:WAIT:，这个标签下的事情都不用你干(爽吧)</li>
-<li>2分钟可完成的立刻干掉</li>
-<li>应该尽快采取行动但超过2分钟的，C-c C-t设为TODO</li>
-<li>这是一件不具体的事务(如养成阅读习惯)，那么确定如何实施下一步(创造条件，下载jar书)</li>
-<li>也许在将来再做的事设标签为:FUTURE:</li>
-<li>不要剩余有未处理的事项，以后注意随时添加，及时检查处理(比如前面的例子就还有四、五项未处理，不应该)</li>
+  <li>逐一处理，马上作出决定，不要积压</li>
+  <li>如果认定是垃圾，删除</li>
+  <li>如果可委派别人，委派出去，将该项标签设为:WAIT:，这个标签下的事情都不用你干(爽吧)</li>
+  <li>2分钟可完成的立刻干掉</li>
+  <li>应该尽快采取行动但超过2分钟的，C-c C-t设为TODO</li>
+  <li>这是一件不具体的事务(如养成阅读习惯)，那么确定如何实施下一步(创造条件，下载jar书)</li>
+  <li>也许在将来再做的事设标签为:FUTURE:</li>
+  <li>不要剩余有未处理的事项，以后注意随时添加，及时检查处理(比如前面的例子就还有四、五项未处理，不应该)</li>
 </ol>
 
-
-<h2>3  规划、执行</h2>
-
-<blockquote><p>一个大学讲师在上课的时候带了一袋沙子、一袋小鹅卵石、几块大石头和一个木桶，问有没有人能把这几种不同形状的东西都装进木桶。一个热心的学生自告奋勇走 上讲台随手抓起沙袋就往木桶里倒，然后把小鹅卵石也放了进去，但是轮到大石头的时候，他发现木桶里的空间已经不够了。讲师遗憾地摇了摇头。他把木桶清空 了，先把那几块大石头放进木桶，再把小鹅卵石放进去，然后倒入沙子。最后他摇了摇木桶，只见这三种不同形状的东西配合得天衣无缝，把木桶挤得满满的。</p></blockquote>
+<h2 id="section-3">3  规划、执行</h2>
+<blockquote>
+  <p>一个大学讲师在上课的时候带了一袋沙子、一袋小鹅卵石、几块大石头和一个木桶，问有没有人能把这几种不同形状的东西都装进木桶。一个热心的学生自告奋勇走 上讲台随手抓起沙袋就往木桶里倒，然后把小鹅卵石也放了进去，但是轮到大石头的时候，他发现木桶里的空间已经不够了。讲师遗憾地摇了摇头。他把木桶清空 了，先把那几块大石头放进木桶，再把小鹅卵石放进去，然后倒入沙子。最后他摇了摇木桶，只见这三种不同形状的东西配合得天衣无缝，把木桶挤得满满的。</p>
+</blockquote>
 
 <p>我们做规划的第一个原则是优先放置大石头，每周前把一周要做的重要事情在org-mode中将其优先级设为最高(shift+上下键设定每项的优化 级)，但设定的事情尽量要少，因为这些事情是必须完成而且应尽早完成的。至于要不要一开始就设定日期，就看个人喜好了，有人在时限压力下工作更好，有人则 会产生焦虑，但一般GTD不建议一开始将日期都定好（当然一些本身具有时限性的事情除外)。</p>
 
 <p>然后是每天的规划了，同样是应当确定大石头，一般是两到三件最重要的事，在org-mode中C-c C-s将其规划到当天，并且优先级设为最高(shift+上下键设定每项的优化级)，事情应该描述得尽量具体，且保证当天能完成(完不成就细化)。然后就 是尽早搞定你大石头了，一定不要找延误的理由，做完后表扬一下自己。至于其它事务，你一高兴当然会多少顺便做一些的，不是么？等一段时间后回头你就会发现 不少事在不知不觉中就完成了，特别是重要的事都没延误。</p>
 
-<blockquote><p>如果你有定力地全神贯注投入工作几个小时，一定会比不断分心的工作一天取得更多的成果。一般进入专注状态需要15分钟时间，所以 能保持专注状态的外界环境和心理环境十分重要。进入专注状态前花几分钟清空头脑中萦绕的琐事(写到org中)，总比你进入专注状态后再被干扰要好。</p></blockquote>
+<blockquote>
+  <p>如果你有定力地全神贯注投入工作几个小时，一定会比不断分心的工作一天取得更多的成果。一般进入专注状态需要15分钟时间，所以 能保持专注状态的外界环境和心理环境十分重要。进入专注状态前花几分钟清空头脑中萦绕的琐事(写到org中)，总比你进入专注状态后再被干扰要好。</p>
+</blockquote>
 
 <p>至于执行，不用说，当然越专注越好，一次只做一件事，而做事时头脑中的琐事已经被事先清理出去了。另外，尽可能改善你的工作环境。</p>
 
@@ -161,45 +159,42 @@
 <p>至于扫描清单，因为列表太长了，自然org-mode会贴心地提供一系列帮助你查找的方法：</p>
 
 <ol>
-<li>C-c /: 在当前org中按关键词查看，比如你可查找某个tag如office：C-c / <ret> office <ret></li>
-<li>C-c a a: 日程表，在日程表状态下，d或w为按日或周查看，.为跳到当日，左右键为前后一天(周)</li>
-<li>C-c a t: 列出所有TODO，每项上按中键可跳到对应的org，至于其中的操作也很方便，自己看菜单了解一下吧</li>
-<li>C-c a m: 根据tag来查找，这就是一开始每件事都要用标签定性的原因，这时候查就方便了，比如你要办公室就查office，要外出就看看trip中有什么可顺便完 成的事，觉得头脑发胀要换思路就查查有什么easy的事，如果想气使颐指一下就看看wait中别人有什么事没给你做完，正豪情万丈中就看看future中 有什么伟大的规划&hellip;.</li>
-<li>c-a a M: 根据tag来查找，但只针对TODO项</li>
-<li>另外C-a a C可以自定义一些查找方式，自己试试吧</li>
+  <li>C-c /: 在当前org中按关键词查看，比如你可查找某个tag如office：C-c / <ret> office <ret></ret></ret></li>
+  <li>C-c a a: 日程表，在日程表状态下，d或w为按日或周查看，.为跳到当日，左右键为前后一天(周)</li>
+  <li>C-c a t: 列出所有TODO，每项上按中键可跳到对应的org，至于其中的操作也很方便，自己看菜单了解一下吧</li>
+  <li>C-c a m: 根据tag来查找，这就是一开始每件事都要用标签定性的原因，这时候查就方便了，比如你要办公室就查office，要外出就看看trip中有什么可顺便完 成的事，觉得头脑发胀要换思路就查查有什么easy的事，如果想气使颐指一下就看看wait中别人有什么事没给你做完，正豪情万丈中就看看future中 有什么伟大的规划….</li>
+  <li>c-a a M: 根据tag来查找，但只针对TODO项</li>
+  <li>另外C-a a C可以自定义一些查找方式，自己试试吧</li>
 </ol>
 
-
-<h2>4  回顾、简化</h2>
+<h2 id="section-4">4  回顾、简化</h2>
 
 <p>这里的回顾不是指周末或每天晚上的反省，而是对目标和org-mode中所记录的所有事情的回顾。</p>
 
 <p>每周回顾的重要意义在此: 它给了你一次机会, 来重新整理所有的事情并检视什么是最重要的任务。 以下是GTD每周回顾的一些步骤：</p>
 
 <ol>
-<li>回顾你的长期目标，中期目标和短期目标</li>
-<li>将没归类的(一般集中放在最后，或者平时用纸记着)、还没确定下一步是什么的事情逐一处理、具体化，加上标签(C-c C-c)，归入相应情境</li>
-<li>C-c a a 看看日程表，看看有什么约会或有deadline的事</li>
-<li>按每种情境(C-c a m)查看任务清单，心里有数</li>
-<li>设定大石头，但不着急放到每一天</li>
+  <li>回顾你的长期目标，中期目标和短期目标</li>
+  <li>将没归类的(一般集中放在最后，或者平时用纸记着)、还没确定下一步是什么的事情逐一处理、具体化，加上标签(C-c C-c)，归入相应情境</li>
+  <li>C-c a a 看看日程表，看看有什么约会或有deadline的事</li>
+  <li>按每种情境(C-c a m)查看任务清单，心里有数</li>
+  <li>设定大石头，但不着急放到每一天</li>
 </ol>
-
 
 <p>至于每一天开始时的回顾，最重要的就是先设定三件最重要的事了，三件就行了，而且描述得尽量具体可行，尽量在早晨就完成，这样在反省时不至于觉得当天没做什么。还有就是三块大石头中应当有一件与你的中长期目标或人生规划相关，这样能增进成就感。</p>
 
 <p>再有就是简化，因为GTD始终原则就是保证你能专注地只管去做一件事。它建立一个系统帮助你把头绪里的琐事清理出来就是为了你专注，它不提前把乱七 八糟的事安排满你的日程也是为了你专注，它每天只在日程中定三件事同样是为了你专注。那么你的org-mode中列表那么长是不是有点影响你的专注了哈， 那就简化它吧。</p>
 
 <ol>
-<li>清除。有时候我们认真权衡一下会发现很多事是没必要做或可以拖延的，还有很多事2分钟就搞定了，这些都清除或搞定之</li>
-<li>对你的目标足够明确，然后结合你的目标来筛选，同样还有可清除的</li>
-<li>减少你的承诺</li>
-<li>把能堆一起的波速堆一起，合适时突击全部完成</li>
-<li>永远只在当日日程中只安排三件事，最重要的三件，而且有一件与你的中长期规划有关</li>
-<li>将 一些琐碎的东西分离出去，比如我的日程表(C-c a)只搜索两个org文件:work.org, self.org，但我可以还有其它一堆org文件，比如是某门学科或某本书的研习计划(顺便说一下用org做学习笔记不错，比如可先列出书中章节，每章 节下面用 &ndash; [ ] Question 的形式列出所有要了解的问题，了解每一项后更新问题答案并C-c C-c之使其变成 &ndash; [X] Answer 的形式) 对于分离出去的org文件，可以用[[file:name.org][description]]的形式来相互链接。事实上, org提供的链接功能很强，甚至可用shell命令。</li>
+  <li>清除。有时候我们认真权衡一下会发现很多事是没必要做或可以拖延的，还有很多事2分钟就搞定了，这些都清除或搞定之</li>
+  <li>对你的目标足够明确，然后结合你的目标来筛选，同样还有可清除的</li>
+  <li>减少你的承诺</li>
+  <li>把能堆一起的波速堆一起，合适时突击全部完成</li>
+  <li>永远只在当日日程中只安排三件事，最重要的三件，而且有一件与你的中长期规划有关</li>
+  <li>将 一些琐碎的东西分离出去，比如我的日程表(C-c a)只搜索两个org文件:work.org, self.org，但我可以还有其它一堆org文件，比如是某门学科或某本书的研习计划(顺便说一下用org做学习笔记不错，比如可先列出书中章节，每章 节下面用 - [ ] Question 的形式列出所有要了解的问题，了解每一项后更新问题答案并C-c C-c之使其变成 - [X] Answer 的形式) 对于分离出去的org文件，可以用[[file:name.org][description]]的形式来相互链接。事实上, org提供的链接功能很强，甚至可用shell命令。</li>
 </ol>
 
-
-<h2>5  反省、激情</h2>
+<h2 id="section-5">5  反省、激情</h2>
 
 <p>用GTD或者org-mode做时间管理的根本目的就是要掌控自己的生活，既不要被一些毫无意义的事情耽延，也不要陷入看起来没完没了的工作中被消磨掉所有锐气。</p>
 
@@ -207,51 +202,51 @@
 
 <p>为了充分反省，不妨新建个review.org，没必要加入日程表中，内容示例如下，当然究竟写成什么样必须根据你个人情况来，自己构想来的系统用起来才真正有效：</p>
 
-<p>* REVIEW<br/>
-** 每日反思<br/>
- - [ ] 今天我有什么样的付出？我是用什么的方式付出？<br/>
- - [ ] 今天三块大石头是什么？哪项与我的人生规划有关？都放下了吗？没有的话，下一步是什么？<br/>
-    - [ ] 1.<br/>
-    - [ ] 2.<br/>
-    - [ ] 3.<br/>
- - [ ] 今天我学到了什么？<br/>
- - [ ] 今天我给自己的人生提高了什么品质？对于未来，我在今天作了什么样的投资？<br/>
-** 周末反思<br/>
- - [ ] 这周的规划都完成？效果如何？<br/>
- - [ ] 这周的工作有没有陷入手忙脚乱中？哪些需要调整？<br/>
- - [ ] 这周的工作状态是不是专注？是什么事情让我分神或担忧？怎么消除？<br/>
- - [ ] 这周有什么事情坚持每天做了(如背英语文章、看书、培养某项习惯等)？如果没有，为什么不坚持？<br/>
-** 感觉无趣时反思一下<br/>
- - [ ] 此刻人生中有什么让我觉得快乐？让我快乐到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么让我觉得振奋？让我振奋到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么让我觉得感激？让我感激到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么让我觉得欣赏？让我欣赏到什么程度？带给我什么样的感受？<br/>
- - [ ] 此刻人生中有什么值得我努力的？让我努力到什么程度？带给我什么样的感受？<br/>
- - [ ] 我喜欢什么样的人？什么的人喜欢我？让我喜欢到什么程度？带给我什么样的感受？</p>
+<p>* REVIEW<br />
+** 每日反思<br />
+ - [ ] 今天我有什么样的付出？我是用什么的方式付出？<br />
+ - [ ] 今天三块大石头是什么？哪项与我的人生规划有关？都放下了吗？没有的话，下一步是什么？<br />
+    - [ ] 1.<br />
+    - [ ] 2.<br />
+    - [ ] 3.<br />
+ - [ ] 今天我学到了什么？<br />
+ - [ ] 今天我给自己的人生提高了什么品质？对于未来，我在今天作了什么样的投资？<br />
+** 周末反思<br />
+ - [ ] 这周的规划都完成？效果如何？<br />
+ - [ ] 这周的工作有没有陷入手忙脚乱中？哪些需要调整？<br />
+ - [ ] 这周的工作状态是不是专注？是什么事情让我分神或担忧？怎么消除？<br />
+ - [ ] 这周有什么事情坚持每天做了(如背英语文章、看书、培养某项习惯等)？如果没有，为什么不坚持？<br />
+** 感觉无趣时反思一下<br />
+ - [ ] 此刻人生中有什么让我觉得快乐？让我快乐到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么让我觉得振奋？让我振奋到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么让我觉得感激？让我感激到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么让我觉得欣赏？让我欣赏到什么程度？带给我什么样的感受？<br />
+ - [ ] 此刻人生中有什么值得我努力的？让我努力到什么程度？带给我什么样的感受？<br />
+ - [ ] 我喜欢什么样的人？什么的人喜欢我？让我喜欢到什么程度？带给我什么样的感受？  </p>
 
 <p>最后很重要的一点就是做你想做的事。试想你每天在做的每一件事都是你所喜欢做的，那么你肯定会愿意付出更多努力来做你想做的事的，也就是说，耽延自 然就会少了，事情也就几乎不可能被堆积下来(前面不止一次说过，事情没完成永远不会是因为时间不够，要么是你不知道下一步怎么走，要么就是你根本没走)</p>
 
-<p>你也许会笑："做我想做的事，说得轻巧，由得了我吗？"那么我问你，你知道你究竟想做什么吗？如果你知道了，你知道下步是什么吗？你所说的下一步已经具体到马上可以执行了吗？如果以上你的回答都是，那么为什么不去做呢？</p>
+<p>你也许会笑：”做我想做的事，说得轻巧，由得了我吗？”那么我问你，你知道你究竟想做什么吗？如果你知道了，你知道下步是什么吗？你所说的下一步已经具体到马上可以执行了吗？如果以上你的回答都是，那么为什么不去做呢？</p>
 
 <p>比如说你现在的工作烦透了，是该反省做改变的时候了，那就在review.org后面加上：</p>
 
-<p>** 我要找份喜欢的工作<br/>
-*** 调查<br/>
-  - [ ] 有谁在从事你心仪的工作？<br/>
-  - [ ] 他们是如何得到这份工作的？<br/>
-  - [ ] 获取这份工作有什么要求与标准？或者说绊脚石是什么？<br/>
-      - [ ] 一份更高的学位?<br/>
-      - [ ] 一份不错的工作经验?<br/>
-      - [ ] 或者其他的技能？<br/>
-*** 设定计划：想出一些有用的方法去解决你的绊脚石<br/>
-  - [ ] 进修、培训<br/>
-  - [ ] 求教，有意积累相关经验<br/>
-  - [ ] 自学<br/>
-*** 开始行动, 不要等待<br/>
-  - [ ] 每天反省：我有没除掉了哪颗绊脚石或向目标迈进了一步？下一步是什么？<br/>
-  - [ ] 每周反省：我有没有坚持不懈？下面该怎么走？</p>
+<p>** 我要找份喜欢的工作<br />
+*** 调查<br />
+  - [ ] 有谁在从事你心仪的工作？<br />
+  - [ ] 他们是如何得到这份工作的？<br />
+  - [ ] 获取这份工作有什么要求与标准？或者说绊脚石是什么？<br />
+      - [ ] 一份更高的学位?<br />
+      - [ ] 一份不错的工作经验?<br />
+      - [ ] 或者其他的技能？<br />
+*** 设定计划：想出一些有用的方法去解决你的绊脚石<br />
+  - [ ] 进修、培训<br />
+  - [ ] 求教，有意积累相关经验<br />
+  - [ ] 自学<br />
+*** 开始行动, 不要等待<br />
+  - [ ] 每天反省：我有没除掉了哪颗绊脚石或向目标迈进了一步？下一步是什么？<br />
+  - [ ] 每周反省：我有没有坚持不懈？下面该怎么走？  </p>
 
-<h2>6  完结</h2>
+<h2 id="section-6">6  完结</h2>
 
 <p>GTD(只管去做)是我在搜索org-mode时无意中看到的，其实也是粗粗看了一下，可能远未得精髓，但还是挺喜欢这套理论的，包括org-mode也挺合我品味，不仅用来做日常计划，还读书笔记、学习计划和学习笔记都用它了。</p>
 
@@ -263,40 +258,40 @@
 
 <p>最后说一下org-mode是可以导出为html或text的(还有xoxo格式其实也是html，自己试试看吧)。但默认的html样式实在不怎样，好在可自定义，先在.emacs上加：</p>
 
-<p>(defcustom org-export-html-style<br/>
-&ldquo;&lt;link rel="stylesheet" type="text/css" href="wheer.css&rdquo;>&ldquo; &rdquo;&ldquo;<br/>
-  :group 'org-export-html<br/>
-  :type 'string)</p>
+<p>(defcustom org-export-html-style<br />
+“&lt;link rel=”stylesheet” type=”text/css” href=”wheer.css”&gt;” ””  
+  :group ’org-export-html<br />
+  :type ’string)  </p>
 
 <p>然后输出的html就可以用自定义的css了，以下只是个示例：</p>
 
-<p>html {font-family: Times, serif;font-size: 12pt;}<br/>
-.title,.author { display:none; }<br/>
-.todo { color: red; }<br/>
-.done { color: green; }<br/>
-.timestamp { color: grey }<br/>
-.timestamp-kwd { color: CadetBlue }<br/>
-.tag { background-color:lightblue; font-weight:normal }<br/>
-.target { background-color: lavender; }<br/>
-pre {border: 1pt solid #AEBDCC;background-color: #F3F5F7;<br/>
-    padding: 5pt;font-family: courier, monospace;}<br/>
-table { border-collapse: collapse; }<br/>
-td, th {vertical-align: top;border: 1pt solid #ADB9CC;}<br/>
-h2{ margin: 5px 0 10px 0;background-color: #AEC5CE; font-size:1.5em;}<br/>
-h3{ margin: 0px 0px 5px 0;padding: 5px 5px 5px 10px;<br/>
-    font-size:1.2em; border-top: solid 1px #9AB7C2;<br/>
-    border-bottom: solid 1px #9AB7C2; font-variant: small-caps; }<br/>
-h4{ color: black; margin: 3px 0px 5px 0px;<br/>
-  padding: 3px 5px 3px 15px; font-size: 1em;}<br/>
-h5{ color: black; margin: 3px 0px 3px 0px;<br/>
-  padding: 3px 5px 3px 25px; font-size: 1em;}<br/>
-p{ margin:0px 10px 0px 18px; }</p>
+<p>html {font-family: Times, serif;font-size: 12pt;}<br />
+.title,.author { display:none; }<br />
+.todo { color: red; }<br />
+.done { color: green; }<br />
+.timestamp { color: grey }<br />
+.timestamp-kwd { color: CadetBlue }<br />
+.tag { background-color:lightblue; font-weight:normal }<br />
+.target { background-color: lavender; }<br />
+pre {border: 1pt solid #AEBDCC;background-color: #F3F5F7;<br />
+    padding: 5pt;font-family: courier, monospace;}<br />
+table { border-collapse: collapse; }<br />
+td, th {vertical-align: top;border: 1pt solid #ADB9CC;}<br />
+h2{ margin: 5px 0 10px 0;background-color: #AEC5CE; font-size:1.5em;}<br />
+h3{ margin: 0px 0px 5px 0;padding: 5px 5px 5px 10px;<br />
+    font-size:1.2em; border-top: solid 1px #9AB7C2;<br />
+    border-bottom: solid 1px #9AB7C2; font-variant: small-caps; }<br />
+h4{ color: black; margin: 3px 0px 5px 0px;<br />
+  padding: 3px 5px 3px 15px; font-size: 1em;}<br />
+h5{ color: black; margin: 3px 0px 3px 0px;<br />
+  padding: 3px 5px 3px 25px; font-size: 1em;}<br />
+p{ margin:0px 10px 0px 18px; }  </p>
 
 <p> </p>
 
 <hr />
 
-<p>File translated from TEX by <a href="http://hutchinson.belmont.ma.us/tth/"> TTH</a>, version 3.80.<br/>
+<p>File translated from TEX by <a href="http://hutchinson.belmont.ma.us/tth/"> TTH</a>, version 3.80.<br />
 On 9 Aug 2009, 11:35.</p>
 ]]></content>
   </entry>
@@ -306,7 +301,7 @@ On 9 Aug 2009, 11:35.</p>
     <link href="http://ChandleWEi.github.io/blog/2009/04/01/emacs_%E5%8F%AF%E4%BB%A5%E6%9B%B4%E6%96%B0%E5%88%B0_23.0.92%E4%BA%86/"/>
     <updated>2009-04-01T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/01/emacs_可以更新到_23.0.92了</id>
-    <content type="html"><![CDATA[<p>GNU Emacs 23.0.92.1 (i686-pc-linux-gnu, GTK+ Version 2.14.7)<br/>
+    <content type="html"><![CDATA[<p>GNU Emacs 23.0.92.1 (i686-pc-linux-gnu, GTK+ Version 2.14.7)<br />
  of 2009-04-01 on ChandleWEi</p>
 
 <p>么什么改变，看了下changelog 变化不大，边用边体验</p>
@@ -318,13 +313,13 @@ On 9 Aug 2009, 11:35.</p>
     <link href="http://ChandleWEi.github.io/blog/2008/10/16/cool_theme_about_emacs/"/>
     <updated>2008-10-16T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/10/16/cool_theme_about_emacs</id>
-    <content type="html"><![CDATA[<p>CFLAGS=-O3 ./configure &mdash;without-pop  &mdash;without-sound &mdash;without-sync-input &mdash;without-xpm &mdash;without-jpeg &mdash;without-tiff &mdash;without-gif &mdash;without-png &mdash;without-rsvg  &mdash;without-toolkit-scroll-bars &mdash;without-xaw3d &mdash;without-xim &mdash;without-gpm &mdash;without-dbus    &amp;&amp; make &amp;&amp; sudo make install</p>
+    <content type="html"><![CDATA[<p>CFLAGS=-O3 ./configure –without-pop  –without-sound –without-sync-input –without-xpm –without-jpeg –without-tiff –without-gif –without-png –without-rsvg  –without-toolkit-scroll-bars –without-xaw3d –without-xim –without-gpm –without-dbus    &amp;&amp; make &amp;&amp; sudo make install  </p>
 
 <p> </p>
 
 <p> </p>
 
-<p><a href="http://redartisan.com/2008/5/27/twilight-emacs">http://redartisan.com/2008/5/27/twilight-emacs</a></p>
+<p>http://redartisan.com/2008/5/27/twilight-emacs</p>
 ]]></content>
   </entry>
   
@@ -333,7 +328,8 @@ On 9 Aug 2009, 11:35.</p>
     <link href="http://ChandleWEi.github.io/blog/2008/09/04/%E6%94%B9%E5%8F%98comment%E7%9A%84%E8%AE%BE%E7%BD%AE/"/>
     <updated>2008-09-04T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/09/04/改变comment的设置</id>
-    <content type="html"><![CDATA[<p>(set (make-local-variable &lsquo;comment-auto-fill-only-comments) t)</p>
+    <content type="html"><![CDATA[<p>(set (make-local-variable ‘comment-auto-fill-only-comments) t)  </p>
+
 ]]></content>
   </entry>
   
@@ -344,11 +340,8 @@ On 9 Aug 2009, 11:35.</p>
     <id>http://ChandleWEi.github.io/blog/2008/08/06/emacs_混乱的cvs</id>
     <content type="html"><![CDATA[<p> 笔记本坏了重装emacs,么想到以前用的cvs有问题，混乱的cvs</p>
 
-<pre><code>sudo apt-get install build-essential  
+<pre><code>sudo apt-get install build-essential   sudo apt-get build-dep emacs21   sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgtk2.0-dev  
 </code></pre>
-
-<p>sudo apt-get build-dep emacs21<br/>
-sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgtk2.0-dev</p>
 
 <p>cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/emacs co emacs</p>
 
@@ -362,7 +355,7 @@ sudo apt-get install xserver-xorg-dev xorg-dev libncurses5 libncurses5-dev libgt
 <pre><code>make bootstrap
 </code></pre>
 
-<p>make &amp;&amp; make install</p>
+<p>make &amp;&amp; make install  </p>
 
 <p> </p>
 ]]></content>

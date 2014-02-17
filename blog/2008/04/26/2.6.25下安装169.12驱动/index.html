@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="转自nvidia forum  重新安装 #169.12的驱动，因为除了173.08其他的nvidia驱动并不能在2.6.25下安装所以要打patch   sh /path/to/NVIDIA-Linux-x86-169.12-pkg2.run &mdash;apply-patch /path/ &hellip;">
+  <meta name="description" content="转自nvidia forum  重新安装 #169.12的驱动，因为除了173.08其他的nvidia驱动并不能在2.6.25下安装所以要打patch   sh /path/to/NVIDIA-Linux-x86-169.12-pkg2.run –apply-patch /path/to/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,15 +102,15 @@
 
 <p>sh /path/to/NVIDIA-Linux-x86-169.12-pkg2.run</p>
 
-<p>&mdash;apply-patch /path/to/NVIDIA_kernel-169.12-2286310.diff.txt</p>
+<p>–apply-patch /path/to/NVIDIA_kernel-169.12-2286310.diff.txt</p>
 
-<h1>sh NVIDIA-Linux-x86-169.12-pkg2-custom.run</h1>
+<h1 id="sh-nvidia-linux-x86-16912-pkg2-customrun">sh NVIDIA-Linux-x86-169.12-pkg2-custom.run</h1>
 
 <p> </p>
 
 <p>patch下载地址</p>
 
-<p><a href="http://www.nvnews.net/vbulletin/attachment.php?attachmentid=30771&amp;d=1205875946">http://www.nvnews.net/vbulletin/attachment.php?attachmentid=30771&amp;d=1205875946</a></p>
+<p>http://www.nvnews.net/vbulletin/attachment.php?attachmentid=30771&amp;d=1205875946</p>
 
 <p>果然在恢复169.12后emacs gtk恢复正常了 </p>
 
@@ -188,6 +188,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -201,10 +205,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -224,6 +224,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

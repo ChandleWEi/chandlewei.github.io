@@ -94,7 +94,7 @@
   </header>
 
 
-<div class="entry-content"><p>deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-updates main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-updates main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-backports main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-backports main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-security main restricted universe multiverse deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-security main restricted universe multiverse deb <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-proposed main multiverse restricted universe deb-src <a href="http://ubuntu.csie.ntu.edu.tw/ubuntu/">http://ubuntu.csie.ntu.edu.tw/ubuntu/</a> hardy-proposed main restricted universe multiverse</p>
+<div class="entry-content"><p>deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-updates main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-updates main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-backports main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-backports main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-security main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-security main restricted universe multiverse deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-proposed main multiverse restricted universe deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy-proposed main restricted universe multiverse</p>
 </div>
 
 
@@ -166,6 +166,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -179,10 +183,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -202,6 +202,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

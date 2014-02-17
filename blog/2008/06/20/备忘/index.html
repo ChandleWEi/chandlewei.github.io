@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="For more information on JSON go to http://www.json.org/.
-MIME is specified in five RFC documents, so it is much more convenient to point you to a &hellip;">
+  <meta name="description" content="For more information on JSON go to http://www.json.org/. MIME is specified in five RFC documents, so it is much more convenient to point you to a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,20 +95,19 @@ MIME is specified in five RFC documents, so it is much more convenient to point 
 
 
 <div class="entry-content"><ol>
-<li>For more information on JSON go to <a href="http://www.json.org/.">http://www.json.org/.</a></li>
-<li>MIME is specified in five RFC documents, so it is much more convenient to point you to a<br/>
-rather good description of MIME provided by Wikipedia at <a href="http://en.wikipedia.org/  ">http://en.wikipedia.org/  </a>
-wiki/MIME.</li>
-<li>For a full list of HTTP status codes, consult the spec at <a href="http://www.w3.org/  ">http://www.w3.org/  </a>
-Protocols/rfc2616/rfc2616-sec10.html.</li>
-<li>Heiko Webers has the best write-up about sanitizing filenames at<br/>
-<a href="http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/.">http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/.</a></li>
-<li>See the official spec at <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.</a></li>
-<li>See <a href="http://www.mnot.net/cache_docs/">http://www.mnot.net/cache_docs/</a> for an overview of web caching.</li>
-<li>Ben Curtis writes up an excellent approach to securing downloads at<br/>
-<a href="http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails/.">http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails/.</a></li>
+  <li>For more information on JSON go to http://www.json.org/.  </li>
+  <li>MIME is specified in five RFC documents, so it is much more convenient to point you to a<br />
+rather good description of MIME provided by Wikipedia at http://en.wikipedia.org/<br />
+wiki/MIME.  </li>
+  <li>For a full list of HTTP status codes, consult the spec at http://www.w3.org/<br />
+Protocols/rfc2616/rfc2616-sec10.html.  </li>
+  <li>Heiko Webers has the best write-up about sanitizing filenames at<br />
+http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/.  </li>
+  <li>See the official spec at http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.  </li>
+  <li>See http://www.mnot.net/cache_docs/ for an overview of web caching.  </li>
+  <li>Ben Curtis writes up an excellent approach to securing downloads at<br />
+http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails/.</li>
 </ol>
-
 </div>
 
 
@@ -181,6 +179,10 @@ Protocols/rfc2616/rfc2616-sec10.html.</li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -194,10 +196,6 @@ Protocols/rfc2616/rfc2616-sec10.html.</li>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -217,6 +215,22 @@ Protocols/rfc2616/rfc2616-sec10.html.</li>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

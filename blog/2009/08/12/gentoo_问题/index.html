@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="1.修改 use 后怎么重新编译单个包 2.列出 app-benchmarks/ 类似目录下的所有软件包   check process lighttpd with pidfile /var/run/lighttpd.pid
-start program = &ldquo;/etc/init.d/ &hellip;">
+start program = “/etc/init.d/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,19 +101,19 @@ start program = &ldquo;/etc/init.d/ &hellip;">
 
 <p> </p>
 
-<p>check process lighttpd with pidfile /var/run/lighttpd.pid<br/>
-start program = &ldquo;/etc/init.d/lighttpd start&#8221;<br/>
-stop program = &rdquo;/etc/init.d/lighttpd stop&#8221;<br/>
-if cpu > 60% for 2 cycles then alert<br/>
-if cpu > 80% for 5 cycles then restart<br/>
-if totalmem > 200.0 MB for 5 cycles then restart<br/>
-if children > 250 then restart<br/>
-if loadavg(5min) greater than 10 for 8 cycles then stop<br/>
-if failed host 127.0.0.1 port 82 protocol http<br/>
-then restart<br/>
-if failed host 127.0.0.1 port 443 type tcpssl protocol http<br/>
-with timeout 15 seconds<br/>
-then restart<br/>
+<p>check process lighttpd with pidfile /var/run/lighttpd.pid<br />
+start program = “/etc/init.d/lighttpd start”<br />
+stop program = “/etc/init.d/lighttpd stop”<br />
+if cpu &gt; 60% for 2 cycles then alert<br />
+if cpu &gt; 80% for 5 cycles then restart<br />
+if totalmem &gt; 200.0 MB for 5 cycles then restart<br />
+if children &gt; 250 then restart<br />
+if loadavg(5min) greater than 10 for 8 cycles then stop<br />
+if failed host 127.0.0.1 port 82 protocol http<br />
+then restart<br />
+if failed host 127.0.0.1 port 443 type tcpssl protocol http<br />
+with timeout 15 seconds<br />
+then restart<br />
 if 3 restarts within 5 cycles then timeout</p>
 </div>
 
@@ -180,6 +180,10 @@ if 3 restarts within 5 cycles then timeout</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -193,10 +197,6 @@ if 3 restarts within 5 cycles then timeout</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -216,6 +216,22 @@ if 3 restarts within 5 cycles then timeout</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

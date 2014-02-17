@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Css | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/css/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -25,8 +25,8 @@
     
 </div>
 
-
 <p> </p>
+
 ]]></content>
   </entry>
   
@@ -37,10 +37,10 @@
     <id>http://ChandleWEi.github.io/blog/2009/04/10/css__备忘</id>
     <content type="html"><![CDATA[<p>text-decoration</p>
 
-<p>none :　 默认值。无装饰<br/>
-blink :　 闪烁<br/>
-underline :　 下划线<br/>
-line-through :　 贯穿线<br/>
+<p>none :　 默认值。无装饰<br />
+blink :　 闪烁<br />
+underline :　 下划线<br />
+line-through :　 贯穿线<br />
 overline :　 上划线</p>
 ]]></content>
   </entry>
@@ -54,7 +54,7 @@ overline :　 上划线</p>
 
 <p> 但是如果使用以下头定义</p>
 
-<p>&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Transitional//EN&rdquo; &ldquo;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>&rdquo;></p>
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”&gt;</p>
 
 <p>则会使不符合w3c的定义失效，所以今天碰的问题是</p>
 

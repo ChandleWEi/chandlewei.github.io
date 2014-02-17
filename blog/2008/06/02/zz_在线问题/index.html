@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="  http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/%C2%A0 Rails &ndash; How to find out who is online Posted by matt on December &hellip;">
+  <meta name="description" content="  http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/  Rails - How to find out who is online Posted by matt on December 13, 2006 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,9 +96,17 @@
 
 <div class="entry-content"><p> </p>
 
-<p><a href="http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/%C2%A0">http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/%C2%A0</a></p>
+<p>http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/ </p>
 
-<p>Rails &ndash; How to find out who is online Posted by matt on December 13, 2006 Well, this is my first post. I was frustrated in to starting this blog, through searching the internet for solutions to various programming problems, and finding either nothing, or only half the answer. Hopefully I will be able to help others solve some of their problems faster. Recently I have been writing a dating site in ruby on rails. One quite important feature of this site is a list of members who are currently online. After a couple of days of pain, here’s the pretty simple solution to the problem: First off this only works if you use ActiveRecord to manage your sessions. To do this you must uncomment the following line in your environment.rb file: config.action_controller.session_store = :active_record_store Then create the sessions table by running the following command from your RAILS_ROOT: rake db:sessions:create Now, whenever a user logs in to your application add their id to the session. In my app at the moment it looks something like this: member = Member.new( @params[ :member ] ) member = Member.find( :all, :conditions => &ldquo;screen_name = &lsquo;#{member.screen_name}&rsquo; AND password = &lsquo;#{member.password}&rsquo;&rdquo; ) if member != nil session[ :member_id ] = member.id redirect_to :action => &lsquo;success&rsquo; else redirect_to :action => &lsquo;form&rsquo; end This code will need work for a production environment, for one thing it is open to SQL injection attacks. Now to find all of the users who are currently online it is just a matter of searching the sessions table for all the users who have been active in the last 10 minutes. This can be done using rails built in session model. Finally the session data needs to be unmarshaled and decoded. This stumped me for a while, but finally I found the answer at <a href="http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html.">http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html.</a> So here is my code to return an array of the member_ids of all the members online and active within the last 10 minutes. def who_is_online @whos_online = Array.new() onlines = CGI::Session::ActiveRecordStore::Session.find( :all, :conditions => [ &lsquo;updated_at = ?&rsquo;, Time.now() &ndash; 10.minutes ] ) onlines.each do |online| id = Marshal.load( Base64.decode64( online.data ) ) @whos_online &lt;&lt; id[ :member_id ] end return @whos_online end * Posted in Ruby on Rails * Meta 10 comments, permalink, rss</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Rails - How to find out who is online Posted by matt on December 13, 2006 Well, this is my first post. I was frustrated in to starting this blog, through searching the internet for solutions to various programming problems, and finding either nothing, or only half the answer. Hopefully I will be able to help others solve some of their problems faster. Recently I have been writing a dating site in ruby on rails. One quite important feature of this site is a list of members who are currently online. After a couple of days of pain, here’s the pretty simple solution to the problem: First off this only works if you use ActiveRecord to manage your sessions. To do this you must uncomment the following line in your environment.rb file: config.action_controller.session_store = :active_record_store Then create the sessions table by running the following command from your RAILS_ROOT: rake db:sessions:create Now, whenever a user logs in to your application add their id to the session. In my app at the moment it looks something like this: member = Member.new( @params[ :member ] ) member = Member.find( :all, :conditions =&gt; “screen_name = ‘#{member.screen_name}’ AND password = ‘#{member.password}’” ) if member != nil session[ :member_id ] = member.id redirect_to :action =&gt; ‘success’ else redirect_to :action =&gt; ‘form’ end This code will need work for a production environment, for one thing it is open to SQL injection attacks. Now to find all of the users who are currently online it is just a matter of searching the sessions table for all the users who have been active in the last 10 minutes. This can be done using rails built in session model. Finally the session data needs to be unmarshaled and decoded. This stumped me for a while, but finally I found the answer at http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html. So here is my code to return an array of the member_ids of all the members online and active within the last 10 minutes. def who_is_online @whos_online = Array.new() onlines = CGI::Session::ActiveRecordStore::Session.find( :all, :conditions =&gt; [ ‘updated_at = ?’, Time.now() - 10.minutes ] ) onlines.each do</td>
+      <td>online</td>
+      <td>id = Marshal.load( Base64.decode64( online.data ) ) @whos_online « id[ :member_id ] end return @whos_online end * Posted in Ruby on Rails * Meta 10 comments, permalink, rss</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
 
@@ -170,6 +178,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -183,10 +195,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -206,6 +214,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

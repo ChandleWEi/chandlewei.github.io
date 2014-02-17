@@ -96,24 +96,24 @@ sudo apt- &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Indexing pdf files and do fast search</p>
+<div class="entry-content"><p>Indexing pdf files and do fast search  </p>
 
-<p>Reference site:<br/>
-<a href="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html" title="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html">http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html</a></p>
+<p>Reference site:<br />
+<a href="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html" title="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html">http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html</a>  </p>
 
-<p>Prerequisite:<br/>
-sudo apt-get install swish++</p>
+<p>Prerequisite:<br />
+sudo apt-get install swish++  </p>
 
-<p>Step 1 Convert pdf to text files separately<br/>
-find -name ‘*.pdf’ -exec pdftotext -nopgbrk -q {} ;</p>
+<p>Step 1 Convert pdf to text files separately<br />
+find -name ‘*.pdf’ -exec pdftotext -nopgbrk -q {} ;  </p>
 
-<p>Step 2 Using swish++ to index text files<br/>
-index++ -e “text:*.txt” .<br/>
-or using the verbose mode<br/>
-index++ -v3 -e “text:*.txt” .</p>
+<p>Step 2 Using swish++ to index text files<br />
+index++ -e “text:*.txt” .<br />
+or using the verbose mode<br />
+index++ -v3 -e “text:*.txt” .  </p>
 
-<p>Step 3 Search using keywords<br/>
-search++ [keyword_1<em>] and [keyword_2</em>] &hellip;. not [keyword_n_]</p>
+<p>Step 3 Search using keywords<br />
+search++ [keyword<em>1</em>] and [keyword<em>2</em>] …. not [keyword_n_]  </p>
 </div>
 
 
@@ -185,6 +185,10 @@ search++ [keyword_1<em>] and [keyword_2</em>] &hellip;. not [keyword_n_]</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -198,10 +202,6 @@ search++ [keyword_1<em>] and [keyword_2</em>] &hellip;. not [keyword_n_]</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -221,6 +221,22 @@ search++ [keyword_1<em>] and [keyword_2</em>] &hellip;. not [keyword_n_]</p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

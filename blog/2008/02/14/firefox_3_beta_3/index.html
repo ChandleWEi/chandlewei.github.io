@@ -98,7 +98,7 @@
 
 <p>sudo make &amp;&amp; sudo make install</p>
 
-<p>wget -c <a href="http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.0b3/source/firefox-3.0b3-source.tar.bz2">http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.0b3/source/firefox-3.0b3-source.tar.bz2</a></p>
+<p>wget -c http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.0b3/source/firefox-3.0b3-source.tar.bz2</p>
 
 <p> </p>
 
@@ -108,7 +108,7 @@
 
 <p>sudo apt-get install libdbus-glib-1-dev libcurl4-openssl-dev -y</p>
 
-<p>./configure &mdash;prefix=/usr/local/firefox-3.0b3 &mdash;enable-application=browser</p>
+<p>./configure –prefix=/usr/local/firefox-3.0b3 –enable-application=browser</p>
 
 <p>make  &amp;&amp; make install</p>
 
@@ -190,6 +190,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -203,10 +207,6 @@
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -226,6 +226,22 @@
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

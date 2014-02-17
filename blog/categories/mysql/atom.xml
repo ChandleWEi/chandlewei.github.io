@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mysql | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-17T12:51:33+08:00</updated>
+  <updated>2014-02-17T14:08:06+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -18,59 +18,59 @@
     <link href="http://ChandleWEi.github.io/blog/2010/09/13/zz_%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%89%BE%E5%87%BA%E8%B0%81%E6%8C%81%E6%9C%89%E9%94%81/"/>
     <updated>2010-09-13T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2010/09/13/zz_高性能MySQL读书笔记：找出谁持有锁</id>
-    <content type="html"><![CDATA[<h2></h2>
+    <content type="html"><![CDATA[<p>##  </p>
 
 <p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fhi.baidu.com%2Fthinkinginlamp%2Frss">老王的技术手册</a> 作者：thinkinginlamp</p>
 
 <p>有 15 人喜欢此条目</p>
 
-<p>作者：老王</p>
+<p>作者：老王  </p>
 
-<p>周末重读了一遍《高性能MySQL》，发现有些知识点看过便忘了，没有实际动手操作一遍就是记不牢，所以今天动手操作了一下“找出谁持有锁”，并把实验步骤记录下来，有兴趣的网友可以参照一二。</p>
+<p>周末重读了一遍《高性能MySQL》，发现有些知识点看过便忘了，没有实际动手操作一遍就是记不牢，所以今天动手操作了一下“找出谁持有锁”，并把实验步骤记录下来，有兴趣的网友可以参照一二。  </p>
 
-<p>问题的背景：在实际使用MySQL时，如果访问量比较大，那么很可能会出现大量Locked状态的进程，但是却不能方便的识别是哪条SQL引起的问题，很 多人遇到此类问题时，多半是通过PhpMyAdmin查询可疑SQL，然后KILL掉，但问题是可疑SQL可能会很多，这样逐一尝试太过笨拙，有的人一怒 之下很可能会重启MySQL，但如此治标不治本的方法肯定更不可取。</p>
+<p>问题的背景：在实际使用MySQL时，如果访问量比较大，那么很可能会出现大量Locked状态的进程，但是却不能方便的识别是哪条SQL引起的问题，很 多人遇到此类问题时，多半是通过PhpMyAdmin查询可疑SQL，然后KILL掉，但问题是可疑SQL可能会很多，这样逐一尝试太过笨拙，有的人一怒 之下很可能会重启MySQL，但如此治标不治本的方法肯定更不可取。  </p>
 
-<p>开始实验，在test数据库先建立一个测试表foo（注意：是InnoDB表类型），添加若干数据：</p>
+<p>开始实验，在test数据库先建立一个测试表foo（注意：是InnoDB表类型），添加若干数据：  </p>
 
-<p>CREATE TABLE IF NOT EXISTS <code>foo</code> (<br/>
-<code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br/>
-<code>str</code> varchar(100) NOT NULL,<br/>
-PRIMARY KEY (<code>id</code>)<br/>
-) ENGINE=InnoDB;</p>
+<p>CREATE TABLE IF NOT EXISTS <code>foo</code> (<br />
+<code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br />
+<code>str</code> varchar(100) NOT NULL,<br />
+PRIMARY KEY (<code>id</code>)<br />
+) ENGINE=InnoDB;  </p>
 
-<p>INSERT INTO <code>foo</code> (<code>id</code>, <code>str</code>) VALUES<br/>
-(1, &lsquo;a&rsquo;),<br/>
-(2, &lsquo;b&rsquo;);</p>
+<p>INSERT INTO <code>foo</code> (<code>id</code>, <code>str</code>) VALUES<br />
+(1, ‘a’),<br />
+(2, ‘b’);  </p>
 
-<p>打开一个MySQL命令行终端：</p>
+<p>打开一个MySQL命令行终端：  </p>
 
-<p>mysql> USE test;<br/>
-mysql> SELECT SLEEP(12345) FROM foo;</p>
+<p>mysql&gt; USE test;<br />
+mysql&gt; SELECT SLEEP(12345) FROM foo;  </p>
 
-<p>再打开一个MySQL命令行终端：</p>
+<p>再打开一个MySQL命令行终端：  </p>
 
-<p>mysql> USE test;<br/>
-mysql> UPDATE foo SET str=&lsquo;bar&rsquo;;</p>
+<p>mysql&gt; USE test;<br />
+mysql&gt; UPDATE foo SET str=’bar’;  </p>
 
-<p>此时执行SHOW PROCESSLIST，可以看到已经出现Locked现象了：</p>
+<p>此时执行SHOW PROCESSLIST，可以看到已经出现Locked现象了：  </p>
 
-<p>10  User sleep  SELECT sleep(12345) FROM foo<br/>
-20  Locked      UPDATE foo SET str = &lsquo;bar&rsquo;</p>
+<p>10  User sleep  SELECT sleep(12345) FROM foo<br />
+20  Locked      UPDATE foo SET str = ‘bar’  </p>
 
-<p>当然，我们知道是SLEEP堵塞了UPDATE，但如果不是这个实验，面对同样的情况，比如说几百个SQL查询同时映入眼帘，我们如何来判断呢？此时没人能打包票，只能瞎蒙了，经验有时候很重要，但我们还需要明确的命令，在这里就是：</p>
+<p>当然，我们知道是SLEEP堵塞了UPDATE，但如果不是这个实验，面对同样的情况，比如说几百个SQL查询同时映入眼帘，我们如何来判断呢？此时没人能打包票，只能瞎蒙了，经验有时候很重要，但我们还需要明确的命令，在这里就是：  </p>
 
-<p>mysqladmin debug</p>
+<p>mysqladmin debug  </p>
 
-<p>注意：如何你没有设定“.my.cnf”配置文件的话，可能需要输入用户名和密码参数</p>
+<p>注意：如何你没有设定“.my.cnf”配置文件的话，可能需要输入用户名和密码参数  </p>
 
-<p>命令执行后，不会有任何明确的输出，不要着急，有价值的东西此时已经被保存到了错误日志里：</p>
+<p>命令执行后，不会有任何明确的输出，不要着急，有价值的东西此时已经被保存到了错误日志里：  </p>
 
-<p>mysql> SHOW VARIABLES LIKE &lsquo;log_error&rsquo;;</p>
+<p>mysql&gt; SHOW VARIABLES LIKE ‘log_error’;  </p>
 
-<p>找到错误日志的具体路径后，打开，查看日志的最后部分：</p>
+<p>找到错误日志的具体路径后，打开，查看日志的最后部分：  </p>
 
-<p>10  test.foo    Locked &ndash; read       Low priority read lock<br/>
-20  test.foo    Waiting &ndash; write     High priority write lock</p>
+<p>10  test.foo    Locked - read       Low priority read lock<br />
+20  test.foo    Waiting - write     High priority write lock  </p>
 
 <p>如此，我们就能看到id是10的SQL堵塞了id是20的SQL，至于具体的SQL，到SHOW PROCESSLIST里对照一下就</p>
 ]]></content>
@@ -81,38 +81,38 @@ mysql> UPDATE foo SET str=&lsquo;bar&rsquo;;</p>
     <link href="http://ChandleWEi.github.io/blog/2009/08/28/mysql_slow_log/"/>
     <updated>2009-08-28T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/08/28/mysql_slow_log</id>
-    <content type="html"><![CDATA[<h1>用mysqldumpslow分析mysql的slow query log</h1>
+    <content type="html"><![CDATA[<h1 id="mysqldumpslowmysqlslow-query-log">用mysqldumpslow分析mysql的slow query log</h1>
 
-<p>  2007年六月7日 由 贝贝爸 <a href="http://www.juyimeng.com/analyze-mysql-slow-query-log-with-mysqldumpslow.html#comments">Leave a reply »</a></p>
+<p>2007年六月7日 由 贝贝爸 <a href="http://www.juyimeng.com/analyze-mysql-slow-query-log-with-mysqldumpslow.html#comments">Leave a reply »</a></p>
 
 <p><strong>mysql</strong>有一个功能就<strong>是</strong>可以<strong>log</strong>下来运行的比较慢的sql语句，默认<strong>是</strong>没有这个<strong>log</strong>的，为了开启这个功能，要修改my.cnf或者在<strong>mysql</strong>启动的时候加入一些参数。如果在my.cnf里面修改，需增加如下几行</p>
 
-<p>long_query_time = 1<br/>
-<strong>log</strong>&ndash;<strong>slow</strong>-queries = /var/youpath/<strong>slow</strong>.<strong>log</strong><br/>
+<p>long_query_time = 1<br />
+<strong>log</strong>-<strong>slow</strong>-queries = /var/youpath/<strong>slow</strong>.<strong>log</strong><br />
 <strong>log</strong>-queries-not-using-indexes</p>
 
-<p>long_query_time <strong>是</strong>指执行超过多久的sql会被<strong>log</strong>下来，这里<strong>是</strong>1秒。<br/>
-<strong>log</strong>&ndash;<strong>slow</strong>-queries 设置把日志写在那里，可以为空，系统会给一个缺省的文件<em>host_name</em>&ndash;<strong>slow</strong>.<strong>log</strong>，我生成的<strong>log</strong>就在<strong>mysql</strong>的data目录<br/>
+<p>long_query_time <strong>是</strong>指执行超过多久的sql会被<strong>log</strong>下来，这里<strong>是</strong>1秒。<br />
+<strong>log</strong>-<strong>slow</strong>-queries 设置把日志写在那里，可以为空，系统会给一个缺省的文件_host_name_-<strong>slow</strong>.<strong>log</strong>，我生成的<strong>log</strong>就在<strong>mysql</strong>的data目录<br />
 <strong>log</strong>-queries-not-using-indexes 就<strong>是</strong>字面意思，<strong>log</strong>下来没有使用索引的query。</p>
 
 <p>把上述参数打开，运行一段时间，就可以关掉了，省得影响生产环境。</p>
 
-<p>接下来就<strong>是</strong>分析了，我这里的文件名字叫host-<strong>slow</strong>.<strong>log</strong>。<br/>
-先<strong>mysql</strong>dump<strong>slow</strong> –help以下，俺主要用的<strong>是</strong><br/>
--s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br/>
--t NUM just show the top n queries<br/>
+<p>接下来就<strong>是</strong>分析了，我这里的文件名字叫host-<strong>slow</strong>.<strong>log</strong>。<br />
+先<strong>mysql</strong>dump<strong>slow</strong> –help以下，俺主要用的<strong>是</strong><br />
+-s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br />
+-t NUM just show the top n queries<br />
 -g PATTERN grep: only consider stmts that include this string</p>
 
-<p>-s，<strong>是</strong>order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br/>
-c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br/>
--t，<strong>是</strong>top n的意思，即为返回前面多少条的数据<br/>
+<p>-s，<strong>是</strong>order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br />
+c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br />
+-t，<strong>是</strong>top n的意思，即为返回前面多少条的数据<br />
 -g，后边可以写一个正则匹配模式，大小写不敏感的</p>
 
-<p><strong>mysql</strong>dump<strong>slow</strong> -s c -t 20 host-<strong>slow</strong>.<strong>log</strong><br/>
+<p><strong>mysql</strong>dump<strong>slow</strong> -s c -t 20 host-<strong>slow</strong>.<strong>log</strong><br />
 <strong>mysql</strong>dump<strong>slow</strong> -s r -t 20 host-<strong>slow</strong>.<strong>log</strong></p>
 
-<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br/>
-<strong>mysql</strong>dump<strong>slow</strong> -t 10 -s t -g “left join” host-<strong>slow</strong>.<strong>log</strong><br/>
+<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br />
+<strong>mysql</strong>dump<strong>slow</strong> -t 10 -s t -g “left join” host-<strong>slow</strong>.<strong>log</strong><br />
 这个<strong>是</strong>按照时间返回前10条里面含有左连接的sql语句。</p>
 
 <p>用了这个工具就可以查询出来那些sql语句<strong>是</strong>性能的瓶颈，进行优化，比如加索引，该应用的实现方式等。</p>
@@ -124,18 +124,18 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
     <link href="http://ChandleWEi.github.io/blog/2009/05/18/%E5%A5%87%E6%80%AA%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <updated>2009-05-18T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/05/18/奇怪的问题</id>
-    <content type="html"><![CDATA[<p>因为是要对大表做数据的水平拆分，将数据拆分到多个数据库上，有几个重要的问题需要思考：<br/>
-1.怎么把在ORACLE中几十亿的数据按规则迁到mysql集群中；<br/>
-2.如何产生主键唯一值；<br/>
-3.大表根据规则拆成小表，具体拆分粒度是多少？每个库多少表？<br/>
-4.如何解决这么多库这么多表的路由问题；<br/>
-5.如何解决跨库的merge与sort；<br/>
-6.如何对连接进行管理；<br/>
-7.如何做数据订正；<br/>
-8.我们需要开发哪些集群管理工具，比如说建表工具；<br/>
-9.集群遇到停电怎么办？<br/>
-10.如何对集群中的数据进行历史迁移？<br/>
-11.尽管集群采用廉价的PC，但具体采用何种PC,差别还是挺大的，如何平衡集群的规模与可管理性方面的问题?<br/>
+    <content type="html"><![CDATA[<p>因为是要对大表做数据的水平拆分，将数据拆分到多个数据库上，有几个重要的问题需要思考：<br />
+1.怎么把在ORACLE中几十亿的数据按规则迁到mysql集群中；<br />
+2.如何产生主键唯一值；<br />
+3.大表根据规则拆成小表，具体拆分粒度是多少？每个库多少表？<br />
+4.如何解决这么多库这么多表的路由问题；<br />
+5.如何解决跨库的merge与sort；<br />
+6.如何对连接进行管理；<br />
+7.如何做数据订正；<br />
+8.我们需要开发哪些集群管理工具，比如说建表工具；<br />
+9.集群遇到停电怎么办？<br />
+10.如何对集群中的数据进行历史迁移？<br />
+11.尽管集群采用廉价的PC，但具体采用何种PC,差别还是挺大的，如何平衡集群的规模与可管理性方面的问题?<br />
 12.集群对机房电力的消耗与机柜占用问题?</p>
 ]]></content>
   </entry>
@@ -145,53 +145,54 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
     <link href="http://ChandleWEi.github.io/blog/2009/04/28/zz%5BMySQL_FAQ%5D%E7%B3%BB%E5%88%97_--_%E7%94%A8mysqlslap%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
     <updated>2009-04-28T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/28/zz[MySQL_FAQ]系列_--_用mysqlslap进行压力测试</id>
-    <content type="html"><![CDATA[<h2><a href="http://imysql.cn/2009/04/24/using_mysqlslap_for_load_testing.html">[MySQL FAQ]系列 &mdash; 用mysqlslap进行压力测试</a></h2>
+    <content type="html"><![CDATA[<h2 id="mysql-faq----mysqlslaphttpimysqlcn20090424usingmysqlslapforloadtestinghtml"><a href="http://imysql.cn/2009/04/24/using_mysqlslap_for_load_testing.html">[MySQL FAQ]系列 – 用mysqlslap进行压力测试</a></h2>
 
-<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fimysql.cn%2Fnode%2Ffeed">MySQL 中文网 &ndash;</a> 作者：yejr</p>
+<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fimysql.cn%2Fnode%2Ffeed">MySQL 中文网 -</a> 作者：yejr</p>
 
 <p>mysqlslap是官方提供的压力测试工具之一，官方介绍如下：</p>
 
-<p>mysqlslap is a diagnostic program designed to emulate client load for a MySQL server and to report<br/>
-the timing of each stage. It works as if multiple clients are accessing the server. mysqlslap is<br/>
-available as of MySQL 5.1.4.</p>
+<p>mysqlslap is a diagnostic program designed to emulate client load for a MySQL server and to report<br />
+the timing of each stage. It works as if multiple clients are accessing the server. mysqlslap is<br />
+available as of MySQL 5.1.4.  </p>
 
 <p>下面介绍一些常见参数：</p>
 
-<p>&mdash;auto-generate-sql-write-number</p>
+<p>–auto-generate-sql-write-number  </p>
 
 <p>每个线程中产生多少个insert</p>
 
-<p>&mdash;auto-generate-sql-guid-primary</p>
+<p>–auto-generate-sql-guid-primary  </p>
 
 <p>自动产生guid格式的主键</p>
 
-<p>&mdash;number-of-queries=50000</p>
+<p>–number-of-queries=50000  </p>
 
 <p>每个连接客户端总共发起的查询次数</p>
 
-<p>&mdash;concurrency=10,50,100</p>
+<p>–concurrency=10,50,100  </p>
 
 <p>并发连接线程数，分别是10、50、100个并发</p>
 
-<p>-i, &mdash;iterations</p>
+<p>-i, –iterations  </p>
 
 <p>重复执行测试的次数</p>
 
-<p>&mdash;number-char-cols=10</p>
+<p>–number-char-cols=10  </p>
 
 <p>创建测试表的 char 型字段数量</p>
 
-<p>&mdash;number-int-cols=10</p>
+<p>–number-int-cols=10  </p>
 
-<p>创建测试表的 int 型字段数量<br/>
+<p>创建测试表的 int 型字段数量<br />
 下面是一个完整的例子：</p>
 
-<p>mysqlslap -hlocalhost -uroot &mdash;engine=innodb &mdash;auto-generate-sql-write-number=100000<br/>
-&mdash;auto-generate-sql-guid-primary &mdash;concurrency=10,50,100 &mdash;number-of-queries=500000<br/>
-&mdash;iterations=2 &mdash;number-char-cols=10 &mdash;number-int-cols=10 &mdash;auto-generate-sql<br/>
-&mdash;create-schema=sbtest &mdash;auto-generate-sql-load-type=mixed</p>
+<p>mysqlslap -hlocalhost -uroot –engine=innodb –auto-generate-sql-write-number=100000<br />
+–auto-generate-sql-guid-primary –concurrency=10,50,100 –number-of-queries=500000<br />
+–iterations=2 –number-char-cols=10 –number-int-cols=10 –auto-generate-sql<br />
+–create-schema=sbtest –auto-generate-sql-load-type=mixed  </p>
 
 <p>具体的慢慢看手册吧，不多啰嗦了，哈。</p>
+
 ]]></content>
   </entry>
   
@@ -200,117 +201,165 @@ available as of MySQL 5.1.4.</p>
     <link href="http://ChandleWEi.github.io/blog/2008/09/01/mysql/"/>
     <updated>2008-09-01T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/09/01/mysql</id>
-    <content type="html"><![CDATA[<h2><a href="http://www.hiadmin.com/mysql%e4%bc%98%e5%8c%96/">MySQL优化 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
+    <content type="html"><![CDATA[<h2 id="mysql-httpswwwgooglecomreaderui2412528845-go-togif-httpwwwhiadmincommysqle4bc98e58c96"><a href="http://www.hiadmin.com/mysql%e4%bc%98%e5%8c%96/">MySQL优化 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
 
 <p>from <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fwww.hiadmin.com%2F%3Ffeed%3Drss2">架构研究室</a> by Johnny Woo</p>
 
-<p>thread_concurrency<br/>
-数量设置为CPU核心数量的两倍.<br/>
-thread_cache_size<br/>
-按照内存大小来设置, 1G=8, 2G=16, 3G=32, >3G=64<br/>
-wait_timeout<br/>
-超时时间,如果连接数比较大,可以减少此参数的值,我使用的是10<br/>
-max_connections<br/>
-最大连接数,mysql实际允许连接数的值是max_connections+1,按照系统库不同而有不同性能.一般是500~1000,MySQL AB提供的linux静态库可以达到4000.<br/>
-query_cache_size<br/>
-查询缓冲,默认是0,所以必须打开以提高mysql性能,其本身需要40K来保存结构数据.所以不能设置的太小,初期可以设置成32M,然后根据实际运行情况另行调整<br/>
-query_cache_type<br/>
-指定查询缓冲的类型,0是关闭,1是缓冲除了使用SELECT SQL_NO_CACHE语句指明了不需要缓冲的数据意外的所有查询,2是只缓冲SELECT SQL_CACHE指定的查询.一般设置为1.<br/>
-query_cache_limit<br/>
+<p>thread_concurrency<br />
+数量设置为CPU核心数量的两倍.<br />
+thread_cache_size<br />
+按照内存大小来设置, 1G=8, 2G=16, 3G=32, &gt;3G=64<br />
+wait_timeout<br />
+超时时间,如果连接数比较大,可以减少此参数的值,我使用的是10<br />
+max_connections<br />
+最大连接数,mysql实际允许连接数的值是max_connections+1,按照系统库不同而有不同性能.一般是500~1000,MySQL AB提供的linux静态库可以达到4000.<br />
+query_cache_size<br />
+查询缓冲,默认是0,所以必须打开以提高mysql性能,其本身需要40K来保存结构数据.所以不能设置的太小,初期可以设置成32M,然后根据实际运行情况另行调整<br />
+query_cache_type<br />
+指定查询缓冲的类型,0是关闭,1是缓冲除了使用SELECT SQL_NO_CACHE语句指明了不需要缓冲的数据意外的所有查询,2是只缓冲SELECT SQL_CACHE指定的查询.一般设置为1.<br />
+query_cache_limit<br />
 允许进入查询缓冲区的最小数据大小,默认值是1MB,可以修改的小一点以满足更多查询的需求.但是如果设置的过于小,则会导致很多新的小查询的结果将原有的查询结果交换出去.增加系统的颠簸.</p>
 
-<p>相关命令<br/>
-查询mysql服务器相关状态数据</p>
+<p>相关命令<br />
+查询mysql服务器相关状态数据<br />
+&gt;SHOW STATUS;</p>
 
-<blockquote><p>SHOW STATUS;</p></blockquote>
+<p>查询mysql服务器相关配置选项<br />
+&gt;SHOW VARIABLES;</p>
 
-<p>查询mysql服务器相关配置选项</p>
+<p>整理查询缓冲区里的碎片<br />
+&gt;flush query cache;</p>
 
-<blockquote><p>SHOW VARIABLES;</p></blockquote>
+<p>删除查询缓冲区里的所有内容<br />
+&gt;reset query cache;</p>
 
-<p>整理查询缓冲区里的碎片</p>
+<p>设置mysql参数<br />
+&gt;SET GLOBAL;</p>
 
-<blockquote><p>flush query cache;</p></blockquote>
+<p>查询mysql当前执行的sql语句<br />
+&gt;show processlist;</p>
 
-<p>删除查询缓冲区里的所有内容</p>
-
-<blockquote><p>reset query cache;</p></blockquote>
-
-<p>设置mysql参数</p>
-
-<blockquote><p>SET GLOBAL;</p></blockquote>
-
-<p>查询mysql当前执行的sql语句</p>
-
-<blockquote><p>show processlist;</p></blockquote>
-
-<p>变量 含义<br/>
-Qcache_queries_in_cache<br/>
-在缓存中已注册的查询数目<br/>
-Qcache_inserts<br/>
-被加入到缓存中的查询数目<br/>
-Qcache_hits<br/>
-缓存采样数数目<br/>
-Qcache_lowmem_prunes<br/>
-因为缺少内存而被从缓存中删除的查询数目<br/>
-Qcache_not_cached<br/>
-没有被缓存的查询数目 (不能被缓存的，或由于 QUERY_CACHE_TYPE)<br/>
-Qcache_free_memory<br/>
-查询缓存的空闲内存总数<br/>
-Qcache_free_blocks<br/>
-查询缓存中的空闲内存块的数目<br/>
-Qcache_total_blocks<br/>
+<p>变量 含义<br />
+Qcache_queries_in_cache<br />
+在缓存中已注册的查询数目<br />
+Qcache_inserts<br />
+被加入到缓存中的查询数目<br />
+Qcache_hits<br />
+缓存采样数数目<br />
+Qcache_lowmem_prunes<br />
+因为缺少内存而被从缓存中删除的查询数目<br />
+Qcache_not_cached<br />
+没有被缓存的查询数目 (不能被缓存的，或由于 QUERY_CACHE_TYPE)<br />
+Qcache_free_memory<br />
+查询缓存的空闲内存总数<br />
+Qcache_free_blocks<br />
+查询缓存中的空闲内存块的数目<br />
+Qcache_total_blocks<br />
 查询缓存中的块的总数目</p>
 
-<p>MySQL查询优化</p>
+<p>MySQL查询优化<br />
+&gt;SHOW STATUS LIKE ‘Qcache%’;<br />
+查询出Cache状态<br />
+如果Qcache_lowmem_prunes非常大,说明因为内存不足而被交换出cache的数据很多.如果增加内存.可以保证较小的交换次数以及较高的命中率<br />
+例如现在我们查询的结果如下</p>
 
-<blockquote><p>SHOW STATUS LIKE ‘Qcache%’;<br/>
-查询出Cache状态<br/>
-如果Qcache_lowmem_prunes非常大,说明因为内存不足而被交换出cache的数据很多.如果增加内存.可以保证较小的交换次数以及较高的命中率<br/>
-例如现在我们查询的结果如下</p></blockquote>
+<table>
+  <tbody>
+    <tr>
+      <td>Qcache_free_blocks     </td>
+      <td>1234     </td>
+    </tr>
+    <tr>
+      <td>Qcache_free_memory     </td>
+      <td>25957504</td>
+    </tr>
+    <tr>
+      <td>Qcache_hits             </td>
+      <td>55771119</td>
+    </tr>
+    <tr>
+      <td>Qcache_inserts         </td>
+      <td>7441153 </td>
+    </tr>
+    <tr>
+      <td>Qcache_lowmem_prunes   </td>
+      <td>28332   </td>
+    </tr>
+    <tr>
+      <td>Qcache_not_cached       </td>
+      <td>1233788 </td>
+    </tr>
+    <tr>
+      <td>Qcache_queries_in_cache</td>
+      <td>4810     </td>
+    </tr>
+    <tr>
+      <td>Qcache_total_blocks     </td>
+      <td>11038   </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>| Qcache_free_blocks      | 1234     |<br/>
-| Qcache_free_memory      | 25957504 |<br/>
-| Qcache_hits             | 55771119 |<br/>
-| Qcache_inserts          | 7441153  |<br/>
-| Qcache_lowmem_prunes    | 28332    |<br/>
-| Qcache_not_cached       | 1233788  |<br/>
-| Qcache_queries_in_cache | 4810     |<br/>
-| Qcache_total_blocks     | 11038    |</p>
+<p>设置为64M cache内存后<br />
+&gt;set global query_cache_size=67108864;</p>
 
-<p>设置为64M cache内存后</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Qcache_free_blocks     </td>
+      <td>1       </td>
+    </tr>
+    <tr>
+      <td>Qcache_free_memory     </td>
+      <td>66623616</td>
+    </tr>
+    <tr>
+      <td>Qcache_hits             </td>
+      <td>55788258</td>
+    </tr>
+    <tr>
+      <td>Qcache_inserts         </td>
+      <td>7445445 </td>
+    </tr>
+    <tr>
+      <td>Qcache_lowmem_prunes   </td>
+      <td>28332   </td>
+    </tr>
+    <tr>
+      <td>Qcache_not_cached       </td>
+      <td>1234057 </td>
+    </tr>
+    <tr>
+      <td>Qcache_queries_in_cache</td>
+      <td>183     </td>
+    </tr>
+    <tr>
+      <td>Qcache_total_blocks     </td>
+      <td>392     </td>
+    </tr>
+  </tbody>
+</table>
 
-<blockquote><p>set global query_cache_size=67108864;</p></blockquote>
-
-<p>| Qcache_free_blocks      | 1        |<br/>
-| Qcache_free_memory      | 66623616 |<br/>
-| Qcache_hits             | 55788258 |<br/>
-| Qcache_inserts          | 7445445  |<br/>
-| Qcache_lowmem_prunes    | 28332    |<br/>
-| Qcache_not_cached       | 1234057  |<br/>
-| Qcache_queries_in_cache | 183      |<br/>
-| Qcache_total_blocks     | 392      |</p>
-
-<p>自由内存块看起来变小了<br/>
-是因为现在自由内存块.是一个整块.而以前的内存块都是分散的小块<br/>
-而因为重建了cache区<br/>
-Qcache_queries_in_cache变量变小了.因为此操作重新建立了cache内存区.所有数据重新缓存<br/>
-在运行一两天后我们再看此数据.如果变大了.说明增大cache内存区域是有效的.如果和以前数据差不多<br/>
+<p>自由内存块看起来变小了<br />
+是因为现在自由内存块.是一个整块.而以前的内存块都是分散的小块<br />
+而因为重建了cache区<br />
+Qcache_queries_in_cache变量变小了.因为此操作重新建立了cache内存区.所有数据重新缓存<br />
+在运行一两天后我们再看此数据.如果变大了.说明增大cache内存区域是有效的.如果和以前数据差不多<br />
 说明增加的内存并没有实际起到多大的作用.</p>
 
-<p>有人会觉得如果我将cache内存设置的非常大<br/>
-然后将cache_limit设置成0<br/>
-那么所有查询都会被缓存了<br/>
-理论上是这样.但是一台数据库服务器的查询非常多.<br/>
-如果连查询单条数据都要缓存.<br/>
-那么内存再大也会不够的.到时候老的内容就会被交换出去<br/>
-当cache内存使用满的时候,就会不停的有新查询进来将老查询替换出去.<br/>
-这样导致两个结果.一个是内存颠簸.效率反而下降.<br/>
-第二个是cache内存的小碎块增多,内存利用率降低<br/>
-如果是只有内容很少的小库,并且查询率不高.是可以使用这种方法提高响应速度<br/>
-但是如果是实际生产环境,数据量会比较大.还是需要按照最佳比例来配置.<br/>
-而不同的应用不同的数据量会有不同的搭配,这点大家不要看网上的优化配置随便的填写<br/>
-还是要时时的查看mysql的状态进行调整.即便是这个月调整好的优化参数<br/>
+<p>有人会觉得如果我将cache内存设置的非常大<br />
+然后将cache_limit设置成0<br />
+那么所有查询都会被缓存了<br />
+理论上是这样.但是一台数据库服务器的查询非常多.<br />
+如果连查询单条数据都要缓存.<br />
+那么内存再大也会不够的.到时候老的内容就会被交换出去<br />
+当cache内存使用满的时候,就会不停的有新查询进来将老查询替换出去.<br />
+这样导致两个结果.一个是内存颠簸.效率反而下降.<br />
+第二个是cache内存的小碎块增多,内存利用率降低<br />
+如果是只有内容很少的小库,并且查询率不高.是可以使用这种方法提高响应速度<br />
+但是如果是实际生产环境,数据量会比较大.还是需要按照最佳比例来配置.<br />
+而不同的应用不同的数据量会有不同的搭配,这点大家不要看网上的优化配置随便的填写<br />
+还是要时时的查看mysql的状态进行调整.即便是这个月调整好的优化参数<br />
 到了下个月业务不同,数据量增加,也会需要调整的.</p>
 ]]></content>
   </entry>

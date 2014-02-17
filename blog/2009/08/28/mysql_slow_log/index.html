@@ -94,38 +94,38 @@
   </header>
 
 
-<div class="entry-content"><h1>用mysqldumpslow分析mysql的slow query log</h1>
+<div class="entry-content"><h1 id="mysqldumpslowmysqlslow-query-log">用mysqldumpslow分析mysql的slow query log</h1>
 
-<p>  2007年六月7日 由 贝贝爸 <a href="http://www.juyimeng.com/analyze-mysql-slow-query-log-with-mysqldumpslow.html#comments">Leave a reply »</a></p>
+<p>2007年六月7日 由 贝贝爸 <a href="http://www.juyimeng.com/analyze-mysql-slow-query-log-with-mysqldumpslow.html#comments">Leave a reply »</a></p>
 
 <p><strong>mysql</strong>有一个功能就<strong>是</strong>可以<strong>log</strong>下来运行的比较慢的sql语句，默认<strong>是</strong>没有这个<strong>log</strong>的，为了开启这个功能，要修改my.cnf或者在<strong>mysql</strong>启动的时候加入一些参数。如果在my.cnf里面修改，需增加如下几行</p>
 
-<p>long_query_time = 1<br/>
-<strong>log</strong>&ndash;<strong>slow</strong>-queries = /var/youpath/<strong>slow</strong>.<strong>log</strong><br/>
+<p>long_query_time = 1<br />
+<strong>log</strong>-<strong>slow</strong>-queries = /var/youpath/<strong>slow</strong>.<strong>log</strong><br />
 <strong>log</strong>-queries-not-using-indexes</p>
 
-<p>long_query_time <strong>是</strong>指执行超过多久的sql会被<strong>log</strong>下来，这里<strong>是</strong>1秒。<br/>
-<strong>log</strong>&ndash;<strong>slow</strong>-queries 设置把日志写在那里，可以为空，系统会给一个缺省的文件<em>host_name</em>&ndash;<strong>slow</strong>.<strong>log</strong>，我生成的<strong>log</strong>就在<strong>mysql</strong>的data目录<br/>
+<p>long_query_time <strong>是</strong>指执行超过多久的sql会被<strong>log</strong>下来，这里<strong>是</strong>1秒。<br />
+<strong>log</strong>-<strong>slow</strong>-queries 设置把日志写在那里，可以为空，系统会给一个缺省的文件_host_name_-<strong>slow</strong>.<strong>log</strong>，我生成的<strong>log</strong>就在<strong>mysql</strong>的data目录<br />
 <strong>log</strong>-queries-not-using-indexes 就<strong>是</strong>字面意思，<strong>log</strong>下来没有使用索引的query。</p>
 
 <p>把上述参数打开，运行一段时间，就可以关掉了，省得影响生产环境。</p>
 
-<p>接下来就<strong>是</strong>分析了，我这里的文件名字叫host-<strong>slow</strong>.<strong>log</strong>。<br/>
-先<strong>mysql</strong>dump<strong>slow</strong> –help以下，俺主要用的<strong>是</strong><br/>
--s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br/>
--t NUM just show the top n queries<br/>
+<p>接下来就<strong>是</strong>分析了，我这里的文件名字叫host-<strong>slow</strong>.<strong>log</strong>。<br />
+先<strong>mysql</strong>dump<strong>slow</strong> –help以下，俺主要用的<strong>是</strong><br />
+-s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br />
+-t NUM just show the top n queries<br />
 -g PATTERN grep: only consider stmts that include this string</p>
 
-<p>-s，<strong>是</strong>order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br/>
-c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br/>
--t，<strong>是</strong>top n的意思，即为返回前面多少条的数据<br/>
+<p>-s，<strong>是</strong>order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br />
+c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br />
+-t，<strong>是</strong>top n的意思，即为返回前面多少条的数据<br />
 -g，后边可以写一个正则匹配模式，大小写不敏感的</p>
 
-<p><strong>mysql</strong>dump<strong>slow</strong> -s c -t 20 host-<strong>slow</strong>.<strong>log</strong><br/>
+<p><strong>mysql</strong>dump<strong>slow</strong> -s c -t 20 host-<strong>slow</strong>.<strong>log</strong><br />
 <strong>mysql</strong>dump<strong>slow</strong> -s r -t 20 host-<strong>slow</strong>.<strong>log</strong></p>
 
-<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br/>
-<strong>mysql</strong>dump<strong>slow</strong> -t 10 -s t -g “left join” host-<strong>slow</strong>.<strong>log</strong><br/>
+<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br />
+<strong>mysql</strong>dump<strong>slow</strong> -t 10 -s t -g “left join” host-<strong>slow</strong>.<strong>log</strong><br />
 这个<strong>是</strong>按照时间返回前10条里面含有左连接的sql语句。</p>
 
 <p>用了这个工具就可以查询出来那些sql语句<strong>是</strong>性能的瓶颈，进行优化，比如加索引，该应用的实现方式等。</p>
@@ -200,6 +200,10 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -213,10 +217,6 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
       </li>
     
   </ul>
@@ -236,6 +236,22 @@ c,t,l,r和ac,at,al,ar，分别<strong>是</strong>按照query次数，时间，l
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   

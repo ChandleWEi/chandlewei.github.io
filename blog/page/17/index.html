@@ -9,8 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="S41 @ Windows XP x86 驱动下载，安装指南 Windows XP x86版驱动，适用机型 BenQ Joybook S41 猫和读卡器我不知道型号，暂缺 s41安装xp全攻略 首先是明基中国的官方驱动升级地址：官方驱动升级暂无 硬件驱动更新， &hellip;">
-  
+  <meta name="description" content="ChandlerWEi的个人博客">
+  <meta name="keywords" content="ios,golang,ruby,etc">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -71,6 +71,51 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2008/06/17/debian_ruby_1.8.7_%E8%BD%AC_1.8.6/">debian_ruby_1.8.7_转_1.8.6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-06-17T00:00:00+08:00" pubdate data-updated="true">Jun 17<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/06/17/debian_ruby_1.8.7_%E8%BD%AC_1.8.6/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/06/17/debian_ruby_1.8.7_%E8%BD%AC_1.8.6/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>downgrade ruby from 1.8.7 to 1.8.6 http://snapshot.debian.net/archive/2008/03/22/debian/pool/main/r/ruby1.8/ download follow package and dpkg -i install all debian package irb1.8_1.8.6.114-2_all.deb libopenssl-ruby1.8_1.8.6.114-2_i386.deb libreadline-ruby1.8_1.8.6.114-2_i386.deb libruby1.8_1.8.6.114-2_i386.deb rdoc1.8_1.8.6.114-2_all.deb ri1.8_1.8.6.114-2_all.deb ruby1.8_1.8.6.114-2_i386.deb ruby1.8-dev_1.8.6.114-2_i386.deb</p>
+
+<p> libtcltk-ruby1.8_1.8.6.114-2_i386.deb</p>
+
+<p> </p>
+
+<p>Warning, replace “i386.deb” to your arc like “amd64.deb” or other finally look http://dev.hubiquity.fr/2008/6/3/avoid-rails-troubles-with-ruby-1-8-7-under-debian you will need to add these few lines into your /etc/apt/preferences to hole your ruby version: Package: ruby1.8 irb1.8 rdoc1.8 ri1.8 libruby1.8 libreadline-ruby1.8 libopenssl-ruby1.8 ruby1.8-dev Pin: version 1.8.6* Pin-Priority: 1001</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2008/06/14/s41_%E5%A4%87%E4%BB%BD/">S41_备份</a></h1>
     
     
@@ -97,40 +142,40 @@
   </header>
 
 
-  <div class="entry-content"><p>S41 @ Windows XP x86 驱动下载，安装指南</p>
+  <div class="entry-content"><p>S41 @ Windows XP x86 驱动下载，安装指南  </p>
 
-<p>Windows XP x86版驱动，适用机型 BenQ Joybook S41</p>
+<p>Windows XP x86版驱动，适用机型 BenQ Joybook S41  </p>
 
-<p>猫和读卡器我不知道型号，暂缺</p>
+<p>猫和读卡器我不知道型号，暂缺  </p>
 
-<p><a href="http://benyouhui.it168.com/thread-533196-1-1.html">s41安装xp全攻略</a></p>
+<p><a href="http://benyouhui.it168.com/thread-533196-1-1.html">s41安装xp全攻略</a>  </p>
 
-<p>首先是明基中国的官方驱动升级地址：官方驱动升级暂无</p>
+<p>首先是明基中国的官方驱动升级地址：官方驱动升级暂无  </p>
 
-<p>硬件驱动更新，这里的驱动只会比官方网站和随机光盘上的更新</p>
+<p>硬件驱动更新，这里的驱动只会比官方网站和随机光盘上的更新  </p>
 
-<p>注明：USB控制器，SD读卡器，电池驱动是Windows系统自带的，如果缺少，说明你的系统被错误的精简过或者系统文件丢失。请安装纯净版系统。</p>
+<p>注明：USB控制器，SD读卡器，电池驱动是Windows系统自带的，如果缺少，说明你的系统被错误的精简过或者系统文件丢失。请安装纯净版系统。  </p>
 
-<p>Intel 945 芯片组驱动：<br/>
-<a href="http://drivers.mydrivers.com/drivers/175-70357-Intel-Intel-Chipset-Device-Software">英特尔芯片组Intel Chipset Device Software驱动最新8.3.0.1013官方正式版For Win2000/XP/2003/XP-64/2003-64/Vista/Vista-64（2007年6月4日发布）</a></p>
+<p>Intel 945 芯片组驱动：<br />
+<a href="http://drivers.mydrivers.com/drivers/175-70357-Intel-Intel-Chipset-Device-Software">英特尔芯片组Intel Chipset Device Software驱动最新8.3.0.1013官方正式版For Win2000/XP/2003/XP-64/2003-64/Vista/Vista-64（2007年6月4日发布）</a>  </p>
 
-<p>NVIDIA GeForce Go8600M GS显卡驱动：<br/>
-<a href="http://www.driverchina.com/downinfo/66812.html">NVIDIA GeForce Go8600M GS显卡最新ForceWare驱动165.01 WHQL版For WinXP </a></p>
+<p>NVIDIA GeForce Go8600M GS显卡驱动：<br />
+<a href="http://www.driverchina.com/downinfo/66812.html">NVIDIA GeForce Go8600M GS显卡最新ForceWare驱动165.01 WHQL版For WinXP </a>  </p>
 
-<p>Marvell Yukon 千兆有线以太网卡驱动：<br/>
-<a href="http://drivers.mydrivers.com/drivers/174-69803-Marvell-Yukon-10.14.6.3-For-Win2000-XP-2003-XP-64-2003-64-Vista-32">Marvell Yukon系列千兆以太网卡最新驱动10.14.6.3版For Win2000/XP/2003/XP-64/2003-64/Vista-32（2007年5月16日发布）</a></p>
+<p>Marvell Yukon 千兆有线以太网卡驱动：<br />
+<a href="http://drivers.mydrivers.com/drivers/174-69803-Marvell-Yukon-10.14.6.3-For-Win2000-XP-2003-XP-64-2003-64-Vista-32">Marvell Yukon系列千兆以太网卡最新驱动10.14.6.3版For Win2000/XP/2003/XP-64/2003-64/Vista-32（2007年5月16日发布）</a>  </p>
 
-<p>Intel英特尔PRO Wireless 4965AGN无线笔记本网卡驱动：<br/>
-<a href="http://drivers.mydrivers.com/drivers/175-70127-Wireless-2915ABG-PRO-Wireless-3945ABG-Wireless-WiFi-Link-4965AGN">Intel英特尔PRO Wireless 4965AGN无线笔记本网卡最新驱动包11.1.1.11版For XP（2007年4月2日发布）</a></p>
+<p>Intel英特尔PRO Wireless 4965AGN无线笔记本网卡驱动：<br />
+<a href="http://drivers.mydrivers.com/drivers/175-70127-Wireless-2915ABG-PRO-Wireless-3945ABG-Wireless-WiFi-Link-4965AGN">Intel英特尔PRO Wireless 4965AGN无线笔记本网卡最新驱动包11.1.1.11版For XP（2007年4月2日发布）</a>  </p>
 
-<p>Realtek高清音频驱动：<br/>
-<a href="http://drivers.mydrivers.com/drivers/174-69880-Realtek-ALC880-ALC882-ALC883-ALC885-ALC888">Realtek瑞昱ALC883 HD Audio音频芯片最新驱动包1.67版For XP（2007年5月18日发布）</a></p>
+<p>Realtek高清音频驱动：<br />
+<a href="http://drivers.mydrivers.com/drivers/174-69880-Realtek-ALC880-ALC882-ALC883-ALC885-ALC888">Realtek瑞昱ALC883 HD Audio音频芯片最新驱动包1.67版For XP（2007年5月18日发布）</a>  </p>
 
-<p>Synaptics触摸板：<br/>
-<a href="http://drivers.mydrivers.com/drivers/163-65459-">Synaptics触摸板(Touchpad)驱动最新9.1.0版For Win2000/XP/Vista-32/Vista-64（2007年5月24日发布）</a></p>
+<p>Synaptics触摸板：<br />
+<a href="http://drivers.mydrivers.com/drivers/163-65459-">Synaptics触摸板(Touchpad)驱动最新9.1.0版For Win2000/XP/Vista-32/Vista-64（2007年5月24日发布）</a>  </p>
 
-<p>Synaptics触摸板外接鼠标时候自动禁用补丁：<br/>
-<a href="http://benyouhui.it168.com/viewthread.php?tid=410975">http://benyouhui.it168.com/viewthread.php?tid=410975</a></p>
+<p>Synaptics触摸板外接鼠标时候自动禁用补丁：<br />
+<a href="http://benyouhui.it168.com/viewthread.php?tid=410975">http://benyouhui.it168.com/viewthread.php?tid=410975</a>  </p>
 </div>
   
   
@@ -171,7 +216,7 @@
 
   <div class="entry-content"><p>今天试验安装了gentoo,使用下面的官方安装指导</p>
 
-<p><a href="http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml">http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml</a></p>
+<p>http://www.gentoo.org/doc/zh_cn/gentoo-x86-quickinstall.xml</p>
 
 <p> 我终于明白了gentoo的优化可能指的是什么了， emerge 获得获得源代码包然后你自己可以修改/etc/make.conf 参数 ，虽然gcc -O2 效能不错，不过你完全可以改成 -O3, 这样就编译优化，这样生成的二进制就优化了，而且是自动编译安装的，不过那个叫慢哦，如果不是服务器,那确实是浪费时间，不过对于服务器来说提高一点是一点，</p>
 
@@ -216,44 +261,44 @@
   </header>
 
 
-  <div class="entry-content"><p><a href="http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby">http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby</a></p>
+  <div class="entry-content"><p>http://sporkmonger.com/2007/2/19/instance-variables-class-variables-and-inheritance-in-ruby</p>
 
 <p> </p>
 
-<p>class ExampleClass<br/>
-@variable = &ldquo;foo&#8221;<br/>
-@@variable = &#8220;bar&rdquo;</p>
+<p>class ExampleClass<br />
+@variable = “foo”<br />
+@@variable = “bar”  </p>
 
-<p>def initialize<br/>
-@variable = &ldquo;baz&#8221;<br/>
-end</p>
+<p>def initialize<br />
+@variable = “baz”<br />
+end  </p>
 
-<p>def self.test<br/>
-puts @variable<br/>
-end</p>
+<p>def self.test<br />
+puts @variable<br />
+end  </p>
 
-<p>def test<br/>
-self.class.test<br/>
-puts @@variable<br/>
-puts @variable<br/>
-end<br/>
-end</p>
+<p>def test<br />
+self.class.test<br />
+puts @@variable<br />
+puts @variable<br />
+end<br />
+end  </p>
 
-<p>class ExampleSubclass &lt; ExampleClass<br/>
-@variable = &ldquo;1&#8221;<br/>
-@@variable = &#8220;2&rdquo;</p>
+<p>class ExampleSubclass &lt; ExampleClass<br />
+@variable = “1”<br />
+@@variable = “2”  </p>
 
-<p>def initialize<br/>
-@variable = &ldquo;3&#8221;<br/>
-end<br/>
-end</p>
+<p>def initialize<br />
+@variable = “3”<br />
+end<br />
+end  </p>
 
-<p>first_example = ExampleClass.new<br/>
-first_example.test</p>
+<p>first_example = ExampleClass.new<br />
+first_example.test  </p>
 
-<p>puts &ldquo;&mdash;&ndash;&rdquo;</p>
+<p>puts “—”  </p>
 
-<p>second_example = ExampleSubclass.new<br/>
+<p>second_example = ExampleSubclass.new<br />
 second_example.test</p>
 
 <p> </p>
@@ -295,7 +340,7 @@ second_example.test</p>
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.my-debugbar.com/wiki/IETester/HomePage">http://www.my-debugbar.com/wiki/IETester/HomePage</a></p>
+  <div class="entry-content"><p>http://www.my-debugbar.com/wiki/IETester/HomePage</p>
 </div>
   
   
@@ -334,11 +379,17 @@ second_example.test</p>
   </header>
 
 
-  <div class="entry-content"><p>|   |</p>
+  <div class="entry-content"><table>
+  <tbody>
+    <tr>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <p>1:44 AM (8 hours ago)</p>
 
-<h2><a href="http://feeds.feedburner.com/%7Er/RubyInside/%7E3/303060223/ruby-187-released-912.html">Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
+<h2 id="ruby-187-released-enumeration-object-support-backported-from-19-httpswwwgooglecomreaderui2412528845-go-togif-httpfeedsfeedburnercom7errubyinside7e3303060223ruby-187-released-912html"><a href="http://feeds.feedburner.com/%7Er/RubyInside/%7E3/303060223/ruby-187-released-912.html">Ruby 1.8.7 Released: Enumeration Object Support Backported From 1.9 <img src="https://www.google.com/reader/ui/2412528845-go-to.gif" alt="" /> </a></h2>
 
 <p>from <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Ffeeds.feedburner.com%2FRubyInside">Ruby Inside</a> by Peter Cooper</p>
 
@@ -350,39 +401,92 @@ second_example.test</p>
 
 <p><strong>vendor_ruby</strong></p>
 
-<blockquote><p>A new library directory named <code>vendor\_ruby’ is introduced in addition to</code>site_ruby’. The idea is to separate libraries installed by the package system (<code>vendor’) from manually (</code>site’) installed libraries preventing the former from getting overwritten by the latter, while preserving the user option to override vendor libraries with site libraries. (<code>site\_ruby’ takes precedence over</code>vendor_ruby’)</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>A new library directory named <code>vendor\_ruby’ is introduced in addition to </code>site_ruby’. The idea is to separate libraries installed by the package system (<code>vendor’) from manually (</code>site’) installed libraries preventing the former from getting overwritten by the latter, while preserving the user option to override vendor libraries with site libraries. (<code>site\_ruby’ takes precedence over </code>vendor_ruby’)</p>
+</blockquote>
 
 <p><strong>securerandom</strong></p>
 
-<blockquote><p>securerandom is a Ruby 1.9 library that’s now part of the Ruby 1.8 standard library too. Example: require ’securerandom’; SecureRandom.random_bytes(16)</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>securerandom is a Ruby 1.9 library that’s now part of the Ruby 1.8 standard library too. Example: require ’securerandom’; SecureRandom.random_bytes(16)</p>
+</blockquote>
 
 <p><strong>Array#flatten changes</strong></p>
 
-<blockquote><p>Array#flatten now takes an optional argument that determines how deep to perform flattening.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Array#flatten now takes an optional argument that determines how deep to perform flattening.</p>
+</blockquote>
 
 <p><strong>Array method changes</strong></p>
 
-<blockquote><p>Array#collect!, Array#map!, Array#each, Array#each_index, Array#reverse_each, Array#reject, Array#reject! and Array#delete_if now return an enumerator if no block is given. Array#pop and Array#shift now take an optional argument specifying the number of elements to remove from the array.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Array#collect!, Array#map!, Array#each, Array#each_index, Array#reverse_each, Array#reject, Array#reject! and Array#delete_if now return an enumerator if no block is given. Array#pop and Array#shift now take an optional argument specifying the number of elements to remove from the array.</p>
+</blockquote>
 
 <p><strong>Binding#eva</strong>l</p>
 
-<blockquote><p>Binding#eval is a new method to enable evaluations to take place in the context of a binding.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Binding#eval is a new method to enable evaluations to take place in the context of a binding.</p>
+</blockquote>
 
 <p><strong>Enumerable::Enumerator added</strong></p>
 
-<blockquote><p><a href="http://ruby-doc.org/core/classes/Enumerable/Enumerator.html">Enumerable::Enumerator</a> adds support for enumerations to be dealt with as objects, as in Ruby 1.9.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p><a href="http://ruby-doc.org/core/classes/Enumerable/Enumerator.html">Enumerable::Enumerator</a> adds support for enumerations to be dealt with as objects, as in Ruby 1.9.</p>
+</blockquote>
 
 <p><strong>Enumerator support on many classes</strong></p>
 
-<blockquote><p>Many methods based on IO, Integer, Array (see above), ARGF, Numeric, ObjectSpace, Range, String, and Struct now support returning enumerator objects where no blocks are given.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p>Many methods based on IO, Integer, Array (see above), ARGF, Numeric, ObjectSpace, Range, String, and Struct now support returning enumerator objects where no blocks are given.</p>
+</blockquote>
 
 <p><strong>net/smtp</strong></p>
 
-<blockquote><p><a href="http://www.ruby-doc.org/stdlib/libdoc/net/smtp/rdoc/index.html">net/smtp</a> now supports SSL/TLS connections.</p></blockquote>
+<blockquote>
+
+</blockquote>
+
+<blockquote>
+  <p><a href="http://www.ruby-doc.org/stdlib/libdoc/net/smtp/rdoc/index.html">net/smtp</a> now supports SSL/TLS connections.</p>
+</blockquote>
 
 <p>These items really only scratch the surface though. Dig into the <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_7/NEWS">NEWS</a> file for more info.</p>
 
-<p>|</p>
+<table>
+  <tbody>
+    <tr>
+    </tr>
+  </tbody>
+</table>
 </div>
   
   
@@ -423,9 +527,17 @@ second_example.test</p>
 
   <div class="entry-content"><p> </p>
 
-<p><a href="http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/%C2%A0">http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/%C2%A0</a></p>
+<p>http://matt-beedle.com/2006/12/13/rails-how-to-find-out-who-is-online/ </p>
 
-<p>Rails &ndash; How to find out who is online Posted by matt on December 13, 2006 Well, this is my first post. I was frustrated in to starting this blog, through searching the internet for solutions to various programming problems, and finding either nothing, or only half the answer. Hopefully I will be able to help others solve some of their problems faster. Recently I have been writing a dating site in ruby on rails. One quite important feature of this site is a list of members who are currently online. After a couple of days of pain, here’s the pretty simple solution to the problem: First off this only works if you use ActiveRecord to manage your sessions. To do this you must uncomment the following line in your environment.rb file: config.action_controller.session_store = :active_record_store Then create the sessions table by running the following command from your RAILS_ROOT: rake db:sessions:create Now, whenever a user logs in to your application add their id to the session. In my app at the moment it looks something like this: member = Member.new( @params[ :member ] ) member = Member.find( :all, :conditions => &ldquo;screen_name = &lsquo;#{member.screen_name}&rsquo; AND password = &lsquo;#{member.password}&rsquo;&rdquo; ) if member != nil session[ :member_id ] = member.id redirect_to :action => &lsquo;success&rsquo; else redirect_to :action => &lsquo;form&rsquo; end This code will need work for a production environment, for one thing it is open to SQL injection attacks. Now to find all of the users who are currently online it is just a matter of searching the sessions table for all the users who have been active in the last 10 minutes. This can be done using rails built in session model. Finally the session data needs to be unmarshaled and decoded. This stumped me for a while, but finally I found the answer at <a href="http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html.">http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html.</a> So here is my code to return an array of the member_ids of all the members online and active within the last 10 minutes. def who_is_online @whos_online = Array.new() onlines = CGI::Session::ActiveRecordStore::Session.find( :all, :conditions => [ &lsquo;updated_at = ?&rsquo;, Time.now() &ndash; 10.minutes ] ) onlines.each do |online| id = Marshal.load( Base64.decode64( online.data ) ) @whos_online &lt;&lt; id[ :member_id ] end return @whos_online end * Posted in Ruby on Rails * Meta 10 comments, permalink, rss</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Rails - How to find out who is online Posted by matt on December 13, 2006 Well, this is my first post. I was frustrated in to starting this blog, through searching the internet for solutions to various programming problems, and finding either nothing, or only half the answer. Hopefully I will be able to help others solve some of their problems faster. Recently I have been writing a dating site in ruby on rails. One quite important feature of this site is a list of members who are currently online. After a couple of days of pain, here’s the pretty simple solution to the problem: First off this only works if you use ActiveRecord to manage your sessions. To do this you must uncomment the following line in your environment.rb file: config.action_controller.session_store = :active_record_store Then create the sessions table by running the following command from your RAILS_ROOT: rake db:sessions:create Now, whenever a user logs in to your application add their id to the session. In my app at the moment it looks something like this: member = Member.new( @params[ :member ] ) member = Member.find( :all, :conditions =&gt; “screen_name = ‘#{member.screen_name}’ AND password = ‘#{member.password}’” ) if member != nil session[ :member_id ] = member.id redirect_to :action =&gt; ‘success’ else redirect_to :action =&gt; ‘form’ end This code will need work for a production environment, for one thing it is open to SQL injection attacks. Now to find all of the users who are currently online it is just a matter of searching the sessions table for all the users who have been active in the last 10 minutes. This can be done using rails built in session model. Finally the session data needs to be unmarshaled and decoded. This stumped me for a while, but finally I found the answer at http://caboo.se/doc/classes/CGI/Session/ActiveRecordStore/SqlBypass.html. So here is my code to return an array of the member_ids of all the members online and active within the last 10 minutes. def who_is_online @whos_online = Array.new() onlines = CGI::Session::ActiveRecordStore::Session.find( :all, :conditions =&gt; [ ‘updated_at = ?’, Time.now() - 10.minutes ] ) onlines.each do</td>
+      <td>online</td>
+      <td>id = Marshal.load( Base64.decode64( online.data ) ) @whos_online « id[ :member_id ] end return @whos_online end * Posted in Ruby on Rails * Meta 10 comments, permalink, rss</td>
+    </tr>
+  </tbody>
+</table>
 </div>
   
   
@@ -466,36 +578,36 @@ second_example.test</p>
 
   <div class="entry-content"><p><strong>我是怎么看FRIENDS练口语的</strong></p>
 
-<p>    很早就开始看F6，最开始是从起床开始，就一个人对着电脑，傻笑一天，每天吃一顿饭，傍晚和同学一起吃饭的时候，基本就不会说中国话了，被人说什么第一个反应就是英文。周末同学都回家了，更是变本加厉，因为没有人和我说话，内心独白都是F6里的各种声音，还有那种“哄笑”配乐，一个周下来，感觉人快疯了。</p>
+<p>    很早就开始看F6，最开始是从起床开始，就一个人对着电脑，傻笑一天，每天吃一顿饭，傍晚和同学一起吃饭的时候，基本就不会说中国话了，被人说什么第一个反应就是英文。周末同学都回家了，更是变本加厉，因为没有人和我说话，内心独白都是F6里的各种声音，还有那种“哄笑”配乐，一个周下来，感觉人快疯了。  </p>
 
-<p>    大学的时候是为了好玩，没想着真的用它来学英语。</p>
+<p>    大学的时候是为了好玩，没想着真的用它来学英语。  </p>
 
-<p>    后来工作了几年，因为一直野心勃勃的要去美国公干，所以从那个时候开始重新FAN F6,很长一段时间过去，学下来，感觉有些许体会了，上来冒个泡。</p>
+<p>    后来工作了几年，因为一直野心勃勃的要去美国公干，所以从那个时候开始重新FAN F6,很长一段时间过去，学下来，感觉有些许体会了，上来冒个泡。  </p>
 
-<p>    第一遍，带中文字幕看一遍</p>
+<p>    第一遍，带中文字幕看一遍  </p>
 
-<p>    10季真不是个小数字，看了一遍把当初那种感觉找了回来，所谓的感觉，就是在内心独白的时候都是英语，说话的第一个反应也是英文。</p>
+<p>    10季真不是个小数字，看了一遍把当初那种感觉找了回来，所谓的感觉，就是在内心独白的时候都是英语，说话的第一个反应也是英文。  </p>
 
-<p>    第二遍，带英文字母看了一遍</p>
+<p>    第二遍，带英文字母看了一遍  </p>
 
-<p>    我买的是60张的那种DVD，英文字母有几季还是不错的，后面的越做越差，真是没法看，就当了剧本。第二次看，基本都能听懂了，就帮着DVD校对字幕，校对的过程中，听力本身就是一个提升。</p>
+<p>    我买的是60张的那种DVD，英文字母有几季还是不错的，后面的越做越差，真是没法看，就当了剧本。第二次看，基本都能听懂了，就帮着DVD校对字幕，校对的过程中，听力本身就是一个提升。  </p>
 
-<p>    第三遍，不说你也知道了，去掉字幕，去掉字母有一个好处，就像丢了拐棍，你听起来就不会像看着英文字母那样一下就反映到脑子里，还要想一下，哦，这个单词是什么来着，因为我们很多时候对于掌握了的单词，突然冒出来，还是会思维停滞一下，就在这停滞的一下，新的内容又冲进来了，你就顾此失彼，到最后，前面的没想起来，后面的又忘了听，刚开始的时候是懊丧不已，因为前两遍的信心全被他给摧毁了，不过没关系，很正常的么，这个地方，你就要不停的重复听，所以你买DVD机比较好，有那个A-B重复健，可以无限重复你要听的句子，你总有想起来的那一刻吧</p>
+<p>    第三遍，不说你也知道了，去掉字幕，去掉字母有一个好处，就像丢了拐棍，你听起来就不会像看着英文字母那样一下就反映到脑子里，还要想一下，哦，这个单词是什么来着，因为我们很多时候对于掌握了的单词，突然冒出来，还是会思维停滞一下，就在这停滞的一下，新的内容又冲进来了，你就顾此失彼，到最后，前面的没想起来，后面的又忘了听，刚开始的时候是懊丧不已，因为前两遍的信心全被他给摧毁了，不过没关系，很正常的么，这个地方，你就要不停的重复听，所以你买DVD机比较好，有那个A-B重复健，可以无限重复你要听的句子，你总有想起来的那一刻吧  </p>
 
 <p>    第三遍是最痛苦的，也是最能升华的一个阶段。</p>
 
-<p>    我在做第三遍的时候，是听力口语一起来的，其实这两个本来就是分不开的，</p>
+<p>    我在做第三遍的时候，是听力口语一起来的，其实这两个本来就是分不开的，  </p>
 
-<p>    口语，要求自己强力模仿！！！！！注意这个词哦~~~不是吃干饭的，充分利用了A-B健，一个句子重复放，跟着读，然后跟着说，最后脱口而出，一点也不比他们差，甚至可以在语气，语调上，和他们一模一样。作这一部分的时候，我犯了一个错误，就是跟着读剧本，这是十分错误的，正确的做法是，像学鸟叫一样，学他们的声音，不要把自己原来读英文的习惯带到里面去，剧本只是告诉你他们再说什么内容，只是一个提示的作用，因为他们有很多连读，四个音节，在他们嘴里常常变成了2个音节，甚至一个音就带过了，你根本就反应不过来，这也就是我们听不懂他们说话的原因，太快了，而你根本不知道他连读了，如果按照自己的读英文的习惯，永远也做不到他们一样快。所以记住，！！！！！！学他们发出的声音，而不是读他们说出的句子！！！！！！！</p>
+<p>    口语，要求自己强力模仿！！！！！注意这个词哦~~~不是吃干饭的，充分利用了A-B健，一个句子重复放，跟着读，然后跟着说，最后脱口而出，一点也不比他们差，甚至可以在语气，语调上，和他们一模一样。作这一部分的时候，我犯了一个错误，就是跟着读剧本，这是十分错误的，正确的做法是，像学鸟叫一样，学他们的声音，不要把自己原来读英文的习惯带到里面去，剧本只是告诉你他们再说什么内容，只是一个提示的作用，因为他们有很多连读，四个音节，在他们嘴里常常变成了2个音节，甚至一个音就带过了，你根本就反应不过来，这也就是我们听不懂他们说话的原因，太快了，而你根本不知道他连读了，如果按照自己的读英文的习惯，永远也做不到他们一样快。所以记住，！！！！！！学他们发出的声音，而不是读他们说出的句子！！！！！！！  </p>
 
-<p>    这第三遍，我可以用老牛拉破车来形容，实在是很慢很无聊，要花费大量的时间，特别是一开始，记得101背到我想吐，莫尼卡的那句 “THERE IS NOTHING TO TELL@!#$%@#%@!%@$#%”可以直接当减肥药了，一听到就想吐！！但是，有一点保证，以后老外用多快的速度，我都能听懂她在说“THERE IS NOTHING TO TELL@!#$%@#%@!%@$#%”而且可以和她说的一样快，一样纯正的美国纽约音。兄弟们~~~代价惨重阿~~~~~`你可以算一下，一集大约20分钟，每句话重复10遍，那是什么概念，就是一集学下来要200分钟，折合3个多小时，如果你特别笨的话，多跟几遍，时间又上去了，我经常会思想溜号，A-B的时候不知道想什么去了，就要多重复几遍。我当初算了一下，我大约要跟到第7遍的时候才有感觉，前面不是语速慢了，就是快了，要么就是停顿不对，也可能我比较笨？加上笨的原因，加上溜号，大约有4个小时一集把.</p>
+<p>    这第三遍，我可以用老牛拉破车来形容，实在是很慢很无聊，要花费大量的时间，特别是一开始，记得101背到我想吐，莫尼卡的那句 “THERE IS NOTHING TO TELL@!#$%@#%@!%@$#%”可以直接当减肥药了，一听到就想吐！！但是，有一点保证，以后老外用多快的速度，我都能听懂她在说“THERE IS NOTHING TO TELL@!#$%@#%@!%@$#%”而且可以和她说的一样快，一样纯正的美国纽约音。兄弟们~~~代价惨重阿~~~~~`你可以算一下，一集大约20分钟，每句话重复10遍，那是什么概念，就是一集学下来要200分钟，折合3个多小时，如果你特别笨的话，多跟几遍，时间又上去了，我经常会思想溜号，A-B的时候不知道想什么去了，就要多重复几遍。我当初算了一下，我大约要跟到第7遍的时候才有感觉，前面不是语速慢了，就是快了，要么就是停顿不对，也可能我比较笨？加上笨的原因，加上溜号，大约有4个小时一集把.  </p>
 
-<p>    下面分析一下他们六个人的口音语速，RACH，我最喜欢的角色，她的口音不很好学，因为她经常会发出很可爱的声音，感情丰富啊，而且连音也比较多，但是学她很有用，因为她的发音很性感，个人认为。CHANDLER这个家伙经常会把我逼疯的，他太贫了，语速又快，最难学了，最好学的是PHEEBS，很喜欢她，她的发音很圆润，语速也很正常，MONIKA 可以用她来练长句子，她经常会一口气说很多，JOEY，他反映慢，语速适中应该是最好学的一个，可是他的声音太低了，不适合女生学，我学他太吃力了，男生的话是个首选~~~~</p>
+<p>    下面分析一下他们六个人的口音语速，RACH，我最喜欢的角色，她的口音不很好学，因为她经常会发出很可爱的声音，感情丰富啊，而且连音也比较多，但是学她很有用，因为她的发音很性感，个人认为。CHANDLER这个家伙经常会把我逼疯的，他太贫了，语速又快，最难学了，最好学的是PHEEBS，很喜欢她，她的发音很圆润，语速也很正常，MONIKA 可以用她来练长句子，她经常会一口气说很多，JOEY，他反映慢，语速适中应该是最好学的一个，可是他的声音太低了，不适合女生学，我学他太吃力了，男生的话是个首选~~~~  </p>
 
-<p>    这样我整了3季的时候，除了生词，在新天地泡吧的时候，可以和老外自由对话，心理满足了一把</p>
+<p>    这样我整了3季的时候，除了生词，在新天地泡吧的时候，可以和老外自由对话，心理满足了一把  </p>
 
-<p>    过了3季，后面的7季就会块很多，因为很多句子，在你的耳朵里已经是很简单的，根本不需要重复，你要练习的只是特别难的那些长句，记不记得伦敦之行？走之前，莫尼卡的那一口气说完的长句子，呵呵，那就是最高境界，你可以脱口而出，和她一样快，一样不喘气，后面的你就不用跟了，你可以出师了<del><br/>
-但是，这是3季以后的事了，3季不过，一切免谈</del></p>
+<p>    过了3季，后面的7季就会块很多，因为很多句子，在你的耳朵里已经是很简单的，根本不需要重复，你要练习的只是特别难的那些长句，记不记得伦敦之行？走之前，莫尼卡的那一口气说完的长句子，呵呵，那就是最高境界，你可以脱口而出，和她一样快，一样不喘气，后面的你就不用跟了，你可以出师了~~~<br />
+但是，这是3季以后的事了，3季不过，一切免谈~~~</p>
 </div>
   
   
@@ -534,16 +646,16 @@ second_example.test</p>
   </header>
 
 
-  <div class="entry-content"><h1><a href="http://www.dbanotes.net/database/mysql_stored_procedure_programming.html">重要图书: MySQL Stored Procedure Programming</a></h1>
+  <div class="entry-content"><h1 id="mysql-stored-procedure-programminghttpwwwdbanotesnetdatabasemysqlstoredprocedureprogramminghtml"><a href="http://www.dbanotes.net/database/mysql_stored_procedure_programming.html">重要图书: MySQL Stored Procedure Programming</a></h1>
 
-<p>作者: <strong> <a href="http://www.dbanotes.net/">Fenng</a></strong> | 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及 <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/">版权声明</a><br/>
+<p>作者: ** <a href="http://www.dbanotes.net/">Fenng</a>** | 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及 <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/">版权声明</a><br />
   网址: <a href="http://www.dbanotes.net/database/mysql_stored_procedure_programming.html">http://www.dbanotes.net/database/mysql_stored_procedure_programming.html</a></p>
 
-<p>看到有 Blog 说 Oracle PL/SQL 经典图书 <a href="http://www.oracleplsqlprogramming.com/">Oracle PL/SQL Programming</a> 的作者 <a href="http://www.stevenfeuerstein.com/">Steven Feuerstein</a> 出了本新书, 这应该不算什么太新鲜的事情，新鲜的是: 这本图书是关于 MySQL 存储过程的! 新书的名字是 <a href="http://safari.oreilly.com/?XmlId=0596100892">MySQL Stored Procedure Programming</a> ， 出版商是 O&#8217;Reilly.</p>
+<p>看到有 Blog 说 Oracle PL/SQL 经典图书 <a href="http://www.oracleplsqlprogramming.com/">Oracle PL/SQL Programming</a> 的作者 <a href="http://www.stevenfeuerstein.com/">Steven Feuerstein</a> 出了本新书, 这应该不算什么太新鲜的事情，新鲜的是: 这本图书是关于 MySQL 存储过程的! 新书的名字是 <a href="http://safari.oreilly.com/?XmlId=0596100892">MySQL Stored Procedure Programming</a> ， 出版商是 O’Reilly.</p>
 
 <p>更值得注意的是, 第一作者是 Guy Harrison , 这位老兄是 <a href="http://www.quest.com/">Quest</a> 软件的架构师(而 Quest 近年来也对 MySQL 的数据库工具推出了不少产品), 也是 <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0136142311?v=glance">Oracle SQL High-Performance Tuning</a> 一书的作者。Oracle SQL High-Performance Tuning 在很长的一段时间内都曾经被一些 Oracle 优化专家推崇, 现在虽然有些过时, 但想起来没能被国内出版社及时引进, 仍然有些遗憾。</p>
 
-<p>从 O&#8217;reilly 的宣传来看, 现在 Guy Harrison 的名头反而不如 Steven Feuerstein 响亮了(所以个别地方把 Steven 放到前面?), 也让人感慨.</p>
+<p>从 O’reilly 的宣传来看, 现在 Guy Harrison 的名头反而不如 Steven Feuerstein 响亮了(所以个别地方把 Steven 放到前面?), 也让人感慨.</p>
 
 <p>MySQL 5 最大的一个新特性是支持存储过程。 而此前, MySQL 最容易受到攻击的一点是不具备存储过程功能, 相信在接下来的改进中, 具备存储过程编程能力的 MySQL 能够真正的进入一些被商业数据库把持的企业应用领域.</p>
 
@@ -588,258 +700,7 @@ second_example.test</p>
   </header>
 
 
-  <div class="entry-content"><p> 1039个读者 译者: attaboy 02/05/2008 原文 引用 双语对照及眉批 简介 十个不可或缺的 ruby gems 在我编程的时候有些东西是必须的。 于是我总结了这个 10 个最重要的 ruby gems 列表， 它们将使你的生活变得更轻松， 即使你只是花少量的时间用 ruby 编程。 Gems 有很多， 不过这些都是精华！ capistrano Capistrano 是 Rails 应用程序开发更加从容。 它还是一个用来和远程服务器交互的聪明的 framework 。 事实上我已经备份了用 Capistrano 写的代码， 作为 Rake/Net::SSH 或者 shell 代码之外的另一个选择。 chronic Chronic 是一个自然语言分析器， 它的名字是个俏皮的双关。 >> Chronic.parse(&lsquo;3rd wednesday in november&rsquo;) => Wed Nov 19 12:00:00 0000 2008 ferret Ferret 会让你的老板、客户爱死你。 它提供了快速文本查询的工具， 你甚至可以可以给 PDF 文件和 Office 文档加索引。 我已经在很多网站上使用 Ferret 了， 我的客户们都说：“ 哇， 这看起来像 Google!” hpricot hpricot 是一个快速、容易上手的 HTML 分析器。 如果你发现自己需要解析 HTML 抑或 XML 的内容， hpricot 是最简捷的方法之一。 事实上我在 Helipad 中的很多地方使用了这个工具。 rcov rcov 是使你的程序不经常崩溃的理由之一。 它分析你的代码， 高亮显示你的测试代码遗漏的部分。 它速度快， 不占资源， 并且能减轻头痛 ：） scruffy 我一直用 Gruff 来画图， 不过当 scruffy 很完善的时候， 我更喜欢 scruffy API 的设计。 它工作的方式非常精妙： 产生简单的 XML 来驱动 SVG 图。 因为 SVG 提供了一直直观地处理原始图片的方式， 你可以丢掉那些大量杂乱难懂的代码了。 我经常继承和重写 scruffy 来做成各种精巧的图片， 如果你觉得你现在用类库不太灵， 何不试试 scruffy 呢。 simple-rss simple-rss 分析 RSS 和 atom feed， 干的又快又好。 它的分析器也容易扩展， 这样你就可以应付那些无效的或专有的 feeds。 thin Thin 使用 EventMachine， Rack 和 Mongrel 来创建一个快速的 web server。 我用它来做 Rails 的本地开发， 它比 mongrel 稍快。 要在我的 Rails 程序中使用它， 只需要在我的程序目录下输入 thin start 就行了。 当时我的 thin 和 IE cookies 之间有点儿冲突， 要记得如果你也遇到同样的问题， 你的程序可能有麻烦。 （说明: 这个问题在 thin 0.6.1 和 Rails 2 环境下好像修正了。） 要安装 thin， 使用 gem install thin 命令。 turn Turn 使你的 Test::Unit 输出更易读。 Turn 也行看起来不那么招人喜欢， 但它确实对阅读测试结果有很大帮助。 在维护 Helicoid 的时候我对测试严重依赖， 所以任何能使这项工作变得更简洁的东西我都乐于尝试。 要安装 turn， 使用 gem install turn 命令。 wirble wirble 使 irb 用起来更简单。 你有更好的对 history 的支持（在 session 间）以及颜色， 所以在繁重的工作中，你的眼睛和手指能得到休息。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/05/20/Ajax_%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90_ZZ/">Ajax_性能分析_ZZ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-05-20T00:00:00+08:00" pubdate data-updated="true">May 20<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/05/20/Ajax_%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90_ZZ/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/05/20/Ajax_%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90_ZZ/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>|</p>
-
-<h1>Ajax 性能分析</h1>
-
-<p><em>使用最新的工具分析性能</em></p>
-
-<p><img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/developerworks/i/dw.gif" alt="developerWorks" /> |</p>
-
-<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
-
-<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
-
-<p>| 文档选项 |</p>
-
-<p>| <tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif" /></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif" /></td><td class="small" width="122"><p><span class="ast">未显示需要 JavaScript 的文档选项</span></p></td></tr></p>
-
-<p>  | <img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/i/v14/icons/printer.gif" alt="将打印机的版面设置成横向打印模式" /> |</p>
-
-<p><strong> <a href="javascript:print(">打印本页</a>)</strong></p>
-
-<p>|
-  | <img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/i/v14/icons/em.gif" alt="将此页作为电子邮件发送" /> |</p>
-
-<p><a href="javascript:document.email.submit("><strong>将此页作为电子邮件发送</strong></a>;)</p>
-
-<p>|
-| <img src="http://www.ibm.com/i/c.gif" alt="" /> | <img src="http://www.ibm.com/i/v14/icons/fw_bold.gif" alt="英文原文 " /> |</p>
-
-<p><a href="http://www.ibm.com/developerworks/web/library/wa-aj-perform/"><strong>英文原文</strong></a></p>
-
-<p>|</p>
-
-<p>|</p>
-
-<p>|</p>
-
-<p>级别： 中级</p>
-
-<p><a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#author">Kristopher William Zyp</a> ( <a href="mailto:kriszyp@xucia.com?subject=Ajax%20%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90&amp;cc=ruterbo@us.ibm.com">kriszyp@xucia.com</a>), 软件开发人员, Xucia</p>
-
-<p>2008 年 5 月 19 日</p>
-
-<blockquote><p>由 于 Asynchronous JavaScript + XML（Ajax）的出现，用户对交互性和性能的期望越来越高了，而开发人员也把 Ajax 视为 Web 应用程序中必需的部分。随着更多的代码转移到客户端和网络模型的改变，开发人员社区构建了更多工具来解决 Ajax 独特的性能问题。本文讨论如何使用工具集在 Ajax 应用程序中寻找和纠正性能问题。</p></blockquote>
-
-<p>性能是促使开发人 员用 Ajax 改进应用程序的主要因素之一。Ajax 可以与服务器进行通信而不必请求完整的页面，因此可以改进响应时间。通过减少响应时间，Ajax 可以提供更好的用户体验。但是，分析和改进 Ajax 应用程序需要一套与传统 Web 应用程序不同的工具。本文讨论这些工具并解释如何使用它们寻找和纠正性能问题。</p>
-
-<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
-
-<p>| <strong>常用的缩写词</strong></p>
-
-<ul>
-<li><strong>CSS</strong>：Cascading Style Sheets</li>
-<li><strong>HTML</strong>：Hypertext Markup Language</li>
-<li><strong>XML</strong>：Extensible Markup Language</li>
-<li><p><strong>HTTP</strong>：Hypertext Transfer Protocol</p>
-
-<p>|</p></li>
-</ul>
-
-
-<p>|</p>
-
-<p>Ajax 应用程序的性能取决于 Web 应用程序的几个方面：</p>
-
-<ul>
-<li>服务器响应时间</li>
-<li>网络传输时间</li>
-<li>客户机 JavaScript 的处理时间</li>
-</ul>
-
-
-<p>在 传统的 Web 应用程序开发中，服务器响应时间是性能分析的主要重点。大多数性能分析度量应用服务器是否能够快速处理请求、执行必需的应用程序逻辑和生成响应。在 Ajax 应用程序开发中，这仍然是应用程序性能的一个重要方面，但是开发人员对这个方面的了解已经很深入了，所以本文主要关注性能的其他方面。</p>
-
-<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
-
-<p>| <strong>developerWorks Ajax 参考资料中心</strong><br/>
-  <a href="http://www.ibm.com/developerworks/cn/ajax/">Ajax 参考资料中心</a> 是一站式站点，包含关于开发 Ajax 应用程序的免费工具、代码和信息。 <a href="http://www.ibm.com/developerworks/forums/dw_forum.jsp?forum=965&amp;cat=11">active Ajax community forum</a> 由 Ajax 专家 Jack Herrington 主持，您可以在这里向其他开发人员寻求帮助。 |</p>
-
-<p>|</p>
-
-<p>工具</p>
-
-<p>为了了解 Web 应用程序的哪些方面需要改进，必须适当地分析应用程序的组件。本文讨论如何使用 Firefox 的 Firebug 扩展和 YSlow 插件分析 Web 应用程序。安装这些工具之后，连接正在开发的站点并单击 Firefox 状态栏中的 <strong>YSlow</strong>。这会在 Firebug 中打开 YSlow 界面。现在单击 <strong>Performance</strong> 按钮。YSlow 对应用程序进行分析，并提供关于应用程序网络传输时间的不同部分的报告，见图 1。</p>
-
-<p><strong>图 1. YSlow 报告</strong><br/>
-  <img src="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/yslow.jpg" alt="YSlow 报告" /></p>
-
-<p>网络传输时间</p>
-
-<p>在大多数 Web 应用程序中，网络传输时间是主要的瓶颈。可以通过 YSlow 报告分析网络传输的不同方面，了解如何减少传输时间。</p>
-
-<p>减少 HTTP 请求</p>
-
-<p>每个 HTTP 请求都需要花一些时间发送到服务器并接收响应。即使响应很小，仍然需要基本的往返时间，这称为<em>延迟</em>。YSlow 根据发出的 HTTP 请求数量进行评级。大量的请求会导致装载速度显著降低。可以简化页面，减少需要装载的组件，从而减少 HTTP 请求。可以通过使用 CSS sprites 减少图像请求。获得一些可以生成 CSS sprites 的工具（参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节）。为了减少脚本和 CSS 请求，可以以内联方式把它们包含在页面中，或者把多个脚本或 CSS 文件组合在一起。</p>
-
-<p>可以提供指定了未来日期的 HTTP 缓存过期头，这会让浏览器对组件进行缓存，因此可以减少 HTTP 请求。当用户在页面之间导航，或者返回您的站点时，可以缓存组件，不需要在每次访问站点时都下载它。如果提供了适当的过期头，代理也可以缓存经常装载的内 容。过期头像下面这样：</p>
-
-<p>|
-Expires: Wed, 10 Mar 2009 10:00:00 GMT<br/>
-|</p>
-
-<p>请记住，如果把过期日期设置为很长时间以后，那么即使已经修改了内容，浏览器仍然会使用缓存的内容。把过期日期设置为一天以后可能比较合适。还可以通过修改文件名使文件名包含版本信息，因此在发布新版本时，就会请求新的 URL，这会让浏览器发出新的请求。可以用 <code>ExpiresDefault</code> 指令配置 Apache，从而添加过期头：</p>
-
-<p>|
-ExpiresDefault &ldquo;access plus 10 years&#8221;<br/>
-  |</p>
-
-<p>还可以通过 YSlow 检查页面的总下载大小（单击 <strong>Stats</strong> 按钮）。YSlow 会显示首次访问（没有缓存）时的页面大小和后续页面访问（可以使用缓存）时的页面大小。</p>
-
-<p>替代的 DNS 查询</p>
-
-<p>HTTP 请求可能涉及多次服务器往返。如果资源使用多个主机或域名，浏览器可能需要多次执行 Domain Name System（DNS）查询。如果必须查询多个名称，YSlow 会发出警告。但是一定要注意，多个 DNS 名称实际上也可能提高性能。大多数浏览器只允许每个主机名有两个连接。但是，通过使用多个主机名，可以建立更多的连接，因此可以进行更多的并发下载。</p>
-
-<p>| <img src="http://www.ibm.com/i/c.gif" alt="" /> |</p>
-
-<p>| 根据 Wikipedia 上的说法，<em>缩减（minify）</em> 过程就是从源代码中删除所有不必要的字符，但是不改变功能。这些不必要的字符通常包括空格字符、换行字符、注释和块分界符。这些字符用来提高代码的可读性，但是对执行代码而言并不是必要的。 |</p>
-
-<p>|</p>
-
-<p>减少组件传输的大小</p>
-
-<p>除了减少 HTTP 请求数量之外，减少请求的组件的大小也对性能有好处。可以应用技术手段压缩某些格式。YSlow 会提示哪些技术可以有效地减少响应大小。</p>
-
-<p>通 过消除不必要的空格和注释，可以缩减 JavaScript 代码、CSS 和 HTML。通过改变变量名，可以进一步压缩 JavaScript 代码。Packer 和 YUI 压缩器是有效的 JavaScript 压缩工具，YUI 压缩器也支持对 CSS 进行压缩。还可以用 JavaScript CompressorRater 比较压缩效果（参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节）。</p>
-
-<p>对 于基于文本的资源，最有效的压缩方法是启用 gzip（GNU zip 的缩写）。通过使用 gzip，一般情况下可以把内容大小减少大约 70%。不要对已经压缩的资源使用 gzip，比如图像和视频。适合使用 gzip 的资源包括 CSS、HTML、JavaScript 代码、XML 和 JavaScript Serialized Object Notation（JSON）。Apache 1.3 通过 <code>mod_gzip</code> 支持 gzip，Apache 2.0 使用 <code>mod_deflate</code> 。</p>
-
-<p>通过减少资源大小来减小 HTTP 响应是很重要的，但是减小 HTTP 请求也很重要。对于许多因特网用户来说，上传速度比下载速度慢得多，所以性能对请求的大小更敏感。大的 URL、大量提交数据和过多的头都会增加请求的大小。在 Firebug 中，可以在 <strong>Net</strong> 选项卡上查看请求，见图 2。可以展开每个请求，查看请求头。不必要地增大请求头的常见原因之一是大的 cookie。cookie 包含在每个请求的头中，因此大的 cookie 会显著增加开销。</p>
-
-<p><strong>图 2. Firebug Net 面板</strong><br/>
-  <img src="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/firebug-net.jpg" alt="Firebug Net 面板" /></p>
-
-<p>Java™ 2 Platform, Enterprise Edition（J2EE）应用程序可以通过一个简单的过滤器 Resource Accelerate 应用这些性能改进技术（缓存过期日期、gzip 和 JavaScript 压缩）。还可以使用 JavaServer Pages（JSP）标记库 pack:tag 对资源进行压缩。还可以选用其他技术，更多信息参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节。</p>
-
-<p>改进网络传输性能的其他技术</p>
-
-<p>YSlow 建议的另一种改进技术是使用内容交付网络（CDN）。CDN 提供一个分布式服务器网络，内容放在比较接近最终用户的服务器上，从而改进响应时间。</p>
-
-<p>通 过适当地调整 CSS 和脚本的次序，也可以加快显示 Web 页面的速度。YSlow 会分析 CSS 和脚本声明的位置，并提出改进次序的建议。建议把 CSS 声明放在页面顶部，这样就可以马上使用 CSS 显示页面。把脚本放在页面底部，这样就可以在装载 JavaScript 代码进行交互之前显示页面。</p>
-
-<p>JavaScript 处理时间</p>
-
-<p>服 务器成功地生成 Web 页面并把页面传输给浏览器之后，Ajax 应用程序通常依靠 JavaScript 代码与用户进行交互。大多数用户愿意花一点儿时间等待页面完全下载，但是高品质的交互依赖于页面的迅速反应，所以对页面上各种组件的快速响应是实现良好用 户体验的最重要的方面。另外，在等待下载资源时，浏览器常常仍然有响应能力，但是如果连续执行 JavaScript 代码，有可能完全锁住浏览器。</p>
-
-<p>Firebug 附带一个分析工具。进入 <strong>Console</strong> 选项卡并单击 <strong>Profile</strong>， 就可以启动这个分析工具。它可以帮助了解 Web 应用程序的哪些部分大量使用了 JavaScript 代码。如果重复执行相同的操作，这个工具会产生更准确的结果。例如，如果在装载页面时执行大量 JavaScript 代码，那么可以多次装载页面。如果有 JavaScript 鼠标事件处理函数，那么可以把鼠标在页面上移动一段时间，让这个工具收集足够的信息。完成操作之后，单击 <strong>Profile</strong> 按钮再次显示分析结果，见图 3。</p>
-
-<p><strong>图 3. Firebug 分析结果</strong><br/>
-  <img src="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/firebug-profile.jpg" alt="Firebug 分析结果" /></p>
-
-<p>分 析结果列出在分析期间发生的所有函数调用。每个条目显示调用函数的次数和关于函数调用的处理时间的统计数据。Time 列表示等待这个函数返回所花费的总时间量，Own Time 列表示等待这个函数返回所花费的总时间量减去这个函数等待它发出的调用返回的时间。Own time 列通常是最重要的数据，因为它们指出哪些地方发生了耗时很长的处理，而且 Percent 列中的值基于这些数据。在默认情况下，Firebug 按照 Percent 列排序，最高的值放在最上面。耗时最长的调用放在最上面，您可以集中精力改进这些函数的性能。在使用 Firebug 时，很容易访问函数的源代码；只需单击列表中的条目，就会转到那个函数。</p>
-
-<p>在评估 JavaScript 函数的性能时，还要注意调用函数的次数。函数本身可能并不慢（可以查看函数的平均处理时间），但是调用得太频繁了。有时候，不必要地频繁调用一个函数会造成性能问题。例如， <code>onmousemove</code> 等鼠标事件处理函数常常会产生大量调用。</p>
-
-<p>如果发现某个函数花费的处理时间很长，就需要检查 JavaScript 代码，寻找可能存在的问题。 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#table1">表 1</a> 列出一些缓慢的 JavaScript 操作。关于性能基准的更多信息，参见 <a href="http://www.ibm.com/developerworks/cn/web/wa-aj-perform/?ca=drs-tp2008#resources">参考资料</a> 一节。</p>
-
-<p><strong>表 1. 缓慢的 JavaScript 操作</strong></p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th> 操作 </th>
-<th> 说明 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td> DOM 访问 </td>
-<td> 与 DOM 的交互常常比普通 JavaScript 代码慢。与 DOM 的交互常常是无法回避的，但是应该尽可能减少。例如，用字符串动态地创建 HTML 并设置 innerHTML 常常比用 DOM 方法创建 HTML 要快。 |</td>
-</tr>
-<tr>
-<td></td>
-<td> eval </td>
-<td> 应该尽可能避免使用 <code>eval</code> 方法，因为脚本运算的开销很大。 |</td>
-</tr>
-<tr>
-<td></td>
-<td> with </td>
-<td> 使用 <code>with</code> 语句创建额外的范围对象，这会减慢变量访问并造成二义性。 |</td>
-</tr>
-<tr>
-<td></td>
-<td> for-in 循环 </td>
-<td> 使用传统的 <code>for (var i=0; i&lt;array.length;i++)</code> 循环遍历数组，而不是使用 for-in 循环。不幸的是，大多数 JavaScript 环境中的 for-in 循环实现很慢。 |</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>其他浏览器</p>
-
-<p>带 Firebug 和 YSlow 的 Firefox 是分析性能的最佳选择。对于 Mac OS X 上的 Safari，还可以使用 Web Inspector 分析 HTTP 请求。对于 JavaScript 性能分析，可以使用手工技术评估某些函数的性能。手工评估函数的方法是，用 <code>Date</code> 函数度量执行时间，见清单 1：</p>
-
-<p><strong>清单 1. 手工计时</strong></p>
-
-<p>|</p>
-
-<p>function myFunctionToTest() {<br/>
-var start = new Date().getTime();<br/>
-&hellip; // body of the function<br/>
-var totalTime = new Date().getTime() &ndash; start;<br/>
-}</p>
-
-<p>|</p>
-
-<p>可能影响性能的一个重要问题是 Windows® Internet Explorer® 糟糕的内存管理。随着创建更多的对象和属性，没有应用补丁的 Internet Explorer 6 和更早版本会逐渐变慢。一般来说，如果创建的对象超过 5000 个，旧版本的 Internet Explorer 就非常慢了。</p>
-
-<p>结束语</p>
-
-<p>通 过使用 Firebug 和 YSlow，可以彻底地分析 Web 应用程序并进行合理的修改来提升性能。YSlow 提供的详细信息有助于减少网络传输时间。Firebug 提供详细的 JavaScript 分析，有助于识别需要改进的代码。这些工具可以帮助开发人员开发性能更好的 Web 应用程序，提供更好的用户体验。</p>
-
-<p>  |</p>
+  <div class="entry-content"><p> 1039个读者 译者: attaboy 02/05/2008 原文 引用 双语对照及眉批 简介 十个不可或缺的 ruby gems 在我编程的时候有些东西是必须的。 于是我总结了这个 10 个最重要的 ruby gems 列表， 它们将使你的生活变得更轻松， 即使你只是花少量的时间用 ruby 编程。 Gems 有很多， 不过这些都是精华！ capistrano Capistrano 是 Rails 应用程序开发更加从容。 它还是一个用来和远程服务器交互的聪明的 framework 。 事实上我已经备份了用 Capistrano 写的代码， 作为 Rake/Net::SSH 或者 shell 代码之外的另一个选择。 chronic Chronic 是一个自然语言分析器， 它的名字是个俏皮的双关。 » Chronic.parse(‘3rd wednesday in november’) =&gt; Wed Nov 19 12:00:00 0000 2008 ferret Ferret 会让你的老板、客户爱死你。 它提供了快速文本查询的工具， 你甚至可以可以给 PDF 文件和 Office 文档加索引。 我已经在很多网站上使用 Ferret 了， 我的客户们都说：“ 哇， 这看起来像 Google!” hpricot hpricot 是一个快速、容易上手的 HTML 分析器。 如果你发现自己需要解析 HTML 抑或 XML 的内容， hpricot 是最简捷的方法之一。 事实上我在 Helipad 中的很多地方使用了这个工具。 rcov rcov 是使你的程序不经常崩溃的理由之一。 它分析你的代码， 高亮显示你的测试代码遗漏的部分。 它速度快， 不占资源， 并且能减轻头痛 ：） scruffy 我一直用 Gruff 来画图， 不过当 scruffy 很完善的时候， 我更喜欢 scruffy API 的设计。 它工作的方式非常精妙： 产生简单的 XML 来驱动 SVG 图。 因为 SVG 提供了一直直观地处理原始图片的方式， 你可以丢掉那些大量杂乱难懂的代码了。 我经常继承和重写 scruffy 来做成各种精巧的图片， 如果你觉得你现在用类库不太灵， 何不试试 scruffy 呢。 simple-rss simple-rss 分析 RSS 和 atom feed， 干的又快又好。 它的分析器也容易扩展， 这样你就可以应付那些无效的或专有的 feeds。 thin Thin 使用 EventMachine， Rack 和 Mongrel 来创建一个快速的 web server。 我用它来做 Rails 的本地开发， 它比 mongrel 稍快。 要在我的 Rails 程序中使用它， 只需要在我的程序目录下输入 thin start 就行了。 当时我的 thin 和 IE cookies 之间有点儿冲突， 要记得如果你也遇到同样的问题， 你的程序可能有麻烦。 （说明: 这个问题在 thin 0.6.1 和 Rails 2 环境下好像修正了。） 要安装 thin， 使用 gem install thin 命令。 turn Turn 使你的 Test::Unit 输出更易读。 Turn 也行看起来不那么招人喜欢， 但它确实对阅读测试结果有很大帮助。 在维护 Helicoid 的时候我对测试严重依赖， 所以任何能使这项工作变得更简洁的东西我都乐于尝试。 要安装 turn， 使用 gem install turn 命令。 wirble wirble 使 irb 用起来更简单。 你有更好的对 history 的支持（在 session 间）以及颜色， 所以在繁重的工作中，你的眼睛和手指能得到休息。</p>
 </div>
   
   
@@ -864,6 +725,10 @@ var totalTime = new Date().getTime() &ndash; start;<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
       </li>
     
@@ -879,10 +744,6 @@ var totalTime = new Date().getTime() &ndash; start;<br/>
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -893,12 +754,29 @@ var totalTime = new Date().getTime() &ndash; start;<br/>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2014 - Chandler Wei -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 </footer>
   
