@@ -9,8 +9,11 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="很久没有写blog了，自从有了微博 推特，以前用博客大巴，后来自己找服务器放blog，服务器么用几年就么了，断断续续就不写blog了，搞的自己也不知道自己都在忙什么，octopress 是很酷的东西 又激发了我写blog的欲望，今天完成简单的部署, 明天看看插件什么的怎么设置，
-">
+  <meta name="description" content="How to Wait for All Goroutines to Finish Executing Before Continuting go wait example `package main import ( "fmt"
+"io/ioutil"
+"log"
+"net/http"
+"sync &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +69,213 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-17T10:57:16+08:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://nathanleclaire.com/blog/2014/02/15/how-to-wait-for-all-goroutines-to-finish-executing-before-continuing/" title="go">How to Wait for All Goroutines to Finish Executing Before Continuting</a></p>
+
+<p>go wait example</p>
+
+<p>`package main</p>
+
+<p>import (</p>
+
+<pre><code>"fmt"
+"io/ioutil"
+"log"
+"net/http"
+"sync"
+</code></pre>
+
+<p>)</p>
+
+<p>func main() {</p>
+
+<pre><code>urls := []string{
+    "http://www.reddit.com/r/aww.json",
+    "http://www.reddit.com/r/funny.json",
+    "http://www.reddit.com/r/programming.json",
+}
+jsonResponses := make(chan string)
+
+var wg sync.WaitGroup
+
+wg.Add(len(urls))
+
+for _, url := range urls {
+    go func(url string) {
+        defer wg.Done()
+        res, err := http.Get(url)
+        if err != nil {
+            log.Fatal(err)
+        } else {
+            defer res.Body.Close()
+            body, err := ioutil.ReadAll(res.Body)
+            if err != nil {
+                log.Fatal(err)
+            } else {
+                jsonResponses &lt;- string(body)
+            }
+        }
+    }(url)
+}
+
+go func() {
+    for response := range jsonResponses {
+        fmt.Println(response)
+    }
+}()
+
+wg.Wait()
+</code></pre>
+
+<p>}`</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-17T00:00:00+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>2014-02-17-go-wait-example.html</title>
+
+</head>
+
+<body>
+
+<hr />
+
+<p>layout: post
+title: &#8220;go wait example&#8221;
+date: 2014-02-17 10:57:16 +0800
+comments: true</p>
+
+<h2>categories: go</h2>
+
+<p><a href="http://nathanleclaire.com/blog/2014/02/15/how-to-wait-for-all-goroutines-to-finish-executing-before-continuing/" title="go">How to Wait for All Goroutines to Finish Executing Before Continuting</a></p>
+
+<p>go wait example</p>
+
+<p>`package main</p>
+
+<p>import (
+    &#8220;fmt&#8221;
+    &#8220;io/ioutil&#8221;
+    &#8220;log&#8221;
+    &#8220;net/http&#8221;
+    &#8220;sync&#8221;
+)</p>
+
+<p>func main() {
+    urls := []string{
+        &#8220;http://www.reddit.com/r/aww.json&#8221;,
+        &#8220;http://www.reddit.com/r/funny.json&#8221;,
+        &#8220;http://www.reddit.com/r/programming.json&#8221;,
+    }
+    jsonResponses := make(chan string)</p>
+
+<pre><code>var wg sync.WaitGroup
+
+wg.Add(len(urls))
+
+for _, url := range urls {
+    go func(url string) {
+        defer wg.Done()
+        res, err := http.Get(url)
+        if err != nil {
+            log.Fatal(err)
+        } else {
+            defer res.Body.Close()
+            body, err := ioutil.ReadAll(res.Body)
+            if err != nil {
+                log.Fatal(err)
+            } else {
+                jsonResponses &lt;- string(body)
+            }
+        }
+    }(url)
+}
+
+go func() {
+    for response := range jsonResponses {
+        fmt.Println(response)
+    }
+}()
+
+wg.Wait()
+</code></pre>
+
+<p>}`</p>
+
+</body>
+</html>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -479,147 +689,6 @@ Uses and Limitations</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/18/%E5%8E%A6%E9%97%A83/">厦门3</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-18T15:48:00+08:00" pubdate data-updated="true">Apr 18<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>现在写东西很慢啊.一点都不像当年的我&hellip;因为很久没写长文字,刚打开页面的时候文思如泉涌，写着写着就歇菜了&hellip;</p>
-
-<p>哎，很崩溃的感觉&hellip;</p>
-
-<p>其实厦门3天确实是我们俩2年半里最成功的一次远途旅行了，每天的满足感都在递进式增长。回来之后回味无穷，哎&hellip;还特此制定短、中、长期旅游计划&hellip;</p>
-
-<p>最近你给我看张小砚台的书，让我对旅游的认识更加多了一层向往，以前只觉得旅游就是玩，就是看风景，拍照片，现在看了别人的生活经历，才开始觉得自己在现世广袤的生活里，蜷缩在偏安一隅的角落里，活的认认真真，辛辛苦苦，其实毫无乐趣可言。什么工资啊、结婚啊，在自由的生活态度面前，真是不堪一击，就和一个穿得冠冕堂皇实际内心枯竭的小子站在穿着乞丐装的小王子面前一样。</p>
-
-<p>你的生活有多重？<br/>
-一部电影叫《在云端》，里面提到的一个问题。<br/>
-“想象一下你背着一个背包，背带勒在肩膀上。现在，把生活中所有的东西都塞到包里。从小件开始，比如书架里，抽屉里的，小玩意，收藏品。感觉这些东西的重量。然后，开始收拾大件的。衣服，桌上电器，台灯，毛巾，电视……背包现在已经相当重了。接着收拾更大的。沙发，床，餐桌，全都放进去。车也放进去，还有你的房子……全都塞进背包里。现在，试着走两步。很困难吧？”<br/>
-这就是我们每天做的事情。我们不断给自己增重，直到寸步难行。然而，行动就是生命。</p>
-
-<p>我们那么认真的活着，积极的也罢，消极的被迫的也罢，终究只是为了一些别人眼里的认可，只有旅游，才是真正愉悦自己的经历吧。不必强求，不必谄媚。</p>
-
-<p>那么决定解放，即使只是暂时的解放，因为现实总是有更多比释放自我更”“重要的事情”，重要与否其实只是你内心的偏向而已，我们总是对自由有种莫名的强烈向往，但是越是自由，就越是意味着无限可能，无限可能既是不确定，不确定就缺乏安全感。既要冒险又想安全感，大多数人就在这种矛盾的心情中不做改变的活了一辈子吧。我们不可能放弃工作，不可能放弃亲情的羁绊，不可能放弃名利与曾经几十年奋斗的结果。不过，人不能放弃尝试的可能，哪怕只是一瞬间&hellip;所以那么多人如此着迷旅行的意义&hellip;.</p>
-
-<p>旅行就是要从自己活腻了的地方到别人活腻了地方去。人一辈子，小小足迹能涉及的范围与茫茫宇宙相比，该是多渺小啊&hellip;有生之年，我应该去哪儿呢？</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/17/%E5%8E%A6%E9%97%A82/">厦门2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-17T16:23:00+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>上次写了鼓浪屿的第一天</p>
-
-<p>隔了很长时间，心心念念的全都是厦门的美景和放飞的心情，每天工作闲暇之余都回味无穷，翻照片，看当时记录的视频，这番心情不记录下来，姑娘我真是会遗憾到死&hellip;.</p>
-
-<p>Day2:</p>
-
-<p>南普陀寺、厦门大学、鼓浪屿右侧</p>
-
-<p>昨夜美美的睡了一觉，ChandleWEi说这是迄今为止我和他出来旅游睡得最好的一觉&hellip;.偶&hellip;其实我老老实实睡觉还是很乖的，而且注意控制了晚上喝水的频次，没有在四五点起来上厕所扰某人清梦~~哈哈，早上醒来，拉开窗帘，外面还是有点灰，不过已经开始依稀透着一点蓝，比昨天好，我们彼此安慰~~~</p>
-
-<p>洗漱，出门，哈哈，有太阳~~4月初春，早上还有点凉意，因为感冒也不能风骚的穿小裙子，只有一条彩色的小背带裙，裹在厚厚的外套里面，这个季节里，厦门的太阳和上海有点点不同，是透明的，是轻柔的，是抚摸皮肤的温柔阳光~~~</p>
-
-<p>stop1：吃早餐，环岛路沙滩上遛遛~~专门问了房东姐姐，说曾厝垵村子里的早餐很多的，果然出门往村里一走就发现很多小店，装修朴素，店招都清一色写着：沙茶面、面线糊之类的厦门风情的小食，店主也不会主动上来揽客，进门随意，即使只是看看就走也尽情随意。不过这边很多店都打着福建沙县小吃的招牌，Chandle一时很难接受，他每天在上海中午上班就为了便宜常常不得不吃沙县，见到这个招牌就恶心。哈哈。不过入乡随俗，福建的小吃在福建吃，风味总有不同吧，我们挑了一家没有沙县的名头的小店，进去犹豫了半天只点了一份面线糊，哈哈，Chandle吃了一根油条&hellip;</p>
-
-<p>吃完我提议在小村子里走走，昨天进村子的时候看到一拨人 明明走在我们后面，但是等我们到达旅馆的时候他们竟然神奇的朝我们迎面走来，当时我就觉得这小村子的道路必有玄机，今天一定要走一番，果然不负所望，村子的左侧-右侧我们昨天是从外部绕的，其实里面的小弄堂可以横穿，小弄堂窄的地方仅容一人通过，路边不时有布置精心的小院落，估计都是为游客准备的小家庭旅馆，方方的院子里，木质的栅栏，摆上几盆绿植，外露式的小楼阶梯，从一楼延伸到3、4楼，小楼都不超过5层楼，互相不遮掩，楼顶都有空旷的阳台，也是摆满了开着小花的素净的植物，随意的摆放也情调非凡。</p>
-
-<p>穿出小村庄，看到村子门口有卖杭州小笼，刚刚吃饱的那股满足感居然已经找不着了，好奇厦门的小笼不知道什么滋味呢？于是索性坐下来，上一笼小笼摆开，旁边老阿姨又卖豆花，反正也是吃个开心，又叫了豆花一杯，再看旁边又是炸得金灿灿的油条，哈哈，前面chandle吃油条我蹭了一口觉得那感觉真是晴天霹雳啊，至今回味，于是又叫了跟油条。哈哈，饱饱的吃了一顿早饭~~</p>
-
-<p>然后满足的出发啦！！</p>
-
-<p>环岛路上晃一圈：</p>
-
-<p>昨天打车到旅馆的时候经过环岛路，就知道一定要下来走一走，今天终于悠闲了&hellip;我们拣了一个陡峭的入口进入沙滩的范畴，还鼓着you jump I jump的大义凛然的决心才先后跳下去&hellip;后来发现十步以外就有个阶梯可以直接到沙滩&hellip;.傻死啦~~~</p>
-
-<p>时间隔得太久，几乎都忘了第一眼看到大海的时候是什么感觉了&hellip;.哎，可惜&hellip;我在秦皇岛也看到过冰海..那是冬天冻得毫无生气的一片海&hellip;水倒是干干净净，但是旁边都是工业城市的冷肃之气，完全没有厦门植被葱茏的海滨小城的风味。</p>
-
-<p>那天的天气，有点小小的阳光，不过并不透彻，不过看到一片茫茫大海，满耳全是海水拍打沙滩的声音的时候，又是心中有爱的时候，这一切总归是美的。看到海浪一波波往沙滩上冲刷，情不自禁想和大海来个亲密接触，于是试探着探出我的小红鞋去踩浪花，哈哈，这一试，果然就中招了&hellip;.海水远远看起来平静，有规律，当人站在水与沙的边缘，以为水每次的拍打都是相同节奏相同强度的时候，大海就会使出她调皮的本性，突然嬉皮笑脸的一个猛冲，小小一个玩笑，沾湿你的鞋子和袜子<del>于是我就在大海的小小伎俩中中招了&hellip;小红鞋和袜子一次性湿透透&hellip;湿了倒好，哈哈，成全我的天性，提着鞋子更加放肆的冲进大海，不过，终究还是因为不会游泳还是止步于浅滩</del>遥望远处有汽艇，疾驰在遥远的海平面上，突然望洋兴叹&hellip;.自由的快感与搏命的风险是共存的啊&hellip;.我还是老老实实在沙滩上走着吧&hellip;</p>
-
-<p>鞋子湿透透了，湿哒哒的，灌满了咸咸的海水和细细的沙子&hellip;找到旁边的小亭子，想赖皮让Chandlewei给我买凉拖鞋，发嗲撒娇撒泼，都无济于事，男人真是狠心的动物啊&hellip;于是我豪气的扔掉了袜子，唰唰的穿上了湿哒哒的小帆布鞋，鞋里还有那些怎么抖落也抖不出来的沙子，于是我一边负气，一边得瑟的一扭一扭的向前走，还好心中满载着与大海亲密接触的满足感，不然真被这人气死啦~~~~</p>
-
-<p>南普陀寺到此一游：</p>
-
-<p>去南普陀寺完全是到此一游，其实我们还是抱着要爬一下寺庙背后的观音山的，据说爬到顶再下来也是要半天时间的，正想着可以满足下从小生在上海这个大平原的Chandle对山的渴望，结果到了南普陀寺，发现寺庙就在观音山下面，那个观音山哪里是座山，分明就是一片凹凸不平的土地上，凸出得稍微有点显眼的土丘&hellip;顿时没了爬山的兴致，再一看，南普陀寺和全天下的寺庙也没什么差别&hellip;我还傻帽的在佛像前问：南普陀寺和静安寺有什么不同啊？？被Chandle狠狠鄙视了一番&hellip;</p>
-
-<p>说到寺庙，Chandle上次去静安寺的时候跟我讲，男女同时迈进庙门的话，需要男抬左脚女抬右脚的，可可是我每次都忘记，大概是习惯了和Chandle保持同样的步调的原因吧，我们俩走路的姿势越来越像，不过是我越来越像他，左摇右摆大大咧咧，连外八字外的角度都一样，两人左脚右脚走起来就是两条平行线，认识他前仅有的一点点女孩子的优雅现在都荡然无存&hellip;</p>
-
-<p>在南普陀寺庙门外买了两柱香，离大门口比较近的那个香台人流拥挤，chandle拉着我一直往前走，结果走了不到一分钟穿过滚滚人流之后，与之对应的另一个香台一个人都木有，我们给了香火费，各点一炷香，诚意拜见，许下那些每到一个地方必须许下的愿望，希望各方神灵都保佑吧。毕竟，我们是那么努力的生活着的人啊&hellip;</p>
-
-<p>厦门大学兜到迷路：</p>
-
-<p>传说厦门大学不是谁都能进的。同事小镜子跟我说一定要去一趟厦门大学，当年她们到厦大的时候就是因为遇到旅游高峰季节，厦门大学封校，不许外来游客进入。我们俩从南普陀寺出来，觉得收获寥寥，不如到厦大去看看试试运气，到校门发现只需要登记一个人的身份证号码就可以进入了，哈哈，这么大牌的学校&hellip;华师大可从来没有这样严格控制过人流出入&hellip;这给人的期待值之高，如果没啥风景可言，那该叫人情何以堪啊&hellip;</p>
-
-<p>人家越是说好的地方，我们总是带着一种逆反的心理去看，一来是觉得自己是特别的，什么小资情调，小清新味儿，我们不和你们一派的，我们是自立门派，加上前面南普陀寺游得并不给力，对厦门大学的期望值哪真叫一个低&hellip;</p>
-
-<p>进去了，发现&hellip;我们好像有点错了&hellip;先是溜达了半个小时，看到各式各样的古色古香的建筑，厦大的校史展览馆，绵延好几百米，哎，这叫一个大气~~~男生宿舍外表那个富丽堂皇，如果不是看到男款小内内晒晾在窗台上，还以为是一城市博物馆&hellip;攻略说厦大超级适合谈恋爱，小山小湖泊，出门还能看到海滩&hellip;所以我们刚开始本来冲着厦大的小湖泊去的，不过半个小时一点湖泊的影子也木有，我们反倒是饿了，一路走来也没看到什么小卖部、学生食堂什么的，问了里面看起来像学生的一个小姑娘，小姑娘跟我们说前面转弯就是，于是我们又信心满满的往前走，么料到，走了很久才到转弯，还是个小小的食堂&hellip;据说前面的大食堂还要再走会儿&hellip;受不了了！！找出我们囤积的鸡爪、鸭肫，在一个小树林里不顾形象的啃了起来，饭饱&hellip;重新上路&hellip;</p>
-
-<p>走着走着越发感叹这厦大真是..忒大了&hellip;地图上看起来近在咫尺的湖泊，走了快一个小时了还四顾茫然，一不小心还走绕路了&hellip;看完地图发现更加迷茫&hellip;厦大地势完全不同于上海的大学一望皆是平原，这里有高有低，有古老也有现代，有湖泊有海滩，还有，高尔夫球场&hellip;哎，这哪里是读书，简直就是神仙修炼之山林&hellip;所以相信或者不相信攻略，都是相对的啊，有那么多人称赞的地方，一定是个好地方&hellip;</p>
-
-<p>我们在茫然的时候索性就不管地图了，看见路就上，怎么新鲜怎么走，这路一会儿山路盘旋，一会儿平坦如大马路，还有小假山，走走发现居然还有真的山<del>~~哈哈，南普陀寺没爬山，难道我们到厦大要爬一次？我俩趁着刚吃饱的劲儿，蹭蹭蹭蹿上了小山头，说是小山头也确实不是高耸入云的山峰，也只能算丘陵一样的地方，但是植被倒是茂盛得很，山间的小石栈道修得煞是整齐，不得不赞叹厦大真是有钱的地儿&hellip;爬的我们俩都是都出了一身汗&hellip;畅快淋漓，到山顶了发现山外还有山，那种感觉真是无比奇妙啊，虽然我也算山里出来的孩子，但是在一大学里有这等景象还是狠狠惊了我一回&hellip;不过确实没这劲头继续攀爬啦。，不然真的不知道走到哪里去了。下山是没有修好的小石阶梯路的，不过常有人走，也踩出了一条斜径，我们抖抖索索的往下爬，路上还遇到一个小老头提着水桶往上爬，问他，他说是护林人&hellip;原来这山，是有主人的..O(∩_∩)O</del></p>
-
-<p>下山，柳暗花明又一村，那个传说中的湖泊就突然出现在了眼前，哈哈，得来全不费工夫&hellip;很奇妙，湖水很清澈，四周被山所包围，虽然没有世外桃源的幽宁，但是也有耳目一新的感觉，坐在湖边畅想了下古往今来，彼此感慨了一番，决定出去&hellip;</p>
-
-<p>厦大给我们的惊喜很多，这里不一一赘述，美总是留在心中的&hellip;风景要看，光靠笔记录，那是有限的&hellip;两人手拉手什么都不想，什么都不管，周围人也并不认得我们，那种自由的心情，那种只需要享受现在的轻松，又岂是文字所能描述的&hellip;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -635,6 +704,14 @@ Uses and Limitations</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -644,14 +721,6 @@ Uses and Limitations</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
       </li>
     
   </ul>

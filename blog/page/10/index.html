@@ -9,12 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="text-decoration none :　 默认值。无装饰
-blink :　 闪烁
-underline :　 下划线
-line-through :　 贯穿线
-overline :　 上划线
-">
+  <meta name="description" content="Siege：压力模拟/测试工具 作者：车东 发表于：2004-02-13 20:02 最后更新于：2008-04-12 03:04 版权声明：可以任意转载，转载时请务必以超链接形式标明文章原始出处和作者信息及本版权声明。 http://www.chedong.com/blog/archives/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +65,212 @@ overline :　 上划线
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Siege：压力模拟/测试工具 作者：车东 发表于：2004-02-13 20:02 最后更新于：2008-04-12 03:04 版权声明：可以任意转载，转载时请务必以超链接形式标明文章原始出处和作者信息及本版权声明。 <a href="http://www.chedong.com/blog/archives/000033.html">http://www.chedong.com/blog/archives/000033.html</a> 最早使用的压力测试工具是apache的ab(apache benchmark)，apache ab做重复压力测试不错，但是每次只能测试一个链接，如何测试一组链接（比如从日志中导出的1个小时的日志，做真实压力测试），后来找到了这个： Siege是一个压力测试和评测工具，设计用于WEB开发这评估应用在压力下的承受能力：可以根据配置对一个WEB站点进行多用户的并发访问，记录每个用户所有请求过程的相应时间，并在一定数量的并发访问下重复进行。 SIEGE is an http regressive testing and benchmarking utility. It was designed to let web developers measure the performance of their code under duress, to see how it will stand up to load on the internet. It lets the user hit a webserver with a configurable number of concurrent simulated users. Those users place the webserver &ldquo;under siege.&rdquo; The duration of the siege is measured in transactions, the sum of simulated users and the number of times each simulated user repeats the process of hitting the server. Thus 20 concurrent users 50 times is 1000 transactions, the length of the test. 下载/安装 Siege时一个开放源代码项目：<a href="http://www.joedog.org">http://www.joedog.org</a> 下载： wget <a href="ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz">ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz</a> 安装： %./configure ; make #make install siege包含了一组压力测试工具： SIEGE (1) Siege是一个HTTP压力测试和评测工具. 使用样例： 任务列表：www.chedong.com.url文件 <a href="http://www.chedong.com/tech/">http://www.chedong.com/tech/</a> <a href="http://www.chedong.com/tech/acdsee.html">http://www.chedong.com/tech/acdsee.html</a> <a href="http://www.chedong.com/tech/ant.html">http://www.chedong.com/tech/ant.html</a> <a href="http://www.chedong.com/tech/apache_install.html">http://www.chedong.com/tech/apache_install.html</a> <a href="http://www.chedong.com/tech/awstats.html">http://www.chedong.com/tech/awstats.html</a> <a href="http://www.chedong.com/tech/cache.html">http://www.chedong.com/tech/cache.html</a> <a href="http://www.chedong.com/tech/click.html">http://www.chedong.com/tech/click.html</a> <a href="http://www.chedong.com/tech/cms.html">http://www.chedong.com/tech/cms.html</a> <a href="http://www.chedong.com/tech/compress.html">http://www.chedong.com/tech/compress.html</a> <a href="http://www.chedong.com/tech/cvs_card.html">http://www.chedong.com/tech/cvs_card.html</a> <a href="http://www.chedong.com/tech/default.html">http://www.chedong.com/tech/default.html</a> <a href="http://www.chedong.com/tech/dev.html">http://www.chedong.com/tech/dev.html</a> <a href="http://www.chedong.com/tech/gnu.html">http://www.chedong.com/tech/gnu.html</a> &hellip;. siege -c 20 -r 2 -f www.chedong.com.url 参数说明： -c 20 并发20个用户 -r 2 重复循环2次 -f www.chedong.com.url 任务列表：URL列表 输出样例： ** Siege 2.59 ** Preparing 20 concurrent users for battle. 这次“战斗”准备了20个并发用户 The server is now under siege.. done. 服务在“围攻”测试中： Transactions: 40 hits 完成40次处理 Availability: 100.00 % 成功率 Elapsed time: 7.67 secs 总共用时 Data transferred: 877340 bytes 共数据传输：877340字节 Response time: 1.65 secs 相应用时1.65秒：显示网络连接的速度 Transaction rate: 5.22 trans/sec 平均每秒完成5.22次处理：表示服务器后台处理的速度 Throughput: 114385.92 bytes/sec 平均每秒传送数据：114385.92字节 Concurrency: 8.59 最高并发数 8.59 Successful transactions: 40 成功处理次数 Failed transactions: 0 失败处理次数 注意：由于速度很快，可能会达不到并发速度很高就已经完成。Response time显示的是测试机器和被测试服务器之间网络链接状况。Transaction rate则表示服务器端任务处理的完成速度。 辅助工具： 增量压力测试： 为了方便增量压力测试，siege还包含了一些辅助工具： bombardment (1) 是一个辅助工具：用于按照增量用户压力测试： 使用样例： bombardment urlfile.txt 5 3 4 1 初始化URL列表：urlfile.txt 初始化为：5个用户 每次增加：3个用户 运行：4次 每个客户端之间的延迟为：1秒 输出成CSV格式： siege2csv.pl (1) siege2csv.pl将bombardment的输出变成CSV格式： Time Data Transferred Response Time Transaction Rate Throughput Concurrency Code 200 (note that this is horribly broken.) 242 60.22 603064 0.02 4.02 10014.35 0.08 605 59.98 1507660 0.01 10.09 25136.05 0.12 938 59.98 2337496 0.02 15.64 38971.26 0.26 1157 60 2883244 0.04 19.28 48054.07 0.78 参考： 开源测试工具：<a href="http://www.opensourcetesting.org/performance.php">http://www.opensourcetesting.org/performance.php</a> 压力测试工具：HammerHead 正在试用中</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/15/zz_fastri/">Zz_fastri</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Overview</h3>
+
+<p><em>FastRI</em> is an alternative to the &ldquo;ri&rdquo; documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
+
+<p>Why prefer it over ri? <em>FastRI</em></p>
+
+<ul>
+<li>actually works</li>
+<li>is *much* faster than ri</li>
+<li>can perform fast full-text searching over all your rdoc documentation</li>
+<li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the &ldquo;full path&rdquo;</li>
+<li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
+<li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
+<li>can serve RI documentation over DRb</li>
+</ul>
+
+
+<p>You can find more information about what makes <em>FastRI</em> faster than ri <a href="http://eigenclass.org/hiki/making+ruby+ri+faster">here</a>, and about its <a href="http://eigenclass.org/hiki/simple+full+text+search+engine">200 LoC full-text search engine here</a>.</p>
+
+<h3>Getting it</h3>
+
+<p><em>FastRI</em> can be installed with RubyGems:</p>
+
+<p>gem install <em>fastri</em></p>
+
+<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge&rsquo;s mirrors.</p>
+
+<p><em>FastRI</em> is available in tarball format. The <em>fri</em> executable will run much faster if you install <em>FastRI</em> from a tarball, since RubyGems introduces a noticeable overhead.</p>
+
+<p>The latest tarball is <a href="http://rubyforge.org/frs/download.php/31654/fastri-0.3.1.tar.gz"><em>fastri</em>-0.3.1.tar.gz</a></p>
+
+<p>You can also get it from <a href="http://eigenclass.org/static/fastri">http://eigenclass.org/static/<em>fastri</em></a> if RubyForge happens to be down.</p>
+
+<p>Just run</p>
+
+<p>setup.rb</p>
+
+<p>to install.</p>
+
+<h3>Usage</h3>
+
+<p>Starting from 0.3.0, fri can be used in either local mode (&mdash;local, -L) or remote mode (using a <em>fastri</em>-server, -R, &mdash;remote). By default, fri will run in remote mode. There&rsquo;s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
+
+<p>Remote mode is slightly faster (typically about 150ms) , since the documentation index is kept in memory and needs not be read from disk.</p>
+
+<h4>Local mode</h4>
+
+<p>$ qri Array<br/>
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
+Arrays are ordered, integer-indexed collections of any object.<br/>
+Array indexing starts at 0, as in C or Java. A negative index is<br/>
+&hellip;</p>
+
+<p>$ qri compact<br/>
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Array#compact</p>
+
+<h2>array.compact &ndash;> an_array  </h2>
+
+<p>Returns a copy of self with all nil elements removed.</p>
+
+<h4>Remote mode</h4>
+
+<p>There are two parts to using <em>FastRI</em> in remote mode:</p>
+
+<ul>
+<li>the server: <em>fastri</em>-server</li>
+<li>the client: fri</li>
+</ul>
+
+
+<p><em>FastRI</em> uses a Rinda Ring to allow servers to be discovered automatically without needing to indicate the DRb URIs manually. It can work across machines if you make sure the ring server is bound to the correct interface, and the ACL permissions are correct.</p>
+
+<h5>Quickstart</h5>
+
+<p>First of all, the DRb server must be launched with</p>
+
+<p>$ <em>fastri</em>-server (blocks)</p>
+
+<p>Later,</p>
+
+<p>$ fri String<br/>
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Class: String<br/>
+A String object holds and manipulates an arbitrary sequence of<br/>
+bytes, typically representing characters. String objects may be<br/>
+created using String::new or as literals.<br/>
+&hellip;</p>
+
+<p>Read on for more information, including how to make <em>FastRI</em> work across machines.</p>
+
+<h5>More about <em>fastri</em>-server</h5>
+
+<p>For local usage, just</p>
+
+<p>$ <em>fastri</em>-server</p>
+
+<p>will do. The DRb service will bind to 127.0.0.1, and only connections from 127.0.0.1 will be allowed. If you want to allow fri to be used from other machines, you have to specify which interface to bind to, and allow incoming connections from the desired hosts. For example, if your network is 192.168.1.0, and your IP is 192.168.1.2, you can do</p>
+
+<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br/>
+<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br/>
+ACL:<br/>
+deny all<br/>
+allow localhost<br/>
+allow 192.168.1.0/24</p>
+
+<p>Further options are documented in</p>
+
+<p>$ <em>fastri</em>-server -h</p>
+
+<h5>More about fri</h5>
+
+<p>Running fri with no options (or -h/&mdash;help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
+
+<p>$ fri Array<br/>
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
+Arrays are ordered, integer-indexed collections of any object.<br/>
+&hellip;</p>
+
+<p>If you&rsquo;re on a different machine, you&rsquo;ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or &mdash;bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you&rsquo;re on 192.168.1.101, both</p>
+
+<p>export <em>FASTRI</em>_ADDR=&ldquo;192.168.1.101&#8221;<br/>
+fri Array</p>
+
+<p>and</p>
+
+<p>fri -s 192.168.1.101 Array</p>
+
+<p>will work. Note that <em>FASTRI</em>_ADDR is the *local* address: the server will be discovered automatically. (The reason why the local address must be specified is that it will be given to the ring server, which must be able to establish a reverse connection through the local DRb service.)</p>
+
+<h3>Feedback</h3>
+
+<p>Bug reports, patches, comments&hellip; are appreciated. You can contact the author via <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#109;&#102;&#x70;&#x40;&#97;&#x63;&#109;&#x2e;&#x6f;&#114;&#103;">&#x6d;&#x66;&#x70;&#64;&#x61;&#x63;&#109;&#46;&#111;&#114;&#103;</a>. Please add &ldquo;<em>fastri</em>&rdquo; to the subject in order to bypass the spam filters.</p>
+
+<h3>License</h3>
+
+<p><em>FastRI</em> is licensed under the same terms as Ruby. See LICENSE</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -524,86 +725,6 @@ KLimit 0</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">重新编译了vim_么碰到什么问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-27T00:00:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p> CFLAGS=-O3 ./configure &mdash;enable-perlinterp &mdash;enable-pythoninterp &mdash;enable-rubyinterp &mdash;enable-cscope &mdash;enable-multibyte</p>
-
-<p>make &amp;&amp; sudo make install</p>
-
-<p> </p>
-
-<p>我对vim 不是很熟悉，各种原因重新下载了7。2编译了下</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/25/rails_many_update_question/">Rails_many_update_question</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-25T00:00:00+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>aa.bbs &lt;&lt; bb (new)</p>
-
-<p>aa.bbs.build bb.attributes (update)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -621,6 +742,14 @@ KLimit 0</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -630,14 +759,6 @@ KLimit 0</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
       </li>
     
   </ul>

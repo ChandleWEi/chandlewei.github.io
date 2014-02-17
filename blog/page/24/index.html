@@ -9,8 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="http://www.slideshare.net/acme/whats-new-in-perl-510
-">
+  <meta name="description" content="五、调试器 别看ruby是动态语言，其实调试器功能并不比Java差，开命令窗口：
+gem install ruby-debug-ide -y 然后开你的netbeans，打开调试器功能，以debug方式启动rails项目，哈哈，和Eclipse一样强大，在断点可以跟踪堆栈，watch变量， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,311 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/29/rails_tips_from_robbin/">Rails_tips_from_robbin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-29T00:00:00+08:00" pubdate data-updated="true">Dec 29<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>五、调试器</p>
+
+<p>别看ruby是动态语言，其实调试器功能并不比Java差，开命令窗口：<br/>
+gem install ruby-debug-ide -y</p>
+
+<p>然后开你的netbeans，打开调试器功能，以debug方式启动rails项目，哈哈，和Eclipse一样强大，在断点可以跟踪堆栈，watch变量，单步执行等等：</p>
+
+<p>六、测试覆盖率</p>
+
+<p>想知道项目的测试覆盖率吗？开命令窗口：<br/>
+gem install rcov<br/>
+然后配置一下rake tasks，执行就可以获得整个项目的测试覆盖率，不错吧？</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/29/linux_%2B__rails_%2B_mysql_%2Blighttpd_%2B_FCGI/">linux_+__rails_+_mysql_+lighttpd_+_FCGI</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-29T00:00:00+08:00" pubdate data-updated="true">Dec 29<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>背景： linux +  rails + mysql +lighttpd + FCGI</p>
+
+<p>step 1)安装ruby</p>
+
+<p>下载源代码包到本地Linux主机，然后解压缩，进入该目录，进行配置，编译和安装：</p>
+
+<p>tar xzvf ruby-1.8.5.tar.gz</p>
+
+<p>cd ruby-1.8.5</p>
+
+<p>./configure –prefix=/usr/local/ruby</p>
+
+<p>make &amp;&amp; make install
+ 
+安装好以后，修改操作系统PATH路径，加入/usr/local/ruby/bin：</p>
+
+<p>export PATH=/usr/local/ruby/bin:$PATH
+将我们自己安装的ruby放在系统PATH前面，避免操作系统自带的ruby造成的干扰。</p>
+
+<p>但是一旦系统重启，可能就没用了，所以将上面的设置放在/etc/profile中，便于对全局生效。</p>
+
+<p>通过查看ruby -v看是否安装成功</p>
+
+<p>step2)安装gem</p>
+
+<p>在安装rails之前，要先安装rubygems。rubygems是ruby的在线包管理工具，可以从rubyforge下载rubygems：</p>
+
+<p><a href="http://rubyforge.org/projects/rubygems/">http://rubyforge.org/projects/rubygems/</a></p>
+
+<p>下载好源代码包，解压缩，安装：</p>
+
+<p>tar xzvf rubygems-0.9.0.tgz</p>
+
+<p>cd rubygems-0.9.0/
+ruby setup.rb<br/>
+通过查看gem -v看是否安装成功</p>
+
+<p>step3)安装rails<br/>
+gem install rails –y<br/>
+这个过程会很慢，请耐心等待<br/>
+通过查看rails -v看是否安装成功</p>
+
+<p><strong>step4) 安装</strong><strong>Ruby</strong><strong>的</strong><strong>FCGI</strong><strong>支持</strong>
+ </p>
+
+<p>由于ruby的fcgi支持库需要在编译的时候联接FCGI的系统库，因此我们需要先安装FCGI库，下载FCGI源代码发行包：</p>
+
+<p><a href="http://www.fastcgi.com/dist/">http://www.fastcgi.com/dist/</a></p>
+
+<p>tar xzvf fcgi-2.4.0.tar.gz</p>
+
+<p>cd fcgi-2.4.0</p>
+
+<p>./configure &mdash;prefix=/usr/local/fcgi</p>
+
+<p>make &amp;&amp; make install</p>
+
+<p> </p>
+
+<p>然后就可以安装ruby的fcgi支持库了，下载ruby-fcgi-0.8.7.tar.gz：</p>
+
+<p><a href="http://rubyforge.org/projects/fcgi/">http://rubyforge.org/projects/fcgi/</a></p>
+
+<p>tar xzvf ruby-fcgi-0.8.7.tar.gz</p>
+
+<p>cd ruby-fcgi-0.8.7</p>
+
+<p>ruby install.rb config &mdash; &mdash;with-fcgi-include=/usr/local/fcgi/include &mdash;with-fcgi-lib=/usr/local/fcgi/lib</p>
+
+<p>ruby install.rb setup</p>
+
+<p>ruby install.rb install<br/>
+<strong><br/>
+step5)安装</strong><strong>lighttpd<br/>
+</strong></p>
+
+<p>然后下载lighttpd：</p>
+
+<p><a href="http://www.lighttpd.net/download/">http://www.lighttpd.net/download/</a></p>
+
+<p>tar xzvf lighttpd-1.4.13.tar.gz</p>
+
+<p>cd lighttpd-1.4.13</p>
+
+<p>./configure &mdash;prefix=/usr/local/lighttpd</p>
+
+<p> </p>
+
+<p>configure完毕以后，会给出一个激活的模块和没有激活模块的清单，可以检查一下，是否自己需要的模块都已经激活，在enable的模块中一定要有“mod_rewrite”这一项，否则重新检查pcre是否安装。然后编译安装：</p>
+
+<p>make &amp;&amp; make install</p>
+
+<p> </p>
+
+<p>编译后配置：</p>
+
+<p>cp doc/sysconfig.lighttpd /etc/sysconfig/lighttpd</p>
+
+<p>mkdir /etc/lighttpd</p>
+
+<p>cp doc/lighttpd.conf /etc/lighttpd/lighttpd.conf</p>
+
+<p> </p>
+
+<p>如果你的Linux是RedHat/CentOS，那么：</p>
+
+<p>cp doc/rc.lighttpd.redhat /etc/init.d/lighttpd</p>
+
+<p>如果你的Linux是SuSE，那么：</p>
+
+<p>cp doc/rc.lighttpd /etc/init.d/lighttpd</p>
+
+<p>其他Linux发行版本可以自行参考该文件内容进行修改。然后修改/etc/init.d/lighttpd，把</p>
+
+<p>LIGHTTPD_BIN=/usr/sbin/lighttpd</p>
+
+<p>改为</p>
+
+<p>LIGHTTPD_BIN=/usr/local/lighttpd/sbin/lighttpd</p>
+
+<p> </p>
+
+<p>此脚本用来控制lighttpd的启动关闭和重启：</p>
+
+<p>/etc/init.d/lighttpd start</p>
+
+<p>/etc/init.d/lighttpd stop</p>
+
+<p>/etc/init.d/lighttpd restart</p>
+
+<p>注意修改/etc/init.d/lighttpd中一行lighttpd=&ldquo;/usr/sbin/lighttpd&#8221;<br/>
+改为lighttpd=&rdquo;/usr/local/lighttpd/sbin/lighttpd&#8221;<br/>
+否则你用上面的脚本启动</p>
+
+<p>虽然你还是可以用 /usr/local/lighttpd/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf这句来启动,但很不方便</p>
+
+<p> </p>
+
+<p><strong>step5)配置</strong><strong>lighttpd</strong></p>
+
+<p> </p>
+
+<p>修改/etc/lighttpd/lighttpd.conf</p>
+
+<p> </p>
+
+<p>5.1）server.modules</p>
+
+<p>取消需要用到模块的注释，mod_rewrite，mod_access，mod_fastcgi，mod_simple_vhost，mod_cgi，mod_compress，mod_accesslog是一般需要用到的。</p>
+
+<p> </p>
+
+<p>5.2）server.document-root, server.error-log，accesslog.filename需要指定相应的目录</p>
+
+<p> </p>
+
+<p>5.3）用什么权限来运行lighttpd</p>
+
+<p>server.username            = &ldquo;nobody&rdquo;</p>
+
+<p>server.groupname           = &ldquo;nobody&rdquo;</p>
+
+<p>从安全角度来说，不建议用root权限运行web server，可以自行指定普通用户权限。</p>
+
+<p> </p>
+
+<p>5.4）静态文件压缩</p>
+
+<p>compress.cache-dir         = &ldquo;/tmp/lighttpd/cache/compress&rdquo;</p>
+
+<p>compress.filetype          = (&ldquo;text/plain&rdquo;, &ldquo;text/html&rdquo;,&ldquo;text/javascript&rdquo;,&ldquo;text/css&rdquo;)</p>
+
+<p>可以指定某些静态资源类型使用压缩方式传输，节省带宽，对于大量AJAX应用来说，可以极大提高页面加载速度。</p>
+
+<p> </p>
+
+<p>5.5）配置ruby on rails</p>
+
+<p> </p>
+
+<p>最简单的配置如下：</p>
+
+<p>$HTTP[&ldquo;host&rdquo;] == &ldquo;www.xxx.com&rdquo; {</p>
+
+<p> server.document-root = &ldquo;/yourrails/public&rdquo;</p>
+
+<p> server.error-handler-404 = &ldquo;/dispatch.fcgi&rdquo;</p>
+
+<p> fastcgi.server = (&ldquo;.fcgi&rdquo; =></p>
+
+<p>    (&ldquo;localhost&rdquo; =></p>
+
+<p>      (&ldquo;min-procs&rdquo; => 10,</p>
+
+<p>       &ldquo;max-procs&rdquo; => 10,</p>
+
+<p>       &ldquo;socket&rdquo; => &ldquo;/tmp/lighttpd/rails.socket&rdquo;,</p>
+
+<p>       &ldquo;bin-path&rdquo; => &ldquo;/yourrails/public/dispatch.fcgi&rdquo;,</p>
+
+<p>       &ldquo;bin-environment&rdquo; => (&ldquo;RAILS_ENV&rdquo; => &ldquo;production&rdquo;)</p>
+
+<p>      )</p>
+
+<p>    )</p>
+
+<p> )</p>
+
+<p>}
+即由lighttpd启动10个FCGI进程，lighttpd和FCGI之间使用本机Unix Socket通信。</p>
+
+<p>step 6）启动时可能遇到的问题<br/>
+6.1) 注意&#8221;socket&#8221; 所对应的目录必须存在，否则报错<br/>
+6.2)  /public/dispatch.fcgi Permission denied,<br/>
+这是由于用户没有执行dispatch.fcgi的权限,只要覆与当前用户权限就行<br/>
+         cd /yourrails/public<br/>
+         chmod 755 dispatch.fcgi</p>
+
+<p>6.3)/public/dispatch.fcgi No such file or directory </p>
+
+<p>这是由于没有找到ruby命令选成的</p>
+
+<p>修改dispatch.fcgi文件,在第一行指定自己的可执行的ruby就可以了,比如我的ruby在/usr/local/ruby/bin/ruby,则把第一行修改为 #!/usr/local/ruby/bin/ruby </p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -382,6 +687,14 @@ make install</p></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -391,14 +704,6 @@ make install</p></li>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
       </li>
     
   </ul>

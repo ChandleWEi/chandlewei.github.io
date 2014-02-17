@@ -9,8 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="                                                                                                                                      
-  &lt;script &hellip;">
+  <meta name="description" content="CFLAGS=-O3 ./configure &mdash;without-pop  &mdash;without-sound &mdash;without-sync-input &mdash;without-xpm &mdash;without-jpeg &mdash;without-tiff &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,179 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/10/16/cool_theme_about_emacs/">Cool_theme_about_emacs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-16T00:00:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>CFLAGS=-O3 ./configure &mdash;without-pop  &mdash;without-sound &mdash;without-sync-input &mdash;without-xpm &mdash;without-jpeg &mdash;without-tiff &mdash;without-gif &mdash;without-png &mdash;without-rsvg  &mdash;without-toolkit-scroll-bars &mdash;without-xaw3d &mdash;without-xim &mdash;without-gpm &mdash;without-dbus    &amp;&amp; make &amp;&amp; sudo make install</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><a href="http://redartisan.com/2008/5/27/twilight-emacs">http://redartisan.com/2008/5/27/twilight-emacs</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/10/14/smartmontools__control_the_health_of_your_hard_diskZZ/">smartmontools__control_the_health_of_your_hard_diskZZ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-14T00:00:00+08:00" pubdate data-updated="true">Oct 14<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2></h2>
+
+<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Ftimes.debian.net%2F%3Fformat%3Drss20.xml">DebianTimes</a></p>
+
+<p><strong>Article submitted by Noel David Torres Taño. Guess what? We still need you to <a href="http://debaday.debian.net/contribute/">submit good articles about software you like</a>!</strong></p>
+
+<p>One of the packages I manually install in every new installation is smartmontools. I’ve some expertise in managing computers and networks, and it is a fact that pirate hackers and software bugs are not the main cause of problems in small and medium installations. Hardware is.</p>
+
+<p>Thus, you have hardware that can fails, and Murphy says that if it can fail, it will. The point is not to avoid hardware failures, which would be impossible, but to detect them early or even prevent them.</p>
+
+<p>Particularly for hard disks, the tool in charge is <code>smartctl</code> from the package smartmontools. IDE disks (if they’re not of the age of dinosaurs) have an integrated self-testing tool called <a href="http://en.wikipedia.org/wiki/Self-Monitoring%2C_Analysis%2C_and_Reporting_Technology">SMART</a> which means “Self-Monitoring, Analysis and Reporting Technology”. Modern SCSI disks have it too if they’re SCSI 3 or newer. It happens that inside the disk chipset there are routines to check parameters of disk health: spin-up time, number of read failures, temperature, life elapsed… And all of those parameters are not only registered by the disk chipset, but they have designated security limits and both parameters and limits can be checked by software who access the disk using the appropriate I/O instructions.</p>
+
+<p>And that software is <code>smartctl</code> , a piece of the smartmontools deb package. Of course, since they access the disk in a raw way, you need to be root to use these commands.</p>
+
+<p><code>smartctl</code> can ask the disk for its smart identification:</p>
+
+<h1>smartctl -i /dev/sda</h1>
+
+<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
+Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
+
+<p>=== START OF INFORMATION SECTION ===<br/>
+Model Family: Fujitsu MHV series<br/>
+Device Model: FUJITSU MHV2060BH<br/>
+Serial Number: NW10T652991F<br/>
+Firmware Version: 00850028<br/>
+User Capacity: 60,011,642,880 bytes<br/>
+Device is: In smartctl database [for details use: -P show]<br/>
+ATA Version is: 7<br/>
+ATA Standard is: ATA/ATAPI-7 T13 1532D revision 4a<br/>
+Local Time is: Mon May 12 02:39:31 2008 CEST<br/>
+SMART support is: Available &ndash; device has SMART capability.<br/>
+SMART support is: Enabled</p>
+
+<p>More interesting, <code>smartctl</code> can ask the disk for its parameter values:</p>
+
+<h1>smartctl -A /dev/sda</h1>
+
+<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
+Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
+
+<p>=== START OF READ SMART DATA SECTION ===<br/>
+SMART Attributes Data Structure revision number: 16<br/>
+Vendor Specific SMART Attributes with Thresholds:<br/>
+ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE<br/>
+1 Raw_Read_Error_Rate 0x000f 100 100 046 Pre-fail Always &ndash; 124253<br/>
+2 Throughput_Performance 0x0004 100 100 000 Old_age Offline &ndash; 18284544<br/>
+3 Spin_Up_Time 0x0003 100 100 025 Pre-fail Always &ndash; 0<br/>
+4 Start_Stop_Count 0x0032 099 099 000 Old_age Always &ndash; 1199<br/>
+5 Reallocated_Sector_Ct 0x0033 100 100 024 Pre-fail Always &ndash; 8589934592000<br/>
+7 Seek_Error_Rate 0x000e 100 087 000 Old_age Always &ndash; 1761<br/>
+8 Seek_Time_Performance 0x0004 100 100 000 Old_age Offline &ndash; 0<br/>
+9 Power_On_Seconds 0x0032 079 079 000 Old_age Always &ndash; 10866h+57m+47s<br/>
+10 Spin_Retry_Count 0x0012 100 100 000 Old_age Always &ndash; 0<br/>
+12 Power_Cycle_Count 0x0032 100 100 000 Old_age Always &ndash; 1199<br/>
+192 Power-Off_Retract_Count 0x0032 099 099 000 Old_age Always &ndash; 283<br/>
+193 Load_Cycle_Count 0x0032 100 100 000 Old_age Always &ndash; 6953<br/>
+194 Temperature_Celsius 0x0022 100 100 000 Old_age Always &ndash; 45 (Lifetime Min/Max 14/58)<br/>
+195 Hardware_ECC_Recovered 0x001a 100 100 000 Old_age Always &ndash; 62<br/>
+196 Reallocated_Event_Count 0x0032 100 100 000 Old_age Always &ndash; 459276288<br/>
+197 Current_Pending_Sector 0x0012 100 100 000 Old_age Always &ndash; 0<br/>
+198 Offline_Uncorrectable 0x0010 100 100 000 Old_age Offline &ndash; 0<br/>
+199 UDMA_CRC_Error_Count 0x003e 200 200 000 Old_age Always &ndash; 0<br/>
+200 Multi_Zone_Error_Rate 0x000e 100 082 000 Old_age Always &ndash; 22371<br/>
+203 Run_Out_Cancel 0x0002 100 100 000 Old_age Always &ndash; 1533257648465<br/>
+240 Head_Flying_Hours 0x003e 200 200 000 Old_age Always &ndash; 0</p>
+
+<p>As you can see, there are some attributes marked as “Pre-fail”. If any of these attributes goes beyond its threshold, the disk is about to fail in hours, maybe minutes.</p>
+
+<p>Even if there are more options to <code>smartctl</code> , the last ones I will comment here are -a and -t.</p>
+
+<p>smartctl -t launches a disk test. It needs a parameter indicating the type of the test, and in the longest case it can last for tens of minutes and will check the electrical and mechanical performance as well as the read performance of the disk, going through all its surface. smartctl -a, in its turn, shows all available information about the disk, including self testing results. Since tests will span minutes or tens of minutes, we can not see them happening. All what we will get when launching tests is like:</p>
+
+<h1>smartctl -t long /dev/sda</h1>
+
+<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
+Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
+
+<p>=== START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION ===<br/>
+Sending command: &ldquo;Execute SMART Extended self-test routine immediately in<br/>
+off-line mode&rdquo;.<br/>
+Drive command &ldquo;Execute SMART Extended self-test routine immediately in<br/>
+off-line mode&rdquo; successful.<br/>
+Testing has begun.<br/>
+Please wait 41 minutes for test to complete.<br/>
+Test will complete after Mon May 12 05:44:03 2008</p>
+
+<p>Use smartctl -X to abort test.</p>
+
+<p>Here, we’re being informed that (maybe) we will get a slightly lower performance on the disk for the next 41 minutes, since the test has started. It is completely background, or better ‘underground’, since it does not happen under the kernel control at all: everything is happening internally to the disk, and all what we can get is the result.</p>
+
+<p>smartctl -a, in turn, show a very large amount of SMART information about the disk: almost all stored SMART information parsed for us. It is usually better to use a more specific switch, see the man page for details.</p>
+
+<p>Finally, I want to comment that there is a daemon in the smartmontools package, <code>smartd</code> , who can take care of doing tests for you. It works by running <code>smartctl</code> in a periodic way (typically every 30 minutes) and logging all errors and parameter value changes to the syslog. The default configuration in Debian will also mail root if there’s any problem detected. I will not explain here about it, because I want you to read its (short and easy) documentation, but remember that in order to use it you must enable it in <code>/etc/default/smartmontools</code> .</p>
+
+<p>The smartmontools package has been available both in <a href="http://packages.debian.org/smartmontools">Debian</a> and <a href="http://packages.ubuntu.com/smartmontools">Ubuntu</a> since a long time ago.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -638,490 +810,6 @@ script/generate rspec</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/09/10/rails_application_private/">Rails_application_private</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-09-10T00:00:00+08:00" pubdate data-updated="true">Sep 10<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hello.<br/>
-It seems private methods of e.g. ApplicationController can be called<br/>
-successfully from other controllers inheriting it. A bug or a<br/>
-&ldquo;feature&rdquo;?</p>
-
-<p>(Tested with Rails 2.1.0)</p>
-
-<p>&mdash;<br/>
-A.H.</p>
-
-<p>     <a href="http://groups.google.com/group/rubyonrails/post?inreplyto=af5735f4731f9db5&amp;reply_to=group&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">Reply</a>     <a href="http://groups.google.com/group/rubyonrails/post?inreplyto=af5735f4731f9db5&amp;reply_to=author&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">Reply to author</a>     <a href="http://groups.google.com/group/rubyonrails/post?inreplyto=af5735f4731f9db5&amp;forward=1&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">Forward</a>       Rate this post: <a href="javascript:void(0"> <img src="http://groups.google.com/groups/img/clear_star_blue_outline.gif" alt="" /> </a>) <a href="javascript:void(0"> <img src="http://groups.google.com/groups/img/clear_star_blue_outline.gif" alt="" /> </a>) <a href="javascript:void(0"> <img src="http://groups.google.com/groups/img/clear_star_blue_outline.gif" alt="" /> </a>) <a href="javascript:void(0"> <img src="http://groups.google.com/groups/img/clear_star_blue_outline.gif" alt="" /> </a>) <a href="javascript:void(0"> <img src="http://groups.google.com/groups/img/clear_star_blue_outline.gif" alt="" /> </a>) Text for clearing space</p>
-
-<p>|   |   |   |</p>
-
-<p>|</p>
-
-<p>|   | <img src="" alt="" /> |   |</p>
-
-<p>|   | <img src="" alt="" /> |   |</p>
-
-<p>  |</p>
-
-<p>You must <a href="https://www.google.com/groups/signin?cd=US&amp;hl=en&amp;ssip=g3&amp;_done=http%3A%2F%2Fgroups.google.com%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20">Sign in</a> before you can post messages.</p>
-
-<p>To post a message you must first <a href="http://groups.google.com/group/rubyonrails/subscribe">join this group</a>.</p>
-
-<p>Please update your nickname on the <a href="http://groups.google.com/group/rubyonrails/subscribe?reason=post_renew&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">subscription settings</a> page before posting.</p>
-
-<p>You do not have the permission required to post.</p>
-
-<p>| <img src="http://groups.google.com/groups/img/dot_clear.gif" alt="" /> |</p>
-
-<p>|   |   |   |
-| Francis Fish   |</p>
-
-<p>| <a href="http://groups.google.com/groups/profile?enc_user=X-jvJBYAAAC-AplmSccbV3dss5QbqTJCo4cocwWvDVg2RHsu8f1bCg">View profile</a> |</p>
-
-<p>  |  More options Aug 1, 4:36 pm |</p>
-
-<p>From: <strong>&ldquo;Francis Fish&rdquo; &lt;francis.f <a href="http://groups.google.com/groups/unlock?_done=/group/rubyonrails/browse_thread/thread/22a8d1e412faaa20&amp;msg=1c4a2e4d91e9a2ba">&hellip;</a>@gmail.com></strong></p>
-
-<p>Date: <strong>Fri, 1 Aug 2008 09:36:17 +0100</strong></p>
-
-<p>Local: <strong>Fri, Aug 1 2008 4:36 pm </strong></p>
-
-<p>Subject: <strong>Re: private equals protected on controllers?</strong></p>
-
-<p>  <a href="http://groups.google.com/group/rubyonrails/post?inreplyto=1c4a2e4d91e9a2ba&amp;reply_to=group&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">Reply</a> | <a href="http://groups.google.com/group/rubyonrails/post?inreplyto=1c4a2e4d91e9a2ba&amp;reply_to=author&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">Reply to author</a> | <a href="http://groups.google.com/group/rubyonrails/post?inreplyto=1c4a2e4d91e9a2ba&amp;forward=1&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">Forward</a> | <a href="http://groups.google.com/group/rubyonrails/msg/1c4a2e4d91e9a2ba?dmode=print">Print</a> | <a href="http://groups.google.com/group/rubyonrails/msg/1c4a2e4d91e9a2ba">Individual message</a> | <a href="http://groups.google.com/group/rubyonrails/msg/1c4a2e4d91e9a2ba?dmode=source">Show original</a> | <a href="http://groups.google.com/groups/abuse?group=rubyonrails&amp;type=message&amp;url=http%3A%2F%2Fgroups.google.com%2Fgroup%2Frubyonrails%2Fmsg%2F1c4a2e4d91e9a2ba&amp;_done=%2Fgroup%2Frubyonrails%2Fbrowse_thread%2Fthread%2F22a8d1e412faaa20%3F&amp;">Report this message</a> | <a href="http://groups.google.com/groups/search?enc_author=X-jvJBYAAAC-AplmSccbV3dss5QbqTJCo4cocwWvDVg2RHsu8f1bCg&amp;scoring=d">Find messages by this author</a></p>
-
-<p>On Fri, Aug 1, 2008 at 9:11 AM, antti.hak <a href="http://groups.google.com/groups/unlock?_done=/group/rubyonrails/browse_thread/thread/22a8d1e412faaa20&amp;msg=1c4a2e4d91e9a2ba">&hellip;</a>@gmail.com &lt;</p>
-
-<p>antti.hak <a href="http://groups.google.com/groups/unlock?_done=/group/rubyonrails/browse_thread/thread/22a8d1e412faaa20&amp;msg=1c4a2e4d91e9a2ba">&hellip;</a>@gmail.com> wrote:</p>
-
-<blockquote><p>Hello.<br/>
-It seems private methods of e.g. ApplicationController can be called<br/>
-successfully from other controllers inheriting it. A bug or a<br/>
-&ldquo;feature&rdquo;?</p>
-
-<p>(Tested with Rails 2.1.0)</p>
-
-<p>&mdash;<br/>
-A.H.</p></blockquote>
-
-<p>It&rsquo;s Ruby. Syntax has different meaning than in Java. In Rails you use<br/>
-private in controllers to mean I don&rsquo;t want this method to be called from<br/>
-outside.</p>
-
-<p><a href="http://en.wikibooks.org/wiki/Ruby_Programming/Classes#Private">http://en.wikibooks.org/wiki/Ruby_Programming/Classes#Private</a></p>
-
-<p>irb(main):001:0> class T<br/>
-irb(main):002:1> private<br/>
-irb(main):003:1> def x<br/>
-irb(main):004:2> puts &ldquo;x&#8221;<br/>
-irb(main):005:2> end<br/>
-irb(main):006:1> end<br/>
-=> nil<br/>
-irb(main):007:0> y = T.new<br/>
-=> #&lt;T:0x7feb78f38098><br/>
-irb(main):008:0> y.x<br/>
-NoMethodError: private method `x&#8217; called for #&lt;T:0x7feb78f38098><br/>
-        from (irb):8<br/>
-        from :0<br/>
-irb(main):009:0> class W &lt; T<br/>
-irb(main):010:1> def q<br/>
-irb(main):011:2> x<br/>
-irb(main):012:2> end<br/>
-irb(main):013:1> end<br/>
-=> nil<br/>
-irb(main):015:0> z = W.new<br/>
-=> #&lt;W:0x7feb78f142b0><br/>
-irb(main):016:0> z.q<br/>
-x<br/>
-=> nil<br/>
-irb(main):017:0></p>
-
-<p>&mdash;<br/>
-Thanks and regards,</p>
-
-<p>Francis Fish</p>
-
-<p>|</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/09/08/History%EF%BC%88%E5%8E%86%E5%8F%B2%EF%BC%89%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95_15_%E4%BE%8B/">History（历史）命令用法_15_例</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-09-08T00:00:00+08:00" pubdate data-updated="true">Sep 8<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2></h2>
-
-<p>2008-09-07 <a href="http://linuxtoy.org/archives/author/admin/" title="Posts by Toy">Toy</a> Posted in <a href="http://linuxtoy.org/category/cli" title="View all posts in CLI">CLI</a>, <a href="http://linuxtoy.org/category/featured-post" title="View all posts in Featured Post">Featured Post</a>, <a href="http://linuxtoy.org/category/tips" title="View all posts in Tips">Tips</a> <a href="http://linuxtoy.org/archives/history-command-usage-examples.html/feed">RSS</a> <a href="http://linuxtoy.org/archives/history-command-usage-examples.html/trackback" title="copy this URI and ping to this post from ur own site">Trackback</a></p>
-
-<p>如果你经常使用 Linux 命令行，那么使用 history（历史）命令可以有效地提升你的效率。本文将通过实例的方式向你介绍 history 命令的 15 个用法。</p>
-
-<ol>
-<li><strong>使用 HISTTIMEFORMAT 显示时间戳</strong></li>
-</ol>
-
-
-<p>当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行：<br/>
-  `</p>
-
-<h1>export HISTTIMEFORMAT=&lsquo;%F %T &rsquo;</h1>
-
-<h1>history | more</h1>
-
-<p>1 2008-08-05 19:02:39 service network restart<br/>
-2 2008-08-05 19:02:39 exit<br/>
-3 2008-08-05 19:02:39 id<br/>
-4 2008-08-05 19:02:39 cat /etc/redhat-release<br/>
-`</p>
-
-<p><strong>注意</strong>：这个功能只能用在当 HISTTIMEFORMAT 这个环境变量被设置之后，之后的那些新执行的 bash 命令才会被打上正确的时间戳。在此之前的所有命令，都将会显示成设置 HISTTIMEFORMAT 变量的时间。[感谢 NightOwl 读者补充]</p>
-
-<ol>
-<li><strong>使用 Ctrl+R 搜索历史</strong></li>
-</ol>
-
-
-<p>Ctrl+R 是我经常使用的一个快捷键。此快捷键让你对命令历史进行搜索，对于想要重复执行某个命令的时候非常有用。当找到命令后，通常再按回车键就可以执行该命令。如果想对找到的命令进行调整后再执行，则可以按一下左或右方向键。<br/>
-  `</p>
-
-<h1>[Press Ctrl+R from the command prompt, which will display the reverse-i-search prompt]</h1>
-
-<p>(reverse-i-search)`red‘: cat /etc/redhat-release<br/>
-[Note: Press enter when you see your command, which will execute the command from the history]</p>
-
-<h1>cat /etc/redhat-release</h1>
-
-<p>Fedora release 9 (Sulphur)<br/>
-`</p>
-
-<ol>
-<li><strong>快速重复执行上一条命令</strong></li>
-</ol>
-
-
-<p>有 4 种方法可以重复执行上一条命令：</p>
-
-<ol>
-<li> 使用上方向键，并回车执行。</li>
-<li> 按 !! 并回车执行。</li>
-<li> 输入 !-1 并回车执行。</li>
-<li><p> 按 Ctrl+P 并回车执行。</p></li>
-<li><p><strong>从命令历史中执行一个指定的命令</strong></p></li>
-</ol>
-
-
-<p>在下面的例子中，如果你想重复执行第 4 条命令，那么可以执行 !4：<br/>
-  `</p>
-
-<h1>history | more</h1>
-
-<p>1 service network restart<br/>
-2 exit<br/>
-3 id<br/>
-4 cat /etc/redhat-release</p>
-
-<h1>!4</h1>
-
-<p>cat /etc/redhat-release<br/>
-Fedora release 9 (Sulphur)<br/>
-`</p>
-
-<ol>
-<li><strong>通过指定关键字来执行以前的命令</strong></li>
-</ol>
-
-
-<p>在下面的例子，输入 !ps 并回车，将执行以 ps 打头的命令：<br/>
-  `</p>
-
-<h1>!ps</h1>
-
-<p>ps aux | grep yp<br/>
-root 16947 0.0 0.1 36516 1264 ? Sl 13:10 0:00 ypbind<br/>
-root 17503 0.0 0.0 4124 740 pts/0 S+ 19:19 0:00 grep yp<br/>
-`</p>
-
-<ol>
-<li><strong>使用 HISTSIZE 控制历史命令记录的总行数</strong></li>
-</ol>
-
-
-<p>将下面两行内容追加到 .bash_profile 文件并重新登录 bash shell，命令历史的记录数将变成 450 条：<br/>
-  `</p>
-
-<h1>vi ~/.bash_profile</h1>
-
-<p>HISTSIZE=450<br/>
-HISTFILESIZE=450<br/>
-`</p>
-
-<ol>
-<li><strong>使用 HISTFILE 更改历史文件名称</strong></li>
-</ol>
-
-
-<p>默认情况下，命令历史存储在 ~/.bash_history 文件中。添加下列内容到 .bash_profile 文件并重新登录 bash shell，将使用 .commandline_warrior 来存储命令历史：<br/>
-  `</p>
-
-<h1>vi ~/.bash_profile</h1>
-
-<p>HISTFILE=/root/.commandline_warrior<br/>
-`</p>
-
-<ol>
-<li><strong>使用 HISTCONTROL 从命令历史中剔除连续重复的条目</strong></li>
-</ol>
-
-
-<p>在下面的例子中，pwd 命令被连续执行了三次。执行 history 后你会看到三条重复的条目。要剔除这些重复的条目，你可以将 HISTCONTROL 设置为 ignoredups：<br/>
-  `</p>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>history | tail -4</h1>
-
-<p>44 pwd<br/>
-45 pwd<br/>
-46 pwd [Note that there are three pwd commands in history, after executing pwd 3 times as shown above]<br/>
-47 history | tail -4</p>
-
-<h1>export HISTCONTROL=ignoredups</h1>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>pwd</h1>
-
-<h1>history | tail -3</h1>
-
-<p>56 export HISTCONTROL=ignoredups<br/>
-57 pwd [Note that there is only one pwd command in the history, even after executing pwd 3 times as shown above]<br/>
-58 history | tail -4<br/>
-`</p>
-
-<ol>
-<li><strong>使用 HISTCONTROL 清除整个命令历史中的重复条目</strong></li>
-</ol>
-
-
-<p>上例中的 ignoredups 只能剔除连续的重复条目。要清除整个命令历史中的重复条目，可以将 HISTCONTROL 设置成 erasedups：<br/>
-  `</p>
-
-<h1>export HISTCONTROL=erasedups</h1>
-
-<h1>pwd</h1>
-
-<h1>service httpd stop</h1>
-
-<h1>history | tail -3</h1>
-
-<p>38 pwd<br/>
-39 service httpd stop<br/>
-40 history | tail -3</p>
-
-<h1>ls -ltr</h1>
-
-<h1>service httpd stop</h1>
-
-<h1>history | tail -6</h1>
-
-<p>35 export HISTCONTROL=erasedups<br/>
-36 pwd<br/>
-37 history | tail -3<br/>
-38 ls -ltr<br/>
-39 service httpd stop<br/>
-[Note that the previous service httpd stop after pwd got erased]<br/>
-40 history | tail -6<br/>
-`</p>
-
-<ol>
-<li><strong>使用 HISTCONTROL 强制 history 不记住特定的命令</strong></li>
-</ol>
-
-
-<p>将 HISTCONTROL 设置为 ignorespace，并在不想被记住的命令前面输入一个空格：</p>
-
-<h1>export HISTCONTROL=ignorespace</h1>
-
-<h1>ls -ltr</h1>
-
-<h1>pwd</h1>
-
-<h1>service httpd stop [Note that there is a space at the beginning of service, to ignore this command from history]</h1>
-
-<h1>history | tail -3</h1>
-
-<p>67 ls -ltr<br/>
-68 pwd<br/>
-69 history | tail -3</p>
-
-<ol>
-<li><strong>使用 -c 选项清除所有的命令历史</strong></li>
-</ol>
-
-
-<p>如果你想清除所有的命令历史，可以执行：</p>
-
-<p><code># history -c</code></p>
-
-<ol>
-<li><strong>命令替换</strong></li>
-</ol>
-
-
-<p>在下面的例子里，!!:$ 将为当前的命令获得上一条命令的参数：<br/>
-  `</p>
-
-<h1>ls anaconda-ks.cfg</h1>
-
-<p>anaconda-ks.cfg</p>
-
-<h1>vi !!:$</h1>
-
-<p>vi anaconda-ks.cfg<br/>
-`</p>
-
-<p><strong>补充</strong>：使用 !$ 可以达到同样的效果，而且更简单。[感谢 wanzigunzi 读者补充]</p>
-
-<p>下例中，!^ 从上一条命令获得第一项参数：<br/>
-  `</p>
-
-<h1>cp anaconda-ks.cfg anaconda-ks.cfg.bak</h1>
-
-<p>anaconda-ks.cfg</p>
-
-<h1>vi -5 !^</h1>
-
-<p>vi anaconda-ks.cfg<br/>
-`</p>
-
-<ol>
-<li><strong>为特定的命令替换指定的参数</strong></li>
-</ol>
-
-
-<p>在下面的例子，!cp:2 从命令历史中搜索以 cp 开头的命令，并获取它的第二项参数：<br/>
-  `</p>
-
-<h1>cp ~/longname.txt /really/a/very/long/path/long-filename.txt</h1>
-
-<h1>ls -l !cp:2</h1>
-
-<p>ls -l /really/a/very/long/path/long-filename.txt<br/>
-`</p>
-
-<p>下例里，!cp:$ 获取 cp 命令的最后一项参数：<br/>
-  `</p>
-
-<h1>ls -l !cp:$</h1>
-
-<p>ls -l /really/a/very/long/path/long-filename.txt<br/>
-`</p>
-
-<ol>
-<li><strong>使用 HISTSIZE 禁用 history</strong></li>
-</ol>
-
-
-<p>如果你想禁用 history，可以将 HISTSIZE 设置为 0：<br/>
-  `</p>
-
-<h1>export HISTSIZE=0</h1>
-
-<h1>history</h1>
-
-<h1>[Note that history did not display anything]</h1>
-
-<p>`</p>
-
-<ol>
-<li><strong>使用 HISTIGNORE 忽略历史中的特定命令</strong></li>
-</ol>
-
-
-<p>下面的例子，将忽略 pwd、ls、ls -ltr 等命令：<br/>
-  `</p>
-
-<h1>export HISTIGNORE=”pwd:ls:ls -ltr:”</h1>
-
-<h1>pwd</h1>
-
-<h1>ls</h1>
-
-<h1>ls -ltr</h1>
-
-<h1>service httpd stop</h1>
-
-<h1>history | tail -3</h1>
-
-<p>79 export HISTIGNORE=”pwd:ls:ls -ltr:”<br/>
-80 service httpd stop<br/>
-81 history<br/>
-[Note that history did not record pwd, ls and ls -ltr]`</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -1139,6 +827,14 @@ HISTFILESIZE=450<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -1148,14 +844,6 @@ HISTFILESIZE=450<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
       </li>
     
   </ul>

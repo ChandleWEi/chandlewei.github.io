@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Go | ChandleWEi's Blog]]></title>
+  <link href="http://ChandleWEi.github.io/blog/categories/go/atom.xml" rel="self"/>
+  <link href="http://ChandleWEi.github.io/"/>
+  <updated>2014-02-17T12:19:02+08:00</updated>
+  <id>http://ChandleWEi.github.io/</id>
+  <author>
+    <name><![CDATA[Chandler Wei]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Go Wait Example]]></title>
+    <link href="http://ChandleWEi.github.io/blog/2014/02/17/go-wait-example/"/>
+    <updated>2014-02-17T10:57:16+08:00</updated>
+    <id>http://ChandleWEi.github.io/blog/2014/02/17/go-wait-example</id>
+    <content type="html"><![CDATA[<p><a href="http://nathanleclaire.com/blog/2014/02/15/how-to-wait-for-all-goroutines-to-finish-executing-before-continuing/" title="go">How to Wait for All Goroutines to Finish Executing Before Continuting</a></p>
+
+<p>go wait example</p>
+
+<p>`package main</p>
+
+<p>import (</p>
+
+<pre><code>"fmt"
+"io/ioutil"
+"log"
+"net/http"
+"sync"
+</code></pre>
+
+<p>)</p>
+
+<p>func main() {</p>
+
+<pre><code>urls := []string{
+    "http://www.reddit.com/r/aww.json",
+    "http://www.reddit.com/r/funny.json",
+    "http://www.reddit.com/r/programming.json",
+}
+jsonResponses := make(chan string)
+
+var wg sync.WaitGroup
+
+wg.Add(len(urls))
+
+for _, url := range urls {
+    go func(url string) {
+        defer wg.Done()
+        res, err := http.Get(url)
+        if err != nil {
+            log.Fatal(err)
+        } else {
+            defer res.Body.Close()
+            body, err := ioutil.ReadAll(res.Body)
+            if err != nil {
+                log.Fatal(err)
+            } else {
+                jsonResponses &lt;- string(body)
+            }
+        }
+    }(url)
+}
+
+go func() {
+    for response := range jsonResponses {
+        fmt.Println(response)
+    }
+}()
+
+wg.Wait()
+</code></pre>
+
+<p>}`</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,7 +9,8 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="echo &ldquo;Hello world&rdquo; | base64 Encryption with base64 Also works with files: $ cat file Hello world $ base64 file SGVsbG8gd29ybGQK To &hellip;">
+  <meta name="description" content="Memcache分布式部署方案 前言
+应该是很久之前，我开始研究 Memcache，写了一系列的学习心得，比如《 Discuz!的Memcache缓存实现》等。后面的好几十条回复也让这篇文章成为了此博客中颇受关注的一员。 同时在百度和Google， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,179 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">zz_Memcache分布式部署方案</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-04T00:00:00+08:00" pubdate data-updated="true">May 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2><a href="http://www.ccvita.com/395.html" title="Memcache分布式部署方案">Memcache分布式部署方案</a></h2>
+
+<p><strong>前言</strong><br/>
+应该是很久之前，我开始研究 <a href="http://www.danga.com/memcached/">Memcache</a>，写了一系列的学习心得，比如《 <a href="http://www.ccvita.com/261.html">Discuz!的Memcache缓存实现</a>》等。后面的好几十条回复也让这篇文章成为了此博客中颇受关注的一员。</p>
+
+<p>同时在百度和Google，关键词Memcache在长达一年多的时间里占据着第二位（第一位是官方），为很多需要了解或者应用Memcache的朋友提供了一些信息，但是我始终觉着还不够，于是本文诞生。</p>
+
+<p>唠唠叨叨说了半天，如果你觉着前面啰嗦，请直接看最后一大段，那是本文的重点。</p>
+
+<p><strong>基础环境</strong><br/>
+其实基于PHP扩展的Memcache客户端实际上早已经实现，而且非常稳定。先解释一些名词，Memcache是danga.com的一个开源项目，可以类比于MySQL这样的服务，而PHP扩展的Memcache实际上是连接Memcache的方式。</p>
+
+<p>首先，进行Memcache被安装具体可查看：<br/>
+  <a href="http://www.ccvita.com/257.html">Linux下的Memcache安装</a>：<a href="http://www.ccvita.com/257.html  ">http://www.ccvita.com/257.html  </a>
+  <a href="http://www.ccvita.com/258.html">Windows下的Memcache安装</a>：<a href="http://www.ccvita.com/258.html%EF%BC%9B  ">http://www.ccvita.com/258.html%EF%BC%9B  </a>
+其次，进行PHP扩展的安装，官方地址是<a href="http://pecl.php.net/package/memcache  ">http://pecl.php.net/package/memcache  </a>
+最后，启动Memcache服务，比如这样</p>
+
+<p>/usr/local/bin/memcached -d -p 11213 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
+/usr/local/bin/memcached -d -p 11214 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid<br/>
+/usr/local/bin/memcached -d -p 11215 -u root -m 10 -c 1024 -t 8 -P /tmp/memcached.pid</p>
+
+<p>启动三个只使用10M内存以方便测试。</p>
+
+<p> </p>
+
+<p><strong>分布式部署</strong><br/>
+PHP的PECL扩展中的memcache实际上在2.0.0的版本中就已经实现多服务器支持，现在都已经2.2.5了。请看如下代码</p>
+
+<p>$memcache = new Memcache;<br/>
+$memcache->addServer(&lsquo;localhost&rsquo;, 11213);<br/>
+$memcache->addServer(&lsquo;localhost&rsquo;, 11214);<br/>
+$memcache->addServer(&lsquo;localhost&rsquo;, 11215);<br/>
+$memStats = $memcache->getExtendedStats();<br/>
+print_r($memStats);</p>
+
+<p>通过上例就已经实现Memcache的分布式部署，是不是非常简单。</p>
+
+<p><strong>分布式系统的良性运行</strong><br/>
+在Memcache的实际使用中，遇到的最严重的问题，就是在增减服务器的时候，会导致大范围的缓存丢失，从而可能会引导数据库的性能瓶颈，为了避免出现这种情况，请先看 <a href="http://en.wikipedia.org/wiki/Consistent_hashing">Consistent hashing</a>算法，中文的介绍可以参考 <a href="http://tech.idv2.com/2008/07/24/memcached-004/#content_2_6">这里</a>，通过存取时选定服务器算法的改变，来实现。</p>
+
+<p>修改PHP的Memcache扩展memcache.c的源代码中的</p>
+
+<p>&ldquo;memcache.hash_strategy&rdquo; = standard</p>
+
+<p>为</p>
+
+<p>&ldquo;memcache.hash_strategy&rdquo; = consistent</p>
+
+<p>重新编译，这时候就是使用Consistent hashing算法来寻找服务器存取数据了。</p>
+
+<p>有效测试数据表明，使用Consistent hashing可以极大的改善增删Memcache时缓存大范围丢失的情况。<br/>
+NonConsistentHash: 92% of lookups changed after adding a target to the existing 10<br/>
+NonConsistentHash: 90% of lookups changed after removing 1 of 10 targets<br/>
+ConsistentHash: 6% of lookups changed after adding a target to the existing 10<br/>
+ConsistentHash: 9% of lookups changed after removing 1 of 10 targets</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/28/zz%5BMySQL_FAQ%5D%E7%B3%BB%E5%88%97_--_%E7%94%A8mysqlslap%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">zz[MySQL_FAQ]系列_&#8211;_用mysqlslap进行压力测试</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-28T00:00:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2><a href="http://imysql.cn/2009/04/24/using_mysqlslap_for_load_testing.html">[MySQL FAQ]系列 &mdash; 用mysqlslap进行压力测试</a></h2>
+
+<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fimysql.cn%2Fnode%2Ffeed">MySQL 中文网 &ndash;</a> 作者：yejr</p>
+
+<p>mysqlslap是官方提供的压力测试工具之一，官方介绍如下：</p>
+
+<p>mysqlslap is a diagnostic program designed to emulate client load for a MySQL server and to report<br/>
+the timing of each stage. It works as if multiple clients are accessing the server. mysqlslap is<br/>
+available as of MySQL 5.1.4.</p>
+
+<p>下面介绍一些常见参数：</p>
+
+<p>&mdash;auto-generate-sql-write-number</p>
+
+<p>每个线程中产生多少个insert</p>
+
+<p>&mdash;auto-generate-sql-guid-primary</p>
+
+<p>自动产生guid格式的主键</p>
+
+<p>&mdash;number-of-queries=50000</p>
+
+<p>每个连接客户端总共发起的查询次数</p>
+
+<p>&mdash;concurrency=10,50,100</p>
+
+<p>并发连接线程数，分别是10、50、100个并发</p>
+
+<p>-i, &mdash;iterations</p>
+
+<p>重复执行测试的次数</p>
+
+<p>&mdash;number-char-cols=10</p>
+
+<p>创建测试表的 char 型字段数量</p>
+
+<p>&mdash;number-int-cols=10</p>
+
+<p>创建测试表的 int 型字段数量<br/>
+下面是一个完整的例子：</p>
+
+<p>mysqlslap -hlocalhost -uroot &mdash;engine=innodb &mdash;auto-generate-sql-write-number=100000<br/>
+&mdash;auto-generate-sql-guid-primary &mdash;concurrency=10,50,100 &mdash;number-of-queries=500000<br/>
+&mdash;iterations=2 &mdash;number-char-cols=10 &mdash;number-int-cols=10 &mdash;auto-generate-sql<br/>
+&mdash;create-schema=sbtest &mdash;auto-generate-sql-load-type=mixed</p>
+
+<p>具体的慢慢看手册吧，不多啰嗦了，哈。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -619,212 +793,6 @@ $> sudo make install</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/04/15/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Siege：压力模拟/测试工具 作者：车东 发表于：2004-02-13 20:02 最后更新于：2008-04-12 03:04 版权声明：可以任意转载，转载时请务必以超链接形式标明文章原始出处和作者信息及本版权声明。 <a href="http://www.chedong.com/blog/archives/000033.html">http://www.chedong.com/blog/archives/000033.html</a> 最早使用的压力测试工具是apache的ab(apache benchmark)，apache ab做重复压力测试不错，但是每次只能测试一个链接，如何测试一组链接（比如从日志中导出的1个小时的日志，做真实压力测试），后来找到了这个： Siege是一个压力测试和评测工具，设计用于WEB开发这评估应用在压力下的承受能力：可以根据配置对一个WEB站点进行多用户的并发访问，记录每个用户所有请求过程的相应时间，并在一定数量的并发访问下重复进行。 SIEGE is an http regressive testing and benchmarking utility. It was designed to let web developers measure the performance of their code under duress, to see how it will stand up to load on the internet. It lets the user hit a webserver with a configurable number of concurrent simulated users. Those users place the webserver &ldquo;under siege.&rdquo; The duration of the siege is measured in transactions, the sum of simulated users and the number of times each simulated user repeats the process of hitting the server. Thus 20 concurrent users 50 times is 1000 transactions, the length of the test. 下载/安装 Siege时一个开放源代码项目：<a href="http://www.joedog.org">http://www.joedog.org</a> 下载： wget <a href="ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz">ftp://sid.joedog.org/pub/siege/siege-latest.tar.gz</a> 安装： %./configure ; make #make install siege包含了一组压力测试工具： SIEGE (1) Siege是一个HTTP压力测试和评测工具. 使用样例： 任务列表：www.chedong.com.url文件 <a href="http://www.chedong.com/tech/">http://www.chedong.com/tech/</a> <a href="http://www.chedong.com/tech/acdsee.html">http://www.chedong.com/tech/acdsee.html</a> <a href="http://www.chedong.com/tech/ant.html">http://www.chedong.com/tech/ant.html</a> <a href="http://www.chedong.com/tech/apache_install.html">http://www.chedong.com/tech/apache_install.html</a> <a href="http://www.chedong.com/tech/awstats.html">http://www.chedong.com/tech/awstats.html</a> <a href="http://www.chedong.com/tech/cache.html">http://www.chedong.com/tech/cache.html</a> <a href="http://www.chedong.com/tech/click.html">http://www.chedong.com/tech/click.html</a> <a href="http://www.chedong.com/tech/cms.html">http://www.chedong.com/tech/cms.html</a> <a href="http://www.chedong.com/tech/compress.html">http://www.chedong.com/tech/compress.html</a> <a href="http://www.chedong.com/tech/cvs_card.html">http://www.chedong.com/tech/cvs_card.html</a> <a href="http://www.chedong.com/tech/default.html">http://www.chedong.com/tech/default.html</a> <a href="http://www.chedong.com/tech/dev.html">http://www.chedong.com/tech/dev.html</a> <a href="http://www.chedong.com/tech/gnu.html">http://www.chedong.com/tech/gnu.html</a> &hellip;. siege -c 20 -r 2 -f www.chedong.com.url 参数说明： -c 20 并发20个用户 -r 2 重复循环2次 -f www.chedong.com.url 任务列表：URL列表 输出样例： ** Siege 2.59 ** Preparing 20 concurrent users for battle. 这次“战斗”准备了20个并发用户 The server is now under siege.. done. 服务在“围攻”测试中： Transactions: 40 hits 完成40次处理 Availability: 100.00 % 成功率 Elapsed time: 7.67 secs 总共用时 Data transferred: 877340 bytes 共数据传输：877340字节 Response time: 1.65 secs 相应用时1.65秒：显示网络连接的速度 Transaction rate: 5.22 trans/sec 平均每秒完成5.22次处理：表示服务器后台处理的速度 Throughput: 114385.92 bytes/sec 平均每秒传送数据：114385.92字节 Concurrency: 8.59 最高并发数 8.59 Successful transactions: 40 成功处理次数 Failed transactions: 0 失败处理次数 注意：由于速度很快，可能会达不到并发速度很高就已经完成。Response time显示的是测试机器和被测试服务器之间网络链接状况。Transaction rate则表示服务器端任务处理的完成速度。 辅助工具： 增量压力测试： 为了方便增量压力测试，siege还包含了一些辅助工具： bombardment (1) 是一个辅助工具：用于按照增量用户压力测试： 使用样例： bombardment urlfile.txt 5 3 4 1 初始化URL列表：urlfile.txt 初始化为：5个用户 每次增加：3个用户 运行：4次 每个客户端之间的延迟为：1秒 输出成CSV格式： siege2csv.pl (1) siege2csv.pl将bombardment的输出变成CSV格式： Time Data Transferred Response Time Transaction Rate Throughput Concurrency Code 200 (note that this is horribly broken.) 242 60.22 603064 0.02 4.02 10014.35 0.08 605 59.98 1507660 0.01 10.09 25136.05 0.12 938 59.98 2337496 0.02 15.64 38971.26 0.26 1157 60 2883244 0.04 19.28 48054.07 0.78 参考： 开源测试工具：<a href="http://www.opensourcetesting.org/performance.php">http://www.opensourcetesting.org/performance.php</a> 压力测试工具：HammerHead 正在试用中</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/04/15/zz_fastri/">Zz_fastri</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-15T00:00:00+08:00" pubdate data-updated="true">Apr 15<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Overview</h3>
-
-<p><em>FastRI</em> is an alternative to the &ldquo;ri&rdquo; documentation browser for Ruby. <em>FastRI</em> can operate in standalone mode (without using a DRb server, see below), so it can now fully replace ri for most intents and purposes.</p>
-
-<p>Why prefer it over ri? <em>FastRI</em></p>
-
-<ul>
-<li>actually works</li>
-<li>is *much* faster than ri</li>
-<li>can perform fast full-text searching over all your rdoc documentation</li>
-<li>is smarter than ri, and can find classes anywhere in the hierarchy without specifying the &ldquo;full path&rdquo;</li>
-<li>can be told to use different search strategies (completion, nested namespaces, etc.)</li>
-<li>supports RubyGems much better than ri, and knows which gem a method/class came from</li>
-<li>can serve RI documentation over DRb</li>
-</ul>
-
-
-<p>You can find more information about what makes <em>FastRI</em> faster than ri <a href="http://eigenclass.org/hiki/making+ruby+ri+faster">here</a>, and about its <a href="http://eigenclass.org/hiki/simple+full+text+search+engine">200 LoC full-text search engine here</a>.</p>
-
-<h3>Getting it</h3>
-
-<p><em>FastRI</em> can be installed with RubyGems:</p>
-
-<p>gem install <em>fastri</em></p>
-
-<p>If you try this shortly after a release and you get an old version/a 404 error, please allow some time until the packages propagate to RubyForge&rsquo;s mirrors.</p>
-
-<p><em>FastRI</em> is available in tarball format. The <em>fri</em> executable will run much faster if you install <em>FastRI</em> from a tarball, since RubyGems introduces a noticeable overhead.</p>
-
-<p>The latest tarball is <a href="http://rubyforge.org/frs/download.php/31654/fastri-0.3.1.tar.gz"><em>fastri</em>-0.3.1.tar.gz</a></p>
-
-<p>You can also get it from <a href="http://eigenclass.org/static/fastri">http://eigenclass.org/static/<em>fastri</em></a> if RubyForge happens to be down.</p>
-
-<p>Just run</p>
-
-<p>setup.rb</p>
-
-<p>to install.</p>
-
-<h3>Usage</h3>
-
-<p>Starting from 0.3.0, fri can be used in either local mode (&mdash;local, -L) or remote mode (using a <em>fastri</em>-server, -R, &mdash;remote). By default, fri will run in remote mode. There&rsquo;s a new executable named qri that defaults to local mode (it behaves otherwise identically to fri).</p>
-
-<p>Remote mode is slightly faster (typically about 150ms) , since the documentation index is kept in memory and needs not be read from disk.</p>
-
-<h4>Local mode</h4>
-
-<p>$ qri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-Array indexing starts at 0, as in C or Java. A negative index is<br/>
-&hellip;</p>
-
-<p>$ qri compact<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Array#compact</p>
-
-<h2>array.compact &ndash;> an_array  </h2>
-
-<p>Returns a copy of self with all nil elements removed.</p>
-
-<h4>Remote mode</h4>
-
-<p>There are two parts to using <em>FastRI</em> in remote mode:</p>
-
-<ul>
-<li>the server: <em>fastri</em>-server</li>
-<li>the client: fri</li>
-</ul>
-
-
-<p><em>FastRI</em> uses a Rinda Ring to allow servers to be discovered automatically without needing to indicate the DRb URIs manually. It can work across machines if you make sure the ring server is bound to the correct interface, and the ACL permissions are correct.</p>
-
-<h5>Quickstart</h5>
-
-<p>First of all, the DRb server must be launched with</p>
-
-<p>$ <em>fastri</em>-server (blocks)</p>
-
-<p>Later,</p>
-
-<p>$ fri String<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Class: String<br/>
-A String object holds and manipulates an arbitrary sequence of<br/>
-bytes, typically representing characters. String objects may be<br/>
-created using String::new or as literals.<br/>
-&hellip;</p>
-
-<p>Read on for more information, including how to make <em>FastRI</em> work across machines.</p>
-
-<h5>More about <em>fastri</em>-server</h5>
-
-<p>For local usage, just</p>
-
-<p>$ <em>fastri</em>-server</p>
-
-<p>will do. The DRb service will bind to 127.0.0.1, and only connections from 127.0.0.1 will be allowed. If you want to allow fri to be used from other machines, you have to specify which interface to bind to, and allow incoming connections from the desired hosts. For example, if your network is 192.168.1.0, and your IP is 192.168.1.2, you can do</p>
-
-<p>$ <em>fastri</em>-server -a 192.168.1.0/24 -s 192.168.1.2<br/>
-<em>FastRI</em> 0.0.1 listening on druby://192.168.1.2:41217<br/>
-ACL:<br/>
-deny all<br/>
-allow localhost<br/>
-allow 192.168.1.0/24</p>
-
-<p>Further options are documented in</p>
-
-<p>$ <em>fastri</em>-server -h</p>
-
-<h5>More about fri</h5>
-
-<p>Running fri with no options (or -h/&mdash;help) will explain the command-line options. If you are using fri locally (i.e. on the same server as <em>fastri</em>-server), just use it as follows:</p>
-
-<p>$ fri Array<br/>
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Class: Array<br/>
-Arrays are ordered, integer-indexed collections of any object.<br/>
-&hellip;</p>
-
-<p>If you&rsquo;re on a different machine, you&rsquo;ll probably have to specify which address the DRb service should be attached to. You can either specify it with -s ADDRESS (or &mdash;bind ADDRESS), or set the <em>FASTRI</em>_ADDR environment variable. For example, if you&rsquo;re on 192.168.1.101, both</p>
-
-<p>export <em>FASTRI</em>_ADDR=&ldquo;192.168.1.101&#8221;<br/>
-fri Array</p>
-
-<p>and</p>
-
-<p>fri -s 192.168.1.101 Array</p>
-
-<p>will work. Note that <em>FASTRI</em>_ADDR is the *local* address: the server will be discovered automatically. (The reason why the local address must be specified is that it will be given to the ring server, which must be able to establish a reverse connection through the local DRb service.)</p>
-
-<h3>Feedback</h3>
-
-<p>Bug reports, patches, comments&hellip; are appreciated. You can contact the author via <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#109;&#x66;&#112;&#64;&#x61;&#99;&#109;&#46;&#111;&#x72;&#103;">&#109;&#x66;&#112;&#64;&#97;&#99;&#109;&#46;&#111;&#x72;&#x67;</a>. Please add &ldquo;<em>fastri</em>&rdquo; to the subject in order to bypass the spam filters.</p>
-
-<h3>License</h3>
-
-<p><em>FastRI</em> is licensed under the same terms as Ruby. See LICENSE</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -842,6 +810,14 @@ fri Array</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -851,14 +827,6 @@ fri Array</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
       </li>
     
   </ul>

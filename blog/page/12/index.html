@@ -9,7 +9,7 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="deb http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy main restricted universe multiverse deb-src http://ubuntu.csie.ntu.edu.tw/ubuntu/ hardy main &hellip;">
+  <meta name="description" content="secret given to the #protect_from_forgery call February 7th, 2008 by Justin Ball My code was running fine under Rails 2.0.2. Then I enabled the db &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,101 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/11/10/secret_given_to_the_%23protect_from_forgery_call_zz%E5%A4%87%E5%BF%98/">Secret_given_to_the_#protect_from_forgery_call_zz备忘</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>secret given to the #protect_from_forgery call</h2>
+
+<h4>February 7th, 2008 by <a href="http://www.justinball.com/">Justin Ball</a></h4>
+
+<p>My code was running fine under Rails 2.0.2. Then I enabled the db based session store by uncommenting this:<br/>
+  <code>  
+config.action_controller.session_store = :active_record_store  
+</code><br/>
+in environment.rb.</p>
+
+<p>Anything that used the session after that gave me this error:<br/>
+  `<br/>
+No :secret given to the #protect_from_forgery call. Set that or use a</p>
+
+<pre><code>session store capable of generating its own keys (Cookie Session Store).  
+</code></pre>
+
+<p>`</p>
+
+<p>If you have the same problem. Go to application.rb and uncomment the secret then restart.</p>
+
+<p>All better.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/11/05/activerecord_sessions/">Activerecord_sessions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>    CGI::Session::ActiveRecordStore::Session.class_eval do<br/>
+      set_table_name :sessions<br/>
+    end</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -494,7 +589,7 @@ end<br/>
 <p>在做任何改动之前，最好把自己的名字和 email 地址介绍给大家，最简单的方法就是:</p>
 
 <p>$ git config &mdash;global user.name &ldquo;Your Name Comes Here&#8221;<br/>
-$ git config &mdash;global user.email <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x79;&#x6f;&#x75;&#x40;&#x79;&#x6f;&#117;&#114;&#x64;&#x6f;&#109;&#97;&#x69;&#110;&#46;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#121;&#x6f;&#117;&#x40;&#x79;&#111;&#x75;&#x72;&#x64;&#111;&#109;&#x61;&#x69;&#x6e;&#46;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#99;&#111;&#109;</a></p>
+$ git config &mdash;global user.email <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x79;&#x6f;&#117;&#64;&#121;&#x6f;&#x75;&#114;&#100;&#111;&#x6d;&#x61;&#105;&#110;&#46;&#x65;&#120;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#111;&#x6d;">&#121;&#111;&#117;&#64;&#121;&#x6f;&#x75;&#x72;&#x64;&#111;&#109;&#97;&#105;&#110;&#46;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;</a></p>
 
 <h2>导入一个新项目</h2>
 
@@ -723,7 +818,7 @@ origin/master</p>
 
 <p>$ git log<br/>
 commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7<br/>
-Author: Junio C Hamano <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x6a;&#x75;&#x6e;&#x6b;&#105;&#111;&#64;&#99;&#111;&#120;&#x2e;&#x6e;&#101;&#x74;">&#106;&#117;&#110;&#107;&#105;&#x6f;&#64;&#99;&#x6f;&#120;&#46;&#x6e;&#x65;&#116;</a><br/>
+Author: Junio C Hamano <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#106;&#x75;&#x6e;&#x6b;&#x69;&#111;&#64;&#x63;&#111;&#120;&#x2e;&#x6e;&#101;&#116;">&#x6a;&#117;&#110;&#x6b;&#x69;&#111;&#64;&#99;&#x6f;&#120;&#46;&#110;&#101;&#116;</a><br/>
 Date: Tue May 16 17:18:22 2006 -0700</p>
 
 <p>merge-base: Clarify the comments on post processing.</p>
@@ -918,179 +1013,6 @@ $ git log v2.5.. Makefile # commits since v2.5 which modify</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/10/16/cool_theme_about_emacs/">Cool_theme_about_emacs</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-10-16T00:00:00+08:00" pubdate data-updated="true">Oct 16<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>CFLAGS=-O3 ./configure &mdash;without-pop  &mdash;without-sound &mdash;without-sync-input &mdash;without-xpm &mdash;without-jpeg &mdash;without-tiff &mdash;without-gif &mdash;without-png &mdash;without-rsvg  &mdash;without-toolkit-scroll-bars &mdash;without-xaw3d &mdash;without-xim &mdash;without-gpm &mdash;without-dbus    &amp;&amp; make &amp;&amp; sudo make install</p>
-
-<p> </p>
-
-<p> </p>
-
-<p><a href="http://redartisan.com/2008/5/27/twilight-emacs">http://redartisan.com/2008/5/27/twilight-emacs</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/10/14/smartmontools__control_the_health_of_your_hard_diskZZ/">smartmontools__control_the_health_of_your_hard_diskZZ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-10-14T00:00:00+08:00" pubdate data-updated="true">Oct 14<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2></h2>
-
-<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Ftimes.debian.net%2F%3Fformat%3Drss20.xml">DebianTimes</a></p>
-
-<p><strong>Article submitted by Noel David Torres Taño. Guess what? We still need you to <a href="http://debaday.debian.net/contribute/">submit good articles about software you like</a>!</strong></p>
-
-<p>One of the packages I manually install in every new installation is smartmontools. I’ve some expertise in managing computers and networks, and it is a fact that pirate hackers and software bugs are not the main cause of problems in small and medium installations. Hardware is.</p>
-
-<p>Thus, you have hardware that can fails, and Murphy says that if it can fail, it will. The point is not to avoid hardware failures, which would be impossible, but to detect them early or even prevent them.</p>
-
-<p>Particularly for hard disks, the tool in charge is <code>smartctl</code> from the package smartmontools. IDE disks (if they’re not of the age of dinosaurs) have an integrated self-testing tool called <a href="http://en.wikipedia.org/wiki/Self-Monitoring%2C_Analysis%2C_and_Reporting_Technology">SMART</a> which means “Self-Monitoring, Analysis and Reporting Technology”. Modern SCSI disks have it too if they’re SCSI 3 or newer. It happens that inside the disk chipset there are routines to check parameters of disk health: spin-up time, number of read failures, temperature, life elapsed… And all of those parameters are not only registered by the disk chipset, but they have designated security limits and both parameters and limits can be checked by software who access the disk using the appropriate I/O instructions.</p>
-
-<p>And that software is <code>smartctl</code> , a piece of the smartmontools deb package. Of course, since they access the disk in a raw way, you need to be root to use these commands.</p>
-
-<p><code>smartctl</code> can ask the disk for its smart identification:</p>
-
-<h1>smartctl -i /dev/sda</h1>
-
-<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
-Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
-
-<p>=== START OF INFORMATION SECTION ===<br/>
-Model Family: Fujitsu MHV series<br/>
-Device Model: FUJITSU MHV2060BH<br/>
-Serial Number: NW10T652991F<br/>
-Firmware Version: 00850028<br/>
-User Capacity: 60,011,642,880 bytes<br/>
-Device is: In smartctl database [for details use: -P show]<br/>
-ATA Version is: 7<br/>
-ATA Standard is: ATA/ATAPI-7 T13 1532D revision 4a<br/>
-Local Time is: Mon May 12 02:39:31 2008 CEST<br/>
-SMART support is: Available &ndash; device has SMART capability.<br/>
-SMART support is: Enabled</p>
-
-<p>More interesting, <code>smartctl</code> can ask the disk for its parameter values:</p>
-
-<h1>smartctl -A /dev/sda</h1>
-
-<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
-Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
-
-<p>=== START OF READ SMART DATA SECTION ===<br/>
-SMART Attributes Data Structure revision number: 16<br/>
-Vendor Specific SMART Attributes with Thresholds:<br/>
-ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE<br/>
-1 Raw_Read_Error_Rate 0x000f 100 100 046 Pre-fail Always &ndash; 124253<br/>
-2 Throughput_Performance 0x0004 100 100 000 Old_age Offline &ndash; 18284544<br/>
-3 Spin_Up_Time 0x0003 100 100 025 Pre-fail Always &ndash; 0<br/>
-4 Start_Stop_Count 0x0032 099 099 000 Old_age Always &ndash; 1199<br/>
-5 Reallocated_Sector_Ct 0x0033 100 100 024 Pre-fail Always &ndash; 8589934592000<br/>
-7 Seek_Error_Rate 0x000e 100 087 000 Old_age Always &ndash; 1761<br/>
-8 Seek_Time_Performance 0x0004 100 100 000 Old_age Offline &ndash; 0<br/>
-9 Power_On_Seconds 0x0032 079 079 000 Old_age Always &ndash; 10866h+57m+47s<br/>
-10 Spin_Retry_Count 0x0012 100 100 000 Old_age Always &ndash; 0<br/>
-12 Power_Cycle_Count 0x0032 100 100 000 Old_age Always &ndash; 1199<br/>
-192 Power-Off_Retract_Count 0x0032 099 099 000 Old_age Always &ndash; 283<br/>
-193 Load_Cycle_Count 0x0032 100 100 000 Old_age Always &ndash; 6953<br/>
-194 Temperature_Celsius 0x0022 100 100 000 Old_age Always &ndash; 45 (Lifetime Min/Max 14/58)<br/>
-195 Hardware_ECC_Recovered 0x001a 100 100 000 Old_age Always &ndash; 62<br/>
-196 Reallocated_Event_Count 0x0032 100 100 000 Old_age Always &ndash; 459276288<br/>
-197 Current_Pending_Sector 0x0012 100 100 000 Old_age Always &ndash; 0<br/>
-198 Offline_Uncorrectable 0x0010 100 100 000 Old_age Offline &ndash; 0<br/>
-199 UDMA_CRC_Error_Count 0x003e 200 200 000 Old_age Always &ndash; 0<br/>
-200 Multi_Zone_Error_Rate 0x000e 100 082 000 Old_age Always &ndash; 22371<br/>
-203 Run_Out_Cancel 0x0002 100 100 000 Old_age Always &ndash; 1533257648465<br/>
-240 Head_Flying_Hours 0x003e 200 200 000 Old_age Always &ndash; 0</p>
-
-<p>As you can see, there are some attributes marked as “Pre-fail”. If any of these attributes goes beyond its threshold, the disk is about to fail in hours, maybe minutes.</p>
-
-<p>Even if there are more options to <code>smartctl</code> , the last ones I will comment here are -a and -t.</p>
-
-<p>smartctl -t launches a disk test. It needs a parameter indicating the type of the test, and in the longest case it can last for tens of minutes and will check the electrical and mechanical performance as well as the read performance of the disk, going through all its surface. smartctl -a, in its turn, shows all available information about the disk, including self testing results. Since tests will span minutes or tens of minutes, we can not see them happening. All what we will get when launching tests is like:</p>
-
-<h1>smartctl -t long /dev/sda</h1>
-
-<p>smartctl version 5.38 [i686-pc-linux-gnu] Copyright &copy; 2002-8 Bruce Allen<br/>
-Home page is <a href="http://smartmontools.sourceforge.net/">http://smartmontools.sourceforge.net/</a></p>
-
-<p>=== START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION ===<br/>
-Sending command: &ldquo;Execute SMART Extended self-test routine immediately in<br/>
-off-line mode&rdquo;.<br/>
-Drive command &ldquo;Execute SMART Extended self-test routine immediately in<br/>
-off-line mode&rdquo; successful.<br/>
-Testing has begun.<br/>
-Please wait 41 minutes for test to complete.<br/>
-Test will complete after Mon May 12 05:44:03 2008</p>
-
-<p>Use smartctl -X to abort test.</p>
-
-<p>Here, we’re being informed that (maybe) we will get a slightly lower performance on the disk for the next 41 minutes, since the test has started. It is completely background, or better ‘underground’, since it does not happen under the kernel control at all: everything is happening internally to the disk, and all what we can get is the result.</p>
-
-<p>smartctl -a, in turn, show a very large amount of SMART information about the disk: almost all stored SMART information parsed for us. It is usually better to use a more specific switch, see the man page for details.</p>
-
-<p>Finally, I want to comment that there is a daemon in the smartmontools package, <code>smartd</code> , who can take care of doing tests for you. It works by running <code>smartctl</code> in a periodic way (typically every 30 minutes) and logging all errors and parameter value changes to the syslog. The default configuration in Debian will also mail root if there’s any problem detected. I will not explain here about it, because I want you to read its (short and easy) documentation, but remember that in order to use it you must enable it in <code>/etc/default/smartmontools</code> .</p>
-
-<p>The smartmontools package has been available both in <a href="http://packages.debian.org/smartmontools">Debian</a> and <a href="http://packages.ubuntu.com/smartmontools">Ubuntu</a> since a long time ago.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -1108,6 +1030,14 @@ Test will complete after Mon May 12 05:44:03 2008</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -1117,14 +1047,6 @@ Test will complete after Mon May 12 05:44:03 2008</p>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
       </li>
     
   </ul>

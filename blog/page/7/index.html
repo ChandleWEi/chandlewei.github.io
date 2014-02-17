@@ -9,8 +9,12 @@
   <meta name="author" content="Chandler Wei">
 
   
-  <meta name="description" content="WinToFlash  winpe linux
-">
+  <meta name="description" content="当IOS SDK升级到 4.x之后.
+你在测试编译时能够选择的SDK 只有4.x
+很多人担心这样3.x环境下的IOS执行这种程序会有问题
+所以有人把SDK 3.x复制到xcode目录下来做兼容
+其实在真正发布的时候
+只在在project属性->Build->Deployment->iPhone &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +70,138 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/13/%E5%BD%93IOS_SDK%E5%8D%87%E7%BA%A7%E5%88%B0_4.x%E4%B9%8B%E5%90%8E./">当IOS_SDK升级到_4.x之后.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-13T00:00:00+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>当IOS SDK升级到 4.x之后.<br/>
+你在测试编译时能够选择的SDK 只有4.x<br/>
+很多人担心这样3.x环境下的IOS执行这种程序会有问题<br/>
+所以有人把SDK 3.x复制到xcode目录下来做兼容<br/>
+其实在真正发布的时候<br/>
+只在在project属性->Build->Deployment->iPhone Deployment Target里面选择对应的IOS版本即可<br/>
+  <a href="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS.png"> <img src="http://www.hiadmin.com/wp-content/uploads/2010/09/IOS-300x217.png" title="IOS" alt="" /> </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/13/zz_%E9%AB%98%E6%80%A7%E8%83%BDMySQL%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%89%BE%E5%87%BA%E8%B0%81%E6%8C%81%E6%9C%89%E9%94%81/">zz_高性能MySQL读书笔记：找出谁持有锁</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-13T00:00:00+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2></h2>
+
+<p>从 <a href="https://www.google.com/reader/view/feed/http%3A%2F%2Fhi.baidu.com%2Fthinkinginlamp%2Frss">老王的技术手册</a> 作者：thinkinginlamp</p>
+
+<p>有 15 人喜欢此条目</p>
+
+<p>作者：老王</p>
+
+<p>周末重读了一遍《高性能MySQL》，发现有些知识点看过便忘了，没有实际动手操作一遍就是记不牢，所以今天动手操作了一下“找出谁持有锁”，并把实验步骤记录下来，有兴趣的网友可以参照一二。</p>
+
+<p>问题的背景：在实际使用MySQL时，如果访问量比较大，那么很可能会出现大量Locked状态的进程，但是却不能方便的识别是哪条SQL引起的问题，很 多人遇到此类问题时，多半是通过PhpMyAdmin查询可疑SQL，然后KILL掉，但问题是可疑SQL可能会很多，这样逐一尝试太过笨拙，有的人一怒 之下很可能会重启MySQL，但如此治标不治本的方法肯定更不可取。</p>
+
+<p>开始实验，在test数据库先建立一个测试表foo（注意：是InnoDB表类型），添加若干数据：</p>
+
+<p>CREATE TABLE IF NOT EXISTS <code>foo</code> (<br/>
+<code>id</code> int(10) unsigned NOT NULL AUTO_INCREMENT,<br/>
+<code>str</code> varchar(100) NOT NULL,<br/>
+PRIMARY KEY (<code>id</code>)<br/>
+) ENGINE=InnoDB;</p>
+
+<p>INSERT INTO <code>foo</code> (<code>id</code>, <code>str</code>) VALUES<br/>
+(1, &lsquo;a&rsquo;),<br/>
+(2, &lsquo;b&rsquo;);</p>
+
+<p>打开一个MySQL命令行终端：</p>
+
+<p>mysql> USE test;<br/>
+mysql> SELECT SLEEP(12345) FROM foo;</p>
+
+<p>再打开一个MySQL命令行终端：</p>
+
+<p>mysql> USE test;<br/>
+mysql> UPDATE foo SET str=&lsquo;bar&rsquo;;</p>
+
+<p>此时执行SHOW PROCESSLIST，可以看到已经出现Locked现象了：</p>
+
+<p>10  User sleep  SELECT sleep(12345) FROM foo<br/>
+20  Locked      UPDATE foo SET str = &lsquo;bar&rsquo;</p>
+
+<p>当然，我们知道是SLEEP堵塞了UPDATE，但如果不是这个实验，面对同样的情况，比如说几百个SQL查询同时映入眼帘，我们如何来判断呢？此时没人能打包票，只能瞎蒙了，经验有时候很重要，但我们还需要明确的命令，在这里就是：</p>
+
+<p>mysqladmin debug</p>
+
+<p>注意：如何你没有设定“.my.cnf”配置文件的话，可能需要输入用户名和密码参数</p>
+
+<p>命令执行后，不会有任何明确的输出，不要着急，有价值的东西此时已经被保存到了错误日志里：</p>
+
+<p>mysql> SHOW VARIABLES LIKE &lsquo;log_error&rsquo;;</p>
+
+<p>找到错误日志的具体路径后，打开，查看日志的最后部分：</p>
+
+<p>10  test.foo    Locked &ndash; read       Low priority read lock<br/>
+20  test.foo    Waiting &ndash; write     High priority write lock</p>
+
+<p>如此，我们就能看到id是10的SQL堵塞了id是20的SQL，至于具体的SQL，到SHOW PROCESSLIST里对照一下就</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1319,123 +1455,6 @@ sed &ldquo;/$name/,/};/d&rdquo; named.conf</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/22/%E5%BC%BA%E5%88%B6_umount_nfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">强制_umount_nfs文件系统</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-22T00:00:00+08:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>强制 umount nfs文件系统</h3>
-
-<p>root@ubuntu:/# umount /app/nfs/<br/>
-umount.nfs: /app/nfs: device is busy<br/>
-umount.nfs: /app/nfs: device is busy</p>
-
-<p>提示文件系统设置busy<br/>
-root@ubuntu:/# fuser -km /app/nfs/   先使用这条命令<br/>
-/data/nfs/:                     8119c<br/>
-root@ubuntu:/# umount /app/nfs/      在umount 就可以了<br/>
-<a href="mailto:root@ubuntu:/">root@ubuntu:/</a>#</p>
-
-<p> </p>
-
-<p>也可使用 umount -f /app/nfs</p>
-
-<p> </p>
-
-<p>[root@dzxt ~]# fuser<br/>
-usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-             [ &ndash; ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
-       fuser -l<br/>
-       fuser -V</p>
-
-<p>    -a        display unused files too<br/>
-    -k        kill processes accessing that file<br/>
-    -i        ask before killing (ignored without -k)<br/>
-    -l        list signal names<br/>
-    -m        mounted FS<br/>
-    -n space search in the specified name space (file, udp, or tcp)<br/>
-    -s        silent operation<br/>
-    -signal   send signal instead of SIGKILL<br/>
-    -u        display user ids<br/>
-    -v        verbose output<br/>
-    -V        display version information<br/>
-    -4        search IPv4 sockets only<br/>
-    -6        search IPv6 sockets only<br/>
-    -         reset options</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/06/css%E6%BB%9A%E5%8A%A8%E6%9D%A1/">Css滚动条</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-06T00:00:00+08:00" pubdate data-updated="true">Jun 6<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div style="width:value;height:value;overflow-x:hidden;overflow-y:scroll">
-
-内容区当设定的显示范围,容纳不了显示的内容的时候,就会出现滚动条,可根据自己的需要适当的改进width,height,overflow-x,overflow-y的属性,即可达到iframe的效果airzen整理
-
-    
-</div>
-
-
-<p> </p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -1453,6 +1472,14 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/11/first-touch/">First Touch</a>
       </li>
     
@@ -1462,14 +1489,6 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name &hellip;<br/>
     
       <li class="post">
         <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/07/delegation_/">Delegation_</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/02/apple_%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0/">Apple_文档学习</a>
       </li>
     
   </ul>
