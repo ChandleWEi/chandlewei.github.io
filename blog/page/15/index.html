@@ -71,6 +71,62 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2008/08/29/zz_pdf/">Zz_pdf</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/08/29/zz_pdf/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/08/29/zz_pdf/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Indexing pdf files and do fast search  </p>
+
+<p>Reference site:<br />
+<a href="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html" title="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html">http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html</a>  </p>
+
+<p>Prerequisite:<br />
+sudo apt-get install swish++  </p>
+
+<p>Step 1 Convert pdf to text files separately<br />
+find -name ‘*.pdf’ -exec pdftotext -nopgbrk -q {} ;  </p>
+
+<p>Step 2 Using swish++ to index text files<br />
+index++ -e “text:*.txt” .<br />
+or using the verbose mode<br />
+index++ -v3 -e “text:*.txt” .  </p>
+
+<p>Step 3 Search using keywords<br />
+search++ [keyword<em>1</em>] and [keyword<em>2</em>] …. not [keyword_n_]  </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2008/08/29/rails_2.0.2_%E7%9A%84%E8%BD%AC%E5%8F%98_zz/">rails_2.0.2_的转变_zz</a></h1>
     
     
@@ -658,80 +714,6 @@ guid=6efed88183a7f6b9210cf40047ba0dfe<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/">Openmoko_顶上时间设置</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-07-21T00:00:00+08:00" pubdate data-updated="true">Jul 21<span>st</span>, 2008</time>
-        
-           | <a href="/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hey!<br />
-I suppose you want to have a little clock in the titlebar?!  </p>
-
-<p>Which Image are you using? 2007.2? ASU?  </p>
-
-<p>If you are using the 2007.2 Image, do the following in your moko-shell:  </p>
-
-<ol>
-  <li>minimize current clock:<br />
-#dbus-launch gconftool-2 –type bool –set<br />
-/desktop/poky/interface/small_clock true<br />
-# /etc/init.d/xserver-nodm restart  </li>
-</ol>
-
-<p>-&gt; ths big clock in the middle of the scrren will be gone. Just the<br />
-bar at the bottom of the page showing the date will remain.  </p>
-
-<ol>
-  <li>To add the clock to the title bar, edit /etc/matchbox/session. In<br />
-the list of applets after –end-applets, add ‘openmoko-panel-clock,’,<br />
-and restart your X server  </li>
-</ol>
-
-<p>hope that helps<br />
-Bastian  </p>
-
-<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> wrote:<br />
-&gt; how to set home page clock to right top.<br />
-&gt;<br />
-&gt;<br />
-&gt; _______________________________________________<br />
-&gt; support mailing list<br />
-&gt; support@lists.openmoko.org<br />
-&gt; https://lists.openmoko.org/mailman/listinfo/support<br />
-&gt;  </p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/16/">&larr; Older</a>
@@ -749,6 +731,10 @@ Bastian  </p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -762,10 +748,6 @@ Bastian  </p>
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>

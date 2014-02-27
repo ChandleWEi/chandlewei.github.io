@@ -71,6 +71,65 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2011/01/19/%E6%88%91%E9%94%99%E4%BA%86/">我错了</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-19T10:29:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2011</time>
+        
+           | <a href="/blog/2011/01/19/%E6%88%91%E9%94%99%E4%BA%86/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2011/01/19/%E6%88%91%E9%94%99%E4%BA%86/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我错了…</p>
+
+<p>我这么诚恳的认错，你在看到这篇文章的时候可不可以原谅我….</p>
+
+<p>事情是这样的：今天早上，我开开心心的带着围脖帽子和手套去上班~~坐公交车、坐2号线…进入二号线的时候，看到人好多好多呀…想到二号线里好热好热啊…于是我把帽子和手套取下来，拿在我的手上，紧紧的握住，紧紧的紧紧的握住~~</p>
+
+<p>我握得很紧很紧了哦…然后我顺利的进入了地铁…愉快的去上班了啦…</p>
+
+<p>但是，我快下车的时候，发现，发现，我的手上只有帽子和一只手套了…只有一只手套了~！！！！</p>
+
+<p>我的手套啊~！！！！我马上在地上找啊找，但是…找不到……</p>
+
+<p>于是乎，结果是，我的手套，丢了一只…我忐忑不安的戴着那孤独的手套去公司了…我一路都非常的不安…~~~~(&gt;_&lt;)~~~~ …我对不起你…我没有照顾好我们的小手套…这是世界上独一无二的咖啡色的最暖和的手套啊…呜呜…再也买不到了…天还那么那么冷…呜呜…</p>
+
+<p>我很伤心啊，我很伤心…你不要怪我啊…</p>
+
+<p>~~~~(&gt;_&lt;)~~~~</p>
+
+<p>放一张昨天的雪，哈哈。</p>
+
+<p><img src="/images/binary/0000/0017/90903f487a5427b7057ff038f842bfc2.jpg" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2011/01/16/plan_for_today/">Plan_for_today</a></h1>
     
     
@@ -493,82 +552,6 @@ sudo mdutil -i on /<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/16/find_in_batches/">Find_in_batches</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-16T00:00:00+08:00" pubdate data-updated="true">Sep 16<span>th</span>, 2010</time>
-        
-           | <a href="/blog/2010/09/16/find_in_batches/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2010/09/16/find_in_batches/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>如果你有10,000,000个用户，每周需要給他们发送最新的推广邮件，你可能会从数据库中这样操作:</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>User.each do</td>
-      <td>user</td>
-      <td>NewsLetter.weekly_deliver(user) end</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>但这样做会让ruby从数据库中一次取出10,000,000条数据，并创建10,000,000个对象，服务器内存会大量消耗，因此这样做是不行的，<br />
-从rails 2.3开始你就可以使用find_each和find_in_batches方法了，这两个方法专门用于分批查询数据和处理，默认情况下 find_each和find_in_batches每次会查出1000条数据记录，你可以可以指定每次取出的数量:batch_size，</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>User.find_each do</td>
-      <td>user</td>
-      <td>NewsLetter.weekly_deliver(user) end</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>find_in_batches是返还一个数据对象:</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>User.find_in_batches(:batch_size =&gt; 5000) do</td>
-      <td>users</td>
-      <td>users.each {</td>
-      <td>user</td>
-      <td>NewsLetter.weekly_deliver(user) } end</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -586,6 +569,10 @@ sudo mdutil -i on /<br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -599,10 +586,6 @@ sudo mdutil -i on /<br />
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>

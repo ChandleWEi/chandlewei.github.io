@@ -71,6 +71,132 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/">Linux_连接windows打印机</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-19T00:00:00+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml  </p>
+
+<p>基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的  </p>
+
+<p>1.查找windows打印机<br />
+#/usr/bin/smbclient -L puma -U ttan<br />
+用ttan这个用户连上puma查看共享的目录或打印机  </p>
+
+<p>结果显示如下：  </p>
+
+<p>Sharename Type Comment<br />
+——— —- ——-<br />
+print$ Disk ┤<br />
+C$ Disk ─<br />
+shared Disk<br />
+TD_Dir Disk TestDirector<br />
+download Disk<br />
+F$ Disk ─<br />
+IPC$ IPC<br />
+EPSONAL- Printer EPSON AL-C1100 Advanced<br />
+ADMIN$ Disk<br />
+D$ Disk ─<br />
+hpLaserJ Printer hp LaserJet 1320 PCL 6  </p>
+
+<p>这里我们要用到的就是hpLaserJ这个打印机  </p>
+
+<p>2.配置CUPS<br />
+#ls -l /usr/lib/cups/backend/smb<br />
+确认CUPS是否安装了smb。<br />
+如果没有<br />
+#ln -s <code>which smbspool</code> /usr/lib/cups/backend/smb  </p>
+
+<p>添加打印机<br />
+#lpadmin -p pumahp -v smb://ttan:password@puma/hpLaserJ -P<br />
+/usr/share/cups/model/laserjet.ppd.gz  </p>
+
+<p>-p是打印机名称，这个可以自己设置<br />
+-v就是打印机设备的URI.<br />
+-P是使用的ppd，PostScript Printer Description  </p>
+
+<h1 id="usrbinenable-pumahp">/usr/bin/enable pumahp</h1>
+<p>启用打印机<br />
+#/usr/sbin/accept pumahp<br />
+打印系统接受发往pumahp的打印任务<br />
+#/usr/sbin/lpadmin -d pumahp<br />
+设置pumahp为默认打印机  </p>
+
+<p>3.开始打印咯<br />
+#lpr /etc/fstab<br />
+#lpq<br />
+pumahp is ready and printing<br />
+Rank Owner Job File(s) Total Size<br />
+active root 1 fstab 1024 bytes  </p>
+
+<p>备注：<br />
+或者第二步可以直接修改配置文件<br />
+/etc/cups/printers.conf  </p>
+
+<p>Info pumahp<br />
+DeviceURI smb://ttan:password@puma/hpLaserJ<br />
+State Idle<br />
+Accepting Yes<br />
+JobSheets none none<br />
+QuotaPeriod 0<br />
+PageLimit 0<br />
+KLimit 0</p>
+
+<p> </p>
+
+<p>=========================================================================</p>
+
+<p>  1 # Printer configuration file for CUPS v1.3.8<br />
+  2 # Written by cupsd on 2009-03-19 11:51<br />
+  3 <printer iloho1="">  
+  4 Info iloho1  
+  5 DeviceURI smb://user:user@192.168.2.188/HPLaserJ1018  
+  6 State Idle  
+  7 StateTime 1237434675  
+  8 Accepting Yes  
+  9 Shared Yes  
+ 10 JobSheets none none  
+ 11 QuotaPeriod 0  
+ 12 PageLimit 0  
+ 13 KLimit 0  
+ 14 OpPolicy default  
+ 15 ErrorPolicy stop-printer  
+ 16 </printer><br />
+~</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">重新编译了vim_么碰到什么问题</a></h1>
     
     
@@ -671,269 +797,6 @@ read symbols: Bad value  </p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/12/09/zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6/">zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/12/09/zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/12/09/zz_Ubuntu_8.10_Downgrade_Ruby_1.8.7_to_1.8.6/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="ubuntu-810-downgrade-ruby-187-to-186httprailsgeekcom20081127ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6-permanent-link-to-ubuntu-810-downgrade-ruby-187-to-186"><a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6" title="permanent link to ubuntu 8.10 downgrade ruby 1.8.7 to 1.8.6">Ubuntu 8.10 Downgrade Ruby 1.8.7 to 1.8.6</a></h2>
-
-<p>November 27, 2008 at 10:51 AM · Posted under <a href="http://railsgeek.com/ubuntu-linux" title="all posts in ubuntu linux">Ubuntu Linux</a></p>
-
-<p>As you may know Ruby 1.8.7 don’t compatable with Rails( <a href="http://www.rubyonrails.org/down">http://www.rubyonrails.org/down</a>)<br />
-_We recommend Ruby 1.8.6 for use with Rails. Ruby 1.8.7, 1.8.5, 1.8.4 and 1.8.2 are still usable too, but version 1.8.3 is not. Ruby 1.8.7 still has some bugs to straighten out. _</p>
-
-<h4 id="step-by-step-to-downgrade-ruby-to-186">Step-by-step to downgrade Ruby to 1.8.6</h4>
-
-<p>1) Replace <strong>/etc/apt/sources.list</strong> file with follow data:</p>
-
-<h1 id="deb-cdromubuntu-710-gutsy-gibbon---release-i386-20071016-gutsy-main-restricted">deb cdrom:[Ubuntu 7.10 _Gutsy Gibbon_ - Release i386 (20071016)]/ gutsy main restricted</h1>
-<p># See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to<br />
-# newer versions of the distribution.  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify">Line commented out by installer because it failed to verify:</h1>
-<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid main restricted<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy main restricted<br />
-# Line commented out by installer because it failed to verify:<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid main restricted<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy main restricted  </p>
-
-<h2 id="major-bug-fix-updates-produced-after-the-final-release-of-the">Major bug fix updates produced after the final release of the</h2>
-<p>## distribution.<br />
-# Line commented out by installer because it failed to verify:<br />
-deb http://mirror.cs.umn.edu/ubuntu/ intrepid-updates main restricted<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy-updates main restricted  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-1">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-updates main restricted<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-updates main restricted  </p>
-
-<h2 id="nb-software-from-this-repository-is-entirely-unsupported-by-the-ubuntu">N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
-<p>## team, and may not be under a free licence. Please satisfy yourself as to<br />
-## your rights to use the software. Also, please note that software in<br />
-## universe WILL NOT receive any review or updates from the Ubuntu security<br />
-## team.<br />
-# Line commented out by installer because it failed to verify:<br />
-deb http://mirror.cs.umn.edu/ubuntu/ intrepid universe<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy universe  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-2">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid universe<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy universe  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-3">Line commented out by installer because it failed to verify:</h1>
-<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-updates universe<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy-updates universe  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-4">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-updates universe<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-updates universe  </p>
-
-<h2 id="nb-software-from-this-repository-is-entirely-unsupported-by-the-ubuntu-1">N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu</h2>
-<p>## team, and may not be under a free licence. Please satisfy yourself as to<br />
-## your rights to use the software. Also, please note that software in<br />
-## multiverse WILL NOT receive any review or updates from the Ubuntu<br />
-## security team.<br />
-# Line commented out by installer because it failed to verify:<br />
-deb http://mirror.cs.umn.edu/ubuntu/ intrepid multiverse<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy multiverse  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-5">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ hardy multiverse<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid multiverse  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-6">Line commented out by installer because it failed to verify:</h1>
-<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-updates multiverse<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy-updates multiverse  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-7">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-updates multiverse<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-updates multiverse  </p>
-
-<h2 id="uncomment-the-following-two-lines-to-add-software-from-the-backports">Uncomment the following two lines to add software from the ‘backports’</h2>
-<p>## repository.<br />
-## N.B. software from this repository may not have been tested as<br />
-## extensively as that contained in the main release, although it includes<br />
-## newer versions of some applications which may provide useful features.<br />
-## Also, please note that software in backports WILL NOT receive any review<br />
-## or updates from the Ubuntu security team.<br />
-deb http://mirror.cs.umn.edu/ubuntu/ intrepid-backports main restricted universe multiverse<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy-backports main restricted universe multiverse  </p>
-
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-backports main restricted universe multiverse<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-backports main restricted universe multiverse  </p>
-
-<h2 id="uncomment-the-following-two-lines-to-add-software-from-canonicals">Uncomment the following two lines to add software from Canonical’s</h2>
-<p>## ‘partner’ repository. This software is not part of Ubuntu, but is<br />
-## offered by Canonical and the respective vendors as a service to Ubuntu<br />
-## users.<br />
-deb http://archive.canonical.com/ubuntu intrepid partner<br />
-deb http://archive.canonical.com/ubuntu hardy partner  </p>
-
-<p>deb-src http://archive.canonical.com/ubuntu intrepid partner<br />
-deb-src http://archive.canonical.com/ubuntu hardy partner  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-8">Line commented out by installer because it failed to verify:</h1>
-<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-security main restricted<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy-security main restricted  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-9">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-security main restricted<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-security main restricted  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-10">Line commented out by installer because it failed to verify:</h1>
-<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-security universe<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy-security universe  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-11">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-security universe<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-security universe  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-12">Line commented out by installer because it failed to verify:</h1>
-<p>deb http://mirror.cs.umn.edu/ubuntu/ intrepid-security multiverse<br />
-deb http://mirror.cs.umn.edu/ubuntu/ hardy-security multiverse  </p>
-
-<h1 id="line-commented-out-by-installer-because-it-failed-to-verify-13">Line commented out by installer because it failed to verify:</h1>
-<p>deb-src http://mirror.cs.umn.edu/ubuntu/ intrepid-security multiverse<br />
-deb-src http://mirror.cs.umn.edu/ubuntu/ hardy-security multiverse  </p>
-
-<p>2) Create new file <strong>/etc/apt/preferences</strong></p>
-
-<p>Package: ruby<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: rdoc1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: ri1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libgtk2-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libdbd-sqlite3-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libopenssl-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libsqlite3-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: ruby1.8-dev<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libdbi-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libatk1-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libpango1-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libatk1-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libgdk-pixbuf2-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libglib2-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libcairo-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: irb1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libreadline-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: rails<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>Package: libncurses-ruby1.8<br />
-Pin: release a=hardy<br />
-Pin-Priority: 900  </p>
-
-<p>3) Open synaptic and find “ruby” relate packages (just search “ruby”). Check for completly removal installed packages (3-7 installed packages will be here)<br />
-4) sudo apt-get update<br />
-5) sudo apt-get install ruby rdoc irb libyaml-ruby libzlib-ruby ri libopenssl-ruby ruby1.8-dev build-essential</p>
-
-<h4 id="thats-all-">That’s all :)</h4>
-
-<p>I use the article: <a href="http://sudan.ubuntuforums.com/showthread.php?t=964978">http://sudan.ubuntuforums.com/showthread.php?t=964978</a></p>
-
-<p><a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6" title="permanent link to ubuntu 8.10 downgrade ruby 1.8.7 to 1.8.6">Permalink</a></p>
-
-<h3 id="lis-said">Lis said</h3>
-
-<p>Dec 01, 2008 @ <a href="http://railsgeek.com/2008/11/27/ubuntu-8-10-downgrade-ruby-1-8-7-to-1-8-6#comment-8" title="permanent link to this comment">12:22 PM</a></p>
-
-<p>As I said before, “Now upgrade it back :D”</p>
-
-<p>but your blog ate russian characters</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -951,6 +814,10 @@ Pin-Priority: 900  </p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -964,10 +831,6 @@ Pin-Priority: 900  </p>
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>

@@ -71,6 +71,80 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/">Openmoko_顶上时间设置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-07-21T00:00:00+08:00" pubdate data-updated="true">Jul 21<span>st</span>, 2008</time>
+        
+           | <a href="/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hey!<br />
+I suppose you want to have a little clock in the titlebar?!  </p>
+
+<p>Which Image are you using? 2007.2? ASU?  </p>
+
+<p>If you are using the 2007.2 Image, do the following in your moko-shell:  </p>
+
+<ol>
+  <li>minimize current clock:<br />
+#dbus-launch gconftool-2 –type bool –set<br />
+/desktop/poky/interface/small_clock true<br />
+# /etc/init.d/xserver-nodm restart  </li>
+</ol>
+
+<p>-&gt; ths big clock in the middle of the scrren will be gone. Just the<br />
+bar at the bottom of the page showing the date will remain.  </p>
+
+<ol>
+  <li>To add the clock to the title bar, edit /etc/matchbox/session. In<br />
+the list of applets after –end-applets, add ‘openmoko-panel-clock,’,<br />
+and restart your X server  </li>
+</ol>
+
+<p>hope that helps<br />
+Bastian  </p>
+
+<p>On Mon, Jul 21, 2008 at 9:39 AM, ChandleWEi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#099;&#104;&#097;&#110;&#100;&#108;&#101;&#046;&#119;&#101;&#105;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> wrote:<br />
+&gt; how to set home page clock to right top.<br />
+&gt;<br />
+&gt;<br />
+&gt; _______________________________________________<br />
+&gt; support mailing list<br />
+&gt; support@lists.openmoko.org<br />
+&gt; https://lists.openmoko.org/mailman/listinfo/support<br />
+&gt;  </p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2008/07/19/GTA02_WLAN/">GTA02_WLAN</a></h1>
     
     
@@ -730,58 +804,6 @@ opkg install /tmp/matchbox-keyboard-applet_0.0+svnr1910-r10_armv4t.ipk</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/06/20/%E5%A4%87%E5%BF%98/">备忘</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-06-20T00:00:00+08:00" pubdate data-updated="true">Jun 20<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/06/20/%E5%A4%87%E5%BF%98/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/06/20/%E5%A4%87%E5%BF%98/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-  <li>For more information on JSON go to http://www.json.org/.  </li>
-  <li>MIME is specified in five RFC documents, so it is much more convenient to point you to a<br />
-rather good description of MIME provided by Wikipedia at http://en.wikipedia.org/<br />
-wiki/MIME.  </li>
-  <li>For a full list of HTTP status codes, consult the spec at http://www.w3.org/<br />
-Protocols/rfc2616/rfc2616-sec10.html.  </li>
-  <li>Heiko Webers has the best write-up about sanitizing filenames at<br />
-http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/.  </li>
-  <li>See the official spec at http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html.  </li>
-  <li>See http://www.mnot.net/cache_docs/ for an overview of web caching.  </li>
-  <li>Ben Curtis writes up an excellent approach to securing downloads at<br />
-http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails/.</li>
-</ol>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -799,6 +821,10 @@ http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -812,10 +838,6 @@ http://www.bencurtis.com/archives/2006/11/serving-protected-downloads-with-rails
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>

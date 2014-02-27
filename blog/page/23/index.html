@@ -71,6 +71,59 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2008/01/20/vim_%E5%92%8C_emacs_%E7%9A%84%E6%AF%94%E8%BE%83/">Vim_和_emacs_的比较</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-20T00:00:00+08:00" pubdate data-updated="true">Jan 20<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/01/20/vim_%E5%92%8C_emacs_%E7%9A%84%E6%AF%94%E8%BE%83/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/01/20/vim_%E5%92%8C_emacs_%E7%9A%84%E6%AF%94%E8%BE%83/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>vim 和 emacs 哪个好坏已经争论不休，世界上本来就没有什么哪个更好哪个更坏，只有哪个跟适合你而已，以下观点纯粹个人臆测</p>
+
+<p>我是个很普通的linux 用户，为什么不用windows有人问，恩也许是华莱士的freedom ,也许是担心windows哪天倒闭，没有了保罗艾伦，没有了比尔盖子，微软已经不再是以前的微软 。但是苹果依然还有疯狂的乔布斯，也许windows倒闭的时候会开源，不过只是也许，毕竟borland 没有那么做，一个ibm的eclipse就让辉煌的borland摇摇欲坠令人感叹的时代。</p>
+
+<p>跑题了，</p>
+
+<p>第一。vim的扩展开发使用的语言并不统一但是很活跃，emacs 的扩展开发的语言是统一的lisp 。这个方便看以及学习使用。当然最近stallman有点偏执的疯狂有点像宗教发展的意图。</p>
+
+<p>第二。vim的编码好像总是和我编辑后的prompt有点冲突。</p>
+
+<p>第三。也许是重点emacs 的logo 是一头牛，在经济领域中牛是祥瑞的象征。</p>
+
+<p>我认为 emacs 很好很强大，vim我用来编辑配置文件等小文件，因为他打开快速，编辑快速。写程序我仍然喜欢用emacs.当然android是例外。eclipse和他就好像是天生一对，总之只要适合喜欢就好，万事莫要强制划分。</p>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2008/01/17/%E6%9B%BC%E6%98%86%E5%92%8C%E5%85%8B%E9%B2%81%E6%A0%BC%E6%9B%BC%E5%85%B3%E4%BA%8E%E5%8C%BB%E6%94%B9%E7%9A%84%E4%BA%89%E8%AE%BA/">曼昆和克鲁格曼关于医改的争论</a></h1>
     
     
@@ -658,245 +711,6 @@ David G. Klein</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/12/29/xfce4_%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE%E5%A4%87%E6%A1%88/">Xfce4_快捷键设置备案</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-12-29T00:00:00+08:00" pubdate data-updated="true">Dec 29<span>th</span>, 2007</time>
-        
-           | <a href="/blog/2007/12/29/xfce4_%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE%E5%A4%87%E6%A1%88/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2007/12/29/xfce4_%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE%E5%A4%87%E6%A1%88/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>xfce4 除了本身常用的快捷键外，还可以自定义十个命令做为快捷键来使用的。下面<br />
-就来介绍一下常用的快捷键是什么及怎样实现快捷键自定义。  </p>
-
-<p>在用户目录创建一个目录：</p>
-
-<p>$ mkdir -p ~/.themes/xfwm4/custom.keys/</p>
-
-<p>用来存放自定义快捷键文件所用，这样不同的用户可以定义不同的快捷键。实现个性化。<br />
-下面把系统缺省的快捷键文件复制到上面的目录：</p>
-
-<p>$ cp /usr/share/xfwm4/themes/default.keys/keythemerc ~/.themes/xfwm4/custom.keys/</p>
-
-<p>文件是 keythemerc  </p>
-
-<p>其内容是(我加了注释）:  </p>
-
-<p>源码:  </p>
-
-<h1 id="section">关闭窗口</h1>
-
-<p>close_window_key = Alt+F4  </p>
-
-<h1 id="section-1">最大化切换</h1>
-
-<p>maximize_window_key = Alt+F5  </p>
-
-<h1 id="section-2">竖向拉长</h1>
-
-<p>maximize_vert_key=Alt+F6  </p>
-
-<h1 id="section-3">横向拉长</h1>
-
-<p>maximize_horiz_key=Alt+F7  </p>
-
-<h1 id="section-4">最小化窗口</h1>
-
-<p>hide_window_key=Alt+F8  </p>
-
-<h1 id="section-5">卷起窗口</h1>
-
-<p>shade_window_key=Alt+F9  </p>
-
-<h1 id="section-6">插入所有工作区中</h1>
-
-<p>stick_window_key=Alt+F10  </p>
-
-<h1 id="section-7">在程序间切换焦点</h1>
-
-<p>cycle_windows_key=Alt+Tab  </p>
-
-<h1 id="section-8">按住三键，再按光标键可移动窗口位置</h1>
-
-<p>move_window_up_key=Control+Shift+Alt+Up  </p>
-
-<h1 id="section-9">向下移动窗口位置</h1>
-
-<p>move_window_down_key=Control+Shift+Alt+Down  </p>
-
-<h1 id="section-10">向左移动窗口位置</h1>
-
-<p>move_window_left_key=Control+Shift+Alt+Left  </p>
-
-<h1 id="section-11">向右移动窗口位置</h1>
-
-<p>move_window_right_key=Control+Shift+Alt+Right  </p>
-
-<h1 id="section-12">改变窗口大小，向上减小</h1>
-
-<p>resize_window_up_key=Shift+Alt+Up  </p>
-
-<h1 id="section-13">向下增大</h1>
-
-<p>resize_window_down_key=Shift+Alt+Down  </p>
-
-<h1 id="section-14">向左减小</h1>
-
-<p>resize_window_left_key=Shift+Alt+Left  </p>
-
-<h1 id="section-15">向右增大</h1>
-
-<p>resize_window_right_key=Shift+Alt+Right  </p>
-
-<h1 id="section-16">使窗口到顶层来</h1>
-
-<p>raise_window_key=Shift+Alt+Page_Up  </p>
-
-<h1 id="section-17">使窗口到底层去</h1>
-
-<p>lower_window_key=Shift+Alt+Page_Down  </p>
-
-<h1 id="section-18">改变当前工作区，去下一个</h1>
-
-<p>next_workspace_key=Control+Alt+Right  </p>
-
-<h1 id="section-19">前一个工作区</h1>
-
-<p>prev_workspace_key=Control+Alt+Left  </p>
-
-<h1 id="section-20">添加一个工作区</h1>
-
-<p>add_workspace_key=Alt+Insert  </p>
-
-<h1 id="section-21">减少一个工作区</h1>
-
-<p>del_workspace_key=Alt+Delete  </p>
-
-<h1 id="section-22">工作区选择，第一个工作区</h1>
-
-<p>workspace_1_key=Control+F1  </p>
-
-<h1 id="section-23">第二个工作区</h1>
-
-<p>workspace_2_key=Control+F2  </p>
-
-<h1 id="section-24">第三个工作区</h1>
-
-<p>workspace_3_key=Control+F3  </p>
-
-<h1 id="section-25">有就是第四个工作区，没有就是第一个，其他类同</h1>
-
-<p>workspace_4_key=Control+F4  </p>
-
-<h1 id="section-26">同上</h1>
-
-<p>workspace_5_key=Control+F5  </p>
-
-<p>workspace_6_key=Control+F6  </p>
-
-<p>workspace_7_key=Control+F7  </p>
-
-<p>workspace_8_key=Control+F8  </p>
-
-<p>workspace_9_key=Control+F9  </p>
-
-<h1 id="section-27">移动窗口到下一个工作区</h1>
-
-<p>move_window_next_workspace_key=Alt+Control+End  </p>
-
-<h1 id="section-28">移动窗口到上一个工作区</h1>
-
-<p>move_window_prev_workspace_key=Alt+Control+Home  </p>
-
-<h1 id="kp11">移动窗口到指定工作区号的工作区，KP_1，表示小键盘数字1</h1>
-
-<p>move_window_workspace_1_key=Alt+Control+KP_1  </p>
-
-<p>move_window_workspace_2_key=Alt+Control+KP_2  </p>
-
-<p>move_window_workspace_3_key=Alt+Control+KP_3  </p>
-
-<h1 id="section-29">有第四个工作区就移动第四个，没有就到第一个，其他类同</h1>
-
-<p>move_window_workspace_4_key=Alt+Control+KP_4  </p>
-
-<p>move_window_workspace_5_key=Alt+Control+KP_5  </p>
-
-<p>move_window_workspace_6_key=Alt+Control+KP_6  </p>
-
-<p>move_window_workspace_7_key=Alt+Control+KP_7  </p>
-
-<p>move_window_workspace_8_key=Alt+Control+KP_8  </p>
-
-<p>move_window_workspace_9_key=Alt+Control+KP_9  </p>
-
-<h1 id="section-30">快捷键列表十个命令可用</h1>
-
-<h1 id="xfce4-">xfce4 文档（帮助）</h1>
-
-<p>shortcut_1_key=Alt+F1  </p>
-
-<h1 id="section-31">快捷键一要执行的命令</h1>
-
-<p>shortcut_1_exec=xfhelp4  </p>
-
-<h1 id="section-32">运行命令对话框</h1>
-
-<p>shortcut_2_key=Alt+F2  </p>
-
-<p>shortcut_2_exec=xfrun4  </p>
-
-<h1 id="section-33">锁屏</h1>
-
-<p>shortcut_3_key=Alt+Control+Delete  </p>
-
-<p>shortcut_3_exec=xflock4  </p>
-
-<p>shortcut_4_key=none  </p>
-
-<p>shortcut_5_key=none  </p>
-
-<p>shortcut_6_key=none  </p>
-
-<p>shortcut_7_key=none  </p>
-
-<p>shortcut_8_key=none  </p>
-
-<p>shortcut_9_key=none  </p>
-
-<p>shortcut_10_key=none</p>
-
-<p>f</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/24/">&larr; Older</a>
@@ -914,6 +728,10 @@ David G. Klein</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -927,10 +745,6 @@ David G. Klein</p>
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>

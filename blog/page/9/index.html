@@ -71,6 +71,56 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2009/05/07/shell_tips/">Shell_tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-07T00:00:00+08:00" pubdate data-updated="true">May 7<span>th</span>, 2009</time>
+        
+           | <a href="/blog/2009/05/07/shell_tips/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/05/07/shell_tips/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>find . -name “*.[ch]” -exec grep -i -H “search pharse” {} ;</p>
+
+<p> </p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>lsof -i</td>
+      <td>grep -i estab</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2009/05/04/zz_Memcache%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">zz_Memcache分布式部署方案</a></h1>
     
     
@@ -756,122 +806,6 @@ $&gt; sudo make install  </p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/04/17/zzUnix%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6/">zzUnix编程哲学</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-17T00:00:00+08:00" pubdate data-updated="true">Apr 17<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/04/17/zzUnix%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/04/17/zzUnix%E7%BC%96%E7%A8%8B%E5%93%B2%E5%AD%A6/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.cppblog.com/jinq0123/archive/2007/08/29/UnixPhilosophy.html">Unix编程哲学</a></p>
-
-<p>Unix编程哲学  </p>
-
-<p>参考其它另外三个不同版本的翻译：<br />
-* <a href="http://www.china-pub.com/computers/common/info.asp?id=23013">Imperfect C++中文版</a><br />
-* <a href="http://www.blogcn.com/user3/hufey/blog/346394.html">心开天籁</a><br />
-* <a href="http://blog.csdn.net/swordll80/archive/2006/09/01/1156991.aspx">Unix编程哲学</a>  </p>
-
-<p>1.Rule of Modularity: Write simple parts connected by clean interfaces.  </p>
-
-<p>模块化准则：编写简单的模块，并用清晰的接口连接它们。  </p>
-
-<p>2.Rule of Clarity:Clarity is better than cleverness.  </p>
-
-<p>清晰性准则：清晰胜于机巧。  </p>
-
-<p>3.Rule of Composition: Design programs to be connected to other programs.  </p>
-
-<p>组合准则：设计可以相互连接的程序。  </p>
-
-<p>4.Rule of Separation:Separate policy form mechanism; separate interfaces from engines.  </p>
-
-<p>分离准则：策略同机制分离；接口同引擎分离  </p>
-
-<p>5.Rule of Simplicity: Design for simplicity; add complexity only where you must.  </p>
-
-<p>简单性准则：设计要简单，必要时才添加复杂性。  </p>
-
-<p>6:Rule of Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.  </p>
-
-<p>吝啬准则：除非确无它法，不要编写庞大的程序。  </p>
-
-<p>7:Rule of Transparency: Design for visibility to make inspection and debug going easier.  </p>
-
-<p>透明性准则：设计要直白，使检查和调试更易容。  </p>
-
-<p>8:Rules of Robustness:Robustness is the child of transparency and simplicity.  </p>
-
-<p>健壮性准则：健壮性源自于透明性与简单性。  </p>
-
-<p>9:Rule of Representation:Fold knowledge into data so program logic can be stupid and robust.  </p>
-
-<p>表示准则：数据体现知识，让逻辑单纯而健壮  </p>
-
-<p>10:Rule of  Least Surprise:In interface design, always do the least surprising thing.  </p>
-
-<p>最小惊奇准则：在接口设计中，避免出乎意料。  </p>
-
-<p>11:Rule of Silence: When a program has nothing surprising to say, it should say nothing.  </p>
-
-<p>沉默准则：如果程序没有什么好说的，就应该保持沉默。  </p>
-
-<p>12:Rule of Repair:When you must fail, fail nosily and as soon as possible.  </p>
-
-<p>修复准则：如果注定失败，要尽早，要大声。  </p>
-
-<p>13:Rule of Economy:Programmer time is expensive; conserve it in preference to machine time.  </p>
-
-<p>经济性准则：和机器的时间比较，程序员的时间是更宝贵的。  </p>
-
-<p>14:Rule of Generation:Avoid hand-hacking, write programs to write programs when you can.  </p>
-
-<p>生成准则：避免手工编程，如果可能，编写程序去生成程序。  </p>
-
-<p>15:Rule of Optimization:Prototype before polishing. Get it working before you optimize it.  </p>
-
-<p>优化准则：打磨前先成型，优化前先使它工作。  </p>
-
-<p>16:Rule of Diversity:Distrust all claims for “one true way”.  </p>
-
-<p>多样性准则：不相信“唯一正途”。  </p>
-
-<p>17:Rule of Extensibility:Design for the future, because it will be here sooner than you think.  </p>
-
-<p>扩展性准则：为未来设计，因为它来的比你想得早。  </p>
-
-<p>（转载请注明来源于金庆的专栏）</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -889,6 +823,10 @@ $&gt; sudo make install  </p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -902,10 +840,6 @@ $&gt; sudo make install  </p>
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>

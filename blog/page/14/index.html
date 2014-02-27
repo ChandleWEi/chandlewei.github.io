@@ -71,6 +71,54 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2008/09/10/spec_%E7%AC%AC%E4%B8%80%E6%AC%A1_%E8%BF%B7%E8%8C%AB%E7%9A%84%E5%AE%89%E8%A3%85/">Spec_第一次_迷茫的安装</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-10T00:00:00+08:00" pubdate data-updated="true">Sep 10<span>th</span>, 2008</time>
+        
+           | <a href="/blog/2008/09/10/spec_%E7%AC%AC%E4%B8%80%E6%AC%A1_%E8%BF%B7%E8%8C%AB%E7%9A%84%E5%AE%89%E8%A3%85/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/09/10/spec_%E7%AC%AC%E4%B8%80%E6%AC%A1_%E8%BF%B7%E8%8C%AB%E7%9A%84%E5%AE%89%E8%A3%85/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>gem install -r rspec  </p>
+
+<p>cd vendor/plugins<br />
+git clone git://github.com/dchelimsky/rspec-rails.git<br />
+cd ../rspec-rails<br />
+git checkout 1.1.4 -b 1.1.4
+cd ..<br />
+rm -rf rspec-rails/.git<br />
+cd ../../<br />
+script/generate rspec  </p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2008/09/10/rails_application_private/">Rails_application_private</a></h1>
     
     
@@ -1448,62 +1496,6 @@ iease我易 http://search.iease.com.cn<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/08/29/zz_pdf/">Zz_pdf</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-08-29T00:00:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/08/29/zz_pdf/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/08/29/zz_pdf/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Indexing pdf files and do fast search  </p>
-
-<p>Reference site:<br />
-<a href="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html" title="http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html">http://www.debianadmin.com/quick-pdf-sorting-and-searching-swish.html</a>  </p>
-
-<p>Prerequisite:<br />
-sudo apt-get install swish++  </p>
-
-<p>Step 1 Convert pdf to text files separately<br />
-find -name ‘*.pdf’ -exec pdftotext -nopgbrk -q {} ;  </p>
-
-<p>Step 2 Using swish++ to index text files<br />
-index++ -e “text:*.txt” .<br />
-or using the verbose mode<br />
-index++ -v3 -e “text:*.txt” .  </p>
-
-<p>Step 3 Search using keywords<br />
-search++ [keyword<em>1</em>] and [keyword<em>2</em>] …. not [keyword_n_]  </p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -1521,6 +1513,10 @@ search++ [keyword<em>1</em>] and [keyword<em>2</em>] …. not [keyword_n_]  </p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -1534,10 +1530,6 @@ search++ [keyword<em>1</em>] and [keyword<em>2</em>] …. not [keyword_n_]  </p>
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>

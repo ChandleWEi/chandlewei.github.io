@@ -71,6 +71,50 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-27T13:36:54+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2014</time>
+        
+           | <a href="/blog/2014/02/27/xcode-fake-cert/#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io/blog/2014/02/27/xcode-fake-cert/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate
+if [ "${PLATFORM_NAME}" == "iphoneos" ] || [ "${PLATFORM_NAME}" == "ipados" ]; then
+    /Applications/Xcode.app/Contents/Developer/iphoneentitlements/gen_entitlements.py "my.company.${PROJECT_NAME}" "${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent";
+    codesign -f -s "iPhone Developer" --entitlements "${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent" "${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/"
+    fi
+</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/02/17/latex-test/">Latex Test</a></h1>
     
     
@@ -608,48 +652,6 @@ Uses and Limitations  </p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/19/Chandle_%E6%83%85%E8%AF%9Drecord1/">Chandle_情话record1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-19T23:46:00+08:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/2011/04/19/Chandle_%E6%83%85%E8%AF%9Drecord1/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2011/04/19/Chandle_%E6%83%85%E8%AF%9Drecord1/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>某人今天说：</p>
-
-<p>拿到疯4没有很开心，可以郊游没有很开心，写程序也不见得开心，打游戏也没特别开心，倒是那啥啥啥在我旁边，一起走走路说说话感觉特别开心….</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -665,6 +667,10 @@ Uses and Limitations  </p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
       </li>
     
@@ -678,10 +684,6 @@ Uses and Limitations  </p>
     
       <li class="post">
         <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/05/24/avplayer/">Avplayer</a>
       </li>
     
   </ul>
