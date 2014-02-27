@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Linuxtips | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: linuxtips | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/linuxtips/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T15:02:53+08:00</updated>
+  <updated>2014-02-27T15:04:40+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -60,7 +60,7 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name …<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Zz_robin_的_配置_留下了]]></title>
+    <title type="html"><![CDATA[zz_robin_的_配置_留下了]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/05/08/zz_robin_%E7%9A%84_%E9%85%8D%E7%BD%AE_%E7%95%99%E4%B8%8B%E4%BA%86/"/>
     <updated>2009-05-08T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/05/08/zz_robin_的_配置_留下了</id>
@@ -109,7 +109,7 @@ usage: fuser [ -a | -s ] [ -n space ] [ -signal ] [ -kimuv ] name …<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Zz_top命令详解]]></title>
+    <title type="html"><![CDATA[zz_top命令详解]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/05/07/zz_top%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/"/>
     <updated>2009-05-07T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/05/07/zz_top命令详解</id>
@@ -259,7 +259,7 @@ W 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Shell_tips]]></title>
+    <title type="html"><![CDATA[shell_tips]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/05/07/shell_tips/"/>
     <updated>2009-05-07T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/05/07/shell_tips</id>
@@ -279,7 +279,7 @@ W 将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Linuxtips]]></title>
+    <title type="html"><![CDATA[linuxtips]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/04/28/linuxtips/"/>
     <updated>2009-04-28T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/28/linuxtips</id>

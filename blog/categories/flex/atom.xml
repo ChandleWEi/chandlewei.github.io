@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Flex | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: flex | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/flex/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T15:02:53+08:00</updated>
+  <updated>2014-02-27T15:04:40+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -45,7 +45,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Flex_gbk_csv_excel_mac问题]]></title>
+    <title type="html"><![CDATA[flex_gbk_csv_excel_mac问题]]></title>
     <link href="http://ChandleWEi.github.io/blog/2011/03/26/flex_gbk_csv_excel_mac%E9%97%AE%E9%A2%98/"/>
     <updated>2011-03-26T22:49:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/03/26/flex_gbk_csv_excel_mac问题</id>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rspec | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: rspec | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T15:02:53+08:00</updated>
+  <updated>2014-02-27T15:04:40+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Rspec_tips]]></title>
+    <title type="html"><![CDATA[rspec_tips]]></title>
     <link href="http://ChandleWEi.github.io/blog/2011/03/30/rspec_tips/"/>
     <updated>2011-03-30T21:18:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/03/30/rspec_tips</id>

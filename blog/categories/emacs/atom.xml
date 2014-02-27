@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T15:02:53+08:00</updated>
+  <updated>2014-02-27T15:04:40+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Zz_只管去做-用emacs的org-mode做时间管理]]></title>
+    <title type="html"><![CDATA[zz_只管去做-用emacs的org-mode做时间管理]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/08/17/zz_%E5%8F%AA%E7%AE%A1%E5%8E%BB%E5%81%9A-%E7%94%A8emacs%E7%9A%84org-mode%E5%81%9A%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
     <updated>2009-08-17T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/08/17/zz_只管去做-用emacs的org-mode做时间管理</id>
@@ -309,7 +309,7 @@ On 9 Aug 2009, 11:35.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Cool_theme_about_emacs]]></title>
+    <title type="html"><![CDATA[cool_theme_about_emacs]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/10/16/cool_theme_about_emacs/"/>
     <updated>2008-10-16T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/10/16/cool_theme_about_emacs</id>
@@ -334,7 +334,7 @@ On 9 Aug 2009, 11:35.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Emacs_混乱的cvs]]></title>
+    <title type="html"><![CDATA[emacs_混乱的cvs]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/08/06/emacs_%E6%B7%B7%E4%B9%B1%E7%9A%84cvs/"/>
     <updated>2008-08-06T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/08/06/emacs_混乱的cvs</id>

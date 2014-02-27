@@ -1,104 +1,93 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>ChandleWEi's Blog</title>
-  <meta name="author" content="Chandler Wei">
+	<meta charset="utf-8">
+	<title>ChandleWEi's Blog</title>
+	<meta name="author" content="Chandler Wei">
 
-  
-  <meta name="description" content="http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml 基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的 1.查找windows打印机
+	
+	<meta name="description" content="http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml 基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的 1.查找windows打印机
 #/usr/bin/ &hellip;">
-  
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://ChandleWEi.github.io/blog/page/11">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
+	<link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">ChandleWEi's Blog</a></h1>
-  
-    <h2>Welcome to our life, Roy</h2>
-  
-</hgroup>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">ChandleWEi's Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:ChandleWEi.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/ChandleWEi" title="Twitter">Twitter</a>
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:ChandleWEi.github.io">
+	</form>
+</nav>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:ChandleWEi.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/">Linux_连接windows打印机</a></h1>
-    
-    
-      <p class="meta">
-        
+	
+		
+	
+	<div id="content" class="inner">
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-03-19T00:00:00+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml  </p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/">
+		
+			Linux_连接windows打印机</a>
+	</h2>
+	<div class="entry-content">
+		<p>http://www.linux.com/howtos/Debian-and-Windows-Shared-Printing/printing_to_windows.shtml  </p>
 
 <p>基本上是参考这里的步骤做的，虽然我是在RHEL4上面实现的  </p>
 
@@ -186,131 +175,139 @@ KLimit 0</p>
  15 ErrorPolicy stop-printer  
  16 </printer><br />
 ~</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-19T00:00:00+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2009</time></div>
+	<div class="tags">
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2009/03/19/linux_%E8%BF%9E%E6%8E%A5windows%E6%89%93%E5%8D%B0%E6%9C%BA/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">重新编译了vim_么碰到什么问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-27T00:00:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p> CFLAGS=-O3 ./configure –enable-perlinterp –enable-pythoninterp –enable-rubyinterp –enable-cscope –enable-multibyte</p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">
+		
+			重新编译了vim_么碰到什么问题</a>
+	</h2>
+	<div class="entry-content">
+		<p> CFLAGS=-O3 ./configure –enable-perlinterp –enable-pythoninterp –enable-rubyinterp –enable-cscope –enable-multibyte</p>
 
 <p>make &amp;&amp; sudo make install</p>
 
 <p> </p>
 
 <p>我对vim 不是很熟悉，各种原因重新下载了7。2编译了下</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-27T00:00:00+08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2009/02/27/%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E4%BA%86vim_%E4%B9%88%E7%A2%B0%E5%88%B0%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/25/rails_many_update_question/">Rails_many_update_question</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-25T00:00:00+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/02/25/rails_many_update_question/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/02/25/rails_many_update_question/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>aa.bbs « bb (new)</p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/02/25/rails_many_update_question/">
+		
+			Rails_many_update_question</a>
+	</h2>
+	<div class="entry-content">
+		<p>aa.bbs « bb (new)</p>
 
 <p>aa.bbs.build bb.attributes (update)</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-25T00:00:00+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>rails</a>
+
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2009/02/25/rails_many_update_question/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/24/debian_gentoo_%E6%AF%94%E8%BE%83_zz/">Debian_gentoo_比较_zz</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-24T00:00:00+08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/02/24/debian_gentoo_%E6%AF%94%E8%BE%83_zz/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/02/24/debian_gentoo_%E6%AF%94%E8%BE%83_zz/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>套件管理工具比較<br />
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/02/24/debian_gentoo_%E6%AF%94%E8%BE%83_zz/">
+		
+			Debian_gentoo_比较_zz</a>
+	</h2>
+	<div class="entry-content">
+		<p>套件管理工具比較<br />
 比較一下現在市面上幾種套件管理工具<br />
 (debian - apt , gentoo - emerge , freebsd - prots)  </p>
 
@@ -443,45 +440,49 @@ FreeBSD: pkg_info -L  </p>
 Gentoo: emerge -e world<br />
 Debian: apt-get update;apt-get upgrade<br />
 FreeBSD: make world ; portupgrade -arf</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-24T00:00:00+08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2009/02/24/debian_gentoo_%E6%AF%94%E8%BE%83_zz/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/20/xfec4-terminal_%E6%85%A2/">Xfec4-terminal_慢</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-20T00:00:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/02/20/xfec4-terminal_%E6%85%A2/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/02/20/xfec4-terminal_%E6%85%A2/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>xfce4-terminal 有bug和xorg有兼容问题， 以前从么想过解决下，今天去xfce4-terminal的列表看了下，原来是这个问题吧</p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/02/20/xfec4-terminal_%E6%85%A2/">
+		
+			Xfec4-terminal_慢</a>
+	</h2>
+	<div class="entry-content">
+		<p>xfce4-terminal 有bug和xorg有兼容问题， 以前从么想过解决下，今天去xfce4-terminal的列表看了下，原来是这个问题吧</p>
 
 <p> 72 Section “Extensions”<br />
  73     #Option “Composite” “Enable”<br />
@@ -493,86 +494,90 @@ FreeBSD: make world ; portupgrade -arf</p>
 <p>把enable 改成disable 就好了</p>
 
 <p> </p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-20T00:00:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2009/02/20/xfec4-terminal_%E6%85%A2/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/02/06/vim_%E6%9B%BF%E6%8D%A2_%E8%80%81%E6%98%AF%E5%BF%98%E8%AE%B0/">Vim_替换_老是忘记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-02-06T00:00:00+08:00" pubdate data-updated="true">Feb 6<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/02/06/vim_%E6%9B%BF%E6%8D%A2_%E8%80%81%E6%98%AF%E5%BF%98%E8%AE%B0/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/02/06/vim_%E6%9B%BF%E6%8D%A2_%E8%80%81%E6%98%AF%E5%BF%98%E8%AE%B0/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>%s/<wsdl:operation name="(w+)">/1/gc</wsdl:operation></p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/02/06/vim_%E6%9B%BF%E6%8D%A2_%E8%80%81%E6%98%AF%E5%BF%98%E8%AE%B0/">
+		
+			Vim_替换_老是忘记</a>
+	</h2>
+	<div class="entry-content">
+		<p>%s/<wsdl:operation name="(w+)">/1/gc</wsdl:operation></p>
 
 <p>:%s/”(.*)” -%&gt;/”1”&gt;1&lt;/label&gt;/gc</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-06T00:00:00+08:00" pubdate data-updated="true">Feb 6<span>th</span>, 2009</time></div>
+	<div class="tags">
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2009/02/06/vim_%E6%9B%BF%E6%8D%A2_%E8%80%81%E6%98%AF%E5%BF%98%E8%AE%B0/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/01/13/%E8%A7%A3%E5%86%B3_Pidgin_%E7%9A%84%E7%99%BB%E5%BD%95%E9%97%AE%E9%A2%98__zz/">解决_Pidgin_的登录问题__zz</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13<span>th</span>, 2009</time>
-        
-           | <a href="/blog/2009/01/13/%E8%A7%A3%E5%86%B3_Pidgin_%E7%9A%84%E7%99%BB%E5%BD%95%E9%97%AE%E9%A2%98__zz/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2009/01/13/%E8%A7%A3%E5%86%B3_Pidgin_%E7%9A%84%E7%99%BB%E5%BD%95%E9%97%AE%E9%A2%98__zz/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="pidgin-">解决 Pidgin 的登录问题</h1>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2009/01/13/%E8%A7%A3%E5%86%B3_Pidgin_%E7%9A%84%E7%99%BB%E5%BD%95%E9%97%AE%E9%A2%98__zz/">
+		
+			解决_Pidgin_的登录问题__zz</a>
+	</h2>
+	<div class="entry-content">
+		<h1 id="pidgin-">解决 Pidgin 的登录问题</h1>
 
 <p>** galeki** posted @ 2009年1月13日 01:50 in <a href="http://www.linuxgem.org/categories/1489/posts">实用软件</a> with tags <a href="http://www.linuxgem.org/tag/pecan">pecan</a> <a href="http://www.linuxgem.org/tag/MSN">MSN</a> , 121 阅读</p>
 
@@ -601,45 +606,49 @@ FreeBSD: make world ; portupgrade -arf</p>
 <p>安装好之后，新建一个帐号，协议中选择 “<strong>WLM</strong>” 就可以了：</p>
 
 <p><img src="http://www.linuxgem.org/user_files/linuxgem/Image/Screenshot-MSN-Pecan.png" alt="" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2009/01/13/%E8%A7%A3%E5%86%B3_Pidgin_%E7%9A%84%E7%99%BB%E5%BD%95%E9%97%AE%E9%A2%98__zz/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/12/17/pidgin_2.5.3%E5%AE%89%E8%A3%85/">pidgin_2.5.3安装</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-17T00:00:00+08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/12/17/pidgin_2.5.3%E5%AE%89%E8%A3%85/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/12/17/pidgin_2.5.3%E5%AE%89%E8%A3%85/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>受够了 debian 的 pidgin 2.4.3的问题去官方网站一看我考都，2。5。3了赶快弄下来编译</p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2008/12/17/pidgin_2.5.3%E5%AE%89%E8%A3%85/">
+		
+			pidgin_2.5.3安装</a>
+	</h2>
+	<div class="entry-content">
+		<p>受够了 debian 的 pidgin 2.4.3的问题去官方网站一看我考都，2。5。3了赶快弄下来编译</p>
 
 <p>  CFLAGS=-O3 ./configure –disable-nm</p>
 
@@ -652,45 +661,49 @@ FreeBSD: make world ; portupgrade -arf</p>
 <p>sudo ldconfig</p>
 
 <p>万事ok, 2.5.2开始了</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-17T00:00:00+08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2008</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2008/12/17/pidgin_2.5.3%E5%AE%89%E8%A3%85/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ/">rpm和deb从本质上就代表了不同理念__ZZ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-15T00:00:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>##  </p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ/">
+		
+			rpm和deb从本质上就代表了不同理念__ZZ</a>
+	</h2>
+	<div class="entry-content">
+		<p>##  </p>
 
 <p>仔细考虑rpm的依赖关系<br />
 其实发现redhat当初考虑rpm<br />
@@ -738,45 +751,49 @@ FreeBSD: make world ; portupgrade -arf</p>
 
 <p>由此我觉得.redhat的rpm代表的是狭隘以及短视,封闭<br />
 而deb或者gentoo的包管理方式.更加开放和富有远见.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-15T00:00:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2008</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/linux/'>Linux</a>
+
+
 </div>
-  
-  
+	
+	<div class="comments"><a href="/blog/2008/12/15/rpm%E5%92%8Cdeb%E4%BB%8E%E6%9C%AC%E8%B4%A8%E4%B8%8A%E5%B0%B1%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%8D%E5%90%8C%E7%90%86%E5%BF%B5__ZZ/#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/12/11/subversion_amd64_%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/">Subversion_amd64_编译问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-11T00:00:00+08:00" pubdate data-updated="true">Dec 11<span>th</span>, 2008</time>
-        
-           | <a href="/blog/2008/12/11/subversion_amd64_%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/#disqus_thread"
-             data-disqus-identifier="http://ChandleWEi.github.io/blog/2008/12/11/subversion_amd64_%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Neon库，是用来作为Subversion服务器和HTTP客户端进行通讯的库，通常被编译成静态库。但是它后来被链接到不同的动态链接库中，这会导致在AMD 64位操作系统系统上面编译的过程出现错误，出现类似下面的信息：</p>
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2008/12/11/subversion_amd64_%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/">
+		
+			Subversion_amd64_编译问题</a>
+	</h2>
+	<div class="entry-content">
+		<p>Neon库，是用来作为Subversion服务器和HTTP客户端进行通讯的库，通常被编译成静态库。但是它后来被链接到不同的动态链接库中，这会导致在AMD 64位操作系统系统上面编译的过程出现错误，出现类似下面的信息：</p>
 
 <blockquote>
 
@@ -791,35 +808,48 @@ read symbols: Bad value  </p>
 <p>在开发者邮件列表中有一篇文章提到了这一点。</p>
 
 <p>解决方法就是为Subversion的配置脚本提供一个“–enable-shared”的参数。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-12-11T00:00:00+08:00" pubdate data-updated="true">Dec 11<span>th</span>, 2008</time></div>
+	<div class="tags">
+
 </div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/12/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/blog/page/10/">Newer &rarr;</a>
-    
-  </div>
+	
+	<div class="comments"><a href="/blog/2008/12/11/subversion_amd64_%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/#disqus_thread">Comments</a></div>
+	
 </div>
-<aside class="sidebar">
-  
-    
-  
-</aside>
+</article>
 
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2014 - Chandler Wei -
-<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+<nav id="pagenavi">
+    
+        <a href="/blog/page/10/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/12/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+Chandler Wei
+
 <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -836,9 +866,15 @@ MathJax.Hub.Config({
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
-
 </footer>
-  
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
 
 <script type="text/javascript">
       var disqus_shortname = 'chandlerweisblog';
@@ -848,35 +884,10 @@ MathJax.Hub.Config({
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//go.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 
