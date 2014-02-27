@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: rails | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: Rails | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T14:46:25+08:00</updated>
+  <updated>2014-02-27T14:52:12+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -81,7 +81,7 @@ controller测试<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[find_in_batches]]></title>
+    <title type="html"><![CDATA[Find_in_batches]]></title>
     <link href="http://ChandleWEi.github.io/blog/2010/09/16/find_in_batches/"/>
     <updated>2010-09-16T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2010/09/16/find_in_batches</id>
@@ -186,7 +186,7 @@ $&gt; sudo make install  </p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[zz_fastri]]></title>
+    <title type="html"><![CDATA[Zz_fastri]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/04/15/zz_fastri/"/>
     <updated>2009-04-15T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/15/zz_fastri</id>

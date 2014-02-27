@@ -25,13 +25,13 @@ f.write num.pack(“I”)
 
   
   <link rel="canonical" href="http://ChandleWEi.github.io/blog/2009/05/12/Write_integer_value_to_a_binary_file">
-  <link href="/favicon.ico" rel="icon">
-  
+  <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="ChandleWEi's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -40,16 +40,19 @@ f.write num.pack(“I”)
 
 </head>
 
-<body   class="no-sidebar"  >
+<body   >
   <header role="banner"><hgroup>
-  <h1>ChandleWEi's Blog</h1>
+  <h1><a href="/">ChandleWEi's Blog</a></h1>
   
-    <h2><a href="/">Welcome to our life, Roy</a></h2>
+    <h2>Welcome to our life, Roy</h2>
   
 </hgroup>
 
 </header>
-  <nav role="navigation">
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
@@ -89,7 +92,8 @@ f.write num.pack(“I”)
 
 <time datetime="2009-05-12T00:00:00+08:00" pubdate data-updated="true">May 12<span>th</span>, 2009</time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://ChandleWEi.github.io">Comments</a>
         
       </p>
     
@@ -118,7 +122,7 @@ a = f.read(4).unpack(“I”)<br />
       
   
 
-<span class="byline author vcard">Posted by <span class="fn"><a href="/about" title="About the author (ChandleWEi)" rel="author">ChandleWEi</a></span></span>
+<span class="byline author vcard">Posted by <span class="fn">ChandleWEi</span></span>
 
       
 
@@ -146,7 +150,7 @@ a = f.read(4).unpack(“I”)<br />
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2009/05/12/Write_integer_value_to_a_binary_file/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2009/05/12/Write_integer_value_to_a_binary_file/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ChandleWEi.github.io/blog/2009/05/12/Write_integer_value_to_a_binary_file/" data-via="ChandleWEi" data-counturl="http://ChandleWEi.github.io/blog/2009/05/12/Write_integer_value_to_a_binary_file/" >Tweet</a>
   
   
   
@@ -160,7 +164,7 @@ a = f.read(4).unpack(“I”)<br />
         <a class="basic-alignment left" href="/blog/2009/05/12/Ruby_Graph_%2B_Dijkstra/" title="Previous Post: Ruby_Graph_+_Dijkstra">&laquo; Ruby_Graph_+_Dijkstra</a>
       
       
-        <a class="basic-alignment right" href="/blog/2009/05/15/railsconf_2009/" title="next Post: railsconf_2009">railsconf_2009 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2009/05/15/railsconf_2009/" title="Next Post: railsconf_2009">railsconf_2009 &raquo;</a>
       
     </p>
   </footer>
@@ -173,6 +177,42 @@ a = f.read(4).unpack(“I”)<br />
   </section>
 
 </div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/27/xcode-fake-cert/">Xcode Fake Cert</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/latex-test/">Latex Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/17/go-wait-example/">Go Wait Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/11/first-touch/">First Touch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/01/%5B%E8%BD%AC%EF%BC%BDiphone_openvpn/">[转］iphone_openvpn</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
 
 
     </div>
@@ -196,7 +236,7 @@ a = f.read(4).unpack(“I”)<br />
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -207,7 +247,7 @@ a = f.read(4).unpack(“I”)<br />
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s); js.id = id; js.async = true;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -221,7 +261,7 @@ a = f.read(4).unpack(“I”)<br />
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

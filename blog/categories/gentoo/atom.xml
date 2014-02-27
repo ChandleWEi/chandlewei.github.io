@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: gentoo | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: Gentoo | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/gentoo/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T14:46:25+08:00</updated>
+  <updated>2014-02-27T14:52:12+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[gentoo_初体验]]></title>
+    <title type="html"><![CDATA[Gentoo_初体验]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/08/07/gentoo_%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
     <updated>2009-08-07T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/08/07/gentoo_初体验</id>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: db | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: Db | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/db/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T14:46:25+08:00</updated>
+  <updated>2014-02-27T14:52:12+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[zz_facebook_海量数据处理]]></title>
+    <title type="html"><![CDATA[Zz_facebook_海量数据处理]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/04/09/zz_facebook_%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
     <updated>2009-04-09T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/09/zz_facebook_海量数据处理</id>

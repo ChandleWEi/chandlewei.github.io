@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: c | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: C | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/c/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T14:46:25+08:00</updated>
+  <updated>2014-02-27T14:52:12+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[curl]]></title>
+    <title type="html"><![CDATA[Curl]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/07/31/curl/"/>
     <updated>2009-07-31T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/07/31/curl</id>
@@ -31,7 +31,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[c_语言学习]]></title>
+    <title type="html"><![CDATA[C_语言学习]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/07/24/c_%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
     <updated>2009-07-24T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/07/24/c_语言学习</id>
@@ -47,7 +47,7 @@ more01.c:42: warning: incompatible implicit declaration of built-in function ‘
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[c_警告_问题]]></title>
+    <title type="html"><![CDATA[C_警告_问题]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/10/22/c_%E8%AD%A6%E5%91%8A_%E9%97%AE%E9%A2%98/"/>
     <updated>2008-10-22T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/10/22/c_警告_问题</id>

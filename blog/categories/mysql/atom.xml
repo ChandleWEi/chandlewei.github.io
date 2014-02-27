@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: mysql | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: Mysql | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T14:46:25+08:00</updated>
+  <updated>2014-02-27T14:52:12+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -77,7 +77,7 @@ mysql&gt; UPDATE foo SET str=’bar’;  </p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[mysql_slow_log]]></title>
+    <title type="html"><![CDATA[Mysql_slow_log]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/08/28/mysql_slow_log/"/>
     <updated>2009-08-28T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/08/28/mysql_slow_log</id>
@@ -197,7 +197,7 @@ available as of MySQL 5.1.4.  </p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[mysql]]></title>
+    <title type="html"><![CDATA[Mysql]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/09/01/mysql/"/>
     <updated>2008-09-01T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/09/01/mysql</id>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: go | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: Go | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T14:46:25+08:00</updated>
+  <updated>2014-02-27T14:52:12+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[go wait example]]></title>
+    <title type="html"><![CDATA[Go Wait Example]]></title>
     <link href="http://ChandleWEi.github.io/blog/2014/02/17/go-wait-example/"/>
     <updated>2014-02-17T10:57:16+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2014/02/17/go-wait-example</id>
