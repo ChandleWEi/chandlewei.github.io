@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T13:38:12+08:00</updated>
+  <updated>2014-02-27T14:17:15+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Zz_sed]]></title>
+    <title type="html"><![CDATA[zz_sed]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/07/10/zz_sed/"/>
     <updated>2009-07-10T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/07/10/zz_sed</id>
@@ -371,7 +371,7 @@ sed “/$name/,/};/d” named.conf</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Cap_init]]></title>
+    <title type="html"><![CDATA[cap_init]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/04/28/cap_init/"/>
     <updated>2009-04-28T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/28/cap_init</id>
@@ -477,7 +477,7 @@ sed “/$name/,/};/d” named.conf</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Memcache_小试验]]></title>
+    <title type="html"><![CDATA[memcache_小试验]]></title>
     <link href="http://ChandleWEi.github.io/blog/2009/04/09/memcache_%E5%B0%8F%E8%AF%95%E9%AA%8C/"/>
     <updated>2009-04-09T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2009/04/09/memcache_小试验</id>

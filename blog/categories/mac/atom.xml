@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Mac | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: mac | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T13:38:12+08:00</updated>
+  <updated>2014-02-27T14:17:15+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Avplayer]]></title>
+    <title type="html"><![CDATA[avplayer]]></title>
     <link href="http://ChandleWEi.github.io/blog/2011/05/24/avplayer/"/>
     <updated>2011-05-24T15:52:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/05/24/avplayer</id>
@@ -35,7 +35,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Delegation_]]></title>
+    <title type="html"><![CDATA[delegation_]]></title>
     <link href="http://ChandleWEi.github.io/blog/2011/05/07/delegation_/"/>
     <updated>2011-05-07T15:35:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/05/07/delegation_</id>
@@ -67,7 +67,7 @@ Uses and Limitations  </p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Iphone_关键知识点]]></title>
+    <title type="html"><![CDATA[iphone_关键知识点]]></title>
     <link href="http://ChandleWEi.github.io/blog/2011/04/12/iphone_%E5%85%B3%E9%94%AE%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <updated>2011-04-12T17:19:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/04/12/iphone_关键知识点</id>
@@ -121,7 +121,7 @@ Uses and Limitations  </p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Flex_gbk_csv_excel_mac问题]]></title>
+    <title type="html"><![CDATA[flex_gbk_csv_excel_mac问题]]></title>
     <link href="http://ChandleWEi.github.io/blog/2011/03/26/flex_gbk_csv_excel_mac%E9%97%AE%E9%A2%98/"/>
     <updated>2011-03-26T22:49:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2011/03/26/flex_gbk_csv_excel_mac问题</id>

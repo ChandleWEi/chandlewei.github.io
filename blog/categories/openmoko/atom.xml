@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Openmoko | ChandleWEi's Blog]]></title>
+  <title><![CDATA[Category: openmoko | ChandleWEi's Blog]]></title>
   <link href="http://ChandleWEi.github.io/blog/categories/openmoko/atom.xml" rel="self"/>
   <link href="http://ChandleWEi.github.io/"/>
-  <updated>2014-02-27T13:38:12+08:00</updated>
+  <updated>2014-02-27T14:17:15+08:00</updated>
   <id>http://ChandleWEi.github.io/</id>
   <author>
     <name><![CDATA[Chandler Wei]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Openmoko_短_消息_中文被忘]]></title>
+    <title type="html"><![CDATA[openmoko_短_消息_中文被忘]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/10/30/openmoko_%E7%9F%AD_%E6%B6%88%E6%81%AF_%E4%B8%AD%E6%96%87%E8%A2%AB%E5%BF%98/"/>
     <updated>2008-10-30T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/10/30/openmoko_短_消息_中文被忘</id>
@@ -24,7 +24,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Epdfview]]></title>
+    <title type="html"><![CDATA[epdfview]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/08/15/epdfview/"/>
     <updated>2008-08-15T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/08/15/epdfview</id>
@@ -43,7 +43,7 @@ opkg install libpoppler-glib3_0.8.4-r0_armv4t.ipk  </p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Openmoko_联系人的设置方式]]></title>
+    <title type="html"><![CDATA[openmoko_联系人的设置方式]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/08/14/openmoko_%E8%81%94%E7%B3%BB%E4%BA%BA%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%96%B9%E5%BC%8F/"/>
     <updated>2008-08-14T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/08/14/openmoko_联系人的设置方式</id>
@@ -88,7 +88,7 @@ guid=6efed88183a7f6b9210cf40047ba0dfe<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Openmoko_顶上时间设置]]></title>
+    <title type="html"><![CDATA[openmoko_顶上时间设置]]></title>
     <link href="http://ChandleWEi.github.io/blog/2008/07/21/openmoko_%E9%A1%B6%E4%B8%8A%E6%97%B6%E9%97%B4%E8%AE%BE%E7%BD%AE/"/>
     <updated>2008-07-21T00:00:00+08:00</updated>
     <id>http://ChandleWEi.github.io/blog/2008/07/21/openmoko_顶上时间设置</id>
